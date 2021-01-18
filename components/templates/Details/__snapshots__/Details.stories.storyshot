@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots ye-ui/templates/Details Details 1`] = `
+<div>
+  <div
+    className="undefined"
+  >
+    <div>
+      <div>
+        Title
+      </div>
+      <div>
+        Some Extra Header
+      </div>
+    </div>
+    <div>
+      <div>
+        <div
+          style={Object {}}
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  <div
+                    style={Object {}}
+                  >
+                    <img
+                      className=""
+                      src="https://picsum.photos/160"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <span
+                style={
+                  Object {
+                    "minHeight": "1.5em",
+                  }
+                }
+              >
+                Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          style={Object {}}
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  <div
+                    style={Object {}}
+                  >
+                    <img
+                      className=""
+                      src="https://picsum.photos/160"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <span
+                style={
+                  Object {
+                    "minHeight": "1.5em",
+                  }
+                }
+              >
+                Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          style={Object {}}
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  <div
+                    style={Object {}}
+                  >
+                    <img
+                      className=""
+                      src="https://picsum.photos/160"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <span
+                style={
+                  Object {
+                    "minHeight": "1.5em",
+                  }
+                }
+              >
+                Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          style={Object {}}
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  <div
+                    style={Object {}}
+                  >
+                    <img
+                      className=""
+                      src="https://picsum.photos/160"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <span
+                style={
+                  Object {
+                    "minHeight": "1.5em",
+                  }
+                }
+              >
+                Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        Some Extra Content
+      </div>
+    </div>
+  </div>
+</div>
+`;
