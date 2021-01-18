@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  background-color: var(--color-background);
+  border-radius: var(--em-tiny);
+}
+
+.is-basic {
+  padding: var(--font-size);
+  box-shadow: var(--shadow-floating-low);
+}
+
+.is-horizontal {
+  display: flex;
+  align-items: flex-start;
+}
+
+.is-borderless {
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.image {
+  flex-shrink: 0;
+}
+
+.content {
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: visibility;
+}
+
+.image + .content {
+  margin-top: var(--em-xsmall);
+}
+
+.is-horizontal .image + .content {
+  margin-top: 0;
+  margin-left: var(--em-small);
+}
+
+.view-thumb {
+  & .content {
+    visibility: hidden;
+  }
+}

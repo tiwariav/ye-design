@@ -1,0 +1,14 @@
+.container {
+  display: block;
+  margin-bottom: var(--em-base);
+}
+
+.label-text {
+  display: block;
+  margin-bottom: var(--em-xsmall);
+}
+
+.error {
+  margin-top: var(--em-xsmall);
+  color: var(--color-danger);
+}

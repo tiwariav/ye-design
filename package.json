@@ -1,0 +1,32 @@
+{
+  "name": "ye-ui",
+  "version": "0.1.0",
+  "description": "A modern, minimal design system",
+  "keywords": [
+    "ye-ui",
+    "ui"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "normalize.css": "^8.0.1",
+    "paths.macro": "^3.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-content-loader": "^6.0.0",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-is": "^17.0.1",
+    "react-use": "^15.3.8"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^1.6.22",
+    "@storybook/addon-docs": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@testing-library/react": "^11.2.3",
+    "core-js": "^3.8.2"
+  }
+}

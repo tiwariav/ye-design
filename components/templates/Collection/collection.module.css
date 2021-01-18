@@ -1,0 +1,33 @@
+.item {
+  flex-shrink: 0;
+  width: 100%;
+  &:not(:last-child) {
+    margin-bottom: var(--em-large);
+  }
+}
+
+.title {
+  margin-bottom: var(--em-xtiny);
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--em-huge);
+}
+
+.button:not(:last-child) {
+  margin-right: var(--em-base);
+}
+
+.is-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.is-grid {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-gap: var(--em-large);
+  grid-template-columns: repeat(auto-fill, minmax(160px, auto));
+}

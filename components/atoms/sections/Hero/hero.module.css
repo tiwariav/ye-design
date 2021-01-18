@@ -1,0 +1,30 @@
+.hero {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 90vh;
+  padding-top: 2.5em;
+  padding-bottom: 2.5em;
+  background-color: var(--color-background);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  text-align: center;
+}
+
+.content-mid {
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+}
+
+.title {
+  padding: var(--em-base);
+  font-weight: 200;
+  font-size: var(--font-size-mammoth);
+  text-align: center;
+}

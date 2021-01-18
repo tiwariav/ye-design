@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+  display: flex;
+}
+
+.text-input {
+  width: 100%;
+  color: inherit;
+  line-height: inherit;
+  border-radius: var(--em-tiny);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: var(--em-xsmall);
+  left: var(--em-large);
+  display: inline-flex;
+
+  &.icon-right {
+    right: var(--em-small);
+    left: auto;
+  }
+}
+
+.padded-left {
+  padding-left: var(--em-xhuge);
+}
+
+.padded-right {
+  padding-right: var(--em-xhuge);
+}
+
+/* vairants */
+.is-outlined {
+  transition-property: background-color, color;
+
+  &.has-focus,
+  &:focus {
+    color: var(--color-background);
+    background-color: var(--color-text);
+  }
+}
+
+.spinner {
+  border-radius: var(--em-tiny);
+}

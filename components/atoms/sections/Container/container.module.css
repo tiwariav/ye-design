@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  padding: var(--em-base);
+}
+
+.space-none {
+  padding: 0;
+}
+
+.space-small {
+  padding: var(--em-xsmall);
+}
+
+.space-large {
+  padding: var(--em-xlarge);
+}
