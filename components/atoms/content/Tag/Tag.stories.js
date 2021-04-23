@@ -24,7 +24,6 @@ export default metadata;
 const Template = ({ iconAfter, iconBefore, ...args }) => {
   const IconAfter = iconMap[iconAfter];
   const IconBefore = iconMap[iconBefore];
-  console.log(IconAfter);
   return (
     <Tag
       iconAfter={IconAfter ? <IconAfter /> : null}
