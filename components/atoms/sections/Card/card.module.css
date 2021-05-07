@@ -1,7 +1,7 @@
 .card {
   position: relative;
   background-color: var(--color-background);
-  border-radius: var(--em-tiny);
+  border-radius: var(--spacing-em-tiny);
 }
 
 .is-basic {
@@ -31,12 +31,12 @@
 }
 
 .image + .content {
-  margin-top: var(--em-xsmall);
+  margin-top: var(--spacing-em-xsmall);
 }
 
 .is-horizontal .image + .content {
   margin-top: 0;
-  margin-left: var(--em-small);
+  margin-left: var(--spacing-em-small);
 }
 
 .view-thumb {

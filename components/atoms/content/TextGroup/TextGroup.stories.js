@@ -1,5 +1,6 @@
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { GiBowman, GiCaveman } from "react-icons/gi";
+import { getStoryName } from "../../../../utils/storybook";
 import TextGroup from "./TextGroup";
 
 const iconMap = {
@@ -11,7 +12,7 @@ const iconMap = {
 };
 
 const metadata = {
-  title: "ye-ui/atoms/content/TextGroup",
+  title: getStoryName(__dirname),
   component: TextGroup,
   argTypes: {
     iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },

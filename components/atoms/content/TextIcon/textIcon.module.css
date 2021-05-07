@@ -2,8 +2,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--em-huge);
-  height: var(--em-huge);
+  width: var(--spacing-em-huge);
+  height: var(--spacing-em-huge);
   color: var(--color-white);
   font-size: var(--font-size-tiny);
   background-color: var(--color-black-10);

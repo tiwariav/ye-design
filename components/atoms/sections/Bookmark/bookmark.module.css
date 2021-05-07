@@ -1,8 +1,8 @@
 .bookmark {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--em-xsmall);
-  padding-bottom: var(--em-xsmall);
+  margin-bottom: var(--spacing-em-xsmall);
+  padding-bottom: var(--spacing-em-xsmall);
   color: var(--color-black-50);
   font-size: var(--font-size-small);
 }
@@ -13,7 +13,7 @@
 
   &:not(:last-child) .text::after {
     position: absolute;
-    bottom: calc(var(--em-xtiny) * -1);
+    bottom: calc(var(--spacing-em-xtiny) * -1);
     left: 0;
     width: 100%;
     height: 1px;
@@ -25,12 +25,12 @@
 .text {
   position: relative;
   display: inline-flex;
-  padding-right: var(--em-xtiny);
-  padding-left: var(--em-xtiny);
+  padding-right: var(--spacing-em-xtiny);
+  padding-left: var(--spacing-em-xtiny);
 }
 
 .separator {
   display: inline-flex;
-  margin-right: var(--em-tiny);
-  margin-left: var(--em-tiny);
+  margin-right: var(--spacing-em-tiny);
+  margin-left: var(--spacing-em-tiny);
 }

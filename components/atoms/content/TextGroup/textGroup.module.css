@@ -7,16 +7,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--em-large);
-  height: var(--em-large);
-  margin-right: var(--em-xsmall);
+  width: var(--spacing-em-large);
+  height: var(--spacing-em-large);
+  margin-right: var(--spacing-em-xsmall);
   color: inherit;
   font-size: var(--font-size-em);
   line-height: 1;
 
   &.is-after {
     margin-right: 0;
-    margin-left: var(--em-xsmall);
+    margin-left: var(--spacing-em-xsmall);
   }
 }
 
@@ -36,9 +36,9 @@
 }
 
 .loader-icon + .loader-text {
-  margin-left: var(--em-xsmall);
+  margin-left: var(--spacing-em-xsmall);
 }
 
 .loader-text + .loader-icon {
-  margin-left: var(--em-xsmall);
+  margin-left: var(--spacing-em-xsmall);
 }

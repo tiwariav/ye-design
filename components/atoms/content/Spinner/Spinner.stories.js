@@ -1,8 +1,9 @@
 import React from "react";
+import { getStoryName } from "../../../../utils/storybook";
 import SpinnerComponent from "./Spinner";
 
 const metadata = {
-  title: "ye-ui/atoms/content/Spinner",
+  title: getStoryName(__dirname),
   component: SpinnerComponent,
   argTypes: {
     color: { control: "color" },

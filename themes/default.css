@@ -12,22 +12,23 @@
   /* COLORS */
 
   /* color definitions */
-  --color-primary: #f18904;
-  --color-black: #000;
-  --color-white: #fff;
-  --color-accent-light: #ffc880;
   --color-accent-dark: #4f2549;
-  --color-text: var(--color-black);
-  --color-text-content: var(--color-black);
-  --color-text-anchor: #005086;
+  --color-accent-light: #ffc880;
   --color-background: var(--color-white);
   --color-background-content: var(--color-white);
-  --color-shadow: rgba(0, 0, 0, 0.15);
-  --color-white-90: rgba(255, 255, 255, 0.9);
-  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-black: #000;
   --color-black-10: rgba(0, 0, 0, 0.1);
   --color-black-50: rgba(0, 0, 0, 0.5);
-  --color-danger: red;
+  --color-danger: rgb(255, 0, 0);
+  --color-primary: #f18904;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+  --color-text: var(--color-black);
+  --color-text-anchor: #005086;
+  --color-text-content: var(--color-black);
+  --color-white: #fff;
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-10: rgba(255, 255, 255, 0.1);
 
   /* ====== */
 
@@ -47,13 +48,16 @@
   --font-size-small: 0.833rem;
   --font-size-xsmall: 0.694rem;
   --font-size-tiny: 0.579rem;
+
+  /* line heights */
   --line-height: 1.5;
+  --line-height-thin: 1.25;
 
   /* weights */
   --font-weight-black: 700;
   --font-weight-bold: 600;
   --font-weight-semibold: 500;
-  --font-weight: 400;
+  --font-weight-normal: 400;
   --font-weight-light: 300;
   --font-weight-thin: 200;
 
@@ -69,15 +73,30 @@
   /* ====== */
 
   /* SPACING */
-  --em-xtiny: 0.125em;
-  --em-tiny: 0.25em;
-  --em-xsmall: 0.5em;
-  --em-small: 0.75em;
+
+  /* relative */
+  --em-unit: 0.125em;
   --em-base: 1em;
-  --em-large: 1.25em;
-  --em-xlarge: 1.5em;
-  --em-huge: 2em;
-  --em-xhuge: 3.5em;
+  --spacing-em-tiny: calc(2 * var(--em-unit));
+  --spacing-em-xsmall: calc(4 * var(--em-unit));
+  --spacing-em-small: calc(6 * var(--em-unit));
+  --spacing-em-normal: var(--em-base);
+  --spacing-em-large: calc(10 * var(--em-unit));
+  --spacing-em-xlarge: calc(12 * var(--em-unit));
+  --spacing-em-huge: calc(16 * var(--em-unit));
+  --spacing-em-xhuge: calc(28 * var(--em-unit));
+
+  /* fixed */
+  --rem-unit: 0.125em;
+  --rem-base: 1rem;
+  --spacing-rem-tiny: calc(2 * var(--rem-unit));
+  --spacing-rem-xsmall: calc(4 * var(--rem-unit));
+  --spacing-rem-small: calc(6 * var(--rem-unit));
+  --spacing-rem-normal: var(--rem-base);
+  --spacing-rem-large: calc(10 * var(--rem-unit));
+  --spacing-rem-xlarge: calc(12 * var(--rem-unit));
+  --spacing-rem-huge: calc(16 * var(--rem-unit));
+  --spacing-rem-xhuge: calc(28 * var(--rem-unit));
 
   /* ====== */
 
@@ -93,21 +112,21 @@
   --button-outline-border-width: 1px;
   --button-focus-shadow: var(--shadow-pressed);
   --button-font-weight: var(--font-weight-semibold);
-  --button-padding: var(--em-xsmall) var(--em-large);
+  --button-padding: var(--spacing-em-xsmall) var(--spacing-em-large);
   --button-outline-padding: calc(
-      var(--em-xsmall) - var(--button-outline-border-width)
+      var(--spacing-em-xsmall) - var(--button-outline-border-width)
     )
-    calc(var(--em-large) - var(--button-outline-border-width));
+    calc(var(--spacing-em-large) - var(--button-outline-border-width));
   --button-shadow: var(--shadow-pressable);
 
   /* ====== */
 
   /* TOPNAV */
 
-  --topnav-padding: var(--em-base) var(--em-large);
+  --topnav-padding: var(--em-base) var(--spacing-em-large);
   --topnav-logo-size: 2.5em;
-  --topnav-logo-margin: 0 var(--em-xsmall);
-  --topnav-content-left-margin: 0 var(--em-large);
+  --topnav-logo-margin: 0 var(--spacing-em-xsmall);
+  --topnav-content-left-margin: 0 var(--spacing-em-large);
 }
 
 * {
@@ -123,7 +142,7 @@
   &::-webkit-scrollbar-track {
     background-color: #f5f5f5;
     border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 6px var(--color-black-10);
+    box-shadow: inset 0 0 6px var(--color-black-10);
   }
 
   &::-webkit-scrollbar {
@@ -136,14 +155,14 @@
 
     /* border: 3px solid #f5f5f5; */
     border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 6px var(--color-black-10);
+    box-shadow: inset 0 0 6px var(--color-black-10);
   }
 }
 
 body {
   overflow-x: hidden;
   color: var(--color-text);
-  font-weight: var(--font-weight);
+  font-weight: var(--font-weight-normal);
   font-size: var(--font-size);
   font-size: clamp(100%, 1rem + 2vw, 16px);
   font-family: var(--font-family);

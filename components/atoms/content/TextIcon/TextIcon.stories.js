@@ -1,7 +1,8 @@
+import { getStoryName } from "../../../../utils/storybook";
 import TextIconComponent from "./TextIcon";
 
 const metadata = {
-  title: "ye-ui/atoms/content/TextIcon",
+  title: getStoryName(__dirname),
   component: TextIconComponent,
 };
 

@@ -1,8 +1,9 @@
 import React from "react";
+import { getStoryName } from "../../../../utils/storybook";
 import ContainerComponent from "./Container";
 
 const metadata = {
-  title: "ye-ui/atoms/sections/Container",
+  title: getStoryName(__dirname),
   component: ContainerComponent,
 };
 

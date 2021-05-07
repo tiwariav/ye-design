@@ -5,10 +5,10 @@
 
 .label-text {
   display: block;
-  margin-bottom: var(--em-xsmall);
+  margin-bottom: var(--spacing-em-xsmall);
 }
 
 .error {
-  margin-top: var(--em-xsmall);
+  margin-top: var(--spacing-em-xsmall);
   color: var(--color-danger);
 }

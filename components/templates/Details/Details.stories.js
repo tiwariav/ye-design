@@ -1,9 +1,10 @@
 import React from "react";
+import { getStoryName } from "../../../utils/storybook";
 import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories";
 import DetailsTemplate from "./Details";
 
 const metadata = {
-  title: "ye-ui/templates/Details",
+  title: getStoryName(__dirname),
   component: DetailsTemplate,
 };
 

@@ -14,7 +14,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: var(--em-small) var(--em-base);
+  padding: var(--spacing-em-small) var(--em-base);
   color: var(--color-text);
   font-size: var(--font-size-small);
   text-decoration: none;
@@ -53,7 +53,7 @@
 }
 
 .sidenav-group-title {
-  padding: var(--em-small) var(--em-base);
+  padding: var(--spacing-em-small) var(--em-base);
   color: var(--color-black-50);
   font-weight: 300;
 }
@@ -62,9 +62,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--em-large);
-  height: var(--em-large);
-  margin-right: var(--em-small);
+  width: var(--spacing-em-large);
+  height: var(--spacing-em-large);
+  margin-right: var(--spacing-em-small);
   color: inherit;
   font-size: var(--font-size-large);
   line-height: 1;

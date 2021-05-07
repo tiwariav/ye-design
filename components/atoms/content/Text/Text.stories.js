@@ -1,8 +1,9 @@
 import { TEXT_LONG } from "../../../../lib/text";
+import { getStoryName } from "../../../../utils/storybook";
 import Text from "./Text";
 
 const metadata = {
-  title: "ye-ui/atoms/content/Text",
+  title: getStoryName(__dirname),
   component: Text,
 };
 

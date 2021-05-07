@@ -1,8 +1,9 @@
 import React from "react";
+import { getStoryName } from "../../../../utils/storybook";
 import FormGroupComponent from "./FormGroup";
 
 const metadata = {
-  title: "ye-ui/atoms/forms/FormGroup",
+  title: getStoryName(__dirname),
   component: FormGroupComponent,
 };
 

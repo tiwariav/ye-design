@@ -1,8 +1,9 @@
+import { getStoryName } from "../../../../utils/storybook";
 import { Button } from "../../forms/Button";
 import DropdownComponent from "./Dropdown";
 
 const metadata = {
-  title: "ye-ui/atoms/content/Dropdown",
+  title: getStoryName(__dirname),
   component: DropdownComponent,
 };
 

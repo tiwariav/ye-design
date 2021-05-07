@@ -33,7 +33,7 @@
 
 .is-list-item {
   width: 100%;
-  padding: var(--em-small) var(--em-base);
+  padding: var(--spacing-em-small) var(--em-base);
   border-radius: 0;
 
   &:hover,
@@ -45,7 +45,7 @@
 .is-nav-item {
   position: relative;
   width: 100%;
-  padding: var(--em-small) var(--em-base);
+  padding: var(--spacing-em-small) var(--em-base);
   border-radius: 0;
 
   &:hover,
@@ -97,16 +97,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--em-large);
-  height: var(--em-large);
-  margin-right: var(--em-xsmall);
+  width: var(--spacing-em-large);
+  height: var(--spacing-em-large);
+  margin-right: var(--spacing-em-xsmall);
   color: inherit;
   font-size: var(--font-size-em);
   line-height: 1;
 
   &.is-after {
     margin-right: 0;
-    margin-left: var(--em-xsmall);
+    margin-left: var(--spacing-em-xsmall);
   }
 }
 

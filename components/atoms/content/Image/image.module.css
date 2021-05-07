@@ -25,7 +25,7 @@
 }
 
 .is-basic {
-  border-radius: var(--em-xsmall);
+  border-radius: var(--spacing-em-xsmall);
 }
 
 .is-circular {
@@ -33,5 +33,5 @@
 }
 
 .spinner {
-  font-size: var(--em-huge);
+  font-size: var(--spacing-em-huge);
 }

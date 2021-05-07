@@ -1,12 +1,13 @@
 import React from "react";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { GiBowman, GiCaveman } from "react-icons/gi";
+import { getStoryName } from "../../../../utils/storybook";
 import Button from "./Button";
 
 const iconMap = { AiFillLeftCircle, AiFillRightCircle, GiBowman, GiCaveman };
 
 const metadata = {
-  title: "ye-ui/atoms/forms/Button",
+  title: getStoryName(__dirname),
   component: Button,
   argTypes: {
     iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },

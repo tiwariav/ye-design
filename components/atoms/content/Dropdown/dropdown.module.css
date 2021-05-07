@@ -4,13 +4,13 @@
 
   & .button-open {
     background-color: var(--color-black-10);
-    border-radius: var(--em-xsmall);
+    border-radius: var(--spacing-em-xsmall);
   }
 }
 
 .menu-container {
   position: absolute;
-  top: calc(100% + var(--em-xsmall));
+  top: calc(100% + var(--spacing-em-xsmall));
   display: flex;
   align-items: flex-start;
   min-width: 100%;
@@ -30,7 +30,7 @@
   overflow: auto;
   text-align: left;
   background-color: var(--color-background);
-  border-radius: var(--em-tiny);
+  border-radius: var(--spacing-em-tiny);
   box-shadow: var(--shadow-floating-high);
 
   & .container {

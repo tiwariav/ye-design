@@ -1,4 +1,5 @@
 import React from "react";
+import { getStoryName } from "../../../../utils/storybook";
 import { Basic as ImageBasic } from "../../content/Image/Image.stories";
 import Text from "../../content/Text/Text";
 import Card from "./Card";
@@ -6,7 +7,7 @@ import Card from "./Card";
 const imageMap = { None: null, ImageBasic };
 
 const metadata = {
-  title: "ye-ui/atoms/sections/Card",
+  title: getStoryName(__dirname),
   component: Card,
   argTypes: {
     image: { control: { type: "select", options: Object.keys(imageMap) } },

@@ -7,7 +7,7 @@
   width: 100%;
   color: inherit;
   line-height: inherit;
-  border-radius: var(--em-tiny);
+  border-radius: var(--spacing-em-tiny);
 
   &:focus {
     outline: none;
@@ -16,22 +16,22 @@
 
 .icon-wrapper {
   position: absolute;
-  top: var(--em-xsmall);
-  left: var(--em-large);
+  top: var(--spacing-em-xsmall);
+  left: var(--spacing-em-large);
   display: inline-flex;
 
   &.icon-right {
-    right: var(--em-small);
+    right: var(--spacing-em-small);
     left: auto;
   }
 }
 
 .padded-left {
-  padding-left: var(--em-xhuge);
+  padding-left: var(--spacing-em-xhuge);
 }
 
 .padded-right {
-  padding-right: var(--em-xhuge);
+  padding-right: var(--spacing-em-xhuge);
 }
 
 /* vairants */
@@ -46,5 +46,5 @@
 }
 
 .spinner {
-  border-radius: var(--em-tiny);
+  border-radius: var(--spacing-em-tiny);
 }

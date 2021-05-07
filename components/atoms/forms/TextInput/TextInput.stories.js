@@ -5,6 +5,7 @@ import {
   AiOutlineEye,
   AiOutlineSearch,
 } from "react-icons/ai";
+import { getStoryName } from "../../../../utils/storybook";
 import TextInput from "./TextInput";
 
 const iconMap = {
@@ -15,7 +16,7 @@ const iconMap = {
 };
 
 const metadata = {
-  title: "ye-ui/atoms/forms/TextInput",
+  title: getStoryName(__dirname),
   component: TextInput,
   argTypes: {
     icon: { control: { type: "select", options: Object.keys(iconMap) } },

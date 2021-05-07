@@ -1,5 +1,6 @@
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { GiBowman, GiCaveman } from "react-icons/gi";
+import { getStoryName } from "../../../../utils/storybook";
 import Tag from "./Tag";
 
 const iconMap = {
@@ -11,7 +12,7 @@ const iconMap = {
 };
 
 const metadata = {
-  title: "ye-ui/atoms/content/Tag",
+  title: getStoryName(__dirname),
   component: Tag,
   argTypes: {
     iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },

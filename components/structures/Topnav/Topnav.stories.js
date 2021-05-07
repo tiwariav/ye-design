@@ -3,6 +3,7 @@ import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { GiWitchFlight } from "react-icons/gi";
 import { IoLogoNodejs } from "react-icons/io";
+import { getStoryName } from "../../../utils/storybook";
 import { Button } from "../../atoms/forms/Button";
 import TextInput from "../../atoms/forms/TextInput/TextInput";
 import Topnav from "./Topnav";
@@ -45,7 +46,7 @@ const itemsMap = {
 };
 
 const metadata = {
-  title: "ye-ui/structures/Topnav",
+  title: getStoryName(__dirname),
   component: Topnav,
   argTypes: {
     logo: { control: { type: "select", options: Object.keys(iconMap) } },

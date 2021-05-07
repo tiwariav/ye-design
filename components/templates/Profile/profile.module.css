@@ -5,7 +5,7 @@
   object-fit: cover;
   overflow: hidden;
   background-color: var(--color-black-10);
-  border-radius: var(--em-xsmall);
+  border-radius: var(--spacing-em-xsmall);
 }
 
 .container {

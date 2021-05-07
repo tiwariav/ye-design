@@ -1,8 +1,9 @@
 import React from "react";
+import { getStoryName } from "../../../../utils/storybook";
 import Image from "./Image";
 
 const metadata = {
-  title: "ye-ui/atoms/content/Image",
+  title: getStoryName(__dirname),
   component: Image,
 };
 

@@ -72,18 +72,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--em-huge);
-  height: var(--em-large);
+  width: var(--spacing-em-huge);
+  height: var(--spacing-em-large);
   color: inherit;
   font-size: var(--font-size-em);
   line-height: 1;
 
   &:not(:last-child) {
-    margin-right: var(--em-xsmall);
+    margin-right: var(--spacing-em-xsmall);
   }
 
   &:not(:first-child) {
-    margin-left: var(--em-xsmall);
+    margin-left: var(--spacing-em-xsmall);
   }
 
   &:last-child {

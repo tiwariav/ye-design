@@ -11,14 +11,14 @@
     outline: none;
     box-shadow: var(--button-focus-shadow);
   }
+}
 
-  &.spacing-equal {
-    padding: var(--em-xsmall);
-  }
+.spacing-equal {
+  padding: var(--spacing-em-xsmall);
+}
 
-  &.spacing-none {
-    padding: 0;
-  }
+.spacing-none {
+  padding: 0;
 }
 
 .is-trans {

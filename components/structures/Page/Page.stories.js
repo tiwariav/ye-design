@@ -1,4 +1,5 @@
 import React from "react";
+import { getStoryName } from "../../../utils/storybook";
 import { Basic as HeroBasic } from "../../atoms/sections/Hero/Hero.stories";
 import { Basic as SidenavBasic } from "../../structures/Sidenav/Sidenav.stories";
 import {
@@ -31,7 +32,7 @@ const templateMap = {
 };
 
 const metadata = {
-  title: "ye-ui/structures/Page",
+  title: getStoryName(__dirname),
   component: Page,
   argTypes: {
     // creates a specific argType based on the iconMap object

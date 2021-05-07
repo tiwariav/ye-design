@@ -62,7 +62,7 @@
   }
 
   & .content-left {
-    padding-left: var(--em-large);
+    padding-left: var(--spacing-em-large);
   }
 }
 

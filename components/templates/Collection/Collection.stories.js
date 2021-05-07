@@ -1,9 +1,10 @@
 import React from "react";
+import { getStoryName } from "../../../utils/storybook";
 import { WithImage as CardWithImage } from "../../atoms/sections/Card/Card.stories";
 import Collection from "./Collection";
 
 const metadata = {
-  title: "ye-ui/templates/Collection",
+  title: getStoryName(__dirname),
   component: Collection,
 };
 

@@ -8,7 +8,7 @@
 }
 
 .space-small {
-  padding: var(--em-xsmall);
+  padding: var(--spacing-em-xsmall);
 }
 
 .space-large {

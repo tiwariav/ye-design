@@ -18,15 +18,15 @@
   flex-shrink: 0;
   width: 100%;
   &:not(:last-child) {
-    margin-bottom: var(--em-large);
+    margin-bottom: var(--spacing-em-large);
   }
 }
 
 .has-separator {
   & .container:first-child .content {
     position: relative;
-    margin-bottom: var(--em-huge);
-    padding-bottom: var(--em-huge);
+    margin-bottom: var(--spacing-em-huge);
+    padding-bottom: var(--spacing-em-huge);
 
     &::after {
       position: absolute;
@@ -41,7 +41,7 @@
 
   & .container .aside {
     position: relative;
-    margin-left: var(--em-large);
+    margin-left: var(--spacing-em-large);
     padding-left: var(--em-base);
 
     &::after {
