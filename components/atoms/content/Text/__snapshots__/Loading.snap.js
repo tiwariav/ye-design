@@ -1,266 +1,105 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots ye-ui/atoms/content/Text Loading 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        class=""
-      >
-        <div
-          style="width: 800px;"
-        >
-          <span
-            style="max-height: 7.5em; min-height: 4.5em;"
-          >
-            <svg
-              aria-labelledby="uk7cdfu-aria"
-              preserveAspectRatio="none"
-              role="img"
-              style="height: 4.5em;"
-              viewBox="0 0 100 72"
-            >
-              <title
-                id="uk7cdfu-aria"
-              >
-                Loading...
-              </title>
-              <rect
-                clip-path="url(#uk7cdfu-diff)"
-                height="100%"
-                role="presentation"
-                style="fill: url(#uk7cdfu-animated-diff);"
-                width="100%"
-                x="0"
-                y="0"
-              />
-              <defs>
-                <clippath
-                  id="uk7cdfu-diff"
-                >
-                  <rect
-                    height="20"
-                    width="100"
-                    x="0"
-                    y="2"
-                  />
-                  <rect
-                    height="20"
-                    width="92"
-                    x="0"
-                    y="26"
-                  />
-                  <rect
-                    height="20"
-                    width="36"
-                    x="0"
-                    y="50"
-                  />
-                </clippath>
-                <lineargradient
-                  id="uk7cdfu-animated-diff"
-                >
-                  <stop
-                    offset="0%"
-                    stop-color="#f5f6f7"
-                    stop-opacity="1"
-                  >
-                    <animate
-                      attributeName="offset"
-                      dur="1.2s"
-                      keyTimes="0; 0.25; 1"
-                      repeatCount="indefinite"
-                      values="-2; -2; 1"
-                    />
-                  </stop>
-                  <stop
-                    offset="50%"
-                    stop-color="#eee"
-                    stop-opacity="1"
-                  >
-                    <animate
-                      attributeName="offset"
-                      dur="1.2s"
-                      keyTimes="0; 0.25; 1"
-                      repeatCount="indefinite"
-                      values="-1; -1; 2"
-                    />
-                  </stop>
-                  <stop
-                    offset="100%"
-                    stop-color="#f5f6f7"
-                    stop-opacity="1"
-                  >
-                    <animate
-                      attributeName="offset"
-                      dur="1.2s"
-                      keyTimes="0; 0.25; 1"
-                      repeatCount="indefinite"
-                      values="0; 0; 3"
-                    />
-                  </stop>
-                </lineargradient>
-              </defs>
-            </svg>
-          </span>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class=""
+<div
+  class=""
+>
+  <div
+    style="width: 800px;"
+  >
+    <span
+      style="max-height: 7.5em; min-height: 4.5em;"
     >
-      <div
-        style="width: 800px;"
+      <svg
+        aria-labelledby="6xcm1rv-aria"
+        preserveAspectRatio="none"
+        role="img"
+        style="height: 4.5em;"
+        viewBox="0 0 100 72"
       >
-        <span
-          style="max-height: 7.5em; min-height: 4.5em;"
+        <title
+          id="6xcm1rv-aria"
         >
-          <svg
-            aria-labelledby="uk7cdfu-aria"
-            preserveAspectRatio="none"
-            role="img"
-            style="height: 4.5em;"
-            viewBox="0 0 100 72"
+          Loading...
+        </title>
+        <rect
+          clip-path="url(#6xcm1rv-diff)"
+          height="100%"
+          role="presentation"
+          style="fill: url(#6xcm1rv-animated-diff);"
+          width="100%"
+          x="0"
+          y="0"
+        />
+        <defs>
+          <clippath
+            id="6xcm1rv-diff"
           >
-            <title
-              id="uk7cdfu-aria"
-            >
-              Loading...
-            </title>
             <rect
-              clip-path="url(#uk7cdfu-diff)"
-              height="100%"
-              role="presentation"
-              style="fill: url(#uk7cdfu-animated-diff);"
-              width="100%"
+              height="20"
+              width="100"
               x="0"
-              y="0"
+              y="2"
             />
-            <defs>
-              <clippath
-                id="uk7cdfu-diff"
-              >
-                <rect
-                  height="20"
-                  width="100"
-                  x="0"
-                  y="2"
-                />
-                <rect
-                  height="20"
-                  width="92"
-                  x="0"
-                  y="26"
-                />
-                <rect
-                  height="20"
-                  width="36"
-                  x="0"
-                  y="50"
-                />
-              </clippath>
-              <lineargradient
-                id="uk7cdfu-animated-diff"
-              >
-                <stop
-                  offset="0%"
-                  stop-color="#f5f6f7"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="-2; -2; 1"
-                  />
-                </stop>
-                <stop
-                  offset="50%"
-                  stop-color="#eee"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="-1; -1; 2"
-                  />
-                </stop>
-                <stop
-                  offset="100%"
-                  stop-color="#f5f6f7"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="0; 0; 3"
-                  />
-                </stop>
-              </lineargradient>
-            </defs>
-          </svg>
-        </span>
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+            <rect
+              height="20"
+              width="92"
+              x="0"
+              y="26"
+            />
+            <rect
+              height="20"
+              width="36"
+              x="0"
+              y="50"
+            />
+          </clippath>
+          <lineargradient
+            id="6xcm1rv-animated-diff"
+          >
+            <stop
+              offset="0%"
+              stop-color="#f5f6f7"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-2; -2; 1"
+              />
+            </stop>
+            <stop
+              offset="50%"
+              stop-color="#eee"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-1; -1; 2"
+              />
+            </stop>
+            <stop
+              offset="100%"
+              stop-color="#f5f6f7"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="0; 0; 3"
+              />
+            </stop>
+          </lineargradient>
+        </defs>
+      </svg>
+    </span>
+  </div>
+</div>
 `;
