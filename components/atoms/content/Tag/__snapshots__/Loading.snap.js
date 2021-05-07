@@ -11,27 +11,27 @@ exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
       class=""
     >
       <svg
-        aria-labelledby="94vqbf-aria"
+        aria-labelledby="test-aria"
         role="img"
         viewBox="0 0 24 24"
       >
         <title
-          id="94vqbf-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#94vqbf-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#94vqbf-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="94vqbf-diff"
+            id="test-diff"
           >
             <circle
               cx="12"
@@ -40,7 +40,7 @@ exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="94vqbf-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"
@@ -85,28 +85,28 @@ exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
         </defs>
       </svg>
       <svg
-        aria-labelledby="nqagwn-aria"
+        aria-labelledby="test-aria"
         preserveAspectRatio="xMaxYMid slice"
         role="img"
         viewBox="0 0 100 24"
       >
         <title
-          id="nqagwn-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#nqagwn-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#nqagwn-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="nqagwn-diff"
+            id="test-diff"
           >
             <rect
               height="20"
@@ -116,7 +116,7 @@ exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="nqagwn-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"
@@ -161,27 +161,27 @@ exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
         </defs>
       </svg>
       <svg
-        aria-labelledby="nihq7c-aria"
+        aria-labelledby="test-aria"
         role="img"
         viewBox="0 0 24 24"
       >
         <title
-          id="nihq7c-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#nihq7c-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#nihq7c-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="nihq7c-diff"
+            id="test-diff"
           >
             <circle
               cx="12"
@@ -190,7 +190,7 @@ exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="nihq7c-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"

@@ -4,6 +4,8 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import styles from "./textGroup.module.css";
 
+const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
+
 export default function TextLoader({
   iconAfter,
   iconBefore,
@@ -13,13 +15,18 @@ export default function TextLoader({
   return (
     <span className={clsx(styles.loader, className)} {...props}>
       {iconBefore ? (
-        <ContentLoader className={styles.loaderIcon} viewBox="0 0 24 24">
+        <ContentLoader
+          uniqueKey={TEST_UNIQUE_KEY}
+          className={styles.loaderIcon}
+          viewBox="0 0 24 24"
+        >
           {/* Only SVG shapes */}
           <circle cx="12" cy="12" r="12" />
         </ContentLoader>
       ) : null}
 
       <ContentLoader
+        uniqueKey={TEST_UNIQUE_KEY}
         className={styles.loaderText}
         viewBox="0 0 100 24"
         preserveAspectRatio="xMaxYMid slice"
@@ -29,7 +36,11 @@ export default function TextLoader({
       </ContentLoader>
 
       {iconAfter ? (
-        <ContentLoader className={styles.loaderIcon} viewBox="0 0 24 24">
+        <ContentLoader
+          uniqueKey={TEST_UNIQUE_KEY}
+          className={styles.loaderIcon}
+          viewBox="0 0 24 24"
+        >
           {/* Only SVG shapes */}
           <circle cx="12" cy="12" r="12" />
         </ContentLoader>

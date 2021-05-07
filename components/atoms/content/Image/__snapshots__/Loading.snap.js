@@ -11,28 +11,28 @@ exports[`Storyshots ye-ui/atoms/content/Image Loading 1`] = `
       class=""
     >
       <svg
-        aria-labelledby="vfng3jk-aria"
+        aria-labelledby="test-aria"
         preserveAspectRatio="xMidYMid slice"
         role="img"
         viewBox="0 0 10 10"
       >
         <title
-          id="vfng3jk-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#vfng3jk-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#vfng3jk-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="vfng3jk-diff"
+            id="test-diff"
           >
             <rect
               height="10"
@@ -42,7 +42,7 @@ exports[`Storyshots ye-ui/atoms/content/Image Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="vfng3jk-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"

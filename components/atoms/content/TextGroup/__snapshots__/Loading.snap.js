@@ -11,27 +11,27 @@ exports[`Storyshots ye-ui/atoms/content/TextGroup Loading 1`] = `
       class=""
     >
       <svg
-        aria-labelledby="7r5a3j-aria"
+        aria-labelledby="test-aria"
         role="img"
         viewBox="0 0 24 24"
       >
         <title
-          id="7r5a3j-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#7r5a3j-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#7r5a3j-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="7r5a3j-diff"
+            id="test-diff"
           >
             <circle
               cx="12"
@@ -40,7 +40,7 @@ exports[`Storyshots ye-ui/atoms/content/TextGroup Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="7r5a3j-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"
@@ -85,28 +85,28 @@ exports[`Storyshots ye-ui/atoms/content/TextGroup Loading 1`] = `
         </defs>
       </svg>
       <svg
-        aria-labelledby="hgnxprl-aria"
+        aria-labelledby="test-aria"
         preserveAspectRatio="xMaxYMid slice"
         role="img"
         viewBox="0 0 100 24"
       >
         <title
-          id="hgnxprl-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#hgnxprl-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#hgnxprl-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="hgnxprl-diff"
+            id="test-diff"
           >
             <rect
               height="20"
@@ -116,7 +116,7 @@ exports[`Storyshots ye-ui/atoms/content/TextGroup Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="hgnxprl-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"
@@ -161,27 +161,27 @@ exports[`Storyshots ye-ui/atoms/content/TextGroup Loading 1`] = `
         </defs>
       </svg>
       <svg
-        aria-labelledby="dt14cqa-aria"
+        aria-labelledby="test-aria"
         role="img"
         viewBox="0 0 24 24"
       >
         <title
-          id="dt14cqa-aria"
+          id="test-aria"
         >
           Loading...
         </title>
         <rect
-          clip-path="url(#dt14cqa-diff)"
+          clip-path="url(#test-diff)"
           height="100%"
           role="presentation"
-          style="fill: url(#dt14cqa-animated-diff);"
+          style="fill: url(#test-animated-diff);"
           width="100%"
           x="0"
           y="0"
         />
         <defs>
           <clippath
-            id="dt14cqa-diff"
+            id="test-diff"
           >
             <circle
               cx="12"
@@ -190,7 +190,7 @@ exports[`Storyshots ye-ui/atoms/content/TextGroup Loading 1`] = `
             />
           </clippath>
           <lineargradient
-            id="dt14cqa-animated-diff"
+            id="test-animated-diff"
           >
             <stop
               offset="0%"
