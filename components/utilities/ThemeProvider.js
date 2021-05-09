@@ -1,10 +1,8 @@
 import clsx from "clsx";
 import React from "react";
-import themes from "../../themes";
-import "../../themes/default.css";
+import "../../themes/base.css";
+import styles from "./themeProvider.module.css";
 
 export default function ThemeProvider({ children, theme }) {
-  const styles = themes[theme] || {};
-
-  return <div className={clsx(styles.theme)}>{children}</div>;
+  return <div className={clsx(styles.theme, theme)}>{children}</div>;
 }
