@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/structures/Topnav Expanded 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

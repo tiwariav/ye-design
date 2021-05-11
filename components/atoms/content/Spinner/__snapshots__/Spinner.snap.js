@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/Spinner Spinner 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     style="position: relative;"

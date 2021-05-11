@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/forms/Button Basic 1`] = `
 <div
-  class=""
+  class="default"
 >
   <button
     class=""

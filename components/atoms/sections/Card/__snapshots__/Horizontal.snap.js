@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/sections/Card Horizontal 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

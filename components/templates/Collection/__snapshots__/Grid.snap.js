@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/templates/Collection Grid 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

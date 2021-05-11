@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/Text Fixed Lines 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     style="width: 800px;"

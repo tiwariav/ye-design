@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/Anchor Dashed 1`] = `
 <div
-  class=""
+  class="default"
 >
   <a
     class=""

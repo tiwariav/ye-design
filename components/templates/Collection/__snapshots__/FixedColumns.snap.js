@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/templates/Collection Fixed Columns 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

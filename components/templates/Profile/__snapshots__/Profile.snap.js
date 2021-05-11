@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/templates/Profile Profile 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

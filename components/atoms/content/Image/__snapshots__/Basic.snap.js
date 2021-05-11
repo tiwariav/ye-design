@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/Image Basic 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     style="width: 160px;"

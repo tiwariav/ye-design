@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/forms/TextInput Basic 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/TextIcon Text Icon 1`] = `
 <div
-  class=""
+  class="default"
 >
   <span>
     A

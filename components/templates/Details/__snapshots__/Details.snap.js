@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/templates/Details Details 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class="undefined"

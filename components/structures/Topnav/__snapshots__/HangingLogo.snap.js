@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/structures/Topnav Hanging Logo 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

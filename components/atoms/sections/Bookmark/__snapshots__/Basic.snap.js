@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/sections/Bookmark Basic 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div>
     <span>

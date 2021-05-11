@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/forms/FormGroup Form Group 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div>
     <label>

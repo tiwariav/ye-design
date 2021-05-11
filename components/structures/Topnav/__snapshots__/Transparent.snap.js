@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/structures/Topnav Transparent 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

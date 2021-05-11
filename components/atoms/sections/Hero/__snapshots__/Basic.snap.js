@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/sections/Hero Basic 1`] = `
 <div
-  class=""
+  class="default"
 >
   <div
     class=""

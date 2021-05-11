@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/Anchor Outlined 1`] = `
 <div
-  class=""
+  class="default"
 >
   <a
     class=""

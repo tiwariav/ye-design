@@ -2,7 +2,7 @@
 
 exports[`Storyshots ye-ui/atoms/content/Tag Loading 1`] = `
 <div
-  class=""
+  class="default"
 >
   <span
     class=""
