@@ -4,10 +4,12 @@
   /* ====== */
 
   /* BREAKPOINTS */
-  --display-min-phone: 576px;
-  --display-min-tablet: 768px;
-  --display-min-desktop: 992px;
-  --display-min-tv: 1200px;
+  --display-max-xs: 575px;
+  --display-min-sm: 576px;
+  --display-min-md: 768px;
+  --display-min-lg: 992px;
+  --display-min-xl: 1200px;
+  --display-min-xxl: 1200px;
 
   /* COLORS */
 
