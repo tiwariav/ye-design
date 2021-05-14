@@ -69,7 +69,14 @@ Anchor.propTypes = {
   /**
    * Design variant
    */
-  variant: PropTypes.oneOf(["basic", "list-item", "outlined", "nav-item"]),
+  variant: PropTypes.oneOf([
+    "basic",
+    "list-item",
+    "outlined",
+    "filled",
+    "nav-item",
+    "color",
+  ]),
   /**
    * Effects
    */

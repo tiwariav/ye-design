@@ -83,7 +83,7 @@ Basic.args = {
 export const Transparent = Template.bind({});
 Transparent.args = {
   ...Basic.args,
-  isTransparent: true,
+  variant: "transparent",
 };
 
 export const Expanded = Template.bind({});

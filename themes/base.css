@@ -1,15 +1,15 @@
-@import "~normalize.css";
+@import "normalize.css";
 
 :root {
   /* ====== */
 
   /* BREAKPOINTS */
-  --display-max-xs: 575px;
-  --display-min-sm: 576px;
-  --display-min-md: 768px;
-  --display-min-lg: 992px;
-  --display-min-xl: 1200px;
-  --display-min-xxl: 1200px;
+  --bp-max-xs: 575px;
+  --bp-min-sm: 576px;
+  --bp-min-md: 768px;
+  --bp-min-lg: 992px;
+  --bp-min-xl: 1200px;
+  --bp-min-xxl: 1400px;
 
   /* COLORS */
 
@@ -20,12 +20,17 @@
   --color-background-content: var(--color-white);
   --color-black: #000;
   --color-black-10: rgba(0, 0, 0, 0.1);
+  --color-black-75: rgba(0, 0, 0, 0.75);
   --color-black-50: rgba(0, 0, 0, 0.5);
   --color-danger: rgb(255, 0, 0);
   --color-primary: #f18904;
   --color-shadow: rgba(0, 0, 0, 0.15);
   --color-text: var(--color-black);
   --color-text-anchor: #005086;
+
+  /* TODO: focus and visited color to be different */
+  --color-text-anchor-focus: #005086;
+  --color-text-anchor-visited: #005086;
   --color-text-content: var(--color-black);
   --color-white: #fff;
   --color-white-90: rgba(255, 255, 255, 0.9);
@@ -89,7 +94,7 @@
   --spacing-em-xhuge: calc(28 * var(--em-unit));
 
   /* fixed */
-  --rem-unit: 0.125em;
+  --rem-unit: 0.125rem;
   --rem-base: 1rem;
   --spacing-rem-tiny: calc(2 * var(--rem-unit));
   --spacing-rem-xsmall: calc(4 * var(--rem-unit));
@@ -122,43 +127,10 @@
   --button-shadow: var(--shadow-pressable);
 
   /* ====== */
-
-  /* TOPNAV */
-
-  --topnav-padding: var(--em-base) var(--spacing-em-large);
-  --topnav-logo-size: 2.5em;
-  --topnav-logo-margin: 0 var(--spacing-em-xsmall);
-  --topnav-content-left-margin: 0 var(--spacing-em-large);
 }
 
 * {
   box-sizing: border-box;
-  scrollbar-width: thin;
-
-  /* SCROLLBAR */
-
-  /* New specs, works on Firefox */
-  scrollbar-color: #f5f5f5 var(--color-primary);
-
-  /* Works on Chrome/Edge/Safari */
-  &::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: inset 0 0 6px var(--color-black-10);
-  }
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);
-
-    /* border: 3px solid #f5f5f5; */
-    border-radius: 8px;
-    box-shadow: inset 0 0 6px var(--color-black-10);
-  }
 }
 
 body {
@@ -199,4 +171,33 @@ h5 {
 h6 {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+
+  /* SCROLLBAR */
+
+  /* New specs, works on Firefox */
+  scrollbar-color: #f5f5f5 var(--color-primary);
+
+  /* Works on Chrome/Edge/Safari */
+  &::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: inset 0 0 6px var(--color-black-10);
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+
+    /* border: 3px solid #f5f5f5; */
+    border-radius: 8px;
+    box-shadow: inset 0 0 6px var(--color-black-10);
+  }
 }

@@ -1,49 +1,62 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import { Container } from "../../atoms/sections";
 import styles from "./topnav.module.css";
 
+const variantOptions = ["basic", "transparent", "flat"];
+
 export default function Topnav({
-  logo,
-  logoVariant,
+  banner,
   contentLeft,
   contentRight,
-  isTransparent,
+  expandedHeight = 112,
   isExpanded,
   isShrinking,
+  logo,
+  logoVariant,
+  variant,
   withSidenav,
   ...props
 }) {
   return (
     <div
-      className={clsx(styles.topnav, {
-        [styles.isTransparent]: isTransparent,
+      className={clsx(styles.root, styles[`is-${variant}`], {
         [styles.isExpanded]: isExpanded,
         [styles.withSidenav]: withSidenav,
       })}
       {...props}
     >
-      {logo ? (
-        <div
-          className={clsx(
-            styles["logo-container"],
-            styles[`is-logo-${logoVariant}`]
-          )}
-          style={
-            isExpanded && isShrinking
-              ? { height: `calc(112px - ${isShrinking}px)` }
-              : undefined
-          }
-        >
-          <div className={styles.logo}>{logo}</div>
-        </div>
+      {banner ? (
+        <Container className={clsx(styles.container, styles.banner)}>
+          {React.cloneElement(banner, {
+            style: { height: `${Math.max(26 - (isShrinking || 0), 0)}px` },
+          })}
+        </Container>
       ) : null}
-      {contentLeft ? (
-        <div className={styles.contentLeft}>{contentLeft}</div>
-      ) : null}
-      {contentRight ? (
-        <div className={styles.contentRight}>{contentRight}</div>
-      ) : null}
+      <Container className={styles.container}>
+        {logo ? (
+          <div
+            className={clsx(
+              styles["logo-container"],
+              styles[`is-logo-${logoVariant}`]
+            )}
+            style={
+              isExpanded
+                ? { height: `${Math.max(expandedHeight - isShrinking, 35)}px` }
+                : undefined
+            }
+          >
+            <div className={styles.logo}>{logo}</div>
+          </div>
+        ) : null}
+        {contentLeft ? (
+          <div className={styles.contentLeft}>{contentLeft}</div>
+        ) : null}
+        {contentRight ? (
+          <div className={styles.contentRight}>{contentRight}</div>
+        ) : null}
+      </Container>
     </div>
   );
 }
@@ -66,9 +79,9 @@ Topnav.propTypes = {
    */
   contentRight: PropTypes.element,
   /**
-   * Wether the topnav is transparent
+   * Design variant
    */
-  isTransparent: PropTypes.bool,
+  variant: PropTypes.oneOf(variantOptions),
   /**
    * Wether to keep in sync with sidenav
    */
