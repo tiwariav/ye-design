@@ -12,7 +12,6 @@ export default function Topnav({
   contentRight,
   expandedHeight = 112,
   isExpanded,
-  isShrinking,
   logo,
   logoVariant,
   variant,
@@ -29,9 +28,7 @@ export default function Topnav({
     >
       {banner ? (
         <Container className={clsx(styles.container, styles.banner)}>
-          {React.cloneElement(banner, {
-            style: { height: `${Math.max(26 - (isShrinking || 0), 0)}px` },
-          })}
+          {banner}
         </Container>
       ) : null}
       <Container className={styles.container}>
@@ -41,11 +38,7 @@ export default function Topnav({
               styles["logo-container"],
               styles[`is-logo-${logoVariant}`]
             )}
-            style={
-              isExpanded
-                ? { height: `${Math.max(expandedHeight - isShrinking, 35)}px` }
-                : undefined
-            }
+            style={isExpanded ? { height: expandedHeight } : undefined}
           >
             <div className={styles.logo}>{logo}</div>
           </div>

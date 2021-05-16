@@ -9,6 +9,7 @@ import styles from "./anchor.module.css";
 const Anchor = forwardRef(
   (
     {
+      as,
       size,
       iconBefore,
       iconAfter,
@@ -22,10 +23,11 @@ const Anchor = forwardRef(
     },
     ref
   ) => {
+    const As = as || "a";
     const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
     return (
-      <a
+      <As
         ref={ref}
         className={clsx(
           styles.anchor,
@@ -44,7 +46,7 @@ const Anchor = forwardRef(
         {iconAfter ? (
           <span className={clsx(styles.icon, styles.isAfter)}>{iconAfter}</span>
         ) : null}
-      </a>
+      </As>
     );
   }
 );

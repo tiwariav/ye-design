@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import PropTypes from "prop-types";
-import React, { useMemo } from "react";
-import { range } from "../../../lib/array";
+import React, { useMemo, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import styles from "./page.module.css";
 
 function Page({
@@ -11,58 +10,30 @@ function Page({
   sidenavIsSticky,
   topnav,
   topnavIsFixed,
-  topnavShrinkOffset,
+  topnavShrinkOffset = 0,
 }) {
-  const heroRef = React.useRef(null);
   const topnavRef = React.useRef(null);
-  const topnavExpandedHeight = React.useRef(null);
-  const [heroVisible, setHeroVisible] = React.useState(Boolean(hero));
-  const [topnavShrink, setTopnavShrink] = React.useState(hero ? 0 : -1);
+  const [spacerRef, spacerInView] = useInView();
+
+  const [topnavMaxHeight, setTopnavMaxHeight] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
-    setHeroVisible(Boolean(hero));
-    setTopnavShrink(hero ? 0 : -1);
-  }, [hero, setHeroVisible, setTopnavShrink]);
-
-  React.useEffect(() => {
-    if (heroRef.current && topnavRef.current) {
-      if (!topnavExpandedHeight.current) {
-        topnavExpandedHeight.current = topnavRef.current.offsetHeight;
-      }
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setHeroVisible(
-            entry.isIntersecting && entry.intersectionRect.height > 0
-          );
-          setTopnavShrink(
-            Math.max(
-              topnavExpandedHeight.current - 67 - entry.intersectionRect.height,
-              0
-            )
-          );
-        },
-        {
-          root: document,
-          rootMargin: `-${
-            topnavShrinkOffset ||
-            Math.min(window.innerHeight, heroRef.current.offsetHeight) -
-              topnavExpandedHeight.current
-          }px 0px 0px`,
-          threshold: range(0, 0.25, 0.001),
-        }
-      );
-      observer.observe(heroRef.current);
+    const scopeTopnavMaxHeight = topnavRef.current.offsetHeight;
+    if (!topnavMaxHeight) {
+      setTopnavMaxHeight(scopeTopnavMaxHeight);
+      setLoading(false);
     }
-  }, [heroRef, topnavShrinkOffset]);
+  }, [topnavMaxHeight]);
 
   const clonedTopnav = useMemo(() => {
+    const topnavExpanded = topnavIsFixed && spacerInView;
     return React.cloneElement(topnav, {
-      variant: heroVisible ? "transparent" : undefined,
-      isExpanded: topnavShrink >= 0,
-      isShrinking: topnavShrink,
+      variant: topnavExpanded || loading ? "transparent" : undefined,
+      isExpanded: topnavExpanded,
       withSidenav: Boolean(sidenav),
     });
-  }, [topnavShrink, heroVisible, sidenav, topnav]);
+  }, [sidenav, topnav, topnavIsFixed, spacerInView, loading]);
 
   return (
     <div className={styles.page}>
@@ -76,9 +47,14 @@ function Page({
       ) : null}
       <main className={styles.main}>
         {hero ? (
-          <div ref={heroRef} className={styles.hero}>
-            {hero}
-          </div>
+          <>
+            <div
+              ref={spacerRef}
+              className={styles.spacer}
+              style={{ top: topnavMaxHeight + topnavShrinkOffset }}
+            />
+            <div className={styles.hero}>{hero}</div>
+          </>
         ) : null}
         <div className={styles.container}>
           {sidenav ? (
@@ -101,10 +77,5 @@ function Page({
     </div>
   );
 }
-
-Page.propTypes = {
-  topnavIsFixed: PropTypes.bool,
-  sidenavIsSticky: PropTypes.bool,
-};
 
 export default Page;

@@ -5,7 +5,7 @@
 }
 
 .is-basic {
-  padding: var(--font-size);
+  padding: var(--font-size-normal);
   box-shadow: var(--shadow-floating-low);
 }
 

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import Spinner from "../Spinner/Spinner";
@@ -11,6 +12,8 @@ function Text({
   minLines,
   maxLines,
   style,
+  className,
+  inline,
   ...props
 }) {
   const textStyles = {};
@@ -21,9 +24,12 @@ function Text({
   if (minLines) {
     textStyles.minHeight = `${minLines * 1.5}em`;
   }
+
+  const Wrapper = inline ? "span" : "div";
+
   return (
-    <span
-      className={styles.text}
+    <Wrapper
+      className={clsx(styles.text, className)}
       style={{ ...textStyles, ...style }}
       {...props}
     >
@@ -37,7 +43,7 @@ function Text({
         children
       )}
       {busy ? <Spinner className={styles.spinner} /> : null}
-    </span>
+    </Wrapper>
   );
 }
 

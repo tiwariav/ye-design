@@ -1,7 +1,8 @@
 /* BREAKPOINTS */
 
 @custom-media --media-max-xs (max-width: 575px);
-@custom-media --media-min-xs (min-width: 576px);
+@custom-media --media-min-sm (min-width: 576px);
+@custom-media --media-max-sm (max-width: 767px);
 @custom-media --media-min-md (min-width: 768px);
 @custom-media --media-min-lg (min-width: 992px);
 @custom-media --media-min-xl (min-width: 1200px);
