@@ -1,0 +1,35 @@
+.root {
+  position: relative;
+}
+
+.is-tinyline,
+.is-tinyline-left {
+  padding-bottom: var(--spacing-rem-small);
+  &::after {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 2px;
+    background: var(--color-black-10);
+    content: "";
+  }
+}
+
+.is-tinyline {
+  &::after {
+    left: 50%;
+    width: 40px;
+    transform: translateX(-50%);
+  }
+}
+
+.is-tinyline-left {
+  &::after {
+    left: 0.125em;
+    width: 80px;
+  }
+}
+
+.align-center {
+  text-align: center;
+}

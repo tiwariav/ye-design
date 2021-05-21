@@ -42,5 +42,5 @@ Loading.args = {
 export const Busy = Template.bind({});
 Busy.args = {
   ...Basic.args,
-  busy: true,
+  isBusy: true,
 };

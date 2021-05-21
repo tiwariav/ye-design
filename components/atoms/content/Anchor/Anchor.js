@@ -18,7 +18,8 @@ const Anchor = forwardRef(
       effects,
       children,
       className,
-      busy,
+      spacing,
+      noVisited,
       ...props
     },
     ref
@@ -34,6 +35,10 @@ const Anchor = forwardRef(
           styles[`is-${size}`],
           styles[`is-${variant}`],
           ...effectClasses,
+          {
+            [styles[`spacing-${spacing}`]]: spacing,
+            [styles.noVisited]: noVisited,
+          },
           className
         )}
         {...props}

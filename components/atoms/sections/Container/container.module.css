@@ -14,3 +14,17 @@
 .space-large {
   padding: var(--em-xlarge);
 }
+
+.space-horizontal {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.is-secondary {
+  background-color: var(--color-background-secondary);
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+}

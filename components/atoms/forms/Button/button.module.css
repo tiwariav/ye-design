@@ -1,12 +1,25 @@
 .button {
   position: relative;
+  padding: var(--button-padding);
   overflow: hidden;
   font-weight: var(--button-font-weight);
   text-align: left;
+  background-color: var(--color-background);
+  border-color: var(--button-border-color);
+  border-width: var(--button-border-width);
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-shadow);
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: box-shadow, background-color;
+
+  &.has-hover,
+  &:hover {
+    outline: none;
+    box-shadow: var(--button-hover-shadow);
+  }
 
   &.has-focus,
-  &.has-hover,
-  &:hover,
   &:focus {
     outline: none;
     box-shadow: var(--button-focus-shadow);
@@ -15,6 +28,20 @@
 
 .spacing-equal {
   padding: var(--spacing-em-xsmall);
+}
+
+.spacing-extra {
+  padding-top: calc(
+    var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
+  );
+  padding-bottom: calc(
+    var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
+  );
+}
+
+.spacing-less {
+  padding-top: calc(var(--spacing-em-xsmall));
+  padding-bottom: calc(var(--spacing-em-xsmall));
 }
 
 .spacing-none {
@@ -31,6 +58,22 @@
   }
 }
 
+.is-inline {
+  padding-right: var(--spacing-em-xsmall);
+  padding-left: var(--spacing-em-xsmall);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+  &:hover,
+  &:focus {
+    box-shadow: none;
+  }
+
+  &.disabled {
+    color: #576878;
+    pointer-events: none;
+  }
+}
+
 .is-list-item {
   width: 100%;
   border-radius: 0;
@@ -44,6 +87,7 @@
 }
 
 .is-primary {
+  color: var(--color-white);
   background-color: var(--color-primary);
 }
 
@@ -58,6 +102,19 @@
   }
 }
 
+.is-filled {
+  color: var(--color-background);
+  background-color: var(--color-text);
+
+  &.has-focus,
+  &.has-hover,
+  &:hover,
+  &:focus {
+    background-color: var(--color-text-light);
+    box-shadow: none;
+  }
+}
+
 .is-dashed {
   &.has-focus,
   &.has-hover,
@@ -66,6 +123,10 @@
     border-style: solid;
     box-shadow: none;
   }
+}
+
+.is-full-width {
+  width: 100%;
 }
 
 /* effects */
@@ -79,14 +140,12 @@
 .effect-cursor-tracking::after,
 .effect-ripple::before {
   position: absolute;
-  top: var(--y);
-  left: var(--x);
   display: block;
   border-radius: 100%;
-  transform: translate(-50%, -50%);
-  transition-timing-function: ease;
-  transition-duration: 0.2s;
-  transition-property: width, height;
+  transform: translate(-50%, -50%) scale(1);
+  transition-timing-function: ease-out;
+  transition-duration: 0.5s;
+  transition-property: transform, opacity;
   content: "";
 }
 
@@ -101,46 +160,55 @@
   &::after {
     --size: 0;
 
-    width: var(--size);
-    height: var(--size);
+    top: var(--effect-tracking-y);
+    left: var(--effect-tracking-x);
+    width: 7.5em;
+    height: 7.5em;
     background: radial-gradient(
         circle closest-side,
         var(--color-shadow),
         transparent
       )
       center/15000%;
-    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.33;
   }
 
+  &:hover::after,
   &:focus::after {
-    --size: 0;
-  }
-
-  &:hover::after {
     --size: 5em;
+
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
 .effect-ripple {
-  &::before,
-  &:focus::before {
-    width: var(--ripple-diameter);
-    height: var(--ripple-diameter);
-    background: var(--color-shadow)
-      radial-gradient(circle, transparent 1%, var(--color-shadow) 1%)
-      center/15000%;
+  &::before {
+    top: var(--effect-ripple-y);
+    left: var(--effect-ripple-x);
+    display: none;
     opacity: 0;
-    transition-property: width, height, opacity;
+  }
+  &:hover::before,
+  &:focus::before {
+    width: var(--effect-ripple-diameter);
+    height: var(--effect-ripple-diameter);
+    background: var(--button-color-ripple)
+      radial-gradient(circle, transparent 1%, var(--button-color-ripple) 1%)
+      center/15000%;
+    opacity: 0.025;
+  }
+  &:hover::before {
+    display: block;
   }
 
-  &:hover::before {
-    opacity: 0.1;
-    transition-duration: 0.8s;
+  &.is-primary:hover::before,
+  &.is-primary:focus::before {
+    opacity: 0.125;
   }
 
   &:active::before {
-    --ripple-diameter: 0;
-
+    transform: translate(-50%, -50%) scale(0);
     transition-duration: 0s;
   }
 }

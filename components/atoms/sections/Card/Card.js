@@ -4,7 +4,7 @@ import React from "react";
 import Spinner from "../../content/Spinner/Spinner";
 import styles from "./card.module.css";
 
-function Card({
+export default function Card({
   variant,
   layout,
   image,
@@ -12,6 +12,7 @@ function Card({
   busy,
   children,
   className,
+  floating,
   ...props
 }) {
   return (
@@ -21,6 +22,7 @@ function Card({
         styles[`is-${variant}`],
         styles[`is-${layout}`],
         styles[`view-${viewMode}`],
+        { [styles[`floating-${floating}`]]: floating },
         className
       )}
       {...props}
@@ -47,5 +49,3 @@ Card.defaultProps = {
   variant: "basic",
   viewMode: "full",
 };
-
-export default Card;

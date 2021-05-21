@@ -8,8 +8,8 @@ import TextLoader from "./TextLoader";
 function Text({
   children,
   loading,
-  busy,
-  minLines,
+  isBusy,
+  minLines = 1,
   maxLines,
   style,
   className,
@@ -42,7 +42,7 @@ function Text({
       ) : (
         children
       )}
-      {busy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner className={styles.spinner} /> : null}
     </Wrapper>
   );
 }
@@ -52,7 +52,7 @@ Text.propTypes = {
   /**
    * Wether the element is busy
    */
-  busy: PropTypes.bool,
+  isBusy: PropTypes.bool,
 };
 
 export default Text;

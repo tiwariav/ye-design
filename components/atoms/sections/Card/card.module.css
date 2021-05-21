@@ -44,3 +44,23 @@
     visibility: hidden;
   }
 }
+
+.floating-highest {
+  box-shadow: var(--shadow-floating-highest);
+}
+
+.floating-high {
+  box-shadow: var(--shadow-floating-high);
+}
+
+.floating-medium {
+  box-shadow: var(--shadow-floating-medium);
+}
+
+.floating-low {
+  box-shadow: var(--shadow-floating-low);
+}
+
+.floating-lowest {
+  box-shadow: var(--shadow-floating-lowest);
+}

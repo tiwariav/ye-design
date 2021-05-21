@@ -1,3 +1,20 @@
+.root {
+  min-height: 100vh;
+}
+
+.main {
+  width: 100%;
+
+  &.with-topnav-fixed {
+    min-height: 100vh;
+  }
+  &.is-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .container {
   display: flex;
 }

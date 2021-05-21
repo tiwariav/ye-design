@@ -15,8 +15,10 @@ export default function TextInput({
   variant,
   onFocus,
   onBlur,
-  busy,
+  isBusy,
+  spacing,
   className,
+  inputClassName,
   register,
   ...props
 }) {
@@ -59,8 +61,13 @@ export default function TextInput({
         className={clsx(
           formStyles.control,
           formStyles[`is-${variant}`],
-          { [styles.paddedLeft]: iconBefore, [styles.paddedRight]: iconAfter },
-          styles.textInput
+          {
+            [styles.paddedLeft]: iconBefore,
+            [styles.paddedRight]: iconAfter,
+            [styles[`space-${spacing}`]]: spacing,
+          },
+          styles.textInput,
+          inputClassName
         )}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -74,7 +81,7 @@ export default function TextInput({
           </span>
         </span>
       ) : null}
-      {busy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner className={styles.spinner} /> : null}
     </div>
   );
 }
@@ -103,7 +110,7 @@ TextInput.propTypes = {
   /**
    * Wether the element is busy
    */
-  busy: PropTypes.bool,
+  isBusy: PropTypes.bool,
 };
 
 TextInput.defaultProps = {

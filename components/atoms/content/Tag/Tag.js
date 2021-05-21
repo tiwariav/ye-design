@@ -10,7 +10,7 @@ function Tag({
   iconBefore,
   iconAfter,
   loading,
-  busy,
+  isBusy,
   style,
   className,
   ...props
@@ -35,7 +35,7 @@ function Tag({
           ) : null}
         </>
       )}
-      {busy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner className={styles.spinner} /> : null}
     </span>
   );
 }
@@ -45,7 +45,7 @@ Tag.propTypes = {
   /**
    * Wether the element is busy
    */
-  busy: PropTypes.bool,
+  isBusy: PropTypes.bool,
 };
 
 export default Tag;

@@ -18,18 +18,21 @@
   --color-accent-light: #ffc880;
   --color-background: var(--color-white);
   --color-background-content: var(--color-white);
+  --color-background-secondary: #f9fafb;
   --color-black: #000;
   --color-black-10: rgba(0, 0, 0, 0.1);
   --color-black-75: rgba(0, 0, 0, 0.75);
   --color-black-50: rgba(0, 0, 0, 0.5);
   --color-danger: rgb(255, 0, 0);
   --color-primary: #f18904;
-  --color-shadow: rgba(0, 0, 0, 0.15);
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-inset: rgba(0, 0, 0, 0.05);
   --color-text: var(--color-black);
-  --color-text-anchor: #005086;
+  --color-text-light: var(--color-black-50);
+  --color-text-anchor: #1890ff;
 
   /* TODO: focus and visited color to be different */
-  --color-text-anchor-focus: #005086;
+  --color-text-anchor-focus: #40a9ff;
   --color-text-anchor-visited: #005086;
   --color-text-content: var(--color-black);
   --color-white: #fff;
@@ -72,11 +75,17 @@
   /* ====== */
 
   /* SHADOWS */
-
-  --shadow-pressable: 0 2px 4px var(--color-shadow);
-  --shadow-pressed: 0 1px 2px var(--color-shadow);
-  --shadow-floating-high: 0 3px 6px var(--color-shadow);
-  --shadow-floating-low: 0 1px 2px var(--color-shadow);
+  --shadow-floating-highest: 0 2px 30px var(--color-shadow);
+  --shadow-floating-high: 0 2px 12px var(--color-shadow);
+  --shadow-floating-medium: 0 2px 6px var(--color-shadow);
+  --shadow-floating-low: 0 1px 4px var(--color-shadow);
+  --shadow-floating-lowest: 0 0 2px var(--color-shadow);
+  --shadow-inset: inset 0 2px 4px var(--color-shadow-inset);
+  --shadow-inset-none: inset 0 0 0 var(--color-shadow-inset);
+  --shadow-outer-none: 0 0 0 var(--color-shadow-inset);
+  --shadow-pressable: var(--shadow-inset-none), var(--shadow-floating-low);
+  --shadow-hovered: var(--shadow-inset-none), var(--shadow-floating-lowest);
+  --shadow-pressed: var(--shadow-inset), var(--shadow-outer-none);
 
   /* ====== */
 
@@ -115,17 +124,34 @@
   /* ====== */
 
   /* BUTTONS */
+  --button-border-color: rgba(0, 0, 0, 0.05);
   --button-border-radius: 3em;
   --button-border-width: 0;
+  --button-color-ripple: var(--color-shadow);
   --button-outline-border-width: 1px;
   --button-focus-shadow: var(--shadow-pressed);
   --button-font-weight: var(--font-weight-semibold);
-  --button-padding: var(--spacing-em-xsmall) var(--spacing-em-large);
+  --button-hover-shadow: var(--shadow-hovered);
+  --button-padding: var(--spacing-em-small) var(--spacing-em-large);
   --button-outline-padding: calc(
-      var(--spacing-em-xsmall) - var(--button-outline-border-width)
+      var(--spacing-em-small) - var(--button-outline-border-width)
     )
     calc(var(--spacing-em-large) - var(--button-outline-border-width));
   --button-shadow: var(--shadow-pressable);
+
+  /* ====== */
+
+  /* FORM */
+  --control-outline-padding: calc(
+      var(--spacing-em-small) - var(--button-outline-border-width)
+    )
+    calc(var(--spacing-em-normal) - var(--button-outline-border-width));
+  --control-padding: var(--spacing-em-small) var(--spacing-em-normal);
+  --input-background-color: rgba(0, 0, 0, 0.025);
+  --input-border-width: 0;
+  --input-border-color: rgba(0, 0, 0, 0.025);
+  --input-shadow: var(--shadow-inset);
+  --input-text-font-family: var(--font-family-body);
 
   /* ====== */
 }
@@ -139,8 +165,8 @@ body {
   color: var(--color-text);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-normal);
-  font-size: clamp(100%, 1rem + 2vw, 16px);
-  font-family: var(--font-family);
+  font-size: clamp(100%, 1rem + 2vw, var(--font-size-normal));
+  font-family: var(--font-family-body);
   line-height: var(--line-height);
 }
 

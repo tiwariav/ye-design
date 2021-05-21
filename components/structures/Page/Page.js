@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 function Page({
   children,
   hero,
+  isCentered,
   sidenav,
   sidenavIsSticky,
   topnav,
@@ -28,24 +29,37 @@ function Page({
 
   const clonedTopnav = useMemo(() => {
     const topnavExpanded = topnavIsFixed && spacerInView;
-    return React.cloneElement(topnav, {
-      variant: topnavExpanded || loading ? "transparent" : undefined,
-      isExpanded: topnavExpanded,
+    const extraProps = {
       withSidenav: Boolean(sidenav),
-    });
+    };
+    if (topnavExpanded) {
+      extraProps.isExpanded = true;
+    }
+    if (topnavExpanded || loading) {
+      extraProps.variant = "transparent";
+    }
+    return React.cloneElement(topnav, extraProps);
   }, [sidenav, topnav, topnavIsFixed, spacerInView, loading]);
 
   return (
-    <div className={styles.page}>
+    <div className={clsx(styles.root)}>
       {topnav ? (
         <div
           ref={topnavRef}
-          className={clsx(styles.topnav, { [styles.isFixed]: topnavIsFixed })}
+          className={clsx(styles.topnav, {
+            [styles.isFixed]: topnavIsFixed,
+            [styles.isFixed]: topnavIsFixed,
+          })}
         >
           {clonedTopnav}
         </div>
       ) : null}
-      <main className={styles.main}>
+      <main
+        className={clsx(styles.main, {
+          [styles.withTopnavFixed]: topnavIsFixed,
+          [styles.isCentered]: isCentered,
+        })}
+      >
         {hero ? (
           <>
             <div

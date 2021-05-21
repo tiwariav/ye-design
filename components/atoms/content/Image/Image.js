@@ -12,7 +12,7 @@ function Image({
   variant,
   Element,
   loading,
-  busy,
+  isBusy,
   style,
   className,
   ...props
@@ -48,7 +48,7 @@ function Image({
       ) : (
         image
       )}
-      {busy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner className={styles.spinner} /> : null}
     </div>
   );
 }
@@ -69,7 +69,7 @@ Image.propTypes = {
   /**
    * Wether the element is busy
    */
-  busy: PropTypes.bool,
+  isBusy: PropTypes.bool,
 };
 
 Image.defaultProps = {

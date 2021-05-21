@@ -4,7 +4,7 @@ import React from "react";
 import { Container } from "../../atoms/sections";
 import styles from "./topnav.module.css";
 
-const variantOptions = ["basic", "transparent", "flat"];
+const variantOptions = ["basic", "transparent", "flat", "underlined"];
 
 export default function Topnav({
   banner,

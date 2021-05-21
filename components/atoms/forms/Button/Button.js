@@ -13,8 +13,25 @@ const variantOptions = [
   "dashed",
   "trans",
   "list-item",
+  "filled",
 ];
 const effectOptions = ["cursor-tracking", "ripple"];
+
+const setRippleProperties = (node, initial, x = "50%", y = "50%") => {
+  node.style.setProperty("--effect-ripple-x", x + "px");
+  node.style.setProperty("--effect-ripple-y", y + "px");
+  if (initial) {
+    node.style.setProperty(
+      "--effect-ripple-diameter",
+      Math.max(node.clientWidth, node.clientHeight) * 2 + "px"
+    );
+  }
+};
+
+const setTrackingProperties = (node, x = "50%", y = "50%") => {
+  node.style.setProperty("--effect-tracking-x", x + "px");
+  node.style.setProperty("--effect-tracking-y", y + "px");
+};
 
 /**
  * Primary UI component for user interaction
@@ -28,25 +45,27 @@ export default function Button({
   effects,
   children,
   className,
+  disabled,
   spacing,
-  busy,
+  onClick,
+  isBusy,
+  isFullWidth,
   ...props
 }) {
   const ref = React.useRef(null);
   const mouseData = useMouseHovered(ref, { bound: true, whenHovered: true });
 
   useEffect(() => {
-    if (ref && ref.current && effects.length) {
-      ref.current.style.setProperty("--x", mouseData.elX + "px");
-      ref.current.style.setProperty("--y", mouseData.elY + "px");
-      if (effects.includes("ripple")) {
-        ref.current.style.setProperty(
-          "--ripple-diameter",
-          Math.max(ref.current.clientWidth, ref.current.clientHeight) * 2 + "px"
-        );
-      }
+    if (ref.current && effects.length && effects.includes("ripple")) {
+      setRippleProperties(ref.current, true);
     }
-  }, [mouseData, effects]);
+  }, [effects]);
+
+  useEffect(() => {
+    if (ref.current && effects.length && effects.includes("cursor-tracking")) {
+      setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
+    }
+  }, [effects, mouseData]);
 
   const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
@@ -60,10 +79,29 @@ export default function Button({
         formStyles[`is-${variant}`],
         styles.button,
         styles[`is-${variant}`],
-        { [styles[`spacing-${spacing}`]]: spacing },
+        {
+          [styles[`spacing-${spacing}`]]: spacing,
+          [styles.hasFocus]: isBusy,
+          [styles.isFullWidth]: isFullWidth,
+          [styles.disabled]: disabled,
+        },
         ...effectClasses,
         className
       )}
+      onClick={(event) => {
+        if (effects.includes("ripple")) {
+          setRippleProperties(
+            ref.current,
+            false,
+            event.nativeEvent.offsetX,
+            event.nativeEvent.offsetY
+          );
+        }
+        if (onClick) {
+          onClick(event);
+        }
+      }}
+      disabled={disabled}
       {...props}
     >
       {iconBefore ? (
@@ -85,7 +123,7 @@ export default function Button({
           {iconAfter}
         </span>
       ) : null}
-      {busy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner className={styles.spinner} /> : null}
     </button>
   );
 }
@@ -118,7 +156,7 @@ Button.propTypes = {
   /**
    * Spacing
    */
-  spacing: PropTypes.oneOf(["equal"]),
+  spacing: PropTypes.oneOf(["equal", "extra"]),
   /**
    * Optional click handler
    */
@@ -126,7 +164,7 @@ Button.propTypes = {
   /**
    * Wether the element is busy
    */
-  busy: PropTypes.bool,
+  isBusy: PropTypes.bool,
 };
 Button.defaultProps = {
   variant: "basic",

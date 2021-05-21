@@ -5,23 +5,37 @@
 
 .text-input {
   width: 100%;
+  padding: var(--control-padding);
   color: inherit;
+  font-family: var(--input-text-font-family);
   line-height: inherit;
-  border-radius: var(--spacing-em-tiny);
+  background-color: var(--input-background-color);
+  border-color: var(--input-border-color);
+  border-style: solid;
+  border-width: var(--input-border-width);
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--input-shadow);
+
+  &:hover {
+    border-color: #40a9ff;
+  }
 
   &:focus {
+    background-color: #f4f5f6;
+    border-color: #40a9ff;
     outline: none;
+    box-shadow: var(--shadow-inset-none);
   }
 }
 
 .icon-wrapper {
   position: absolute;
-  top: var(--spacing-em-xsmall);
+  top: var(--spacing-em-small);
   left: var(--spacing-em-large);
   display: inline-flex;
 
   &.icon-right {
-    right: var(--spacing-em-small);
+    right: var(--spacing-em-large);
     left: auto;
   }
 }
@@ -33,6 +47,8 @@
 .padded-right {
   padding-right: var(--spacing-em-xhuge);
 }
+
+.spacing-
 
 /* vairants */
 .is-outlined {

@@ -3,10 +3,23 @@ import PropTypes from "prop-types";
 import React from "react";
 import styles from "./container.module.css";
 
-function Container({ spacing, children, className, ...props }) {
+function Container({
+  spacing,
+  children,
+  align,
+  className,
+  variant = "basic",
+  ...props
+}) {
   return (
     <div
-      className={clsx(styles.container, styles[`space-${spacing}`], className)}
+      className={clsx(
+        styles.container,
+        styles[`space-${spacing}`],
+        styles[`is-${variant}`],
+        { [styles[`align-${align}`]]: align },
+        className
+      )}
       {...props}
     >
       {children}
@@ -18,7 +31,7 @@ Container.propTypes = {
   /**
    * How large should the padding be?
    */
-  spacing: PropTypes.oneOf(["none", "small", "medium", "large"]),
+  spacing: PropTypes.oneOf(["none", "small", "medium", "large", "horizontal"]),
 };
 
 Container.defaultProps = {

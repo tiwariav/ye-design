@@ -50,6 +50,12 @@
   box-shadow: none;
 }
 
+.is-underlined {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+}
+
 .is-expanded {
   & .banner {
     height: 26px;
