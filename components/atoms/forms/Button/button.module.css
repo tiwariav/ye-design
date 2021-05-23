@@ -70,6 +70,7 @@
 
   &.disabled {
     color: #576878;
+    opacity: 0.3;
     pointer-events: none;
   }
 }
@@ -211,4 +212,11 @@
     transform: translate(-50%, -50%) scale(0);
     transition-duration: 0s;
   }
+}
+
+.spinner {
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
 }

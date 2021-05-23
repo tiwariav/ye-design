@@ -17,6 +17,7 @@
   --color-accent-dark: #4f2549;
   --color-accent-light: #ffc880;
   --color-background: var(--color-white);
+  --color-background-card: var(--color-white);
   --color-background-content: var(--color-white);
   --color-background-secondary: #f9fafb;
   --color-black: #000;
@@ -168,6 +169,7 @@ body {
   font-size: clamp(100%, 1rem + 2vw, var(--font-size-normal));
   font-family: var(--font-family-body);
   line-height: var(--line-height);
+  background-color: var(--color-background);
 }
 
 h1,

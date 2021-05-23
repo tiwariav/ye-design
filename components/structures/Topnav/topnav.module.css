@@ -3,7 +3,7 @@
 .root {
   z-index: 100;
   width: 100%;
-  padding: var(--em-base) 0;
+  padding: var(--em-base);
   background-color: var(--color-background);
   box-shadow: var(--shadow-floating-low);
   transition-timing-function: var(--transition-function);
@@ -51,8 +51,7 @@
 }
 
 .is-underlined {
-  background-color: transparent;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   box-shadow: none;
 }
 
@@ -99,17 +98,12 @@
   display: flex;
   justify-content: center;
   height: 1em;
-  margin: 0 var(--spacing-rem-small);
   font-size: 2.5em;
   line-height: 1;
   transition: var(--transition-duration) height ease-in-out;
 
   @media screen and (prefers-reduced-motion: reduce) {
     transition: none;
-  }
-
-  @media (--media-min-md) {
-    margin: 0 var(--spacing-rem-normal);
   }
 }
 

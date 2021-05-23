@@ -62,8 +62,13 @@ export default function Button({
   }, [effects]);
 
   useEffect(() => {
-    if (ref.current && effects.length && effects.includes("cursor-tracking")) {
-      setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
+    if (ref.current && effects.length) {
+      if (effects.includes("cursor-tracking")) {
+        setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
+      }
+      if (effects.includes("ripple")) {
+        setRippleProperties(ref.current, true);
+      }
     }
   }, [effects, mouseData]);
 

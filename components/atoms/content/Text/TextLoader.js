@@ -21,6 +21,7 @@ export default function TextLoader({ lines, ...props }) {
           y={index * 24 + 2}
           width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
           height="20"
+          key={index}
         />
       ))}
     </ContentLoader>
