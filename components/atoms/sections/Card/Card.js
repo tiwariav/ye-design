@@ -13,6 +13,7 @@ export default function Card({
   children,
   className,
   floating,
+  height,
   ...props
 }) {
   return (
@@ -23,6 +24,7 @@ export default function Card({
         styles[`is-${layout}`],
         styles[`view-${viewMode}`],
         { [styles[`floating-${floating}`]]: floating },
+        { [styles[`height-${height}`]]: height },
         className
       )}
       {...props}

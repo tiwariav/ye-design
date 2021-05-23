@@ -9,6 +9,8 @@ function Container({
   align,
   className,
   variant = "basic",
+  width,
+  height,
   ...props
 }) {
   return (
@@ -17,7 +19,11 @@ function Container({
         styles.container,
         styles[`space-${spacing}`],
         styles[`is-${variant}`],
-        { [styles[`align-${align}`]]: align },
+        {
+          [styles[`align-${align}`]]: align,
+          [styles[`width-${width}`]]: width,
+          [styles[`height-${height}`]]: height,
+        },
         className
       )}
       {...props}

@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   padding: var(--em-base);
+  overflow: hidden;
 }
 
 .space-none {
@@ -27,4 +28,23 @@
 .align-center {
   display: flex;
   justify-content: center;
+}
+
+.width-xsmall {
+  max-width: 420px;
+  margin: auto;
+}
+
+.width-small {
+  max-width: 540px;
+  margin: auto;
+}
+
+.height-readable {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.height-full {
+  height: 100%;
 }

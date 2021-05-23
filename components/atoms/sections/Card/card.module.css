@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  background-color: var(--color-background);
+  background-color: var(--color-background-card);
   border-radius: var(--spacing-em-tiny);
 }
 
@@ -25,6 +25,7 @@
 }
 
 .content {
+  /* height: 100%; */
   transition-timing-function: var(--transition-function);
   transition-duration: var(--transition-duration);
   transition-property: visibility;
@@ -63,4 +64,12 @@
 
 .floating-lowest {
   box-shadow: var(--shadow-floating-lowest);
+}
+
+.floating-none {
+  box-shadow: none;
+}
+
+.height-full .content {
+  height: 100%;
 }
