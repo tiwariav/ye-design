@@ -1,0 +1,76 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.placeholder {
+  width: 100%;
+  padding: var(--button-padding);
+  color: inherit;
+  line-height: inherit;
+  background-color: var(--color-background);
+  border-color: var(--button-border-color);
+  border-style: solid;
+  border-width: var(--button-border-width);
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-shadow);
+}
+
+.input {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+
+  &:hover + .placeholder {
+    border-color: #40a9ff;
+  }
+
+  &:focus + .placeholder {
+    background-color: #f4f5f6;
+    border-color: #40a9ff;
+    outline: none;
+    box-shadow: var(--shadow-inset-none);
+  }
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: var(--spacing-em-small);
+  left: var(--spacing-em-large);
+  display: inline-flex;
+
+  &.icon-right {
+    right: var(--spacing-em-large);
+    left: auto;
+  }
+}
+
+.padded-left {
+  padding-left: var(--spacing-em-xhuge);
+}
+
+.padded-right {
+  padding-right: var(--spacing-em-xhuge);
+}
+
+.spacing-
+
+/* vairants */
+.is-outlined {
+  transition-property: background-color, color;
+
+  &.has-focus,
+  &:focus {
+    color: var(--color-background);
+    background-color: var(--color-text);
+  }
+}
+
+.spinner {
+  border-radius: var(--spacing-em-tiny);
+}
+
+.label {
+  width: 100%;
+}

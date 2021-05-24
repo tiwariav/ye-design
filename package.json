@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "clsx": "^1.1.1",
+    "lodash-es": "^4.17.21",
     "micromatch": "^4.0.4",
     "normalize.css": "^8.0.1",
     "paths.macro": "^3.0.1",
