@@ -54,7 +54,22 @@
   padding-right: var(--spacing-em-xhuge);
 }
 
-.spacing-
+.list-item {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  margin-top: var(--spacing-em-normal);
+  font-size: var(--font-size-xsmall);
+  text-align: left;
+}
+
+.list-item-text {
+  flex: 1;
+}
+
+.list-item-status-text {
+  margin-right: 0.25rem;
+}
 
 /* vairants */
 .is-outlined {
@@ -73,4 +88,16 @@
 
 .label {
   width: 100%;
+}
+
+.progress {
+  color: var(--color-primary);
+}
+
+.success {
+  color: var(--color-positive);
+}
+
+.failed {
+  color: var(--color-negative);
 }

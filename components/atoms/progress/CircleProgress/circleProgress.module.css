@@ -1,0 +1,36 @@
+.root {
+  position: relative;
+}
+
+&.is-semi {
+  .circle-text {
+    font-size: 0.375em;
+  }
+}
+
+.circle-background,
+.circle-progress {
+  fill: none;
+}
+
+.circle-background {
+  stroke: #ddd;
+}
+
+.circle-progress {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 0.625em;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%) translateY(-50%);
+}

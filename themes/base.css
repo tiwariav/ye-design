@@ -24,6 +24,8 @@
   --color-black-10: rgba(0, 0, 0, 0.1);
   --color-black-75: rgba(0, 0, 0, 0.75);
   --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-positive: #39bf0a;
+  --color-negative: #c45d65;
   --color-danger: rgb(255, 0, 0);
   --color-primary: #f18904;
   --color-shadow: rgba(0, 0, 0, 0.1);

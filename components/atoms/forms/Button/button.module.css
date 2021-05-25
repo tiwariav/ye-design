@@ -49,6 +49,7 @@
 }
 
 .is-trans {
+  background-color: transparent;
   box-shadow: none;
 
   &:hover,

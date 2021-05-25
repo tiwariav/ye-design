@@ -20,25 +20,30 @@ function Page({
   const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
-    const scopeTopnavMaxHeight = topnavRef.current.offsetHeight;
-    if (!topnavMaxHeight) {
-      setTopnavMaxHeight(scopeTopnavMaxHeight);
-      setLoading(false);
+    if (topnavRef.current) {
+      const scopeTopnavMaxHeight = topnavRef.current.offsetHeight;
+      if (!topnavMaxHeight) {
+        setTopnavMaxHeight(scopeTopnavMaxHeight);
+        setLoading(false);
+      }
     }
   }, [topnavMaxHeight]);
 
   const clonedTopnav = useMemo(() => {
-    const topnavExpanded = topnavIsFixed && spacerInView;
-    const extraProps = {
-      withSidenav: Boolean(sidenav),
-    };
-    if (topnavExpanded) {
-      extraProps.isExpanded = true;
+    if (topnav) {
+      const topnavExpanded = topnavIsFixed && spacerInView;
+      const extraProps = {
+        withSidenav: Boolean(sidenav),
+      };
+      if (topnavExpanded) {
+        extraProps.isExpanded = true;
+      }
+      if (topnavExpanded || loading) {
+        extraProps.variant = "transparent";
+      }
+      return React.cloneElement(topnav, extraProps);
     }
-    if (topnavExpanded || loading) {
-      extraProps.variant = "transparent";
-    }
-    return React.cloneElement(topnav, extraProps);
+    return null;
   }, [sidenav, topnav, topnavIsFixed, spacerInView, loading]);
 
   return (
@@ -47,7 +52,6 @@ function Page({
         <div
           ref={topnavRef}
           className={clsx(styles.topnav, {
-            [styles.isFixed]: topnavIsFixed,
             [styles.isFixed]: topnavIsFixed,
           })}
         >
