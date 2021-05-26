@@ -1,0 +1,46 @@
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 120px;
+  overflow: hidden;
+}
+
+.svg {
+  width: auto;
+  height: 100%;
+}
+
+.content {
+  --radius: 1.875em;
+
+  position: absolute;
+  bottom: calc(-1 * var(--radius));
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(2 * var(--radius));
+  height: calc(2 * var(--radius));
+  padding-bottom: var(--font-size-large);
+  line-height: 1;
+  background-color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-floating-medium);
+}
+
+.text {
+  font-weight: bold;
+}
+
+.indicator {
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  display: flex;
+  width: 2.25em;
+  color: var(--color-primary);
+  font-size: 1em;
+  border-radius: 5px;
+  transform-origin: right;
+}
