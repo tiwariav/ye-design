@@ -1,6 +1,6 @@
-import { TEXT_LONG } from "../../../../lib/text";
 import { getStoryName } from "../../../../utils/storybook";
 import Text from "./Text";
+import { TEXT_LONG } from "./__testData";
 
 const metadata = {
   title: getStoryName(__dirname),

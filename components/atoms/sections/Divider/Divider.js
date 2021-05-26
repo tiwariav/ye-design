@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import React from "react";
 import styles from "./divider.module.css";
 
-function Divider({ className, spacing, vertical, ...props }) {
+export default function Divider({
+  className,
+  spacing = "medium",
+  vertical,
+  ...props
+}) {
   return React.createElement(
     vertical ? "div" : "hr",
     {
@@ -25,9 +30,3 @@ Divider.propTypes = {
    */
   spacing: PropTypes.oneOf(["none", "small", "medium", "large"]),
 };
-
-Divider.defaultProps = {
-  spacing: "medium",
-};
-
-export default Divider;
