@@ -97,8 +97,8 @@ export default function FileInput({
       </label>
       {files && files.length ? (
         <div className={styles.list}>
-          {files.map((item) => (
-            <div className={styles.listItem}>
+          {files.map((item, index) => (
+            <div className={styles.listItem} key={index}>
               <div className={styles.listItemText}>{item.file.name}</div>
               {item.status === UPLOAD_FILE_STATUS.uploading ? (
                 <>
