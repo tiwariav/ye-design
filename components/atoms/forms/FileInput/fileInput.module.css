@@ -63,8 +63,18 @@
   text-align: left;
 }
 
+.list-item-progress {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .list-item-text {
   flex: 1;
+}
+
+.list-item-data-input {
+  padding: var(--spacing-em-xsmall) var(--spacing-em-xsmall);
+  font-size: var(--font-size-xsmall);
 }
 
 .list-item-status-text {

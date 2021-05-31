@@ -42,7 +42,7 @@ export default function CircleProgress({
 
   return (
     <div
-      className={clsx(styles.root, {
+      className={clsx(styles.root, className, {
         "is-semi": isSemi,
         "is-large": isLarge,
       })}

@@ -1,13 +1,14 @@
 import clsx from "clsx";
-import { uniqueId } from "lodash-es";
+import { debounce, uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { AiFillDelete, AiOutlineReload } from "react-icons/ai";
 import { UPLOAD_FILE_STATUS } from "../../../../lib/uploadFile";
 import Spinner from "../../content/Spinner/Spinner";
 import CircleProgress from "../../progress/CircleProgress/CircleProgress";
 import { Button } from "../Button";
 import formStyles from "../form.module.css";
+import TextInput from "../TextInput/TextInput";
 import styles from "./fileInput.module.css";
 
 export const variants = ["basic", "outlined", "dashed", "borderless"];
@@ -52,7 +53,11 @@ export default function FileInput({
     }
   };
 
-  useEffect(() => {}, [files]);
+  const handleDataChange = debounce((event, file, dataIndex) => {
+    const fileData = [...file.data];
+    fileData[dataIndex].value = event.target.value;
+    updateFiles([{ ...file, data: fileData }], "update");
+  }, 500);
 
   return (
     <div className={clsx(styles.root, className)}>
@@ -98,60 +103,94 @@ export default function FileInput({
       {files && files.length ? (
         <div className={styles.list}>
           {files.map((item, index) => (
-            <div className={styles.listItem} key={index}>
-              <div className={styles.listItemText}>{item.file.name}</div>
-              {item.status === UPLOAD_FILE_STATUS.uploading ? (
-                <>
-                  <div
-                    className={clsx(styles.listItemStatusText, styles.progress)}
-                  >
-                    Uploading...
-                  </div>
-                  <div className={styles.listItemStatusIcon}>
-                    <CircleProgress
-                      squareSize={18}
-                      progress={item.progress}
-                      className={styles.listItemProgress}
+            <div className={styles.listItemContainer} key={index}>
+              <div className={styles.listItem} key={index}>
+                <div className={styles.listItemText}>{item.file.name}</div>
+                {item.status === UPLOAD_FILE_STATUS.uploading ? (
+                  <>
+                    <div
+                      className={clsx(
+                        styles.listItemStatusText,
+                        styles.progress
+                      )}
+                    >
+                      Uploading...
+                    </div>
+                    <div className={styles.listItemStatusIcon}>
+                      <CircleProgress
+                        squareSize={18}
+                        progress={item.progress}
+                        className={styles.listItemProgress}
+                      />
+                    </div>
+                  </>
+                ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
+                  <>
+                    <div
+                      className={clsx(
+                        styles.listItemStatusText,
+                        styles.success
+                      )}
+                    >
+                      Uploaded
+                    </div>
+                    <div className={styles.listItemStatusIcon}>
+                      <Button
+                        onClick={() => updateFiles([item], "remove")}
+                        variant="trans"
+                        spacing="equal"
+                        className={styles.listItemProgressIcon}
+                      >
+                        <AiFillDelete />
+                      </Button>
+                    </div>
+                  </>
+                ) : item.status === UPLOAD_FILE_STATUS.failed ? (
+                  <>
+                    <div
+                      className={clsx(styles.listItemStatusText, styles.failed)}
+                    >
+                      Failed
+                    </div>
+                    <div className={styles.listItemStatusIcon}>
+                      <Button
+                        onClick={() => uploadFiles([item])}
+                        variant="trans"
+                        spacing="equal"
+                        className={styles.listItemProgressIcon}
+                      >
+                        <AiOutlineReload />
+                      </Button>
+                    </div>
+                    <div className={styles.listItemStatusIcon}>
+                      <Button
+                        onClick={() => updateFiles([item], "remove")}
+                        variant="trans"
+                        spacing="equal"
+                        className={styles.listItemProgressIcon}
+                      >
+                        <AiFillDelete />
+                      </Button>
+                    </div>
+                  </>
+                ) : null}
+              </div>
+              {item.data && item.data.length
+                ? item.data.map((dataItem, dataIndex) => (
+                    <TextInput
+                      className={styles.listItemData}
+                      inputClassName={styles.listItemDataInput}
+                      key={index}
+                      size="small"
+                      onChange={(event) =>
+                        handleDataChange(event, item, dataIndex)
+                      }
+                      defaultValue={dataItem.value}
+                      placeholder={dataItem.placeholder}
+                      type={dataItem.type || "text"}
                     />
-                  </div>
-                </>
-              ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
-                <>
-                  <div
-                    className={clsx(styles.listItemStatusText, styles.success)}
-                  >
-                    Uploaded
-                  </div>
-                  <div className={styles.listItemStatusIcon}>
-                    <Button
-                      onClick={() => updateFiles([item], "remove")}
-                      variant="trans"
-                      spacing="equal"
-                      className={styles.listItemProgressIcon}
-                    >
-                      <AiFillDelete />
-                    </Button>
-                  </div>
-                </>
-              ) : item.status === UPLOAD_FILE_STATUS.failed ? (
-                <>
-                  <div
-                    className={clsx(styles.listItemStatusText, styles.failed)}
-                  >
-                    Failed
-                  </div>
-                  <div className={styles.listItemStatusIcon}>
-                    <Button
-                      onClick={() => uploadFiles([item])}
-                      variant="trans"
-                      spacing="equal"
-                      className={styles.listItemProgressIcon}
-                    >
-                      <AiOutlineReload />
-                    </Button>
-                  </div>
-                </>
-              ) : null}
+                  ))
+                : null}
             </div>
           ))}
         </div>
