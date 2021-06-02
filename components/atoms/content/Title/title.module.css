@@ -5,6 +5,7 @@
 .is-tinyline,
 .is-tinyline-left {
   padding-bottom: var(--spacing-rem-small);
+  text-align: center;
   &::after {
     position: absolute;
     bottom: 0;
