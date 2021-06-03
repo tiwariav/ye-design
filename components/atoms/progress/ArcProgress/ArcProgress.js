@@ -1,5 +1,6 @@
 import anime from "animejs/lib/anime.es.js";
 import clsx from "clsx";
+import { uniqueId } from "lodash-es";
 import React, { useEffect, useMemo } from "react";
 import { BsCaretLeftFill } from "react-icons/bs";
 import { describeArc } from "../../../../lib/svg";
@@ -20,6 +21,7 @@ export default function ArcProgress({
     () => 100 * (progress[0] / progress[1]),
     [progress]
   );
+  const animeId = useMemo(() => uniqueId(), []);
   const angles = useMemo(() => {
     const value = [];
     let parts =
@@ -43,18 +45,18 @@ export default function ArcProgress({
       duration: 3000,
     };
     anime({
-      targets: ".anime-indicator",
+      targets: `#anime_indicator__${animeId}`,
       rotateZ: [0, (180 * percentage) / 100],
       ...animeProps,
     });
     anime({
-      targets: ".anime-text",
+      targets: `#anime_text__${animeId}`,
       textContent: [0, percentage],
       round: 1,
       ...animeProps,
       easing: "easeOutElastic(1, 2)",
     });
-  }, [percentage]);
+  }, [percentage, animeId]);
 
   return (
     <div className={clsx(styles.root, className)} {...props}>
@@ -75,11 +77,14 @@ export default function ArcProgress({
           />
         ))}
       </svg>
-      <div className={clsx(styles.indicator, "anime-indicator")}>
+      <div
+        id={`anime_indicator__${animeId}`}
+        className={clsx(styles.indicator)}
+      >
         <BsCaretLeftFill />
       </div>
       <div className={styles.content}>
-        <div className={clsx(styles.text, "anime-text")}>
+        <div id={`anime_text__${animeId}`} className={clsx(styles.text)}>
           {text ? text : percentage}
         </div>
         {children}
