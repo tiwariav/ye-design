@@ -8,6 +8,7 @@ const variantOptions = ["basic", "transparent", "flat", "underlined"];
 
 export default function Topnav({
   banner,
+  className,
   contentLeft,
   contentRight,
   expandedHeight = 112,
@@ -20,10 +21,15 @@ export default function Topnav({
 }) {
   return (
     <div
-      className={clsx(styles.root, styles[`is-${variant}`], {
-        [styles.isExpanded]: isExpanded,
-        [styles.withSidenav]: withSidenav,
-      })}
+      className={clsx(
+        styles.root,
+        styles[`is-${variant}`],
+        {
+          [styles.isExpanded]: isExpanded,
+          [styles.withSidenav]: withSidenav,
+        },
+        className
+      )}
       {...props}
     >
       {banner ? (

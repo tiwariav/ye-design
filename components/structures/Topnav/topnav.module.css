@@ -3,16 +3,11 @@
 .root {
   z-index: 100;
   width: 100%;
-  padding: var(--em-base);
   background-color: var(--color-background);
   box-shadow: var(--shadow-floating-low);
   transition-timing-function: var(--transition-function);
   transition-duration: 250ms;
   transition-property: background-color box-shadow;
-
-  @media (--media-min-md) {
-    padding: var(--em-base) var(--spacing-em-large);
-  }
 }
 
 .container {
