@@ -9,11 +9,12 @@ exports[`Storyshots ye-ui/atoms/sections/Card Basic 1`] = `
     style="width: 160px;"
   >
     <div>
-      <span
+      <div
+        class=""
         style="min-height: 1.5em;"
       >
         Card content
-      </span>
+      </div>
     </div>
   </div>
 </div>

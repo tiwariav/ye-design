@@ -6,7 +6,7 @@ exports[`Storyshots ye-ui/atoms/forms/Button Dashed 1`] = `
 >
   <button
     class=""
-    style="--x: 0px; --y: 0px; --ripple-diameter: 0px;"
+    style="--effect-ripple-x: 50%px; --effect-ripple-y: 50%px; --effect-ripple-diameter: 0px; --effect-tracking-x: 0px; --effect-tracking-y: 0px;"
     type="button"
   >
     Button

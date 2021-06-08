@@ -29,7 +29,7 @@ exports[`Storyshots ye-ui/atoms/forms/TextInput With Icon 1`] = `
       </span>
     </span>
     <input
-      class="undefined"
+      class=""
       placeholder="Enter your text"
       style="width: 240px;"
       type="text"

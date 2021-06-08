@@ -40,11 +40,12 @@ exports[`Storyshots ye-ui/templates/Details Details 1`] = `
               </div>
             </div>
             <div>
-              <span
+              <div
+                class=""
                 style="min-height: 1.5em;"
               >
                 Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -71,11 +72,12 @@ exports[`Storyshots ye-ui/templates/Details Details 1`] = `
               </div>
             </div>
             <div>
-              <span
+              <div
+                class=""
                 style="min-height: 1.5em;"
               >
                 Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -102,11 +104,12 @@ exports[`Storyshots ye-ui/templates/Details Details 1`] = `
               </div>
             </div>
             <div>
-              <span
+              <div
+                class=""
                 style="min-height: 1.5em;"
               >
                 Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -133,11 +136,12 @@ exports[`Storyshots ye-ui/templates/Details Details 1`] = `
               </div>
             </div>
             <div>
-              <span
+              <div
+                class=""
                 style="min-height: 1.5em;"
               >
                 Expedita possimus dolor est unde possimus. Velit est qui alias veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem molestiae odio et dolor.
-              </span>
+              </div>
             </div>
           </div>
         </div>

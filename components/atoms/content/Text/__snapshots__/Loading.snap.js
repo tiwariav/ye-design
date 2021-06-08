@@ -7,7 +7,8 @@ exports[`Storyshots ye-ui/atoms/content/Text Loading 1`] = `
   <div
     style="width: 800px;"
   >
-    <span
+    <div
+      class=""
       style="max-height: 7.5em; min-height: 4.5em;"
     >
       <svg
@@ -99,7 +100,7 @@ exports[`Storyshots ye-ui/atoms/content/Text Loading 1`] = `
           </lineargradient>
         </defs>
       </svg>
-    </span>
+    </div>
   </div>
 </div>
 `;
