@@ -31,6 +31,6 @@
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@testing-library/react": "^11.2.7",
-    "core-js": "^3.12.1"
+    "core-js": "^3.14.0"
   }
 }
