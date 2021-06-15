@@ -8,12 +8,13 @@ import styles from "./button.module.css";
 
 const variantOptions = [
   "basic",
-  "primary",
-  "outlined",
+  "dark",
   "dashed",
-  "trans",
-  "list-item",
   "filled",
+  "list-item",
+  "outlined",
+  "primary",
+  "trans",
 ];
 const effectOptions = ["cursor-tracking", "ripple"];
 
