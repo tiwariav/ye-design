@@ -11,6 +11,7 @@ const variantOptions = [
   "dark",
   "dashed",
   "filled",
+  "inline",
   "list-item",
   "outlined",
   "primary",
@@ -162,7 +163,7 @@ Button.propTypes = {
   /**
    * Spacing
    */
-  spacing: PropTypes.oneOf(["equal", "extra"]),
+  spacing: PropTypes.oneOf(["equal", "extra", "none"]),
   /**
    * Optional click handler
    */

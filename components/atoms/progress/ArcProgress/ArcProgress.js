@@ -63,9 +63,6 @@ export default function ArcProgress({
       <svg className={styles.svg} viewBox="0 0 100 50">
         {angles.map(([startAngle, endAngle], index) => (
           <path
-            fill="none"
-            stroke={colors[index] || "#000"}
-            strokeWidth={strokeWidth}
             d={describeArc(
               50,
               50 - strokeWidth,
@@ -73,7 +70,11 @@ export default function ArcProgress({
               startAngle,
               endAngle
             )}
+            fill="none"
+            key={index}
+            stroke={colors[index] || "#000"}
             strokeLinecap="round"
+            strokeWidth={strokeWidth}
           />
         ))}
       </svg>
