@@ -33,9 +33,7 @@ export default function Topnav({
       {...props}
     >
       {banner ? (
-        <Container className={clsx(styles.container, styles.banner)}>
-          {banner}
-        </Container>
+        <div className={clsx(styles.container, styles.banner)}>{banner}</div>
       ) : null}
       <Container className={styles.container}>
         {logo ? (
