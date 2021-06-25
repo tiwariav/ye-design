@@ -1,0 +1,36 @@
+.root {
+  width: 70px;
+  margin: 100px auto 0;
+  text-align: center;
+}
+
+.bounce {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+  border-radius: 100%;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  @media screen and (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.bounce1 {
+  animation-delay: -0.32s;
+}
+
+.bounce2 {
+  animation-delay: -0.16s;
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
