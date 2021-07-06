@@ -108,7 +108,7 @@ export default function Button({
           onClick(event);
         }
       }}
-      disabled={disabled}
+      disabled={disabled || isBusy}
       {...props}
     >
       {iconBefore ? (
