@@ -26,6 +26,11 @@
   }
 }
 
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .spacing-equal {
   padding: var(--spacing-em-xsmall);
 }
@@ -71,8 +76,6 @@
 
   &.disabled {
     color: #576878;
-    opacity: 0.3;
-    pointer-events: none;
   }
 }
 
