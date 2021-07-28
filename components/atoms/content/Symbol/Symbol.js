@@ -17,7 +17,7 @@ function imageTransform(variant) {
 }
 
 const Symbol = forwardRef(
-  ({ className, fill, imageSrc, imageProps, variant }, ref) => {
+  ({ className, fill, imageSrc, imageProps, variant, ...props }, ref) => {
     const maskID = useMemo(() => uniqueId("svgMask_"), []);
 
     return (
@@ -26,6 +26,7 @@ const Symbol = forwardRef(
         ref={ref}
         viewBox={"0 0 10 10"}
         xmlns="http://www.w3.org/2000/svg"
+        {...props}
       >
         <mask id={maskID}>
           <rect width="100%" height="100%" fill="black" />
