@@ -1,14 +1,24 @@
 .text {
   position: relative;
-  display: inline-flex;
-  display: -webkit-box;
+  display: block;
   width: 100%;
   max-width: 720px;
   overflow: hidden;
-  -webkit-box-orient: vertical;
+  box-orient: vertical;
+
+  &.inline {
+    display: inline-flex;
+  }
 }
 
 .loader {
+  display: block;
   width: 100%;
   height: 1em;
+}
+
+.inline {
+  & .loader {
+    display: inline-block;
+  }
 }

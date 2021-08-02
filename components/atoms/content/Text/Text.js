@@ -14,6 +14,7 @@ function Text({
   style,
   className,
   inline,
+  loaderStyles,
   ...props
 }) {
   const textStyles = {};
@@ -29,7 +30,7 @@ function Text({
 
   return (
     <Wrapper
-      className={clsx(styles.text, className)}
+      className={clsx(styles.text, { [styles.inline]: inline }, className)}
       style={{ ...textStyles, ...style }}
       {...props}
     >
@@ -37,7 +38,7 @@ function Text({
         <TextLoader
           lines={minLines}
           className={styles.loader}
-          style={{ height: textStyles.minHeight }}
+          style={{ height: textStyles.minHeight, ...loaderStyles }}
         />
       ) : (
         children

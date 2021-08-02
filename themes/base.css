@@ -163,6 +163,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: var(--color-background);
+}
+
 body {
   overflow-x: hidden;
   color: var(--color-text);
@@ -171,7 +175,6 @@ body {
   font-size: clamp(100%, 1rem + 2vw, var(--font-size-normal));
   font-family: var(--font-family-body);
   line-height: var(--line-height);
-  background-color: var(--color-background);
 }
 
 h1,
