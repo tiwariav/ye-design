@@ -54,7 +54,7 @@
 .content-left {
   display: flex;
   flex: 1;
-  margin: 0 var(--spacing-em-large);
+  margin: 0 var(--spacing-em-xsmall);
 }
 
 .has-separator {
@@ -95,7 +95,6 @@
     align-items: center;
     justify-content: flex-end;
     margin-left: auto;
-    padding-left: var(--spacing-em-normal);
   }
 }
 
@@ -134,10 +133,6 @@
   & .logo-container {
     justify-content: center;
     width: 120px;
-  }
-
-  & .content-left {
-    padding-left: var(--spacing-em-large);
   }
 }
 

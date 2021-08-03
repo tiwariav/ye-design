@@ -11,7 +11,7 @@
   box-shadow: var(--button-shadow);
   transition-timing-function: var(--transition-function);
   transition-duration: var(--transition-duration);
-  transition-property: box-shadow, background-color;
+  transition-property: box-shadow, background-color, color;
 
   &.has-hover,
   &:hover {

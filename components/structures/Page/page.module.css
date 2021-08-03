@@ -21,7 +21,14 @@
 }
 
 .sidenav {
+  z-index: 1;
   height: 100vh;
+  padding-right: var(--spacing-em-small);
+
+  &.topnav-top {
+    top: 4.5rem;
+    height: calc(100vh - 4.5rem);
+  }
 }
 
 .is-sticky {
@@ -35,6 +42,13 @@
   left: 0;
   z-index: 100;
   width: 100%;
+
+  &.sidenav-top {
+    --sidenav-width: calc(var(--layout-sidenav-width));
+
+    left: var(--sidenav-width);
+    width: calc(100% - var(--sidenav-width));
+  }
 }
 
 .content {

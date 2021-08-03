@@ -126,6 +126,12 @@
 
   /* ====== */
 
+  /* LAYOUTS */
+
+  --layout-sidenav-width: 100px;
+
+  /* ====== */
+
   /* BUTTONS */
   --button-border-color: rgba(0, 0, 0, 0.05);
   --button-border-radius: 3em;
@@ -157,6 +163,11 @@
   --input-text-font-family: var(--font-family-body);
 
   /* ====== */
+
+  /* MODAL */
+  --modal-radius: var(--spacing-em-normal);
+
+  /* ====== */
 }
 
 * {
@@ -175,6 +186,7 @@ body {
   font-size: clamp(100%, 1rem + 2vw, var(--font-size-normal));
   font-family: var(--font-family-body);
   line-height: var(--line-height);
+  background-color: var(--color-background);
 }
 
 h1,

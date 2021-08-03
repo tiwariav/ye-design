@@ -9,8 +9,10 @@ function Page({
   isCentered,
   sidenav,
   sidenavIsSticky,
+  sidenavOnTop,
   topnav,
   topnavIsFixed,
+  topnavCanExpand,
   topnavShrinkOffset = 0,
 }) {
   const topnavRef = React.useRef(null);
@@ -53,6 +55,7 @@ function Page({
           ref={topnavRef}
           className={clsx(styles.topnav, {
             [styles.isFixed]: topnavIsFixed,
+            [styles.sidenavTop]: sidenavOnTop
           })}
         >
           {clonedTopnav}
@@ -64,27 +67,25 @@ function Page({
           [styles.isCentered]: isCentered,
         })}
       >
-        {hero ? (
-          <>
+        {
+          topnavCanExpand ?
             <div
               ref={spacerRef}
               className={styles.spacer}
               style={{ top: topnavMaxHeight + topnavShrinkOffset }}
             />
-            <div className={styles.hero}>{hero}</div>
-          </>
+            : null
+        }
+        {hero ? (
+          <div className={styles.hero}>{hero}</div>
         ) : null}
         <div className={styles.container}>
           {sidenav ? (
             <div
               className={clsx(styles.sidenav, {
                 [styles.isSticky]: sidenavIsSticky,
+                [styles.topnavTop]: sidenavIsSticky && !sidenavOnTop,
               })}
-              style={
-                sidenavIsSticky && topnavIsFixed
-                  ? { top: "4.5rem", height: "calc(100vh - 4.5rem)" }
-                  : undefined
-              }
             >
               {sidenav}
             </div>

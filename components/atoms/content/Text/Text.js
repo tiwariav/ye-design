@@ -11,6 +11,7 @@ function Text({
   isBusy,
   minLines = 1,
   maxLines,
+  lineHeight,
   style,
   className,
   inline,
@@ -18,12 +19,13 @@ function Text({
   ...props
 }) {
   const textStyles = {};
+  const inlineHeight = lineHeight || 1.5;
   if (maxLines) {
-    textStyles.maxHeight = `${maxLines * 1.5}em`;
+    textStyles.maxHeight = `${maxLines * inlineHeight}em`;
     textStyles.WebkitLineClamp = maxLines;
   }
   if (minLines) {
-    textStyles.minHeight = `${minLines * 1.5}em`;
+    textStyles.minHeight = `${minLines * inlineHeight}em`;
   }
 
   const Wrapper = inline ? "span" : "div";
