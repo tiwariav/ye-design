@@ -163,7 +163,7 @@ Button.propTypes = {
   /**
    * Spacing
    */
-  spacing: PropTypes.oneOf(["equal", "extra", "none"]),
+  spacing: PropTypes.oneOf(["equal", "extra", "less", "none"]),
   /**
    * Optional click handler
    */
