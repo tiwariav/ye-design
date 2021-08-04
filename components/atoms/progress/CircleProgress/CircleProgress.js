@@ -15,7 +15,7 @@ export default function CircleProgress({
   ...props
 }) {
   // calculate percentage
-  const percentage = 100 * (progress[0] / progress[1]);
+  const percentage = (100 * progress[0]) / progress[1];
   let fill = color;
   if (!fill) {
     if (percentage === 0) {
@@ -66,9 +66,8 @@ export default function CircleProgress({
           cy={squareSize / 2}
           r={radius}
           strokeWidth={`${strokeWidth}px`}
-          transform={`rotate(${isSemi ? "180" : "-90"} ${squareSize / 2} ${
-            squareSize / 2
-          })`}
+          transform={`rotate(${isSemi ? "180" : "-90"} ${squareSize / 2} ${squareSize / 2
+            })`}
           style={{
             strokeDasharray: dashArray,
             strokeDashoffset: dashOffset,
@@ -87,10 +86,10 @@ export default function CircleProgress({
             {textType === "parts"
               ? `${progress[0]}/${progress[1]}`
               : textType === "percent"
-              ? `${percentage}`
-              : textType === "append"
-              ? `${progress[0]} ${text.split(" ")[1]}`
-              : null}
+                ? `${percentage}`
+                : textType === "append"
+                  ? `${progress[0]} ${text.split(" ")[1]}`
+                  : null}
           </text>
         ) : null}
       </svg>
