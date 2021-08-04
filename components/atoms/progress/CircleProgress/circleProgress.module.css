@@ -2,7 +2,7 @@
   position: relative;
 }
 
-&.is-semi {
+.is-semi {
   .circle-text {
     font-size: 0.375em;
   }

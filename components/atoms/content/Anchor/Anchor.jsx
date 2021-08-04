@@ -10,12 +10,12 @@ const Anchor = forwardRef(
   (
     {
       as,
-      size,
+      size = "medium",
       iconBefore,
       iconAfter,
       label,
-      variant,
-      effects,
+      variant = "basic",
+      effects = [],
       children,
       className,
       spacing,
@@ -32,10 +32,10 @@ const Anchor = forwardRef(
         ref={ref}
         className={clsx(
           styles.anchor,
-          styles[`is-${size}`],
-          styles[`is-${variant}`],
           ...effectClasses,
           {
+            [styles[`is-${size}`]]: size,
+            [styles[`is-${variant}`]]: variant,
             [styles[`spacing-${spacing}`]]: spacing,
             [styles.noVisited]: noVisited,
           },
@@ -88,12 +88,6 @@ Anchor.propTypes = {
    * Effects
    */
   effects: PropTypes.arrayOf(PropTypes.oneOf([])),
-};
-
-Anchor.defaultProps = {
-  variant: "basic",
-  effects: [],
-  size: "medium",
 };
 
 export default Anchor;
