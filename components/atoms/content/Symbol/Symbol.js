@@ -1,3 +1,5 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-small'] }] */
+
 import clsx from "clsx";
 import { uniqueId } from "lodash-es";
 import React, { forwardRef, useMemo } from "react";

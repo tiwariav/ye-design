@@ -1,4 +1,7 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-small', 'is-large'] }] */
+
 import clsx from "clsx";
+import { isFunction } from "lodash-es";
 import PropTypes from "prop-types";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import ReactDOM from "react-dom";
@@ -41,14 +44,14 @@ function Dropdown({
   // const [subMenuCascade, setSubMenuCascade] = useState(false);
 
   useClickAway(containerRef, (e) => {
-    if (open) {
-      if (
+    if (open &&
+      (
         !parentMenuNode ||
         !((menuRef || {}).current || {}).contains(e.target)
-      ) {
-        setOpen(false);
-      }
+      )) {
+      setOpen(false);
     }
+
   });
 
   const handleButtonClick = () => setOpen((open) => !open);
@@ -59,9 +62,9 @@ function Dropdown({
     setOpen(false);
   };
 
-  const containerBounds = containerNode
+  const containerBounds = useMemo(() => containerNode
     ? containerNode.getBoundingClientRect()
-    : {};
+    : {}, [containerNode]);
 
   const renderedMenu = useMemo(() => {
     return (
@@ -74,9 +77,9 @@ function Dropdown({
         style={
           parentMenuNode
             ? {
-                marginTop:
-                  containerBounds.y - parentMenuNode.getBoundingClientRect().y,
-              }
+              marginTop:
+                containerBounds.y - parentMenuNode.getBoundingClientRect().y,
+            }
             : undefined
         }
       >
@@ -109,22 +112,22 @@ function Dropdown({
       onMouseLeave={hoverable ? handleMouseLeave : undefined}
       {...props}
     >
-      {typeof button === "function"
+      {isFunction(button)
         ? button(open, handleButtonClick)
         : React.cloneElement(button, {
-            className: clsx(
-              button.props.className,
-              open ? styles.buttonOpen : ""
-            ),
-            onClick: handleButtonClick,
-            iconAfter: !hideArrow ? (
-              open ? (
-                <AiOutlineCaretUp />
-              ) : (
-                <AiOutlineCaretDown />
-              )
-            ) : null,
-          })}
+          className: clsx(
+            button.props.className,
+            open ? styles.buttonOpen : ""
+          ),
+          onClick: handleButtonClick,
+          iconAfter: !hideArrow ? (
+            open ? (
+              <AiOutlineCaretUp />
+            ) : (
+              <AiOutlineCaretDown />
+            )
+          ) : null,
+        })}
 
       {parentMenuNode ? (
         ReactDOM.createPortal(renderedMenu, parentMenuNode)

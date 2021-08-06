@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import styles from "./sidenav.module.css";
+import styles from "./sidenavFooter.module.css";
 
 export default function SidenavFooter({ children, hasSeparator, ...props }) {
   return (
     <div
-      className={clsx(styles.sidenavFooter, {
+      className={clsx(styles.root, {
         [styles.hasSeparator]: hasSeparator,
       })}
       {...props}

@@ -1,3 +1,5 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-basic', 'is-circular'] }] */
+
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useEffect, useMemo, useState } from "react";

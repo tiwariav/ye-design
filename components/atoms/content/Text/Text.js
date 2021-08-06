@@ -45,7 +45,7 @@ function Text({
       ) : (
         children
       )}
-      {isBusy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner /> : null}
     </Wrapper>
   );
 }

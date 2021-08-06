@@ -35,7 +35,7 @@ function Tag({
           ) : null}
         </>
       )}
-      {isBusy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy ? <Spinner /> : null}
     </span>
   );
 }

@@ -1,3 +1,5 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
+
 import clsx from "clsx";
 import { debounce, uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
@@ -7,6 +9,7 @@ import { UPLOAD_FILE_STATUS } from "../../../../lib/uploadFile";
 import Spinner from "../../content/Spinner/Spinner";
 import CircleProgress from "../../progress/CircleProgress/CircleProgress";
 import { Button } from "../Button";
+// eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
 import TextInput from "../TextInput/TextInput";
 import styles from "./fileInput.module.css";
@@ -60,13 +63,14 @@ export default function FileInput({
   }, 500);
 
   return (
-    <div className={clsx(styles.root, className)}>
+    <div className={clsx(className)}>
       <label
         className={clsx(
           formStyles[`is-${size}`],
           styles.wrapper,
           styles[`is-${variant}`],
           {
+            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
           }
         )}
@@ -74,7 +78,7 @@ export default function FileInput({
         {label ? <span className={styles.label}>{label}</span> : null}
         {iconBefore ? (
           <span className={clsx(styles.iconWrapper)}>
-            <span className={clsx(formStyles.icon, styles.icon)}>
+            <span className={clsx(formStyles.icon)}>
               {iconBefore}
             </span>
           </span>
@@ -93,7 +97,7 @@ export default function FileInput({
         </span>
         {iconAfter ? (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-            <span className={clsx(formStyles.icon, styles.icon)}>
+            <span className={clsx(formStyles.icon)}>
               {iconAfter}
             </span>
           </span>
@@ -101,9 +105,9 @@ export default function FileInput({
         {isBusy ? <Spinner className={styles.spinner} /> : null}
       </label>
       {files && files.length ? (
-        <div className={styles.list}>
+        <div>
           {files.map((item, index) => (
-            <div className={styles.listItemContainer} key={index}>
+            <div key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
                 {item.status === UPLOAD_FILE_STATUS.uploading ? (
@@ -116,7 +120,7 @@ export default function FileInput({
                     >
                       Uploading...
                     </div>
-                    <div className={styles.listItemStatusIcon}>
+                    <div>
                       <CircleProgress
                         squareSize={18}
                         progress={item.progress}
@@ -134,12 +138,11 @@ export default function FileInput({
                     >
                       Uploaded
                     </div>
-                    <div className={styles.listItemStatusIcon}>
+                    <div>
                       <Button
                         onClick={() => updateFiles([item], "remove")}
                         variant="trans"
                         spacing="equal"
-                        className={styles.listItemProgressIcon}
                       >
                         <AiFillDelete />
                       </Button>
@@ -152,22 +155,20 @@ export default function FileInput({
                     >
                       Failed
                     </div>
-                    <div className={styles.listItemStatusIcon}>
+                    <div>
                       <Button
                         onClick={() => uploadFiles([item])}
                         variant="trans"
                         spacing="equal"
-                        className={styles.listItemProgressIcon}
                       >
                         <AiOutlineReload />
                       </Button>
                     </div>
-                    <div className={styles.listItemStatusIcon}>
+                    <div>
                       <Button
                         onClick={() => updateFiles([item], "remove")}
                         variant="trans"
                         spacing="equal"
-                        className={styles.listItemProgressIcon}
                       >
                         <AiFillDelete />
                       </Button>
@@ -177,19 +178,18 @@ export default function FileInput({
               </div>
               {item.data && item.data.length
                 ? item.data.map((dataItem, dataIndex) => (
-                    <TextInput
-                      className={styles.listItemData}
-                      inputClassName={styles.listItemDataInput}
-                      key={index}
-                      size="small"
-                      onChange={(event) =>
-                        handleDataChange(event, item, dataIndex)
-                      }
-                      defaultValue={dataItem.value}
-                      placeholder={dataItem.placeholder}
-                      type={dataItem.type || "text"}
-                    />
-                  ))
+                  <TextInput
+                    inputClassName={styles.listItemDataInput}
+                    key={index}
+                    size="small"
+                    onChange={(event) =>
+                      handleDataChange(event, item, dataIndex)
+                    }
+                    defaultValue={dataItem.value}
+                    placeholder={dataItem.placeholder}
+                    type={dataItem.type || "text"}
+                  />
+                ))
                 : null}
             </div>
           ))}

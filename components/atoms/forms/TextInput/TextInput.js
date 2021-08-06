@@ -1,7 +1,10 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
+
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { forwardRef, useState } from "react";
 import Spinner from "../../content/Spinner/Spinner";
+// eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
 import styles from "./textInput.module.css";
 
@@ -47,6 +50,7 @@ const TextInput = forwardRef(
           styles.wrapper,
           styles[`is-${variant}`],
           {
+            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
           },
           className
@@ -54,7 +58,7 @@ const TextInput = forwardRef(
       >
         {iconBefore ? (
           <span className={clsx(styles.iconWrapper)}>
-            <span className={clsx(formStyles.icon, styles.icon)}>
+            <span className={clsx(formStyles.icon)}>
               {iconBefore}
             </span>
           </span>
@@ -79,7 +83,7 @@ const TextInput = forwardRef(
         />
         {iconAfter ? (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-            <span className={clsx(formStyles.icon, styles.icon)}>
+            <span className={clsx(formStyles.icon)}>
               {iconAfter}
             </span>
           </span>

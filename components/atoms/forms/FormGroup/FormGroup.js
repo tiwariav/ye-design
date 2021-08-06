@@ -5,7 +5,7 @@ export default function FormGroup({ label, error, children, ...props }) {
   return (
     <div className={styles.container} {...props}>
       {label ? (
-        <label className={styles.label}>
+        <label>
           <span className={styles.labelText}>{label}</span>
           {children}
         </label>

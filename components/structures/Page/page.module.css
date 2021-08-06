@@ -4,16 +4,17 @@
 
 .main {
   width: 100%;
+}
 
-  &.with-topnav-fixed {
-    min-height: 100vh;
-  }
-  &.is-centered {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #fff;
-  }
+.is-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.with-topnav-fixed {
+  min-height: 100vh;
 }
 
 .container {

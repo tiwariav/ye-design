@@ -1,8 +1,15 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  'is-outlined', 'is-dashed', 'is-trans', 'is-inline',
+  'is-list-item', 'is-primary', 'is-filled', 'effect-cursor-tracking', 'effect-ripple',
+  'spacing-equal', 'spacing-extra', 'spacing-less', 'spacing-none'
+]}] */
+
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { useMouseHovered } from "react-use";
 import Spinner from "../../content/Spinner/Spinner";
+// eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
 import styles from "./button.module.css";
 
@@ -84,10 +91,11 @@ export default function Button({
         formStyles.control,
         formStyles[`is-${size}`],
         formStyles[`is-${variant}`],
-        styles.button,
+        styles.root,
         styles[`is-${variant}`],
         {
           [styles[`spacing-${spacing}`]]: spacing,
+          // eslint-disable-next-line css-modules/no-undef-class
           [styles.hasFocus]: isBusy,
           [styles.isFullWidth]: isFullWidth,
           [styles.disabled]: disabled,
@@ -126,7 +134,7 @@ export default function Button({
         </>
       )}
       {iconAfter ? (
-        <span className={clsx(formStyles.icon, formStyles.isAfter)}>
+        <span className={clsx(formStyles.icon)}>
           {iconAfter}
         </span>
       ) : null}

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import ContentLoader from "react-content-loader";
-import styles from "./tag.module.css";
+import styles from "./tagLoader.module.css";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
 

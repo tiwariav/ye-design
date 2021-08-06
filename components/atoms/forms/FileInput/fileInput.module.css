@@ -39,19 +39,11 @@
   top: var(--spacing-em-small);
   left: var(--spacing-em-large);
   display: inline-flex;
-
-  &.icon-right {
-    right: var(--spacing-em-large);
-    left: auto;
-  }
 }
 
-.padded-left {
-  padding-left: var(--spacing-em-xhuge);
-}
-
-.padded-right {
-  padding-right: var(--spacing-em-xhuge);
+.icon-right {
+  right: var(--spacing-em-large);
+  left: auto;
 }
 
 .list-item {

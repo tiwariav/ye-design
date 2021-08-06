@@ -16,32 +16,9 @@
   color: inherit;
   font-size: var(--font-size-em);
   line-height: 1;
-
-  &.is-after {
-    margin-right: 0;
-    margin-left: var(--spacing-em-xsmall);
-  }
 }
 
-.loader {
-  display: flex;
-  width: 100%;
-  height: 1.5em;
-}
-
-.loader-icon {
-  width: var(--em-xlarge);
-}
-
-.loader-text {
-  flex: 1;
-  min-width: 24px;
-}
-
-.loader-icon + .loader-text {
-  margin-left: var(--spacing-em-xsmall);
-}
-
-.loader-text + .loader-icon {
+.is-after {
+  margin-right: 0;
   margin-left: var(--spacing-em-xsmall);
 }

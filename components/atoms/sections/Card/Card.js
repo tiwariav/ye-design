@@ -1,3 +1,10 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  'is-basic', 'is-horizontal', 'is-borderless', 'view-thumb',
+  'floating-highest', 'floating-high', 'floating-medium', 'floating-low', 'floating-lowest', 'floating-none',
+  'height-full'
+]}] */
+
+
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -31,7 +38,7 @@ export default function Card({
     >
       {image ? <div className={styles.image}>{image}</div> : null}
       {children ? <div className={styles.content}>{children}</div> : null}
-      {busy ? <Spinner className={styles.spinner} /> : null}
+      {busy ? <Spinner /> : null}
     </div>
   );
 }

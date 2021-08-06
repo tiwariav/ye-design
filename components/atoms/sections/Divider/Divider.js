@@ -1,3 +1,7 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  'space-none', 'space-small', 'space-large'
+]}] */
+
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

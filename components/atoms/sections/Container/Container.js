@@ -1,3 +1,9 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  'is-secondary', 'align-center', 'width-xsmall', 'width-small', 'height-readable', 'height-full',
+  'space-none', 'space-small', 'space-large', 'space-horizontal'
+]}] */
+
+
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

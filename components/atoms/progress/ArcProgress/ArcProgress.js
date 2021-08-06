@@ -1,6 +1,6 @@
 import anime from "animejs/lib/anime.es.js";
 import clsx from "clsx";
-import { uniqueId } from "lodash-es";
+import { isNumber, uniqueId } from "lodash-es";
 import React, { useEffect, useMemo } from "react";
 import { BsCaretLeftFill } from "react-icons/bs";
 import { describeArc } from "../../../../lib/svg";
@@ -25,7 +25,7 @@ export default function ArcProgress({
   const angles = useMemo(() => {
     const value = [];
     let parts =
-      typeof segments === "number"
+      isNumber(segments)
         ? [...Array(segments)].fill(100 / segments)
         : segments;
     let startAngle = -90;

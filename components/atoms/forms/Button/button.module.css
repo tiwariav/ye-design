@@ -1,4 +1,4 @@
-.button {
+.root {
   position: relative;
   padding: var(--button-padding);
   overflow: hidden;

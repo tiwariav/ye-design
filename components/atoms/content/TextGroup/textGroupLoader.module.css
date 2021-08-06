@@ -1,0 +1,22 @@
+.loader {
+  display: flex;
+  width: 100%;
+  height: 1.5em;
+}
+
+.loader-icon {
+  width: var(--em-xlarge);
+}
+
+.loader-text {
+  flex: 1;
+  min-width: 24px;
+
+  @nest .loader-icon + & {
+    margin-left: var(--spacing-em-xsmall);
+  }
+
+  & + .loader-icon {
+    margin-left: var(--spacing-em-xsmall);
+  }
+}

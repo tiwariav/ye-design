@@ -33,11 +33,11 @@
   top: var(--spacing-em-small);
   left: var(--spacing-em-large);
   display: inline-flex;
+}
 
-  &.icon-right {
-    right: var(--spacing-em-large);
-    left: auto;
-  }
+.icon-right {
+  right: var(--spacing-em-large);
+  left: auto;
 }
 
 .padded-left {

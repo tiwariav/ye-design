@@ -53,8 +53,9 @@ function Page({
       {topnav ? (
         <div
           ref={topnavRef}
-          className={clsx(styles.topnav, {
+          className={clsx({
             [styles.isFixed]: topnavIsFixed,
+            // eslint-disable-next-line css-modules/no-undef-class
             [styles.sidenavTop]: sidenavOnTop
           })}
         >
@@ -77,13 +78,14 @@ function Page({
             : null
         }
         {hero ? (
-          <div className={styles.hero}>{hero}</div>
+          <div>{hero}</div>
         ) : null}
         <div className={styles.container}>
           {sidenav ? (
             <div
               className={clsx(styles.sidenav, {
                 [styles.isSticky]: sidenavIsSticky,
+                // eslint-disable-next-line css-modules/no-undef-class
                 [styles.topnavTop]: sidenavIsSticky && !sidenavOnTop,
               })}
             >
