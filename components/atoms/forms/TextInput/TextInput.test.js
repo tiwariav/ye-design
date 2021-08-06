@@ -4,5 +4,5 @@ import TextInput from "./TextInput";
 
 test("TextInput renders", () => {
   const { queryByText } = render(<TextInput />);
-  expect(queryByText(/TextInput/i)).toBeTruthy();
+  expect(queryByText(/textinput/i)).toBeTruthy();
 });

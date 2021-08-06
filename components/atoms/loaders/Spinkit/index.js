@@ -5,16 +5,23 @@ import Chase from "./Chase";
 import DoubleBounce from "./DoubleBounce";
 import styles from "./spinkit.module.css";
 
+function getLoader(name, props) {
+  switch (name) {
+    case "bounce":
+      return <Bounce {...props} />
+    case "chase":
+      return <Chase {...props} />
+    case "double-bounce":
+      return <DoubleBounce {...props} />
+    default:
+      return null;
+  }
+}
+
 export default function Spinkit({ name, ...props }) {
   return (
     <LoaderWrapper className={styles.root}>
-      {name === "bounce" ? (
-        <Bounce {...props} />
-      ) : name === "chase" ? (
-        <Chase {...props} />
-      ) : name === "double-bounce" ? (
-        <DoubleBounce {...props} />
-      ) : null}
+      {getLoader(name, props)}
     </LoaderWrapper>
   );
 }

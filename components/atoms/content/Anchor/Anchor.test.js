@@ -4,5 +4,5 @@ import Anchor from "./Anchor";
 
 test("Anchor renders", () => {
   const { queryByText } = render(<Anchor label="Anchor" />);
-  expect(queryByText(/Anchor/i)).toBeTruthy();
+  expect(queryByText(/anchor/i)).toBeTruthy();
 });

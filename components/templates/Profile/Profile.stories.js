@@ -31,7 +31,7 @@ const Template = ({ coverImage, ...args }) => {
       }
       {...args}
     >
-      {Array(4).fill(
+      {Array.from({length: 4}).fill(
         <CardHorizontal {...CardHorizontal.args}>
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem

@@ -65,13 +65,13 @@ export default function Button({
   const mouseData = useMouseHovered(ref, { bound: true, whenHovered: true });
 
   useEffect(() => {
-    if (ref.current && effects.length && effects.includes("ripple")) {
+    if (ref.current && effects.length > 0 && effects.includes("ripple")) {
       setRippleProperties(ref.current, true);
     }
   }, [effects]);
 
   useEffect(() => {
-    if (ref.current && effects.length) {
+    if (ref.current && effects.length > 0) {
       if (effects.includes("cursor-tracking")) {
         setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
       }

@@ -29,7 +29,7 @@ function Collection({
   return (
     <Container {...props}>
       <h1 className={styles.title}>{title}</h1>
-      {(filter && filter.length) || (sort && sort.length) ? (
+      {(filter && filter.length > 0) || (sort && sort.length > 0) ? (
         <div className={styles.options}>
           {filter ? (
             <Button

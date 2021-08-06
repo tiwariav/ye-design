@@ -51,8 +51,8 @@ export default function FileInput({
   };
 
   const handleChange = (event) => {
-    if (event.target.files.length) {
-      updateFiles(Array.from(event.target.files), "add");
+    if (event.target.files.length > 0) {
+      updateFiles([...event.target.files], "add");
     }
   };
 
@@ -104,7 +104,7 @@ export default function FileInput({
         ) : null}
         {isBusy ? <Spinner className={styles.spinner} /> : null}
       </label>
-      {files && files.length ? (
+      {files && files.length > 0 ? (
         <div>
           {files.map((item, index) => (
             <div key={index}>
@@ -128,7 +128,7 @@ export default function FileInput({
                       />
                     </div>
                   </>
-                ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
+                ) : (item.status === UPLOAD_FILE_STATUS.uploaded ? (
                   <>
                     <div
                       className={clsx(
@@ -174,9 +174,9 @@ export default function FileInput({
                       </Button>
                     </div>
                   </>
-                ) : null}
+                ) : null)}
               </div>
-              {item.data && item.data.length
+              {item.data && item.data.length > 0
                 ? item.data.map((dataItem, dataIndex) => (
                   <TextInput
                     inputClassName={styles.listItemDataInput}

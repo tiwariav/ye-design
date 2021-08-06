@@ -31,7 +31,7 @@ function Image({
       const ratio =
         variant === "circular"
           ? [1, 1]
-          : aspectRatio.split("/").map((item) => parseInt(item));
+          : aspectRatio.split("/").map((item) => Number.parseInt(item));
       setContentStyle({ paddingBottom: (100 * ratio[1]) / ratio[0] + "%" });
     }
   }, [aspectRatio, variant]);

@@ -4,5 +4,5 @@ import Button from "./Button";
 
 test("Button renders", () => {
   const { queryByText } = render(<Button label="Button" />);
-  expect(queryByText(/Button/i)).toBeTruthy();
+  expect(queryByText(/button/i)).toBeTruthy();
 });

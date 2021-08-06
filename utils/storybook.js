@@ -12,7 +12,7 @@ export function getStoryName(dirname) {
 export function getStoryFile(storyKind) {
   if (!storyKind.includes("/providers/")) {
     return storyKind.replace(
-      RegExp(`^${PACKAGE_NAME}/`),
+      new RegExp(`^${PACKAGE_NAME}/`),
       `${PACKAGE_NAME}/components/`
     );
   }

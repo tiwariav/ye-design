@@ -26,7 +26,7 @@ export default function ArcProgress({
     const value = [];
     let parts =
       isNumber(segments)
-        ? [...Array(segments)].fill(100 / segments)
+        ? [...Array.from({ length: segments })].fill(100 / segments)
         : segments;
     let startAngle = -90;
     for (let index = 0; index < parts.length; index++) {
