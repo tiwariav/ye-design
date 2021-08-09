@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/structures/Page Basic 1`] = `
+exports[`Storyshots ye-ui/structures/Page With Hero 1`] = `
 <div
   class="default"
 >
@@ -117,6 +117,26 @@ exports[`Storyshots ye-ui/structures/Page Basic 1`] = `
       <main
         class=""
       >
+        <div>
+          <div
+            class=""
+          >
+            <div
+              class=""
+            >
+              <h1
+                class=""
+              >
+                Hero Title
+              </h1>
+              <div>
+                <p>
+                  Hero content
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div>
           <div
             class="undefined"
