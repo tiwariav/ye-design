@@ -9,6 +9,7 @@
   border-width: var(--button-border-width);
   border-radius: var(--button-border-radius);
   box-shadow: var(--button-shadow);
+  cursor: pointer;
   transition-timing-function: var(--transition-function);
   transition-duration: var(--transition-duration);
   transition-property: box-shadow, background-color, color;
