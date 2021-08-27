@@ -21,6 +21,8 @@ export default function Card({
   className,
   floating,
   height,
+  disabled,
+  onClick,
   ...props
 }) {
   return (
@@ -32,8 +34,10 @@ export default function Card({
         styles[`view-${viewMode}`],
         { [styles[`floating-${floating}`]]: floating },
         { [styles[`height-${height}`]]: height },
+        { [styles.disabled]: disabled },
         className
       )}
+      onClick={() => disabled ? null : onClick()}
       {...props}
     >
       {image ? <div className={styles.image}>{image}</div> : null}
