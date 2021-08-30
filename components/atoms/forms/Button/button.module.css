@@ -28,7 +28,7 @@
 
 .disabled {
   opacity: 0.3;
-  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .spacing-equal {
@@ -132,6 +132,16 @@
 
 .is-full-width {
   width: 100%;
+}
+
+/* cursor pointer */
+
+.is-pointer {
+  cursor: pointer;
+}
+
+.is-not-allowed {
+  cursor: not-allowed;
 }
 
 /* effects */
