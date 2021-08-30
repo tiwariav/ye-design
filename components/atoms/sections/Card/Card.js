@@ -22,7 +22,7 @@ export default function Card({
   floating,
   height,
   disabled,
-  onClick,
+  onClick = undefined,
   ...props
 }) {
   return (
@@ -37,7 +37,7 @@ export default function Card({
         { [styles.disabled]: disabled },
         className
       )}
-      onClick={() => disabled ? null : onClick()}
+      onClick={() => disabled || onClick === undefined ? null : onClick()}
       {...props}
     >
       {image ? <div className={styles.image}>{image}</div> : null}
