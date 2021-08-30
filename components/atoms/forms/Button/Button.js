@@ -24,6 +24,7 @@ const variantOptions = [
   "primary",
   "trans",
 ];
+const cursorOptions = ["pointer", "not-allowed"]
 const effectOptions = ["cursor-tracking", "ripple"];
 
 const setRippleProperties = (node, initial, x = "50%", y = "50%") => {
@@ -59,6 +60,7 @@ export default function Button({
   onClick,
   isBusy,
   isFullWidth,
+  cursorType,
   ...props
 }) {
   const ref = React.useRef(null);
@@ -93,6 +95,7 @@ export default function Button({
         formStyles[`is-${variant}`],
         styles.root,
         styles[`is-${variant}`],
+        styles[`is-${cursorType}`],
         {
           [styles[`spacing-${spacing}`]]: spacing,
           // eslint-disable-next-line css-modules/no-undef-class
@@ -164,6 +167,10 @@ Button.propTypes = {
    * Design variant
    */
   variant: PropTypes.oneOf(variantOptions),
+  /**
+   * Cursor on hover of button
+   */
+  cursorOptions: PropTypes.oneOf(cursorOptions),
   /**
    * Effects
    */
