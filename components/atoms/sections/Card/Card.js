@@ -21,7 +21,7 @@ export default function Card({
   className,
   floating,
   height,
-  cardContentStyle,
+  cardContentClassName,
   ...props
 }) {
   return (
@@ -38,7 +38,7 @@ export default function Card({
       {...props}
     >
       {image ? <div className={styles.image}>{image}</div> : null}
-      {children ? <div className={clsx([styles.content], cardContentStyle)}>{children}</div> : null}
+      {children ? <div className={clsx([styles.content], cardContentClassName)}>{children}</div> : null}
       {busy ? <Spinner /> : null}
     </div>
   );
