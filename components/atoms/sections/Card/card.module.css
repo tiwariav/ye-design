@@ -4,11 +4,6 @@
   border-radius: var(--spacing-em-tiny);
 }
 
-.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .is-basic {
   padding: var(--font-size-normal);
   box-shadow: var(--shadow-floating-low);
