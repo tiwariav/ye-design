@@ -63,6 +63,7 @@ export default function CircleProgress({
   color,
   isLarge,
   children,
+  circleBackground,
   centerTextClassName,
   ...props
 }) {
@@ -93,6 +94,7 @@ export default function CircleProgress({
       <svg width={dia} height={isSemi ? dia * 2 : dia} viewBox={viewBox}>
         <circle
           className={styles.circleBackground}
+          style={{stroke: circleBackground}}
           cx={squareSize / 2}
           cy={squareSize / 2}
           r={radius}
