@@ -23,9 +23,16 @@ const variantOptions = [
   "outlined",
   "primary",
   "trans",
+  "neu"
 ];
 const cursorOptions = ["pointer", "not-allowed"]
 const effectOptions = ["cursor-tracking", "ripple"];
+
+function overrideStyleProperty(node, name, value) {
+  if (value) {
+    node.style.setProperty(name, value);
+  }
+}
 
 const setRippleProperties = (node, initial, x = "50%", y = "50%") => {
   node.style.setProperty("--effect-ripple-x", x + "px");
@@ -42,6 +49,13 @@ const setTrackingProperties = (node, x = "50%", y = "50%") => {
   node.style.setProperty("--effect-tracking-x", x + "px");
   node.style.setProperty("--effect-tracking-y", y + "px");
 };
+
+const setNeuProperties = (node, options = { colors: {} }) => {
+  overrideStyleProperty(node, "--color-neu-background-dark", options.colors.backgroundDark);
+  overrideStyleProperty(node, "--color-neu-background-light", options.colors.backgroundLight);
+  overrideStyleProperty(node, "--color-neu-shadow-dark", options.colors.shadowDark);
+  overrideStyleProperty(node, "--color-neu-shadow-light", options.colors.shadowLight);
+}
 
 /**
  * Primary UI component for user interaction
@@ -60,7 +74,7 @@ export default function Button({
   onClick,
   isBusy,
   isFullWidth,
-  cursorType,
+  neuOptions,
   ...props
 }) {
   const ref = React.useRef(null);
@@ -73,15 +87,20 @@ export default function Button({
   }, [effects]);
 
   useEffect(() => {
-    if (ref.current && effects.length > 0) {
-      if (effects.includes("cursor-tracking")) {
-        setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
+    if (ref.current) {
+      if (effects.length > 0) {
+        if (effects.includes("cursor-tracking")) {
+          setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
+        }
+        if (effects.includes("ripple")) {
+          setRippleProperties(ref.current, true);
+        }
       }
-      if (effects.includes("ripple")) {
-        setRippleProperties(ref.current, true);
+      if (variant === "neu") {
+        setNeuProperties(ref.current, neuOptions);
       }
     }
-  }, [effects, mouseData]);
+  }, [effects, mouseData, variant, neuOptions]);
 
   const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
@@ -91,11 +110,10 @@ export default function Button({
       type="button"
       className={clsx(
         formStyles.control,
-        formStyles[`is-${size}`],
         formStyles[`is-${variant}`],
         styles.root,
+        styles[`is-${size}`],
         styles[`is-${variant}`],
-        styles[`is-${cursorType}`],
         {
           [styles[`spacing-${spacing}`]]: spacing,
           // eslint-disable-next-line css-modules/no-undef-class

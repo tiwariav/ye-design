@@ -21,6 +21,7 @@
   --color-background-content: var(--color-white);
   --color-background-secondary: #f9fafb;
   --color-black: #000;
+  --color-black-5: rgba(0, 0, 0, 0.05);
   --color-black-10: rgba(0, 0, 0, 0.1);
   --color-black-75: rgba(0, 0, 0, 0.75);
   --color-black-50: rgba(0, 0, 0, 0.5);
@@ -122,7 +123,7 @@
 
   /* TRANSITIONS */
   --transition-function: ease-in-out;
-  --transition-duration: 300ms;
+  --transition-duration: 250ms;
 
   /* ====== */
 
@@ -137,6 +138,7 @@
   --button-border-radius: 3em;
   --button-border-width: 0;
   --button-color-ripple: var(--color-shadow);
+  --button-cursor: pointer;
   --button-outline-border-width: 1px;
   --button-focus-shadow: var(--shadow-pressed);
   --button-font-weight: var(--font-weight-semibold);
