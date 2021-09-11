@@ -5,7 +5,6 @@
 }
 
 /* sizes */
-
 .is-small {
   font-size: var(--font-size-small);
 }
@@ -51,18 +50,17 @@
 
 .is-color {
   color: var(--color-text-anchor);
-  text-decoration: underline;
-
-  &:not(.no-visited):visited {
-    color: var(--color-text-anchor-visited);
-  }
 
   &.has-focus,
   &.has-hover,
   &:hover,
   &:focus {
     color: var(--color-text-anchor-focus);
-    background-color: rgba(0, 0, 0, 0.025);
+    text-decoration: underline;
+  }
+
+  &:not(.no-visited):visited {
+    color: var(--color-text-anchor-visited);
   }
 }
 
