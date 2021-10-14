@@ -2,9 +2,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useLockBodyScroll, useToggle } from "react-use";
+import { useLockBodyScroll, useToggle, useWindowSize } from "react-use";
 import { Button } from "../../atoms/forms";
-import { Container } from "../../atoms/sections";
+import { Container, Divider } from "../../atoms/sections";
 import styles from "./topnav.module.css";
 
 const variantOptions = ["basic", "transparent", "flat", "underlined"];
@@ -26,6 +26,8 @@ export default function Topnav({
   const [drawer, toggleDrawer] = useToggle(false);
   useLockBodyScroll(drawer);
 
+  let { width } = useWindowSize();
+  let smallerWidth = width <= 991;
   return (
     <div
       className={clsx(
@@ -43,7 +45,7 @@ export default function Topnav({
         <div className={clsx(styles.container, styles.banner)}>{banner}</div>
       ) : null}
       <Container className={styles.container}>
-        {contentMenu ? (
+        {smallerWidth ? (
           <div className={clsx(styles.contentMenuIcon)}>
             <Button variant="trans" spacing="none" onClick={toggleDrawer}>
               <AiOutlineMenu />
@@ -61,19 +63,22 @@ export default function Topnav({
             <div className={styles.logo}>{logo}</div>
           </div>
         ) : null}
-        {contentLeft ? (
+        {contentLeft && !smallerWidth ? (
           <div className={styles.contentLeft}>{contentLeft}</div>
         ) : null}
-        {contentMenu ? (
+
+        {smallerWidth ? (
           <div
             className={clsx(styles.contentMenu, {
               [styles.open]: drawer,
             })}
           >
-            {contentMenu}
+            {contentLeft}
+            <Divider />
+            {contentRight}
           </div>
         ) : null}
-        {contentRight ? (
+        {contentRight && !smallerWidth ? (
           <div className={styles.contentRight}>{contentRight}</div>
         ) : null}
       </Container>

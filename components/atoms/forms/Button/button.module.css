@@ -60,7 +60,6 @@
 
   &:hover,
   &:focus {
-    background-color: var(--color-black-10);
     box-shadow: none;
   }
 }
