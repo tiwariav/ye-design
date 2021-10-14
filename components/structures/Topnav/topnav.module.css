@@ -87,11 +87,14 @@
 
     &.open {
       transform: translateX(0);
+      height: fit-content;
+      padding-bottom: var(--spacing-em-huge);
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
     }
   }
 
   @media (--media-min-lg) {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-end;
     margin-left: auto;
