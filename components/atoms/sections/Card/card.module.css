@@ -25,19 +25,18 @@
 }
 
 .content {
-  /* height: 100%; */
   transition-timing-function: var(--transition-function);
   transition-duration: var(--transition-duration);
   transition-property: visibility;
-}
 
-.image + .content {
-  margin-top: var(--spacing-em-xsmall);
-}
+  @nest .image + & {
+    margin-top: var(--spacing-em-xsmall);
+  }
 
-.is-horizontal .image + .content {
-  margin-top: 0;
-  margin-left: var(--spacing-em-small);
+  @nest .is-horizontal .image + & {
+    margin-top: 0;
+    margin-left: var(--spacing-em-small);
+  }
 }
 
 .view-thumb {
