@@ -72,6 +72,7 @@ export default function Topnav({
             className={clsx(styles.contentMenu, {
               [styles.open]: drawer,
             })}
+            onClick={toggleDrawer}
           >
             {contentLeft}
             <Divider />
