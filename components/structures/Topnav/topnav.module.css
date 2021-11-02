@@ -8,6 +8,11 @@
   transition-timing-function: var(--transition-function);
   transition-duration: 250ms;
   transition-property: background-color box-shadow;
+
+  &.is-transparent {
+    background-color: transparent;
+    box-shadow: none;
+  }
 }
 
 .container {
@@ -30,10 +35,6 @@
   box-shadow: none;
 }
 
-.is-transparent {
-  background-color: transparent;
-  box-shadow: none;
-}
 
 .is-underlined {
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);

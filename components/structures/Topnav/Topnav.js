@@ -15,7 +15,7 @@ export default function Topnav({
   contentLeft,
   contentMenu,
   contentRight,
-  expandedHeight = 112,
+  expandedHeight = 72,
   isExpanded,
   logo,
   logoVariant,
