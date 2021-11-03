@@ -17,6 +17,7 @@
 .item {
   flex-shrink: 0;
   width: 100%;
+
   &:not(:last-child) {
     margin-bottom: var(--spacing-em-large);
   }

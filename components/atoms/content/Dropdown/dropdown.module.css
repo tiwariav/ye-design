@@ -2,6 +2,7 @@
   position: relative;
   display: inline-flex;
 }
+
 .button-open {
   background-color: var(--color-black-10);
   border-radius: var(--spacing-em-xsmall);

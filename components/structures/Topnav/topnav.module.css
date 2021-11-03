@@ -37,7 +37,7 @@
 
 
 .is-underlined {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgb(0 0 0 / 3%);
   box-shadow: none;
 }
 
@@ -87,10 +87,10 @@
     transform: translateX(-100%);
 
     &.open {
-      transform: translateX(0);
       height: fit-content;
       padding-bottom: var(--spacing-em-huge);
       box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
+      transform: translateX(0);
     }
   }
 

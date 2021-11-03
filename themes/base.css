@@ -14,6 +14,7 @@
   /* COLORS */
 
   /* color definitions */
+  --color-accent: rgb(186 73 240 / 75%);
   --color-accent-dark: #4f2549;
   --color-accent-light: #ffc880;
   --color-background: var(--color-white);
@@ -21,16 +22,16 @@
   --color-background-content: var(--color-white);
   --color-background-secondary: #f9fafb;
   --color-black: #000;
-  --color-black-5: rgba(0, 0, 0, 0.05);
-  --color-black-10: rgba(0, 0, 0, 0.1);
-  --color-black-75: rgba(0, 0, 0, 0.75);
-  --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-black-5: rgb(0 0 0 / 5%);
+  --color-black-10: rgb(0 0 0 / 10%);
+  --color-black-75: rgb(0 0 0 / 75%);
+  --color-black-50: rgb(0 0 0 / 50%);
   --color-positive: #39bf0a;
   --color-negative: #c45d65;
-  --color-danger: rgb(255, 0, 0);
+  --color-danger: rgb(255 0 0);
   --color-primary: #f18904;
-  --color-shadow: rgba(0, 0, 0, 0.1);
-  --color-shadow-inset: rgba(0, 0, 0, 0.05);
+  --color-shadow: rgb(0 0 0 / 10%);
+  --color-shadow-inset: rgb(0 0 0 / 5%);
   --color-text: var(--color-black);
   --color-text-light: var(--color-black-50);
   --color-text-anchor: #1890ff;
@@ -40,9 +41,9 @@
   --color-text-anchor-visited: #005086;
   --color-text-content: var(--color-black);
   --color-white: #fff;
-  --color-white-90: rgba(255, 255, 255, 0.9);
-  --color-white-50: rgba(255, 255, 255, 0.5);
-  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-90: rgb(255 255 255 / 90%);
+  --color-white-50: rgb(255 255 255 / 50%);
+  --color-white-10: rgb(255 255 255 / 10%);
 
   /* ====== */
 
@@ -85,6 +86,7 @@
   --shadow-floating-low: 0 1px 4px var(--color-shadow);
   --shadow-floating-lowest: 0 0 2px var(--color-shadow);
   --shadow-inset: inset 0 2px 4px var(--color-shadow-inset);
+  --shadow-inset-sm: inset 0 1px 2px var(--color-shadow-inset);
   --shadow-inset-none: inset 0 0 0 var(--color-shadow-inset);
   --shadow-outer-none: 0 0 0 var(--color-shadow-inset);
   --shadow-pressable: var(--shadow-inset-none), var(--shadow-floating-low);
@@ -131,10 +133,16 @@
 
   --layout-sidenav-width: 100px;
 
+  /* HEIGHTS */
+
+  --height-page-content: calc(100vh - 88px);
+  --height-input: 2.5rem;
+  --height-input-inner: calc(var(--height-input) - 2px);
+
   /* ====== */
 
   /* BUTTONS */
-  --button-border-color: rgba(0, 0, 0, 0.05);
+  --button-border-color: rgb(0 0 0 / 5%);
   --button-border-radius: 3em;
   --button-border-width: 0;
   --button-color-ripple: var(--color-shadow);
@@ -158,9 +166,9 @@
     )
     calc(var(--spacing-em-normal) - var(--button-outline-border-width));
   --control-padding: var(--spacing-em-small) var(--spacing-em-normal);
-  --input-background-color: rgba(0, 0, 0, 0.025);
+  --input-background-color: rgb(0 0 0 / 2.5%);
   --input-border-width: 0;
-  --input-border-color: rgba(0, 0, 0, 0.025);
+  --input-border-color: rgb(0 0 0 / 2.5%);
   --input-shadow: var(--shadow-inset);
   --input-text-font-family: var(--font-family-body);
 

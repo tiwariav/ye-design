@@ -1,5 +1,6 @@
 .sidenav-group {
   padding: var(--em-base) 0;
+
   & + .sidenav-group {
     border-top: 1px solid var(--color-black-10);
   }

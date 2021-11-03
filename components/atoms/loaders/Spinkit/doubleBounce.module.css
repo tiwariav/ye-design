@@ -14,7 +14,7 @@
   height: 100%;
   background-color: #333;
   border-radius: 50%;
-  opacity: 0.6;
+  opacity: 60%;
   animation: sk-bounce 2s infinite ease-in-out;
   @media screen and (prefers-reduced-motion: reduce) {
     animation: none;
@@ -30,6 +30,7 @@
   100% {
     transform: scale(0);
   }
+
   50% {
     transform: scale(1);
   }

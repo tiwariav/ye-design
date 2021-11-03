@@ -29,7 +29,7 @@
 
 .disabled {
   cursor: not-allowed;
-  opacity: 0.3;
+  opacity: 30%;
 }
 
 .spacing-equal {
@@ -67,8 +67,9 @@
 .is-inline {
   padding-right: var(--spacing-em-xsmall);
   padding-left: var(--spacing-em-xsmall);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgb(0 0 0 / 5%);
   box-shadow: none;
+
   &:hover,
   &:focus {
     box-shadow: none;
@@ -214,7 +215,7 @@
       )
       center/15000%;
     transform: translate(-50%, -50%) scale(0);
-    opacity: 0.33;
+    opacity: 33%;
   }
 
   &:hover::after,
@@ -230,8 +231,9 @@
     top: var(--effect-ripple-y);
     left: var(--effect-ripple-x);
     display: none;
-    opacity: 0;
+    opacity: 0%;
   }
+
   &:hover::before,
   &:focus::before {
     width: var(--effect-ripple-diameter);
@@ -239,15 +241,16 @@
     background: var(--button-color-ripple)
       radial-gradient(circle, transparent 1%, var(--button-color-ripple) 1%)
       center/15000%;
-    opacity: 0.025;
+    opacity: 2.5%;
   }
+
   &:hover::before {
     display: block;
   }
 
   &.is-primary:hover::before,
   &.is-primary:focus::before {
-    opacity: 0.125;
+    opacity: 12.5%;
   }
 
   &:active::before {

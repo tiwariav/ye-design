@@ -26,6 +26,7 @@
       var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
     );
   }
+
   &.spacing-less {
     padding-top: calc(var(--spacing-em-xsmall));
     padding-bottom: calc(var(--spacing-em-xsmall));
