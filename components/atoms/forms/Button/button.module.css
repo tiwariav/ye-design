@@ -29,7 +29,7 @@
 
 .disabled {
   cursor: not-allowed;
-  opacity: 30%;
+  opacity: 0.3;
 }
 
 .spacing-equal {
@@ -67,7 +67,7 @@
 .is-inline {
   padding-right: var(--spacing-em-xsmall);
   padding-left: var(--spacing-em-xsmall);
-  border: 1px solid rgb(0 0 0 / 5%);
+  border: 1px solid rgb(0 0 0 / 0.05);
   box-shadow: none;
 
   &:hover,
@@ -215,7 +215,7 @@
       )
       center/15000%;
     transform: translate(-50%, -50%) scale(0);
-    opacity: 33%;
+    opacity: 0.33;
   }
 
   &:hover::after,
@@ -231,7 +231,7 @@
     top: var(--effect-ripple-y);
     left: var(--effect-ripple-x);
     display: none;
-    opacity: 0%;
+    opacity: 0;
   }
 
   &:hover::before,
@@ -241,7 +241,7 @@
     background: var(--button-color-ripple)
       radial-gradient(circle, transparent 1%, var(--button-color-ripple) 1%)
       center/15000%;
-    opacity: 2.5%;
+    opacity: 0.025;
   }
 
   &:hover::before {
@@ -250,7 +250,7 @@
 
   &.is-primary:hover::before,
   &.is-primary:focus::before {
-    opacity: 12.5%;
+    opacity: 0.125;
   }
 
   &:active::before {
