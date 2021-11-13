@@ -4,7 +4,6 @@
   'height-full'
 ]}] */
 
-
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -38,7 +37,11 @@ export default function Card({
       {...props}
     >
       {image ? <div className={styles.image}>{image}</div> : null}
-      {children ? <div className={clsx([styles.content], cardContentClassName)}>{children}</div> : null}
+      {children ? (
+        <div className={clsx([styles.content], cardContentClassName)}>
+          {children}
+        </div>
+      ) : null}
       {busy ? <Spinner /> : null}
     </div>
   );

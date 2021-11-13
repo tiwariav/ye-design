@@ -34,7 +34,14 @@ function getTextTypeContent(textType, text, progress, percentage) {
   }
 }
 
-function CenterText({ fill, isSemi, percentage, progress, text, centerTextClassName }) {
+function CenterText({
+  fill,
+  isSemi,
+  percentage,
+  progress,
+  text,
+  centerTextClassName,
+}) {
   const textType = useMemo(
     () => (text ? text.split(" ")[0] : undefined),
     [text]
@@ -94,7 +101,7 @@ export default function CircleProgress({
       <svg width={dia} height={isSemi ? dia * 2 : dia} viewBox={viewBox}>
         <circle
           className={styles.circleBackground}
-          style={{stroke: circleBackground}}
+          style={{ stroke: circleBackground }}
           cx={squareSize / 2}
           cy={squareSize / 2}
           r={radius}
@@ -106,8 +113,9 @@ export default function CircleProgress({
           cy={squareSize / 2}
           r={radius}
           strokeWidth={`${strokeWidth}px`}
-          transform={`rotate(${isSemi ? "180" : "-90"} ${squareSize / 2} ${squareSize / 2
-            })`}
+          transform={`rotate(${isSemi ? "180" : "-90"} ${squareSize / 2} ${
+            squareSize / 2
+          })`}
           style={circleStyles}
           stroke={fill}
         />

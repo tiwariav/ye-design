@@ -78,9 +78,7 @@ export default function FileInput({
         {label ? <span className={styles.label}>{label}</span> : null}
         {iconBefore ? (
           <span className={clsx(styles.iconWrapper)}>
-            <span className={clsx(formStyles.icon)}>
-              {iconBefore}
-            </span>
+            <span className={clsx(formStyles.icon)}>{iconBefore}</span>
           </span>
         ) : null}
         <input
@@ -97,9 +95,7 @@ export default function FileInput({
         </span>
         {iconAfter ? (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-            <span className={clsx(formStyles.icon)}>
-              {iconAfter}
-            </span>
+            <span className={clsx(formStyles.icon)}>{iconAfter}</span>
           </span>
         ) : null}
         {isBusy ? <Spinner className={styles.spinner} /> : null}
@@ -128,7 +124,7 @@ export default function FileInput({
                       />
                     </div>
                   </>
-                ) : (item.status === UPLOAD_FILE_STATUS.uploaded ? (
+                ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
                   <>
                     <div
                       className={clsx(
@@ -174,22 +170,22 @@ export default function FileInput({
                       </Button>
                     </div>
                   </>
-                ) : null)}
+                ) : null}
               </div>
               {item.data && item.data.length > 0
                 ? item.data.map((dataItem, dataIndex) => (
-                  <TextInput
-                    inputClassName={styles.listItemDataInput}
-                    key={index}
-                    size="small"
-                    onChange={(event) =>
-                      handleDataChange(event, item, dataIndex)
-                    }
-                    defaultValue={dataItem.value}
-                    placeholder={dataItem.placeholder}
-                    type={dataItem.type || "text"}
-                  />
-                ))
+                    <TextInput
+                      inputClassName={styles.listItemDataInput}
+                      key={index}
+                      size="small"
+                      onChange={(event) =>
+                        handleDataChange(event, item, dataIndex)
+                      }
+                      defaultValue={dataItem.value}
+                      placeholder={dataItem.placeholder}
+                      type={dataItem.type || "text"}
+                    />
+                  ))
                 : null}
             </div>
           ))}

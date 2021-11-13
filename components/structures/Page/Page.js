@@ -56,7 +56,7 @@ function Page({
           className={clsx({
             [styles.isFixed]: topnavIsFixed,
             // eslint-disable-next-line css-modules/no-undef-class
-            [styles.sidenavTop]: sidenavOnTop
+            [styles.sidenavTop]: sidenavOnTop,
           })}
         >
           {clonedTopnav}
@@ -68,18 +68,14 @@ function Page({
           [styles.isCentered]: isCentered,
         })}
       >
-        {
-          topnavCanExpand ?
-            <div
-              ref={spacerRef}
-              className={styles.spacer}
-              style={{ top: topnavMaxHeight + topnavShrinkOffset }}
-            />
-            : null
-        }
-        {hero ? (
-          <div>{hero}</div>
+        {topnavCanExpand ? (
+          <div
+            ref={spacerRef}
+            className={styles.spacer}
+            style={{ top: topnavMaxHeight + topnavShrinkOffset }}
+          />
         ) : null}
+        {hero ? <div>{hero}</div> : null}
         <div className={styles.container}>
           {sidenav ? (
             <div

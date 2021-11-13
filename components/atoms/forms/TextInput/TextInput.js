@@ -58,9 +58,7 @@ const TextInput = forwardRef(
       >
         {iconBefore ? (
           <span className={clsx(styles.iconWrapper)}>
-            <span className={clsx(formStyles.icon)}>
-              {iconBefore}
-            </span>
+            <span className={clsx(formStyles.icon)}>{iconBefore}</span>
           </span>
         ) : null}
         <input
@@ -83,9 +81,7 @@ const TextInput = forwardRef(
         />
         {iconAfter ? (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-            <span className={clsx(formStyles.icon)}>
-              {iconAfter}
-            </span>
+            <span className={clsx(formStyles.icon)}>{iconAfter}</span>
           </span>
         ) : null}
         {isBusy ? <Spinner className={styles.spinner} /> : null}

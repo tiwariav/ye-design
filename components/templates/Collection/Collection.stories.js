@@ -19,7 +19,7 @@ const Template = ({ content, cardWidth, variant, ...args }) => {
   };
   return (
     <Collection {...args} variant={variant}>
-      {Array.from({length: 32}).fill(
+      {Array.from({ length: 32 }).fill(
         <CardWithImage {...itemArgs}>
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem

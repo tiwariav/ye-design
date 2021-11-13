@@ -107,7 +107,7 @@
   --spacing-em-large: calc(10 * var(--em-unit));
   --spacing-em-xlarge: calc(12 * var(--em-unit));
   --spacing-em-huge: calc(16 * var(--em-unit));
-  --spacing-em-xhuge: calc(28 * var(--em-unit));
+  --spacing-em-xhuge: calc(20 * var(--em-unit));
 
   /* fixed */
   --rem-unit: 0.125rem;
@@ -119,7 +119,7 @@
   --spacing-rem-large: calc(10 * var(--rem-unit));
   --spacing-rem-xlarge: calc(12 * var(--rem-unit));
   --spacing-rem-huge: calc(16 * var(--rem-unit));
-  --spacing-rem-xhuge: calc(28 * var(--rem-unit));
+  --spacing-rem-xhuge: calc(20 * var(--rem-unit));
 
   /* ====== */
 

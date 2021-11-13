@@ -3,7 +3,6 @@
   'space-none', 'space-small', 'space-large', 'space-horizontal'
 ]}] */
 
-
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

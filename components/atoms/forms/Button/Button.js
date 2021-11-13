@@ -23,9 +23,9 @@ const variantOptions = [
   "outlined",
   "primary",
   "trans",
-  "neu"
+  "neu",
 ];
-const cursorOptions = ["pointer", "not-allowed"]
+const cursorOptions = ["pointer", "not-allowed"];
 const effectOptions = ["cursor-tracking", "ripple"];
 
 function overrideStyleProperty(node, name, value) {
@@ -51,11 +51,27 @@ const setTrackingProperties = (node, x = "50%", y = "50%") => {
 };
 
 const setNeuProperties = (node, options = { colors: {} }) => {
-  overrideStyleProperty(node, "--color-neu-background-dark", options.colors.backgroundDark);
-  overrideStyleProperty(node, "--color-neu-background-light", options.colors.backgroundLight);
-  overrideStyleProperty(node, "--color-neu-shadow-dark", options.colors.shadowDark);
-  overrideStyleProperty(node, "--color-neu-shadow-light", options.colors.shadowLight);
-}
+  overrideStyleProperty(
+    node,
+    "--color-neu-background-dark",
+    options.colors.backgroundDark
+  );
+  overrideStyleProperty(
+    node,
+    "--color-neu-background-light",
+    options.colors.backgroundLight
+  );
+  overrideStyleProperty(
+    node,
+    "--color-neu-shadow-dark",
+    options.colors.shadowDark
+  );
+  overrideStyleProperty(
+    node,
+    "--color-neu-shadow-light",
+    options.colors.shadowLight
+  );
+};
 
 /**
  * Primary UI component for user interaction
@@ -155,9 +171,7 @@ export default function Button({
         </>
       )}
       {iconAfter ? (
-        <span className={clsx(formStyles.icon)}>
-          {iconAfter}
-        </span>
+        <span className={clsx(formStyles.icon)}>{iconAfter}</span>
       ) : null}
       {isBusy ? <Spinner className={styles.spinner} /> : null}
     </button>

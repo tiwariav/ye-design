@@ -44,14 +44,12 @@ function Dropdown({
   // const [subMenuCascade, setSubMenuCascade] = useState(false);
 
   useClickAway(containerRef, (e) => {
-    if (open &&
-      (
-        !parentMenuNode ||
-        !((menuRef || {}).current || {}).contains(e.target)
-      )) {
+    if (
+      open &&
+      (!parentMenuNode || !((menuRef || {}).current || {}).contains(e.target))
+    ) {
       setOpen(false);
     }
-
   });
 
   const handleButtonClick = () => setOpen((open) => !open);
@@ -62,9 +60,10 @@ function Dropdown({
     setOpen(false);
   };
 
-  const containerBounds = useMemo(() => containerNode
-    ? containerNode.getBoundingClientRect()
-    : {}, [containerNode]);
+  const containerBounds = useMemo(
+    () => (containerNode ? containerNode.getBoundingClientRect() : {}),
+    [containerNode]
+  );
 
   const renderedMenu = useMemo(() => {
     return (
@@ -77,9 +76,9 @@ function Dropdown({
         style={
           parentMenuNode
             ? {
-              marginTop:
-                containerBounds.y - parentMenuNode.getBoundingClientRect().y,
-            }
+                marginTop:
+                  containerBounds.y - parentMenuNode.getBoundingClientRect().y,
+              }
             : undefined
         }
       >
@@ -115,19 +114,19 @@ function Dropdown({
       {isFunction(button)
         ? button(open, handleButtonClick)
         : React.cloneElement(button, {
-          className: clsx(
-            button.props.className,
-            open ? styles.buttonOpen : ""
-          ),
-          onClick: handleButtonClick,
-          iconAfter: !hideArrow ? (
-            open ? (
-              <AiOutlineCaretUp />
-            ) : (
-              <AiOutlineCaretDown />
-            )
-          ) : null,
-        })}
+            className: clsx(
+              button.props.className,
+              open ? styles.buttonOpen : ""
+            ),
+            onClick: handleButtonClick,
+            iconAfter: !hideArrow ? (
+              open ? (
+                <AiOutlineCaretUp />
+              ) : (
+                <AiOutlineCaretDown />
+              )
+            ) : null,
+          })}
 
       {parentMenuNode ? (
         ReactDOM.createPortal(renderedMenu, parentMenuNode)

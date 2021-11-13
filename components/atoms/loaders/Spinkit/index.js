@@ -8,11 +8,11 @@ import styles from "./spinkit.module.css";
 function getLoader(name, props) {
   switch (name) {
     case "bounce":
-      return <Bounce {...props} />
+      return <Bounce {...props} />;
     case "chase":
-      return <Chase {...props} />
+      return <Chase {...props} />;
     case "double-bounce":
-      return <DoubleBounce {...props} />
+      return <DoubleBounce {...props} />;
     default:
       return null;
   }
