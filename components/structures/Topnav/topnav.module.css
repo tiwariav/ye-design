@@ -42,7 +42,7 @@
 
 .is-expanded {
   & .banner {
-    height: 26px;
+    height: 40px;
   }
 }
 
