@@ -82,7 +82,7 @@ export default function FileInput({
           </span>
         ) : null}
         <input
-          id={idRef}
+          id={idRef.current}
           type="file"
           className={clsx(styles.input)}
           onFocus={handleFocus}
