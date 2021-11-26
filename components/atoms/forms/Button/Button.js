@@ -157,7 +157,7 @@ export default function Button({
       {...props}
     >
       {iconBefore ? (
-        <span className={clsx(formStyles.icon)}>{iconBefore}</span>
+        <span className={clsx(formStyles.icon, styles.icon)}>{iconBefore}</span>
       ) : null}
       {(iconBefore || iconAfter) && (label || children) ? (
         <span>
@@ -171,7 +171,7 @@ export default function Button({
         </>
       )}
       {iconAfter ? (
-        <span className={clsx(formStyles.icon)}>{iconAfter}</span>
+        <span className={clsx(formStyles.icon, styles.icon)}>{iconAfter}</span>
       ) : null}
       {isBusy ? <Spinner className={styles.spinner} /> : null}
     </button>
