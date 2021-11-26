@@ -121,6 +121,11 @@
   --spacing-rem-huge: calc(16 * var(--rem-unit));
   --spacing-rem-xhuge: calc(20 * var(--rem-unit));
 
+  /* radii */
+  --radius-small: var(--spacing-em-tiny);
+  --radius-normal: var(--spacing-em-xsmall);
+  --radius-large: var(--spacing-em-small);
+
   /* ====== */
 
   /* TRANSITIONS */
@@ -153,8 +158,8 @@
   --button-hover-shadow: var(--shadow-hovered);
   --button-padding: var(--spacing-em-small) var(--spacing-em-large);
   --button-outline-padding: calc(
-      var(--spacing-em-small) - var(--button-outline-border-width)
-    )
+    var(--spacing-em-small) - var(--button-outline-border-width)
+  )
     calc(var(--spacing-em-large) - var(--button-outline-border-width));
   --button-shadow: var(--shadow-pressable);
 
@@ -162,8 +167,8 @@
 
   /* FORM */
   --control-outline-padding: calc(
-      var(--spacing-em-small) - var(--button-outline-border-width)
-    )
+    var(--spacing-em-small) - var(--button-outline-border-width)
+  )
     calc(var(--spacing-em-normal) - var(--button-outline-border-width));
   --control-padding: var(--spacing-em-small) var(--spacing-em-normal);
   --input-background-color: rgb(0 0 0 / 0.025);

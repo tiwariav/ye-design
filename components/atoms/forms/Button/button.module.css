@@ -34,6 +34,12 @@
 
 .spacing-equal {
   padding: var(--spacing-em-xsmall);
+
+  & .icon {
+    &:not(:last-child) {
+      margin-right: var(--spacing-em-tiny);
+    }
+  }
 }
 
 .spacing-extra {
@@ -97,7 +103,17 @@
   background-color: var(--color-primary);
 }
 
+.is-outlined,
+.is-dashed {
+  border-color: var(--color-text);
+  border-width: var(--button-outline-border-width);
+  box-shadow: none;
+}
+
 .is-outlined {
+  border-style: solid;
+  transition-property: background-color, color;
+
   &.has-focus,
   &.has-hover,
   &:hover,
@@ -146,7 +162,7 @@
     var(--color-neu-background-dark),
     var(--color-neu-background-light)
   );
-  border-radius: var(--button-border-radius);
+  border-radius: var(--radius-normal);
   box-shadow: 2px 2px 5px var(--color-neu-shadow-dark),
     -2px -2px 5px var(--color-neu-shadow-light);
 
@@ -209,10 +225,10 @@
     width: 7.5em;
     height: 7.5em;
     background: radial-gradient(
-        circle closest-side,
-        var(--color-shadow),
-        transparent
-      )
+      circle closest-side,
+      var(--color-shadow),
+      transparent
+    )
       center/15000%;
     transform: translate(-50%, -50%) scale(0);
     opacity: 0.33;
