@@ -5,7 +5,7 @@
   min-height: 90vh;
   padding-top: 2.5em;
   padding-bottom: 2.5em;
-  background-color: var(--color-background);
+  background-color: var(--ye-color-background);
 }
 
 .content {
@@ -23,8 +23,8 @@
 }
 
 .title {
-  padding: var(--em-base);
+  padding: var(--ye-em-base);
   font-weight: 200;
-  font-size: var(--font-size-mammoth);
+  font-size: var(--ye-font-size-mammoth);
   text-align: center;
 }

@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding: var(--em-base);
+  padding: var(--ye-em-base);
 }
 
 .space-none {
@@ -8,11 +8,11 @@
 }
 
 .space-small {
-  padding: var(--spacing-em-xsmall);
+  padding: var(--ye-spacing-em-xsmall);
 }
 
 .space-large {
-  padding: var(--em-xlarge);
+  padding: var(--ye-em-xlarge);
 }
 
 .space-horizontal {
@@ -21,7 +21,7 @@
 }
 
 .is-secondary {
-  background-color: var(--color-background-secondary);
+  background-color: var(--ye-color-background-secondary);
 }
 
 .align-center {

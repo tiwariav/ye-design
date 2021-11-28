@@ -11,7 +11,7 @@ export default metadata;
 
 const Template = ({ content, ...args }) => (
   <ContainerComponent
-    style={{ border: "1px solid var(--color-black-10)" }}
+    style={{ border: "1px solid var(--ye-color-black-10)" }}
     {...args}
   />
 );

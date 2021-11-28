@@ -4,185 +4,180 @@
   /* ====== */
 
   /* BREAKPOINTS */
-  --bp-max-xs: 575px;
-  --bp-min-sm: 576px;
-  --bp-min-md: 768px;
-  --bp-min-lg: 992px;
-  --bp-min-xl: 1200px;
-  --bp-min-xxl: 1400px;
+  --ye-bp-max-xs: 575px;
+  --ye-bp-min-sm: 576px;
+  --ye-bp-min-md: 768px;
+  --ye-bp-min-lg: 992px;
+  --ye-bp-min-xl: 1200px;
+  --ye-bp-min-xxl: 1400px;
 
   /* COLORS */
 
   /* color definitions */
-  --color-accent: rgb(186 73 240 / 0.75);
-  --color-accent-dark: #4f2549;
-  --color-accent-light: #ffc880;
-  --color-background: var(--color-white);
-  --color-background-card: var(--color-white);
-  --color-background-content: var(--color-white);
-  --color-background-secondary: #f9fafb;
-  --color-black: #000;
-  --color-black-5: rgb(0 0 0 / 0.05);
-  --color-black-10: rgb(0 0 0 / 0.1);
-  --color-black-75: rgb(0 0 0 / 0.75);
-  --color-black-50: rgb(0 0 0 / 0.5);
-  --color-positive: #39bf0a;
-  --color-negative: #c45d65;
-  --color-danger: rgb(255 0 0);
-  --color-primary: #f18904;
-  --color-shadow: rgb(0 0 0 / 0.1);
-  --color-shadow-inset: rgb(0 0 0 / 0.05);
-  --color-text: var(--color-black);
-  --color-text-light: var(--color-black-50);
-  --color-text-anchor: #1890ff;
+  --ye-color-accent: rgb(186 73 240 / 0.75);
+  --ye-color-accent-dark: #4f2549;
+  --ye-color-accent-light: #ffc880;
+  --ye-color-background: var(--ye-color-white);
+  --ye-color-background-card: var(--ye-color-white);
+  --ye-color-background-content: var(--ye-color-white);
+  --ye-color-background-secondary: #f9fafb;
+  --ye-color-black: #000;
+  --ye-color-black-5: rgb(0 0 0 / 0.05);
+  --ye-color-black-10: rgb(0 0 0 / 0.1);
+  --ye-color-black-75: rgb(0 0 0 / 0.75);
+  --ye-color-black-50: rgb(0 0 0 / 0.5);
+  --ye-color-border: rgb(0 0 0 / 0.05);
+  --ye-color-danger: rgb(255 0 0);
+  --ye-color-negative: #c45d65;
+  --ye-color-positive: #39bf0a;
+  --ye-color-primary: #f18904;
+  --ye-color-ripple: var(--ye-color-shadow);
+  --ye-color-shadow: rgb(0 0 0 / 0.1);
+  --ye-color-shadow-inset: rgb(0 0 0 / 0.05);
+  --ye-color-text: var(--ye-color-black);
+  --ye-color-text-light: var(--ye-color-black-50);
+  --ye-color-text-anchor: #1890ff;
 
   /* TODO: focus and visited color to be different */
-  --color-text-anchor-focus: #40a9ff;
-  --color-text-anchor-visited: #005086;
-  --color-text-content: var(--color-black);
-  --color-white: #fff;
-  --color-white-90: rgb(255 255 255 / 0.9);
-  --color-white-50: rgb(255 255 255 / 0.5);
-  --color-white-10: rgb(255 255 255 / 0.1);
+  --ye-color-text-anchor-focus: #40a9ff;
+  --ye-color-text-anchor-visited: #005086;
+  --ye-color-text-content: var(--ye-color-black);
+  --ye-color-white: #fff;
+  --ye-color-white-90: rgb(255 255 255 / 0.9);
+  --ye-color-white-50: rgb(255 255 255 / 0.5);
+  --ye-color-white-10: rgb(255 255 255 / 0.1);
 
   /* ====== */
 
   /* FONTS */
 
   /* Make sure the fonts are imported in the appropriate html (.storybook/preview-head.html for storybook) */
-  --font-family-body: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
-  --font-family-title: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
+  --ye-font-family-body: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
+  --ye-font-family-title: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
+  --ye-font-family-mono: source-code-pro, "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  --ye-font-family-input: var(--ye-font-family-body);
 
   /* type scale 1.2 (https://type-scale.com/) */
-  --font-size-em: 1.2em;
-  --font-size-mammoth: 2.488rem;
-  --font-size-xhuge: 2.074rem;
-  --font-size-huge: 1.728rem;
-  --font-size-xlarge: 1.44rem;
-  --font-size-large: 1.2rem;
-  --font-size-normal: 1rem;
-  --font-size-small: 0.833rem;
-  --font-size-xsmall: 0.694rem;
-  --font-size-tiny: 0.579rem;
+  --ye-font-size-em: 1.2em;
+  --ye-font-size-mammoth: 2.488rem;
+  --ye-font-size-xhuge: 2.074rem;
+  --ye-font-size-huge: 1.728rem;
+  --ye-font-size-xlarge: 1.44rem;
+  --ye-font-size-large: 1.2rem;
+  --ye-font-size-normal: 1rem;
+  --ye-font-size-small: 0.833rem;
+  --ye-font-size-xsmall: 0.694rem;
+  --ye-font-size-tiny: 0.579rem;
 
   /* line heights */
-  --line-height: 1.5;
-  --line-height-thin: 1.25;
+  --ye-line-height: 1.5;
+  --ye-line-height-thin: 1.25;
 
   /* weights */
-  --font-weight-black: 700;
-  --font-weight-bold: 600;
-  --font-weight-semibold: 500;
-  --font-weight-normal: 400;
-  --font-weight-light: 300;
-  --font-weight-thin: 200;
+  --ye-font-weight-black: 700;
+  --ye-font-weight-bold: 600;
+  --ye-font-weight-semibold: 500;
+  --ye-font-weight-normal: 400;
+  --ye-font-weight-light: 300;
+  --ye-font-weight-thin: 200;
 
   /* ====== */
 
   /* SHADOWS */
-  --shadow-floating-highest: 0 2px 30px var(--color-shadow);
-  --shadow-floating-high: 0 2px 12px var(--color-shadow);
-  --shadow-floating-medium: 0 2px 6px var(--color-shadow);
-  --shadow-floating-low: 0 1px 4px var(--color-shadow);
-  --shadow-floating-lowest: 0 0 2px var(--color-shadow);
-  --shadow-inset: inset 0 2px 4px var(--color-shadow-inset);
-  --shadow-inset-sm: inset 0 1px 2px var(--color-shadow-inset);
-  --shadow-inset-none: inset 0 0 0 var(--color-shadow-inset);
-  --shadow-outer-none: 0 0 0 var(--color-shadow-inset);
-  --shadow-pressable: var(--shadow-inset-none), var(--shadow-floating-low);
-  --shadow-hovered: var(--shadow-inset-none), var(--shadow-floating-lowest);
-  --shadow-pressed: var(--shadow-inset), var(--shadow-outer-none);
+  --ye-shadow-floating-highest: 0 2px 30px var(--ye-color-shadow);
+  --ye-shadow-floating-high: 0 2px 12px var(--ye-color-shadow);
+  --ye-shadow-floating-medium: 0 2px 6px var(--ye-color-shadow);
+  --ye-shadow-floating-low: 0 1px 4px var(--ye-color-shadow);
+  --ye-shadow-floating-lowest: 0 0 2px var(--ye-color-shadow);
+  --ye-shadow-inset: inset 0 2px 4px var(--ye-color-shadow-inset);
+  --ye-shadow-inset-sm: inset 0 1px 2px var(--ye-color-shadow-inset);
+  --ye-shadow-inset-none: inset 0 0 0 var(--ye-color-shadow-inset);
+  --ye-shadow-outer-none: 0 0 0 var(--ye-color-shadow-inset);
+  --ye-shadow-pressable: var(--ye-shadow-inset-none), var(--ye-shadow-floating-low);
+  --ye-shadow-hovered: var(--ye-shadow-inset-none), var(--ye-shadow-floating-lowest);
+  --ye-shadow-pressed: var(--ye-shadow-inset), var(--ye-shadow-outer-none);
 
   /* ====== */
 
   /* SPACING */
 
   /* relative */
-  --em-unit: 0.125em;
-  --em-base: 1em;
-  --spacing-em-tiny: calc(2 * var(--em-unit));
-  --spacing-em-xsmall: calc(4 * var(--em-unit));
-  --spacing-em-small: calc(6 * var(--em-unit));
-  --spacing-em-normal: var(--em-base);
-  --spacing-em-large: calc(10 * var(--em-unit));
-  --spacing-em-xlarge: calc(12 * var(--em-unit));
-  --spacing-em-huge: calc(16 * var(--em-unit));
-  --spacing-em-xhuge: calc(20 * var(--em-unit));
+  --ye-em-unit: 0.125em;
+  --ye-em-base: 1em;
+  --ye-spacing-em-tiny: calc(2 * var(--ye-em-unit));
+  --ye-spacing-em-xsmall: calc(4 * var(--ye-em-unit));
+  --ye-spacing-em-small: calc(6 * var(--ye-em-unit));
+  --ye-spacing-em-normal: var(--ye-em-base);
+  --ye-spacing-em-large: calc(10 * var(--ye-em-unit));
+  --ye-spacing-em-xlarge: calc(12 * var(--ye-em-unit));
+  --ye-spacing-em-huge: calc(16 * var(--ye-em-unit));
+  --ye-spacing-em-xhuge: calc(20 * var(--ye-em-unit));
 
   /* fixed */
-  --rem-unit: 0.125rem;
-  --rem-base: 1rem;
-  --spacing-rem-tiny: calc(2 * var(--rem-unit));
-  --spacing-rem-xsmall: calc(4 * var(--rem-unit));
-  --spacing-rem-small: calc(6 * var(--rem-unit));
-  --spacing-rem-normal: var(--rem-base);
-  --spacing-rem-large: calc(10 * var(--rem-unit));
-  --spacing-rem-xlarge: calc(12 * var(--rem-unit));
-  --spacing-rem-huge: calc(16 * var(--rem-unit));
-  --spacing-rem-xhuge: calc(20 * var(--rem-unit));
+  --ye-rem-unit: 0.125rem;
+  --ye-rem-base: 1rem;
+  --ye-spacing-rem-tiny: calc(2 * var(--ye-rem-unit));
+  --ye-spacing-rem-xsmall: calc(4 * var(--ye-rem-unit));
+  --ye-spacing-rem-small: calc(6 * var(--ye-rem-unit));
+  --ye-spacing-rem-normal: var(--ye-rem-base);
+  --ye-spacing-rem-large: calc(10 * var(--ye-rem-unit));
+  --ye-spacing-rem-xlarge: calc(12 * var(--ye-rem-unit));
+  --ye-spacing-rem-huge: calc(16 * var(--ye-rem-unit));
+  --ye-spacing-rem-xhuge: calc(20 * var(--ye-rem-unit));
 
   /* radii */
-  --radius-small: var(--spacing-em-tiny);
-  --radius-normal: var(--spacing-em-xsmall);
-  --radius-large: var(--spacing-em-small);
+  --ye-radius-small: var(--ye-spacing-em-tiny);
+  --ye-radius-normal: var(--ye-spacing-em-xsmall);
+  --ye-radius-large: var(--ye-spacing-em-small);
+  --ye-radius-xlarge: var(--ye-spacing-em-normal);
 
   /* ====== */
 
   /* TRANSITIONS */
-  --transition-function: ease-in-out;
-  --transition-duration: 250ms;
+  --ye-transition-function: ease-in-out;
+  --ye-transition-duration: 250ms;
 
   /* ====== */
 
   /* LAYOUTS */
 
-  --layout-sidenav-width: 100px;
+  --ye-layout-sidenav-width: 100px;
 
   /* HEIGHTS */
 
-  --height-page-content: calc(100vh - 88px);
-  --height-input: 2.5rem;
-  --height-input-inner: calc(var(--height-input) - 2px);
+  --ye-height-page-content: calc(100vh - 88px);
+  --ye-height-input: 2.5rem;
+  --ye-height-input-inner: calc(var(--ye-height-input) - 2px);
 
   /* ====== */
 
   /* BUTTONS */
-  --button-border-color: rgb(0 0 0 / 0.05);
-  --button-border-radius: 3em;
-  --button-border-width: 0;
-  --button-color-ripple: var(--color-shadow);
-  --button-cursor: pointer;
-  --button-outline-border-width: 1px;
-  --button-focus-shadow: var(--shadow-pressed);
-  --button-font-weight: var(--font-weight-semibold);
-  --button-hover-shadow: var(--shadow-hovered);
-  --button-padding: var(--spacing-em-small) var(--spacing-em-large);
-  --button-outline-padding: calc(
-    var(--spacing-em-small) - var(--button-outline-border-width)
+  --ye-button-border-radius: 3em;
+  --ye-button-border-width: 0;
+  --ye-button-cursor: pointer;
+  --ye-button-outline-border-width: 1px;
+  --ye-button-focus-shadow: var(--ye-shadow-pressed);
+  --ye-button-font-weight: var(--ye-font-weight-semibold);
+  --ye-button-hover-shadow: var(--ye-shadow-hovered);
+  --ye-button-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-large);
+  --ye-button-outline-padding: calc(
+    var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
   )
-    calc(var(--spacing-em-large) - var(--button-outline-border-width));
-  --button-shadow: var(--shadow-pressable);
+    calc(var(--ye-spacing-em-large) - var(--ye-button-outline-border-width));
+  --ye-button-shadow: var(--ye-shadow-pressable);
 
   /* ====== */
 
   /* FORM */
-  --control-outline-padding: calc(
-    var(--spacing-em-small) - var(--button-outline-border-width)
+  --ye-control-outline-padding: calc(
+    var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
   )
-    calc(var(--spacing-em-normal) - var(--button-outline-border-width));
-  --control-padding: var(--spacing-em-small) var(--spacing-em-normal);
-  --input-background-color: rgb(0 0 0 / 0.025);
-  --input-border-width: 0;
-  --input-border-color: rgb(0 0 0 / 0.025);
-  --input-shadow: var(--shadow-inset);
-  --input-text-font-family: var(--font-family-body);
-
-  /* ====== */
-
-  /* MODAL */
-  --modal-radius: var(--spacing-em-normal);
-
-  /* ====== */
+    calc(var(--ye-spacing-em-normal) - var(--ye-button-outline-border-width));
+  --ye-control-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-normal);
+  --ye-input-background-color: rgb(0 0 0 / 0.025);
+  --ye-input-border-width: 0;
+  --ye-input-border-color: rgb(0 0 0 / 0.025);
+  --ye-input-shadow: var(--ye-shadow-inset);
 }
 
 * {
@@ -190,18 +185,18 @@
 }
 
 html {
-  background-color: var(--color-background);
+  background-color: var(--ye-color-background);
 }
 
 body {
   overflow-x: hidden;
-  color: var(--color-text);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-normal);
-  font-size: clamp(100%, 1rem + 2vw, var(--font-size-normal));
-  font-family: var(--font-family-body);
-  line-height: var(--line-height);
-  background-color: var(--color-background);
+  color: var(--ye-color-text);
+  font-weight: var(--ye-font-weight-normal);
+  font-size: var(--ye-font-size-normal);
+  font-size: clamp(100%, 1rem + 2vw, var(--ye-font-size-normal));
+  font-family: var(--ye-font-family-body);
+  line-height: var(--ye-line-height);
+  background-color: var(--ye-color-background);
 }
 
 h1,
@@ -210,32 +205,32 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--font-weight-bold);
-  font-family: var(--font-family-title);
+  font-weight: var(--ye-font-weight-bold);
+  font-family: var(--ye-font-family-title);
 }
 
 h1 {
-  font-size: var(--font-size-mammoth);
+  font-size: var(--ye-font-size-mammoth);
 }
 
 h2 {
-  font-size: var(--font-size-xhuge);
+  font-size: var(--ye-font-size-xhuge);
 }
 
 h3 {
-  font-size: var(--font-size-huge);
+  font-size: var(--ye-font-size-huge);
 }
 
 h4 {
-  font-size: var(--font-size-xlarge);
+  font-size: var(--ye-font-size-xlarge);
 }
 
 h5 {
-  font-size: var(--font-size-large);
+  font-size: var(--ye-font-size-large);
 }
 
 h6 {
-  font-size: var(--font-size-normal);
+  font-size: var(--ye-font-size-normal);
 }
 
 .custom-scrollbar {
@@ -244,13 +239,13 @@ h6 {
   /* SCROLLBAR */
 
   /* New specs, works on Firefox */
-  scrollbar-color: #f5f5f5 var(--color-primary);
+  scrollbar-color: #f5f5f5 var(--ye-color-primary);
 
   /* Works on Chrome/Edge/Safari */
   &::-webkit-scrollbar-track {
     background-color: #f5f5f5;
     border-radius: 8px;
-    box-shadow: inset 0 0 6px var(--color-black-10);
+    box-shadow: inset 0 0 6px var(--ye-color-black-10);
   }
 
   &::-webkit-scrollbar {
@@ -259,10 +254,10 @@ h6 {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);
+    background-color: var(--ye-color-primary);
 
     /* border: 3px solid #f5f5f5; */
     border-radius: 8px;
-    box-shadow: inset 0 0 6px var(--color-black-10);
+    box-shadow: inset 0 0 6px var(--ye-color-black-10);
   }
 }

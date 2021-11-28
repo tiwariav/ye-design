@@ -6,15 +6,15 @@
 
 .placeholder {
   width: 100%;
-  padding: var(--button-padding);
+  padding: var(--ye-button-padding);
   color: inherit;
   line-height: inherit;
-  background-color: var(--color-background);
-  border-color: var(--button-border-color);
+  background-color: var(--ye-color-background);
+  border-color: var(--ye-color-border);
   border-style: solid;
-  border-width: var(--button-border-width);
-  border-radius: var(--button-border-radius);
-  box-shadow: var(--button-shadow);
+  border-width: var(--ye-button-border-width);
+  border-radius: var(--ye-button-border-radius);
+  box-shadow: var(--ye-button-shadow);
 }
 
 .input {
@@ -30,19 +30,19 @@
     background-color: #f4f5f6;
     border-color: #40a9ff;
     outline: none;
-    box-shadow: var(--shadow-inset-none);
+    box-shadow: var(--ye-shadow-inset-none);
   }
 }
 
 .icon-wrapper {
   position: absolute;
-  top: var(--spacing-em-small);
-  left: var(--spacing-em-large);
+  top: var(--ye-spacing-em-small);
+  left: var(--ye-spacing-em-large);
   display: inline-flex;
 }
 
 .icon-right {
-  right: var(--spacing-em-large);
+  right: var(--ye-spacing-em-large);
   left: auto;
 }
 
@@ -50,8 +50,8 @@
   display: flex;
   align-items: center;
   max-width: 100%;
-  margin-top: var(--spacing-em-normal);
-  font-size: var(--font-size-xsmall);
+  margin-top: var(--ye-spacing-em-normal);
+  font-size: var(--ye-font-size-xsmall);
   text-align: left;
 }
 
@@ -65,8 +65,8 @@
 }
 
 .list-item-data-input {
-  padding: var(--spacing-em-xsmall) var(--spacing-em-xsmall);
-  font-size: var(--font-size-xsmall);
+  padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-xsmall);
+  font-size: var(--ye-font-size-xsmall);
 }
 
 .list-item-status-text {
@@ -79,13 +79,13 @@
 
   &.has-focus,
   &:focus {
-    color: var(--color-background);
-    background-color: var(--color-text);
+    color: var(--ye-color-background);
+    background-color: var(--ye-color-text);
   }
 }
 
 .spinner {
-  border-radius: var(--spacing-em-tiny);
+  border-radius: var(--ye-spacing-em-tiny);
 }
 
 .label {
@@ -93,13 +93,13 @@
 }
 
 .progress {
-  color: var(--color-primary);
+  color: var(--ye-color-primary);
 }
 
 .success {
-  color: var(--color-positive);
+  color: var(--ye-color-positive);
 }
 
 .failed {
-  color: var(--color-negative);
+  color: var(--ye-color-negative);
 }

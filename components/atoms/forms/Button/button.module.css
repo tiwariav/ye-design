@@ -1,29 +1,29 @@
 .root {
   position: relative;
-  padding: var(--button-padding);
+  padding: var(--ye-button-padding);
   overflow: hidden;
-  font-weight: var(--button-font-weight);
+  font-weight: var(--ye-button-font-weight);
   text-align: left;
-  background-color: var(--color-background);
-  border-color: var(--button-border-color);
-  border-width: var(--button-border-width);
-  border-radius: var(--button-border-radius);
-  box-shadow: var(--button-shadow);
-  cursor: var(--button-cursor);
-  transition-timing-function: var(--transition-function);
-  transition-duration: var(--transition-duration);
+  background-color: var(--ye-color-background);
+  border-color: var(--ye-color-border);
+  border-width: var(--ye-button-border-width);
+  border-radius: var(--ye-button-border-radius);
+  box-shadow: var(--ye-button-shadow);
+  cursor: var(--ye-button-cursor);
+  transition-timing-function: var(--ye-transition-function);
+  transition-duration: var(--ye-transition-duration);
   transition-property: box-shadow, background-color, color;
 
   &.has-hover,
   &:hover {
     outline: none;
-    box-shadow: var(--button-hover-shadow);
+    box-shadow: var(--ye-button-hover-shadow);
   }
 
   &.has-focus,
   &:focus {
     outline: none;
-    box-shadow: var(--button-focus-shadow);
+    box-shadow: var(--ye-button-focus-shadow);
   }
 }
 
@@ -33,27 +33,27 @@
 }
 
 .spacing-equal {
-  padding: var(--spacing-em-xsmall);
+  padding: var(--ye-spacing-em-xsmall);
 
   & .icon {
     &:not(:last-child) {
-      margin-right: var(--spacing-em-tiny);
+      margin-right: var(--ye-spacing-em-tiny);
     }
   }
 }
 
 .spacing-extra {
   padding-top: calc(
-    var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
+    var(--ye-spacing-em-normal) - 2 * var(--ye-button-outline-border-width)
   );
   padding-bottom: calc(
-    var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
+    var(--ye-spacing-em-normal) - 2 * var(--ye-button-outline-border-width)
   );
 }
 
 .spacing-less {
-  padding-top: calc(var(--spacing-em-xsmall));
-  padding-bottom: calc(var(--spacing-em-xsmall));
+  padding-top: calc(var(--ye-spacing-em-xsmall));
+  padding-bottom: calc(var(--ye-spacing-em-xsmall));
 }
 
 .spacing-none {
@@ -71,8 +71,8 @@
 }
 
 .is-inline {
-  padding-right: var(--spacing-em-xsmall);
-  padding-left: var(--spacing-em-xsmall);
+  padding-right: var(--ye-spacing-em-xsmall);
+  padding-left: var(--ye-spacing-em-xsmall);
   border: 1px solid rgb(0 0 0 / 0.05);
   box-shadow: none;
 
@@ -93,20 +93,20 @@
 
   &:hover,
   &:focus {
-    background-color: var(--color-black-10);
+    background-color: var(--ye-color-black-10);
     box-shadow: none;
   }
 }
 
 .is-primary {
-  color: var(--color-white);
-  background-color: var(--color-primary);
+  color: var(--ye-color-white);
+  background-color: var(--ye-color-primary);
 }
 
 .is-outlined,
 .is-dashed {
-  border-color: var(--color-text);
-  border-width: var(--button-outline-border-width);
+  border-color: var(--ye-color-text);
+  border-width: var(--ye-button-outline-border-width);
   box-shadow: none;
 }
 
@@ -118,21 +118,21 @@
   &.has-hover,
   &:hover,
   &:focus {
-    color: var(--color-background);
-    background-color: var(--color-text);
+    color: var(--ye-color-background);
+    background-color: var(--ye-color-text);
     box-shadow: none;
   }
 }
 
 .is-filled {
-  color: var(--color-background);
-  background-color: var(--color-text);
+  color: var(--ye-color-background);
+  background-color: var(--ye-color-text);
 
   &.has-focus,
   &.has-hover,
   &:hover,
   &:focus {
-    background-color: var(--color-text-light);
+    background-color: var(--ye-color-text-light);
     box-shadow: none;
   }
 }
@@ -162,7 +162,7 @@
     var(--color-neu-background-dark),
     var(--color-neu-background-light)
   );
-  border-radius: var(--radius-normal);
+  border-radius: var(--ye-radius-normal);
   box-shadow: 2px 2px 5px var(--color-neu-shadow-dark),
     -2px -2px 5px var(--color-neu-shadow-light);
 
@@ -182,11 +182,11 @@
 /* sizes */
 
 .is-small {
-  font-size: var(--font-size-small);
+  font-size: var(--ye-font-size-small);
 }
 
 .is-large {
-  font-size: var(--font-size-large);
+  font-size: var(--ye-font-size-large);
 }
 
 /* effects */
@@ -226,7 +226,7 @@
     height: 7.5em;
     background: radial-gradient(
       circle closest-side,
-      var(--color-shadow),
+      var(--ye-color-shadow),
       transparent
     )
       center/15000%;
@@ -254,8 +254,8 @@
   &:focus::before {
     width: var(--effect-ripple-diameter);
     height: var(--effect-ripple-diameter);
-    background: var(--button-color-ripple)
-      radial-gradient(circle, transparent 1%, var(--button-color-ripple) 1%)
+    background: var(--ye-color-ripple)
+      radial-gradient(circle, transparent 1%, var(--ye-color-ripple) 1%)
       center/15000%;
     opacity: 0.025;
   }

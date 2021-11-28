@@ -1,16 +1,16 @@
 .anchor {
   display: inline-flex;
-  color: var(--color-text);
+  color: var(--ye-color-text);
   text-decoration: none;
 }
 
 /* sizes */
 .is-small {
-  font-size: var(--font-size-small);
+  font-size: var(--ye-font-size-small);
 }
 
 .is-large {
-  font-size: var(--font-size-large);
+  font-size: var(--ye-font-size-large);
 }
 
 /* vairants */
@@ -20,22 +20,22 @@
 .is-filled {
   &.spacing-extra {
     padding-top: calc(
-      var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
+      var(--ye-spacing-em-normal) - 2 * var(--ye-button-outline-border-width)
     );
     padding-bottom: calc(
-      var(--spacing-em-normal) - 2 * var(--button-outline-border-width)
+      var(--ye-spacing-em-normal) - 2 * var(--ye-button-outline-border-width)
     );
   }
 
   &.spacing-less {
-    padding-top: calc(var(--spacing-em-xsmall));
-    padding-bottom: calc(var(--spacing-em-xsmall));
+    padding-top: calc(var(--ye-spacing-em-xsmall));
+    padding-bottom: calc(var(--ye-spacing-em-xsmall));
   }
 }
 
 .is-outlined,
 .is-filled {
-  border-radius: var(--button-border-radius);
+  border-radius: var(--ye-button-border-radius);
 }
 
 .is-basic {
@@ -50,42 +50,43 @@
 }
 
 .is-color {
-  color: var(--color-text-anchor);
+  color: var(--ye-color-text-anchor);
 
   &.has-focus,
   &.has-hover,
   &:hover,
   &:focus {
-    color: var(--color-text-anchor-focus);
+    color: var(--ye-color-text-anchor-focus);
     text-decoration: underline;
   }
 
   &:not(.no-visited):visited {
-    color: var(--color-text-anchor-visited);
+    color: var(--ye-color-text-anchor-visited);
   }
 }
 
 .is-list-item {
+  display: flex;
   width: 100%;
-  padding: var(--spacing-em-small) var(--em-base);
+  padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-normal);
   border-radius: 0;
   transition-property: box-shadow, border-radius, background-color;
 
   &:hover,
   &:focus {
-    background-color: var(--color-black-5);
+    background-color: var(--ye-color-black-5);
   }
 }
 
 .is-nav-item {
   position: relative;
   width: 100%;
-  padding: var(--spacing-em-small) var(--em-base);
+  padding: var(--ye-spacing-em-small) var(--ye-em-base);
   border-radius: 0;
 
   &:hover,
   &:focus {
-    color: var(--color-primary);
+    color: var(--ye-color-primary);
 
     &::after {
       position: absolute;
@@ -94,19 +95,19 @@
       bottom: 0;
       display: block;
       width: 2px;
-      background-color: var(--color-primary);
+      background-color: var(--ye-color-primary);
       content: "";
     }
   }
 }
 
 .is-outlined {
-  padding: var(--button-outline-padding);
+  padding: var(--ye-button-outline-padding);
   background-color: transparent;
-  border-color: var(--color-text);
+  border-color: var(--ye-color-text);
   border-style: solid;
-  border-width: var(--button-outline-border-width);
-  transition-timing-function: var(--transition-function);
+  border-width: var(--ye-button-outline-border-width);
+  transition-timing-function: var(--ye-transition-function);
   transition-duration: 200ms;
   transition-property: box-shadow, border-radius, background-color, color;
 
@@ -114,20 +115,20 @@
   &.has-hover,
   &:hover,
   &:focus {
-    color: var(--color-background);
-    background-color: var(--color-text);
+    color: var(--ye-color-background);
+    background-color: var(--ye-color-text);
     box-shadow: none;
   }
 }
 
 .is-filled {
-  padding: var(--button-outline-padding);
-  color: var(--color-background);
-  background-color: var(--color-text);
-  border-color: var(--color-text);
+  padding: var(--ye-button-outline-padding);
+  color: var(--ye-color-background);
+  background-color: var(--ye-color-text);
+  border-color: var(--ye-color-text);
   border-style: solid;
-  border-width: var(--button-outline-border-width);
-  transition-timing-function: var(--transition-function);
+  border-width: var(--ye-button-outline-border-width);
+  transition-timing-function: var(--ye-transition-function);
   transition-duration: 200ms;
   transition-property: box-shadow, border-radius, background-color, color;
 
@@ -135,7 +136,7 @@
   &.has-hover,
   &:hover,
   &:focus {
-    color: var(--color-text);
+    color: var(--ye-color-text);
     background-color: transparent;
     box-shadow: none;
   }
@@ -145,16 +146,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-em-large);
-  height: var(--spacing-em-large);
-  margin-right: var(--spacing-em-xsmall);
+  flex-shrink: 0;
+  width: var(--ye-spacing-em-large);
+  height: var(--ye-spacing-em-large);
+  margin-right: var(--ye-spacing-em-xsmall);
   color: inherit;
-  font-size: var(--font-size-em);
+  font-size: var(--ye-font-size-em);
   line-height: 1;
 
   &.is-after {
-    margin-right: calc(-1 * var(--em-unit));
-    margin-left: var(--spacing-em-xsmall);
+    margin-right: calc(-1 * var(--ye-em-unit));
+    margin-left: var(--ye-spacing-em-xsmall);
   }
 }
 

@@ -24,7 +24,7 @@
 .sidenav {
   z-index: 1;
   height: 100vh;
-  padding-right: var(--spacing-em-small);
+  padding-right: var(--ye-spacing-em-small);
 
   &.topnav-top {
     top: 4.5rem;
@@ -45,7 +45,7 @@
   width: 100%;
 
   &.sidenav-top {
-    --sidenav-width: calc(var(--layout-sidenav-width));
+    --sidenav-width: calc(var(--ye-layout-sidenav-width));
 
     left: var(--sidenav-width);
     width: calc(100% - var(--sidenav-width));

@@ -1,3 +1,4 @@
+/* eslint css-modules/no-unused-class:off */
 import coolNFreshStyle from "./cool-n-fresh.module.css";
 import trustyStyle from "./trusty.module.css";
 

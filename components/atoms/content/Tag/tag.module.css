@@ -1,24 +1,24 @@
 .container {
   display: inline-flex;
   align-items: center;
-  padding: var(--spacing-em-tiny) var(--spacing-em-xsmall);
-  background-color: var(--color-black-10);
-  border-radius: var(--em-base);
+  padding: var(--ye-spacing-em-tiny) var(--ye-spacing-em-xsmall);
+  background-color: var(--ye-color-black-10);
+  border-radius: var(--ye-em-base);
 }
 
 .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-em-large);
-  height: var(--spacing-em-large);
-  margin-right: var(--spacing-em-xsmall);
+  width: var(--ye-spacing-em-large);
+  height: var(--ye-spacing-em-large);
+  margin-right: var(--ye-spacing-em-xsmall);
   color: inherit;
-  font-size: var(--font-size-em);
+  font-size: var(--ye-font-size-em);
   line-height: 1;
 }
 
 .is-after {
   margin-right: 0;
-  margin-left: var(--spacing-em-xsmall);
+  margin-left: var(--ye-spacing-em-xsmall);
 }

@@ -10,7 +10,7 @@ const metadata = {
 export default metadata;
 
 const Template = ({ width, ...args }) => (
-  <div style={{ width, border: "1px solid var(--color-black-10)" }}>
+  <div style={{ width, border: "1px solid var(--ye-color-black-10)" }}>
     <Text {...args} />
   </div>
 );

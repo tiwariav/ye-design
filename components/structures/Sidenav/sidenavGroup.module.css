@@ -1,13 +1,13 @@
 .sidenav-group {
-  padding: var(--em-base) 0;
+  padding: var(--ye-em-base) 0;
 
   & + .sidenav-group {
-    border-top: 1px solid var(--color-black-10);
+    border-top: 1px solid var(--ye-color-black-10);
   }
 }
 
 .sidenav-group-title {
-  padding: var(--spacing-em-small) var(--em-base);
-  color: var(--color-black-50);
+  padding: var(--ye-spacing-em-small) var(--ye-em-base);
+  color: var(--ye-color-black-50);
   font-weight: 300;
 }

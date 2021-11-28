@@ -22,11 +22,11 @@
   justify-content: center;
   width: calc(2 * var(--radius));
   height: calc(2 * var(--radius));
-  padding-bottom: var(--font-size-large);
+  padding-bottom: var(--ye-font-size-large);
   line-height: 1;
   background-color: #fff;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-floating-medium);
+  box-shadow: var(--ye-shadow-floating-medium);
 }
 
 .text {
@@ -39,7 +39,7 @@
   bottom: 0;
   display: flex;
   width: 2.25em;
-  color: var(--color-primary);
+  color: var(--ye-color-primary);
   font-size: 1em;
   border-radius: 5px;
   transform-origin: right;

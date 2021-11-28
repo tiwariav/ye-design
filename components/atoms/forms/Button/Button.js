@@ -35,40 +35,40 @@ function overrideStyleProperty(node, name, value) {
 }
 
 const setRippleProperties = (node, initial, x = "50%", y = "50%") => {
-  node.style.setProperty("--effect-ripple-x", x + "px");
-  node.style.setProperty("--effect-ripple-y", y + "px");
+  node.style.setProperty("--ye-effect-ripple-x", x + "px");
+  node.style.setProperty("--ye-effect-ripple-y", y + "px");
   if (initial) {
     node.style.setProperty(
-      "--effect-ripple-diameter",
+      "--ye-effect-ripple-diameter",
       Math.max(node.clientWidth, node.clientHeight) * 2 + "px"
     );
   }
 };
 
 const setTrackingProperties = (node, x = "50%", y = "50%") => {
-  node.style.setProperty("--effect-tracking-x", x + "px");
-  node.style.setProperty("--effect-tracking-y", y + "px");
+  node.style.setProperty("--ye-effect-tracking-x", x + "px");
+  node.style.setProperty("--ye-effect-tracking-y", y + "px");
 };
 
 const setNeuProperties = (node, options = { colors: {} }) => {
   overrideStyleProperty(
     node,
-    "--color-neu-background-dark",
+    "--ye-color-neu-background-dark",
     options.colors.backgroundDark
   );
   overrideStyleProperty(
     node,
-    "--color-neu-background-light",
+    "--ye-color-neu-background-light",
     options.colors.backgroundLight
   );
   overrideStyleProperty(
     node,
-    "--color-neu-shadow-dark",
+    "--ye-color-neu-shadow-dark",
     options.colors.shadowDark
   );
   overrideStyleProperty(
     node,
-    "--color-neu-shadow-light",
+    "--ye-color-neu-shadow-light",
     options.colors.shadowLight
   );
 };

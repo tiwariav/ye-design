@@ -1,27 +1,27 @@
 .control {
   display: inline-flex;
-  padding: var(--control-padding);
-  color: var(--color-text);
-  line-height: var(--line-height);
+  padding: var(--ye-control-padding);
+  color: var(--ye-color-text);
+  line-height: var(--ye-line-height);
   background-color: transparent;
-  transition-timing-function: var(--transition-function);
-  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--ye-transition-function);
+  transition-duration: var(--ye-transition-duration);
   transition-property: box-shadow, border-radius;
 
   &.has-focus,
   &:focus {
-    box-shadow: var(--button-focus-shadow);
+    box-shadow: var(--ye-button-focus-shadow);
   }
 }
 
 /* sizes */
 
 .is-small {
-  font-size: var(--font-size-small);
+  font-size: var(--ye-font-size-small);
 }
 
 .is-large {
-  font-size: var(--font-size-large);
+  font-size: var(--ye-font-size-large);
 }
 
 /* vairants */
@@ -36,9 +36,9 @@
 
 .is-outlined,
 .is-dashed {
-  padding: var(--button-outline-padding);
-  border-color: var(--color-text);
-  border-width: var(--button-outline-border-width);
+  padding: var(--ye-button-outline-padding);
+  border-color: var(--ye-color-text);
+  border-width: var(--ye-button-outline-border-width);
   box-shadow: none;
 }
 
@@ -48,8 +48,8 @@
 
   &.has-focus,
   &:focus {
-    color: var(--color-background);
-    background-color: var(--color-text);
+    color: var(--ye-color-background);
+    background-color: var(--ye-color-text);
     box-shadow: none;
   }
 }
@@ -69,18 +69,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-em-large);
-  height: var(--spacing-em-large);
+  width: var(--ye-spacing-em-large);
+  height: var(--ye-spacing-em-large);
   color: inherit;
-  font-size: var(--font-size-em);
+  font-size: var(--ye-font-size-em);
   line-height: 1;
 
   &:not(:last-child) {
-    margin-right: var(--spacing-em-xsmall);
+    margin-right: var(--ye-spacing-em-xsmall);
   }
 
   &:not(:first-child) {
-    margin-left: var(--spacing-em-xsmall);
+    margin-left: var(--ye-spacing-em-xsmall);
   }
 
   &:last-child {

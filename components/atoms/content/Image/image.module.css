@@ -3,7 +3,7 @@
   display: flex;
   width: 100%;
   overflow: hidden;
-  border: 1px solid var(--color-black-10);
+  border: 1px solid var(--ye-color-black-10);
 }
 
 .image {
@@ -25,7 +25,7 @@
 }
 
 .is-basic {
-  border-radius: var(--spacing-em-xsmall);
+  border-radius: var(--ye-spacing-em-xsmall);
 }
 
 .is-circular {
@@ -33,5 +33,5 @@
 }
 
 .spinner {
-  font-size: var(--spacing-em-huge);
+  font-size: var(--ye-spacing-em-huge);
 }

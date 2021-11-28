@@ -4,7 +4,7 @@
 
 .is-tinyline,
 .is-tinyline-left {
-  padding-bottom: var(--spacing-rem-small);
+  padding-bottom: var(--ye-spacing-rem-small);
   text-align: center;
 
   &::after {
@@ -12,7 +12,7 @@
     bottom: 0;
     display: block;
     height: 2px;
-    background: var(--color-black-10);
+    background: var(--ye-color-black-10);
     content: "";
   }
 }

@@ -22,5 +22,5 @@ export const Spinner = Template.bind({});
 Spinner.args = {
   width: 48,
   height: 48,
-  color: "var(--color-primary)",
+  color: "var(--ye-color-primary)",
 };

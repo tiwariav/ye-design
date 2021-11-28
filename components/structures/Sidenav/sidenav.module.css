@@ -2,8 +2,8 @@
   width: 200px;
   height: 100%;
   max-height: calc(100vh - 2rem);
-  background-color: var(--color-background-content);
-  box-shadow: 0 -1px 0 var(--color-background), var(--shadow-floating-low);
+  background-color: var(--ye-color-background-content);
+  box-shadow: 0 -1px 0 var(--ye-color-background), var(--ye-shadow-floating-low);
 }
 
 .with-hanging {
@@ -14,10 +14,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-em-large);
-  height: var(--spacing-em-large);
-  margin-right: var(--spacing-em-small);
+  width: var(--ye-spacing-em-large);
+  height: var(--ye-spacing-em-large);
+  margin-right: var(--ye-spacing-em-small);
   color: inherit;
-  font-size: var(--font-size-large);
+  font-size: var(--ye-font-size-large);
   line-height: 1;
 }

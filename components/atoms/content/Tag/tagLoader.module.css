@@ -5,7 +5,7 @@
 }
 
 .loader-icon {
-  width: var(--em-xlarge);
+  width: var(--ye-em-xlarge);
 }
 
 .loader-text {
@@ -13,10 +13,10 @@
   min-width: 24px;
 
   @nest .loader-icon + & {
-    margin-left: var(--spacing-em-xsmall);
+    margin-left: var(--ye-spacing-em-xsmall);
   }
 
   & + .loader-icon {
-    margin-left: var(--spacing-em-xsmall);
+    margin-left: var(--ye-spacing-em-xsmall);
   }
 }

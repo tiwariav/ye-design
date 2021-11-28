@@ -1,10 +1,10 @@
 .bookmark {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--spacing-em-xsmall);
-  padding-bottom: var(--spacing-em-xsmall);
-  color: var(--color-black-50);
-  font-size: var(--font-size-small);
+  margin-bottom: var(--ye-spacing-em-xsmall);
+  padding-bottom: var(--ye-spacing-em-xsmall);
+  color: var(--ye-color-black-50);
+  font-size: var(--ye-font-size-small);
 }
 
 .item {
@@ -13,11 +13,11 @@
 
   &:not(:last-child) .text::after {
     position: absolute;
-    bottom: calc(var(--spacing-em-xtiny) * -1);
+    bottom: calc(var(--ye-spacing-em-xtiny) * -1);
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: var(--color-black-10);
+    background-color: var(--ye-color-black-10);
     content: "";
   }
 }
@@ -25,12 +25,12 @@
 .text {
   position: relative;
   display: inline-flex;
-  padding-right: var(--spacing-em-xtiny);
-  padding-left: var(--spacing-em-xtiny);
+  padding-right: var(--ye-spacing-em-xtiny);
+  padding-left: var(--ye-spacing-em-xtiny);
 }
 
 .separator {
   display: inline-flex;
-  margin-right: var(--spacing-em-tiny);
-  margin-left: var(--spacing-em-tiny);
+  margin-right: var(--ye-spacing-em-tiny);
+  margin-left: var(--ye-spacing-em-tiny);
 }

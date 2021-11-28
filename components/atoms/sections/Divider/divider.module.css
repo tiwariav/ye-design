@@ -1,9 +1,9 @@
 .root {
   width: 100%;
   height: 1px;
-  margin-top: var(--spacing-em-small);
-  margin-bottom: var(--spacing-em-small);
-  background-color: var(--color-black-10);
+  margin-top: var(--ye-spacing-em-small);
+  margin-bottom: var(--ye-spacing-em-small);
+  background-color: var(--ye-color-black-10);
   border: 0;
 }
 
@@ -13,11 +13,11 @@
 }
 
 .space-small {
-  margin-top: var(--spacing-em-xsmall);
-  margin-bottom: var(--spacing-em-xsmall);
+  margin-top: var(--ye-spacing-em-xsmall);
+  margin-bottom: var(--ye-spacing-em-xsmall);
 }
 
 .space-large {
-  margin-top: var(--em-xlarge);
-  margin-bottom: var(--em-xlarge);
+  margin-top: var(--ye-em-xlarge);
+  margin-bottom: var(--ye-em-xlarge);
 }
