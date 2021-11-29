@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import styles from "./sidenavFooter.module.css";
+import styles from "./topNav.module.css";
 
-export default function SidenavFooter({ children, hasSeparator, ...props }) {
+export default function TopNavItem({ children, hasSeparator, ...props }) {
   return (
     <div
-      className={clsx(styles.root, {
+      className={clsx(styles.topNavItem, {
         [styles.hasSeparator]: hasSeparator,
       })}
       {...props}
@@ -16,6 +16,6 @@ export default function SidenavFooter({ children, hasSeparator, ...props }) {
   );
 }
 
-SidenavFooter.propTypes = {
+TopNavItem.propTypes = {
   hasSeparator: PropTypes.bool,
 };

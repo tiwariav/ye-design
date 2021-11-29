@@ -6,35 +6,35 @@ import { IoLogoNodejs } from "react-icons/io";
 import { getStoryName } from "../../../utils/storybook";
 import { Button } from "../../atoms/forms/Button";
 import TextInput from "../../atoms/forms/TextInput/TextInput";
-import Topnav from "./Topnav";
-import TopnavItem from "./TopnavItem";
+import TopNav from "./TopNav";
+import TopNavItem from "./TopNavItem";
 
 const iconMap = { GiWitchFlight, IoLogoNodejs, FaMicrophoneAlt };
 const itemsMap = {
   Button: (
-    <TopnavItem>
+    <TopNavItem>
       <Button size="small" label="Button" variant="outlined" />
-    </TopnavItem>
+    </TopNavItem>
   ),
   ButtonWithIcon: (
-    <TopnavItem>
+    <TopNavItem>
       <Button
         size="small"
         iconBefore={<AiOutlineLogin />}
         label="Button"
         variant="outlined"
       />
-    </TopnavItem>
+    </TopNavItem>
   ),
   ButtonWithSeparator: (
-    <TopnavItem hasSeparator>
+    <TopNavItem hasSeparator>
       <Button
         size="small"
         iconBefore={<FaMicrophoneAlt />}
         label="Button"
         variant="outlined"
       />
-    </TopnavItem>
+    </TopNavItem>
   ),
   SearchInput: (
     <TextInput
@@ -47,7 +47,7 @@ const itemsMap = {
 
 const metadata = {
   title: getStoryName(__dirname),
-  component: Topnav,
+  component: TopNav,
   argTypes: {
     logo: { control: { type: "select", options: Object.keys(iconMap) } },
     contentLeft: {
@@ -64,7 +64,7 @@ export default metadata;
 const Template = ({ logo, contentLeft, contentRight, ...args }) => {
   const Logo = iconMap[logo];
   return (
-    <Topnav
+    <TopNav
       logo={Logo ? <Logo /> : null}
       contentLeft={contentLeft.map((item) => itemsMap[item])}
       contentRight={contentRight.map((item) => itemsMap[item])}

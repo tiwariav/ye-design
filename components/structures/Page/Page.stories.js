@@ -1,11 +1,11 @@
 import React from "react";
 import { getStoryName } from "../../../utils/storybook";
 import { Basic as HeroBasic } from "../../atoms/sections/Hero/Hero.stories";
-import { Basic as SidenavBasic } from "../../structures/Sidenav/Sidenav.stories";
+import { Basic as SideNavBasic } from "../../structures/SideNav/SideNav.stories";
 import {
-  Basic as TopnavBasic,
-  HangingLogo as TopnavHangingLogo,
-} from "../../structures/Topnav/Topnav.stories";
+  Basic as TopNavBasic,
+  HangingLogo as TopNavHangingLogo,
+} from "../../structures/TopNav/TopNav.stories";
 import {
   Basic as CollectionBasic,
   FixedColumns as CollectionFixedColumns,
@@ -15,12 +15,12 @@ import { Details } from "../../templates/Details/Details.stories";
 import { Profile } from "../../templates/Profile/Profile.stories";
 import Page from "./Page";
 
-const topnavMap = {
-  TopnavHangingLogo: <TopnavHangingLogo {...TopnavHangingLogo.args} />,
-  TopnavBasic: <TopnavBasic {...TopnavBasic.args} />,
+const topNavMap = {
+  TopNavHangingLogo: <TopNavHangingLogo {...TopNavHangingLogo.args} />,
+  TopNavBasic: <TopNavBasic {...TopNavBasic.args} />,
 };
-const sidenavMap = {
-  SidenavBasic: <SidenavBasic {...SidenavBasic.args} withHanging />,
+const sideNavMap = {
+  SideNavBasic: <SideNavBasic {...SideNavBasic.args} withHanging />,
 };
 const heroMap = { HeroBasic: <HeroBasic {...HeroBasic.args} /> };
 const templateMap = {
@@ -36,8 +36,8 @@ const metadata = {
   component: Page,
   argTypes: {
     // creates a specific argType based on the iconMap object
-    topnav: { control: { type: "select", options: Object.keys(topnavMap) } },
-    sidenav: { control: { type: "select", options: Object.keys(sidenavMap) } },
+    topNav: { control: { type: "select", options: Object.keys(topNavMap) } },
+    sideNav: { control: { type: "select", options: Object.keys(sideNavMap) } },
     hero: { control: { type: "select", options: Object.keys(heroMap) } },
     template: {
       control: { type: "select", options: Object.keys(templateMap) },
@@ -54,12 +54,12 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ topnav, sidenav, hero, template, ...args }) => {
+const Template = ({ topNav, sideNav, hero, template, ...args }) => {
   const Content = templateMap[template];
   return (
     <Page
-      topnav={topnavMap[topnav]}
-      sidenav={sidenavMap[sidenav]}
+      topNav={topNavMap[topNav]}
+      sideNav={sideNavMap[sideNav]}
       hero={heroMap[hero]}
       {...args}
     >
@@ -70,17 +70,17 @@ const Template = ({ topnav, sidenav, hero, template, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  topnav: "TopnavHangingLogo",
-  topnavIsFixed: true,
-  sidenav: "SidenavBasic",
-  sidenavIsSticky: true,
+  topNav: "TopNavHangingLogo",
+  topNavIsFixed: true,
+  sideNav: "SideNavBasic",
+  sideNavIsSticky: true,
   template: "CollectionBasic",
 };
 
 export const WithHero = Template.bind({});
 WithHero.args = {
   ...Basic.args,
-  topnav: "TopnavHangingLogo",
-  sidenav: "SidenavBasic",
+  topNav: "TopNavHangingLogo",
+  sideNav: "SideNavBasic",
   hero: "HeroBasic",
 };

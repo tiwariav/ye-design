@@ -1,12 +1,12 @@
-.sidenav-group {
+.root {
   padding: var(--ye-em-base) 0;
 
-  & + .sidenav-group {
+  & + .root {
     border-top: 1px solid var(--ye-color-black-10);
   }
 }
 
-.sidenav-group-title {
+.title {
   padding: var(--ye-spacing-em-small) var(--ye-em-base);
   color: var(--ye-color-black-50);
   font-weight: 300;

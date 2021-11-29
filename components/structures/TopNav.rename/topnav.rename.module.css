@@ -19,6 +19,10 @@
   display: flex;
   align-items: center;
   width: 100%;
+
+  @media (--media-max-md) {
+    justify-content: space-between;
+  }
 }
 
 .banner {
@@ -46,7 +50,7 @@
   }
 }
 
-.topnav-item {
+.top-nav-item {
   display: flex;
   align-items: center;
 }
@@ -103,7 +107,6 @@
 
 .content-menu-icon {
   display: flex;
-  margin-right: var(--ye-spacing-em-xsmall);
   font-size: 2em;
   fill: #000;
   @media (--media-min-lg) {
@@ -132,7 +135,7 @@
   }
 }
 
-.with-sidenav {
+.with-side-nav {
   & .logo-container {
     justify-content: center;
     width: 120px;

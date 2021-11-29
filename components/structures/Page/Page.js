@@ -7,85 +7,85 @@ function Page({
   children,
   hero,
   isCentered,
-  sidenav,
-  sidenavIsSticky,
-  sidenavOnTop,
-  topnav,
-  topnavIsFixed,
-  topnavCanExpand,
-  topnavShrinkOffset = 0,
+  sideNav,
+  sideNavIsSticky,
+  sideNavOnTop,
+  topNav,
+  topNavIsFixed,
+  topNavCanExpand,
+  topNavShrinkOffset = 0,
 }) {
-  const topnavRef = React.useRef(null);
+  const topNavRef = React.useRef(null);
   const [spacerRef, spacerInView] = useInView();
 
-  const [topnavMaxHeight, setTopnavMaxHeight] = useState(0);
+  const [topNavMaxHeight, setTopNavMaxHeight] = useState(0);
   const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
-    if (topnavRef.current) {
-      const scopeTopnavMaxHeight = topnavRef.current.offsetHeight;
-      if (!topnavMaxHeight) {
-        setTopnavMaxHeight(scopeTopnavMaxHeight);
+    if (topNavRef.current) {
+      const scopeTopNavMaxHeight = topNavRef.current.offsetHeight;
+      if (!topNavMaxHeight) {
+        setTopNavMaxHeight(scopeTopNavMaxHeight);
         setLoading(false);
       }
     }
-  }, [topnavMaxHeight]);
+  }, [topNavMaxHeight]);
 
-  const clonedTopnav = useMemo(() => {
-    if (topnav) {
-      const topnavExpanded = topnavIsFixed && spacerInView;
+  const clonedTopNav = useMemo(() => {
+    if (topNav) {
+      const topNavExpanded = topNavIsFixed && spacerInView;
       const extraProps = {
-        withSidenav: Boolean(sidenav),
+        withSideNav: Boolean(sideNav),
       };
-      if (topnavExpanded) {
+      if (topNavExpanded) {
         extraProps.isExpanded = true;
       }
-      if (topnavExpanded || loading) {
+      if (topNavExpanded || loading) {
         extraProps.variant = "transparent";
       }
-      return React.cloneElement(topnav, extraProps);
+      return React.cloneElement(topNav, extraProps);
     }
     return null;
-  }, [sidenav, topnav, topnavIsFixed, spacerInView, loading]);
+  }, [sideNav, topNav, topNavIsFixed, spacerInView, loading]);
 
   return (
     <div className={clsx(styles.root)}>
-      {topnav ? (
+      {topNav ? (
         <div
-          ref={topnavRef}
+          ref={topNavRef}
           className={clsx({
-            [styles.isFixed]: topnavIsFixed,
+            [styles.isFixed]: topNavIsFixed,
             // eslint-disable-next-line css-modules/no-undef-class
-            [styles.sidenavTop]: sidenavOnTop,
+            [styles.sideNavTop]: sideNavOnTop,
           })}
         >
-          {clonedTopnav}
+          {clonedTopNav}
         </div>
       ) : null}
       <main
         className={clsx(styles.main, {
-          [styles.withTopnavFixed]: topnavIsFixed,
+          [styles.withTopNavFixed]: topNavIsFixed,
           [styles.isCentered]: isCentered,
         })}
       >
-        {topnavCanExpand ? (
+        {topNavCanExpand ? (
           <div
             ref={spacerRef}
             className={styles.spacer}
-            style={{ top: topnavMaxHeight + topnavShrinkOffset }}
+            style={{ top: topNavMaxHeight + topNavShrinkOffset }}
           />
         ) : null}
         {hero ? <div>{hero}</div> : null}
         <div className={styles.container}>
-          {sidenav ? (
+          {sideNav ? (
             <div
-              className={clsx(styles.sidenav, {
-                [styles.isSticky]: sidenavIsSticky,
+              className={clsx(styles.sideNav, {
+                [styles.isSticky]: sideNavIsSticky,
                 // eslint-disable-next-line css-modules/no-undef-class
-                [styles.topnavTop]: sidenavIsSticky && !sidenavOnTop,
+                [styles.topNavTop]: sideNavIsSticky && !sideNavOnTop,
               })}
             >
-              {sidenav}
+              {sideNav}
             </div>
           ) : null}
           <div className={styles.content}>{children}</div>

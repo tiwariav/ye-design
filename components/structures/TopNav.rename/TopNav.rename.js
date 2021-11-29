@@ -1,15 +1,15 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { AiOutlineMenu } from "react-icons/ai";
+import { RiMenu5Fill } from "react-icons/ri";
 import { useLockBodyScroll, useToggle, useWindowSize } from "react-use";
 import { Button } from "../../atoms/forms";
 import { Container, Divider } from "../../atoms/sections";
-import styles from "./topnav.module.css";
+import styles from "./topNav.module.css";
 
 const variantOptions = ["basic", "transparent", "flat", "underlined"];
 
-export default function Topnav({
+export default function TopNav({
   banner,
   className,
   contentLeft,
@@ -20,7 +20,9 @@ export default function Topnav({
   logo,
   logoVariant,
   variant,
-  withSidenav,
+  withSideNav,
+  leftNavIcon,
+  rightNavIcon,
   ...props
 }) {
   const [drawer, toggleDrawer] = useToggle(false);
@@ -35,7 +37,7 @@ export default function Topnav({
         styles[`is-${variant}`],
         {
           [styles.isExpanded]: isExpanded,
-          [styles.withSidenav]: withSidenav,
+          [styles.withSideNav]: withSideNav,
         },
         className
       )}
@@ -45,10 +47,10 @@ export default function Topnav({
         <div className={clsx(styles.container, styles.banner)}>{banner}</div>
       ) : null}
       <Container className={styles.container}>
-        {smallerWidth ? (
+        {smallerWidth && (withSideNav || leftNavIcon) ? (
           <div className={clsx(styles.contentMenuIcon)}>
-            <Button variant="trans" spacing="none" onClick={toggleDrawer}>
-              <AiOutlineMenu />
+            <Button variant="trans" spacing="none">
+              {leftNavIcon ? leftNavIcon : <RiMenu5Fill />}
             </Button>
           </div>
         ) : null}
@@ -63,6 +65,17 @@ export default function Topnav({
             <div className={styles.logo}>{logo}</div>
           </div>
         ) : null}
+        {smallerWidth && (withSideNav || rightNavIcon) ? (
+          <div className={clsx(styles.contentMenuIcon)}>
+            {rightNavIcon ? (
+              rightNavIcon
+            ) : (
+              <Button variant="trans" spacing="none" onClick={toggleDrawer}>
+                <RiMenu5Fill />
+              </Button>
+            )}
+          </div>
+        ) : null}
         {contentLeft && !smallerWidth ? (
           <div className={styles.contentLeft}>{contentLeft}</div>
         ) : null}
@@ -72,7 +85,6 @@ export default function Topnav({
             className={clsx(styles.contentMenu, {
               [styles.open]: drawer,
             })}
-            onClick={toggleDrawer}
           >
             {contentLeft}
             <Divider />
@@ -87,7 +99,7 @@ export default function Topnav({
   );
 }
 
-Topnav.propTypes = {
+TopNav.propTypes = {
   /**
    * Logo rendered on left of Topnav
    */
@@ -111,9 +123,9 @@ Topnav.propTypes = {
   /**
    * Wether to keep in sync with sidenav
    */
-  withSidenav: PropTypes.bool,
+  withSideNav: PropTypes.bool,
 };
 
-Topnav.defaultProps = {
+TopNav.defaultProps = {
   logoVariant: "basic",
 };
