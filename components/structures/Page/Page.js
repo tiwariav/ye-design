@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React, { useMemo, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useToggle } from "react-use";
 import styles from "./page.module.css";
 
 function Page({
@@ -15,8 +16,10 @@ function Page({
   topNavCanExpand,
   topNavShrinkOffset = 0,
 }) {
+  // TODO: create a LayoutProvider to manage topnav and sidenav states
   const topNavRef = React.useRef(null);
   const [spacerRef, spacerInView] = useInView();
+  const [sideNavToggle, toggleSideNav] = useToggle(false);
 
   const [topNavMaxHeight, setTopNavMaxHeight] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -31,11 +34,17 @@ function Page({
     }
   }, [topNavMaxHeight]);
 
+  const topNavExpanded = useMemo(
+    () => topNavIsFixed && spacerInView,
+    [spacerInView, topNavIsFixed]
+  );
+
   const clonedTopNav = useMemo(() => {
     if (topNav) {
-      const topNavExpanded = topNavIsFixed && spacerInView;
       const extraProps = {
         withSideNav: Boolean(sideNav),
+        sideNavToggle,
+        toggleSideNav,
       };
       if (topNavExpanded) {
         extraProps.isExpanded = true;
@@ -46,7 +55,21 @@ function Page({
       return React.cloneElement(topNav, extraProps);
     }
     return null;
-  }, [sideNav, topNav, topNavIsFixed, spacerInView, loading]);
+  }, [topNav, sideNav, sideNavToggle, toggleSideNav, topNavExpanded, loading]);
+
+  const clonedSideNav = useMemo(() => {
+    if (sideNav) {
+      const extraProps = {
+        sideNavToggle,
+        toggleSideNav,
+      };
+      if (topNavExpanded) {
+        extraProps.topNavExpanded = true;
+      }
+      return React.cloneElement(sideNav, extraProps);
+    }
+    return null;
+  }, [sideNav, sideNavToggle, toggleSideNav, topNavExpanded]);
 
   return (
     <div className={clsx(styles.root)}>
@@ -57,6 +80,7 @@ function Page({
             [styles.isFixed]: topNavIsFixed,
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.sideNavTop]: sideNavOnTop,
+            [styles.hasSideNavToggle]: sideNavToggle,
           })}
         >
           {clonedTopNav}
@@ -83,9 +107,16 @@ function Page({
                 [styles.isSticky]: sideNavIsSticky,
                 // eslint-disable-next-line css-modules/no-undef-class
                 [styles.topNavTop]: sideNavIsSticky && !sideNavOnTop,
+                [styles.sideNavToggle]: sideNavToggle,
               })}
             >
-              {sideNav}
+              <div
+                className={styles.sideNavBackdrop}
+                onClick={() => {
+                  if (sideNavToggle) toggleSideNav();
+                }}
+              />
+              {clonedSideNav}
             </div>
           ) : null}
           <div className={styles.content}>{children}</div>

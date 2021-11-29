@@ -142,7 +142,8 @@
 
   /* LAYOUTS */
 
-  --ye-layout-side-nav-width: 100px;
+  --ye-layout-side-nav-width: 160px;
+  --ye-layout-side-nav-toggle-width: 56px;
 
   /* HEIGHTS */
 
@@ -179,6 +180,11 @@
   --ye-input-border-width: 0;
   --ye-input-border-color: rgb(0 0 0 / 0.025);
   --ye-input-shadow: var(--ye-shadow-inset);
+
+  @media (--media-max-md) {
+    --ye-layout-side-nav-width: 240px;
+    --ye-layout-side-nav-toggle-width: 0;
+  }
 }
 
 * {

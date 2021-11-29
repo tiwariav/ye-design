@@ -166,3 +166,11 @@
     transition: none;
   }
 }
+
+.side-nav-toggled {
+  @media (--media-max-md) {
+    & .logo {
+      opacity: 0;
+    }
+  }
+}

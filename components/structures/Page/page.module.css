@@ -1,6 +1,6 @@
 .root {
   --z-index-stack-1: 1;
-  --z-index-stack-2: 100;
+  --z-index-stack-2: 101;
   min-height: 100vh;
 }
 
@@ -26,21 +26,52 @@
 .side-nav {
   z-index: var(--z-index-stack-1);
   height: 100vh;
+  max-width: 100%;
+  width: var(--ye-layout-side-nav-width);
+  transition: width ease-in-out .5s;
 
   &.top-nav-top {
     top: 4.5rem;
     height: calc(100vh - 4.5rem);
   }
 
+  @media (--media-max-md) {
+    position: fixed;
+    z-index: var(--z-index-stack-2);
+    width: var(--ye-layout-side-nav-toggle-width);
+    left: -2px;
+  }
+
   @media (--media-min-lg) {
-    padding-right: var(--ye-spacing-em-small);
+    &.is-sticky {
+      position: sticky;
+      top: 0;
+    }
   }
 }
 
-.is-sticky {
-  position: sticky;
+.side-nav-backdrop {
+  display: block;
+  background: var(--ye-color-black-50);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 100%;
+  bottom: 0;
 }
+
+.side-nav-toggle {
+  width: var(--ye-layout-side-nav-toggle-width);
+
+  @media (--media-max-md) {
+    width: var(--ye-layout-side-nav-width);
+
+    & .side-nav-backdrop {
+      right: 0;
+    }
+  }
+}
+
 
 .is-fixed {
   position: fixed;
@@ -48,13 +79,18 @@
   left: 0;
   z-index: var(--z-index-stack-2);
   width: 100%;
+  transition: all ease-in-out .5s;
+  transition-property: width, left;
 
   &.side-nav-top {
-    --side-nav-width: calc(var(--ye-layout-side-nav-width));
-
     @media (--media-min-lg) {
-      left: var(--side-nav-width);
-      width: calc(100% - var(--side-nav-width));
+      left: var(--ye-layout-side-nav-width);
+      width: calc(100% - var(--ye-layout-side-nav-width));
+
+      &.has-side-nav-toggle {
+        left: var(--ye-layout-side-nav-toggle-width);
+        width: calc(100% - var(--ye-layout-side-nav-toggle-width));
+      }
     }
   }
 }

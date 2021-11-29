@@ -6,7 +6,6 @@ import { useLockBodyScroll, useToggle, useWindowSize } from "react-use";
 import { Button } from "../../atoms/forms";
 import { Container, Divider } from "../../atoms/sections";
 import styles from "./topNav.module.css";
-
 const variantOptions = ["basic", "transparent", "flat", "underlined"];
 
 export default function TopNav({
@@ -17,12 +16,14 @@ export default function TopNav({
   contentRight,
   expandedHeight = 72,
   isExpanded,
+  leftNavIcon,
   logo,
   logoVariant,
+  rightNavIcon,
+  sideNavToggle,
+  toggleSideNav,
   variant,
   withSideNav,
-  leftNavIcon,
-  rightNavIcon,
   ...props
 }) {
   const [drawer, toggleDrawer] = useToggle(false);
@@ -30,6 +31,7 @@ export default function TopNav({
 
   let { width } = useWindowSize();
   let smallerWidth = width <= 991;
+
   return (
     <div
       className={clsx(
@@ -38,6 +40,7 @@ export default function TopNav({
         {
           [styles.isExpanded]: isExpanded,
           [styles.withSideNav]: withSideNav,
+          [styles.sideNavToggled]: sideNavToggle,
         },
         className
       )}
@@ -49,7 +52,7 @@ export default function TopNav({
       <Container className={styles.container}>
         {smallerWidth && (withSideNav || leftNavIcon) ? (
           <div className={clsx(styles.contentMenuIcon)}>
-            <Button variant="trans" spacing="none">
+            <Button variant="trans" spacing="none" onClick={toggleSideNav}>
               {leftNavIcon ? leftNavIcon : <RiMenu5Fill />}
             </Button>
           </div>
