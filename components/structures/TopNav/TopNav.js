@@ -2,7 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import { RiMenu5Fill } from "react-icons/ri";
-import { useLockBodyScroll, useToggle, useWindowSize } from "react-use";
+import { useLockBodyScroll, useWindowSize } from "react-use";
 import { Button } from "../../atoms/forms";
 import { Container, Divider } from "../../atoms/sections";
 import styles from "./topNav.module.css";
@@ -14,6 +14,7 @@ export default function TopNav({
   contentLeft,
   contentMenu,
   contentRight,
+  drawer,
   expandedHeight = 72,
   isExpanded,
   leftNavIcon,
@@ -22,15 +23,14 @@ export default function TopNav({
   rightNavIcon,
   sideNavToggle,
   toggleSideNav,
+  toggleDrawer,
   variant,
   withSideNav,
   ...props
 }) {
-  const [drawer, toggleDrawer] = useToggle(false);
-  useLockBodyScroll(drawer);
-
   let { width } = useWindowSize();
   let smallerWidth = width <= 991;
+  useLockBodyScroll(smallerWidth && drawer);
 
   return (
     <div
@@ -68,7 +68,7 @@ export default function TopNav({
             <div className={styles.logo}>{logo}</div>
           </div>
         ) : null}
-        {smallerWidth && (withSideNav || rightNavIcon) ? (
+        {smallerWidth ? (
           <div className={clsx(styles.contentMenuIcon)}>
             {rightNavIcon ? (
               rightNavIcon

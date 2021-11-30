@@ -76,6 +76,11 @@
 }
 
 .content-menu {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+
   @media (--media-max-md) {
     position: fixed;
     top: 0;
@@ -88,18 +93,12 @@
     transform: translateX(-100%);
 
     &.open {
+      display: block;
       height: fit-content;
       padding-bottom: var(--ye-spacing-em-huge);
       box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.06);
       transform: translateX(0);
     }
-  }
-
-  @media (--media-min-lg) {
-    display: none;
-    align-items: center;
-    justify-content: flex-end;
-    margin-left: auto;
   }
 }
 
