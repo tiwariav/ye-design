@@ -4,7 +4,6 @@
   overflow: hidden;
   font-weight: var(--ye-button-font-weight);
   text-align: left;
-  background-color: var(--ye-color-background);
   border-color: var(--ye-color-border);
   border-width: var(--ye-button-border-width);
   border-radius: var(--ye-button-border-radius);
