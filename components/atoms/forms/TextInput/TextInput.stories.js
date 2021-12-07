@@ -1,3 +1,4 @@
+import path from "node:path";
 import React from "react";
 import {
   AiFillLeftCircle,
@@ -16,7 +17,7 @@ const iconMap = {
 };
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: TextInput,
   argTypes: {
     icon: { control: { type: "select", options: Object.keys(iconMap) } },

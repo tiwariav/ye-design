@@ -1,3 +1,4 @@
+import path from "node:path";
 import React from "react";
 import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai";
 import { FaMicrophoneAlt } from "react-icons/fa";
@@ -46,7 +47,7 @@ const itemsMap = {
 };
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: TopNav,
   argTypes: {
     logo: { control: { type: "select", options: Object.keys(iconMap) } },

@@ -1,10 +1,11 @@
+import path from "node:path";
 import React from "react";
 import { getStoryName } from "../../../utils/storybook";
 import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories";
 import DetailsTemplate from "./Details";
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: DetailsTemplate,
 };
 

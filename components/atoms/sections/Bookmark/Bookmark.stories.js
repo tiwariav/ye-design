@@ -1,9 +1,10 @@
+import path from "node:path";
 import React from "react";
 import { getStoryName } from "../../../../utils/storybook";
 import Bookmark from "./Bookmark";
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: Bookmark,
 };
 

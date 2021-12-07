@@ -1,9 +1,10 @@
+import path from "node:path";
 import React from "react";
 import { getStoryName } from "../../../../utils/storybook";
 import Image from "./Image";
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: Image,
 };
 

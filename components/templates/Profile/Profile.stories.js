@@ -1,3 +1,4 @@
+import path from "node:path";
 import React from "react";
 import { getStoryName } from "../../../utils/storybook";
 import Image from "../../atoms/content/Image/Image";
@@ -6,7 +7,7 @@ import Container from "../../atoms/sections/Container/Container";
 import ProfileTemplate from "./Profile";
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: ProfileTemplate,
 };
 

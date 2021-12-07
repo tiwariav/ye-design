@@ -1,9 +1,10 @@
+import path from "node:path";
 import { getStoryName } from "../../../../utils/storybook";
 import Text from "./Text";
 import { TEXT_LONG } from "./__testData";
 
 const metadata = {
-  title: getStoryName(__dirname),
+  title: getStoryName(path.dirname(import.meta.url)),
   component: Text,
 };
 
