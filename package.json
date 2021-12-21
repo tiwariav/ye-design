@@ -12,17 +12,15 @@
     "react"
   ],
   "exports": {
-    ".": "./lib/index.js",
-    "./components/atoms": "./components/atoms/index.js",
-    "./components/structures": "./components/structures/index.js",
-    "./components/templates": "./components/templates/index.js",
+    "./components/atoms/sections": "./components/atoms/sections/index.js",
+    "./components/*": "./components/*/index.js",
     "./lib/*": "./lib/*.js",
-    "./styles/css": "./styles/*.css",
-    "./styles/*": "./styles/*.js",
-    "./styles/themes/css": "./styles/themes/*.css",
-    "./styles/themes/*": "./styles/themes/*.js",
-    "./svg": "./svg/index.js",
-    "./utils/*": "./utils/*.js"
+    "./styles/css/*": "./styles/*.css",
+    "./styles/themes/css/*": "./styles/themes/*.css",
+    "./styles/*": "./styles/*/index.js",
+    "./svg/icons": "./svg/icons/index.js",
+    "./svg/paths": "./svg/paths/index.js",
+    "./utils/*": "./utils/*/index.js"
   },
   "scripts": {
     "precommit": "lint-staged"
@@ -37,14 +35,14 @@
     "prop-types": "^15.7.2",
     "react-content-loader": "^6.1.0",
     "react-icons": "^4.3.1",
-    "react-intersection-observer": "^8.32.5",
+    "react-intersection-observer": "^8.33.1",
     "react-is": "^17.0.2",
     "react-use": "^17.3.1"
   },
   "devDependencies": {
     "@mdx-js/react": "^1.6.22",
-    "@storybook/addon-docs": "^6.4.8",
-    "@storybook/addon-links": "^6.4.8",
+    "@storybook/addon-docs": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
     "@testing-library/react": "^12.1.2"
   },
   "peerDependencies": {

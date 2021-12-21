@@ -1,5 +1,4 @@
 @import "normalize.css";
-@import "./media.css";
 
 :root {
   /* ====== */
@@ -181,7 +180,11 @@
   --ye-input-border-color: rgb(0 0 0 / 0.025);
   --ye-input-shadow: var(--ye-shadow-inset);
 
-  @media (--media-max-md) {
+}
+
+/* media property import from ./media.css not working here */
+@media (max-width: 991px) {
+  :root {
     --ye-layout-side-nav-width: 240px;
     --ye-layout-side-nav-toggle-width: 0;
   }

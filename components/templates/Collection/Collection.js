@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { AiOutlineFilter } from "react-icons/ai";
 import { BiSortDown } from "react-icons/bi";
-import { Button } from "../../atoms/forms/Button";
+import { Button } from "../../atoms/forms";
 import Container from "../../atoms/sections/Container/Container";
 import styles from "./collection.module.css";
 

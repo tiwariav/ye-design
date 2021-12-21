@@ -5,8 +5,7 @@ import { FaMicrophoneAlt } from "react-icons/fa";
 import { GiWitchFlight } from "react-icons/gi";
 import { IoLogoNodejs } from "react-icons/io";
 import { getStoryName } from "../../../utils/storybook";
-import { Button } from "../../atoms/forms/Button";
-import TextInput from "../../atoms/forms/TextInput/TextInput";
+import { Button, TextInput } from "../../atoms/forms";
 import TopNav from "./TopNav";
 import TopNavItem from "./TopNavItem";
 
