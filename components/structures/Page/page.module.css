@@ -85,7 +85,6 @@
   transition-property: width, left;
 
   &.side-nav-top {
-    background-color: red;
     @media (--media-min-lg) {
       left: var(--ye-layout-side-nav-width);
       width: calc(100% - var(--ye-layout-side-nav-width));
