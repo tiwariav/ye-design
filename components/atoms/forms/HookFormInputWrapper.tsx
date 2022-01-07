@@ -1,23 +1,35 @@
-import { Form } from "antd";
-import React, { ReactElement, useMemo } from "react";
+import React, { ReactElement } from "react";
+import { Controller } from "react-hook-form";
 
 interface HookFormInputWrapperProps {
   children: ReactElement;
-  className: string;
+  control: any;
+  name: string;
 }
 
 export default function HookFormInputWrapper({
   children,
-  className,
+  control,
+  name,
   ...props
 }: HookFormInputWrapperProps): ReactElement {
-  const overrideProps = useMemo(() => {
-    return {};
-  }, []);
-
   return (
-    <Form.Item {...props}>
-      {React.cloneElement(children, overrideProps)}
-    </Form.Item>
+    <Controller
+      control={control}
+      name={name}
+      render={({
+        field: { onChange, onBlur, value, ref },
+        fieldState: { error },
+      }) =>
+        React.cloneElement(children, {
+          onChange,
+          onBlur,
+          value,
+          ref,
+          error,
+        })
+      }
+      {...props}
+    />
   );
 }
