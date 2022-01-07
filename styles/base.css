@@ -37,6 +37,11 @@
   --ye-color-text: var(--ye-color-black);
   --ye-color-text-light: var(--ye-color-black-50);
   --ye-color-text-anchor: #1890ff;
+  --ye-color-input-background: rgb(0 0 0 / 0.025);
+  --ye-color-input-border: rgb(0 0 0 / 0.025);
+  --ye-color-input-focus-background: #f4f5f6;
+  --ye-color-input-focus-border: #40a9ff;
+  --ye-color-input-focus-shadow: rgb(24 144 255 / .2);
 
   /* TODO: focus and visited color to be different */
   --ye-color-text-anchor-focus: #40a9ff;
@@ -175,9 +180,8 @@
   )
     calc(var(--ye-spacing-em-normal) - var(--ye-button-outline-border-width));
   --ye-control-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-normal);
-  --ye-input-background-color: rgb(0 0 0 / 0.025);
   --ye-input-border-width: 0;
-  --ye-input-border-color: rgb(0 0 0 / 0.025);
+  --ye-input-border-radius: 3em;
   --ye-input-shadow: var(--ye-shadow-inset);
 
 }

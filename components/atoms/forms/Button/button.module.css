@@ -131,7 +131,7 @@
   &.has-hover,
   &:hover,
   &:focus {
-    background-color: var(--ye-color-text-light);
+    background-color: var(--ye-color-black-50);
     box-shadow: none;
   }
 }
