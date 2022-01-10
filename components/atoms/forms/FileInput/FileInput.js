@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { debounce, uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { AiFillDelete, AiOutlineReload } from "react-icons/ai";
 import { UPLOAD_FILE_STATUS } from "../../../../lib/uploadFile";
 import Spinner from "../../content/Spinner/Spinner";
@@ -24,6 +24,7 @@ export default function FileInput({
   variant,
   onFocus,
   onBlur,
+  id,
   isBusy,
   spacing,
   className,
@@ -35,7 +36,7 @@ export default function FileInput({
   ...props
 }) {
   const [hasFocus, setHasFocus] = useState(false);
-  const idRef = useRef(uniqueId("input_"));
+  const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
   const handleFocus = (e) => {
     setHasFocus(true);
@@ -82,7 +83,7 @@ export default function FileInput({
           </span>
         ) : null}
         <input
-          id={idRef}
+          id={fileInputID}
           type="file"
           className={clsx(styles.input)}
           onFocus={handleFocus}
