@@ -41,12 +41,12 @@ export default function AntFormItemWrapper({
       onBlur: handleBlur,
       ...(loading ? { isLoading: loading } : {}),
       ...(label ? { label } : {}),
-      required: rules.find((item) => item.required),
+      required: rules?.find((item) => item.required),
     };
   }, [handleBlur, label, loading, rules]);
 
   const modifiedRules = useMemo(() => {
-    return rules.map((item) => {
+    return rules?.map((item) => {
       if (item.required && item.message && !firstInput) {
         item.message = undefined;
       }
