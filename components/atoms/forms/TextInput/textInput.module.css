@@ -1,10 +1,12 @@
 .root {
-  --input-padding-top: calc(var(--ye-spacing-rem-xlarge));
+  --input-padding-top: var(--ye-spacing-rem-small);
   --input-padding-right: var(--ye-spacing-rem-small);
-  --input-padding-bottom: calc(var(--ye-spacing-rem-tiny) + var(--ye-rem-unit));
+  --input-padding-bottom: var(--ye-spacing-rem-small);
   --input-padding-left: var(--ye-spacing-rem-small);
 
   position: relative;
+  background-color: var(--ye-color-input-background);
+  border-radius: var(--ye-input-border-radius);
 }
 
 .input-wrapper {
@@ -23,30 +25,29 @@
   padding: var(--input-padding-top) var(--input-padding-right) var(--input-padding-bottom) var(--input-padding-left);
   color: inherit;
   font-family: var(--ye-fontfamily-input);
-  background-color: var(--ye-color-input-background);
   border-color: var(--ye-color-input-border);
   border-style: solid;
   border-width: var(--ye-input-border-width);
   border-radius: var(--ye-input-border-radius);
   box-shadow: var(--ye-input-shadow);
 
-  &:hover {
-    border-color: var(--ye-color-input-focus-shadow);
+  &:hover, &:focus {
+    background-color: var(--ye-color-input-focus-background);
   }
 
   &:focus {
-    background-color: var(--ye-color-input-focus-background);
     border-color: var(--ye-color-input-focus-border);
     outline: none;
-    box-shadow: var(--ye-shadow-inset-none), 0 0 0 2px var(--ye-color-input-focus-shadow);
+    box-shadow: var(--ye-shadow-inset-none), 0 0 0 1px var(--ye-color-input-focus-shadow);
   }
 }
 
 .icon-wrapper {
   position: absolute;
-  top: var(--ye-spacing-em-small);
+  top: 50%;
   left: var(--ye-spacing-em-large);
   display: inline-flex;
+  transform: translateY(-50%);
 }
 
 .icon-right {
@@ -84,6 +85,9 @@
 }
 
 .is-material {
+  --input-padding-top: calc(var(--ye-spacing-rem-xlarge));
+  --input-padding-bottom: calc(var(--ye-spacing-rem-tiny) + var(--ye-rem-unit));
+
   & .label {
     --calc-xy-padding: calc(var(--input-padding-top) + var(--input-padding-bottom));
 
@@ -95,6 +99,7 @@
     padding: 0;
     color: var(--ye-color-text-light);
     font-weight: 300;
+    transform-origin: 0 center;
     cursor: text;
     transition-timing-function: var(--ye-transition-function);
     transition-duration: calc(var(--ye-transition-duration) / 2);
@@ -108,7 +113,7 @@
   &.has-value .label,
   &.has-focus .label {
     font-weight: 500;
-    transform: scale(0.72) translateX(calc(-22% - var(--ye-spacing-rem-tiny))) translateY(calc(var(--input-padding-bottom) - var(--input-padding-top) + var(--ye-spacing-rem-tiny)));
+    transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny))) translateY(calc(var(--input-padding-bottom) - var(--input-padding-top) + var(--ye-spacing-rem-tiny)));
     transition-duration: var(--ye-transition-duration);
   }
 }

@@ -12,7 +12,7 @@
     "react"
   ],
   "exports": {
-    "./components/atoms/sections": "./components/atoms/sections/index.js",
+    "./components/atoms/*": "./components/atoms/*/index.js",
     "./components/*": "./components/*/index.js",
     "./lib/*": "./lib/*.js",
     "./styles/css/*": "./styles/*.css",

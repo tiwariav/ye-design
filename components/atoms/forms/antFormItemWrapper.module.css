@@ -1,0 +1,8 @@
+.root {
+  margin-bottom: 0;
+
+  & :global .ant-form-item-explain-error {
+    margin-top: calc(-1 * var(--ye-spacing-em-small));
+    margin-bottom: var(--ye-spacing-em-normal);
+  }
+}

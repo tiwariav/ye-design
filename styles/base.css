@@ -39,9 +39,9 @@
   --ye-color-text-anchor: #1890ff;
   --ye-color-input-background: rgb(0 0 0 / 0.025);
   --ye-color-input-border: rgb(0 0 0 / 0.025);
-  --ye-color-input-focus-background: #f4f5f6;
-  --ye-color-input-focus-border: #40a9ff;
-  --ye-color-input-focus-shadow: rgb(24 144 255 / .2);
+  --ye-color-input-focus-background: #f6f7f8;
+  --ye-color-input-focus-border: rgb(64 169 255);
+  --ye-color-input-focus-shadow: rgb(64 164 255 / .75);
 
   /* TODO: focus and visited color to be different */
   --ye-color-text-anchor-focus: #40a9ff;
@@ -98,8 +98,8 @@
   --ye-shadow-inset-sm: inset 0 1px 2px var(--ye-color-shadow-inset);
   --ye-shadow-inset-none: inset 0 0 0 var(--ye-color-shadow-inset);
   --ye-shadow-outer-none: 0 0 0 var(--ye-color-shadow-inset);
-  --ye-shadow-pressable: var(--ye-shadow-inset-none), var(--ye-shadow-floating-low);
-  --ye-shadow-hovered: var(--ye-shadow-inset-none), var(--ye-shadow-floating-lowest);
+  --ye-shadow-pressable: var(--ye-shadow-floating-low);
+  --ye-shadow-hovered: var(--ye-shadow-floating-lowest);
   --ye-shadow-pressed: var(--ye-shadow-inset), var(--ye-shadow-outer-none);
 
   /* ====== */
