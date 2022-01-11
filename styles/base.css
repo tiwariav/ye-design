@@ -247,6 +247,10 @@ h6 {
   font-size: var(--ye-font-size-normal);
 }
 
+code {
+  font-family: var(--ye-font-family-mono);
+}
+
 .custom-scrollbar {
   scrollbar-width: thin;
 
