@@ -5,6 +5,7 @@
   --input-padding-left: var(--ye-spacing-rem-small);
 
   position: relative;
+  width: 100%;
   background-color: var(--ye-color-input-background);
   border-radius: var(--ye-input-border-radius);
 }
@@ -92,7 +93,7 @@
     --calc-xy-padding: calc(var(--input-padding-top) + var(--input-padding-bottom));
 
     position: absolute;
-    top: calc(var(--calc-xy-padding) / 2);
+    top: calc((var(--calc-xy-padding) / 2) + 1px);
     left: calc(var(--input-padding-left) + var(--ye-spacing-rem-tiny));
     z-index: 1;
     margin: 0;

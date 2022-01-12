@@ -279,4 +279,5 @@
   right: 1px;
   bottom: 1px;
   left: 1px;
+  border-radius: var(--ye-button-border-radius);
 }

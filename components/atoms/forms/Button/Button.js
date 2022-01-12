@@ -34,7 +34,7 @@ function overrideStyleProperty(node, name, value) {
   }
 }
 
-const setRippleProperties = (node, initial, x = "50%", y = "50%") => {
+const setRippleProperties = (node, initial, x = 0, y = 0) => {
   node.style.setProperty("--ye-effect-ripple-x", x + "px");
   node.style.setProperty("--ye-effect-ripple-y", y + "px");
   if (initial) {
@@ -45,7 +45,7 @@ const setRippleProperties = (node, initial, x = "50%", y = "50%") => {
   }
 };
 
-const setTrackingProperties = (node, x = "50%", y = "50%") => {
+const setTrackingProperties = (node, x = 0, y = 0) => {
   node.style.setProperty("--ye-effect-tracking-x", x + "px");
   node.style.setProperty("--ye-effect-tracking-y", y + "px");
 };

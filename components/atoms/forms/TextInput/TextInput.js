@@ -5,6 +5,7 @@ import { uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
 import { forwardRef, useMemo, useState } from "react";
 import ContentLoader from "react-content-loader";
+import { useMeasureInput } from "../../../../hooks";
 import Spinner from "../../content/Spinner/Spinner";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
@@ -35,6 +36,7 @@ const TextInput = forwardRef(
       onBlur,
       placeholder,
       size,
+      style = {},
       spacing,
       value,
       variant,
@@ -59,6 +61,8 @@ const TextInput = forwardRef(
       }
     };
 
+    const [labelRef, { input }] = useMeasureInput();
+
     return (
       <div
         className={clsx(
@@ -74,7 +78,7 @@ const TextInput = forwardRef(
         )}
       >
         {label ? (
-          <label className={styles.label} htmlFor={inputID}>
+          <label ref={labelRef} className={styles.label} htmlFor={inputID}>
             {label}
           </label>
         ) : null}
@@ -107,6 +111,14 @@ const TextInput = forwardRef(
             onBlur={handleBlur}
             ref={ref}
             value={value}
+            style={
+              input
+                ? {
+                    paddingTop: `calc(${input.paddingTop}px + var(--input-padding-top))`,
+                    ...style,
+                  }
+                : style
+            }
             {...props}
           />
           {iconAfter ? (

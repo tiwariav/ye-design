@@ -59,7 +59,6 @@ export default function AntFormItemWrapper({
       className={clsx(styles.root, className)}
       rules={modifiedRules}
       normalize={(value) => {
-        console.log(value, isObject(value), Number.isNaN(value));
         if (isObject(value)) {
           return value.value;
         } else if (isNaN(value)) {
