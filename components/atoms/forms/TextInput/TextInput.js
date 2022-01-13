@@ -1,11 +1,11 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
-
 import clsx from "clsx";
 import { uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
 import { forwardRef, useMemo, useState } from "react";
 import ContentLoader from "react-content-loader";
 import { useMeasureInput } from "../../../../hooks";
+import { isEmpty } from "../../../../lib/utils";
 import Spinner from "../../content/Spinner/Spinner";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
@@ -24,7 +24,6 @@ const TextInput = forwardRef(
     {
       className,
       errors,
-      focus,
       iconBefore,
       iconAfter,
       id,
@@ -71,8 +70,8 @@ const TextInput = forwardRef(
           styles[`is-${variant}`],
           {
             // eslint-disable-next-line css-modules/no-undef-class
-            [styles.hasFocus]: focus || hasFocus,
-            [styles.hasValue]: value,
+            [styles.hasFocus]: hasFocus,
+            [styles.hasValue]: !isEmpty(value),
           },
           className
         )}
@@ -103,9 +102,9 @@ const TextInput = forwardRef(
               inputClassName
             )}
             placeholder={
-              variant === "material" && !(value || focus || hasFocus)
-                ? ""
-                : placeholder
+              variant === "material" && (!isEmpty(value) || hasFocus)
+                ? placeholder
+                : ""
             }
             onFocus={handleFocus}
             onBlur={handleBlur}

@@ -1,6 +1,6 @@
 import { Form } from "antd";
 import clsx from "clsx";
-import { isObject } from "lodash-es";
+import { isDate, isObject } from "lodash-es";
 import React, { ReactElement, useCallback, useMemo, useState } from "react";
 import styles from "./antFormItemWrapper.module.css";
 
@@ -59,7 +59,7 @@ export default function AntFormItemWrapper({
       className={clsx(styles.root, className)}
       rules={modifiedRules}
       normalize={(value) => {
-        if (isObject(value)) {
+        if (isObject(value) && !isDate(value)) {
           return value.value;
         } else if (isNaN(value)) {
           return value;

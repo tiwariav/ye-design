@@ -27,7 +27,7 @@ const NumberInput = forwardRef(
         if (format) {
           event.target.value = String(event.target.value).split(",").join("");
         }
-        if (onChange) {
+        if (onChange && !isNaN(event.target.value)) {
           onChange(event);
         }
       },
@@ -37,6 +37,8 @@ const NumberInput = forwardRef(
     useEffect(() => {
       if (format) {
         formatValue(value);
+      } else {
+        setFormattedValue(value);
       }
     }, [format, formatValue, value]);
 
@@ -49,7 +51,7 @@ const NumberInput = forwardRef(
           onChange={handleChange}
           // cannot format in type=number
           type={format ? "text" : "number"}
-          value={formattedValue || value}
+          value={formattedValue}
           {...props}
         />
         <input

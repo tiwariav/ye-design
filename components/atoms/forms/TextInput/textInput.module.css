@@ -70,7 +70,7 @@
   position: absolute;
   z-index: 2;
   width: 100%;
-  height: calc(var(--input-padding-top) + var(--input-padding-bottom) + var(--loader-line-height));
+  height: 100%;
   border-radius: var(--ye-input-border-radius);
 }
 
