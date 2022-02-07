@@ -115,7 +115,7 @@ const TextInput = forwardRef(
                 ? placeholder
                 : ""
             }
-            required
+            required={required}
             onFocus={handleFocus}
             onBlur={handleBlur}
             ref={ref}
