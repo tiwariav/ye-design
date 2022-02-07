@@ -133,3 +133,8 @@
   margin: var(--ye-spacing-em-tiny) 0 0;
   padding-bottom: var(--ye-spacing-em-tiny);
 }
+
+.required::after {
+  color: var(--ye-color-danger);
+  content:" *";
+}

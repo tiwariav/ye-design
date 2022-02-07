@@ -39,6 +39,8 @@ const TextInput = forwardRef(
       spacing,
       value,
       variant,
+      required,
+      requiredText,
       ...props
     },
     ref
@@ -77,8 +79,15 @@ const TextInput = forwardRef(
         )}
       >
         {label ? (
-          <label ref={labelRef} className={styles.label} htmlFor={inputID}>
+          <label
+            ref={labelRef}
+            htmlFor={inputID}
+            className={clsx(styles.label, {
+              [styles["required"]]: required && !requiredText,
+            })}
+          >
             {label}
+            {requiredText ? ` ( ${requiredText})` : null}
           </label>
         ) : null}
         <div className={styles.inputWrapper}>
@@ -106,6 +115,7 @@ const TextInput = forwardRef(
                 ? placeholder
                 : ""
             }
+            required={required}
             onFocus={handleFocus}
             onBlur={handleBlur}
             ref={ref}
