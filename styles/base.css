@@ -173,8 +173,6 @@
     calc(var(--ye-spacing-em-large) - var(--ye-button-outline-border-width));
   --ye-button-shadow: var(--ye-shadow-pressable);
 
-  /* ====== */
-
   /* FORM */
   --ye-control-outline-padding: calc(
     var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
@@ -184,6 +182,11 @@
   --ye-input-border-width: 0;
   --ye-input-border-radius: 3em;
   --ye-input-shadow: var(--ye-shadow-inset);
+
+  /* COMPONENTS SPECIFIC */
+
+  /* TOPNAV */
+  --ye-topnav-expanded-color-bg: transparent;
 
 }
 

@@ -16,6 +16,7 @@ export default function TopNav({
   contentRight,
   drawer,
   expandedHeight = 72,
+  innerClassNames,
   isExpanded,
   leftNavIcon,
   logo,
@@ -43,7 +44,12 @@ export default function TopNav({
           [styles.withSideNav]: withSideNav,
           [styles.sideNavToggled]: sideNavToggle,
         },
-        className
+        className,
+        innerClassNames
+          ? {
+              [innerClassNames.isExpanded]: isExpanded,
+            }
+          : {}
       )}
       {...props}
     >
