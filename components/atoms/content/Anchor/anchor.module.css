@@ -144,9 +144,9 @@
 
 .icon {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   width: var(--ye-spacing-em-large);
   height: var(--ye-spacing-em-large);
   margin-right: var(--ye-spacing-em-xsmall);
