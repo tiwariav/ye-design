@@ -61,11 +61,8 @@ export default function AntFormItemWrapper({
       normalize={(value) => {
         if (isObject(value) && !isDate(value)) {
           return value.value;
-        } else if (isNaN(value)) {
-          return value;
-        } else {
-          return Number(value);
         }
+        return value;
       }}
       {...props}
     >
