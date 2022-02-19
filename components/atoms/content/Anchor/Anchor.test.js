@@ -1,8 +1,7 @@
-import { render } from "@testing-library/react";
-import React from "react";
+import { render, screen } from "@testing-library/react";
 import Anchor from "./Anchor";
 
 test("Anchor renders", () => {
-  const { queryByText } = render(<Anchor label="Anchor" />);
-  expect(queryByText(/anchor/i)).toBeTruthy();
+  render(<Anchor label="Anchor" />);
+  expect(screen.getByText(/anchor/i)).toBeTruthy();
 });

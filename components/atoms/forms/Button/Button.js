@@ -1,6 +1,8 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  'is-outlined', 'is-dashed', 'is-trans', 'is-inline',
-  'is-list-item', 'is-primary', 'is-filled', 'effect-cursor-tracking', 'effect-ripple',
+  'is-outlined', 'is-dashed', 'is-trans', 'is-inline', 'is-neu',
+  'is-list-item', 'is-primary', 'is-filled',
+  'is-small', 'is-large',
+  'effect-cursor-tracking', 'effect-ripple',
   'spacing-equal', 'spacing-extra', 'spacing-less', 'spacing-none'
 ]}] */
 
@@ -50,26 +52,26 @@ const setTrackingProperties = (node, x = 0, y = 0) => {
   node.style.setProperty("--ye-effect-tracking-y", y + "px");
 };
 
-const setNeuProperties = (node, options = { colors: {} }) => {
+const setNeuProperties = (node, options = {}) => {
   overrideStyleProperty(
     node,
     "--ye-color-neu-background-dark",
-    options.colors.backgroundDark
+    options.colors?.backgroundDark
   );
   overrideStyleProperty(
     node,
     "--ye-color-neu-background-light",
-    options.colors.backgroundLight
+    options.colors?.backgroundLight
   );
   overrideStyleProperty(
     node,
     "--ye-color-neu-shadow-dark",
-    options.colors.shadowDark
+    options.colors?.shadowDark
   );
   overrideStyleProperty(
     node,
     "--ye-color-neu-shadow-light",
-    options.colors.shadowLight
+    options.colors?.shadowLight
   );
 };
 

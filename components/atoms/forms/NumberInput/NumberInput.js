@@ -27,6 +27,7 @@ const NumberInput = forwardRef(
         if (format) {
           event.target.value = String(event.target.value).split(",").join("");
         }
+        // eslint-disable-next-line unicorn/prefer-number-properties
         if (onChange && !isNaN(event.target.value)) {
           onChange(event);
         }

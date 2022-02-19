@@ -24,7 +24,7 @@ export default function ArcProgress({
   const animeId = useMemo(() => uniqueId(), []);
   const angles = useMemo(() => {
     const value = [];
-    let parts = isNumber(segments)
+    const parts = isNumber(segments)
       ? [...Array.from({ length: segments })].fill(100 / segments)
       : segments;
     let startAngle = -90;

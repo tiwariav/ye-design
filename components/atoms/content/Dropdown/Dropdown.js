@@ -43,10 +43,11 @@ function Dropdown({
   const [open, setOpen] = useState(false);
   // const [subMenuCascade, setSubMenuCascade] = useState(false);
 
-  useClickAway(containerRef, (e) => {
+  useClickAway(containerRef, (event) => {
     if (
       open &&
-      (!parentMenuNode || !((menuRef || {}).current || {}).contains(e.target))
+      (!parentMenuNode ||
+        !((menuRef || {}).current || {}).contains(event.target))
     ) {
       setOpen(false);
     }
@@ -56,7 +57,7 @@ function Dropdown({
   const handleMouseEnter = () => {
     setOpen(true);
   };
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     setOpen(false);
   };
 
