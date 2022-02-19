@@ -38,16 +38,16 @@ export default function FileInput({
   const [hasFocus, setHasFocus] = useState(false);
   const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
-  const handleFocus = (e) => {
+  const handleFocus = (event) => {
     setHasFocus(true);
     if (onFocus) {
-      onFocus(e);
+      onFocus(event);
     }
   };
-  const handleBlur = (e) => {
+  const handleBlur = (event) => {
     setHasFocus(false);
     if (onBlur) {
-      onBlur(e);
+      onBlur(event);
     }
   };
 

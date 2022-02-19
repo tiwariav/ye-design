@@ -23,7 +23,7 @@ function Image({
 
   const image = useMemo(
     () => <Element className={clsx(styles.image, className)} {...props} />,
-    [className, props]
+    [Element, className, props]
   );
 
   useEffect(() => {

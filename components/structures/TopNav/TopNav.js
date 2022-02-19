@@ -29,8 +29,8 @@ export default function TopNav({
   withSideNav,
   ...props
 }) {
-  let { width } = useWindowSize();
-  let smallerWidth = width <= 991;
+  const { width } = useWindowSize();
+  const smallerWidth = width <= 991;
 
   useLockBodyScroll(Boolean(smallerWidth && drawer));
 

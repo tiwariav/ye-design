@@ -1,4 +1,4 @@
-/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material'] }] */
 import clsx from "clsx";
 import { uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
