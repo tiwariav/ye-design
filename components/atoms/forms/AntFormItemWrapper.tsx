@@ -61,12 +61,8 @@ export default function AntFormItemWrapper({
       normalize={(value) => {
         if (isObject(value) && !isDate(value)) {
           return value.value;
-          // eslint-disable-next-line unicorn/prefer-number-properties
-        } else if (isNaN(value)) {
-          return value;
-        } else {
-          return Number(value);
         }
+        return value;
       }}
       {...props}
     >
