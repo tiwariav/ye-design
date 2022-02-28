@@ -174,19 +174,27 @@ export default function FileInput({
                 ) : null}
               </div>
               {item.data && item.data.length > 0
-                ? item.data.map((dataItem, dataIndex) => (
-                    <TextInput
-                      inputClassName={styles.listItemDataInput}
-                      key={index}
-                      size="small"
-                      onChange={(event) =>
-                        handleDataChange(event, item, dataIndex)
-                      }
-                      defaultValue={dataItem.value}
-                      placeholder={dataItem.placeholder}
-                      type={dataItem.type || "text"}
-                    />
-                  ))
+                ? item.data.map((dataItem, dataIndex) =>
+                    dataItem.type === "password" ? (
+                      <TextInput
+                        inputClassName={styles.listItemDataInput}
+                        key={index}
+                        size="small"
+                        onChange={(event) =>
+                          handleDataChange(event, item, dataIndex)
+                        }
+                        defaultValue={dataItem.value}
+                        placeholder={dataItem.placeholder}
+                        type={dataItem.type || "text"}
+                      />
+                    ) : dataItem.type === "preview" ? (
+                      <img
+                        src={item.resource}
+                        alt={item.name}
+                        className={styles.previewImage}
+                      />
+                    ) : null
+                  )
                 : null}
             </div>
           ))}

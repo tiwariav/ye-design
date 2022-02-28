@@ -19,6 +19,7 @@
   display: flex;
   align-items: stretch;
   width: 100%;
+  background-color: var(--ye-color-white);
 
   @media (--media-max-md) {
     justify-content: space-between;
