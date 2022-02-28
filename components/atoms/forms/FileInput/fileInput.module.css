@@ -103,3 +103,8 @@
 .failed {
   color: var(--ye-color-negative);
 }
+
+.preview-image {
+  width: 48px;
+  height: 48px;
+}

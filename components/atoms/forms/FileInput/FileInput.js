@@ -38,6 +38,73 @@ export default function FileInput({
   const [hasFocus, setHasFocus] = useState(false);
   const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
+  // const updateFiles = useCallback(
+  //   (
+  //     files,
+  //     action = "add",
+  //     appendToOld = true,
+  //     includePassword = false,
+  //     includePreview = false
+  //   ) => {
+  //     switch (action) {
+  //       case "add": {
+  //         setFiles((oldFiles) => {
+  //           const newFileObjects = files.map(
+  //             (file) =>
+  //               new UploadFile(file, {
+  //                 data: [
+  //                   {
+  //                     name: "password",
+  //                     value: "",
+  //                     type: "password",
+  //                     placeholder: "Password (if required by the file)",
+  //                   },
+  //                 ],
+  //               })
+  //           );
+  //           return [...oldFiles, ...newFileObjects];
+  //         });
+
+  //         break;
+  //       }
+  //       case "remove": {
+  //         setFiles(([...oldFiles]) => {
+  //           const oldFileIds = files.map((item) => item.id);
+  //           for (const file of files) {
+  //             const removeIndex = oldFileIds.indexOf(file.id);
+  //             if (removeIndex !== -1) {
+  //               oldFiles.splice(removeIndex, 1);
+  //             }
+  //           }
+  //           return oldFiles;
+  //         });
+
+  //         break;
+  //       }
+  //       case "update": {
+  //         setFiles(([...oldFiles]) => {
+  //           const oldFileIds = files.map((item) => item.id);
+  //           for (const file of files) {
+  //             const updateIndex = oldFileIds.findIndex(
+  //               (item) => item.id === file.id
+  //             );
+  //             if (updateIndex !== -1) {
+  //               oldFiles[updateIndex] = file;
+  //             }
+  //           }
+  //           return oldFiles;
+  //         });
+
+  //         break;
+  //       }
+  //       default: {
+  //         setFiles([]);
+  //       }
+  //     }
+  //   },
+  //   [setFiles]
+  // );
+
   const handleFocus = (event) => {
     setHasFocus(true);
     if (onFocus) {
@@ -174,19 +241,27 @@ export default function FileInput({
                 ) : null}
               </div>
               {item.data && item.data.length > 0
-                ? item.data.map((dataItem, dataIndex) => (
-                    <TextInput
-                      inputClassName={styles.listItemDataInput}
-                      key={index}
-                      size="small"
-                      onChange={(event) =>
-                        handleDataChange(event, item, dataIndex)
-                      }
-                      defaultValue={dataItem.value}
-                      placeholder={dataItem.placeholder}
-                      type={dataItem.type || "text"}
-                    />
-                  ))
+                ? item.data.map((dataItem, dataIndex) =>
+                    dataItem.type === "password" ? (
+                      <TextInput
+                        inputClassName={styles.listItemDataInput}
+                        key={index}
+                        size="small"
+                        onChange={(event) =>
+                          handleDataChange(event, item, dataIndex)
+                        }
+                        defaultValue={dataItem.value}
+                        placeholder={dataItem.placeholder}
+                        type={dataItem.type || "text"}
+                      />
+                    ) : dataItem.type === "preview" ? (
+                      <img
+                        src={item.resource}
+                        alt={item.name}
+                        className={styles.previewImage}
+                      />
+                    ) : null
+                  )
                 : null}
             </div>
           ))}
