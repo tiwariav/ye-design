@@ -17,7 +17,7 @@
 
 .container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
 
   @media (--media-max-md) {
