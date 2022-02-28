@@ -65,7 +65,7 @@ export default function AntFormItemWrapper({
         return value;
       }}
       getValueFromEvent={(event) => {
-        return event?.target?.id.startsWith("numberInputText")
+        return event?.target?.id?.startsWith("numberInputText")
           ? Number(event.target.value)
           : event.value ?? event.target.value;
       }}
