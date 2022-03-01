@@ -31,6 +31,7 @@ export default function FileInput({
   inputClassName,
   files,
   updateFiles,
+  setFiles,
   uploadFiles,
   placeholder = "Browse",
   ...props
@@ -53,14 +54,14 @@ export default function FileInput({
 
   const handleChange = (event) => {
     if (event.target.files.length > 0) {
-      updateFiles([...event.target.files], "add");
+      updateFiles(setFiles, [...event.target.files], "add");
     }
   };
 
   const handleDataChange = debounce((event, file, dataIndex) => {
     const fileData = [...file.data];
     fileData[dataIndex].value = event.target.value;
-    updateFiles([{ ...file, data: fileData }], "update");
+    updateFiles(setFiles, [{ ...file, data: fileData }], "update");
   }, 500);
 
   return (
@@ -137,7 +138,7 @@ export default function FileInput({
                     </div>
                     <div>
                       <Button
-                        onClick={() => updateFiles([item], "remove")}
+                        onClick={() => updateFiles(setFiles, [item], "remove")}
                         variant="trans"
                         spacing="equal"
                       >
@@ -163,7 +164,7 @@ export default function FileInput({
                     </div>
                     <div>
                       <Button
-                        onClick={() => updateFiles([item], "remove")}
+                        onClick={() => updateFiles(setFiles, [item], "remove")}
                         variant="trans"
                         spacing="equal"
                       >
