@@ -7,7 +7,10 @@ import styles from "./numberInput.module.css";
 const NumberInput = forwardRef(
   ({ id, isBusy, isLoading, format, value, onChange, ...props }, ref) => {
     const [formattedValue, setFormattedValue] = useState(value);
-    const numberInputID = useMemo(() => id || uniqueId("numberInput_"), [id]);
+    const [numberInputID, numberInputTextID] = useMemo(() => {
+      const numberId = id || uniqueId("numberInput_");
+      return [numberId, "numberInputText_" + numberId];
+    }, [id]);
 
     const formatValue = useCallback((value = "") => {
       const unformattedNumber = String(value).split(",").join("");
@@ -46,7 +49,7 @@ const NumberInput = forwardRef(
     return (
       <div className={styles.root}>
         <TextInput
-          id={numberInputID}
+          id={numberInputTextID}
           isBusy={isBusy}
           isLoading={isLoading}
           onChange={handleChange}
@@ -59,7 +62,7 @@ const NumberInput = forwardRef(
           ref={ref}
           type="number"
           className={styles.numberInput}
-          id={id}
+          id={numberInputID}
           value={value}
         />
       </div>
