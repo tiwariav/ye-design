@@ -31,7 +31,6 @@ export default function FileInput({
   inputClassName,
   files,
   updateFiles,
-  setFiles,
   uploadFiles,
   placeholder = "Browse",
   ...props
@@ -54,14 +53,14 @@ export default function FileInput({
 
   const handleChange = (event) => {
     if (event.target.files.length > 0) {
-      updateFiles(setFiles, [...event.target.files], "add");
+      updateFiles([...event.target.files], "add");
     }
   };
 
   const handleDataChange = debounce((event, file, dataIndex) => {
     const fileData = [...file.data];
     fileData[dataIndex].value = event.target.value;
-    updateFiles(setFiles, [{ ...file, data: fileData }], "update");
+    updateFiles([{ ...file, data: fileData }], "update");
   }, 500);
 
   return (
@@ -138,7 +137,7 @@ export default function FileInput({
                     </div>
                     <div>
                       <Button
-                        onClick={() => updateFiles(setFiles, [item], "remove")}
+                        onClick={() => updateFiles([item], "remove")}
                         variant="trans"
                         spacing="equal"
                       >
@@ -164,7 +163,7 @@ export default function FileInput({
                     </div>
                     <div>
                       <Button
-                        onClick={() => updateFiles(setFiles, [item], "remove")}
+                        onClick={() => updateFiles([item], "remove")}
                         variant="trans"
                         spacing="equal"
                       >
@@ -190,7 +189,8 @@ export default function FileInput({
                       />
                     ) : dataItem.type === "preview" ? (
                       <img
-                        src={item.resource}
+                        id={item.resource}
+                        // src={item.resource}
                         alt={item.name}
                         className={styles.previewImage}
                       />
