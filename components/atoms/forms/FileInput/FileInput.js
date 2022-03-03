@@ -189,7 +189,8 @@ export default function FileInput({
                       />
                     ) : dataItem.type === "preview" ? (
                       <img
-                        src={item.resource}
+                        id={item.resource}
+                        // src={item.resource}
                         alt={item.name}
                         className={styles.previewImage}
                       />
