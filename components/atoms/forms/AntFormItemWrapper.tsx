@@ -22,18 +22,18 @@ export default function AntFormItemWrapper({
   rules,
   ...props
 }: AntFormItemWrapperProps): ReactElement {
-  const [firstInput, setFirstInuput] = useState(false);
+  const [firstBlur, setFirstBlur] = useState(false);
 
   const handleBlur: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
-      if (event.target?.value && !firstInput) {
-        setFirstInuput(false);
+      if (event.target?.value && !firstBlur) {
+        setFirstBlur(true);
       }
       if (onBlur) {
         onBlur(event);
       }
     },
-    [firstInput, onBlur]
+    [firstBlur, onBlur]
   );
 
   const overrideProps = useMemo(() => {
@@ -45,19 +45,11 @@ export default function AntFormItemWrapper({
     };
   }, [handleBlur, label, loading, rules]);
 
-  const modifiedRules = useMemo(() => {
-    return rules?.map((item) => {
-      if (item.required && item.message && !firstInput) {
-        item.message = undefined;
-      }
-      return item;
-    });
-  }, [firstInput, rules]);
-
   return (
     <Form.Item
+      validateTrigger={firstBlur ? "onChange" : "onBlur"}
       className={clsx(styles.root, className)}
-      rules={modifiedRules}
+      rules={rules}
       normalize={(value) => {
         if (isObject(value) && !isDate(value)) {
           return value.value;
