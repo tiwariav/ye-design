@@ -95,6 +95,7 @@
   --ye-shadow-floating-medium: 0 2px 6px var(--ye-color-shadow);
   --ye-shadow-floating-low: 0 1px 4px var(--ye-color-shadow);
   --ye-shadow-floating-lowest: 0 0 2px var(--ye-color-shadow);
+  --ye-shadow-flying-medium: 0 10px 50px 0 var(--ye-color-shadow);
   --ye-shadow-inset: inset 0 2px 4px var(--ye-color-shadow-inset);
   --ye-shadow-inset-sm: inset 0 1px 2px var(--ye-color-shadow-inset);
   --ye-shadow-inset-none: inset 0 0 0 var(--ye-color-shadow-inset);

@@ -19,6 +19,7 @@ export default function Card({
   children,
   className,
   floating,
+  flying,
   height,
   cardContentClassName,
   ...props
@@ -30,8 +31,11 @@ export default function Card({
         styles[`is-${variant}`],
         styles[`is-${layout}`],
         styles[`view-${viewMode}`],
-        { [styles[`floating-${floating}`]]: floating },
-        { [styles[`height-${height}`]]: height },
+        {
+          [styles[`floating-${floating}`]]: floating,
+          [styles[`flying-${flying}`]]: flying,
+          [styles[`height-${height}`]]: height,
+        },
         className
       )}
       {...props}
