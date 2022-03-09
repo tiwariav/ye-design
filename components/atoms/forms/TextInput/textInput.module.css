@@ -17,29 +17,35 @@
 
 .label {
   margin-bottom: var(--ye-spacing-em-xsmall);
-  padding: var(--input-padding-top) var(--input-padding-right) var(--input-padding-bottom) var(--input-padding-left);
+  padding: var(--input-padding-top) var(--input-padding-right)
+    var(--input-padding-bottom) var(--input-padding-left);
   line-height: var(--ye-line-height);
 }
 
 .text-input {
+  --color-body-with-opacity: #939fa480;
+
   width: 100%;
-  padding: var(--input-padding-top) var(--input-padding-right) var(--input-padding-bottom) var(--input-padding-left);
+  padding: var(--input-padding-top) var(--input-padding-right)
+    var(--input-padding-bottom) var(--input-padding-left);
   color: inherit;
   font-family: var(--ye-fontfamily-input);
-  border-color: var(--ye-color-input-border);
+  border-color: var(--color-body-with-opacity);
   border-style: solid;
   border-width: var(--ye-input-border-width);
   border-radius: var(--ye-input-border-radius);
   box-shadow: var(--ye-input-shadow);
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: var(--ye-color-input-focus-background);
   }
 
   &:focus {
     border-color: var(--ye-color-input-focus-border);
     outline: none;
-    box-shadow: var(--ye-shadow-inset-none), 0 0 0 1px var(--ye-color-input-focus-shadow);
+    box-shadow: var(--ye-shadow-inset-none),
+      0 0 0 1px var(--ye-color-input-focus-shadow);
   }
 }
 
@@ -90,7 +96,9 @@
   --input-padding-bottom: calc(var(--ye-spacing-rem-tiny) + var(--ye-rem-unit));
 
   & .label {
-    --calc-xy-padding: calc(var(--input-padding-top) + var(--input-padding-bottom));
+    --calc-xy-padding: calc(
+      var(--input-padding-top) + var(--input-padding-bottom)
+    );
 
     position: absolute;
     top: calc((var(--calc-xy-padding) / 2) + 1px);
@@ -107,14 +115,21 @@
     transition-property: transform;
   }
 
-  & .text-input:hover, & .text-input:focus {
+  & .text-input:hover,
+  & .text-input:focus {
     background-color: var(--ye-color-input-focus-background);
   }
 
   &.has-value .label,
   &.has-focus .label {
     font-weight: 500;
-    transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny))) translateY(calc(var(--input-padding-bottom) - var(--input-padding-top) + var(--ye-spacing-rem-tiny)));
+    transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
+      translateY(
+        calc(
+          var(--input-padding-bottom) - var(--input-padding-top) +
+            var(--ye-spacing-rem-tiny)
+        )
+      );
     transition-duration: var(--ye-transition-duration);
   }
 }
@@ -136,5 +151,5 @@
 
 .required::after {
   color: var(--ye-color-danger);
-  content:" *";
+  content: " *";
 }
