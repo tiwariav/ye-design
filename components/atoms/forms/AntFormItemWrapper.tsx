@@ -66,10 +66,11 @@ export default function AntFormItemWrapper({
         return value;
       }}
       getValueFromEvent={(event) => {
+        console.log(event);
         return isDate(event)
           ? event
           : event.value ??
-              (event.target.id.startsWith("numberInputText")
+              (event.target.id?.startsWith("numberInputText")
                 ? Number(event.target.value)
                 : event.target.value);
       }}
