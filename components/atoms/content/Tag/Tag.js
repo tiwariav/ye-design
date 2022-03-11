@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import Spinner from "../Spinner/Spinner";
 import styles from "./tag.module.css";
 import TagLoader from "./TagLoader";

@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import styles from "./topNav.module.css";
 
 export default function TopNavItem({ children, hasSeparator, ...props }) {

@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import ContentLoader from "react-content-loader";
 import styles from "./tagLoader.module.css";
 

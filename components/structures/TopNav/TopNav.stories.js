@@ -1,5 +1,4 @@
 import path from "node:path";
-import React from "react";
 import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { GiWitchFlight } from "react-icons/gi";

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function SVGCircle(props) {
   return (
     <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" {...props}>

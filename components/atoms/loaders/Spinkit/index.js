@@ -1,4 +1,3 @@
-import React from "react";
 import LoaderWrapper from "../LoaderWrapper";
 import Bounce from "./Bounce";
 import Chase from "./Chase";

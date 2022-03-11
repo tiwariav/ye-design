@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import Spinner from "../Spinner/Spinner";
 import styles from "./textGroup.module.css";
 import TextGroupLoader from "./TextGroupLoader";
