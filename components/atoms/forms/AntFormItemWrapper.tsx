@@ -16,6 +16,7 @@ interface AntFormItemWrapperProps {
   label: string;
   loading: boolean;
   onBlur: React.ChangeEventHandler<HTMLInputElement>;
+  onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   rules: any[];
 }
 
@@ -25,16 +26,19 @@ export default function AntFormItemWrapper({
   label,
   loading,
   onBlur,
+  onKeyPress,
   rules,
   ...props
 }: AntFormItemWrapperProps): ReactElement {
   const [virgin, setVirgin] = useState(true);
+  const [validateTrigger, setValidateTrigger] = useState("onChange");
   const valueRef = useRef<any>();
 
   const handleBlur: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
       if (event.target?.value && virgin) {
         setVirgin(false);
+        setValidateTrigger("onChange");
       }
       if (onBlur) {
         onBlur(event);
@@ -43,32 +47,49 @@ export default function AntFormItemWrapper({
     [virgin, onBlur]
   );
 
+  const handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> =
+    useCallback(
+      (event) => {
+        if (event.key && virgin) {
+          setValidateTrigger("onBlur");
+        }
+        if (onKeyPress) {
+          onKeyPress(event);
+        }
+      },
+      [virgin, onKeyPress]
+    );
+
   const overrideProps = useMemo(() => {
     return {
       onBlur: handleBlur,
+      onKeyPress: handleKeyPress,
       ...(loading ? { isLoading: loading } : {}),
       ...(label ? { label } : {}),
       required: rules?.find((item) => item.required),
     };
-  }, [handleBlur, label, loading, rules]);
+  }, [handleBlur, handleKeyPress, label, loading, rules]);
+
+  console.log(
+    virgin,
+    valueRef.current,
+    isNil(valueRef.current),
+    validateTrigger
+  );
 
   return (
     <Form.Item
-      validateTrigger={
-        virgin && !isNil(valueRef.current) ? "onBlur" : "onChange"
-      }
+      validateTrigger={validateTrigger}
       className={clsx(styles.root, { [styles.virgin]: virgin }, className)}
       rules={rules}
       getValueFromEvent={(event) => {
-        const value = isDate(event)
+        return isDate(event)
           ? event
           : event.value
           ? event.value.value
           : event.target.id?.startsWith("numberInputText")
           ? Number(event.target.value)
           : event.target.value;
-        valueRef.current = value;
-        return value;
       }}
       {...props}
     >
