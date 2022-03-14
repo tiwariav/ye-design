@@ -1,7 +1,13 @@
 import { Form } from "antd";
 import clsx from "clsx";
-import { isDate, isObject } from "lodash-es";
-import React, { ReactElement, useCallback, useMemo, useState } from "react";
+import { isDate, isNil } from "lodash-es";
+import React, {
+  ReactElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps {
@@ -23,6 +29,7 @@ export default function AntFormItemWrapper({
   ...props
 }: AntFormItemWrapperProps): ReactElement {
   const [virgin, setVirgin] = useState(true);
+  const valueRef = useRef<any>();
 
   const handleBlur: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
@@ -45,33 +52,23 @@ export default function AntFormItemWrapper({
     };
   }, [handleBlur, label, loading, rules]);
 
-  const modifiedRules = useMemo(() => {
-    return rules?.map((item) => {
-      if (item.message && virgin) {
-        item.message = "";
-      }
-      return item;
-    });
-  }, [virgin, rules]);
-
   return (
     <Form.Item
-      validateTrigger={virgin ? "onBlur" : "onChange"}
+      validateTrigger={
+        virgin && !isNil(valueRef.current) ? "onBlur" : "onChange"
+      }
       className={clsx(styles.root, { [styles.virgin]: virgin }, className)}
-      rules={modifiedRules}
-      normalize={(value) => {
-        if (isObject(value) && !isDate(value)) {
-          return value.value;
-        }
-        return value;
-      }}
+      rules={rules}
       getValueFromEvent={(event) => {
-        return isDate(event)
+        const value = isDate(event)
           ? event
-          : event.value ??
-              (event.target.id.startsWith("numberInputText")
-                ? Number(event.target.value)
-                : event.target.value);
+          : event.value
+          ? event.value.value
+          : event.target.id?.startsWith("numberInputText")
+          ? Number(event.target.value)
+          : event.target.value;
+        valueRef.current = value;
+        return value;
       }}
       {...props}
     >
