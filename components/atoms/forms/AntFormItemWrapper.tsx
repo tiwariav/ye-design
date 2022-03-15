@@ -1,6 +1,6 @@
 import { Form } from "antd";
 import clsx from "clsx";
-import { isDate, isNil } from "lodash-es";
+import { isDate } from "lodash-es";
 import React, {
   ReactElement,
   useCallback,
@@ -69,13 +69,6 @@ export default function AntFormItemWrapper({
       required: rules?.find((item) => item.required),
     };
   }, [handleBlur, handleKeyPress, label, loading, rules]);
-
-  console.log(
-    virgin,
-    valueRef.current,
-    isNil(valueRef.current),
-    validateTrigger
-  );
 
   return (
     <Form.Item
