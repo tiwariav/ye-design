@@ -66,7 +66,6 @@ export default function AntFormItemWrapper({
         return value;
       }}
       getValueFromEvent={(event) => {
-        console.log(event);
         return isDate(event)
           ? event
           : event.value ??

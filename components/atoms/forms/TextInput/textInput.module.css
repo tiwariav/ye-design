@@ -127,7 +127,7 @@
       translateY(
         calc(
           var(--input-padding-bottom) - var(--input-padding-top) +
-            var(--ye-spacing-rem-tiny)
+          var(--ye-spacing-rem-tiny)
         )
       );
     transition-duration: var(--ye-transition-duration);
