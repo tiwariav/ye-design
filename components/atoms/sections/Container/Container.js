@@ -5,7 +5,6 @@
 
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import styles from "./container.module.css";
 
 function Container({

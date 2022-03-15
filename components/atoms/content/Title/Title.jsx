@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 import styles from "./title.module.css";
 
 export default function Title({ className, align, variant, as, ...props }) {

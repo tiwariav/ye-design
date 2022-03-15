@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./formGroup.module.css";
 
 export default function FormGroup({ label, error, children, ...props }) {

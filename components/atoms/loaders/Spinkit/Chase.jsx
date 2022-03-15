@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./chase.module.css";
 
 export default function Chase(props) {

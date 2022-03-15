@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import React from "react";
 import ContentLoader from "react-content-loader";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;

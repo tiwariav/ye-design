@@ -1,7 +1,13 @@
 import { Form } from "antd";
 import clsx from "clsx";
-import { isDate, isObject } from "lodash-es";
-import React, { ReactElement, useCallback, useMemo, useState } from "react";
+import { isDate } from "lodash-es";
+import React, {
+  ReactElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps {
@@ -10,6 +16,7 @@ interface AntFormItemWrapperProps {
   label: string;
   loading: boolean;
   onBlur: React.ChangeEventHandler<HTMLInputElement>;
+  onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   rules: any[];
 }
 
@@ -19,15 +26,19 @@ export default function AntFormItemWrapper({
   label,
   loading,
   onBlur,
+  onKeyPress,
   rules,
   ...props
 }: AntFormItemWrapperProps): ReactElement {
   const [virgin, setVirgin] = useState(true);
+  const [validateTrigger, setValidateTrigger] = useState("onChange");
+  const valueRef = useRef<any>();
 
   const handleBlur: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
       if (event.target?.value && virgin) {
         setVirgin(false);
+        setValidateTrigger("onChange");
       }
       if (onBlur) {
         onBlur(event);
@@ -36,42 +47,42 @@ export default function AntFormItemWrapper({
     [virgin, onBlur]
   );
 
+  const handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> =
+    useCallback(
+      (event) => {
+        if (event.key && virgin) {
+          setValidateTrigger("onBlur");
+        }
+        if (onKeyPress) {
+          onKeyPress(event);
+        }
+      },
+      [virgin, onKeyPress]
+    );
+
   const overrideProps = useMemo(() => {
     return {
       onBlur: handleBlur,
+      onKeyPress: handleKeyPress,
       ...(loading ? { isLoading: loading } : {}),
       ...(label ? { label } : {}),
       required: rules?.find((item) => item.required),
     };
-  }, [handleBlur, label, loading, rules]);
-
-  const modifiedRules = useMemo(() => {
-    return rules?.map((item) => {
-      if (item.message && virgin) {
-        item.message = "";
-      }
-      return item;
-    });
-  }, [virgin, rules]);
+  }, [handleBlur, handleKeyPress, label, loading, rules]);
 
   return (
     <Form.Item
-      validateTrigger={virgin ? "onBlur" : "onChange"}
+      validateTrigger={validateTrigger}
       className={clsx(styles.root, { [styles.virgin]: virgin }, className)}
-      rules={modifiedRules}
-      normalize={(value) => {
-        if (isObject(value) && !isDate(value)) {
-          return value.value;
-        }
-        return value;
-      }}
+      rules={rules}
       getValueFromEvent={(event) => {
         return isDate(event)
           ? event
-          : event.value ??
-              (event.target.id?.startsWith("numberInputText")
-                ? Number(event.target.value)
-                : event.target.value);
+          : event.value
+          ? event.value.value
+          : event.target.id?.startsWith("numberInputText")
+          ? Number(event.target.value)
+          : event.target.value;
       }}
       {...props}
     >

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function SVGPathPin(props) {
   return (
     <g transform="translate(-180.28 -179.33)">

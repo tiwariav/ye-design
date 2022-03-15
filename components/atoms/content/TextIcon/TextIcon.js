@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./textIcon.module.css";
 
 function Text({ children, ...props }) {

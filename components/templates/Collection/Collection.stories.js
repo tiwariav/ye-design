@@ -1,5 +1,4 @@
 import path from "node:path";
-import React from "react";
 import { getStoryName } from "../../../utils/storybook";
 import { WithImage as CardWithImage } from "../../atoms/sections/Card/Card.stories";
 import Collection from "./Collection";

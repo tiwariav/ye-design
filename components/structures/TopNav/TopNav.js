@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import { RiMenu5Fill } from "react-icons/ri";
 import { useLockBodyScroll, useWindowSize } from "react-use";
 import { Button } from "../../atoms/forms";
@@ -16,7 +15,7 @@ export default function TopNav({
   contentRight,
   drawer,
   expandedHeight = 72,
-  innerClassNames,
+  innerClassNames = {},
   isExpanded,
   leftNavIcon,
   logo,
@@ -56,7 +55,7 @@ export default function TopNav({
       {banner ? (
         <div className={clsx(styles.container, styles.banner)}>{banner}</div>
       ) : null}
-      <Container className={styles.container}>
+      <Container className={clsx(styles.container, innerClassNames.container)}>
         {smallerWidth && (withSideNav || leftNavIcon) ? (
           <div className={clsx(styles.contentMenuIcon)}>
             <Button variant="trans" spacing="none" onClick={toggleSideNav}>

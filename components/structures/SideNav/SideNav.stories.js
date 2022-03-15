@@ -1,5 +1,4 @@
 import path from "node:path";
-import React from "react";
 import { AiOutlineBulb, AiOutlineHome } from "react-icons/ai";
 import { getStoryName } from "../../../utils/storybook";
 import Anchor from "../../atoms/content/Anchor/Anchor";

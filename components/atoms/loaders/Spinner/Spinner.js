@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 import styles from "./spinner.module.css";
 
 export default function Spinner({ className, ...props }) {

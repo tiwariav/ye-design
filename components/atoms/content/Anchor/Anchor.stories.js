@@ -1,5 +1,4 @@
 import path from "node:path";
-import React from "react";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { GiBowman, GiCaveman } from "react-icons/gi";
 import { getStoryName } from "../../../../utils/storybook";

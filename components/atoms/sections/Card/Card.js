@@ -6,7 +6,6 @@
 
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
 import Spinner from "../../content/Spinner/Spinner";
 import styles from "./card.module.css";
 
