@@ -17,10 +17,7 @@ function Tag({
   return (
     <span className={clsx(styles.container, className)} {...props}>
       {loading ? (
-        <TagLoader
-          iconAfter={Boolean(iconAfter)}
-          iconBefore={Boolean(iconBefore)}
-        />
+        <TagLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
           {iconBefore ? (

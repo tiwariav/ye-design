@@ -17,10 +17,7 @@ function TextGroup({
   return (
     <span className={clsx(styles.container, className)} {...props}>
       {loading ? (
-        <TextGroupLoader
-          iconAfter={Boolean(iconAfter)}
-          iconBefore={Boolean(iconBefore)}
-        />
+        <TextGroupLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
           {iconBefore ? (

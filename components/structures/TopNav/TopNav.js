@@ -31,7 +31,7 @@ export default function TopNav({
   const { width } = useWindowSize();
   const smallerWidth = width <= 991;
 
-  useLockBodyScroll(Boolean(smallerWidth && drawer));
+  useLockBodyScroll(!!(smallerWidth && drawer));
 
   return (
     <div
