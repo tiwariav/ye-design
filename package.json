@@ -41,7 +41,7 @@
     "react-use": "^17.3.2"
   },
   "devDependencies": {
-    "@mdx-js/react": "^2.0.0",
+    "@mdx-js/react": "^2.1.0",
     "@storybook/addon-docs": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
     "@testing-library/react": "^12.1.4",
