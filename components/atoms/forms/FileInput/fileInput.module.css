@@ -105,6 +105,8 @@
 }
 
 .preview-image {
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  max-width: 400px;
+  max-height: 160px;
+  margin-top: var(--ye-spacing-rem-small);
 }
