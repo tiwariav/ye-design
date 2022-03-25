@@ -6,6 +6,8 @@
 
 .placeholder {
   width: 100%;
+  max-width: 200px;
+  margin: auto;
   padding: var(--ye-button-padding);
   color: inherit;
   line-height: inherit;
@@ -50,9 +52,14 @@
   display: flex;
   align-items: center;
   max-width: 100%;
-  margin-top: var(--ye-spacing-em-normal);
+  margin: var(--ye-spacing-em-normal) 0;
+  padding: var(--ye-spacing-rem-small);
   font-size: var(--ye-font-size-xsmall);
   text-align: left;
+  border-color: var(--ye-color-border);
+  border-style: solid;
+  border-width: var(--ye-button-outline-border-width);
+  border-radius: 8px;
 }
 
 .list-item-progress {
