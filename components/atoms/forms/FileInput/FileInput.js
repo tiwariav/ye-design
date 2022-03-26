@@ -184,7 +184,8 @@ export default function FileInput({
                           handleDataChange(event, item, dataIndex)
                         }
                         defaultValue={dataItem.value}
-                        label={dataItem.placeholder}
+                        label={dataItem.label}
+                        placeholder={dataItem.placeholder}
                         type={dataItem.type || "text"}
                       />
                     ) : dataItem.type === "preview" ? (
