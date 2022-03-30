@@ -41,6 +41,6 @@
   width: 2.25em;
   color: var(--ye-color-primary);
   font-size: 1em;
-  border-radius: 5px;
+  border-radius: var(--ye-radius-small);
   transform-origin: right;
 }

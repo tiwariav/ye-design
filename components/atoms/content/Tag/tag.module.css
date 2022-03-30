@@ -3,7 +3,7 @@
   align-items: center;
   padding: var(--ye-spacing-em-tiny) var(--ye-spacing-em-xsmall);
   background-color: var(--ye-color-black-10);
-  border-radius: var(--ye-em-base);
+  border-radius: var(--ye-radius-xlarge);
 }
 
 .icon {

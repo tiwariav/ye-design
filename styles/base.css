@@ -133,10 +133,12 @@
   --ye-spacing-rem-xhuge: calc(20 * var(--ye-rem-unit));
 
   /* radii */
+  --ye-radius-tiny: var(--ye-em-unit);
   --ye-radius-small: var(--ye-spacing-em-tiny);
   --ye-radius-normal: var(--ye-spacing-em-xsmall);
   --ye-radius-large: var(--ye-spacing-em-small);
   --ye-radius-xlarge: var(--ye-spacing-em-normal);
+  --ye-radius-circle: 100%;
 
   /* ====== */
 
@@ -271,7 +273,7 @@ code {
   /* Works on Chrome/Edge/Safari */
   &::-webkit-scrollbar-track {
     background-color: #f5f5f5;
-    border-radius: 8px;
+    border-radius: var(--ye-radius-normal);
     box-shadow: inset 0 0 6px var(--ye-color-black-10);
   }
 
@@ -282,7 +284,7 @@ code {
 
   &::-webkit-scrollbar-thumb {
     background-color: var(--ye-color-primary);
-    border-radius: 8px;
+    border-radius: var(--ye-radius-normal);
     box-shadow: inset 0 0 6px var(--ye-color-black-10);
   }
 }

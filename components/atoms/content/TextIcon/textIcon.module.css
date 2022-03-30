@@ -7,5 +7,5 @@
   color: var(--ye-color-white);
   font-size: var(--ye-font-size-tiny);
   background-color: var(--ye-color-black-10);
-  border-radius: var(--ye-em-xlarge);
+  border-radius: var(--ye-radius-normal);
 }

@@ -59,7 +59,7 @@
   border-color: var(--ye-color-border);
   border-style: solid;
   border-width: var(--ye-button-outline-border-width);
-  border-radius: 8px;
+  border-radius: var(--ye-radius-normal);
 }
 
 .list-item-progress {
@@ -92,7 +92,7 @@
 }
 
 .spinner {
-  border-radius: var(--ye-spacing-em-tiny);
+  border-radius: var(--ye-radius-small);
 }
 
 .label {

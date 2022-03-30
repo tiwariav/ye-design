@@ -25,11 +25,11 @@
 }
 
 .is-basic {
-  border-radius: var(--ye-spacing-em-xsmall);
+  border-radius: var(--ye-radius-normal);
 }
 
 .is-circular {
-  border-radius: 100%;
+  border-radius: var(--ye-radius-circle);
 }
 
 .spinner {

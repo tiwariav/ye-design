@@ -135,7 +135,7 @@
 }
 
 .spinner {
-  border-radius: var(--ye-spacing-em-tiny);
+  border-radius: var(--ye-radius-small);
 }
 
 .errors {

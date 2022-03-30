@@ -1,7 +1,7 @@
 .card {
   position: relative;
   background-color: var(--ye-color-background-card);
-  border-radius: var(--ye-spacing-em-tiny);
+  border-radius: var(--ye-radius-small);
 }
 
 .is-basic {

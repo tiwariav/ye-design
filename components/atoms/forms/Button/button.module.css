@@ -200,7 +200,7 @@
 .effect-ripple::before {
   position: absolute;
   display: block;
-  border-radius: 100%;
+  border-radius: var(--ye-radius-circle);
   transform: translate(-50%, -50%) scale(1);
   transition-timing-function: ease-out;
   transition-duration: 0.5s;

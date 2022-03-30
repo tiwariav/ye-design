@@ -5,7 +5,7 @@
 
 .button-open {
   background-color: var(--ye-color-black-10);
-  border-radius: var(--ye-spacing-em-xsmall);
+  border-radius: var(--ye-radius-normal);
 }
 
 .menu-container {
@@ -24,7 +24,7 @@
   overflow: auto;
   text-align: left;
   background-color: var(--ye-color-background);
-  border-radius: var(--ye-spacing-em-tiny);
+  border-radius: var(--ye-radius-small);
   box-shadow: var(--ye-shadow-floating-high);
 
   & .container {
