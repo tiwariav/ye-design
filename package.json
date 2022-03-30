@@ -37,7 +37,6 @@
     "react-content-loader": "^6.2.0",
     "react-icons": "^4.3.1",
     "react-intersection-observer": "^8.33.1",
-    "react-is": "^17.0.2",
     "react-use": "^17.3.2"
   },
   "devDependencies": {
@@ -50,8 +49,8 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-router-dom": "^5.3.3",
-    "antd": "^4.19.3",
-    "react-hook-form": "^7.28.1"
+    "antd": "^4.19.4",
+    "react-hook-form": "^7.29.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
