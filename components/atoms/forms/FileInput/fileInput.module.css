@@ -108,10 +108,3 @@
   width: 48px;
   height: 48px;
 }
-
-.button-container{
-  display: flex;
-  gap: var(--ye-spacing-rem-small);
-  justify-content: center;
-  margin-top: var(--ye-spacing-rem-small);
-}

@@ -33,7 +33,7 @@ export default function FileInput({
   updateFiles,
   uploadFiles,
   placeholder = "Browse",
-  callback,
+  onChange,
   ...props
 }) {
   const [hasFocus, setHasFocus] = useState(false);
@@ -55,7 +55,7 @@ export default function FileInput({
   const handleChange = (event) => {
     if (event.target.files.length > 0) {
       updateFiles([...event.target.files], "add");
-      if (callback) callback(true);
+      if (onChange) onChange(true);
     }
   };
 
