@@ -55,7 +55,9 @@ export default function FileInput({
   const handleChange = (event) => {
     if (event.target.files.length > 0) {
       updateFiles([...event.target.files], "add");
-      if (onChange) onChange(true);
+    }
+    if (onChange) {
+      onChange(event);
     }
   };
 
