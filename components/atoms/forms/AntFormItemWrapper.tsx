@@ -1,13 +1,7 @@
 import { Form } from "antd";
 import clsx from "clsx";
 import { isDate } from "lodash-es";
-import React, {
-  ReactElement,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { ReactElement, useCallback, useMemo, useState } from "react";
 import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps {
@@ -32,7 +26,6 @@ export default function AntFormItemWrapper({
 }: AntFormItemWrapperProps): ReactElement {
   const [virgin, setVirgin] = useState(true);
   const [validateTrigger, setValidateTrigger] = useState("onChange");
-  const valueRef = useRef<any>();
 
   const handleBlur: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
