@@ -7,8 +7,9 @@
 ]}] */
 
 import clsx from "clsx";
+import { isFunction, isObject } from "lodash-es";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import { forwardRef, useCallback, useEffect, useRef } from "react";
 import { useMouseHovered } from "react-use";
 import Spinner from "../../content/Spinner/Spinner";
 // eslint-disable-next-line css-modules/no-unused-class
@@ -78,107 +79,141 @@ const setNeuProperties = (node, options = {}) => {
 /**
  * Primary UI component for user interaction
  */
-export default function Button({
-  size,
-  iconBefore,
-  iconAfter,
-  label,
-  variant,
-  effects,
-  children,
-  className,
-  disabled,
-  spacing,
-  onClick,
-  isBusy,
-  isFullWidth,
-  neuOptions,
-  ...props
-}) {
-  const ref = React.useRef(null);
-  const mouseData = useMouseHovered(ref, { bound: true, whenHovered: true });
+const Button = forwardRef(
+  (
+    {
+      size,
+      iconBefore,
+      iconAfter,
+      label,
+      variant,
+      effects,
+      children,
+      className,
+      disabled,
+      spacing,
+      onClick,
+      isBusy,
+      isFullWidth,
+      neuOptions,
+      ...props
+    },
+    propRef
+  ) => {
+    const innerRef = useRef(null);
+    const mouseData = useMouseHovered(innerRef, {
+      bound: true,
+      whenHovered: true,
+    });
 
-  useEffect(() => {
-    if (ref.current && effects.length > 0 && effects.includes("ripple")) {
-      setRippleProperties(ref.current, true);
-    }
-  }, [effects]);
-
-  useEffect(() => {
-    if (ref.current) {
-      if (effects.length > 0) {
-        if (effects.includes("cursor-tracking")) {
-          setTrackingProperties(ref.current, mouseData.elX, mouseData.elY);
+    const setRef = useCallback(
+      (node) => {
+        if (propRef) {
+          if (isFunction(propRef)) {
+            propRef(node);
+          } else if (isObject(propRef)) {
+            propRef.current = node;
+          }
+          innerRef.current = node;
         }
-        if (effects.includes("ripple")) {
-          setRippleProperties(ref.current, true);
+      },
+      [propRef]
+    );
+
+    useEffect(() => {
+      if (
+        innerRef.current &&
+        effects.length > 0 &&
+        effects.includes("ripple")
+      ) {
+        setRippleProperties(innerRef.current, true);
+      }
+    }, [effects, innerRef]);
+
+    useEffect(() => {
+      if (innerRef.current) {
+        if (effects.length > 0) {
+          if (effects.includes("cursor-tracking")) {
+            setTrackingProperties(
+              innerRef.current,
+              mouseData.elX,
+              mouseData.elY
+            );
+          }
+          if (effects.includes("ripple")) {
+            setRippleProperties(innerRef.current, true);
+          }
+        }
+        if (variant === "neu") {
+          setNeuProperties(innerRef.current, neuOptions);
         }
       }
-      if (variant === "neu") {
-        setNeuProperties(ref.current, neuOptions);
-      }
-    }
-  }, [effects, mouseData, variant, neuOptions]);
+    }, [effects, mouseData, variant, neuOptions, innerRef]);
 
-  const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
+    const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={clsx(
-        formStyles.control,
-        formStyles[`is-${variant}`],
-        styles.root,
-        styles[`is-${size}`],
-        styles[`is-${variant}`],
-        {
-          [styles[`spacing-${spacing}`]]: spacing,
-          // eslint-disable-next-line css-modules/no-undef-class
-          [styles.hasFocus]: isBusy,
-          [styles.isFullWidth]: isFullWidth,
-          [styles.disabled]: disabled,
-        },
-        ...effectClasses,
-        className
-      )}
-      onClick={(event) => {
-        if (effects.includes("ripple")) {
-          setRippleProperties(
-            ref.current,
-            false,
-            event.nativeEvent.offsetX,
-            event.nativeEvent.offsetY
-          );
-        }
-        if (onClick) {
-          onClick(event);
-        }
-      }}
-      disabled={disabled || isBusy}
-      {...props}
-    >
-      {iconBefore ? (
-        <span className={clsx(formStyles.icon, styles.icon)}>{iconBefore}</span>
-      ) : null}
-      {(iconBefore || iconAfter) && (label || children) ? (
-        <span>
-          {label}
-          {children}
-        </span>
-      ) : (
-        <>
-          {label}
-          {children}
-        </>
-      )}
-      {iconAfter ? (
-        <span className={clsx(formStyles.icon, styles.icon)}>{iconAfter}</span>
-      ) : null}
-      {isBusy ? <Spinner className={styles.spinner} /> : null}
-    </button>
-  );
-}
+    return (
+      <button
+        ref={setRef}
+        type="button"
+        className={clsx(
+          formStyles.control,
+          formStyles[`is-${variant}`],
+          styles.root,
+          styles[`is-${size}`],
+          styles[`is-${variant}`],
+          {
+            [styles[`spacing-${spacing}`]]: spacing,
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.hasFocus]: isBusy,
+            [styles.isFullWidth]: isFullWidth,
+            [styles.disabled]: disabled,
+          },
+          ...effectClasses,
+          className
+        )}
+        onClick={(event) => {
+          if (effects.includes("ripple")) {
+            setRippleProperties(
+              ref.current,
+              false,
+              event.nativeEvent.offsetX,
+              event.nativeEvent.offsetY
+            );
+          }
+          if (onClick) {
+            onClick(event);
+          }
+        }}
+        disabled={disabled || isBusy}
+        {...props}
+      >
+        {iconBefore ? (
+          <span className={clsx(formStyles.icon, styles.icon)}>
+            {iconBefore}
+          </span>
+        ) : null}
+        {(iconBefore || iconAfter) && (label || children) ? (
+          <span>
+            {label}
+            {children}
+          </span>
+        ) : (
+          <>
+            {label}
+            {children}
+          </>
+        )}
+        {iconAfter ? (
+          <span className={clsx(formStyles.icon, styles.icon)}>
+            {iconAfter}
+          </span>
+        ) : null}
+        {isBusy ? <Spinner className={styles.spinner} /> : null}
+      </button>
+    );
+  }
+);
 
 Button.propTypes = {
   /**
@@ -228,3 +263,5 @@ Button.defaultProps = {
   size: "medium",
   onClick: undefined,
 };
+
+export default Button;
