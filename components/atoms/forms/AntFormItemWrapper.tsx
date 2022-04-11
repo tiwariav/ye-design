@@ -1,6 +1,6 @@
 import { Form } from "antd";
 import clsx from "clsx";
-import { isDate } from "lodash-es";
+import { isDate, isObject } from "lodash-es";
 import React, { ReactElement, useCallback, useMemo, useState } from "react";
 import styles from "./antFormItemWrapper.module.css";
 
@@ -69,7 +69,7 @@ export default function AntFormItemWrapper({
       className={clsx(styles.root, { [styles.virgin]: virgin }, className)}
       rules={rules}
       getValueFromEvent={(event) => {
-        return isDate(event)
+        return !isObject(event) || isDate(event)
           ? event
           : event.value ??
               (event.target.id?.startsWith("numberInputText")
