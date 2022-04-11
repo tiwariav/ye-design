@@ -7,10 +7,10 @@
 ]}] */
 
 import clsx from "clsx";
-import { isFunction, isObject } from "lodash-es";
 import PropTypes from "prop-types";
-import { forwardRef, useCallback, useEffect, useRef } from "react";
+import { forwardRef, useEffect } from "react";
 import { useMouseHovered } from "react-use";
+import { usePropRef } from "../../../../hooks";
 import Spinner from "../../content/Spinner/Spinner";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
@@ -100,25 +100,12 @@ const Button = forwardRef(
     },
     propRef
   ) => {
-    const innerRef = useRef(null);
+    const {innerRef,setInnerRef} = usePropRef(propRef);
+
     const mouseData = useMouseHovered(innerRef, {
       bound: true,
       whenHovered: true,
     });
-
-    const setRef = useCallback(
-      (node) => {
-        if (propRef) {
-          if (isFunction(propRef)) {
-            propRef(node);
-          } else if (isObject(propRef)) {
-            propRef.current = node;
-          }
-          innerRef.current = node;
-        }
-      },
-      [propRef]
-    );
 
     useEffect(() => {
       if (
@@ -154,7 +141,7 @@ const Button = forwardRef(
 
     return (
       <button
-        ref={setRef}
+        ref={setInnerRef}
         type="button"
         className={clsx(
           formStyles.control,
@@ -175,7 +162,7 @@ const Button = forwardRef(
         onClick={(event) => {
           if (effects.includes("ripple")) {
             setRippleProperties(
-              ref.current,
+              innerRef.current,
               false,
               event.nativeEvent.offsetX,
               event.nativeEvent.offsetY
