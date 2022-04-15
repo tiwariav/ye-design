@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { forwardRef, useEffect } from "react";
 import { useMouseHovered } from "react-use";
 import { usePropRef } from "../../../../hooks";
+import { overrideStyleProperty } from "../../../../lib/css";
 import Spinner from "../../content/Spinner/Spinner";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
@@ -31,12 +32,6 @@ const variantOptions = [
 const cursorOptions = ["pointer", "not-allowed"];
 const effectOptions = ["cursor-tracking", "ripple"];
 
-function overrideStyleProperty(node, name, value) {
-  if (value) {
-    node.style.setProperty(name, value);
-  }
-}
-
 const setRippleProperties = (node, initial, x = 0, y = 0) => {
   node.style.setProperty("--ye-effect-ripple-x", x + "px");
   node.style.setProperty("--ye-effect-ripple-y", y + "px");
@@ -55,24 +50,24 @@ const setTrackingProperties = (node, x = 0, y = 0) => {
 
 const setNeuProperties = (node, options = {}) => {
   overrideStyleProperty(
-    node,
     "--ye-color-neu-background-dark",
-    options.colors?.backgroundDark
+    options.colors?.backgroundDark,
+    node
   );
   overrideStyleProperty(
-    node,
     "--ye-color-neu-background-light",
-    options.colors?.backgroundLight
+    options.colors?.backgroundLight,
+    node
   );
   overrideStyleProperty(
-    node,
     "--ye-color-neu-shadow-dark",
-    options.colors?.shadowDark
+    options.colors?.shadowDark,
+    node
   );
   overrideStyleProperty(
-    node,
     "--ye-color-neu-shadow-light",
-    options.colors?.shadowLight
+    options.colors?.shadowLight,
+    node
   );
 };
 
@@ -100,7 +95,7 @@ const Button = forwardRef(
     },
     propRef
   ) => {
-    const {innerRef,setInnerRef} = usePropRef(propRef);
+    const { innerRef, setInnerRef } = usePropRef(propRef);
 
     const mouseData = useMouseHovered(innerRef, {
       bound: true,
