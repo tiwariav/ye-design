@@ -13,7 +13,8 @@ const NumberInput = forwardRef(
     }, [id]);
 
     const formatValue = useCallback((value = "") => {
-      const unformattedNumber = String(value).split(",").join("");
+      const unformattedNumber =
+        value === 0 ? null : String(value).split(",").join("");
       const newFormattedNumber =
         unformattedNumber === "-"
           ? "-"
