@@ -4,6 +4,7 @@ import { uniqueId } from "lodash-es";
 import PropTypes from "prop-types";
 import { forwardRef, useMemo, useState } from "react";
 import ContentLoader from "react-content-loader";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useMeasureInput } from "../../../../hooks";
 import { isEmpty } from "../../../../lib/utils";
 import Spinner from "../../content/Spinner/Spinner";
@@ -41,12 +42,13 @@ const TextInput = forwardRef(
       variant,
       required,
       requiredText,
+      type,
       ...props
     },
     ref
   ) => {
     const [hasFocus, setHasFocus] = useState(false);
-
+    const [showPassword, setShowPassword] = useState(false);
     const inputID = useMemo(() => id || uniqueId("textInput_"), [id]);
 
     const handleFocus = (event) => {
@@ -98,7 +100,7 @@ const TextInput = forwardRef(
           ) : null}
           <input
             id={inputID}
-            type="text"
+            type={showPassword ? "text" : type ?? "text"}
             className={clsx(
               formStyles.control,
               formStyles[`is-${variant}`],
@@ -135,6 +137,16 @@ const TextInput = forwardRef(
               <span className={clsx(formStyles.icon)}>{iconAfter}</span>
             </span>
           ) : null}
+          {type === "password" ? (
+            <span className={clsx(styles.iconWrapper, styles.iconRight)}>
+              <span
+                onClick={() => setShowPassword((previous) => !previous)}
+                className={clsx(formStyles.icon)}
+              >
+                {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+              </span>
+            </span>
+          ) : null}
           {isLoading ? (
             <ContentLoader
               viewBox={`0 0 100 100`}
@@ -146,13 +158,7 @@ const TextInput = forwardRef(
           ) : null}
           {isBusy ? <Spinner className={styles.spinner} /> : null}
         </div>
-        {errors && errors.length > 0 ? (
-          <div className={styles.errors}>
-            {errors.map((message) => (
-              <p className={styles.errorItem}>{message}</p>
-            ))}
-          </div>
-        ) : null}
+        {}
       </div>
     );
   }
