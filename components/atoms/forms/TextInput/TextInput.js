@@ -158,7 +158,13 @@ const TextInput = forwardRef(
           ) : null}
           {isBusy ? <Spinner className={styles.spinner} /> : null}
         </div>
-        {}
+        {errors && errors.length > 0 ? (
+          <div className={styles.errors}>
+            {errors.map((message) => (
+              <p className={styles.errorItem}>{message}</p>
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   }
