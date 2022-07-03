@@ -34,6 +34,7 @@ export default function FileInput({
   uploadFiles,
   placeholder = "Browse",
   onChange,
+  passwordStyle,
   ...props
 }) {
   const [hasFocus, setHasFocus] = useState(false);
@@ -181,7 +182,10 @@ export default function FileInput({
                 ? item.data.map((dataItem, dataIndex) =>
                     dataItem.type === "password" ? (
                       <TextInput
-                        inputClassName={styles.listItemDataInput}
+                        inputClassName={clsx(
+                          styles.listItemDataInput,
+                          passwordStyle
+                        )}
                         key={index}
                         size="small"
                         onChange={(event) =>
