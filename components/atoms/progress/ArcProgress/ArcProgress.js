@@ -85,7 +85,7 @@ export default function ArcProgress({
       </div>
       <div className={styles.content}>
         <div id={`anime_text__${animeId}`} className={clsx(styles.text)}>
-          {text ? text : percentage}
+          {text || percentage}
         </div>
         {children}
       </div>
