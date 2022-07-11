@@ -111,9 +111,11 @@ const TextInput = forwardRef(
               inputClassName
             )}
             placeholder={
-              variant === "material" && (!isEmpty(value) || hasFocus)
-                ? placeholder
-                : ""
+              variant === "material"
+                ? !isEmpty(value) || hasFocus
+                  ? placeholder
+                  : ""
+                : placeholder
             }
             required={required}
             onFocus={handleFocus}
