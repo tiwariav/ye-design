@@ -48,7 +48,6 @@
 
   &.has-focus,
   &:focus {
-    color: var(--ye-color-background);
     background-color: var(--ye-color-text);
     box-shadow: none;
   }
