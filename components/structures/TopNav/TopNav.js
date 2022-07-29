@@ -26,6 +26,7 @@ export default function TopNav({
   toggleDrawer,
   variant,
   withSideNav,
+  hideRightIcon = false,
   ...props
 }) {
   const { width } = useWindowSize();
@@ -74,7 +75,7 @@ export default function TopNav({
             <div className={styles.logo}>{logo}</div>
           </div>
         ) : null}
-        {smallerWidth ? (
+        {!hideRightIcon && smallerWidth ? (
           <div className={clsx(styles.contentMenuIcon)}>
             {rightNavIcon || (
               <Button variant="trans" spacing="none" onClick={toggleDrawer}>
