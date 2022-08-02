@@ -1,11 +1,9 @@
-import path from "node:path";
 import {
   AiFillLeftCircle,
   AiFillRightCircle,
   AiOutlineEye,
   AiOutlineSearch,
 } from "react-icons/ai";
-import { getStoryName } from "../../../../utils/storybook";
 import TextInput from "./TextInput";
 
 const iconMap = {
@@ -16,7 +14,6 @@ const iconMap = {
 };
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: TextInput,
   argTypes: {
     icon: { control: { type: "select", options: Object.keys(iconMap) } },

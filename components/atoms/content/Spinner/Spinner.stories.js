@@ -1,9 +1,6 @@
-import path from "node:path";
-import { getStoryName } from "../../../../utils/storybook";
 import SpinnerComponent from "./Spinner";
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: SpinnerComponent,
   argTypes: {
     color: { control: "color" },

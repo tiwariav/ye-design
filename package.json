@@ -15,6 +15,9 @@
     "./components/atoms/*": "./components/atoms/*/index.js",
     "./components/*": "./components/*/index.js",
     "./hooks": "./hooks/index.js",
+    "./lib/cjs": {
+      "require": "./lib/cjs/index.cjs"
+    },
     "./lib/*": "./lib/*.js",
     "./styles/css/*": "./styles/*.css",
     "./styles/themes/css/*": "./styles/themes/*.css",

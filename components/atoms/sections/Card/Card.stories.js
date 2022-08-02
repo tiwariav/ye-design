@@ -1,5 +1,3 @@
-import path from "node:path";
-import { getStoryName } from "../../../../utils/storybook";
 import { Basic as ImageBasic } from "../../content/Image/Image.stories";
 import Text from "../../content/Text/Text";
 import Card from "./Card";
@@ -7,7 +5,6 @@ import Card from "./Card";
 const imageMap = { None: null, ImageBasic };
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: Card,
   argTypes: {
     image: { control: { type: "select", options: Object.keys(imageMap) } },

@@ -1,9 +1,7 @@
-import path from "node:path";
 import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { GiWitchFlight } from "react-icons/gi";
 import { IoLogoNodejs } from "react-icons/io";
-import { getStoryName } from "../../../utils/storybook";
 import { Button, TextInput } from "../../atoms/forms";
 import TopNav from "./TopNav";
 import TopNavItem from "./TopNavItem";
@@ -45,7 +43,6 @@ const itemsMap = {
 };
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: TopNav,
   argTypes: {
     logo: { control: { type: "select", options: Object.keys(iconMap) } },

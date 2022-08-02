@@ -1,12 +1,9 @@
-import path from "node:path";
-import { getStoryName } from "../../../utils/storybook";
 import Image from "../../atoms/content/Image/Image";
 import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories";
 import Container from "../../atoms/sections/Container/Container";
 import ProfileTemplate from "./Profile";
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: ProfileTemplate,
 };
 

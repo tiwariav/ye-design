@@ -1,12 +1,9 @@
-import path from "node:path";
 import { AiOutlineBulb, AiOutlineHome } from "react-icons/ai";
-import { getStoryName } from "../../../utils/storybook";
 import Anchor from "../../atoms/content/Anchor/Anchor";
 import SideNav from "./SideNav";
 import SideNavGroup from "./SideNavGroup";
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: SideNav,
   subcomponents: { SidenavGroup: SideNavGroup, Anchor },
 };

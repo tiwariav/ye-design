@@ -1,13 +1,10 @@
-import path from "node:path";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { GiBowman, GiCaveman } from "react-icons/gi";
-import { getStoryName } from "../../../../utils/storybook";
 import Anchor from "./Anchor";
 
 const iconMap = { AiFillLeftCircle, AiFillRightCircle, GiBowman, GiCaveman };
 
 const metadata = {
-  title: getStoryName(path.dirname(import.meta.url)),
   component: Anchor,
   argTypes: {
     iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },
