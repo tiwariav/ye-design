@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import styles from "./image.module.css";
 import ImageLoader from "./ImageLoader";

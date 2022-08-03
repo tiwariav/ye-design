@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { uniqueId } from "lodash-es";
-import React, { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import { SVGPathFlag, SVGPathPin } from "../../../../svg/paths";
 import { VARIANT_OPTIONS } from "./options";
 import styles from "./symbols.module.css";
