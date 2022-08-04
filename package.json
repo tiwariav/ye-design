@@ -27,10 +27,13 @@
     "./utils/*": "./utils/*/index.js"
   },
   "scripts": {
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 6007",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "animejs": "^3.2.1",
+    "chromatic": "^6.7.3",
     "clsx": "^1.2.1",
     "lodash-es": "^4.17.21",
     "micromatch": "^4.0.5",
@@ -40,22 +43,42 @@
     "react-content-loader": "^6.2.0",
     "react-icons": "^4.4.0",
     "react-intersection-observer": "^9.4.0",
-    "react-use": "^17.4.0"
+    "react-use": "^17.4.0",
+    "wo-library": "workspace:*"
   },
   "devDependencies": {
-    "@mdx-js/react": "^2.1.2",
-    "@storybook/addon-docs": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
+    "@babel/core": "^7.18.10",
+    "@gt-web/browserslist-config": "workspace:*",
+    "@mdx-js/react": "^1.6.22",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-docs": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-jest": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-toolbars": "^6.5.10",
+    "@storybook/builder-webpack4": "^6.5.10",
+    "@storybook/builder-webpack5": "^6.5.10",
+    "@storybook/manager-webpack4": "^6.5.10",
+    "@storybook/manager-webpack5": "^6.5.10",
+    "@storybook/react": "^6.5.10",
+    "@storybook/testing-library": "^0.0.13",
     "@testing-library/react": "^13.3.0",
+    "@types/babel__core": "^7",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.3",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "antd": "^4.22.3",
+    "babel-loader": "^8.2.5",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.7.2",
     "react-hook-form": "^7.34.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
