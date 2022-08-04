@@ -15,7 +15,7 @@ const Template = ({ width, ...args }) => (
 export const Basic = Template.bind({});
 Basic.args = {
   width: 160,
-  src: "https://picsum.photos/160",
+  src: `${process.env.STORYBOOK_IMAGE_SRC}/160`,
 };
 
 export const Circular = Template.bind({});

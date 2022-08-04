@@ -16,7 +16,7 @@ const Template = ({ coverImage, ...args }) => {
       contentLeft={
         <Container style={{ textAlign: "center" }}>
           <Image
-            src="https://picsum.photos/160"
+            src={`${process.env.STORYBOOK_IMAGE_SRC}/160`}
             style={{ width: 160, margin: "auto" }}
           />
           <h1>Arvind Tiwari</h1>
@@ -41,5 +41,5 @@ const Template = ({ coverImage, ...args }) => {
 
 export const Profile = Template.bind({});
 Profile.args = {
-  coverImage: "https://picsum.photos/1600/400",
+  coverImage: `${process.env.STORYBOOK_IMAGE_SRC}/1600/400`,
 };
