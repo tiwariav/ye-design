@@ -1,8 +1,6 @@
-import {
-  globalTypes,
-  parameters,
-  registerResults,
-} from "wo-library/lib/storybook";
+import { globalTypes, parameters } from "wo-library/lib/storybook";
+import { withTests } from "@storybook/addon-jest";
+import { addDecorator } from "@storybook/react";
 import { withThemeProvider } from "../lib/storybook";
 import "../styles/base.css";
 import defaultThemeStyleOptions from "../styles/themes";
@@ -12,4 +10,12 @@ export { parameters, globalTypes };
 
 export const decorators = [withThemeProvider];
 
-registerResults("../reports/test-report.json");
+let results;
+
+try {
+  results = "../reports/test-report.json";
+} catch {
+  console.log("reports/test-report.json does not exist, skipping.");
+}
+
+if (results) addDecorator(withTests({ results }));
