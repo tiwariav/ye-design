@@ -147,6 +147,10 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
+
+  @media (--media-max-sm) {
+    align-items: flex-start;
+  }
 }
 
 .is-logo-hanging {
