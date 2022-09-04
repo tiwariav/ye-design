@@ -22,11 +22,11 @@ export default function HookFormInputWrapper({
         fieldState: { error },
       }) =>
         React.cloneElement(children, {
-          onChange,
-          onBlur,
-          value,
-          ref,
           error,
+          onBlur,
+          onChange,
+          ref,
+          value,
         })
       }
       {...props}

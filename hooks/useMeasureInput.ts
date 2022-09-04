@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { cssVariable } from "../lib/css";
 
 export default function useMeasureInput() {
-  const labelRef = useRef();
+  const labelRef = useRef<HTMLLabelElement>();
   const [extraStyles, setExtraStyles] = useState({});
 
   useEffect(() => {
@@ -16,8 +16,8 @@ export default function useMeasureInput() {
       if (lineHeightPixel < labelHeight) {
         setExtraStyles({
           input: {
-            paddingTop: labelHeight - lineHeightPixel,
             height: labelHeight,
+            paddingTop: labelHeight - lineHeightPixel,
           },
         });
       }

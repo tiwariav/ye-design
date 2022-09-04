@@ -5,7 +5,7 @@ import SideNavGroup from "./SideNavGroup";
 
 const metadata = {
   component: SideNav,
-  subcomponents: { SidenavGroup: SideNavGroup, Anchor },
+  subcomponents: { Anchor, SidenavGroup: SideNavGroup },
 };
 
 export default metadata;

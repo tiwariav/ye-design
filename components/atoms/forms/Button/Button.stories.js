@@ -5,11 +5,11 @@ import Button from "./Button";
 const iconMap = { AiFillLeftCircle, AiFillRightCircle, GiBowman, GiCaveman };
 
 const metadata = {
-  component: Button,
   argTypes: {
-    iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },
-    iconBefore: { control: { type: "select", options: Object.keys(iconMap) } },
+    iconAfter: { control: { options: Object.keys(iconMap), type: "select" } },
+    iconBefore: { control: { options: Object.keys(iconMap), type: "select" } },
   },
+  component: Button,
 };
 
 export default metadata;
@@ -28,8 +28,8 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  label: "Button",
   effects: ["cursor-tracking", "ripple"],
+  label: "Button",
 };
 Basic.parameters = {
   jest: ["Button.test.js"],
@@ -50,6 +50,6 @@ Dashed.args = {
 export const withIcon = Template.bind({});
 withIcon.args = {
   ...Basic.args,
-  iconBefore: "AiFillLeftCircle",
   iconAfter: "AiFillRightCircle",
+  iconBefore: "AiFillLeftCircle",
 };

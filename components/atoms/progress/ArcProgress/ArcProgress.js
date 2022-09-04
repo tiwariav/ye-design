@@ -44,14 +44,14 @@ export default function ArcProgress({
       duration: 3000,
     };
     anime({
-      targets: `#anime_indicator__${animeId}`,
       rotateZ: [0, (180 * percentage) / 100],
+      targets: `#anime_indicator__${animeId}`,
       ...animeProps,
     });
     anime({
+      round: 1,
       targets: `#anime_text__${animeId}`,
       textContent: [0, percentage],
-      round: 1,
       ...animeProps,
       easing: "easeOutElastic(1, 2)",
     });

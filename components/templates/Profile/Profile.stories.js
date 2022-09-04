@@ -17,7 +17,7 @@ const Template = ({ coverImage, ...args }) => {
         <Container style={{ textAlign: "center" }}>
           <Image
             src={`${process.env.STORYBOOK_IMAGE_SRC}/160`}
-            style={{ width: 160, margin: "auto" }}
+            style={{ margin: "auto", width: 160 }}
           />
           <h1>Arvind Tiwari</h1>
           <p>

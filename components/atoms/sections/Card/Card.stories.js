@@ -2,13 +2,13 @@ import { Basic as ImageBasic } from "../../content/Image/Image.stories";
 import Text from "../../content/Text/Text";
 import Card from "./Card";
 
-const imageMap = { None: null, ImageBasic };
+const imageMap = { ImageBasic, None: null };
 
 const metadata = {
-  component: Card,
   argTypes: {
-    image: { control: { type: "select", options: Object.keys(imageMap) } },
+    image: { control: { options: Object.keys(imageMap), type: "select" } },
   },
+  component: Card,
 };
 
 export default metadata;
@@ -34,23 +34,23 @@ const Template = ({ image, width, children, loading, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  width: 160,
   children: "Card content",
   loading: false,
+  width: 160,
 };
 
 export const WithImage = Template.bind({});
 WithImage.args = {
   ...Basic.args,
-  variant: "borderless",
   image: "ImageBasic",
+  variant: "borderless",
 };
 
 export const Horizontal = Template.bind({});
 Horizontal.args = {
   children: "Card content",
-  variant: "borderless",
   image: "ImageBasic",
   layout: "horizontal",
   loading: false,
+  variant: "borderless",
 };

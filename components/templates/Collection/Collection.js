@@ -65,13 +65,14 @@ function Collection({
 
 Collection.propTypes = {
   /**
-   * Layout variant
-   */
-  variant: PropTypes.oneOf(["grid", "list"]),
-  /**
    * No.of fixed columns
    */
   columns: PropTypes.number,
+
+  /**
+   * Layout variant
+   */
+  variant: PropTypes.oneOf(["grid", "list"]),
 };
 
 Collection.defaultProps = {

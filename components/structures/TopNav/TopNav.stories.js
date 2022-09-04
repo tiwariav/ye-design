@@ -6,7 +6,7 @@ import { Button, TextInput } from "../../atoms/forms";
 import TopNav from "./TopNav";
 import TopNavItem from "./TopNavItem";
 
-const iconMap = { GiWitchFlight, IoLogoNodejs, FaMicrophoneAlt };
+const iconMap = { FaMicrophoneAlt, GiWitchFlight, IoLogoNodejs };
 const itemsMap = {
   Button: (
     <TopNavItem>
@@ -43,16 +43,16 @@ const itemsMap = {
 };
 
 const metadata = {
-  component: TopNav,
   argTypes: {
-    logo: { control: { type: "select", options: Object.keys(iconMap) } },
     contentLeft: {
-      control: { type: "inline-check", options: Object.keys(itemsMap) },
+      control: { options: Object.keys(itemsMap), type: "inline-check" },
     },
     contentRight: {
-      control: { type: "inline-check", options: Object.keys(itemsMap) },
+      control: { options: Object.keys(itemsMap), type: "inline-check" },
     },
+    logo: { control: { options: Object.keys(iconMap), type: "select" } },
   },
+  component: TopNav,
 };
 
 export default metadata;
@@ -71,9 +71,9 @@ const Template = ({ logo, contentLeft, contentRight, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  logo: "GiWitchFlight",
   contentLeft: ["SearchInput"],
   contentRight: ["ButtonWithSeparator", "Button"],
+  logo: "GiWitchFlight",
 };
 
 export const Transparent = Template.bind({});
@@ -84,7 +84,7 @@ Transparent.args = {
 
 export const Expanded = Template.bind({});
 Expanded.argTypes = {
-  isShrinking: { control: { type: "range", min: 0, max: 72, step: 1 } },
+  isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
 };
 Expanded.args = {
   ...Basic.args,
@@ -94,7 +94,7 @@ Expanded.args = {
 
 export const HangingLogo = Template.bind({});
 HangingLogo.argTypes = {
-  isShrinking: { control: { type: "range", min: 0, max: 72, step: 1 } },
+  isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
 };
 HangingLogo.args = {
   ...Basic.args,

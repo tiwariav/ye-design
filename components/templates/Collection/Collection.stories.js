@@ -11,8 +11,8 @@ const Template = ({ content, cardWidth, variant, ...args }) => {
   const cardLayout = variant === "grid" ? "vertical" : "horizontal";
   const itemArgs = {
     ...CardWithImage.args,
-    style: { width: cardWidth },
     layout: cardLayout,
+    style: { width: cardWidth },
   };
   return (
     <Collection {...args} variant={variant}>
@@ -29,30 +29,30 @@ const Template = ({ content, cardWidth, variant, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  title: "A list of items",
   filter: [
     {
-      name: "Release Date",
       key: "release_date",
+      name: "Release Date",
       options: ["this week", "this month", "this year"],
     },
     {
-      name: "Language",
       key: "language",
+      name: "Language",
       options: ["English"],
     },
   ],
   sort: [
-    { name: "Release Date", key: "release_date" },
-    { name: "Popularity", key: "popularity" },
+    { key: "release_date", name: "Release Date" },
+    { key: "popularity", name: "Popularity" },
   ],
+  title: "A list of items",
 };
 
 export const FixedColumns = Template.bind({});
 FixedColumns.args = {
   ...Basic.args,
-  title: "A list of items, with fixed number of columns",
   columns: 2,
+  title: "A list of items, with fixed number of columns",
 };
 
 export const Grid = Template.bind({});

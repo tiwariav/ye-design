@@ -162,29 +162,34 @@ const TextInput = forwardRef(
 
 TextInput.propTypes = {
   /**
-   * How large should the button be?
+   * Icon element
    */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  iconAfter: PropTypes.element,
+
   /**
    * Icon element
    */
   iconBefore: PropTypes.element,
-  /**
-   * Icon element
-   */
-  iconAfter: PropTypes.element,
-  /**
-   * Label text
-   */
-  label: PropTypes.string,
-  /**
-   * Label text
-   */
-  variant: PropTypes.oneOf(variants),
+
   /**
    * Wether the element is busy
    */
   isBusy: PropTypes.bool,
+
+  /**
+   * Label text
+   */
+  label: PropTypes.string,
+
+  /**
+   * How large should the button be?
+   */
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+
+  /**
+   * Label text
+   */
+  variant: PropTypes.oneOf(variants),
 };
 
 TextInput.defaultProps = {

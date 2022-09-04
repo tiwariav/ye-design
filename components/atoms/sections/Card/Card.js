@@ -51,14 +51,18 @@ export default function Card({
 }
 
 Card.propTypes = {
-  layout: PropTypes.oneOf(["vertical", "horizontal"]),
-  variant: PropTypes.oneOf(["basic", "borderless"]),
-  viewMode: PropTypes.oneOf(["full", "mini", "thumb"]),
-  cardContentStyle: PropTypes.string,
   /**
    * Wether the element is busy
    */
   busy: PropTypes.bool,
+
+  cardContentStyle: PropTypes.string,
+
+  layout: PropTypes.oneOf(["vertical", "horizontal"]),
+
+  variant: PropTypes.oneOf(["basic", "borderless"]),
+
+  viewMode: PropTypes.oneOf(["full", "mini", "thumb"]),
 };
 
 Card.defaultProps = {

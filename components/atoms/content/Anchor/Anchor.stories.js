@@ -5,11 +5,11 @@ import Anchor from "./Anchor";
 const iconMap = { AiFillLeftCircle, AiFillRightCircle, GiBowman, GiCaveman };
 
 const metadata = {
-  component: Anchor,
   argTypes: {
-    iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },
-    iconBefore: { control: { type: "select", options: Object.keys(iconMap) } },
+    iconAfter: { control: { options: Object.keys(iconMap), type: "select" } },
+    iconBefore: { control: { options: Object.keys(iconMap), type: "select" } },
   },
+  component: Anchor,
 };
 
 export default metadata;
@@ -29,8 +29,8 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  label: "Anchor",
   effects: ["cursor-tracking", "ripple"],
+  label: "Anchor",
 };
 Basic.parameters = {
   jest: ["Anchor.test.js"],
@@ -51,6 +51,6 @@ Dashed.args = {
 export const withIcon = Template.bind({});
 withIcon.args = {
   ...Basic.args,
-  iconBefore: "AiFillLeftCircle",
   iconAfter: "AiFillRightCircle",
+  iconBefore: "AiFillLeftCircle",
 };

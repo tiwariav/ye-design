@@ -42,9 +42,9 @@ function Page({
   const clonedTopNav = useMemo(() => {
     if (topNav) {
       const extraProps = {
-        withSideNav: !!sideNav,
         sideNavToggle,
         toggleSideNav,
+        withSideNav: !!sideNav,
       };
       if (topNavExpanded) {
         extraProps.isExpanded = true;

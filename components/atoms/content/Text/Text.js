@@ -50,11 +50,12 @@ function Text({
 }
 
 Text.propTypes = {
-  loading: PropTypes.bool,
   /**
    * Wether the element is busy
    */
   isBusy: PropTypes.bool,
+
+  loading: PropTypes.bool,
 };
 
 export default Text;

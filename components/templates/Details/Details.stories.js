@@ -21,8 +21,8 @@ const Template = ({ content, ...args }) => (
 
 export const Details = Template.bind({});
 Details.args = {
-  headerMain: "Title",
-  headerSide: "Some Extra Header",
   contentSide: "Some Extra Content",
   hasSeparator: true,
+  headerMain: "Title",
+  headerSide: "Some Extra Header",
 };

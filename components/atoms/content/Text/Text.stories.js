@@ -8,22 +8,22 @@ const metadata = {
 export default metadata;
 
 const Template = ({ width, ...args }) => (
-  <div style={{ width, border: "1px solid var(--ye-color-black-10)" }}>
+  <div style={{ border: "1px solid var(--ye-color-black-10)", width }}>
     <Text {...args} />
   </div>
 );
 
 export const Basic = Template.bind({});
 Basic.args = {
-  width: 800,
   children: TEXT_LONG,
+  width: 800,
 };
 
 export const FixedLines = Template.bind({});
 FixedLines.args = {
   ...Basic.args,
-  minLines: 3,
   maxLines: 5,
+  minLines: 3,
 };
 
 export const Loading = Template.bind({});

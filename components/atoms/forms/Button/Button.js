@@ -199,51 +199,63 @@ const Button = forwardRef(
 
 Button.propTypes = {
   /**
-   * How large should the button be?
-   */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
-  /**
-   * Icon element that appears before label
-   */
-  iconBefore: PropTypes.element,
-  /**
-   * Icon element that appears after label
-   */
-  iconAfter: PropTypes.element,
-  /**
-   * Label text
-   */
-  label: PropTypes.string,
-  /**
-   * Design variant
-   */
-  variant: PropTypes.oneOf(variantOptions),
-  /**
    * Cursor on hover of button
    */
   cursorOptions: PropTypes.oneOf(cursorOptions),
+
   /**
    * Effects
    */
   effects: PropTypes.arrayOf(PropTypes.oneOf(effectOptions)),
+
   /**
-   * Spacing
+   * Icon element that appears after label
    */
-  spacing: PropTypes.oneOf(["equal", "extra", "less", "none"]),
+  iconAfter: PropTypes.element,
+
+  /**
+   * Icon element that appears before label
+   */
+  iconBefore: PropTypes.element,
+
+  
+  /**
+   * Wether the element is busy
+   */
+isBusy: PropTypes.bool,
+
+  
+  
+/**
+   * Label text
+   */
+label: PropTypes.string,
+
+  /**
+   * How large should the button be?
+   */
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+
   /**
    * Optional click handler
    */
   onClick: PropTypes.func,
+
   /**
-   * Wether the element is busy
+   * Spacing
    */
-  isBusy: PropTypes.bool,
+  spacing: PropTypes.oneOf(["equal", "extra", "less", "none"]),
+
+  /**
+   * Design variant
+   */
+  variant: PropTypes.oneOf(variantOptions),
 };
 Button.defaultProps = {
-  variant: "basic",
   effects: [],
-  size: "medium",
   onClick: undefined,
+  size: "medium",
+  variant: "basic",
 };
 
 export default Button;

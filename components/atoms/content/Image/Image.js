@@ -66,18 +66,20 @@ Image.propTypes = {
       );
     }
   },
-  variant: PropTypes.oneOf(variants),
-  loading: PropTypes.bool,
   /**
    * Wether the element is busy
    */
   isBusy: PropTypes.bool,
+
+  loading: PropTypes.bool,
+
+  variant: PropTypes.oneOf(variants),
 };
 
 Image.defaultProps = {
-  variant: "basic",
   Element: "img",
   style: {},
+  variant: "basic",
 };
 
 export default Image;

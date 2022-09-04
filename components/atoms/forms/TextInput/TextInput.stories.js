@@ -9,15 +9,15 @@ import TextInput from "./TextInput";
 const iconMap = {
   AiFillLeftCircle,
   AiFillRightCircle,
-  AiOutlineSearch,
   AiOutlineEye,
+  AiOutlineSearch,
 };
 
 const metadata = {
-  component: TextInput,
   argTypes: {
-    icon: { control: { type: "select", options: Object.keys(iconMap) } },
+    icon: { control: { options: Object.keys(iconMap), type: "select" } },
   },
+  component: TextInput,
 };
 
 export default metadata;
@@ -65,6 +65,6 @@ Borderless.args = {
 export const withIcon = Template.bind({});
 withIcon.args = {
   ...Basic.args,
-  iconBefore: "AiOutlineSearch",
   iconAfter: "AiOutlineEye",
+  iconBefore: "AiOutlineSearch",
 };

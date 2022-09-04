@@ -3,19 +3,19 @@ import { GiBowman, GiCaveman } from "react-icons/gi";
 import Tag from "./Tag";
 
 const iconMap = {
-  None: null,
   AiFillLeftCircle,
   AiFillRightCircle,
   GiBowman,
   GiCaveman,
+  None: null,
 };
 
 const metadata = {
-  component: Tag,
   argTypes: {
-    iconAfter: { control: { type: "select", options: Object.keys(iconMap) } },
-    iconBefore: { control: { type: "select", options: Object.keys(iconMap) } },
+    iconAfter: { control: { options: Object.keys(iconMap), type: "select" } },
+    iconBefore: { control: { options: Object.keys(iconMap), type: "select" } },
   },
+  component: Tag,
 };
 
 export default metadata;
@@ -34,9 +34,9 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = {
-  iconBefore: "AiFillLeftCircle",
-  iconAfter: "AiFillRightCircle",
   children: "Some Text",
+  iconAfter: "AiFillRightCircle",
+  iconBefore: "AiFillLeftCircle",
 };
 
 export const Loading = Template.bind({});

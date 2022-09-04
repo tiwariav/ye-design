@@ -108,21 +108,24 @@ export default function TopNav({
 
 TopNav.propTypes = {
   /**
-   * Logo rendered on left of Topnav
-   */
-  logo: PropTypes.element,
-  /**
-   * Logo variant
-   */
-  logoVariant: PropTypes.oneOf(["basic", "hanging"]),
-  /**
    * Content to be rendered on left half
    */
   contentLeft: PropTypes.element,
+
   /**
    * Content to be rendered on right half
    */
   contentRight: PropTypes.element,
+
+  /**
+   * Logo rendered on left of Topnav
+   */
+  logo: PropTypes.element,
+
+  /**
+   * Logo variant
+   */
+  logoVariant: PropTypes.oneOf(["basic", "hanging"]),
   /**
    * Design variant
    */
