@@ -44,7 +44,7 @@
     "react-icons": "^4.4.0",
     "react-intersection-observer": "^9.4.0",
     "react-use": "^17.4.0",
-    "wo-library": "workspace:*"
+    "wo-library": "^0.1.16"
   },
   "devDependencies": {
     "@babel/core": "^7.19.0",
