@@ -1,4 +1,36 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "include": ["components", "lib", "styles", "svg", "utils"]
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    // @react-native-async-storage/async-storage throws error
+    // "declarationDir": "lib/@types",
+    "diagnostics": true,
+    // "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // "nodenext" does not work for contentloader import
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "outDir": "lib",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": { "classnameTransform": "camelCase" }
+      }
+    ],
+    // "rootDir": "src",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    // "strict": true,
+    "target": "ES2015"
+  },
+  "include": ["src"],
+  "exclude": ["**/__snapshots__", "**/__tests__", "node_modules"]
 }
