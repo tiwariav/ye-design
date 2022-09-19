@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/atoms/forms/TextInput Basic 1`] = `
+exports[`Storyshots ye-design/atoms/forms/TextInput Basic 1`] = `
 <div>
   <div
     className=""
@@ -21,7 +21,7 @@ exports[`Storyshots ye-ui/atoms/forms/TextInput Basic 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/TextInput Borderless 1`] = `
+exports[`Storyshots ye-design/atoms/forms/TextInput Borderless 1`] = `
 <div>
   <div
     className=""
@@ -42,7 +42,7 @@ exports[`Storyshots ye-ui/atoms/forms/TextInput Borderless 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/TextInput Dashed 1`] = `
+exports[`Storyshots ye-design/atoms/forms/TextInput Dashed 1`] = `
 <div>
   <div
     className=""
@@ -63,7 +63,7 @@ exports[`Storyshots ye-ui/atoms/forms/TextInput Dashed 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/TextInput Outlined 1`] = `
+exports[`Storyshots ye-design/atoms/forms/TextInput Outlined 1`] = `
 <div>
   <div
     className=""
@@ -84,7 +84,7 @@ exports[`Storyshots ye-ui/atoms/forms/TextInput Outlined 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/TextInput With Icon 1`] = `
+exports[`Storyshots ye-design/atoms/forms/TextInput With Icon 1`] = `
 <div>
   <div
     className=""

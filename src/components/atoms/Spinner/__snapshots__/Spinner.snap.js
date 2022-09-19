@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/atoms/loaders/Spinner Spinner 1`] = `
+exports[`Storyshots ye-design/atoms/loaders/Spinner Spinner 1`] = `
 <div
   class="default"
 >

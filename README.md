@@ -1,3 +1,3 @@
-# ye-ui
+# ye-design
 
 UI components and helpers.

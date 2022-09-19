@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/atoms/forms/Button Basic 1`] = `
+exports[`Storyshots ye-design/atoms/forms/Button Basic 1`] = `
 <div>
   <button
     className=""
@@ -11,7 +11,7 @@ exports[`Storyshots ye-ui/atoms/forms/Button Basic 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/Button Dashed 1`] = `
+exports[`Storyshots ye-design/atoms/forms/Button Dashed 1`] = `
 <div>
   <button
     className=""
@@ -22,7 +22,7 @@ exports[`Storyshots ye-ui/atoms/forms/Button Dashed 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/Button Outlined 1`] = `
+exports[`Storyshots ye-design/atoms/forms/Button Outlined 1`] = `
 <div>
   <button
     className=""
@@ -33,7 +33,7 @@ exports[`Storyshots ye-ui/atoms/forms/Button Outlined 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/atoms/forms/Button With Icon 1`] = `
+exports[`Storyshots ye-design/atoms/forms/Button With Icon 1`] = `
 <div>
   <button
     className=""

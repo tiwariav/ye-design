@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/structures/Topnav Expanded 1`] = `
+exports[`Storyshots ye-design/structures/Topnav Expanded 1`] = `
 <div
   class="default"
 >

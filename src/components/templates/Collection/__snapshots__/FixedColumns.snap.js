@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/templates/Collection Fixed Columns 1`] = `
+exports[`Storyshots ye-design/templates/Collection Fixed Columns 1`] = `
 <div
   class="default"
 >

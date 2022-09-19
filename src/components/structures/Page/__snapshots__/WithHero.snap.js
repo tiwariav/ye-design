@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/structures/Page With Hero 1`] = `
+exports[`Storyshots ye-design/structures/Page With Hero 1`] = `
 <div
   class="default"
 >

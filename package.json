@@ -1,5 +1,5 @@
 {
-  "name": "ye-ui",
+  "name": "ye-design",
   "version": "0.1.0",
   "type": "module",
   "engines": {
@@ -7,7 +7,7 @@
   },
   "description": "A modern, minimal design system",
   "keywords": [
-    "ye-ui",
+    "ye-design",
     "ui",
     "react"
   ],

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ye-ui/structures/Topnav Basic 1`] = `
+exports[`Storyshots ye-design/structures/Topnav Basic 1`] = `
 <div>
   <div
     className=""
@@ -118,7 +118,7 @@ exports[`Storyshots ye-ui/structures/Topnav Basic 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/structures/Topnav Expanded 1`] = `
+exports[`Storyshots ye-design/structures/Topnav Expanded 1`] = `
 <div>
   <div
     className=""
@@ -236,7 +236,7 @@ exports[`Storyshots ye-ui/structures/Topnav Expanded 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/structures/Topnav Hanging Logo 1`] = `
+exports[`Storyshots ye-design/structures/Topnav Hanging Logo 1`] = `
 <div>
   <div
     className=""
@@ -354,7 +354,7 @@ exports[`Storyshots ye-ui/structures/Topnav Hanging Logo 1`] = `
 </div>
 `;
 
-exports[`Storyshots ye-ui/structures/Topnav Transparent 1`] = `
+exports[`Storyshots ye-design/structures/Topnav Transparent 1`] = `
 <div>
   <div
     className=""
