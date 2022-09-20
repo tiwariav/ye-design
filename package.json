@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
@@ -34,37 +34,38 @@
     "wo-library": "^1.0.2"
   },
   "devDependencies": {
-    "@gt-web/browserslist-config": "^1.0.0",
+    "@gt-web/browserslist-config": "^1.0.3",
     "@rollup/plugin-beep": "^0.2.0",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-eslint": "^8.0.2",
     "@rollup/plugin-multi-entry": "^4.1.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-docs": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-interactions": "^6.5.10",
-    "@storybook/addon-jest": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-docs": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-jest": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
     "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/addon-toolbars": "^6.5.10",
-    "@storybook/builder-webpack5": "^6.5.10",
-    "@storybook/manager-webpack5": "^6.5.10",
+    "@storybook/addon-toolbars": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/mdx2-csf": "^0.0.3",
-    "@storybook/react": "^6.5.10",
+    "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
     "@testing-library/react": "^13.4.0",
-    "@types/jest": "^29.0.1",
-    "@types/node": "^18.7.16",
-    "@types/react": "^18.0.19",
+    "@types/jest": "^29.0.3",
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "chromatic": "^6.9.0",
+    "cssnano": "^5.1.13",
     "eslint": "^8.23.1",
     "postcss": "^8.4.16",
     "postcss-import": "^15.0.0",
     "postcss-normalize": "^10.0.1",
-    "postcss-preset-env": "^7.8.1",
+    "postcss-preset-env": "^7.8.2",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^4.2.2",
@@ -79,7 +80,7 @@
     "webpack": "^5.74.0"
   },
   "peerDependencies": {
-    "antd": "^4.23.1",
+    "antd": "^4.23.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.35.0"
@@ -96,6 +97,11 @@
     },
     "react-hook-form": {
       "optional": true
+    }
+  },
+  "overrides": {
+    "@react-native-async-storage/async-storage": {
+      "react": "$react"
     }
   }
 }

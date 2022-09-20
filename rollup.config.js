@@ -2,6 +2,7 @@ import beep from "@rollup/plugin-beep";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
+import cssnano from "cssnano";
 import fs from "fs";
 import path from "path";
 import postcssFlexbugsFixes from "postcss-flexbugs-fixes";
@@ -17,34 +18,36 @@ import { terser } from "rollup-plugin-terser";
 import visualizer from "rollup-plugin-visualizer";
 
 const isDev = Boolean(process.env.ROLLUP_WATCH);
+const postcssPluginOptions = {
+  extensions: [".css"],
+  plugins: [
+    cssnano({ preset: "default" }),
+    postcssImport(),
+    postcssFlexbugsFixes(),
+    postcssPresetEnv({
+      autoprefixer: {
+        flexbox: "no-2009",
+      },
+      features: {
+        "custom-media-queries": { preserve: true },
+        "custom-properties": true,
+        "gap-properties": true,
+        "nesting-rules": true,
+      },
+      stage: 1,
+    }),
+    // Adds PostCSS Normalize as the reset css with default options,
+    // so that it honors browserslist config in package.json
+    // which in turn let's users customize the target behavior as per their needs.
+    postcssNormalize(),
+  ],
+  sourceMap: isDev,
+};
 const plugins = [
   autoExternal(),
-  postcss({
-    plugins: [
-      postcssImport(),
-      postcssFlexbugsFixes(),
-      postcssPresetEnv({
-        autoprefixer: {
-          flexbox: "no-2009",
-        },
-        features: {
-          "custom-media-queries": true,
-          "custom-properties": true,
-          "gap-properties": true,
-          "nesting-rules": true,
-        },
-        stage: 1,
-      }),
-      // Adds PostCSS Normalize as the reset css with default options,
-      // so that it honors browserslist config in package.json
-      // which in turn let's users customize the target behavior as per their needs.
-      postcssNormalize(),
-    ],
-    sourceMap: isDev,
-    extensions: [".css"],
-  }),
   resolve(),
   commonjs(),
+  postcss(postcssPluginOptions),
   sizeSnapshot(),
   progress(),
   ...(isDev ? [beep(), visualizer()] : [terser()]),
@@ -52,7 +55,6 @@ const plugins = [
 
 const output = {
   dir: "./lib",
-  sourcemap: isDev,
   entryFileNames: "[name].js",
   chunkFileNames: "chunks/[name]-[hash].js",
   format: "es",
@@ -77,7 +79,10 @@ function walkIndex(dir) {
   return response;
 }
 
-function walk(dir, { includeDirs, ext } = { includeDirs: false, ext: "ts" }) {
+function walk(
+  dir,
+  { includeDirs = false, ext = "ts" } = { includeDirs: false, ext: "ts" }
+) {
   const response = {};
   const files = fs.readdirSync(dir);
   for (const file of files) {
@@ -95,6 +100,21 @@ function walk(dir, { includeDirs, ext } = { includeDirs: false, ext: "ts" }) {
   return response;
 }
 
+function bundleCss() {
+  const config = [];
+  const files = walk("src/styles", { ext: "css" });
+  for (const [key, value] of Object.entries(files)) {
+    config.push(
+      postcss({
+        ...postcssPluginOptions,
+        include: value,
+        extract: key + ".css",
+      })
+    );
+  }
+  return config;
+}
+
 export default [
   {
     input: {
@@ -104,11 +124,30 @@ export default [
       "components/structures": "src/components/structures/index.ts",
       "components/templates": "src/components/templates/index.ts",
       hooks: "src/hooks/index.ts",
-      ...walkIndex("src/tools"),
+      ...walk("src/tools"),
+      ...walk("src/styles", { includeDirs: true }),
       ...walk("src/components"),
     },
     output,
     plugins: [...plugins, del({ targets: "lib/**/*" }), typescript()],
+    perf: isDev,
+  },
+  {
+    input: {
+      ...walk("src/styles", { ext: "css" }),
+    },
+    output: {
+      dir: "./lib",
+      entryFileNames: "[name].css",
+      format: "es",
+    },
+    plugins: [
+      ...bundleCss(),
+      sizeSnapshot(),
+      progress(),
+      del({ targets: "lib/tmp/**/*" }),
+      ...(isDev ? [beep(), visualizer()] : []),
+    ],
     perf: isDev,
   },
   {
