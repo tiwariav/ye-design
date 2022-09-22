@@ -1,6 +1,6 @@
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { GiBowman, GiCaveman } from "react-icons/gi";
-import Anchor from "./Anchor.jsx";
+import Anchor from "./Anchor.js";
 
 const iconMap = { AiFillLeftCircle, AiFillRightCircle, GiBowman, GiCaveman };
 

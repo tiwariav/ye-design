@@ -7,14 +7,13 @@
     // @react-native-async-storage/async-storage throws error
     // "declarationDir": "lib/@types",
     "diagnostics": true,
-    // "esModuleInterop": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    // "nodenext" does not work for contentloader import
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
     "outDir": "lib",
@@ -24,7 +23,6 @@
         "options": { "classnameTransform": "camelCase" }
       }
     ],
-    // "rootDir": "src",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,

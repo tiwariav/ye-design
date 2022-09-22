@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai/index.js";
 import styles from "./bookmark.module.css";
 
 function Bookmark({ children, ...props }) {

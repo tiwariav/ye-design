@@ -3,5 +3,5 @@ const { main } = storybook;
 
 module.exports = {
   ...main,
-  stories: ["../!(node_modules|svg|dist)/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
+  stories: ["../!(node_modules|lib)/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
 };

@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { RiMenu5Fill } from "react-icons/ri";
+import { RiMenu5Fill } from "react-icons/ri/index.js";
 import { useLockBodyScroll, useWindowSize } from "react-use";
 import { Button, Container, Divider } from "../../atoms/index.js";
 import styles from "./topNav.module.css";

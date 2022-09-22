@@ -3,7 +3,7 @@
 import { clsx } from "clsx";
 import { debounce, uniqueId } from "lodash-es";
 import { useMemo, useState } from "react";
-import { AiFillDelete, AiOutlineReload } from "react-icons/ai";
+import { AiFillDelete, AiOutlineReload } from "react-icons/ai/index.js";
 import { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
 import { Button } from "../Button/index.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";

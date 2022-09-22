@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Anchor from "./Anchor.jsx";
+import Anchor from "./Anchor.js";
 
 test("Anchor renders", () => {
   render(<Anchor label="Anchor" />);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai/index.js";
 import TextInput from "./TextInput.js";
 
 export default function PasswordInput({ ...props }) {

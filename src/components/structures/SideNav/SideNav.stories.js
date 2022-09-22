@@ -1,5 +1,5 @@
 import { AiOutlineBulb, AiOutlineHome } from "react-icons/ai";
-import Anchor from "../../atoms/Anchor/Anchor.jsx";
+import Anchor from "../../atoms/Anchor/Anchor.js";
 import SideNav from "./SideNav.js";
 import SideNavGroup from "./SideNavGroup.js";
 

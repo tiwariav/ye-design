@@ -2,7 +2,7 @@ import anime from "animejs/lib/anime.es.js";
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
 import { useEffect, useMemo } from "react";
-import { BsCaretLeftFill } from "react-icons/bs";
+import { BsCaretLeftFill } from "react-icons/bs/index.js";
 import { describeArc } from "../../../tools/svg.js";
 import styles from "./arcProgress.module.css";
 

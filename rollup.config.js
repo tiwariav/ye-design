@@ -1,6 +1,5 @@
 import beep from "@rollup/plugin-beep";
 import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import cssnano from "cssnano";
 import fs from "fs";
@@ -10,6 +9,7 @@ import postcssImport from "postcss-import";
 import postcssNormalize from "postcss-normalize";
 import postcssPresetEnv from "postcss-preset-env";
 import autoExternal from "rollup-plugin-auto-external";
+import copy from "rollup-plugin-copy";
 import del from "rollup-plugin-delete";
 import postcss from "rollup-plugin-postcss";
 import progress from "rollup-plugin-progress";
@@ -41,11 +41,11 @@ const postcssPluginOptions = {
     // which in turn let's users customize the target behavior as per their needs.
     postcssNormalize(),
   ],
+  modules: { localsConvention: "camelCase" },
   sourceMap: isDev,
 };
 const plugins = [
   autoExternal(),
-  resolve(),
   commonjs(),
   postcss(postcssPluginOptions),
   sizeSnapshot(),
@@ -123,13 +123,18 @@ export default [
       // "components/molecules": "src/components/molecules/index.ts",
       "components/structures": "src/components/structures/index.ts",
       "components/templates": "src/components/templates/index.ts",
+      svg: "src/svg/index.ts",
       hooks: "src/hooks/index.ts",
       ...walk("src/tools"),
       ...walk("src/styles", { includeDirs: true }),
       ...walk("src/components"),
     },
     output,
-    plugins: [...plugins, del({ targets: "lib/**/*" }), typescript()],
+    plugins: [
+      ...plugins,
+      del({ targets: "lib/**/*", runOnce: isDev }),
+      typescript(),
+    ],
     perf: isDev,
   },
   {
@@ -145,7 +150,12 @@ export default [
       ...bundleCss(),
       sizeSnapshot(),
       progress(),
-      del({ targets: "lib/tmp/**/*" }),
+      copy({
+        targets: [
+          { src: "assets/**/*", dest: "lib/assets" },
+          { src: ["package.json", "README.md"], dest: "lib" },
+        ],
+      }),
       ...(isDev ? [beep(), visualizer()] : []),
     ],
     perf: isDev,
