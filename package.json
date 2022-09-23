@@ -57,7 +57,7 @@
     "@tiwariav/browserslist-config": "^1.0.3",
     "@types/jest": "^29.0.3",
     "@types/node": "^18.7.18",
-    "@types/react": "^18.0.20",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "chromatic": "^6.9.0",
     "cssnano": "^5.1.13",
@@ -85,7 +85,7 @@
     "antd": "^4.23.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.35.0"
+    "react-hook-form": "^7.36.0"
   },
   "peerDependenciesMeta": {
     "antd": {
