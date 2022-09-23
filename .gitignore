@@ -109,3 +109,7 @@ stats.html
 
 # storybook
 storybook-static
+
+# yalc files
+.yalc
+yalc.lock
