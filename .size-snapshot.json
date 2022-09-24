@@ -1,29 +1,29 @@
 {
   "components.js": {
-    "bundled": 1238,
-    "minified": 1137,
-    "gzipped": 513,
+    "bundled": 1203,
+    "minified": 1105,
+    "gzipped": 499,
     "treeshaked": {
       "rollup": {
-        "code": 792,
-        "import_statements": 792
+        "code": 779,
+        "import_statements": 779
       },
       "webpack": {
-        "code": 2652
+        "code": 2605
       }
     }
   },
   "components/atoms.js": {
-    "bundled": 955,
-    "minified": 879,
-    "gzipped": 428,
+    "bundled": 920,
+    "minified": 847,
+    "gzipped": 413,
     "treeshaked": {
       "rollup": {
-        "code": 617,
-        "import_statements": 617
+        "code": 604,
+        "import_statements": 604
       },
       "webpack": {
-        "code": 2319
+        "code": 2272
       }
     }
   },
@@ -56,16 +56,16 @@
     }
   },
   "components/templates.js": {
-    "bundled": 645,
-    "minified": 600,
-    "gzipped": 273,
+    "bundled": 630,
+    "minified": 587,
+    "gzipped": 270,
     "treeshaked": {
       "rollup": {
-        "code": 559,
-        "import_statements": 559
+        "code": 546,
+        "import_statements": 546
       },
       "webpack": {
-        "code": 2190
+        "code": 2143
       }
     }
   },
@@ -112,16 +112,16 @@
     }
   },
   "components/structures.js": {
-    "bundled": 762,
-    "minified": 710,
-    "gzipped": 321,
+    "bundled": 747,
+    "minified": 697,
+    "gzipped": 316,
     "treeshaked": {
       "rollup": {
-        "code": 637,
-        "import_statements": 637
+        "code": 624,
+        "import_statements": 624
       },
       "webpack": {
-        "code": 2337
+        "code": 2290
       }
     }
   },
@@ -1458,6 +1458,244 @@
       },
       "webpack": {
         "code": 83932
+      }
+    }
+  },
+  "chunks/Pin-e7736c7b.js": {
+    "bundled": 1447,
+    "minified": 1373,
+    "gzipped": 693,
+    "treeshaked": {
+      "rollup": {
+        "code": 26,
+        "import_statements": 26
+      },
+      "webpack": {
+        "code": 1010
+      }
+    }
+  },
+  "chunks/Divider-638e389b.js": {
+    "bundled": 650,
+    "minified": 418,
+    "gzipped": 284,
+    "treeshaked": {
+      "rollup": {
+        "code": 94,
+        "import_statements": 94
+      },
+      "webpack": {
+        "code": 1177
+      }
+    }
+  },
+  "chunks/index-ad49ee5a.js": {
+    "bundled": 7067,
+    "minified": 6138,
+    "gzipped": 1752,
+    "treeshaked": {
+      "rollup": {
+        "code": 2650,
+        "import_statements": 321
+      },
+      "webpack": {
+        "code": 4024
+      }
+    }
+  },
+  "chunks/TopNavItem-7bb721dd.js": {
+    "bundled": 20706,
+    "minified": 17198,
+    "gzipped": 3962,
+    "treeshaked": {
+      "rollup": {
+        "code": 9221,
+        "import_statements": 405
+      },
+      "webpack": {
+        "code": 10717
+      }
+    }
+  },
+  "chunks/Title-6bf56d5d.js": {
+    "bundled": 22510,
+    "minified": 15051,
+    "gzipped": 4452,
+    "treeshaked": {
+      "rollup": {
+        "code": 292,
+        "import_statements": 292
+      },
+      "webpack": {
+        "code": 1644
+      }
+    }
+  },
+  "chunks/title.module-0712a80f.js": {
+    "bundled": 113547,
+    "minified": 85794,
+    "gzipped": 20649,
+    "treeshaked": {
+      "rollup": {
+        "code": 67254,
+        "import_statements": 641
+      },
+      "webpack": {
+        "code": 70049
+      }
+    }
+  },
+  "chunks/Divider-c7f60f30.js": {
+    "bundled": 650,
+    "minified": 418,
+    "gzipped": 286,
+    "treeshaked": {
+      "rollup": {
+        "code": 94,
+        "import_statements": 94
+      },
+      "webpack": {
+        "code": 1177
+      }
+    }
+  },
+  "components/antd.js": {
+    "bundled": 3085,
+    "minified": 2065,
+    "gzipped": 1229,
+    "treeshaked": {
+      "rollup": {
+        "code": 896,
+        "import_statements": 190
+      },
+      "webpack": {
+        "code": 2084
+      }
+    }
+  },
+  "chunks/index-44d6ac47.js": {
+    "bundled": 7052,
+    "minified": 6125,
+    "gzipped": 1748,
+    "treeshaked": {
+      "rollup": {
+        "code": 2637,
+        "import_statements": 308
+      },
+      "webpack": {
+        "code": 3977
+      }
+    }
+  },
+  "chunks/Title-3f76714d.js": {
+    "bundled": 20487,
+    "minified": 13996,
+    "gzipped": 4067,
+    "treeshaked": {
+      "rollup": {
+        "code": 279,
+        "import_statements": 279
+      },
+      "webpack": {
+        "code": 1597
+      }
+    }
+  },
+  "chunks/TopNavItem-e9cbbf11.js": {
+    "bundled": 20691,
+    "minified": 17185,
+    "gzipped": 3958,
+    "treeshaked": {
+      "rollup": {
+        "code": 9208,
+        "import_statements": 392
+      },
+      "webpack": {
+        "code": 10670
+      }
+    }
+  },
+  "chunks/title.module-1b235d53.js": {
+    "bundled": 113239,
+    "minified": 85501,
+    "gzipped": 20573,
+    "treeshaked": {
+      "rollup": {
+        "code": 67067,
+        "import_statements": 641
+      },
+      "webpack": {
+        "code": 69852
+      }
+    }
+  },
+  "chunks/Divider-b706e012.js": {
+    "bundled": 648,
+    "minified": 416,
+    "gzipped": 285,
+    "treeshaked": {
+      "rollup": {
+        "code": 94,
+        "import_statements": 94
+      },
+      "webpack": {
+        "code": 1177
+      }
+    }
+  },
+  "chunks/index-f7b0d78e.js": {
+    "bundled": 11570,
+    "minified": 10643,
+    "gzipped": 3720,
+    "treeshaked": {
+      "rollup": {
+        "code": 7200,
+        "import_statements": 318
+      },
+      "webpack": {
+        "code": 8560
+      }
+    }
+  },
+  "chunks/TopNavItem-98f8afce.js": {
+    "bundled": 35607,
+    "minified": 32101,
+    "gzipped": 9233,
+    "treeshaked": {
+      "rollup": {
+        "code": 24189,
+        "import_statements": 402
+      },
+      "webpack": {
+        "code": 25691
+      }
+    }
+  },
+  "chunks/Title-b190016f.js": {
+    "bundled": 20396,
+    "minified": 13905,
+    "gzipped": 4013,
+    "treeshaked": {
+      "rollup": {
+        "code": 279,
+        "import_statements": 279
+      },
+      "webpack": {
+        "code": 1597
+      }
+    }
+  },
+  "chunks/title.module-3f2093c1.js": {
+    "bundled": 176112,
+    "minified": 148374,
+    "gzipped": 38312,
+    "treeshaked": {
+      "rollup": {
+        "code": 129928,
+        "import_statements": 691
+      },
+      "webpack": {
+        "code": 133018
       }
     }
   }

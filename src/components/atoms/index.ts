@@ -1,5 +1,4 @@
 export { default as Anchor } from "./Anchor/Anchor.js";
-export { default as AntFormItemWrapper } from "./AntFormItemWrapper.js";
 export { default as ArcProgress } from "./ArcProgress/ArcProgress.js";
 export { default as Bookmark } from "./Bookmark/Bookmark.js";
 export { Button } from "./Button/index.js";
