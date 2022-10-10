@@ -23,7 +23,6 @@ function Page({
 
   const [topNavMaxHeight, setTopNavMaxHeight] = useState(0);
   const [loading, setLoading] = useState(true);
-  console.log("hello");
 
   React.useEffect(() => {
     if (topNavRef.current) {

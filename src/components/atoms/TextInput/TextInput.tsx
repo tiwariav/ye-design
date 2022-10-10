@@ -62,7 +62,6 @@ const TextInput = forwardRef(
     };
 
     const [labelRef, { input }] = useMeasureInput();
-    console.log(styles.inputWrapper);
     return (
       <div
         className={clsx(
