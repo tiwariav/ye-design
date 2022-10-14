@@ -19,6 +19,7 @@ import visualizer from "rollup-plugin-visualizer";
 
 const isDev = Boolean(process.env.ROLLUP_WATCH);
 const postcssPluginOptions = {
+  extract: "dist.css",
   extensions: [".css"],
   plugins: [
     cssnano({ preset: "default" }),
@@ -44,10 +45,8 @@ const postcssPluginOptions = {
   modules: { localsConvention: "camelCase" },
   sourceMap: isDev,
 };
-const plugins = [
-  autoExternal(),
-  commonjs(),
-  postcss(postcssPluginOptions),
+const corePlugins = [autoExternal(), commonjs()];
+const miscPlugins = [
   sizeSnapshot(),
   progress(),
   ...(isDev ? [beep(), visualizer()] : [terser()]),
@@ -131,8 +130,11 @@ export default [
     },
     output,
     plugins: [
-      ...plugins,
-      del({ targets: "lib/**/*", runOnce: isDev }),
+      ...corePlugins,
+      postcss(postcssPluginOptions),
+      ...miscPlugins,
+      del({ targets: "lib/**/*", runOnce: true }),
+      del({ targets: "lib/chunks/*" }),
       typescript(),
     ],
     perf: isDev,
@@ -165,7 +167,7 @@ export default [
       ...walk("src/tools/cjs", { includeDirs: true, ext: "cjs" }),
     },
     output: { ...output, format: "cjs", exports: "auto" },
-    plugins,
+    plugins: [...corePlugins, miscPlugins],
     perf: isDev,
   },
 ];
