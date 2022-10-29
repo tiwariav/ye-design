@@ -74,11 +74,12 @@ export default function TopNav({
         ) : null}
         {smallerWidth ? (
           <div className={clsx(styles.contentMenuIcon)}>
-            {rightNavIcon || (
-              <Button variant="trans" spacing="none" onClick={toggleDrawer}>
-                <RiMenu5Fill />
-              </Button>
-            )}
+            {rightNavIcon ||
+              ((contentLeft || contentRight || contentMenu) && (
+                <Button variant="trans" spacing="none" onClick={toggleDrawer}>
+                  <RiMenu5Fill />
+                </Button>
+              ))}
           </div>
         ) : null}
         {contentLeft && !smallerWidth ? (
