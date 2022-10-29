@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: node
           package-name: release-please-action
+          release-as: 1.2.0
       # The logic below handles the npm publication:
       - uses: actions/checkout@v2
         # these if statements ensure that a publication only occurs when
@@ -20,12 +22,12 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 18
           registry-url: "https://registry.npmjs.org"
         if: ${{ steps.release.outputs.release_created }}
       - run: npm ci && npm run build
         if: ${{ steps.release.outputs.release_created }}
-      - run: npm release
+      - run: npm run release
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.release.outputs.release_created }}
