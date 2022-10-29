@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/tiwariav/ye-design/compare/v1.0.0...v1.2.0) (2022-10-29)
+
+
+### Bug Fixes
+
+* hide right icon for no data ([73010a9](https://github.com/tiwariav/ye-design/commit/73010a9350eb9e7ac4b5231fbda4aea9cd2b11de))
+* topnav banner css ([dcfcfb9](https://github.com/tiwariav/ye-design/commit/dcfcfb9c511934814295f0cb0ea21590cd8e9592))
+
 ## 1.0.0 (2022-09-23)
 
 
