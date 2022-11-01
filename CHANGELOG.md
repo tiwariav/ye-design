@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/tiwariav/ye-design/compare/v1.2.0...v1.3.0) (2022-11-01)
+
+
+### Features
+
+* add browserslist config ([c625c6d](https://github.com/tiwariav/ye-design/commit/c625c6d60041cbe78cab05c7ca415d063a7caaab))
+
 ## [1.2.0](https://github.com/tiwariav/ye-design/compare/v1.0.0...v1.2.0) (2022-10-29)
 
 
