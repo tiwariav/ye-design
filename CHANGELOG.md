@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/tiwariav/ye-design/compare/v1.3.0...v1.3.1) (2022-11-01)
+
+
+### Bug Fixes
+
+* package lock ([ea16476](https://github.com/tiwariav/ye-design/commit/ea164769b2a663161c82132b4e0cdd8ce75cdedc))
+
 ## [1.3.0](https://github.com/tiwariav/ye-design/compare/v1.2.0...v1.3.0) (2022-11-01)
 
 
