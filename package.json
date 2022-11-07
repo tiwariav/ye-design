@@ -62,7 +62,7 @@
     "@tiwariav/browserslist-config": "^1.0.3",
     "@types/jest": "^29.2.1",
     "@types/node": "^18.11.9",
-    "@types/react": "^18.0.24",
+    "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "babel-jest": "29.2.2",
     "chromatic": "^6.11.4",
