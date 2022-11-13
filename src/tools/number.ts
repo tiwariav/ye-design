@@ -1,6 +1,16 @@
+interface FormatNumberProps {
+  decimals?: number;
+  nullValue?: string;
+  decimalPadding?: boolean;
+}
+
 export function formatNumber(
   value,
-  { decimals = 2, nullValue = "--", decimalPadding = true } = {}
+  {
+    decimals = 2,
+    nullValue = "--",
+    decimalPadding = true,
+  }: FormatNumberProps = {}
 ) {
   let parsedNumber = Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {
@@ -41,9 +51,13 @@ export function formatNumber(
   return prefix + returnValue;
 }
 
+interface FormatNumberSuffixProps extends FormatNumberProps {
+  suffix?: string;
+}
+
 export function formatNumberWithSuffix(
   value,
-  { nullValue = "--", suffix = "", ...rest } = {}
+  { nullValue = "--", suffix = "", ...rest }: FormatNumberSuffixProps = {}
 ) {
   let parsedNumber = Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {
@@ -81,13 +95,17 @@ export function ordinalNumber(value) {
     return value;
   }
   switch (value) {
-    case 1:
+    case 1: {
       return "1st";
-    case 2:
+    }
+    case 2: {
       return "2nd";
-    case 3:
+    }
+    case 3: {
       return "3rd";
-    default:
+    }
+    default: {
       return `${value}th`;
+    }
   }
 }
