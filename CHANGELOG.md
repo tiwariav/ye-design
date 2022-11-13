@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/tiwariav/ye-design/compare/v1.3.3...v1.3.4) (2022-11-13)
+
+
+### Bug Fixes
+
+* types for formatnumber ([604de44](https://github.com/tiwariav/ye-design/commit/604de441fef53de1d864fc47164784de4c2bb398))
+
 ## [1.3.3](https://github.com/tiwariav/ye-design/compare/v1.3.2...v1.3.3) (2022-11-04)
 
 
