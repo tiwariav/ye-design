@@ -1,3 +1,13 @@
+## [1.3.4](https://github.com/tiwariav/ye-design/compare/v1.3.3...v1.3.4) (2022-11-13)
+
+
+### Bug Fixes
+
+* move from release please to semantic release ([b3310b2](https://github.com/tiwariav/ye-design/commit/b3310b200b9972a9c5fc27d91ccdbbbacbb3c3ad))
+* semantic release config ([5c42d8e](https://github.com/tiwariav/ye-design/commit/5c42d8e537ea97e33e7b42d55cb67f07c48437ba))
+* types for formatnumber ([604de44](https://github.com/tiwariav/ye-design/commit/604de441fef53de1d864fc47164784de4c2bb398))
+* update packages ([f70c153](https://github.com/tiwariav/ye-design/commit/f70c15381ca7d2430b6862c47148d4efe1748030))
+
 # Changelog
 
 ## [1.3.3](https://github.com/tiwariav/ye-design/compare/v1.3.2...v1.3.3) (2022-11-04)
