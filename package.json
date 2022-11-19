@@ -31,9 +31,9 @@
     "paths.macro": "^3.0.1",
     "react-content-loader": "^6.2.0",
     "react-icons": "^4.6.0",
-    "react-intersection-observer": "^9.4.0",
+    "react-intersection-observer": "^9.4.1",
     "react-use": "^17.4.0",
-    "wo-library": "^1.4.0"
+    "wo-library": "^1.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "17.2.0",
@@ -60,15 +60,15 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "^13.4.0",
     "@tiwariav/browserslist-config": "^1.0.3",
-    "@types/jest": "^29.2.2",
+    "@types/jest": "^29.2.3",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
+    "@types/react-dom": "^18.0.9",
     "babel-jest": "29.3.1",
     "chromatic": "^6.11.4",
     "cssnano": "^5.1.14",
     "default-import": "^1.1.5",
-    "eslint": "8.27.0",
+    "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-formatter-gitlab": "4.0.0",
@@ -83,7 +83,7 @@
     "eslint-plugin-lodash": "7.4.0",
     "eslint-plugin-only-warn": "1.0.3",
     "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-react": "7.31.10",
+    "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-sonarjs": "0.16.0",
     "eslint-plugin-sort-keys-fix": "1.1.2",
@@ -94,13 +94,13 @@
     "jest-environment-jsdom": "29.3.1",
     "jest-html-reporter": "3.7.0",
     "jest-html-reporters": "3.0.11",
-    "jest-junit": "14.0.1",
+    "jest-junit": "15.0.0",
     "lint-staged": "13.0.3",
     "postcss": "^8.4.19",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.0.0",
     "postcss-normalize": "^10.0.1",
-    "postcss-preset-env": "^7.8.2",
+    "postcss-preset-env": "^7.8.3",
     "prettier": "2.7.1",
     "rollup": "^3.3.0",
     "rollup-plugin-auto-external": "^2.0.0",
@@ -123,7 +123,7 @@
     "stylelint-declaration-strict-value": "1.9.1",
     "stylelint-use-nesting": "4.0.0",
     "ts-jest": "29.0.3",
-    "typescript": "^4.8.4",
+    "typescript": "^4.9.3",
     "typescript-plugin-css-modules": "^3.4.0",
     "webpack": "^5.75.0"
   },
@@ -131,7 +131,7 @@
     "antd": "^4.24.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.39.3"
+    "react-hook-form": "^7.39.4"
   },
   "peerDependenciesMeta": {
     "antd": {
