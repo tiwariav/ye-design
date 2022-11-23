@@ -36,8 +36,8 @@
     "wo-library": "^1.4.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.2.0",
-    "@commitlint/config-conventional": "17.2.0",
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
     "@rollup/plugin-beep": "^1.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-eslint": "^9.0.1",
@@ -101,8 +101,8 @@
     "postcss-import": "^15.0.0",
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.8.3",
-    "prettier": "2.7.1",
-    "rollup": "^3.3.0",
+    "prettier": "2.8.0",
+    "rollup": "^3.4.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-delete": "^2.0.0",
@@ -128,10 +128,10 @@
     "webpack": "^5.75.0"
   },
   "peerDependencies": {
-    "antd": "^4.24.3",
+    "antd": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.39.4"
+    "react-hook-form": "^7.39.5"
   },
   "peerDependenciesMeta": {
     "antd": {

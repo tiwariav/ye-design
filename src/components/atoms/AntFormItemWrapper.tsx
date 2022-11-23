@@ -1,10 +1,9 @@
-import * as antd from "antd";
+import { Form } from "antd";
 import { clsx } from "clsx";
 import { isDate, isObject } from "lodash-es";
 import React, { ReactElement, useCallback, useMemo, useState } from "react";
 import styles from "./antFormItemWrapper.module.css";
 
-const { Form } = antd;
 interface AntFormItemWrapperProps {
   children: ReactElement;
   className: string;
