@@ -1,3 +1,10 @@
+## [1.3.8](https://github.com/tiwariav/ye-design/compare/v1.3.7...v1.3.8) (2022-11-23)
+
+
+### Bug Fixes
+
+* update antd to v5 ([c111024](https://github.com/tiwariav/ye-design/commit/c1110246157b7f881016dab264b778f2b67a1dde))
+
 ## [1.3.7](https://github.com/tiwariav/ye-design/compare/v1.3.6...v1.3.7) (2022-11-21)
 
 
