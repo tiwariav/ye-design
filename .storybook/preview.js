@@ -1,9 +1,9 @@
 import { withTests } from "@storybook/addon-jest";
 import { addDecorator } from "@storybook/react";
 import { globalTypes, parameters } from "wo-library/tools/storybook";
-import "../styles/base.css";
-import defaultThemeStyleOptions from "../styles/themes";
-import { withThemeProvider } from "../tools/storybook";
+import "../src/styles/base.css";
+import defaultThemeStyleOptions from "../src/styles/themes";
+import { withThemeProvider } from "../src/tools/storybook";
 
 globalTypes.theme.toolbar.items.push(...Object.keys(defaultThemeStyleOptions));
 export { parameters, globalTypes };

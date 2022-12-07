@@ -1,9 +1,35 @@
 import { clsx } from "clsx";
+import { ReactNode } from "react";
 import { RiMenu5Fill } from "react-icons/ri/index.js";
 import { useLockBodyScroll, useWindowSize } from "react-use";
+import { BREAKPOINTS } from "../../../styles/media.js";
 import { Button, Container, Divider } from "../../atoms/index.js";
 import styles from "./topNav.module.css";
-const variantOptions = ["basic", "transparent", "flat", "underlined"];
+const variantOptions = ["basic", "transparent", "flat", "underlined"] as const;
+
+interface TopNavProps {
+  banner?: ReactNode;
+  className?: string;
+  contentLeft?: ReactNode;
+  contentMenu?: ReactNode;
+  contentRight?: ReactNode;
+  drawer: boolean;
+  expandedHeight: number;
+  innerClassNames: {
+    isExpanded?: string;
+    container?: string;
+  };
+  isExpanded?: boolean;
+  leftNavIcon?: ReactNode;
+  logo?: ReactNode;
+  logoVariant: string;
+  rightNavIcon?: ReactNode;
+  sideNavToggle?: boolean;
+  toggleSideNav?: Function;
+  toggleDrawer?: Function;
+  variant?: typeof variantOptions[number];
+  withSideNav?: boolean;
+}
 
 export default function TopNav({
   banner,
@@ -25,9 +51,9 @@ export default function TopNav({
   variant,
   withSideNav,
   ...props
-}: any) {
+}: TopNavProps) {
   const { width } = useWindowSize();
-  const smallerWidth = width <= 991;
+  const smallerWidth = width < BREAKPOINTS.lg;
 
   useLockBodyScroll(!!(smallerWidth && drawer));
 
@@ -50,18 +76,18 @@ export default function TopNav({
       )}
       {...props}
     >
-      {banner ? (
+      {banner || (
         <div className={clsx(styles.container, styles.banner)}>{banner}</div>
-      ) : null}
+      )}
       <Container className={clsx(styles.container, innerClassNames.container)}>
-        {smallerWidth && (withSideNav || leftNavIcon) ? (
+        {(smallerWidth && (withSideNav || leftNavIcon)) || (
           <div className={clsx(styles.contentMenuIcon)}>
             <Button variant="trans" spacing="none" onClick={toggleSideNav}>
               {leftNavIcon || <RiMenu5Fill />}
             </Button>
           </div>
-        ) : null}
-        {logo ? (
+        )}
+        {logo || (
           <div
             className={clsx(
               styles["logo-container"],
@@ -71,8 +97,8 @@ export default function TopNav({
           >
             <div className={styles.logo}>{logo}</div>
           </div>
-        ) : null}
-        {smallerWidth ? (
+        )}
+        {smallerWidth || (
           <div className={clsx(styles.contentMenuIcon)}>
             {rightNavIcon ||
               ((contentLeft || contentRight || contentMenu) && (
@@ -81,12 +107,12 @@ export default function TopNav({
                 </Button>
               ))}
           </div>
-        ) : null}
-        {contentLeft && !smallerWidth ? (
+        )}
+        {(contentLeft && width && !smallerWidth) || (
           <div className={styles.contentLeft}>{contentLeft}</div>
-        ) : null}
+        )}
 
-        {smallerWidth ? (
+        {smallerWidth || (
           <div
             className={clsx(styles.contentMenu, {
               [styles.open]: drawer,
@@ -96,10 +122,11 @@ export default function TopNav({
             <Divider />
             {contentRight}
           </div>
-        ) : null}
-        {contentRight && !smallerWidth ? (
+        )}
+
+        {(contentRight && width && !smallerWidth) || (
           <div className={styles.contentRight}>{contentRight}</div>
-        ) : null}
+        )}
       </Container>
     </div>
   );
