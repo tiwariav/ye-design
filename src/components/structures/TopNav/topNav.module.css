@@ -100,7 +100,7 @@
 
 .content-menu-icon {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   font-size: 2em;
   fill: #000;
   @media (--media-min-lg) {

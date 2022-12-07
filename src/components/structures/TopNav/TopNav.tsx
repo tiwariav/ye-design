@@ -54,7 +54,6 @@ export default function TopNav({
 }: TopNavProps) {
   const { width } = useWindowSize();
   const smallerWidth = width < BREAKPOINTS.lg;
-
   useLockBodyScroll(!!(smallerWidth && drawer));
 
   return (
@@ -76,18 +75,18 @@ export default function TopNav({
       )}
       {...props}
     >
-      {banner || (
+      {banner && (
         <div className={clsx(styles.container, styles.banner)}>{banner}</div>
       )}
       <Container className={clsx(styles.container, innerClassNames.container)}>
-        {(smallerWidth && (withSideNav || leftNavIcon)) || (
+        {smallerWidth && (withSideNav || leftNavIcon) && (
           <div className={clsx(styles.contentMenuIcon)}>
             <Button variant="trans" spacing="none" onClick={toggleSideNav}>
               {leftNavIcon || <RiMenu5Fill />}
             </Button>
           </div>
         )}
-        {logo || (
+        {logo && (
           <div
             className={clsx(
               styles["logo-container"],
@@ -98,7 +97,7 @@ export default function TopNav({
             <div className={styles.logo}>{logo}</div>
           </div>
         )}
-        {smallerWidth || (
+        {smallerWidth && (
           <div className={clsx(styles.contentMenuIcon)}>
             {rightNavIcon ||
               ((contentLeft || contentRight || contentMenu) && (
@@ -108,11 +107,11 @@ export default function TopNav({
               ))}
           </div>
         )}
-        {(contentLeft && width && !smallerWidth) || (
+        {contentLeft && Number.isFinite(width) && !smallerWidth && (
           <div className={styles.contentLeft}>{contentLeft}</div>
         )}
 
-        {smallerWidth || (
+        {smallerWidth && (
           <div
             className={clsx(styles.contentMenu, {
               [styles.open]: drawer,
@@ -124,7 +123,7 @@ export default function TopNav({
           </div>
         )}
 
-        {(contentRight && width && !smallerWidth) || (
+        {contentRight && Number.isFinite(width) && !smallerWidth && (
           <div className={styles.contentRight}>{contentRight}</div>
         )}
       </Container>
