@@ -1,3 +1,10 @@
+## [1.3.10](https://github.com/tiwariav/ye-design/compare/v1.3.9...v1.3.10) (2022-12-07)
+
+
+### Bug Fixes
+
+* topnav flickering for pre-rendered page ([8d8c476](https://github.com/tiwariav/ye-design/commit/8d8c4769e5f332a0fc04ad31530d37c3bf09fcf1))
+
 ## [1.3.9](https://github.com/tiwariav/ye-design/compare/v1.3.8...v1.3.9) (2022-11-23)
 
 
