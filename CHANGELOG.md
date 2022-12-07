@@ -1,3 +1,10 @@
+## [1.3.11](https://github.com/tiwariav/ye-design/compare/v1.3.10...v1.3.11) (2022-12-07)
+
+
+### Bug Fixes
+
+* topnav conditions for mobile view ([bf7952f](https://github.com/tiwariav/ye-design/commit/bf7952f358a893cadf65d97f9ef1694e747ca137))
+
 ## [1.3.10](https://github.com/tiwariav/ye-design/compare/v1.3.9...v1.3.10) (2022-12-07)
 
 
