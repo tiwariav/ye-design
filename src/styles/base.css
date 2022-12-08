@@ -207,12 +207,11 @@
 }
 
 html,body {
-  height: 100%;
+  min-height: 100%;
 }
 
 html {
   background-color: var(--ye-color-background);
-  overflow: auto;
 }
 
 body {
