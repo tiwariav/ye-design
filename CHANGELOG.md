@@ -1,3 +1,10 @@
+## [1.3.12](https://github.com/tiwariav/ye-design/compare/v1.3.11...v1.3.12) (2022-12-08)
+
+
+### Bug Fixes
+
+* set html overflow auto ([87b5661](https://github.com/tiwariav/ye-design/commit/87b56617b52ecf2cf7159adb0022562f41a16c92))
+
 ## [1.3.11](https://github.com/tiwariav/ye-design/compare/v1.3.10...v1.3.11) (2022-12-07)
 
 
