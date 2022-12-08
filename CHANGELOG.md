@@ -1,3 +1,10 @@
+## [1.3.13](https://github.com/tiwariav/ye-design/compare/v1.3.12...v1.3.13) (2022-12-08)
+
+
+### Bug Fixes
+
+* remove html overflow auto and change height to min-height ([a1b380e](https://github.com/tiwariav/ye-design/commit/a1b380e0f75d824efb85cfb2f6a14f2fddaf45fd))
+
 ## [1.3.12](https://github.com/tiwariav/ye-design/compare/v1.3.11...v1.3.12) (2022-12-08)
 
 
