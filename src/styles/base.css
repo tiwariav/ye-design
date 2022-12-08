@@ -212,6 +212,7 @@ html,body {
 
 html {
   background-color: var(--ye-color-background);
+  overflow: auto;
 }
 
 body {

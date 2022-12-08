@@ -3,6 +3,7 @@
   --z-index-stack-2: 101;
 
   min-height: 100vh;
+  position: relative;
 }
 
 .main {
