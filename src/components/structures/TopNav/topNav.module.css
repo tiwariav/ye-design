@@ -25,11 +25,13 @@
 
 .banner {
   width: calc(100%);
-  height: 0;
+  height: var(--ye-spacing-rem-tiny);
   margin: var(--ye-spacing-em-unit) auto;
   font-size: var(--ye-font-size-small);
   transition: var(--ye-transition-duration) height ease-in-out;
-
+  @media (--media-max-md) {
+    height: var(--ye-spacing-rem-xlarge);
+  }
   @media screen and (prefers-reduced-motion: reduce) {
     transition: none;
   }
