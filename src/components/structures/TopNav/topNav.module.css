@@ -29,7 +29,7 @@
   margin: var(--ye-spacing-em-unit) auto;
   font-size: var(--ye-font-size-small);
   transition: var(--ye-transition-duration) height ease-in-out;
-  @media (--media-max-md) {
+  @media (--media-max-sm) {
     height: var(--ye-spacing-rem-xlarge);
   }
   @media screen and (prefers-reduced-motion: reduce) {
