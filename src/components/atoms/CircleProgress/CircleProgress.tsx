@@ -18,19 +18,24 @@ function getCircleStyles(radius, percentage, isSemi) {
   const strokeDashoffset =
     strokeDasharray -
     (strokeDasharray * (isSemi ? percentage / 2 : percentage)) / 100;
+
   return { strokeDasharray, strokeDashoffset };
 }
 
 function getTextTypeContent(textType, text, progress, percentage) {
   switch (textType) {
-    case "parts":
+    case "parts": {
       return progress[0] / progress[1];
-    case "percent":
+    }
+    case "percent": {
       return percentage;
-    case "append":
+    }
+    case "append": {
       return `${progress[0]} ${text.split(" ")[1]}`;
-    default:
+    }
+    default: {
       return null;
+    }
   }
 }
 
@@ -75,7 +80,7 @@ export default function CircleProgress({
   ...props
 }: any) {
   const percentage = useMemo(
-    () => (100 * progress[0]) / progress[1],
+    () => (progress[1] ? (100 * progress[0]) / progress[1] : 0),
     [progress]
   );
   const fill = color || getFillColor(percentage);
