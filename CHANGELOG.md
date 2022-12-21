@@ -1,3 +1,10 @@
+## [1.3.15](https://github.com/tiwariav/ye-design/compare/v1.3.14...v1.3.15) (2022-12-21)
+
+
+### Bug Fixes
+
+* circle stroke value for 0 percent ([f05cf51](https://github.com/tiwariav/ye-design/commit/f05cf5110df2fce7e2846f19bf66002a981483bd))
+
 ## [1.3.14](https://github.com/tiwariav/ye-design/compare/v1.3.13...v1.3.14) (2022-12-19)
 
 
