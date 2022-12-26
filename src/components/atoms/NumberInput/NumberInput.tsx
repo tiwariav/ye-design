@@ -19,12 +19,13 @@ const NumberInput = forwardRef(
       const unformattedNumber = isNil(value)
         ? null
         : String(value).split(",").join("");
+      const nullValue = value ? "0" : "";
       const newFormattedNumber =
         unformattedNumber === "-"
           ? "-"
           : formatNumber(unformattedNumber, {
               decimals: 0,
-              nullValue: "0",
+              nullValue,
             });
       setFormattedValue(newFormattedNumber);
       return unformattedNumber;
