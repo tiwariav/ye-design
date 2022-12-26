@@ -1,5 +1,5 @@
 import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories.js";
-import DetailsTemplate from "./Details.js";
+import DetailsTemplate from "./index.js";
 
 const metadata = {
   component: DetailsTemplate,

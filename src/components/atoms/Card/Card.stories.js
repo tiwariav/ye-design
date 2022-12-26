@@ -1,5 +1,5 @@
-import { Basic as ImageBasic } from "../../content/Image/Image.stories.js";
-import Text from "../../content/Text/Text.js";
+import { Basic as ImageBasic } from "../Image/Image.stories.js";
+import Text from "../Text/Text.js";
 import Card from "./Card.js";
 
 const imageMap = { ImageBasic, None: null };
