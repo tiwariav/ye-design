@@ -43,3 +43,10 @@ Basic.args = {
 Basic.parameters = {
   jest: ["TextInput.test.js"],
 };
+
+export const Formatted = Template.bind({});
+Formatted.args = {
+  format: true,
+  placeholder: "Enter your text",
+  width: 240,
+};
