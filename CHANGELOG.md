@@ -1,3 +1,10 @@
+## [1.3.17](https://github.com/tiwariav/ye-design/compare/v1.3.16...v1.3.17) (2022-12-26)
+
+
+### Bug Fixes
+
+* storybook configxx ([a506b3d](https://github.com/tiwariav/ye-design/commit/a506b3df0b293d87f26ba554f01bff7b8d867550))
+
 ## [1.3.16](https://github.com/tiwariav/ye-design/compare/v1.3.15...v1.3.16) (2022-12-26)
 
 
