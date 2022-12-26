@@ -1,3 +1,10 @@
+## [1.3.19](https://github.com/tiwariav/ye-design/compare/v1.3.18...v1.3.19) (2022-12-26)
+
+
+### Bug Fixes
+
+* number input empty when backspace ([4c5e239](https://github.com/tiwariav/ye-design/commit/4c5e239d6fe1c6d9b617d5fbe47755b4d9c67f32))
+
 ## [1.3.18](https://github.com/tiwariav/ye-design/compare/v1.3.17...v1.3.18) (2022-12-26)
 
 
