@@ -25,8 +25,6 @@ const NumberInput = forwardRef(
     const formatValue = useCallback((value: string | number = "") => {
       const unformattedNumber = isNil(value)
         ? null
-        : value === 0
-        ? 0
         : String(value).split(",").join("");
 
       const newFormattedNumber =
