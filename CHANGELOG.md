@@ -1,3 +1,10 @@
+## [1.3.16](https://github.com/tiwariav/ye-design/compare/v1.3.15...v1.3.16) (2022-12-26)
+
+
+### Bug Fixes
+
+* zero number entry in format state ([c35dc19](https://github.com/tiwariav/ye-design/commit/c35dc1900f9fc2a8b7d52e14249039a75c1ae7cc))
+
 ## [1.3.15](https://github.com/tiwariav/ye-design/compare/v1.3.14...v1.3.15) (2022-12-21)
 
 
