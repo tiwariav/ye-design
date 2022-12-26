@@ -1,3 +1,10 @@
+## [1.3.18](https://github.com/tiwariav/ye-design/compare/v1.3.17...v1.3.18) (2022-12-26)
+
+
+### Bug Fixes
+
+* number input formatting for 0 value ([0e4493a](https://github.com/tiwariav/ye-design/commit/0e4493a3f82f18d36a5cf7c4cb498a5e14655d30))
+
 ## [1.3.17](https://github.com/tiwariav/ye-design/compare/v1.3.16...v1.3.17) (2022-12-26)
 
 
