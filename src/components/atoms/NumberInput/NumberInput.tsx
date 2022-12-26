@@ -1,4 +1,4 @@
-import { uniqueId } from "lodash-es";
+import { uniqueId, isNil } from "lodash-es";
 import {
   forwardRef,
   LegacyRef,
@@ -23,8 +23,10 @@ const NumberInput = forwardRef(
     }, [id]);
 
     const formatValue = useCallback((value: string | number = "") => {
-      const unformattedNumber =
-        value === 0 ? null : String(value).split(",").join("");
+      const unformattedNumber = isNil(value)
+        ? null
+        : String(value).split(",").join("");
+
       const newFormattedNumber =
         unformattedNumber === "-"
           ? "-"
