@@ -1,3 +1,10 @@
+## [1.3.20](https://github.com/tiwariav/ye-design/compare/v1.3.19...v1.3.20) (2022-12-29)
+
+
+### Bug Fixes
+
+* controlled value in numberinput ([159bf75](https://github.com/tiwariav/ye-design/commit/159bf75097cf5c21a588ef7f9b4a574d774baafa))
+
 ## [1.3.19](https://github.com/tiwariav/ye-design/compare/v1.3.18...v1.3.19) (2022-12-26)
 
 

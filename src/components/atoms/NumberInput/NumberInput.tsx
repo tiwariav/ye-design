@@ -1,5 +1,12 @@
 import { isNil, uniqueId } from "lodash-es";
-import { forwardRef, LegacyRef, useCallback, useMemo, useState } from "react";
+import {
+  forwardRef,
+  LegacyRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { formatNumber } from "../../../tools/number.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./numberInput.module.css";
@@ -48,6 +55,15 @@ const NumberInput = forwardRef(
       },
       [format, formatValue, onChange]
     );
+
+    useEffect(() => {
+      if (format) {
+        formatValue(value);
+      } else {
+        setFormattedValue(value);
+      }
+    }, [format, formatValue, value]);
+
     return (
       <div className={styles.root}>
         <TextInput
@@ -65,6 +81,7 @@ const NumberInput = forwardRef(
           type="number"
           className={styles.numberInput}
           id={numberInputID}
+          readOnly
           value={value}
         />
       </div>
