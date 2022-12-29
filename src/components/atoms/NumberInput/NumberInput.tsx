@@ -1,12 +1,5 @@
-import { uniqueId } from "lodash-es";
-import {
-  forwardRef,
-  LegacyRef,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { isNil, uniqueId } from "lodash-es";
+import { forwardRef, LegacyRef, useCallback, useMemo, useState } from "react";
 import { formatNumber } from "../../../tools/number.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./numberInput.module.css";
@@ -23,14 +16,16 @@ const NumberInput = forwardRef(
     }, [id]);
 
     const formatValue = useCallback((value: string | number = "") => {
-      const unformattedNumber =
-        value === 0 ? null : String(value).split(",").join("");
+      const unformattedNumber = isNil(value)
+        ? null
+        : String(value).split(",").join("");
+      const nullValue = value ? "0" : "";
       const newFormattedNumber =
         unformattedNumber === "-"
           ? "-"
           : formatNumber(unformattedNumber, {
               decimals: 0,
-              nullValue: "",
+              nullValue,
             });
       setFormattedValue(newFormattedNumber);
       return unformattedNumber;
@@ -42,21 +37,17 @@ const NumberInput = forwardRef(
           event.target.value = String(event.target.value).split(",").join("");
         }
         // eslint-disable-next-line unicorn/prefer-number-properties
-        if (onChange && !isNaN(event.target.value)) {
+        if (onChange && !isNil(event.target.value)) {
           onChange(event);
         }
+        if (format) {
+          formatValue(event.target.value);
+        } else {
+          setFormattedValue(event.target.value);
+        }
       },
-      [format, onChange]
+      [format, formatValue, onChange]
     );
-
-    useEffect(() => {
-      if (format) {
-        formatValue(value);
-      } else {
-        setFormattedValue(value);
-      }
-    }, [format, formatValue, value]);
-
     return (
       <div className={styles.root}>
         <TextInput

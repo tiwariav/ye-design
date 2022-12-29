@@ -1,7 +1,7 @@
 import Image from "../../atoms/content/Image/Image.js";
 import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories.js";
 import Container from "../../atoms/sections/Container/Container.js";
-import ProfileTemplate from "./Profile.js";
+import ProfileTemplate from "./index.js";
 
 const metadata = {
   component: ProfileTemplate,

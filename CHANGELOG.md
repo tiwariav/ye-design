@@ -1,3 +1,46 @@
+## [1.3.19](https://github.com/tiwariav/ye-design/compare/v1.3.18...v1.3.19) (2022-12-26)
+
+
+### Bug Fixes
+
+* number input empty when backspace ([4c5e239](https://github.com/tiwariav/ye-design/commit/4c5e239d6fe1c6d9b617d5fbe47755b4d9c67f32))
+
+## [1.3.18](https://github.com/tiwariav/ye-design/compare/v1.3.17...v1.3.18) (2022-12-26)
+
+
+### Bug Fixes
+
+* number input formatting for 0 value ([0e4493a](https://github.com/tiwariav/ye-design/commit/0e4493a3f82f18d36a5cf7c4cb498a5e14655d30))
+
+## [1.3.17](https://github.com/tiwariav/ye-design/compare/v1.3.16...v1.3.17) (2022-12-26)
+
+
+### Bug Fixes
+
+* storybook configxx ([a506b3d](https://github.com/tiwariav/ye-design/commit/a506b3df0b293d87f26ba554f01bff7b8d867550))
+
+## [1.3.16](https://github.com/tiwariav/ye-design/compare/v1.3.15...v1.3.16) (2022-12-26)
+
+
+### Bug Fixes
+
+* zero number entry in format state ([c35dc19](https://github.com/tiwariav/ye-design/commit/c35dc1900f9fc2a8b7d52e14249039a75c1ae7cc))
+
+## [1.3.15](https://github.com/tiwariav/ye-design/compare/v1.3.14...v1.3.15) (2022-12-21)
+
+
+### Bug Fixes
+
+* circle stroke value for 0 percent ([f05cf51](https://github.com/tiwariav/ye-design/commit/f05cf5110df2fce7e2846f19bf66002a981483bd))
+
+## [1.3.14](https://github.com/tiwariav/ye-design/compare/v1.3.13...v1.3.14) (2022-12-19)
+
+
+### Bug Fixes
+
+* update packages ([3bf1d80](https://github.com/tiwariav/ye-design/commit/3bf1d80d2a62c7418b328f501bbbc2bd29b8bd2d))
+* update packages ([16a11ec](https://github.com/tiwariav/ye-design/commit/16a11ec8128b66eec370aba1811f2ac456fe9c1a))
+
 ## [1.3.13](https://github.com/tiwariav/ye-design/compare/v1.3.12...v1.3.13) (2022-12-08)
 
 
