@@ -97,38 +97,36 @@ export default function TopNav({
           </div>
         )}
         {smallerWidth && (
-          <div
-            className={clsx(
-              styles.contentMenuIcon,
-              styles.contentMenuIconRight
-            )}
-          >
-            {rightNavIcon ||
-              ((contentLeft || contentRight || contentMenu) && (
-                <Button variant="trans" spacing="none" onClick={toggleDrawer}>
-                  <RiMenu5Fill />
-                </Button>
-              ))}
-          </div>
+          <>
+            <div
+              className={clsx(
+                styles.contentMenuIcon,
+                styles.contentMenuIconRight
+              )}
+            >
+              {rightNavIcon ||
+                ((contentLeft || contentRight || contentMenu) && (
+                  <Button variant="trans" spacing="none" onClick={toggleDrawer}>
+                    <RiMenu5Fill />
+                  </Button>
+                ))}
+            </div>
+            <div
+              className={clsx(styles.contentMenu, {
+                [styles.open]: drawer,
+              })}
+            >
+              {contentLeft}
+              <Divider />
+              {contentRight}
+            </div>
+          </>
         )}
         {contentLeft && Number.isFinite(width) && !smallerWidth && (
-          <div className={styles.contentLeft}>{contentLeft}</div>
-        )}
-
-        {smallerWidth && (
-          <div
-            className={clsx(styles.contentMenu, {
-              [styles.open]: drawer,
-            })}
-          >
-            {contentLeft}
-            <Divider />
-            {contentRight}
-          </div>
-        )}
-
-        {contentRight && Number.isFinite(width) && !smallerWidth && (
-          <div className={styles.contentRight}>{contentRight}</div>
+          <>
+            <div className={styles.contentLeft}>{contentLeft}</div>
+            <div className={styles.contentRight}>{contentRight}</div>
+          </>
         )}
       </Container>
     </div>
