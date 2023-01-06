@@ -1,3 +1,10 @@
+## [1.3.22](https://github.com/tiwariav/ye-design/compare/v1.3.21...v1.3.22) (2023-01-06)
+
+
+### Bug Fixes
+
+* remove undefined classname in topnav ([251bab3](https://github.com/tiwariav/ye-design/commit/251bab38d253bc875563787df03a73e027aa3f48))
+
 ## [1.3.21](https://github.com/tiwariav/ye-design/compare/v1.3.20...v1.3.21) (2023-01-06)
 
 
