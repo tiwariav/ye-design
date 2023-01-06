@@ -98,7 +98,12 @@ export default function TopNav({
           </div>
         )}
         {smallerWidth && (
-          <div className={clsx(styles.contentMenuIcon)}>
+          <div
+            className={clsx(
+              styles.contentMenuIcon,
+              styles.contentMenuIconRight
+            )}
+          >
             {rightNavIcon ||
               ((contentLeft || contentRight || contentMenu) && (
                 <Button variant="trans" spacing="none" onClick={toggleDrawer}>

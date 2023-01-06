@@ -17,10 +17,6 @@
   display: flex;
   align-items: stretch;
   width: 100%;
-
-  @media (--media-max-md) {
-    justify-content: space-between;
-  }
 }
 
 .banner {
@@ -106,6 +102,9 @@
   @media (--media-min-lg) {
     display: none;
   }
+  @media (--media-max-md) {
+    margin-left: auto;
+  }
 }
 
 .content-right {
@@ -132,7 +131,7 @@
 .with-side-nav {
   & .logo-container {
     justify-content: center;
-    width: 120px;
+    width: 64px;
   }
 }
 
