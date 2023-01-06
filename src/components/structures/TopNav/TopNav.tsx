@@ -62,7 +62,6 @@ export default function TopNav({
         styles.root,
         styles[`is-${variant}`],
         {
-          [styles.isExpanded]: isExpanded,
           [styles.withSideNav]: withSideNav,
           [styles.sideNavToggled]: sideNavToggle,
         },
