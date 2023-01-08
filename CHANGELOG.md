@@ -1,3 +1,10 @@
+## [1.3.23](https://github.com/tiwariav/ye-design/compare/v1.3.22...v1.3.23) (2023-01-07)
+
+
+### Bug Fixes
+
+* remove repeated conditions from topnav ([0a6b87a](https://github.com/tiwariav/ye-design/commit/0a6b87a2bf7364cb476bfb1a57926b263d9ede48))
+
 ## [1.3.22](https://github.com/tiwariav/ye-design/compare/v1.3.21...v1.3.22) (2023-01-06)
 
 
