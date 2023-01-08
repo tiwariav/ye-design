@@ -1,6 +1,6 @@
-import Image from "../../atoms/content/Image/Image.js";
-import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories.js";
-import Container from "../../atoms/sections/Container/Container.js";
+import { Horizontal as CardHorizontal } from "../../atoms/Card/Card.stories.js";
+import Container from "../../atoms/Container/Container.js";
+import Image from "../../atoms/Image/Image.js";
 import ProfileTemplate from "./index.js";
 
 const metadata = {

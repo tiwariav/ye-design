@@ -1,4 +1,4 @@
-import { Basic as HeroBasic } from "../../atoms/sections/Hero/Hero.stories.js";
+import { Basic as HeroBasic } from "../../atoms/Hero/Hero.stories.js";
 import {
   Basic as CollectionBasic,
   FixedColumns as CollectionFixedColumns,

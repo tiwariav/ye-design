@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "1.3.3",
+  "version": "1.3.20",
   "type": "module",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
@@ -16,10 +16,11 @@
     "analyze": "source-map-explorer 'lib/**/*.js' --no-border-checks",
     "build": "rollup -c",
     "dev": "rollup -c -w --watch.onEnd 'yalc push lib'",
+    "postversion": "cp -r package.json ..",
     "precommit": "lint-staged",
     "prepare": "(test -d '.git' && husky install) || true",
     "release": "cd lib && npm publish",
-    "storybook": "start-storybook",
+    "storybook": "start-storybook -p 9100",
     "build-storybook": "build-storybook"
   },
   "dependencies": {

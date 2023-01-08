@@ -1,4 +1,4 @@
-import { WithImage as CardWithImage } from "../../atoms/sections/Card/Card.stories.js";
+import { WithImage as CardWithImage } from "../../atoms/Card/Card.stories.js";
 import Collection from "./index.js";
 
 const metadata = {

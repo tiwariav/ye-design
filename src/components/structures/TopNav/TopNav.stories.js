@@ -2,7 +2,7 @@ import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { GiWitchFlight } from "react-icons/gi";
 import { IoLogoNodejs } from "react-icons/io";
-import { Button, TextInput } from "../../atoms/forms/index.js";
+import { Button, TextInput } from "../../atoms/index.js";
 import TopNav from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
 
@@ -34,12 +34,21 @@ const itemsMap = {
     </TopNavItem>
   ),
   SearchInput: (
-    <TextInput
-      iconBefore={<AiOutlineSearch />}
-      variant="borderless"
-      placeholder="Search Here"
-    />
+    <TopNavItem>
+      <TextInput
+        iconBefore={<AiOutlineSearch />}
+        variant="borderless"
+        placeholder="Search Here"
+        style={{ minWidth: 240 }}
+      />
+    </TopNavItem>
   ),
+};
+const fixedStyles = {
+  left: 0,
+  position: "fixed",
+  right: 0,
+  top: 0,
 };
 
 const metadata = {
@@ -69,6 +78,17 @@ const Template = ({ logo, contentLeft, contentRight, ...args }) => {
   );
 };
 
+const FixedTemplate = (props) => (
+  <div style={{ paddingTop: 120 }}>
+    <div style={fixedStyles}>
+      <Template {...props} />
+    </div>
+    <div style={{ backgroundColor: "rgba(0,0,0,0.1)", height: "200vh" }}>
+      Long content ...
+    </div>
+  </div>
+);
+
 export const Basic = Template.bind({});
 Basic.args = {
   contentLeft: ["SearchInput"],
@@ -79,6 +99,21 @@ Basic.args = {
 export const Transparent = Template.bind({});
 Transparent.args = {
   ...Basic.args,
+  variant: "transparent",
+};
+
+export const Fixed = FixedTemplate.bind({});
+Fixed.args = {
+  ...Basic.args,
+  hideOnScroll: true,
+  variant: "transparent",
+};
+
+export const MultiRow = FixedTemplate.bind({});
+MultiRow.args = {
+  ...Basic.args,
+  hideOnScroll: "contentLeft",
+  multiRow: true,
   variant: "transparent",
 };
 

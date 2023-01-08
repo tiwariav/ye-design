@@ -22,6 +22,7 @@ const visualizer = defaultImport(_visualizer);
 const STYLES_DIR = "src/styles";
 const isDev = Boolean(process.env.ROLLUP_WATCH);
 const postcssPluginOptions = {
+  config: false,
   extensions: [".css"],
   extract: "dist.css",
   modules: { localsConvention: "camelCase" },

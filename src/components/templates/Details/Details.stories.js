@@ -1,4 +1,4 @@
-import { Horizontal as CardHorizontal } from "../../atoms/sections/Card/Card.stories.js";
+import { Horizontal as CardHorizontal } from "../../atoms/Card/Card.stories.js";
 import DetailsTemplate from "./index.js";
 
 const metadata = {

@@ -1,0 +1,11 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ye-spacing-em-normal);
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+  gap: var(--ye-spacing-em-normal);
+}

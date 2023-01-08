@@ -63,7 +63,10 @@
 }
 
 .padded-left {
-  --input-padding-left: var(--ye-spacing-em-xhuge);
+  --input-padding-left: calc(
+    var(--ye-spacing-em-large) + var(--ye-spacing-em-large) +
+      var(--ye-spacing-em-small)
+  );
 }
 
 .padded-right {

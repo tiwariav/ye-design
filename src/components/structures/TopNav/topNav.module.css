@@ -1,3 +1,5 @@
+@import "../../../styles/media.css";
+
 .root {
   z-index: 100;
   width: 100%;
@@ -17,6 +19,18 @@
   display: flex;
   align-items: stretch;
   width: 100%;
+  gap: var(--ye-spacing-em-normal);
+
+  &.has-multi-row {
+    flex-wrap: wrap;
+
+    @media (--media-max-md) {
+      & .content-left,
+      & .content-right {
+        display: flex;
+      }
+    }
+  }
 }
 
 .banner {
@@ -48,7 +62,21 @@
 .content-left {
   display: flex;
   flex: 1;
-  margin: 0 var(--ye-spacing-em-xsmall);
+  @media (--media-max-md) {
+    display: none;
+  }
+}
+
+.content-right-wrapper {
+  margin-left: auto;
+}
+
+.content-right {
+  justify-content: flex-end;
+  gap: 0;
+  @media (--media-max-md) {
+    display: none;
+  }
 }
 
 .has-separator {
@@ -69,27 +97,25 @@
 
 .content-menu {
   display: none;
-  align-items: center;
-  justify-content: flex-end;
   margin-left: auto;
+  align-items: stretch;
+  z-index: -1;
+  height: fit-content;
+  padding: var(--ye-em-base);
+  transform: translateX(-100%);
 
   @media (--media-max-md) {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    padding-top: 130px;
-    background: #fff;
-    transform: translateX(-100%);
-
     &.open {
-      display: block;
-      height: fit-content;
-      padding-bottom: var(--ye-spacing-em-huge);
-      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.06);
+      display: flex;
       transform: translateX(0);
+    }
+  }
+
+  & .has-separator {
+    margin-right: 0;
+    padding-right: 0;
+    &::after {
+      content: none;
     }
   }
 }
@@ -102,23 +128,27 @@
   @media (--media-min-lg) {
     display: none;
   }
-  @media (--media-max-md) {
-    margin-left: auto;
-  }
 }
 
-.content-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-left: auto;
-  padding-left: var(--ye-spacing-em-normal);
+.content-menu-icon-right {
+  margin-left: var(--ye-spacing-em-normal);
+}
+
+.content-menu-top,
+.content-menu-bottom {
+  align-items: flex-end;
+}
+
+.content-menu-top {
+  & + .content-menu-bottom {
+    border-top: 1px solid rgb(0 0 0 / 0.03);
+    padding-top: var(--ye-spacing-em-normal);
+  }
 }
 
 .logo-container {
   display: flex;
   justify-content: center;
-  height: 1em;
   font-size: 2.5em;
   line-height: 1;
   transition: var(--ye-transition-duration) height ease-in-out;
@@ -167,5 +197,11 @@
     & .logo {
       opacity: 0;
     }
+  }
+}
+
+.has-drawer {
+  &.is-transparent {
+    background-color: var(--ye-color-background);
   }
 }
