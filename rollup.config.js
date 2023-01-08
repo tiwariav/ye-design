@@ -79,7 +79,6 @@ function bundleCss() {
   }
   return config;
 }
-
 const config = [
   {
     input: {
