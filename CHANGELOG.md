@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/tiwariav/ye-design/compare/v1.3.23...v1.4.0) (2023-01-08)
+
+
+### Bug Fixes
+
+* rollup config for styles ([826583a](https://github.com/tiwariav/ye-design/commit/826583aef39908985f9d3cf38c262cb1b6efddc4))
+
+
+### Features
+
+* update topnav design ([2773d48](https://github.com/tiwariav/ye-design/commit/2773d4887195ca53b7cdb7f9e98c133d456d4b2f))
+
 ## [1.3.23](https://github.com/tiwariav/ye-design/compare/v1.3.22...v1.3.23) (2023-01-07)
 
 
