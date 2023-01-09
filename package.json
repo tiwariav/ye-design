@@ -37,7 +37,7 @@
     "wo-library": "^1.5.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.0",
+    "@commitlint/cli": "^17.4.1",
     "@commitlint/config-conventional": "^17.4.0",
     "@mdx-js/react": "^2.2.1",
     "@rollup/plugin-beep": "^1.0.2",
