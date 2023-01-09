@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/tiwariav/ye-design/compare/v1.4.1...v1.4.2) (2023-01-09)
+
+
+### Bug Fixes
+
+* hook import ([2995c28](https://github.com/tiwariav/ye-design/commit/2995c28d2be7a4a2a69fa545c6343ddc817f436e))
+
 ## [1.4.1](https://github.com/tiwariav/ye-design/compare/v1.4.0...v1.4.1) (2023-01-09)
 
 
