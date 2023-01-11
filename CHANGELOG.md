@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/tiwariav/ye-design/compare/v1.4.3...v1.4.4) (2023-01-11)
+
+
+### Performance Improvements
+
+* update packages ([e88ddfc](https://github.com/tiwariav/ye-design/commit/e88ddfc7cecba255f775d616daa544df5fbbba26))
+
 ## [1.4.3](https://github.com/tiwariav/ye-design/compare/v1.4.2...v1.4.3) (2023-01-11)
 
 
