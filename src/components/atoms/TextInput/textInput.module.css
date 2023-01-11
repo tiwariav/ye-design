@@ -115,6 +115,7 @@
     transition-timing-function: var(--ye-transition-function);
     transition-duration: calc(var(--ye-transition-duration) / 2);
     transition-property: transform;
+    display: flex;
   }
 
   & .text-input:hover,
