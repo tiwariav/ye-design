@@ -34,7 +34,7 @@
     "react-icons": "^4.7.1",
     "react-intersection-observer": "^9.4.1",
     "react-use": "^17.4.0",
-    "wo-library": "^1.5.3"
+    "wo-library": "^1.5.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.1",
@@ -86,7 +86,7 @@
     "eslint-plugin-lodash": "^7.4.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sonarjs": "^0.17.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
