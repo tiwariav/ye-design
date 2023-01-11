@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/tiwariav/ye-design/compare/v1.4.4...v1.4.5) (2023-01-11)
+
+
+### Bug Fixes
+
+* text input label flex ([110f49c](https://github.com/tiwariav/ye-design/commit/110f49cd77fb2ced40d9d11f0f663d04c4ca736d))
+
 ## [1.4.4](https://github.com/tiwariav/ye-design/compare/v1.4.3...v1.4.4) (2023-01-11)
 
 
