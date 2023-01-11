@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/tiwariav/ye-design/compare/v1.4.2...v1.4.3) (2023-01-11)
+
+
+### Bug Fixes
+
+* topnav content left ref ([271ac2a](https://github.com/tiwariav/ye-design/commit/271ac2ae65fe673014e9145d9ef6326483b2b3ad))
+
 ## [1.4.2](https://github.com/tiwariav/ye-design/compare/v1.4.1...v1.4.2) (2023-01-09)
 
 
