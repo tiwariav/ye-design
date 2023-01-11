@@ -80,7 +80,7 @@ export default function TopNav({
     const isScrollingDown =
       scrollDirection === "down" && scrollY > ref.current.offsetHeight;
     if (!isScrollingDown || showDrawer) return {};
-    if (hideOnScroll === "contentLeft") {
+    if (hideOnScroll === "contentLeft" && contentLeftRef.current) {
       return {
         transform: `translateY(-${contentLeftRef.current.offsetHeight + 16}px)`,
       };
