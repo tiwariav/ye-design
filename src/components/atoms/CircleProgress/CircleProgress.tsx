@@ -80,7 +80,7 @@ export default function CircleProgress({
   ...props
 }: any) {
   const percentage = useMemo(
-    () => (progress[1] ? (100 * progress[0]) / progress[1] : 0),
+    () => (progress[0] && progress[1] ? (100 * progress[0]) / progress[1] : 0),
     [progress]
   );
   const fill = color || getFillColor(percentage);
