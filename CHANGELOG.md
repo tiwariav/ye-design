@@ -1,3 +1,15 @@
+## [1.4.7](https://github.com/tiwariav/ye-design/compare/v1.4.6...v1.4.7) (2023-01-21)
+
+
+### Bug Fixes
+
+* circleprogress using nan as stroke offset ([d1e0634](https://github.com/tiwariav/ye-design/commit/d1e0634386e04570d4d99f88e5ce1a7003189890))
+
+
+### Performance Improvements
+
+* update packages ([d54452c](https://github.com/tiwariav/ye-design/commit/d54452c003906122d620458752054593a4c63ade))
+
 ## [1.4.6](https://github.com/tiwariav/ye-design/compare/v1.4.5...v1.4.6) (2023-01-19)
 
 
