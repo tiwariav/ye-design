@@ -34,7 +34,7 @@
     "react-icons": "^4.7.1",
     "react-intersection-observer": "^9.4.1",
     "react-use": "^17.4.0",
-    "wo-library": "^1.6.2"
+    "wo-library": "^1.6.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
@@ -106,7 +106,7 @@
     "postcss-preset-env": "^7.8.3",
     "prettier": "^2.8.3",
     "react": "^18.2.0",
-    "rollup": "^3.10.0",
+    "rollup": "^3.10.1",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-delete": "^2.0.0",
@@ -132,7 +132,7 @@
     "webpack": "^5.75.0"
   },
   "peerDependencies": {
-    "antd": "^5.1.5",
+    "antd": "^5.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1"
