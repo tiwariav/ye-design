@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/tiwariav/ye-design/compare/v1.4.7...v1.5.0) (2023-01-24)
+
+
+### Features
+
+* update rollup config to preserve modules ([7e1b538](https://github.com/tiwariav/ye-design/commit/7e1b538cad5e4d4de918990268e0a2ff25d5e5f3))
+
 ## [1.4.7](https://github.com/tiwariav/ye-design/compare/v1.4.6...v1.4.7) (2023-01-21)
 
 
