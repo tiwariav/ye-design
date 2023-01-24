@@ -13,7 +13,7 @@ const variants = [
 ] as const;
 
 interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  as: any;
+  as?: any;
   size?: (typeof sizes)[number];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;

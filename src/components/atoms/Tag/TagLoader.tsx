@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import ContentLoader from "react-content-loader";
+import ContentLoader from "../../../vendors/ContentLoader.js";
 import styles from "./tagLoader.module.css";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;

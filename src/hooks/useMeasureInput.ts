@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { cssVariable } from "../tools/css";
+import { cssVariable } from "../tools/css.js";
 
 export default function useMeasureInput() {
   const labelRef = useRef<HTMLLabelElement>();

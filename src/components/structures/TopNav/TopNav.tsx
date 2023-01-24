@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import { CSSProperties, ReactNode, useMemo, useRef } from "react";
 import { RiMenu5Fill } from "react-icons/ri/index.js";
 import { useToggle, useWindowScroll, useWindowSize } from "react-use";
-import { useScrollDirection } from "wo-library/hooks.js";
+import { useScrollDirection } from "wo-library/hooks/index.js";
 import { BREAKPOINTS } from "../../../styles/media.js";
 import styleUtils from "../../../styles/utils/flex.module.css";
 import { Button, Container } from "../../atoms/index.js";

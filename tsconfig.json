@@ -4,19 +4,16 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
-    // @react-native-async-storage/async-storage throws error
-    // "declarationDir": "lib/@types",
     "diagnostics": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "NodeNext",
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
-    "outDir": "lib",
+    "outDir": "dist",
     "plugins": [
       {
         "name": "typescript-plugin-css-modules",
@@ -24,11 +21,10 @@
       }
     ],
     "resolveJsonModule": true,
-    "skipLibCheck": true,
     "sourceMap": true,
     // "strict": true,
     "target": "ES2015"
   },
-  "include": ["src"],
+  "include": ["src", "rollup.config.ts", "types"],
   "exclude": ["**/__snapshots__", "**/__tests__", "node_modules"]
 }

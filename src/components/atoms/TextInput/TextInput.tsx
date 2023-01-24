@@ -2,9 +2,9 @@
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
 import { forwardRef, useMemo, useState } from "react";
-import ContentLoader from "react-content-loader";
 import { useMeasureInput } from "../../../hooks/index.js";
 import { isEmpty } from "../../../tools/utils.js";
+import ContentLoader from "../../../vendors/ContentLoader.js";
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";

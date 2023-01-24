@@ -1,4 +1,4 @@
-import { ThemeContext } from "wo-library/contexts.js";
+import { ThemeContext } from "wo-library/contexts/index.js";
 import defaultThemeStyleOptions from "../styles/themes/index.js";
 
 export const withThemeProvider = (Story, context) => {
