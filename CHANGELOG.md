@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/tiwariav/ye-design/compare/v1.5.0...v1.5.1) (2023-01-24)
+
+
+### Bug Fixes
+
+* rollup postcss config for custom media queries ([97250a9](https://github.com/tiwariav/ye-design/commit/97250a9ece31eeebbe62b0f6d9354f65aad91970))
+
 # [1.5.0](https://github.com/tiwariav/ye-design/compare/v1.4.7...v1.5.0) (2023-01-24)
 
 
