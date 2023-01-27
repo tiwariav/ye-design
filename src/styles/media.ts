@@ -1,7 +1,10 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const BREAKPOINTS = {
-  lg: 992,
-  md: 768,
-  sm: 576,
+  xs: 360,
+  sm: 480,
+  md: 780,
+  lg: 1080,
   xl: 1200,
-  xxl: 1600,
+  xxl: 1440,
+  xxxl: 1920,
 };

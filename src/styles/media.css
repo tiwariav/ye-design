@@ -1,12 +1,14 @@
 /* BREAKPOINTS */
 
-@custom-media --media-max-xs (max-width: 575px);
-@custom-media --media-min-sm (min-width: 576px);
-@custom-media --media-max-sm (max-width: 767px);
-@custom-media --media-min-md (min-width: 768px);
-@custom-media --media-max-md (max-width: 991px);
-@custom-media --media-min-lg (min-width: 992px);
-@custom-media --media-max-lg (max-width: 1199px);
-@custom-media --media-min-xl (min-width: 1200px);
-@custom-media --media-max-xl (max-width: 1599px);
-@custom-media --media-min-xxl (min-width: 1600px);
+@custom-media --media-max-xs (max-width: 360px);
+@custom-media --media-min-sm (min-width: 361px);
+@custom-media --media-max-sm (max-width: 480px);
+@custom-media --media-min-md (min-width: 481px);
+@custom-media --media-max-md (max-width: 780px);
+@custom-media --media-min-lg (min-width: 781px);
+@custom-media --media-max-lg (max-width: 1080px);
+@custom-media --media-min-xl (min-width: 1081px);
+@custom-media --media-max-xl (max-width: 1200px);
+@custom-media --media-min-xxl (min-width: 1201px);
+@custom-media --media-max-xxl (min-width: 1440px);
+@custom-media --media-min-xxxl (min-width: 1920px);
