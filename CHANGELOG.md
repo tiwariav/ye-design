@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/tiwariav/ye-design/compare/v1.5.2...v1.6.0) (2023-02-04)
+
+
+### Features
+
+* add display font family type ([6011a95](https://github.com/tiwariav/ye-design/commit/6011a95b2902251e5216503ad2c8f3d40f80050f))
+
 ## [1.5.2](https://github.com/tiwariav/ye-design/compare/v1.5.1...v1.5.2) (2023-01-27)
 
 
