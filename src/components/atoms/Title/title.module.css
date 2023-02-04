@@ -1,5 +1,6 @@
 .root {
   position: relative;
+  font-family: var(--ye-font-family-title);
 }
 
 .is-tinyline,

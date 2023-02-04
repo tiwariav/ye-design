@@ -42,7 +42,7 @@
   --ye-color-input-border: rgb(0 0 0 / 0.025);
   --ye-color-input-focus-background: #f6f7f8;
   --ye-color-input-focus-border: rgb(64 169 255);
-  --ye-color-input-focus-shadow: rgb(64 164 255 / .75);
+  --ye-color-input-focus-shadow: rgb(64 164 255 / 0.75);
 
   /* TODO: focus and visited color to be different */
   --ye-color-text-anchor-focus: #40a9ff;
@@ -59,9 +59,14 @@
   /* FONTS */
 
   /* Make sure the fonts are imported in the appropriate html (.storybook/preview-head.html for storybook) */
-  --ye-font-family-body: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
-  --ye-font-family-title: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
-  --ye-font-family-mono: source-code-pro, "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  --ye-font-family-body: "Poppins", "Helvetica Neue", helvetica, arial,
+    sans-serif;
+  --ye-font-family-title: "Poppins", "Helvetica Neue", helvetica, arial,
+    sans-serif;
+  --ye-font-family-display: "Poppins", "Helvetica Neue", helvetica, arial,
+    sans-serif;
+  --ye-font-family-mono: source-code-pro, "Menlo", "Monaco", "Consolas",
+    "Courier New", monospace;
   --ye-font-family-input: var(--ye-font-family-body);
 
   /* type scale 1.2 (https://type-scale.com/) */
@@ -172,15 +177,15 @@
   --ye-button-hover-shadow: var(--ye-shadow-hovered);
   --ye-button-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-large);
   --ye-button-outline-padding: calc(
-    var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
-  )
+      var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
+    )
     calc(var(--ye-spacing-em-large) - var(--ye-button-outline-border-width));
   --ye-button-shadow: var(--ye-shadow-pressable);
 
   /* FORM */
   --ye-control-outline-padding: calc(
-    var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
-  )
+      var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
+    )
     calc(var(--ye-spacing-em-normal) - var(--ye-button-outline-border-width));
   --ye-control-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-normal);
   --ye-input-border-width: 0;
@@ -191,7 +196,6 @@
 
   /* TOPNAV */
   --ye-topnav-expanded-color-bg: transparent;
-
 }
 
 /* media property import from ./media.css not working here */
@@ -206,7 +210,8 @@
   box-sizing: border-box;
 }
 
-html,body {
+html,
+body {
   min-height: 100%;
 }
 
@@ -232,7 +237,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--ye-font-weight-bold);
-  font-family: var(--ye-font-family-title);
+  font-family: var(--ye-font-family-display);
 }
 
 h1 {
