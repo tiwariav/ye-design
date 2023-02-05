@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/tiwariav/ye-design/compare/v1.6.0...v1.6.1) (2023-02-05)
+
+
+### Performance Improvements
+
+* update packages ([22d2d87](https://github.com/tiwariav/ye-design/commit/22d2d87cd18ded513b9cdf7a760ef233b80f8b04))
+
 # [1.6.0](https://github.com/tiwariav/ye-design/compare/v1.5.2...v1.6.0) (2023-02-04)
 
 
