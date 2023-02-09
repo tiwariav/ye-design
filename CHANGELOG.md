@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/tiwariav/ye-design/compare/v1.6.1...v1.6.2) (2023-02-09)
+
+
+### Bug Fixes
+
+* improve typing ([3028cbb](https://github.com/tiwariav/ye-design/commit/3028cbb7a7e77212924ce45ac8410ae4b03fa3a9))
+
 ## [1.6.1](https://github.com/tiwariav/ye-design/compare/v1.6.0...v1.6.1) (2023-02-05)
 
 
