@@ -7,16 +7,21 @@ import styles from "./spinkit.module.css";
 
 function getLoader(name, props) {
   switch (name) {
-    case "bounce":
+    case "bounce": {
       return <Bounce {...props} />;
-    case "chase":
+    }
+    case "chase": {
       return <Chase {...props} />;
-    case "circle-fade-dot":
+    }
+    case "circle-fade-dot": {
       return <CircleFadeDot {...props} />;
-    case "double-bounce":
+    }
+    case "double-bounce": {
       return <DoubleBounce {...props} />;
-    default:
+    }
+    default: {
       return null;
+    }
   }
 }
 

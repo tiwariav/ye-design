@@ -17,7 +17,7 @@ function Page({
   topNavShrinkOffset = 0,
 }: any) {
   // TODO: create a LayoutProvider to manage topnav and sidenav states
-  const topNavRef = React.useRef(null);
+  const topNavRef = React.useRef<HTMLDivElement>(null);
   const [spacerRef, spacerInView] = useInView();
   const [sideNavToggle, toggleSideNav] = useToggle(false);
 

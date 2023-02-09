@@ -11,7 +11,13 @@ interface AntFormItemWrapperProps {
   loading: boolean;
   onBlur: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
-  rules: any[];
+  rules: {
+    required: boolean;
+  }[];
+}
+
+interface EventValue extends React.ChangeEvent<HTMLInputElement> {
+  value?: string;
 }
 
 export default function AntFormItemWrapper({
@@ -66,9 +72,13 @@ export default function AntFormItemWrapper({
   return (
     <Form.Item
       validateTrigger={validateTrigger}
-      className={clsx(styles.root, { [styles.virgin]: virgin }, className)}
+      className={clsx(
+        styles.root,
+        // { [styles.virgin]: virgin },
+        className
+      )}
       rules={rules}
-      getValueFromEvent={(event) => {
+      getValueFromEvent={(event: EventValue) => {
         return !isObject(event) || isDate(event)
           ? event
           : event.value ??

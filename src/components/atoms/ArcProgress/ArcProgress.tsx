@@ -24,14 +24,12 @@ export default function ArcProgress({
   const animeId = useMemo(() => uniqueId(), []);
   const angles = useMemo(() => {
     const value = [];
-    const parts = [...Array.from<number>({ length: segments })].fill(
-      100 / segments
-    );
+    const parts = Array.from<number>({ length: segments }).fill(100 / segments);
     let startAngle = -90;
     for (let index = 0; index < parts.length; index++) {
       const part = parts[index];
       const nextAngle = startAngle + (180 * part) / 100;
-      const endAngle = index !== parts.length - 1 ? nextAngle - 7.5 : nextAngle;
+      const endAngle = index === parts.length - 1 ? nextAngle : nextAngle - 7.5;
       value.push([startAngle, endAngle]);
       startAngle = nextAngle;
     }

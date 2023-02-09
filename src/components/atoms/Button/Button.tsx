@@ -92,7 +92,7 @@ const Button = forwardRef(
       neuOptions,
       ...props
     }: any,
-    propRef
+    propRef: React.ForwardedRef<Node>
   ) => {
     const { innerRef, setInnerRef } = usePropRef(propRef);
 

@@ -6,6 +6,7 @@
 
 import { clsx } from "clsx";
 import Spinner from "../Spinner/Spinner.js";
+// eslint-disable-next-line css-modules/no-unused-class
 import styles from "./card.module.css";
 
 const layoutOptions = ["vertical", "horizontal"];

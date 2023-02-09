@@ -5,7 +5,6 @@ export const withThemeProvider = (Story, context) => {
   return (
     <ThemeContext.ThemeProvider
       themeVariants={defaultThemeStyleOptions}
-      // @ts-ignore
       activeThemeName={context.globals.theme}
     >
       <Story {...context} />

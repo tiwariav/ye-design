@@ -9,12 +9,15 @@ import styles from "./symbol.module.css";
 
 function imageTransform(variant) {
   switch (variant) {
-    case VARIANT_OPTIONS.pin:
+    case VARIANT_OPTIONS.pin: {
       return "translate(0 -0.5)";
-    case VARIANT_OPTIONS.flag:
+    }
+    case VARIANT_OPTIONS.flag: {
       return "translate(0 -0.75)";
-    default:
+    }
+    default: {
       return "translate(0 0)";
+    }
   }
 }
 
