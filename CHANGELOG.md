@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/tiwariav/ye-design/compare/v1.6.2...v1.6.3) (2023-02-10)
+
+
+### Bug Fixes
+
+* improve antformitemwrapper prop types ([22150f1](https://github.com/tiwariav/ye-design/commit/22150f1264e95e2439d5de7da890cfa3a56d7ae7))
+
 ## [1.6.2](https://github.com/tiwariav/ye-design/compare/v1.6.1...v1.6.2) (2023-02-09)
 
 
