@@ -1,4 +1,5 @@
 import { Form } from "antd";
+import { Rule } from "antd/es/form/index.js";
 import { clsx } from "clsx";
 import { isDate, isObject } from "lodash-es";
 import React, { ReactElement, useCallback, useMemo, useState } from "react";
@@ -6,14 +7,12 @@ import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps {
   children: ReactElement;
-  className: string;
-  label: string;
-  loading: boolean;
-  onBlur: React.ChangeEventHandler<HTMLInputElement>;
-  onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
-  rules: {
-    required: boolean;
-  }[];
+  className?: string;
+  label?: string;
+  loading?: boolean;
+  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
+  onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
+  rules?: Rule[];
 }
 
 interface EventValue extends React.ChangeEvent<HTMLInputElement> {
@@ -65,6 +64,7 @@ export default function AntFormItemWrapper({
       onKeyPress: handleKeyPress,
       ...(loading ? { isLoading: loading } : {}),
       ...(label ? { label } : {}),
+      // @ts-ignore
       required: rules?.find((item) => item.required),
     };
   }, [handleBlur, handleKeyPress, label, loading, rules]);

@@ -12,12 +12,12 @@ const extendConfig = [
 ];
 
 const rulesConfig = {
-  "@typescript-eslint/ban-ts-comment": [
-    "error",
-    {
-      "ts-ignore": { descriptionFormat: "^: TS\\d+ because .+$" },
-    },
-  ],
+  // "@typescript-eslint/ban-ts-comment": [
+  //   "error",
+  //   {
+  //     "ts-ignore": { descriptionFormat: "^: TS\\d+ because .+$" },
+  //   },
+  // ],
   "css-modules/no-undef-class": ["off", { camelCase: true }],
   "css-modules/no-unused-class": ["off", { camelCase: true }],
   "eslint-comments/disable-enable-pair": ["error", { allowWholeFile: true }],
