@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/tiwariav/ye-design/compare/v1.6.4...v1.6.5) (2023-02-11)
+
+
+### Performance Improvements
+
+* update wo-library ([3a3cbac](https://github.com/tiwariav/ye-design/commit/3a3cbac1c8df15b191c76deb0664ed2658bf376d))
+
 ## [1.6.4](https://github.com/tiwariav/ye-design/compare/v1.6.3...v1.6.4) (2023-02-11)
 
 
