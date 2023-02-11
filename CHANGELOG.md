@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/tiwariav/ye-design/compare/v1.6.5...v1.6.6) (2023-02-11)
+
+
+### Performance Improvements
+
+* udpate packages ([8c66561](https://github.com/tiwariav/ye-design/commit/8c665610a511839342183d8381cb996aa2f7fec3))
+
 ## [1.6.5](https://github.com/tiwariav/ye-design/compare/v1.6.4...v1.6.5) (2023-02-11)
 
 
