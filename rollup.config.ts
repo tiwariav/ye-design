@@ -10,7 +10,7 @@ import {
   postcssConfig,
   rollupInputMap,
   tsPlugins,
-} from "wo-library/tools/rollup.js";
+} from "wo-library/tools/rollup/index.js";
 // import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 
 const postcss = defaultImport(_postcss);

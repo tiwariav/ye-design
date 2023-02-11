@@ -37,7 +37,7 @@
     "react-intersection-observer": "^9.4.2",
     "react-use": "^17.4.0",
     "tslib": "^2.5.0",
-    "wo-library": "^1.9.6"
+    "wo-library": "^1.10.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
@@ -124,7 +124,6 @@
     "stylelint": "14.16.1",
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-css-modules": "^4.1.0",
-    "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^29.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.6.0",
