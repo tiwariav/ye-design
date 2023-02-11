@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/tiwariav/ye-design/compare/v1.6.3...v1.6.4) (2023-02-11)
+
+
+### Bug Fixes
+
+* remove box-shadow-inset variable causing unknown error ([95bf501](https://github.com/tiwariav/ye-design/commit/95bf501013c2ebdbc907e659b150fe80c5a0eec2))
+
 ## [1.6.3](https://github.com/tiwariav/ye-design/compare/v1.6.2...v1.6.3) (2023-02-10)
 
 
