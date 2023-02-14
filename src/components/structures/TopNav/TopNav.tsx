@@ -68,7 +68,7 @@ export default function TopNav({
   // NOTE: smallerWidth is false server side because width is Infinity
   const smallerWidth = useMemo(() => {
     if (!Number.isFinite(width)) return;
-    return width < BREAKPOINTS.lg;
+    return width <= BREAKPOINTS.lg;
   }, [width]);
   const ref = useRef<HTMLDivElement>();
   const contentLeftRef = useRef<HTMLDivElement>();
