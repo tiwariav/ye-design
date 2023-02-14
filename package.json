@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "type": "module",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

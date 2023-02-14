@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/tiwariav/ye-design/compare/v1.6.7...v1.6.8) (2023-02-14)
+
+
+### Bug Fixes
+
+* fix page sidenav responsive breakpoints ([4ca6fa2](https://github.com/tiwariav/ye-design/commit/4ca6fa242ad9c7e12fb75bb4b1856e27cfe2bdbb))
+
 ## [1.6.7](https://github.com/tiwariav/ye-design/compare/v1.6.6...v1.6.7) (2023-02-12)
 
 
