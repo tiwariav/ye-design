@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import React from "react";
-import { AiOutlineFilter } from "react-icons/ai/index.js";
+import { AiOutlineFilter } from "react-icons/ai";
 import { BiSortDown } from "react-icons/bi/index.js";
 import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
