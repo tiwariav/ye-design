@@ -1,3 +1,10 @@
+## [1.6.10](https://github.com/tiwariav/ye-design/compare/v1.6.9...v1.6.10) (2023-02-16)
+
+
+### Bug Fixes
+
+* add generic type to useProfRef ([3bbafdf](https://github.com/tiwariav/ye-design/commit/3bbafdf6be0971104596aa5b12ca4f1072c26138))
+
 ## [1.6.9](https://github.com/tiwariav/ye-design/compare/v1.6.8...v1.6.9) (2023-02-15)
 
 
