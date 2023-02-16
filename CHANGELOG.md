@@ -1,3 +1,10 @@
+## [1.6.9](https://github.com/tiwariav/ye-design/compare/v1.6.8...v1.6.9) (2023-02-15)
+
+
+### Performance Improvements
+
+* update react-icons import to esm ([cd820d8](https://github.com/tiwariav/ye-design/commit/cd820d813df3dc114b55edf68c80cc5dd852f559))
+
 ## [1.6.8](https://github.com/tiwariav/ye-design/compare/v1.6.7...v1.6.8) (2023-02-14)
 
 
