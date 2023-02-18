@@ -1,3 +1,10 @@
+## [1.6.11](https://github.com/tiwariav/ye-design/compare/v1.6.10...v1.6.11) (2023-02-18)
+
+
+### Bug Fixes
+
+* fix react-icons imports ([d2d8c6d](https://github.com/tiwariav/ye-design/commit/d2d8c6dc80d395143e7c68fc8888fbd4dab0fe34))
+
 ## [1.6.10](https://github.com/tiwariav/ye-design/compare/v1.6.9...v1.6.10) (2023-02-16)
 
 
