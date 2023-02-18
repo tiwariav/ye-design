@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { CSSProperties, ReactNode, useMemo, useRef } from "react";
-import { RiMenu5Fill } from "react-icons/ri";
+import { RiMenu5Fill } from "react-icons/ri/index.esm.js";
 import { useToggle, useWindowScroll, useWindowSize } from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
 import { BREAKPOINTS } from "../../../styles/media.js";
