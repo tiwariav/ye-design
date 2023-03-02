@@ -1,5 +1,6 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
 
+import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce, uniqueId } from "lodash-es";
 import { useMemo, useState } from "react";
@@ -8,7 +9,6 @@ import { Button } from "../Button/index.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
-import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import formStyles from "../form.module.css";
 import TextInput from "../TextInput/TextInput.js";
 import styles from "./fileInput.module.css";
