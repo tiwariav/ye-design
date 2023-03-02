@@ -1,13 +1,13 @@
-import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
-import { GiBowman, GiCaveman } from "react-icons/gi";
+import { storyIconMap } from "../../../tools/storybook.js";
 import Anchor from "./Anchor.js";
-
-const iconMap = { AiFillLeftCircle, AiFillRightCircle, GiBowman, GiCaveman };
-
 const metadata = {
   argTypes: {
-    iconAfter: { control: { options: Object.keys(iconMap), type: "select" } },
-    iconBefore: { control: { options: Object.keys(iconMap), type: "select" } },
+    iconAfter: {
+      control: { options: Object.keys(storyIconMap), type: "select" },
+    },
+    iconBefore: {
+      control: { options: Object.keys(storyIconMap), type: "select" },
+    },
   },
   component: Anchor,
 };
@@ -15,8 +15,8 @@ const metadata = {
 export default metadata;
 
 const Template = ({ iconAfter, iconBefore, ...args }) => {
-  const IconAfter = iconMap[iconAfter];
-  const IconBefore = iconMap[iconBefore];
+  const IconAfter = storyIconMap[iconAfter];
+  const IconBefore = storyIconMap[iconBefore];
   return (
     <Anchor
       iconAfter={IconAfter ? <IconAfter /> : null}
@@ -51,6 +51,6 @@ Dashed.args = {
 export const withIcon = Template.bind({});
 withIcon.args = {
   ...Basic.args,
-  iconAfter: "AiFillRightCircle",
-  iconBefore: "AiFillLeftCircle",
+  iconAfter: "IconSquareRoundedChevronLeftFilled",
+  iconBefore: "IconSquareRoundedChevronRightFilled",
 };

@@ -1,5 +1,5 @@
+import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useState } from "react";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai/index.esm.js";
 import TextInput from "./TextInput.js";
 
 export default function PasswordInput({ ...props }) {
@@ -9,9 +9,9 @@ export default function PasswordInput({ ...props }) {
       type="password"
       iconAfter={
         showPassword ? (
-          <AiFillEye onClick={() => setShowPassword(false)} />
+          <IconEye onClick={() => setShowPassword(false)} />
         ) : (
-          <AiFillEyeInvisible onClick={() => setShowPassword(true)} />
+          <IconEyeOff onClick={() => setShowPassword(true)} />
         )
       }
       {...props}

@@ -1,7 +1,6 @@
+import { IconFilter, IconSortDescending } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import React from "react";
-import { AiOutlineFilter } from "react-icons/ai/index.esm.js";
-import { BiSortDown } from "react-icons/bi//index.esm.js";
 import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
 import styles from "./collection.module.css";
@@ -35,7 +34,7 @@ function Collection({
               className={styles.button}
               size="small"
               label="Filter"
-              iconBefore={<AiOutlineFilter />}
+              iconBefore={<IconFilter />}
             />
           ) : null}
           {sort ? (
@@ -43,7 +42,7 @@ function Collection({
               className={styles.button}
               size="small"
               label="Sort"
-              iconBefore={<BiSortDown />}
+              iconBefore={<IconSortDescending />}
             />
           ) : null}
         </div>

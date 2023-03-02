@@ -3,12 +3,12 @@
 import { clsx } from "clsx";
 import { debounce, uniqueId } from "lodash-es";
 import { useMemo, useState } from "react";
-import { AiFillDelete, AiOutlineReload } from "react-icons/ai/index.esm.js";
 import { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
 import { Button } from "../Button/index.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
+import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import formStyles from "../form.module.css";
 import TextInput from "../TextInput/TextInput.js";
 import styles from "./fileInput.module.css";
@@ -144,7 +144,7 @@ export default function FileInput({
                         variant="trans"
                         spacing="equal"
                       >
-                        <AiFillDelete />
+                        <IconTrashXFilled />
                       </Button>
                     </div>
                   </>
@@ -161,7 +161,7 @@ export default function FileInput({
                         variant="trans"
                         spacing="equal"
                       >
-                        <AiOutlineReload />
+                        <IconReload />
                       </Button>
                     </div>
                     <div>
@@ -170,7 +170,7 @@ export default function FileInput({
                         variant="trans"
                         spacing="equal"
                       >
-                        <AiFillDelete />
+                        <IconTrashXFilled />
                       </Button>
                     </div>
                   </>

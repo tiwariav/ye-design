@@ -1,21 +1,9 @@
-import {
-  AiFillLeftCircle,
-  AiFillRightCircle,
-  AiOutlineEye,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { storyIconMap } from "../../../tools/storybook.js";
 import TextInput from "./TextInput.js";
-
-const iconMap = {
-  AiFillLeftCircle,
-  AiFillRightCircle,
-  AiOutlineEye,
-  AiOutlineSearch,
-};
 
 const metadata = {
   argTypes: {
-    icon: { control: { options: Object.keys(iconMap), type: "select" } },
+    icon: { control: { options: Object.keys(storyIconMap), type: "select" } },
   },
   component: TextInput,
 };
@@ -23,8 +11,8 @@ const metadata = {
 export default metadata;
 
 const Template = ({ width, iconBefore, iconAfter, ...args }) => {
-  const IconBefore = iconMap[iconBefore];
-  const IconAfter = iconMap[iconAfter];
+  const IconBefore = storyIconMap[iconBefore];
+  const IconAfter = storyIconMap[iconAfter];
   return (
     <TextInput
       iconBefore={IconBefore ? <IconBefore /> : null}

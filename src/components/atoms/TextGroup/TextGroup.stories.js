@@ -1,19 +1,14 @@
-import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
-import { GiBowman, GiCaveman } from "react-icons/gi";
+import { storyIconMap } from "../../../tools/storybook.js";
 import TextGroup from "./TextGroup.js";
-
-const iconMap = {
-  AiFillLeftCircle,
-  AiFillRightCircle,
-  GiBowman,
-  GiCaveman,
-  None: null,
-};
 
 const metadata = {
   argTypes: {
-    iconAfter: { control: { options: Object.keys(iconMap), type: "select" } },
-    iconBefore: { control: { options: Object.keys(iconMap), type: "select" } },
+    iconAfter: {
+      control: { options: Object.keys(storyIconMap), type: "select" },
+    },
+    iconBefore: {
+      control: { options: Object.keys(storyIconMap), type: "select" },
+    },
   },
   component: TextGroup,
 };
@@ -21,8 +16,8 @@ const metadata = {
 export default metadata;
 
 const Template = ({ iconAfter, iconBefore, ...args }) => {
-  const IconAfter = iconMap[iconAfter];
-  const IconBefore = iconMap[iconBefore];
+  const IconAfter = storyIconMap[iconAfter];
+  const IconBefore = storyIconMap[iconBefore];
   return (
     <TextGroup
       iconAfter={IconAfter ? <IconAfter /> : null}

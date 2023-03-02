@@ -1,6 +1,13 @@
+import { IconMenu } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { CSSProperties, ReactNode, useMemo, useRef } from "react";
-import { RiMenu5Fill } from "react-icons/ri/index.esm.js";
+import {
+  CSSProperties,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useToggle, useWindowScroll, useWindowSize } from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
 import { BREAKPOINTS } from "../../../styles/media.js";
@@ -65,11 +72,8 @@ export default function TopNav({
   const { width } = useWindowSize();
   const [localDrawer, toggleLocalDrawer] = useToggle(false);
   const scrollDirection = useScrollDirection();
-  // NOTE: smallerWidth is false server side because width is Infinity
-  const smallerWidth = useMemo(() => {
-    if (!Number.isFinite(width)) return;
-    return width <= BREAKPOINTS.lg;
-  }, [width]);
+  const [smallerWidth, setSmallerWidth] = useState<boolean>();
+
   const ref = useRef<HTMLDivElement>();
   const contentLeftRef = useRef<HTMLDivElement>();
   const { y: scrollY } = useWindowScroll();
@@ -87,6 +91,12 @@ export default function TopNav({
     }
     return { transform: "translateY(-100%)" };
   }, [hideOnScroll, scrollDirection, scrollY, showDrawer]);
+
+  useEffect(() => {
+    // NOTE: smallerWidth is undefined server side because width is Infinity
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    setSmallerWidth(width <= BREAKPOINTS.lg);
+  }, [width]);
 
   const hasContextMenu = contentMenu || contentLeft || contentRight;
 
@@ -123,7 +133,7 @@ export default function TopNav({
         {smallerWidth !== false && withSideNav && leftNavIcon !== null && (
           <div className={clsx(styles.contentMenuIcon)}>
             <Button variant="trans" spacing="none" onClick={toggleSideNav}>
-              {leftNavIcon || <RiMenu5Fill />}
+              {leftNavIcon || <IconMenu />}
             </Button>
           </div>
         )}
@@ -140,7 +150,7 @@ export default function TopNav({
           </div>
         )}
         {/* left content */}
-        {(smallerWidth !== true || multiRow) && contentLeft && (
+        {(smallerWidth === false || multiRow) && contentLeft && (
           <div ref={contentLeftRef} className={styles.contentLeft}>
             {contentLeft}
           </div>
@@ -179,7 +189,7 @@ export default function TopNav({
                     spacing="none"
                     onClick={toggleDrawer || toggleLocalDrawer}
                   >
-                    {rightNavIcon || <RiMenu5Fill />}
+                    {rightNavIcon || <IconMenu />}
                   </Button>
                 </TopNavItem>
               )}

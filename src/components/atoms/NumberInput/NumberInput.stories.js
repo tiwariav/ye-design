@@ -1,23 +1,11 @@
 import { useState } from "react";
-import {
-  AiFillLeftCircle,
-  AiFillRightCircle,
-  AiOutlineEye,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "./NumberInput.js";
 
-const iconMap = {
-  AiFillLeftCircle,
-  AiFillRightCircle,
-  AiOutlineEye,
-  AiOutlineSearch,
-};
-
 const metadata = {
   argTypes: {
-    icon: { control: { options: Object.keys(iconMap), type: "select" } },
+    icon: { control: { options: Object.keys(storyIconMap), type: "select" } },
   },
   component: NumberInput,
 };
@@ -25,8 +13,8 @@ const metadata = {
 export default metadata;
 
 const Template = ({ width, iconBefore, iconAfter, ...args }) => {
-  const IconBefore = iconMap[iconBefore];
-  const IconAfter = iconMap[iconAfter];
+  const IconBefore = storyIconMap[iconBefore];
+  const IconAfter = storyIconMap[iconAfter];
   return (
     <NumberInput
       iconBefore={IconBefore ? <IconBefore /> : null}
@@ -53,8 +41,8 @@ Formatted.args = {
   width: 240,
 };
 export const PresetValue = ({ width, iconBefore, iconAfter, ...args }) => {
-  const IconBefore = iconMap[iconBefore];
-  const IconAfter = iconMap[iconAfter];
+  const IconBefore = storyIconMap[iconBefore];
+  const IconAfter = storyIconMap[iconAfter];
   const [value, setValue] = useState(0);
   return (
     <div>

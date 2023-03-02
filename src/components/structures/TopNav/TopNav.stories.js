@@ -1,12 +1,15 @@
-import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai";
-import { FaMicrophoneAlt } from "react-icons/fa";
-import { GiWitchFlight } from "react-icons/gi";
-import { IoLogoNodejs } from "react-icons/io";
+import {
+  IconFish,
+  IconLogin,
+  IconMicrophone,
+  IconSearch,
+  IconSpider,
+} from "@tabler/icons-react";
 import { Button, TextInput } from "../../atoms/index.js";
 import TopNav from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
 
-const iconMap = { FaMicrophoneAlt, GiWitchFlight, IoLogoNodejs };
+const iconMap = { IconFish, IconSpider };
 const itemsMap = {
   Button: (
     <TopNavItem>
@@ -17,7 +20,7 @@ const itemsMap = {
     <TopNavItem>
       <Button
         size="small"
-        iconBefore={<AiOutlineLogin />}
+        iconBefore={<IconLogin />}
         label="Button"
         variant="outlined"
       />
@@ -27,7 +30,7 @@ const itemsMap = {
     <TopNavItem hasSeparator>
       <Button
         size="small"
-        iconBefore={<FaMicrophoneAlt />}
+        iconBefore={<IconMicrophone />}
         label="Button"
         variant="outlined"
       />
@@ -36,7 +39,7 @@ const itemsMap = {
   SearchInput: (
     <TopNavItem>
       <TextInput
-        iconBefore={<AiOutlineSearch />}
+        iconBefore={<IconSearch />}
         variant="borderless"
         placeholder="Search Here"
         style={{ minWidth: 240 }}
@@ -93,7 +96,7 @@ export const Basic = Template.bind({});
 Basic.args = {
   contentLeft: ["SearchInput"],
   contentRight: ["ButtonWithSeparator", "Button"],
-  logo: "GiWitchFlight",
+  logo: "IconSpider",
 };
 
 export const Transparent = Template.bind({});

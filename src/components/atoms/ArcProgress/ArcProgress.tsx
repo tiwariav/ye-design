@@ -1,8 +1,8 @@
+import { IconArrowLeftRhombus } from "@tabler/icons-react";
 import anime from "animejs/lib/anime.es.js";
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
 import { useEffect, useMemo } from "react";
-import { BsCaretLeftFill } from "react-icons/bs/index.esm.js";
 import { describeArc } from "../../../tools/svg.js";
 import styles from "./arcProgress.module.css";
 
@@ -79,7 +79,7 @@ export default function ArcProgress({
         id={`anime_indicator__${animeId}`}
         className={clsx(styles.indicator)}
       >
-        <BsCaretLeftFill />
+        <IconArrowLeftRhombus />
       </div>
       <div className={styles.content}>
         <div id={`anime_text__${animeId}`} className={clsx(styles.text)}>

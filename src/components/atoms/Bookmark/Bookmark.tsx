@@ -1,5 +1,5 @@
+import { IconCircleChevronRight } from "@tabler/icons-react";
 import React from "react";
-import { AiOutlineRight } from "react-icons/ai/index.esm.js";
 import styles from "./bookmark.module.css";
 
 function Bookmark({ children, ...props }) {
@@ -10,7 +10,7 @@ function Bookmark({ children, ...props }) {
           <span className={styles.text}>{child}</span>
           {index < React.Children.count(children) - 1 ? (
             <span className={styles.separator}>
-              <AiOutlineRight />
+              <IconCircleChevronRight />
             </span>
           ) : null}
         </span>

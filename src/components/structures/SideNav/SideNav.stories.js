@@ -1,4 +1,4 @@
-import { AiOutlineBulb, AiOutlineHome } from "react-icons/ai";
+import { IconBulb, IconHome } from "@tabler/icons-react";
 import Anchor from "../../atoms/Anchor/Anchor.js";
 import SideNav from "./SideNav.js";
 import SideNavGroup from "./SideNavGroup.js";
@@ -15,13 +15,13 @@ const Template = (args) => (
     <SideNavGroup>
       <Anchor
         variant="nav-item"
-        iconBefore={<AiOutlineHome />}
+        iconBefore={<IconHome />}
         label="Home"
         href="/"
       />
       <Anchor
         variant="nav-item"
-        iconBefore={<AiOutlineBulb />}
+        iconBefore={<IconBulb />}
         label="Menu Item"
         href="/"
       />
