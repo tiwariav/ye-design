@@ -1,3 +1,10 @@
+## [1.6.12](https://github.com/tiwariav/ye-design/compare/v1.6.11...v1.6.12) (2023-03-02)
+
+
+### Bug Fixes
+
+* replace react-icons with tabler icons ([17078a4](https://github.com/tiwariav/ye-design/commit/17078a4a896f6eac8c9e6ca01e6450c40c10997c))
+
 ## [1.6.11](https://github.com/tiwariav/ye-design/compare/v1.6.10...v1.6.11) (2023-02-18)
 
 
