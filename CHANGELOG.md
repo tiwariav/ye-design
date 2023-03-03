@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/tiwariav/ye-design/compare/v1.6.12...v1.7.0) (2023-03-03)
+
+
+### Features
+
+* mark sideEffects as false for webpack ([5e813f2](https://github.com/tiwariav/ye-design/commit/5e813f2a6c997f7741d671f02372c0071e76ad91))
+
 ## [1.6.12](https://github.com/tiwariav/ye-design/compare/v1.6.11...v1.6.12) (2023-03-02)
 
 
