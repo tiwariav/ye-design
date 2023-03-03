@@ -38,7 +38,7 @@
     "react-intersection-observer": "^9.4.3",
     "react-use": "^17.4.0",
     "tslib": "^2.5.0",
-    "wo-library": "^1.10.4"
+    "wo-library": "^1.10.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
