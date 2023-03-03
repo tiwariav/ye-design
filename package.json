@@ -2,6 +2,7 @@
   "name": "ye-design",
   "version": "1.6.12",
   "type": "module",
+  "sideEffects": false,
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
@@ -38,7 +39,7 @@
     "react-intersection-observer": "^9.4.3",
     "react-use": "^17.4.0",
     "tslib": "^2.5.0",
-    "wo-library": "^1.10.4"
+    "wo-library": "^1.11.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
@@ -67,6 +68,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@tiwariav/browserslist-config": "^1.0.3",
+    "@types/animejs": "^3.1.7",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.4",
     "@types/react": "^18.0.28",

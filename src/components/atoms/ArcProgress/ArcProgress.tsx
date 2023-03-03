@@ -1,5 +1,5 @@
 import { IconArrowLeftRhombus } from "@tabler/icons-react";
-import anime from "animejs/lib/anime.es.js";
+import anime from "animejs";
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
 import { useEffect, useMemo } from "react";
