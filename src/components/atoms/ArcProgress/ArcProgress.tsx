@@ -1,10 +1,10 @@
 import { IconArrowLeftRhombus } from "@tabler/icons-react";
-import anime from "animejs";
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { describeArc } from "../../../tools/svg.js";
 import styles from "./arcProgress.module.css";
+import useProgressAnimation from "./useProgressAnimations.js";
 
 export default function ArcProgress({
   className,
@@ -36,24 +36,7 @@ export default function ArcProgress({
     return value;
   }, [segments]);
 
-  useEffect(() => {
-    const animeProps = {
-      delay: 1000,
-      duration: 3000,
-    };
-    anime({
-      rotateZ: [0, (180 * percentage) / 100],
-      targets: `#anime_indicator__${animeId}`,
-      ...animeProps,
-    });
-    anime({
-      round: 1,
-      targets: `#anime_text__${animeId}`,
-      textContent: [0, percentage],
-      ...animeProps,
-      easing: "easeOutElastic(1, 2)",
-    });
-  }, [percentage, animeId]);
+  /*#__PURE__*/ useProgressAnimation(percentage, animeId);
 
   return (
     <div className={clsx(styles.root, className)} {...props}>
