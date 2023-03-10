@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/tiwariav/ye-design/compare/v1.7.1...v1.7.2) (2023-03-10)
+
+
+### Bug Fixes
+
+* fix storybook config import ([97cec80](https://github.com/tiwariav/ye-design/commit/97cec809c4f70f8243c0d1f1772752ceca1250f3))
+
 ## [1.7.1](https://github.com/tiwariav/ye-design/compare/v1.7.0...v1.7.1) (2023-03-07)
 
 # [1.7.0](https://github.com/tiwariav/ye-design/compare/v1.6.12...v1.7.0) (2023-03-03)
