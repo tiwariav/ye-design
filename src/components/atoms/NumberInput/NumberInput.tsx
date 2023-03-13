@@ -13,7 +13,7 @@ import styles from "./numberInput.module.css";
 
 const NumberInput = forwardRef(
   (
-    { id, isBusy, isLoading, format, value, onChange, ...props }: any,
+    { id, isBusy, isLoading, format, value, mode, onChange, ...props }: any,
     ref: LegacyRef<HTMLInputElement>
   ) => {
     const [formattedValue, setFormattedValue] = useState(value);
@@ -29,7 +29,7 @@ const NumberInput = forwardRef(
           setFormattedValue(inputValue);
         } else {
           const numberValue = Number(inputValue.replace(/,/g, ""));
-          const formattedValue = formatNumber(numberValue);
+          const formattedValue = formatNumber(numberValue, mode);
           setFormattedValue(formattedValue);
         }
       }

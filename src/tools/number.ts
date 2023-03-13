@@ -4,9 +4,10 @@ interface FormatNumberProps {
   decimalPadding?: boolean;
 }
 
-export function formatNumber(value) {
+export function formatNumber(value, mode = "nodecimal") {
+  const decimal = mode === "nodecimal" ? 0 : 2;
   return value.toLocaleString("en-IN", {
-    maximumFractionDigits: 2,
+    maximumFractionDigits: decimal,
     minimumFractionDigits: 0,
   });
 }
