@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { formatNumber } from "../../../tools/number.js";
+import { formatNumber, isValidNumber } from "../../../tools/number.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./numberInput.module.css";
 
@@ -22,20 +22,17 @@ const NumberInput = forwardRef(
       return [numberId, "numberInputText_" + numberId];
     }, [id]);
 
-    const formatValue = useCallback((value: string | number = "") => {
-      const unformattedNumber = isNil(value)
-        ? null
-        : String(value).split(",").join("");
-      const nullValue = value ? "0" : "";
-      const newFormattedNumber =
-        unformattedNumber === "-"
-          ? "-"
-          : formatNumber(unformattedNumber, {
-              decimals: 0,
-              nullValue,
-            });
-      setFormattedValue(newFormattedNumber);
-      return unformattedNumber;
+    const formatValue = useCallback((value: string = "") => {
+      const inputValue = value;
+      if (isValidNumber(inputValue)) {
+        if (inputValue.charAt(inputValue.length - 1) === ".") {
+          setFormattedValue(inputValue);
+        } else {
+          const numberValue = Number(inputValue.replace(/,/g, ""));
+          const formattedValue = formatNumber(numberValue);
+          setFormattedValue(formattedValue);
+        }
+      }
     }, []);
 
     const handleChange = useCallback(

@@ -1,4 +1,4 @@
-const { main } = require("wo-library/tools/cjs/storybook.cjs");
+const { main } = require("wo-library/tools/cjs/storybook/index.cjs");
 
 module.exports = {
   ...main,

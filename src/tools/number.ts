@@ -4,51 +4,18 @@ interface FormatNumberProps {
   decimalPadding?: boolean;
 }
 
-export function formatNumber(
-  value,
-  {
-    decimals = 2,
-    nullValue = "--",
-    decimalPadding = true,
-  }: FormatNumberProps = {}
-) {
-  let parsedNumber = Number.parseFloat(value);
-  if (Number.isNaN(parsedNumber)) {
-    return nullValue;
-  }
+export function formatNumber(value) {
+  return value.toLocaleString("en-IN", {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
+  });
+}
 
-  let prefix = "";
-  if (parsedNumber < (decimals ? Number(`-0.${"0".repeat(decimals)}5`) : 0)) {
-    prefix = "-";
-    parsedNumber = Math.abs(parsedNumber);
-  }
-
-  const decimalMultiplier = Math.pow(10, decimals);
-  let decimalNumber = (
-    Math.round((parsedNumber + Number.EPSILON) * decimalMultiplier) /
-    decimalMultiplier
-  ).toFixed(decimals);
-  if (!decimalPadding) {
-    decimalNumber = Number.parseFloat(decimalNumber).toFixed(0);
-  }
-  const parts = decimalNumber.split(".");
-
-  const decimalNumber_ = parts[1] ? `.${parts[1]}` : "";
-  let wholeNumber = parts[0];
-  const wholeNumberLength = wholeNumber.length;
-  if (wholeNumberLength > 3) {
-    let crores = "";
-    let toSplit = wholeNumber.slice(0, Math.max(0, wholeNumberLength - 3));
-    if (wholeNumberLength > 7) {
-      crores = `${toSplit.slice(0, Math.max(0, wholeNumberLength - 7))},`;
-      toSplit = toSplit.slice(-4);
-    }
-    toSplit = `${toSplit.replace(/\B(?=(\d{2})+(?!\d))/g, ",")},`;
-    wholeNumber = crores + toSplit + wholeNumber.slice(-3);
-  }
-
-  const returnValue = wholeNumber + decimalNumber_;
-  return prefix + returnValue;
+export function isValidNumber(inputValue) {
+  return (
+    !Number.isNaN(Number(inputValue.replace(/,/g, "").replace(".", ""))) &&
+    inputValue.indexOf(".") === inputValue.lastIndexOf(".")
+  );
 }
 
 interface FormatNumberSuffixProps extends FormatNumberProps {
@@ -78,7 +45,7 @@ export function formatNumberWithSuffix(
   if (suffixString) {
     suffixString = ` ${suffixString}`;
   }
-  return `${formatNumber(parsedNumber, rest)}${suffixString}`;
+  return `${formatNumber(parsedNumber)}${suffixString}`;
 }
 
 export function parseNumber(value) {
