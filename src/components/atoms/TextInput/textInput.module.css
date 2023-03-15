@@ -5,7 +5,7 @@
   --input-padding-left: var(--ye-spacing-rem-small);
 
   position: relative;
-  width: 100%;
+  width: fit-content;
   background-color: var(--ye-color-input-background);
   border-radius: var(--ye-input-border-radius);
 }

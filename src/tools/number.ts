@@ -1,22 +1,22 @@
-interface FormatNumberProps {
-  decimals?: number;
+import { isFinite, isNumber, isString } from "lodash-es";
+
+interface FormatNumberProps extends Intl.NumberFormatOptions {
   nullValue?: string;
-  decimalPadding?: boolean;
 }
 
-export function formatNumber(value, mode = "nodecimal") {
-  const decimal = mode === "nodecimal" ? 0 : 2;
-  return value.toLocaleString("en-IN", {
-    maximumFractionDigits: decimal,
-    minimumFractionDigits: 0,
+export function formatNumber(
+  value,
+  { nullValue, ...options }: FormatNumberProps
+) {
+  const number = stringToNumber(value, nullValue);
+  if (!isFinite(number)) {
+    return nullValue;
+  }
+  return number.toLocaleString("en-IN", {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: value.endsWith(".") ? 1 : 0,
+    ...options,
   });
-}
-
-export function isValidNumber(inputValue) {
-  return (
-    !Number.isNaN(Number(inputValue.replace(/,/g, "").replace(".", ""))) &&
-    inputValue.indexOf(".") === inputValue.lastIndexOf(".")
-  );
 }
 
 interface FormatNumberSuffixProps extends FormatNumberProps {
@@ -25,7 +25,7 @@ interface FormatNumberSuffixProps extends FormatNumberProps {
 
 export function formatNumberWithSuffix(
   value,
-  { nullValue = "--", suffix = "", ...rest }: FormatNumberSuffixProps = {}
+  { nullValue = "--", suffix = "", ...options }: FormatNumberSuffixProps = {}
 ) {
   let parsedNumber = Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {
@@ -46,15 +46,15 @@ export function formatNumberWithSuffix(
   if (suffixString) {
     suffixString = ` ${suffixString}`;
   }
-  return `${formatNumber(parsedNumber)}${suffixString}`;
+  return `${formatNumber(parsedNumber, options)}${suffixString}`;
 }
 
-export function parseNumber(value) {
-  if (value.includes("--")) {
-    value = value.replaceAll("--", "");
-  }
-  const number = Number.parseFloat(value.split(",").join(""));
-  if (Number.isNaN(number)) return 0;
+export function stringToNumber(value, nanValue?: any) {
+  if (isNumber(value)) return value;
+  const number = Number.parseFloat(
+    isString(value) ? value.replace(/,/g, "") : value
+  );
+  if (nanValue && Number.isNaN(number)) return nanValue;
   return number;
 }
 
