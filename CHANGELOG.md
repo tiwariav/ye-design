@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/tiwariav/ye-design/compare/v1.7.5...v1.7.6) (2023-03-15)
+
+
+### Bug Fixes
+
+* default min fraction digits ([2f36a53](https://github.com/tiwariav/ye-design/commit/2f36a530166e01614fcafeedb73634f4982827ae))
+
 ## [1.7.5](https://github.com/tiwariav/ye-design/compare/v1.7.4...v1.7.5) (2023-03-15)
 
 
