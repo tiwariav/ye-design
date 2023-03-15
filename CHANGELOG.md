@@ -1,3 +1,11 @@
+## [1.7.4](https://github.com/tiwariav/ye-design/compare/v1.7.3...v1.7.4) (2023-03-15)
+
+
+### Bug Fixes
+
+* added mode for selecting decimal ([dab9beb](https://github.com/tiwariav/ye-design/commit/dab9beb8008a3fe7ad49f790135c1d48d70b38cc))
+* changed format type for NumberInput ([34736a0](https://github.com/tiwariav/ye-design/commit/34736a09f6ba5d417442c3daf69a51cfeab6aa40))
+
 ## [1.7.3](https://github.com/tiwariav/ye-design/compare/v1.7.2...v1.7.3) (2023-03-10)
 
 ## [1.7.2](https://github.com/tiwariav/ye-design/compare/v1.7.1...v1.7.2) (2023-03-10)
