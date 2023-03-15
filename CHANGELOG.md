@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/tiwariav/ye-design/compare/v1.7.4...v1.7.5) (2023-03-15)
+
+
+### Bug Fixes
+
+* format number relation between min and max fraction ([f4df44d](https://github.com/tiwariav/ye-design/commit/f4df44ddb2b590cae2cd4b64403c506b518001dd))
+
 ## [1.7.4](https://github.com/tiwariav/ye-design/compare/v1.7.3...v1.7.4) (2023-03-15)
 
 
