@@ -1,4 +1,4 @@
-import { isNil, uniqueId } from "lodash-es";
+import { isNil, isObject, uniqueId } from "lodash-es";
 import {
   forwardRef,
   LegacyRef,
@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { formatNumber } from "../../../tools/number.js";
+import { formatNumber, stringToNumber } from "../../../tools/number.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./numberInput.module.css";
 
@@ -22,33 +22,35 @@ const NumberInput = forwardRef(
       return [numberId, "numberInputText_" + numberId];
     }, [id]);
 
-    const formatValue = useCallback((value: string | number = "") => {
-      const unformattedNumber = isNil(value)
-        ? null
-        : String(value).split(",").join("");
-      const nullValue = value ? "0" : "";
-      const newFormattedNumber =
-        unformattedNumber === "-"
-          ? "-"
-          : formatNumber(unformattedNumber, {
-              decimals: 0,
-              nullValue,
-            });
-      setFormattedValue(newFormattedNumber);
-      return unformattedNumber;
-    }, []);
+    const formatValue = useCallback(
+      (value) => {
+        let newFormattedNumber = value;
+        if (!(value && (value.endsWith(".") || value === "-"))) {
+          const nullValue = value ? "0" : "";
+          const formatOptions = isObject(format) ? format : {};
+          newFormattedNumber = formatNumber(value, {
+            nullValue,
+            ...formatOptions,
+          });
+        }
+        setFormattedValue(newFormattedNumber);
+      },
+      [format]
+    );
 
     const handleChange = useCallback(
       (event) => {
+        // to format the number when input value is changed by user
+        const numberString = event.target.value;
         if (format) {
-          event.target.value = String(event.target.value).split(",").join("");
+          event.target.value = stringToNumber(event.target.value);
         }
         // eslint-disable-next-line unicorn/prefer-number-properties
         if (onChange && !isNil(event.target.value)) {
           onChange(event);
         }
         if (format) {
-          formatValue(event.target.value);
+          formatValue(numberString);
         } else {
           setFormattedValue(event.target.value);
         }
@@ -57,6 +59,7 @@ const NumberInput = forwardRef(
     );
 
     useEffect(() => {
+      // to format the number when value prop is changed
       if (format) {
         formatValue(value);
       } else {

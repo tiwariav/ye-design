@@ -15,13 +15,24 @@ export default metadata;
 const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
+  const [value, setValue] = useState();
   return (
-    <NumberInput
-      iconBefore={IconBefore ? <IconBefore /> : null}
-      iconAfter={IconAfter ? <IconAfter /> : null}
-      style={{ width }}
-      {...args}
-    />
+    <div>
+      <NumberInput
+        iconBefore={IconBefore ? <IconBefore /> : null}
+        iconAfter={IconAfter ? <IconAfter /> : null}
+        onChange={(event) => {
+          setValue(event.target.value);
+        }}
+        style={{ width }}
+        {...args}
+      />
+      {value !== undefined && (
+        <div>
+          Value: {value} ({typeof value})
+        </div>
+      )}
+    </div>
   );
 };
 
