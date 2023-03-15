@@ -9,7 +9,7 @@ export function formatNumber(
   {
     nullValue,
     maximumFractionDigits = 2,
-    minimumFractionDigits = 0,
+    minimumFractionDigits = 2,
     ...options
   }: FormatNumberProps = {}
 ) {

@@ -31,6 +31,7 @@ const NumberInput = forwardRef(
           newFormattedNumber = formatNumber(value, {
             nullValue,
             ...formatOptions,
+            minimumFractionDigits: 0,
           });
         }
         setFormattedValue(newFormattedNumber);
