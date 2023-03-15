@@ -6,15 +6,27 @@ interface FormatNumberProps extends Intl.NumberFormatOptions {
 
 export function formatNumber(
   value,
-  { nullValue, ...options }: FormatNumberProps
+  {
+    nullValue,
+    maximumFractionDigits = 2,
+    minimumFractionDigits = 0,
+    ...options
+  }: FormatNumberProps = {}
 ) {
   const number = stringToNumber(value, nullValue);
   if (!isFinite(number)) {
     return nullValue;
   }
+  const adjustedMinFractionDigits = Math.max(
+    minimumFractionDigits,
+    value.endsWith(".") ? 1 : 0
+  );
   return number.toLocaleString("en-IN", {
-    maximumFractionDigits: 2,
-    minimumFractionDigits: value.endsWith(".") ? 1 : 0,
+    maximumFractionDigits: Math.max(
+      maximumFractionDigits,
+      adjustedMinFractionDigits
+    ),
+    minimumFractionDigits: adjustedMinFractionDigits,
     ...options,
   });
 }
