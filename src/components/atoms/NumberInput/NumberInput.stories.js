@@ -17,14 +17,13 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   const IconAfter = storyIconMap[iconAfter];
   const [value, setValue] = useState();
   return (
-    <div>
+    <div style={{ width }}>
       <NumberInput
         iconBefore={IconBefore ? <IconBefore /> : null}
         iconAfter={IconAfter ? <IconAfter /> : null}
         onChange={(event) => {
           setValue(event.target.value);
         }}
-        style={{ width }}
         {...args}
       />
       {value !== undefined && (
@@ -56,12 +55,11 @@ export const PresetValue = ({ width, iconBefore, iconAfter, ...args }) => {
   const IconAfter = storyIconMap[iconAfter];
   const [value, setValue] = useState(0);
   return (
-    <div>
+    <div style={{ width }}>
       <Button onClick={() => setValue(value + 1)}>Update</Button>
       <NumberInput
         iconBefore={IconBefore ? <IconBefore /> : null}
         iconAfter={IconAfter ? <IconAfter /> : null}
-        style={{ width }}
         value={value}
         {...args}
       />
