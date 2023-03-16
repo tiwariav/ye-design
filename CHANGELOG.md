@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/tiwariav/ye-design/compare/v1.7.6...v1.7.7) (2023-03-16)
+
+
+### Bug Fixes
+
+* revert text input style ([d3cc3ad](https://github.com/tiwariav/ye-design/commit/d3cc3ad824764f0f0df56cb2a581fbfbffc22384))
+
 ## [1.7.6](https://github.com/tiwariav/ye-design/compare/v1.7.5...v1.7.6) (2023-03-15)
 
 
