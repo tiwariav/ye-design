@@ -19,7 +19,7 @@ export function formatNumber(
   }
   const adjustedMinFractionDigits = Math.max(
     minimumFractionDigits,
-    value.endsWith(".") ? 1 : 0
+    isString(value) && value.endsWith(".") ? 1 : 0
   );
   return number.toLocaleString("en-IN", {
     maximumFractionDigits: Math.max(
