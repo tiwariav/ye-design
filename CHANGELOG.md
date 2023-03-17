@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/tiwariav/ye-design/compare/v1.7.7...v1.7.8) (2023-03-17)
+
+
+### Bug Fixes
+
+* fix error on number input in format function ([25193b5](https://github.com/tiwariav/ye-design/commit/25193b5e7996d7a886fa078ec048d41cf00942b7))
+
 ## [1.7.7](https://github.com/tiwariav/ye-design/compare/v1.7.6...v1.7.7) (2023-03-16)
 
 
