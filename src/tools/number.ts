@@ -13,6 +13,9 @@ export function formatNumber(
     ...options
   }: FormatNumberProps = {}
 ) {
+  if (Number.isInteger(value)) {
+    value = value.toString();
+  }
   const number = stringToNumber(value, nullValue);
   if (!isFinite(number)) {
     return nullValue;
