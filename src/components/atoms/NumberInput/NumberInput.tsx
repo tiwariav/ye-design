@@ -25,7 +25,7 @@ const NumberInput = forwardRef(
     const formatValue = useCallback(
       (value) => {
         let newFormattedNumber = value;
-        if (!(value && (value.endsWith(".") || value === "-"))) {
+        if (!(value && (value.toString().endsWith(".") || value === "-"))) {
           const nullValue = value ? "0" : "";
           const formatOptions = isObject(format) ? format : {};
           newFormattedNumber = formatNumber(value, {
