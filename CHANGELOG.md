@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/tiwariav/ye-design/compare/v1.7.8...v1.7.9) (2023-03-21)
+
+
+### Bug Fixes
+
+* fix error on number formatting ([2caf8c6](https://github.com/tiwariav/ye-design/commit/2caf8c6f8ba40a93e09fe21905428844273c54ac))
+
 ## [1.7.8](https://github.com/tiwariav/ye-design/compare/v1.7.7...v1.7.8) (2023-03-17)
 
 
