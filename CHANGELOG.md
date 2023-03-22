@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/tiwariav/ye-design/compare/v1.7.9...v1.8.0) (2023-03-22)
+
+
+### Features
+
+* add fractionDigits to formatNumber for simpler cases ([ea3c0ac](https://github.com/tiwariav/ye-design/commit/ea3c0ace5f32267b3ba1e436b993a3af1050d09e))
+
 ## [1.7.9](https://github.com/tiwariav/ye-design/compare/v1.7.8...v1.7.9) (2023-03-21)
 
 
