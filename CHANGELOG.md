@@ -1,3 +1,5 @@
+## [1.8.2](https://github.com/tiwariav/ye-design/compare/v1.8.1...v1.8.2) (2023-03-25)
+
 ## [1.8.1](https://github.com/tiwariav/ye-design/compare/v1.8.0...v1.8.1) (2023-03-25)
 
 # [1.8.0](https://github.com/tiwariav/ye-design/compare/v1.7.9...v1.8.0) (2023-03-22)
