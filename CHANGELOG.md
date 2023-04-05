@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/tiwariav/ye-design/compare/v1.8.2...v1.9.0) (2023-04-05)
+
+
+### Features
+
+* add innerClassNames to TextInput ([56165b6](https://github.com/tiwariav/ye-design/commit/56165b6c67d24d06d640eed2daefe96582007560))
+
 ## [1.8.2](https://github.com/tiwariav/ye-design/compare/v1.8.1...v1.8.2) (2023-03-25)
 
 ## [1.8.1](https://github.com/tiwariav/ye-design/compare/v1.8.0...v1.8.1) (2023-03-25)
