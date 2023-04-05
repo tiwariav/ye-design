@@ -26,7 +26,7 @@ const TextInput = forwardRef(
       iconBefore,
       iconAfter,
       id,
-      innerClassNames,
+      innerClassNames = {},
       isBusy,
       isLoading,
       label,

@@ -27,7 +27,7 @@ export default function FileInput({
   isBusy,
   spacing,
   className,
-  innerClassNames,
+  innerClassNames = {},
   files,
   updateFiles,
   uploadFiles,
