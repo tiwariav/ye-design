@@ -39,7 +39,9 @@ const Template = ({ coverImage, ...args }) => {
   );
 };
 
-export const Profile = Template.bind({});
-Profile.args = {
-  coverImage: `${process.env.STORYBOOK_IMAGE_SRC}/1600/400`,
+export const Profile = {
+  args: {
+    coverImage: `${process.env.STORYBOOK_IMAGE_SRC}/1600/400`,
+  },
+  render: (args) => <Template {...args} />,
 };

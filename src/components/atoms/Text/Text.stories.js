@@ -13,21 +13,27 @@ const Template = ({ width, ...args }) => (
   </div>
 );
 
-export const Basic = Template.bind({});
-Basic.args = {
-  children: TEXT_LONG,
-  width: 800,
+export const Basic = {
+  args: {
+    children: TEXT_LONG,
+    width: 800,
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const FixedLines = Template.bind({});
-FixedLines.args = {
-  ...Basic.args,
-  maxLines: 5,
-  minLines: 3,
+export const FixedLines = {
+  args: {
+    ...Basic.args,
+    maxLines: 5,
+    minLines: 3,
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  ...FixedLines.args,
-  loading: true,
+export const Loading = {
+  args: {
+    ...FixedLines.args,
+    loading: true,
+  },
+  render: (args) => <Template {...args} />,
 };

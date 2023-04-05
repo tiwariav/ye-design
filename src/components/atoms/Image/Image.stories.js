@@ -12,32 +12,42 @@ const Template = ({ width, ...args }) => (
   </div>
 );
 
-export const Basic = Template.bind({});
-Basic.args = {
-  src: `${process.env.STORYBOOK_IMAGE_SRC}/160`,
-  width: 160,
+export const Basic = {
+  args: {
+    src: `${process.env.STORYBOOK_IMAGE_SRC}/160`,
+    width: 160,
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Circular = Template.bind({});
-Circular.args = {
-  ...Basic.args,
-  variant: "circular",
+export const Circular = {
+  args: {
+    ...Basic.args,
+    variant: "circular",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const CustomRatio = Template.bind({});
-CustomRatio.args = {
-  ...Basic.args,
-  aspectRatio: "16/9",
+export const CustomRatio = {
+  args: {
+    ...Basic.args,
+    aspectRatio: "16/9",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  ...Basic.args,
-  loading: true,
+export const Loading = {
+  args: {
+    ...Basic.args,
+    loading: true,
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Busy = Template.bind({});
-Busy.args = {
-  ...Basic.args,
-  isBusy: true,
+export const Busy = {
+  args: {
+    ...Basic.args,
+    isBusy: true,
+  },
+  render: (args) => <Template {...args} />,
 };

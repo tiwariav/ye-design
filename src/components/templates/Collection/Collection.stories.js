@@ -27,37 +27,43 @@ const Template = ({ content, cardWidth, variant, ...args }) => {
   );
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  filter: [
-    {
-      key: "release_date",
-      name: "Release Date",
-      options: ["this week", "this month", "this year"],
-    },
-    {
-      key: "language",
-      name: "Language",
-      options: ["English"],
-    },
-  ],
-  sort: [
-    { key: "release_date", name: "Release Date" },
-    { key: "popularity", name: "Popularity" },
-  ],
-  title: "A list of items",
+export const Basic = {
+  args: {
+    filter: [
+      {
+        key: "release_date",
+        name: "Release Date",
+        options: ["this week", "this month", "this year"],
+      },
+      {
+        key: "language",
+        name: "Language",
+        options: ["English"],
+      },
+    ],
+    sort: [
+      { key: "release_date", name: "Release Date" },
+      { key: "popularity", name: "Popularity" },
+    ],
+    title: "A list of items",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const FixedColumns = Template.bind({});
-FixedColumns.args = {
-  ...Basic.args,
-  columns: 2,
-  title: "A list of items, with fixed number of columns",
+export const FixedColumns = {
+  args: {
+    ...Basic.args,
+    columns: 2,
+    title: "A list of items, with fixed number of columns",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Grid = Template.bind({});
-Grid.args = {
-  ...Basic.args,
-  title: "A grid of items",
-  variant: "grid",
+export const Grid = {
+  args: {
+    ...Basic.args,
+    title: "A grid of items",
+    variant: "grid",
+  },
+  render: (args) => <Template {...args} />,
 };

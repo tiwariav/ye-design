@@ -32,25 +32,31 @@ const Template = ({ image, width, children, loading, ...args }) => {
   );
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  children: "Card content",
-  loading: false,
-  width: 160,
+export const Basic = {
+  args: {
+    children: "Card content",
+    loading: false,
+    width: 160,
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...Basic.args,
-  image: "ImageBasic",
-  variant: "borderless",
+export const WithImage = {
+  args: {
+    ...Basic.args,
+    image: "ImageBasic",
+    variant: "borderless",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Horizontal = Template.bind({});
-Horizontal.args = {
-  children: "Card content",
-  image: "ImageBasic",
-  layout: "horizontal",
-  loading: false,
-  variant: "borderless",
+export const Horizontal = {
+  args: {
+    children: "Card content",
+    image: "ImageBasic",
+    layout: "horizontal",
+    loading: false,
+    variant: "borderless",
+  },
+  render: (args) => <Template {...args} />,
 };

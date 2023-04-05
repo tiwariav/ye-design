@@ -15,9 +15,11 @@ const Template = ({ width, height, color, ...args }) => (
   </div>
 );
 
-export const Spinner = Template.bind({});
-Spinner.args = {
-  color: "var(--ye-color-primary)",
-  height: 48,
-  width: 48,
+export const Spinner = {
+  args: {
+    color: "var(--ye-color-primary)",
+    height: 48,
+    width: 48,
+  },
+  render: (args) => <Template {...args} />,
 };

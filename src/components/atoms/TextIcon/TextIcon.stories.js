@@ -8,7 +8,9 @@ export default metadata;
 
 const Template = (args) => <TextIconComponent {...args} />;
 
-export const TextIcon = Template.bind({});
-TextIcon.args = {
-  children: "A",
+export const TextIcon = {
+  args: {
+    children: "A",
+  },
+  render: (args) => <Template {...args} />,
 };

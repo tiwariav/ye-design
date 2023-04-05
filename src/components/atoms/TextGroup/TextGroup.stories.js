@@ -27,15 +27,19 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
   );
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  children: "Some Text",
-  iconAfter: "AiFillRightCircle",
-  iconBefore: "AiFillLeftCircle",
+export const Basic = {
+  args: {
+    children: "Some Text",
+    iconAfter: "AiFillRightCircle",
+    iconBefore: "AiFillLeftCircle",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  ...Basic.args,
-  loading: true,
+export const Loading = {
+  args: {
+    ...Basic.args,
+    loading: true,
+  },
+  render: (args) => <Template {...args} />,
 };

@@ -35,22 +35,27 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   );
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  placeholder: "Enter your text",
-  width: 240,
-};
-Basic.parameters = {
-  jest: ["TextInput.test.js"],
+export const Basic = {
+  args: {
+    placeholder: "Enter your text",
+    width: 240,
+  },
+  parameters: {
+    jest: ["TextInput.test.js"],
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Formatted = Template.bind({});
-Formatted.args = {
-  format: true,
-  placeholder: "Enter your text",
-  width: 240,
+export const Formatted = {
+  args: {
+    format: true,
+    placeholder: "Enter your text",
+    width: 240,
+  },
+  render: (args) => <Template {...args} />,
 };
-export const PresetValue = ({ width, iconBefore, iconAfter, ...args }) => {
+
+const PresetValueTemplate = ({ width, iconBefore, iconAfter, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
   const [value, setValue] = useState(0);
@@ -66,6 +71,10 @@ export const PresetValue = ({ width, iconBefore, iconAfter, ...args }) => {
     </div>
   );
 };
-PresetValue.args = {
-  format: true,
+
+export const PresetValue = {
+  args: {
+    format: true,
+  },
+  render: (args) => <PresetValueTemplate {...args} />,
 };

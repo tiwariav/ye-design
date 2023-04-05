@@ -92,49 +92,61 @@ const FixedTemplate = (props) => (
   </div>
 );
 
-export const Basic = Template.bind({});
-Basic.args = {
-  contentLeft: ["SearchInput"],
-  contentRight: ["ButtonWithSeparator", "Button"],
-  logo: "IconSpider",
+export const Basic = {
+  args: {
+    contentLeft: ["SearchInput"],
+    contentRight: ["ButtonWithSeparator", "Button"],
+    logo: "IconSpider",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Transparent = Template.bind({});
-Transparent.args = {
-  ...Basic.args,
-  variant: "transparent",
+export const Transparent = {
+  args: {
+    ...Basic.args,
+    variant: "transparent",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Fixed = FixedTemplate.bind({});
-Fixed.args = {
-  ...Basic.args,
-  hideOnScroll: true,
-  variant: "transparent",
+export const Fixed = {
+  args: {
+    ...Basic.args,
+    hideOnScroll: true,
+    variant: "transparent",
+  },
+  render: (args) => <FixedTemplate {...args} />,
 };
 
-export const MultiRow = FixedTemplate.bind({});
-MultiRow.args = {
-  ...Basic.args,
-  hideOnScroll: "contentLeft",
-  multiRow: true,
-  variant: "transparent",
+export const MultiRow = {
+  args: {
+    ...Basic.args,
+    hideOnScroll: "contentLeft",
+    multiRow: true,
+    variant: "transparent",
+  },
+  render: (args) => <FixedTemplate {...args} />,
 };
 
-export const Expanded = Template.bind({});
-Expanded.argTypes = {
-  isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
-};
-Expanded.args = {
-  ...Basic.args,
-  isExpanded: true,
-  isShrinking: 0,
+export const Expanded = {
+  args: {
+    ...Basic.args,
+    isExpanded: true,
+    isShrinking: 0,
+  },
+  argTypes: {
+    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const HangingLogo = Template.bind({});
-HangingLogo.argTypes = {
-  isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
-};
-HangingLogo.args = {
-  ...Basic.args,
-  logoVariant: "hanging",
+export const HangingLogo = {
+  args: {
+    ...Basic.args,
+    logoVariant: "hanging",
+  },
+  argTypes: {
+    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
+  },
+  render: (args) => <Template {...args} />,
 };

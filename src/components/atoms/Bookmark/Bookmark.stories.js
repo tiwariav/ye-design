@@ -10,7 +10,9 @@ const Template = ({ children, ...args }) => (
   <Bookmark {...args}>{children.map((child) => child)}</Bookmark>
 );
 
-export const Basic = Template.bind({});
-Basic.args = {
-  children: ["Home", "Some Page", "Some Inner Page"],
+export const Basic = {
+  args: {
+    children: ["Home", "Some Page", "Some Inner Page"],
+  },
+  render: (args) => <Template {...args} />,
 };

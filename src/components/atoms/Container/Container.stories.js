@@ -13,7 +13,9 @@ const Template = ({ content, ...args }) => (
   />
 );
 
-export const Container = Template.bind({});
-Container.args = {
-  children: "This is a container. It provides space around content.",
+export const Container = {
+  args: {
+    children: "This is a container. It provides space around content.",
+  },
+  render: (args) => <Template {...args} />,
 };

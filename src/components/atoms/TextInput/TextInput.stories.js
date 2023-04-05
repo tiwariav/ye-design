@@ -23,36 +23,46 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   );
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  placeholder: "Enter your text",
-  width: 240,
-};
-Basic.parameters = {
-  jest: ["TextInput.test.js"],
-};
-
-export const Outlined = Template.bind({});
-Outlined.args = {
-  ...Basic.args,
-  variant: "outlined",
+export const Basic = {
+  args: {
+    placeholder: "Enter your text",
+    width: 240,
+  },
+  parameters: {
+    jest: ["TextInput.test.js"],
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Dashed = Template.bind({});
-Dashed.args = {
-  ...Basic.args,
-  variant: "dashed",
+export const Outlined = {
+  args: {
+    ...Basic.args,
+    variant: "outlined",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const Borderless = Template.bind({});
-Borderless.args = {
-  ...Basic.args,
-  variant: "borderless",
+export const Dashed = {
+  args: {
+    ...Basic.args,
+    variant: "dashed",
+  },
+  render: (args) => <Template {...args} />,
 };
 
-export const withIcon = Template.bind({});
-withIcon.args = {
-  ...Basic.args,
-  iconAfter: "AiOutlineEye",
-  iconBefore: "AiOutlineSearch",
+export const Borderless = {
+  args: {
+    ...Basic.args,
+    variant: "borderless",
+  },
+  render: (args) => <Template {...args} />,
+};
+
+export const withIcon = {
+  args: {
+    ...Basic.args,
+    iconAfter: "AiOutlineEye",
+    iconBefore: "AiOutlineSearch",
+  },
+  render: (args) => <Template {...args} />,
 };
