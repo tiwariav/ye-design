@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/tiwariav/ye-design/compare/v1.9.0...v1.9.1) (2023-04-05)
+
+
+### Bug Fixes
+
+* input innerClassNamse default ([c805be1](https://github.com/tiwariav/ye-design/commit/c805be1c8f531b2748a785c2750b2198b9d27421))
+
 # [1.9.0](https://github.com/tiwariav/ye-design/compare/v1.8.2...v1.9.0) (2023-04-05)
 
 
