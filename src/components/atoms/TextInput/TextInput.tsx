@@ -26,7 +26,7 @@ const TextInput = forwardRef(
       iconBefore,
       iconAfter,
       id,
-      inputClassName,
+      innerClassNames,
       isBusy,
       isLoading,
       label,
@@ -106,7 +106,7 @@ const TextInput = forwardRef(
                 [styles[`space-${spacing}`]]: spacing,
               },
               styles.textInput,
-              inputClassName
+              innerClassNames.input
             )}
             placeholder={
               variant === "material"
@@ -132,7 +132,9 @@ const TextInput = forwardRef(
           />
           {iconAfter ? (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-              <span className={clsx(formStyles.icon)}>{iconAfter}</span>
+              <span className={clsx(formStyles.icon, innerClassNames.input)}>
+                {iconAfter}
+              </span>
             </span>
           ) : null}
           {isLoading ? (

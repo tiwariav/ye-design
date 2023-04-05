@@ -27,7 +27,7 @@ export default function FileInput({
   isBusy,
   spacing,
   className,
-  inputClassName,
+  innerClassNames,
   files,
   updateFiles,
   uploadFiles,
@@ -94,7 +94,7 @@ export default function FileInput({
           onChange={handleChange}
           {...props}
         />
-        <span className={clsx(styles.placeholder, inputClassName)}>
+        <span className={clsx(styles.placeholder, innerClassNames.input)}>
           {placeholder}
         </span>
         {iconAfter ? (
@@ -180,7 +180,7 @@ export default function FileInput({
                 ? item.data.map((dataItem, dataIndex) =>
                     dataItem.type === "password" ? (
                       <TextInput
-                        inputClassName={styles.listItemDataInput}
+                        innerClassNames={{ input: styles.listItemDataInput }}
                         key={index}
                         size="small"
                         onChange={(event) =>
