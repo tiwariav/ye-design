@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/tiwariav/ye-design/compare/v1.9.2...v1.9.3) (2023-04-06)
+
+
+### Bug Fixes
+
+* fix jest config ([768f27e](https://github.com/tiwariav/ye-design/commit/768f27ebe559592584437035395190bd5e6325bd))
+
 ## [1.9.2](https://github.com/tiwariav/ye-design/compare/v1.9.1...v1.9.2) (2023-04-05)
 
 ## [1.9.1](https://github.com/tiwariav/ye-design/compare/v1.9.0...v1.9.1) (2023-04-05)
