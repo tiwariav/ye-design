@@ -29,7 +29,7 @@ const config = [
       ...commonPlugins,
       postcss(postcssConfig),
       ...getBuildPlugins(),
-      typescript({ tsconfig: "tsconfig.rollup.json" }),
+      typescript(),
       ...devPlugins,
     ],
   },
