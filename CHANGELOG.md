@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/tiwariav/ye-design/compare/v1.9.3...v1.9.4) (2023-04-07)
+
+
+### Bug Fixes
+
+* tsconfig for jest and rollup ([b21b878](https://github.com/tiwariav/ye-design/commit/b21b87851fbd7b31e57ab2302379a3a7b93f1173))
+
 ## [1.9.3](https://github.com/tiwariav/ye-design/compare/v1.9.2...v1.9.3) (2023-04-06)
 
 
