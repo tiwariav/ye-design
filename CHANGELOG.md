@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/tiwariav/ye-design/compare/v1.9.4...v1.10.0) (2023-04-19)
+
+
+### Features
+
+* add 'parse' option to NumberInput to return number type ([1cfebee](https://github.com/tiwariav/ye-design/commit/1cfebeef71ff4d393d85c0a86aa9c6e7937b3cc9))
+
 ## [1.9.4](https://github.com/tiwariav/ye-design/compare/v1.9.3...v1.9.4) (2023-04-07)
 
 
