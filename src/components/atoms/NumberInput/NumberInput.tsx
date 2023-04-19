@@ -1,7 +1,7 @@
 import { isNil, isObject, isString, uniqueId } from "lodash-es";
 import {
-  forwardRef,
   LegacyRef,
+  forwardRef,
   useCallback,
   useEffect,
   useMemo,
@@ -11,62 +11,87 @@ import { formatNumber, stringToNumber } from "../../../tools/number.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./numberInput.module.css";
 
+interface NumberInputProps {
+  id?: string;
+  isBusy?: boolean;
+  isLoading?: boolean;
+  format?: boolean;
+  parse?: boolean;
+  value: string;
+  onChange?: Function;
+  onChangeValue?: Function;
+}
+
+function getTextValue(value, format) {
+  if (!format) return value;
+  if (isString(value) && (value.endsWith(".") || value === "-")) {
+    return value.toString();
+  }
+  const nullValue = value ? "0" : "";
+  const formatOptions = isObject(format) ? format : {};
+  return formatNumber(value, {
+    minimumFractionDigits: 0,
+    nullValue,
+    ...formatOptions,
+  });
+}
+
 const NumberInput = forwardRef(
   (
-    { id, isBusy, isLoading, format, value, onChange, ...props }: any,
+    {
+      id,
+      isBusy,
+      isLoading,
+      format,
+      parse,
+      value,
+      onChange,
+      onChangeValue,
+      ...props
+    }: NumberInputProps,
     ref: LegacyRef<HTMLInputElement>
   ) => {
-    const [formattedValue, setFormattedValue] = useState(value);
+    const [numberValue, setNumberValue] = useState(value || "");
+    const [textValue, setTextValue] = useState<string>("");
     const [numberInputID, numberInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("numberInput_");
       return [numberId, "numberInputText_" + numberId];
     }, [id]);
 
-    const formatValue = useCallback(
-      (value) => {
-        let newFormattedNumber = value;
-        if (!(isString(value) && (value.endsWith(".") || value === "-"))) {
-          const nullValue = value ? "0" : "";
-          const formatOptions = isObject(format) ? format : {};
-          newFormattedNumber = formatNumber(value, {
-            nullValue,
-            ...formatOptions,
-            minimumFractionDigits: 0,
-          });
-        }
-        setFormattedValue(newFormattedNumber);
-      },
-      [format]
-    );
-
     const handleChange = useCallback(
       (event) => {
         // to format the number when input value is changed by user
-        const numberString = event.target.value;
-        if (format) {
-          event.target.value = stringToNumber(event.target.value);
+        let newTextValue = event.target.value;
+        if (newTextValue.endsWith(".") || newTextValue === "-") {
+          setTextValue(newTextValue);
+          return;
         }
-        // eslint-disable-next-line unicorn/prefer-number-properties
-        if (onChange && !isNil(event.target.value)) {
-          onChange(event);
+        const newFormattedValue = getTextValue(newTextValue, format);
+        if (
+          newTextValue.split(".")[1]?.length >
+          newFormattedValue.split(".")[1]?.length
+        ) {
+          const newSplits = newTextValue.split(".");
+          newTextValue = `${newSplits[0]}.${newFormattedValue.split(".")[1]}`;
         }
-        if (format) {
-          formatValue(numberString);
-        } else {
-          setFormattedValue(event.target.value);
-        }
+        const unformattedValue = format
+          ? stringToNumber(newTextValue)
+          : newTextValue;
+        const newNumberValue =
+          parse || isNil(unformattedValue)
+            ? unformattedValue
+            : unformattedValue.toString();
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(newNumberValue);
+        setNumberValue(unformattedValue);
+        setTextValue(getTextValue(newTextValue, format));
       },
-      [format, formatValue, onChange]
+      [format, onChange, onChangeValue, parse]
     );
 
     useEffect(() => {
-      // to format the number when value prop is changed
-      if (format) {
-        formatValue(value);
-      } else {
-        setFormattedValue(value);
-      }
-    }, [format, formatValue, value]);
+      setNumberValue(value);
+    }, [value]);
 
     return (
       <div className={styles.root}>
@@ -77,16 +102,21 @@ const NumberInput = forwardRef(
           onChange={handleChange}
           // cannot format in type=number
           type={format ? "text" : "number"}
-          value={formattedValue}
+          value={textValue}
           {...props}
         />
+        {/* This second input is required so that if any parent component tries
+         * to access the value using ref, it always gets the unformatted number,
+         * not the formatted string. The behavior is meant to be consistent with
+         * the handleChange function.
+         */}
         <input
           ref={ref}
           type="number"
           className={styles.numberInput}
           id={numberInputID}
           readOnly
-          value={value}
+          value={numberValue}
         />
       </div>
     );

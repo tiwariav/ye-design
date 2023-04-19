@@ -49,6 +49,7 @@ export const Basic = {
 export const Formatted = {
   args: {
     format: true,
+    parse: true,
     placeholder: "Enter your text",
     width: 240,
   },

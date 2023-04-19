@@ -68,7 +68,7 @@ export function stringToNumber(value, nanValue?: any) {
   const number = Number.parseFloat(
     isString(value) ? value.replace(/,/g, "") : value
   );
-  if (nanValue && Number.isNaN(number)) return nanValue;
+  if (Number.isNaN(number)) return nanValue;
   return number;
 }
 
