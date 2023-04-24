@@ -52,7 +52,9 @@ const NumberInput = forwardRef(
     ref: LegacyRef<HTMLInputElement>
   ) => {
     const [numberValue, setNumberValue] = useState(value || "");
-    const [textValue, setTextValue] = useState<string>("");
+    const [textValue, setTextValue] = useState<string>(
+      getTextValue(value, format) || ""
+    );
     const [numberInputID, numberInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("numberInput_");
       return [numberId, "numberInputText_" + numberId];
