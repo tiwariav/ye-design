@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/tiwariav/ye-design/compare/v1.10.0...v1.10.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* added inital value for textinput ([dbe133f](https://github.com/tiwariav/ye-design/commit/dbe133fe06b46de2fa0497ce35221408d5a81f4c))
+
 # [1.10.0](https://github.com/tiwariav/ye-design/compare/v1.9.4...v1.10.0) (2023-04-19)
 
 
