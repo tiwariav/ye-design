@@ -1,3 +1,12 @@
+## [1.10.2](https://github.com/tiwariav/ye-design/compare/v1.10.1...v1.10.2) (2023-04-26)
+
+
+### Bug Fixes
+
+* added emptyvalue prop to numberinput ([8719cc9](https://github.com/tiwariav/ye-design/commit/8719cc946bb360780d015f252602e1b19655623a))
+* added overflow hidden in the page module ([2e48dc7](https://github.com/tiwariav/ye-design/commit/2e48dc70e481b2cc39a433cce46932e4f2d126f8))
+* added settextvalue in useeffect and made parse default true for basic number input ([07907ec](https://github.com/tiwariav/ye-design/commit/07907ec1808368bcab34fe34d373ad8d43dbc75a))
+
 ## [1.10.1](https://github.com/tiwariav/ye-design/compare/v1.10.0...v1.10.1) (2023-04-24)
 
 
