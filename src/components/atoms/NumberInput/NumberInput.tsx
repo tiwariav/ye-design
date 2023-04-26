@@ -20,6 +20,7 @@ interface NumberInputProps {
   value: string;
   onChange?: Function;
   onChangeValue?: Function;
+  emptyValue?: undefined | null | string | number;
 }
 
 function getTextValue(value, format) {
@@ -47,6 +48,7 @@ const NumberInput = forwardRef(
       value,
       onChange,
       onChangeValue,
+      emptyValue,
       ...props
     }: NumberInputProps,
     ref: LegacyRef<HTMLInputElement>
@@ -77,7 +79,7 @@ const NumberInput = forwardRef(
           newTextValue = `${newSplits[0]}.${newFormattedValue.split(".")[1]}`;
         }
         const unformattedValue = format
-          ? stringToNumber(newTextValue)
+          ? stringToNumber(newTextValue, emptyValue)
           : newTextValue;
         const newNumberValue =
           parse || isNil(unformattedValue)
@@ -93,7 +95,8 @@ const NumberInput = forwardRef(
 
     useEffect(() => {
       setNumberValue(value);
-    }, [value]);
+      setTextValue(getTextValue(value, format));
+    }, [format, value]);
 
     return (
       <div className={styles.root}>
