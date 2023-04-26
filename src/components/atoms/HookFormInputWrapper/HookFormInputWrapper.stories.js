@@ -41,6 +41,12 @@ const Template = () => {
         <InputWrapper name={"NumberInput"} control={control} />
         <InputWrapper name={"NumberInput (format)"} control={control} format />
         <InputWrapper
+          name={"NumberInput (format and empty value)"}
+          control={control}
+          format
+          emptyValue={null}
+        />
+        <InputWrapper
           name={"NumberInput (format & parse)"}
           control={control}
           format
