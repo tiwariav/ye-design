@@ -43,7 +43,7 @@ const NumberInput = forwardRef(
       isBusy,
       isLoading,
       format,
-      parse,
+      parse = true,
       value,
       onChange,
       onChangeValue,
@@ -93,7 +93,8 @@ const NumberInput = forwardRef(
 
     useEffect(() => {
       setNumberValue(value);
-    }, [value]);
+      setTextValue(getTextValue(value, format));
+    }, [format, value]);
 
     return (
       <div className={styles.root}>
@@ -119,6 +120,7 @@ const NumberInput = forwardRef(
           id={numberInputID}
           readOnly
           value={numberValue}
+          defaultValue={null}
         />
       </div>
     );
