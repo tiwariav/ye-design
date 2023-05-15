@@ -93,11 +93,6 @@ const NumberInput = forwardRef(
       [emptyValue, format, onChange, onChangeValue, parse]
     );
 
-    useEffect(() => {
-      setNumberValue(value);
-      setTextValue(getTextValue(value, format));
-    }, [format, value]);
-
     return (
       <div className={styles.root}>
         <TextInput
