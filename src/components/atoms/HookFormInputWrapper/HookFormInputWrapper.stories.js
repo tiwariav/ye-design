@@ -12,13 +12,7 @@ export default metadata;
 function InputWrapper({ name, control, ...props }) {
   return (
     <HookFormInputWrapper control={control} name={name}>
-      <NumberInput
-        size="small"
-        variant="material"
-        label={name}
-        onChange={(value) => console.log("input value", value)}
-        {...props}
-      />
+      <NumberInput size="small" variant="material" label={name} {...props} />
     </HookFormInputWrapper>
   );
 }
@@ -39,7 +33,14 @@ const Template = () => {
         }}
       >
         <InputWrapper name={"NumberInput"} control={control} />
-        <InputWrapper name={"NumberInput (format)"} control={control} format />
+        <InputWrapper
+          name={"NumberInput fraction 0 "}
+          control={control}
+          parse
+          emptyValue={null}
+          format={{ maximumFractionDigits: 0 }}
+        />
+        <InputWrapper name={"NumberInput (parse)"} control={control} format />
         <InputWrapper
           name={"NumberInput (format and empty value)"}
           control={control}

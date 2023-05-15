@@ -79,7 +79,7 @@ const NumberInput = forwardRef(
           newTextValue = `${newSplits[0]}.${newFormattedValue.split(".")[1]}`;
         }
         const unformattedValue = format
-          ? stringToNumber(newTextValue, emptyValue)
+          ? stringToNumber(newFormattedValue, emptyValue)
           : newTextValue;
         const newNumberValue =
           parse || isNil(unformattedValue)
@@ -90,7 +90,7 @@ const NumberInput = forwardRef(
         setNumberValue(unformattedValue);
         setTextValue(getTextValue(newTextValue, format));
       },
-      [format, onChange, onChangeValue, parse]
+      [emptyValue, format, onChange, onChangeValue, parse]
     );
 
     useEffect(() => {
