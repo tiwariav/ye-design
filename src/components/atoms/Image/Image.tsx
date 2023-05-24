@@ -3,10 +3,8 @@
 import { clsx } from "clsx";
 import { useEffect, useMemo, useState } from "react";
 import Spinner from "../Spinner/Spinner.js";
-import styles from "./image.module.css";
 import ImageLoader from "./ImageLoader.js";
-
-const variants = ["basic", "circular"];
+import styles from "./image.module.css";
 
 function Image({
   aspectRatio,

@@ -1,5 +1,5 @@
-@import "normalize.css";
-@import "./media.css";
+@import url("normalize.css");
+@import url("./media.css");
 
 :root {
   /* ====== */
@@ -41,6 +41,7 @@
   --ye-color-input-background: rgb(0 0 0 / 0.025);
   --ye-color-input-border: rgb(0 0 0 / 0.025);
   --ye-color-input-focus-background: #f6f7f8;
+  --ye-color-bg-scrollbar: #f5f5f5;
   --ye-color-input-focus-border: rgb(64 169 255);
   --ye-color-input-focus-shadow: rgb(64 164 255 / 0.75);
 
@@ -115,7 +116,7 @@
   /* SPACING */
 
   /* relative */
-  --ye-em-unit: 0.125em;
+  --ye-em-unit: 0.125em; /* 2px */
   --ye-em-base: 1em;
   --ye-spacing-em-tiny: calc(2 * var(--ye-em-unit));
   --ye-spacing-em-xsmall: calc(4 * var(--ye-em-unit));
@@ -199,7 +200,7 @@
 }
 
 /* media property import from ./media.css not working here */
-@media (max-width: 991px) {
+@media (width <= 991px) {
   :root {
     --ye-layout-side-nav-width: 240px;
     --ye-layout-side-nav-toggle-width: 0;
@@ -274,18 +275,18 @@ code {
   /* SCROLLBAR */
 
   /* New specs, works on Firefox */
-  scrollbar-color: #f5f5f5 var(--ye-color-primary);
+  scrollbar-color: var(--ye-color-bg-scrollbar) var(--ye-color-primary);
 
   /* Works on Chrome/Edge/Safari */
   &::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
+    background-color: var(--ye-color-bg-scrollbar);
     border-radius: var(--ye-radius-normal);
     box-shadow: inset 0 0 6px var(--ye-color-black-10);
   }
 
   &::-webkit-scrollbar {
     width: 8px;
-    background-color: #f5f5f5;
+    background-color: var(--ye-color-bg-scrollbar);
   }
 
   &::-webkit-scrollbar-thumb {

@@ -85,15 +85,15 @@ const TextInput = forwardRef(
             })}
           >
             {label}
-            {requiredText ? ` ( ${requiredText})` : null}
+            {requiredText && ` ( ${requiredText})`}
           </label>
         ) : null}
         <div className={styles.inputWrapper}>
-          {iconBefore ? (
+          {iconBefore && (
             <span className={clsx(styles.iconWrapper)}>
               <span className={clsx(formStyles.icon)}>{iconBefore}</span>
             </span>
-          ) : null}
+          )}
           <input
             id={inputID}
             type="text"
@@ -130,14 +130,14 @@ const TextInput = forwardRef(
             }
             {...props}
           />
-          {iconAfter ? (
+          {iconAfter && (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>
               <span className={clsx(formStyles.icon, innerClassNames.input)}>
                 {iconAfter}
               </span>
             </span>
-          ) : null}
-          {isLoading ? (
+          )}
+          {isLoading && (
             <ContentLoader
               viewBox={`0 0 100 100`}
               preserveAspectRatio="none"
@@ -145,16 +145,16 @@ const TextInput = forwardRef(
             >
               <rect x="0" y="0" width={100} height={100} />
             </ContentLoader>
-          ) : null}
-          {isBusy ? <Spinner className={styles.spinner} /> : null}
+          )}
+          {isBusy && <Spinner className={styles.spinner} />}
         </div>
-        {errors && errors.length > 0 ? (
+        {errors && errors.length > 0 && (
           <div className={styles.errors}>
             {errors.map((message) => (
               <p className={styles.errorItem}>{message}</p>
             ))}
           </div>
-        ) : null}
+        )}
       </div>
     );
   }

@@ -85,12 +85,14 @@ const NumberInput = forwardRef(
           parse || isNil(unformattedValue)
             ? unformattedValue
             : unformattedValue.toString();
-        onChange && onChange(event);
+        console.log(onChange);
+        if (onChange) onChange("aalo");
+        console.log("aa");
         onChangeValue && onChangeValue(newNumberValue);
         setNumberValue(unformattedValue);
         setTextValue(getTextValue(newTextValue, format));
       },
-      [format, onChange, onChangeValue, parse]
+      [emptyValue, format, onChange, onChangeValue, parse]
     );
 
     useEffect(() => {

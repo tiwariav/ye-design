@@ -8,6 +8,16 @@ import styles from "./container.module.css";
 
 const spacingOptions = ["none", "small", "medium", "large", "horizontal"];
 
+interface ContainerProps {
+  spacing?: (typeof spacingOptions)[number];
+  children: React.ReactNode;
+  align?: "center" | "left" | "right";
+  className?: string;
+  variant?: "basic" | "secondary";
+  width?: "xsmall" | "small" | "medium" | "large" | "xlarge";
+  height?: "readable" | "full";
+}
+
 export default function Container({
   spacing = "medium",
   children,
@@ -17,7 +27,7 @@ export default function Container({
   width,
   height,
   ...props
-}: any) {
+}: ContainerProps) {
   return (
     <div
       className={clsx(

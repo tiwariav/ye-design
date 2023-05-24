@@ -16,21 +16,6 @@ import Spinner from "../Spinner/Spinner.js";
 import formStyles from "../form.module.css";
 import styles from "./button.module.css";
 
-const variantOptions = [
-  "basic",
-  "dark",
-  "dashed",
-  "filled",
-  "inline",
-  "list-item",
-  "outlined",
-  "primary",
-  "trans",
-  "neu",
-];
-const cursorOptions = ["pointer", "not-allowed"];
-const effectOptions = ["cursor-tracking", "ripple"];
-
 const setRippleProperties = (node, initial, x = 0, y = 0) => {
   node.style.setProperty("--ye-effect-ripple-x", x + "px");
   node.style.setProperty("--ye-effect-ripple-y", y + "px");

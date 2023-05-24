@@ -79,12 +79,12 @@ export default function FileInput({
           }
         )}
       >
-        {label ? <span className={styles.label}>{label}</span> : null}
-        {iconBefore ? (
+        {label && <span className={styles.label}>{label}</span>}
+        {iconBefore && (
           <span className={clsx(styles.iconWrapper)}>
             <span className={clsx(formStyles.icon)}>{iconBefore}</span>
           </span>
-        ) : null}
+        )}
         <input
           id={fileInputID}
           type="file"
@@ -104,7 +104,7 @@ export default function FileInput({
         ) : null}
         {isBusy ? <Spinner className={styles.spinner} /> : null}
       </label>
-      {files && files.length > 0 ? (
+      {files && files.length > 0 && (
         <div>
           {files.map((item, index) => (
             <div key={index}>
@@ -176,35 +176,35 @@ export default function FileInput({
                   </>
                 ) : null}
               </div>
-              {item.data && item.data.length > 0
-                ? item.data.map((dataItem, dataIndex) =>
-                    dataItem.type === "password" ? (
-                      <TextInput
-                        innerClassNames={{ input: styles.listItemDataInput }}
-                        key={index}
-                        size="small"
-                        onChange={(event) =>
-                          handleDataChange(event, item, dataIndex)
-                        }
-                        defaultValue={dataItem.value}
-                        label={dataItem.label}
-                        placeholder={dataItem.placeholder}
-                        type={dataItem.type || "text"}
-                      />
-                    ) : dataItem.type === "preview" ? (
-                      <img
-                        id={dataItem.resource}
-                        src={dataItem.resource}
-                        alt={dataItem.name}
-                        className={styles.previewImage}
-                      />
-                    ) : null
-                  )
-                : null}
+              {item.data &&
+                item.data.length > 0 &&
+                item.data.map((dataItem, dataIndex) =>
+                  dataItem.type === "password" ? (
+                    <TextInput
+                      innerClassNames={{ input: styles.listItemDataInput }}
+                      key={index}
+                      size="small"
+                      onChange={(event) =>
+                        handleDataChange(event, item, dataIndex)
+                      }
+                      defaultValue={dataItem.value}
+                      label={dataItem.label}
+                      placeholder={dataItem.placeholder}
+                      type={dataItem.type || "text"}
+                    />
+                  ) : dataItem.type === "preview" ? (
+                    <img
+                      id={dataItem.resource}
+                      src={dataItem.resource}
+                      alt={dataItem.name}
+                      className={styles.previewImage}
+                    />
+                  ) : null
+                )}
             </div>
           ))}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

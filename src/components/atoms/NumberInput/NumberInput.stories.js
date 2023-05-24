@@ -8,6 +8,9 @@ const metadata = {
     icon: { control: { options: Object.keys(storyIconMap), type: "select" } },
   },
   component: NumberInput,
+  parameters: {
+    actions: {},
+  },
 };
 
 export default metadata;
@@ -22,6 +25,7 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
         iconBefore={IconBefore ? <IconBefore /> : null}
         iconAfter={IconAfter ? <IconAfter /> : null}
         onChange={(event) => {
+          console.log(event);
           setValue(event.target.value);
         }}
         {...args}

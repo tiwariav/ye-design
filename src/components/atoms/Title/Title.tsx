@@ -1,13 +1,19 @@
 import { clsx } from "clsx";
 import styles from "./title.module.css";
 
+interface TitleProps {
+  className?: string;
+  align?: "center" | "left" | "right";
+  variant?: "basic" | "tinyline" | "tyline-left";
+  as?: any;
+}
 export default function Title({
   className,
   align,
   variant,
   as,
   ...props
-}: any) {
+}: TitleProps) {
   const As = as || "div";
   return (
     <As

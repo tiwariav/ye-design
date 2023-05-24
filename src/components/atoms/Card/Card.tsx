@@ -9,10 +9,6 @@ import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import styles from "./card.module.css";
 
-const layoutOptions = ["vertical", "horizontal"];
-const variantOptions = ["basic", "borderless"];
-const viewModeOptions = ["full", "mini", "thumb"];
-
 export default function Card({
   layout = "vertical",
   variant = "basic",

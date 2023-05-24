@@ -66,7 +66,7 @@ export function formatNumberWithSuffix(
 export function stringToNumber(value, nanValue?: any) {
   if (isNumber(value)) return value;
   const number = Number.parseFloat(
-    isString(value) ? value.replace(/,/g, "") : value
+    isString(value) ? value.replaceAll(",", "") : value
   );
   if (Number.isNaN(number)) return nanValue;
   return number;
