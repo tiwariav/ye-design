@@ -85,9 +85,7 @@ const NumberInput = forwardRef(
           parse || isNil(unformattedValue)
             ? unformattedValue
             : unformattedValue.toString();
-        console.log(onChange);
-        if (onChange) onChange("aalo");
-        console.log("aa");
+        onChange && onChange(event);
         onChangeValue && onChangeValue(newNumberValue);
         setNumberValue(unformattedValue);
         setTextValue(getTextValue(newTextValue, format));
