@@ -1,3 +1,15 @@
+# [1.11.0](https://github.com/tiwariav/ye-design/compare/v1.10.4...v1.11.0) (2023-05-29)
+
+
+### Bug Fixes
+
+* password input visibility ([d2b6743](https://github.com/tiwariav/ye-design/commit/d2b6743528992f266a82911c542b495bd398a6d6))
+
+
+### Features
+
+* add CardLink component ([60d3740](https://github.com/tiwariav/ye-design/commit/60d3740426acc5ffbdd02e72f153e786835038fd))
+
 ## [1.10.4](https://github.com/tiwariav/ye-design/compare/v1.10.3...v1.10.4) (2023-05-24)
 
 ## [1.10.3](https://github.com/tiwariav/ye-design/compare/v1.10.2...v1.10.3) (2023-05-03)
