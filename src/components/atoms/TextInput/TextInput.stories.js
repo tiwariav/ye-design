@@ -14,12 +14,13 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
   return (
-    <TextInput
-      iconBefore={IconBefore ? <IconBefore /> : null}
-      iconAfter={IconAfter ? <IconAfter /> : null}
-      style={{ width }}
-      {...args}
-    />
+    <div style={{ width }}>
+      <TextInput
+        iconBefore={IconBefore ? <IconBefore /> : null}
+        iconAfter={IconAfter ? <IconAfter /> : null}
+        {...args}
+      />
+    </div>
   );
 };
 

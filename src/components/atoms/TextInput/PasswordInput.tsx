@@ -6,7 +6,7 @@ export default function PasswordInput({ ...props }) {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <TextInput
-      type="password"
+      type={showPassword ? "text" : "password"}
       iconAfter={
         showPassword ? (
           <IconEye onClick={() => setShowPassword(false)} />
