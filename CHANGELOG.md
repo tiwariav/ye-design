@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/tiwariav/ye-design/compare/v1.11.0...v1.11.1) (2023-05-29)
+
+
+### Bug Fixes
+
+* remove hardocded debug statements from NumberInput ([b35c00f](https://github.com/tiwariav/ye-design/commit/b35c00f4e1b1e956428384dc59351074a60018c2))
+
 # [1.11.0](https://github.com/tiwariav/ye-design/compare/v1.10.4...v1.11.0) (2023-05-29)
 
 
