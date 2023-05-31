@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/tiwariav/ye-design/compare/v1.11.1...v1.11.2) (2023-05-31)
+
+
+### Bug Fixes
+
+* added inner class for page ([7f23447](https://github.com/tiwariav/ye-design/commit/7f234476581eb3d9e708229f6fd08f6d265f0c80))
+
 ## [1.11.1](https://github.com/tiwariav/ye-design/compare/v1.11.0...v1.11.1) (2023-05-29)
 
 
