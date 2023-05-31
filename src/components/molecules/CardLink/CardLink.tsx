@@ -6,10 +6,9 @@ import styles from "./cardLink.module.css";
 interface CardLinkProps {
   children: ReactNode;
   linkRef: MutableRefObject<HTMLAnchorElement>;
-  className:string;
 }
 
-export default function CardLink({ children, linkRef, className }: CardLinkProps) {
+export default function CardLink({ children, linkRef, ...props }: CardLinkProps) {
   const ref = useRef<HTMLDivElement>();
 
   const handleClick = () => {
@@ -28,7 +27,7 @@ export default function CardLink({ children, linkRef, className }: CardLinkProps
   });
 
   return (
-    <Card className={className} ref={ref} onClick={handleClick}>
+    <Card ref={ref} onClick={handleClick} {...props}>
       {children}
     </Card>
   );
