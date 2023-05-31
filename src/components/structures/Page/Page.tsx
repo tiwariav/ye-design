@@ -15,6 +15,7 @@ function Page({
   topNavIsFixed,
   topNavCanExpand,
   topNavShrinkOffset = 0,
+  innerClassName = {},
 }: any) {
   // TODO: create a LayoutProvider to manage topnav and sidenav states
   const topNavRef = React.useRef<HTMLDivElement>(null);
@@ -103,7 +104,7 @@ function Page({
         <div className={styles.container}>
           {sideNav ? (
             <div
-              className={clsx(styles.sideNav, {
+              className={clsx(styles.sideNav, innerClassName.sideNav, {
                 [styles.isSticky]: sideNavIsSticky,
                 // eslint-disable-next-line css-modules/no-undef-class
                 [styles.topNavTop]: sideNavIsSticky && !sideNavOnTop,
