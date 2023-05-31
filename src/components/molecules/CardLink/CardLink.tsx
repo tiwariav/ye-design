@@ -8,7 +8,7 @@ interface CardLinkProps {
   linkRef: MutableRefObject<HTMLAnchorElement>;
 }
 
-export default function CardLink({ children, linkRef }: CardLinkProps) {
+export default function CardLink({ children, linkRef, ...props }: CardLinkProps) {
   const ref = useRef<HTMLDivElement>();
 
   const handleClick = () => {
@@ -27,7 +27,7 @@ export default function CardLink({ children, linkRef }: CardLinkProps) {
   });
 
   return (
-    <Card className={styles.root} ref={ref} onClick={handleClick}>
+    <Card ref={ref} onClick={handleClick} {...props}>
       {children}
     </Card>
   );
