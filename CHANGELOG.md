@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/tiwariav/ye-design/compare/v1.11.2...v1.12.0) (2023-06-01)
+
+
+### Features
+
+* add phone number input ([9223f36](https://github.com/tiwariav/ye-design/commit/9223f3646cba04a7211d876189ae1a464308c5fc))
+
 ## [1.11.2](https://github.com/tiwariav/ye-design/compare/v1.11.1...v1.11.2) (2023-05-31)
 
 
