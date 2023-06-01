@@ -1,7 +1,7 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material'] }] */
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
-import { forwardRef, useMemo, useState } from "react";
+import { InputHTMLAttributes, Ref, forwardRef, useMemo, useState } from "react";
 import { useMeasureInput } from "../../../hooks/index.js";
 import { isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
@@ -17,6 +17,29 @@ export const variants = [
   "borderless",
   "material",
 ];
+
+export interface TextInputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+  className?: string;
+  errors?: string[];
+  iconBefore?: React.ReactNode;
+  iconAfter?: React.ReactNode;
+  id?: string;
+  innerClassNames?: {
+    input?: string;
+  };
+  isBusy?: boolean;
+  isLoading?: boolean;
+  label?: string;
+  placeholder?: string;
+  size?: "small" | "medium" | "large";
+  style?: object;
+  spacing?: "none" | "small" | "medium" | "large";
+  value?: string;
+  variant?: (typeof variants)[number];
+  required?: boolean;
+  requiredText?: string;
+}
 
 const TextInput = forwardRef(
   (
@@ -41,8 +64,8 @@ const TextInput = forwardRef(
       required,
       requiredText,
       ...props
-    }: any,
-    ref
+    }: TextInputProps,
+    ref: Ref<HTMLInputElement>
   ) => {
     const [hasFocus, setHasFocus] = useState(false);
 

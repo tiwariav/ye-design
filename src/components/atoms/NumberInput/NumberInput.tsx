@@ -1,131 +1,78 @@
-import { isNil, isObject, isString, uniqueId } from "lodash-es";
-import {
-  LegacyRef,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { isNil } from "lodash-es";
+import { Ref, forwardRef, useCallback, useRef } from "react";
 import { formatNumber, stringToNumber } from "../../../tools/number.js";
-import { TextInput } from "../TextInput/index.js";
-import styles from "./numberInput.module.css";
+import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
+import { FormattedInput } from "../FormattedInput/index.js";
 
-interface NumberInputProps {
-  id?: string;
-  isBusy?: boolean;
-  isLoading?: boolean;
+interface NumberInputProps
+  extends Omit<FromattedInputProps, "format" | "parse"> {
   format?: boolean;
   parse?: boolean;
-  value: string;
-  onChange?: Function;
-  onChangeValue?: Function;
-  emptyValue?: undefined | null | string | number;
+  formatOptions?: object;
 }
 
-function getTextValue(value, format) {
-  if (!format) return value;
-  if (isString(value) && (value.endsWith(".") || value === "-")) {
-    return value.toString();
-  }
-  const nullValue = value ? "0" : "";
-  const formatOptions = isObject(format) ? format : {};
-  return formatNumber(value, {
-    minimumFractionDigits: 0,
-    nullValue,
-    ...formatOptions,
-  });
-}
+// storybook events dont work when default export name is same as file name
 
-const NumberInput = forwardRef(
+export default forwardRef(
   (
-    {
-      id,
-      isBusy,
-      isLoading,
-      format,
-      parse,
-      value,
-      onChange,
-      onChangeValue,
-      emptyValue,
-      ...props
-    }: NumberInputProps,
-    ref: LegacyRef<HTMLInputElement>
+    { format, parse, formatOptions = {}, ...props }: NumberInputProps,
+    ref: Ref<HTMLInputElement>
   ) => {
-    const [numberValue, setNumberValue] = useState(value || "");
-    const [textValue, setTextValue] = useState<string>(
-      getTextValue(value, format) || ""
-    );
-    const [numberInputID, numberInputTextID] = useMemo(() => {
-      const numberId = id || uniqueId("numberInput_");
-      return [numberId, "numberInputText_" + numberId];
-    }, [id]);
+    const textValueRef = useRef("");
 
-    const handleChange = useCallback(
-      (event) => {
-        // to format the number when input value is changed by user
-        let newTextValue = event.target.value;
-        if (newTextValue.endsWith(".") || newTextValue === "-") {
-          setTextValue(newTextValue);
+    const formatFunction = useCallback(
+      (value) => {
+        if (!format || isNil(value)) {
+          textValueRef.current = value;
           return;
         }
-        const newFormattedValue = getTextValue(newTextValue, format);
-        if (
-          newTextValue.split(".")[1]?.length >
-          newFormattedValue.split(".")[1]?.length
-        ) {
-          const newSplits = newTextValue.split(".");
-          newTextValue = `${newSplits[0]}.${newFormattedValue.split(".")[1]}`;
+        value = value.toString();
+        textValueRef.current = value;
+        if (value.endsWith(".") || value === "-") {
+          return value;
         }
-        const unformattedValue = format
-          ? stringToNumber(newTextValue, emptyValue)
-          : newTextValue;
-        const newNumberValue =
-          parse || isNil(unformattedValue)
-            ? unformattedValue
-            : unformattedValue.toString();
-        onChange && onChange(event);
-        onChangeValue && onChangeValue(newNumberValue);
-        setNumberValue(unformattedValue);
-        setTextValue(getTextValue(newTextValue, format));
+        const nullValue = value ? "0" : "";
+        const formattedValue = formatNumber(value, {
+          minimumFractionDigits: 0,
+          nullValue,
+          ...formatOptions,
+        });
+        if (
+          value.split(".")[1]?.length > formattedValue.split(".")[1]?.length
+        ) {
+          const newSplits = value.split(".");
+          textValueRef.current = `${newSplits[0]}.${
+            formattedValue.split(".")[1]
+          }`;
+        }
+        return formattedValue;
       },
-      [emptyValue, format, onChange, onChangeValue, parse]
+      [format, formatOptions]
     );
 
-    useEffect(() => {
-      setNumberValue(value);
-      setTextValue(getTextValue(value, format));
-    }, [format, value]);
+    const parseFunction = useCallback(
+      (formattedValue, emptyValue) => {
+        let textValue = textValueRef.current;
+        console.log(textValue);
+        if (textValue === undefined) return;
+        const unformattedValue = format
+          ? stringToNumber(formattedValue, emptyValue)
+          : textValue;
+        return parse || isNil(unformattedValue)
+          ? unformattedValue
+          : unformattedValue.toString();
+      },
+      [format, parse]
+    );
 
     return (
-      <div className={styles.root}>
-        <TextInput
-          id={numberInputTextID}
-          isBusy={isBusy}
-          isLoading={isLoading}
-          onChange={handleChange}
-          // cannot format in type=number
-          type={format ? "text" : "number"}
-          value={textValue}
-          {...props}
-        />
-        {/* This second input is required so that if any parent component tries
-         * to access the value using ref, it always gets the unformatted number,
-         * not the formatted string. The behavior is meant to be consistent with
-         * the handleChange function.
-         */}
-        <input
-          ref={ref}
-          type="number"
-          className={styles.numberInput}
-          id={numberInputID}
-          readOnly
-          value={numberValue}
-        />
-      </div>
+      <FormattedInput
+        ref={ref}
+        format={formatFunction}
+        parse={parseFunction}
+        hiddenInputProps={{ type: "number" }}
+        {...props}
+      />
     );
   }
 );
-
-export default NumberInput;
