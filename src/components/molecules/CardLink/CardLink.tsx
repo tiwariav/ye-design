@@ -1,14 +1,17 @@
 import { MutableRefObject, ReactNode, useRef } from "react";
 import { useEffectOnce } from "react-use";
 import { Card } from "../../atoms/index.js";
-import styles from "./cardLink.module.css";
 
 interface CardLinkProps {
   children: ReactNode;
   linkRef: MutableRefObject<HTMLAnchorElement>;
 }
 
-export default function CardLink({ children, linkRef, ...props }: CardLinkProps) {
+export default function CardLink({
+  children,
+  linkRef,
+  ...props
+}: CardLinkProps) {
   const ref = useRef<HTMLDivElement>();
 
   const handleClick = () => {

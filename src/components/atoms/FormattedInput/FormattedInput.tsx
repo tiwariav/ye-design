@@ -1,6 +1,6 @@
 import { uniqueId } from "lodash-es";
 import {
-  LegacyRef,
+  MutableRefObject,
   forwardRef,
   useCallback,
   useEffect,
@@ -39,7 +39,7 @@ export default forwardRef(
       value,
       ...props
     }: FromattedInputProps,
-    ref: LegacyRef<HTMLInputElement>
+    ref: MutableRefObject<HTMLInputElement>
   ) => {
     const [parsedValue, setParsedValue] = useState(value || "");
     const [formattedValue, setFormattedValue] = useState<string>("");
@@ -51,18 +51,15 @@ export default forwardRef(
     const handleChange = useCallback(
       (event) => {
         // to get new formatted text when input value is changed by user
-        console.log(event.target);
         let formattedValue = format
           ? format(event.target.value)
           : event.target.value;
-        console.log(formattedValue);
         setFormattedValue(formattedValue);
         onChange && onChange(event);
         // to update the value when input value is changed by user
         const newNumberValue = parse
           ? parse(formattedValue, emptyValue)
           : event.target.value;
-        console.log(newNumberValue);
         setParsedValue(newNumberValue);
         onChangeValue && onChangeValue(newNumberValue);
       },
@@ -70,13 +67,10 @@ export default forwardRef(
     );
 
     useEffect(() => {
-      console.log(defaultValue, value, ref?.current?.value);
-      // if (value && value != ref.current?.value) {
       const newValue = value || defaultValue;
       const newFormattedValue = format ? format(newValue) : newValue;
       setParsedValue(parse ? parse(newFormattedValue, emptyValue) : newValue);
       setFormattedValue(newFormattedValue);
-      // }
     }, [emptyValue, format, parse, ref, value, defaultValue]);
 
     return (

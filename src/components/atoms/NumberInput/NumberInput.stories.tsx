@@ -80,10 +80,10 @@ export const Formatted = {
   render: (args) => <Template {...args} />,
 };
 
-const PresetValueTemplate = ({ width, ...args }) => {
+const PresetValueTemplate = (args) => {
   const [value, setValue] = useState(2000.01);
   return (
-    <div style={{ width }}>
+    <div>
       <Button onClick={() => setValue(value + 0.01)}>Update</Button>
       <Template value={value} {...args} />
     </div>

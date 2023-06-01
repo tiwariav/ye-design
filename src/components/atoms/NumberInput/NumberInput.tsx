@@ -53,7 +53,6 @@ export default forwardRef(
     const parseFunction = useCallback(
       (formattedValue, emptyValue) => {
         let textValue = textValueRef.current;
-        console.log(textValue);
         if (textValue === undefined) return;
         const unformattedValue = format
           ? stringToNumber(formattedValue, emptyValue)

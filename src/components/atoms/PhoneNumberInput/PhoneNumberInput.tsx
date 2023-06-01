@@ -1,4 +1,4 @@
-import parsePhoneNumber from "libphonenumber-js";
+import parsePhoneNumber, { AsYouType } from "libphonenumber-js";
 import { isNil } from "lodash-es";
 import { Ref, forwardRef, useCallback, useRef, useState } from "react";
 import FormattedInput, {
@@ -31,17 +31,16 @@ export default forwardRef(
       value = value.toString();
       textValueRef.current = value;
       const phoneNumber = parsePhoneNumber(value, { defaultCountry: "IN" });
-      if (phoneNumber) {
+      if (phoneNumber?.country) {
         setFlag(getFlagEmoji(phoneNumber.country));
-        return phoneNumber.formatInternational();
+        return new AsYouType().input(value);
       }
-      return textValueRef.current;
+      return textValueRef.current.replaceAll(/[^\d+]/g, "");
     }, []);
 
     const parseFunction = useCallback((formattedValue, emptyValue) => {
       let textValue = textValueRef.current;
-      console.log(textValue, formattedValue);
-      if (isNil(textValue)) return;
+      if (isNil(textValue) || isNil(formattedValue)) return;
       return formattedValue.replaceAll(" ", "");
     }, []);
 
