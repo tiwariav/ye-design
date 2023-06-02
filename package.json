@@ -15,8 +15,8 @@
   ],
   "scripts": {
     "analyze": "source-map-explorer 'dist/**/*.js' --no-border-checks",
-    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
-    "dev": "rollup -w --config rollup.config.ts --configPlugin @rollup/plugin-typescript --watch.onEnd 'yalc push dist'",
+    "build": "rollup --config rollup.config.js",
+    "dev": "rollup -w --config rollup.config.js --watch.onEnd 'yalc push dist'",
     "postversion": "cp -r package.json ..",
     "precommit": "lint-staged",
     "prepare": "(test -d '.git' && husky install) || true",
