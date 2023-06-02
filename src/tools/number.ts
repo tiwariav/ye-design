@@ -39,7 +39,7 @@ interface FormatNumberSuffixProps extends FormatNumberProps {
 
 export function formatNumberWithSuffix(
   value,
-  { nullValue = "--", suffix = "", ...options }: FormatNumberSuffixProps = {}
+  { nullValue, suffix = "", ...options }: FormatNumberSuffixProps = {}
 ) {
   let parsedNumber = Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {

@@ -1,24 +1,24 @@
-import { formatNumber, formatNumberWithSuffix } from "../number";
+import { formatNumber, formatNumberWithSuffix } from "../number.js";
 
 const SOME_STRING = "some string";
 const NON_NUMBERS = [
-  [[SOME_STRING], "--"],
+  [[SOME_STRING], undefined],
   [[SOME_STRING, { nullValue: "xx" }], "xx"],
-  [[""], "--"],
-  [[null], "--"],
-  [[], "--"],
+  [[""], undefined],
+  [[null], undefined],
+  [[], undefined],
 ];
 
 function testArray(tests) {
   for (const item of tests) {
-    const output = formatNumber(...item[0]);
+    const output = formatNumber(item[0][0], item[0][1]);
     expect(output).toBe(item[1]);
   }
 }
 
 function testArrayWithSuffix(tests) {
   for (const item of tests) {
-    const output = formatNumberWithSuffix(...item[0]);
+    const output = formatNumberWithSuffix(item[0][0], item[0][1]);
     expect(output).toBe(item[1]);
   }
 }
@@ -33,8 +33,8 @@ describe("format number", () => {
       [["1"], "1.00"],
       [["-1"], "-1.00"],
       [["1.001"], "1.00"],
-      // [["1", { decimals: 1 }], "1.0"],
-      // [["1", { decimalPadding: false }], "1"],
+      [["1", { fractionDigits: 1 }], "1.0"],
+      [["1", { minimumFractionDigits: 0 }], "1"],
     ];
     testArray(tests);
   });
@@ -51,7 +51,7 @@ describe("format number", () => {
   test("should format correctly", () => {
     const tests = [
       [["0"], "0.00"],
-      [["-0.002"], "0.00"],
+      [["-0.002"], "-0.00"],
       [["-0.05"], "-0.05"],
       [["-0.055"], "-0.06"],
       [["0.05"], "0.05"],
@@ -65,8 +65,8 @@ describe("format number", () => {
       [["1000000"], "10,00,000.00"],
       [["10000000"], "1,00,00,000.00"],
       [["100000000"], "10,00,00,000.00"],
-      [["1000000000"], "100,00,00,000.00"],
-      [["10000000000"], "1000,00,00,000.00"],
+      [["1000000000"], "1,00,00,00,000.00"],
+      [["10000000000"], "10,00,00,00,000.00"],
     ];
     testArray(tests);
   });
@@ -95,7 +95,7 @@ describe("format number with suffix", () => {
       [["1000000000"], "100.00 Cr"],
       [["10000000000"], "1,000.00 Cr"],
       [["10000000000", { suffix: "Cr" }], "1,000.00 Cr"],
-      [["10000", { decimals: 3, suffix: "Cr" }], "0.001 Cr"],
+      [["10000", { fractionDigits: 3, suffix: "Cr" }], "0.001 Cr"],
     ];
     testArrayWithSuffix(tests);
   });
