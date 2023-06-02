@@ -1,3 +1,11 @@
+## [1.12.1](https://github.com/tiwariav/ye-design/compare/v1.12.0...v1.12.1) (2023-06-02)
+
+
+### Bug Fixes
+
+* rollup config path in package.json ([cba4a8f](https://github.com/tiwariav/ye-design/commit/cba4a8f4d0f489841325a9301d23476f0e85503b))
+* update jest config ([be7169d](https://github.com/tiwariav/ye-design/commit/be7169d72727dcd327dea5937fd2949958914721))
+
 # [1.12.0](https://github.com/tiwariav/ye-design/compare/v1.11.2...v1.12.0) (2023-06-01)
 
 
