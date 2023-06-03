@@ -11,13 +11,15 @@ function getFillColor(percentage) {
   return "#04844B";
 }
 
-function getCircleStyles(radius, percentage, isSemi) {
+function getCircleStyles(radius, percentage, isSemi, arc) {
   // Arc length at 100% coverage is the circle circumference
   const strokeDasharray = radius * Math.PI * 2;
   // Scale 100% coverage overlay with the actual percent
   const strokeDashoffset =
     strokeDasharray -
-    (strokeDasharray * (isSemi ? percentage / 2 : percentage)) / 100;
+    (strokeDasharray *
+      (isSemi ? percentage / 2 : arc ? (percentage * arc) / 100 : percentage)) /
+      100;
 
   return { strokeDasharray, strokeDashoffset };
 }
@@ -72,6 +74,7 @@ export default function CircleProgress({
   squareSize = 20,
   text,
   strokeWidth = 2,
+  arcPercent,
   color,
   isLarge,
   children,
@@ -86,12 +89,16 @@ export default function CircleProgress({
   const fill = color || getFillColor(percentage);
   // Size of the enclosing square
   const dia = isSemi ? squareSize * 2 : squareSize;
+  const arcHeight = (arcPercent * dia) / 100;
+
   // SVG centers the stroke width on the radius, subtract out so circle fits in square
   const radius = (squareSize - strokeWidth) / 2;
   // Enclose cicle in a circumscribing square
-  const viewBox = `0 0 ${squareSize} ${isSemi ? squareSize / 2 : squareSize}`;
-  const rootStyles = { height: squareSize, width: squareSize };
-  const circleStyles = getCircleStyles(radius, percentage, isSemi);
+  const viewBox = `0 0 ${squareSize} ${
+    isSemi ? squareSize / 2 : arcPercent ? arcHeight : squareSize
+  }`;
+  const rootStyles = { height: squareSize, width: dia };
+  const circleStyles = getCircleStyles(radius, percentage, isSemi, arcPercent);
 
   return (
     <div
@@ -103,7 +110,11 @@ export default function CircleProgress({
       style={rootStyles}
       {...props}
     >
-      <svg width={dia} height={isSemi ? dia * 2 : dia} viewBox={viewBox}>
+      <svg
+        width={dia}
+        height={isSemi ? dia / 2 : arcPercent ? arcHeight : dia}
+        viewBox={viewBox}
+      >
         <circle
           className={styles.circleBackground}
           style={{ stroke: circleBackground }}
@@ -118,9 +129,19 @@ export default function CircleProgress({
           cy={squareSize / 2}
           r={radius}
           strokeWidth={`${strokeWidth}px`}
-          transform={`rotate(${isSemi ? "180" : "-90"} ${squareSize / 2} ${
-            squareSize / 2
-          })`}
+          transform={`rotate(${
+            isSemi
+              ? "180"
+              : arcPercent
+              ? 180 -
+                (Math.asin(
+                  (arcHeight - radius - strokeWidth / 2) /
+                    (radius - strokeWidth / 2)
+                ) *
+                  180) /
+                  Math.PI
+              : "90"
+          } ${squareSize / 2} ${squareSize / 2})`}
           style={circleStyles}
           stroke={fill}
         />
