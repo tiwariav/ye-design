@@ -8,7 +8,7 @@ import styles from "./antFormItemWrapper.module.css";
 interface AntFormItemWrapperProps {
   children: ReactElement;
   className?: string;
-  label?: string;
+  label?: string | JSX.Element;
   loading?: boolean;
   onBlur?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
