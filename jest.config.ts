@@ -4,10 +4,9 @@ import { config as sharedConfig } from "wo-library/tools/cjs/jest/config.cjs";
 
 const config: Config = {
   ...(sharedConfig as Config),
+  setupFilesAfterEnv: ["wo-library/tools/cjs/jest/setupTests.cjs"],
   testRegex: "src.*(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
-  transform: {
-    "^.+\\.tsx?$": ["ts-jest", { tsconfig: "tsconfig.jest.json" }],
-  },
+  transformIgnorePatterns: ["/node_modules/(?!(lodash-es|default-import)/)"],
 };
 
 export default config;

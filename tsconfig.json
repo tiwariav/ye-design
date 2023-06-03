@@ -4,7 +4,8 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
-    "diagnostics": true,
+    // enable to debug
+    // "diagnostics": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -26,5 +27,5 @@
     "target": "es2017"
   },
   "include": ["src", "rollup.config.ts", "types"],
-  "exclude": ["**/__snapshots__", "**/__tests__", "node_modules"]
+  "exclude": ["**/__snapshots__", "node_modules"]
 }
