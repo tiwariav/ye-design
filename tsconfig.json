@@ -23,9 +23,8 @@
     ],
     "resolveJsonModule": true,
     "sourceMap": true,
-    // "strict": true,
     "target": "es2017"
   },
-  "include": ["src", "rollup.config.ts", "types"],
+  "include": ["src", "types"],
   "exclude": ["**/__snapshots__", "node_modules"]
 }
