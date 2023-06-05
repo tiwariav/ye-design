@@ -12,7 +12,7 @@ import React, {
 import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps {
-  children: ReactNode;
+  children: ReactElement;
   className?: string;
   label?: ReactNode;
   loading?: boolean;
