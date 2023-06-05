@@ -1,11 +1,6 @@
 .root {
   position: relative;
-}
-
-.is-semi {
-  .circle-text {
-    font-size: 0.375em;
-  }
+  overflow: hidden;
 }
 
 .circle-background,
@@ -17,14 +12,12 @@
   stroke: #ddd;
 }
 
-.circle-progress {
+.stroke-round {
   stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .text {
   font-weight: bold;
-  font-size: 0.625em;
 }
 
 .content {
