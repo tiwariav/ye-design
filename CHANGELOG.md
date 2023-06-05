@@ -1,3 +1,11 @@
+## [1.12.2](https://github.com/tiwariav/ye-design/compare/v1.12.1...v1.12.2) (2023-06-05)
+
+
+### Bug Fixes
+
+* added arc percent and some other fixes ([40c4a4c](https://github.com/tiwariav/ye-design/commit/40c4a4c69b0031b15a80243d46321531edb39b7f))
+* tsconfig for declaration files ([846cbcb](https://github.com/tiwariav/ye-design/commit/846cbcb08b16442631dc564df5a62032d47afa44))
+
 ## [1.12.1](https://github.com/tiwariav/ye-design/compare/v1.12.0...v1.12.1) (2023-06-02)
 
 
