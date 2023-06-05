@@ -1,25 +1,15 @@
 import { Form } from "antd";
-import { Rule } from "antd/es/form/index.js";
+import { FormItemProps } from "antd/es/form/index.js";
 import { clsx } from "clsx";
 import { isDate, isObject } from "lodash-es";
-import React, {
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useMemo,
-  useState,
-} from "react";
+import React, { ReactElement, useCallback, useMemo, useState } from "react";
 import styles from "./antFormItemWrapper.module.css";
 
-interface AntFormItemWrapperProps {
+interface AntFormItemWrapperProps extends FormItemProps {
   children: ReactElement;
-  className?: string;
-  label?: ReactNode;
   loading?: boolean;
-  name: string;
   onBlur?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
-  rules?: Rule[];
 }
 
 interface EventValue extends React.ChangeEvent<HTMLInputElement> {
