@@ -2,13 +2,19 @@ import { Form } from "antd";
 import { Rule } from "antd/es/form/index.js";
 import { clsx } from "clsx";
 import { isDate, isObject } from "lodash-es";
-import React, { ReactElement, useCallback, useMemo, useState } from "react";
+import React, {
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps {
-  children: ReactElement;
+  children: ReactNode;
   className?: string;
-  label?: string;
+  label?: ReactNode;
   loading?: boolean;
   onBlur?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
