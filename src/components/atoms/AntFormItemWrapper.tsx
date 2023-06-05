@@ -16,6 +16,7 @@ interface AntFormItemWrapperProps {
   className?: string;
   label?: ReactNode;
   loading?: boolean;
+  name: string;
   onBlur?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
   rules?: Rule[];
