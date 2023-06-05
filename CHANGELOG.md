@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/tiwariav/ye-design/compare/v1.12.2...v1.12.3) (2023-06-05)
+
+
+### Bug Fixes
+
+* add name prop to AntFormItemWrapperProps ([4bf0567](https://github.com/tiwariav/ye-design/commit/4bf05679749fab6cf9382a84fa6e167f0a8542eb))
+
 ## [1.12.2](https://github.com/tiwariav/ye-design/compare/v1.12.1...v1.12.2) (2023-06-05)
 
 
