@@ -1,12 +1,12 @@
 import { withTests } from "@storybook/addon-jest";
-import { globalTypes, parameters } from "wo-library/tools/storybook/index.js";
+import { globalTypes } from "wo-library/tools/storybook/index.js";
 import "../src/styles/base.css";
 import defaultThemeStyleOptions from "../src/styles/themes";
 import { withThemeProvider } from "../src/tools/storybook";
 import "./preview.css";
 
 globalTypes.theme.toolbar.items.push(...Object.keys(defaultThemeStyleOptions));
-export { parameters, globalTypes };
+export { globalTypes };
 
 let results;
 
