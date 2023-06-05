@@ -1,3 +1,10 @@
+## [1.12.4](https://github.com/tiwariav/ye-design/compare/v1.12.3...v1.12.4) (2023-06-05)
+
+
+### Bug Fixes
+
+* extend AntFormItemWrapperProps from FormItemProps ([e68dce9](https://github.com/tiwariav/ye-design/commit/e68dce9f1b9e60ceb1e9ab3d5bfc9c416008822c))
+
 ## [1.12.3](https://github.com/tiwariav/ye-design/compare/v1.12.2...v1.12.3) (2023-06-05)
 
 
