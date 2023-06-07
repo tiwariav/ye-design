@@ -1,3 +1,10 @@
+## [1.12.5](https://github.com/tiwariav/ye-design/compare/v1.12.4...v1.12.5) (2023-06-07)
+
+
+### Bug Fixes
+
+* props name changed that was always truthy ([d7018f6](https://github.com/tiwariav/ye-design/commit/d7018f67d056c5283edc3526788a33b72fa36526))
+
 ## [1.12.4](https://github.com/tiwariav/ye-design/compare/v1.12.3...v1.12.4) (2023-06-05)
 
 
