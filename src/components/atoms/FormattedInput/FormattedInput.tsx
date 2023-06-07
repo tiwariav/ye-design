@@ -55,7 +55,6 @@ export default forwardRef(
           ? format(event.target.value)
           : event.target.value;
         setFormattedValue(formattedValue);
-
         onChange && onChange(event);
         // to update the value when input value is changed by user
         const newNumberValue = parse
