@@ -67,8 +67,10 @@ export default forwardRef(
     return (
       <FormattedInput
         ref={ref}
-        format={formatFunction}
-        parse={parseFunction}
+        formatFunction={formatFunction}
+        format={format}
+        parseFunction={parseFunction}
+        parse={parse}
         hiddenInputProps={{ type: "number" }}
         {...props}
       />
