@@ -1,5 +1,5 @@
 import { isNil } from "lodash-es";
-import { Ref, forwardRef, useCallback, useMemo, useRef } from "react";
+import { Ref, forwardRef, useCallback, useRef } from "react";
 import { formatNumber, stringToNumber } from "../../../tools/number.js";
 import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
 import { FormattedInput } from "../FormattedInput/index.js";
@@ -64,18 +64,12 @@ export default forwardRef(
       [format, parse]
     );
 
-    const dataFormattingProps = useMemo(
-      () => ({
-        ...(format ? { format: formatFunction } : {}),
-        ...(parse ? { parse: parseFunction } : {}),
-      }),
-      [format, formatFunction, parse, parseFunction]
-    );
-
     return (
       <FormattedInput
         ref={ref}
         hiddenInputProps={{ type: "number" }}
+        format={format ? formatFunction : undefined}
+        parse={parse ? parseFunction : undefined}
         {...dataFormattingProps}
         {...props}
       />
