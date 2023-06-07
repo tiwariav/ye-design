@@ -13,15 +13,13 @@ import styles from "./formattedInput.module.css";
 
 export interface FromattedInputProps extends TextInputProps {
   emptyValue?: undefined | null | string | number;
-  format?: boolean;
-  formatFunction: Function;
-  parseFunction: Function;
+  format?: Function;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
   onChangeValue?: Function;
-  parse?: boolean;
+  parse?: Function;
   value?: string;
 }
 
@@ -31,13 +29,11 @@ export default forwardRef(
       defaultValue,
       emptyValue,
       format,
-      formatFunction,
       hiddenInputProps = {},
       id,
       isBusy,
       isLoading,
       onChange,
-      parseFunction,
       onChangeValue,
       parse,
       value,
@@ -56,46 +52,27 @@ export default forwardRef(
       (event) => {
         // to get new formatted text when input value is changed by user
         let formattedValue = format
-          ? formatFunction(event.target.value)
+          ? format(event.target.value)
           : event.target.value;
         setFormattedValue(formattedValue);
 
         onChange && onChange(event);
         // to update the value when input value is changed by user
         const newNumberValue = parse
-          ? parseFunction(formattedValue, emptyValue)
+          ? parse(formattedValue, emptyValue)
           : event.target.value;
         setParsedValue(newNumberValue);
         onChangeValue && onChangeValue(newNumberValue);
       },
-      [
-        emptyValue,
-        format,
-        formatFunction,
-        onChange,
-        onChangeValue,
-        parse,
-        parseFunction,
-      ]
+      [emptyValue, format, onChange, onChangeValue, parse]
     );
 
     useEffect(() => {
       const newValue = value || defaultValue;
-      const newFormattedValue = format ? formatFunction(newValue) : newValue;
-      setParsedValue(
-        parse ? parseFunction(newFormattedValue, emptyValue) : newValue
-      );
+      const newFormattedValue = format ? format(newValue) : newValue;
+      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : newValue);
       setFormattedValue(newFormattedValue);
-    }, [
-      emptyValue,
-      format,
-      parse,
-      ref,
-      value,
-      defaultValue,
-      formatFunction,
-      parseFunction,
-    ]);
+    }, [emptyValue, format, parse, ref, value, defaultValue]);
 
     return (
       <div className={styles.root}>
