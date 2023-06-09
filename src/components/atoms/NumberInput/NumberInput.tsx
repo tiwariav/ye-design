@@ -4,7 +4,7 @@ import { formatNumber, stringToNumber } from "../../../tools/number.js";
 import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
 import { FormattedInput } from "../FormattedInput/index.js";
 
-interface NumberInputProps
+export interface NumberInputProps
   extends Omit<FromattedInputProps, "format" | "parse"> {
   format?: boolean;
   parse?: boolean;

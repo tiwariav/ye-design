@@ -34,6 +34,9 @@ function getTextContent(text, progress, percentage) {
     case "percent": {
       return `${percentage}%`;
     }
+    case "value": {
+      return progress[0];
+    }
     default: {
       return `${progress[0]} ${text}`;
     }
