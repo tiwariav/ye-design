@@ -1,3 +1,10 @@
+## [1.12.6](https://github.com/tiwariav/ye-design/compare/v1.12.5...v1.12.6) (2023-06-09)
+
+
+### Bug Fixes
+
+* add 'value' option to CircleProgress progres ([81f5c61](https://github.com/tiwariav/ye-design/commit/81f5c61705a27b684997bd538313253390fac79f))
+
 ## [1.12.5](https://github.com/tiwariav/ye-design/compare/v1.12.4...v1.12.5) (2023-06-07)
 
 
