@@ -8,12 +8,12 @@ export const UPLOAD_FILE_STATUS = {
 };
 
 export default class UploadFile {
+  data: any;
   file: any;
   id: any;
   status: any;
-  data: any;
 
-  constructor(file, { status, data }: any = {}) {
+  constructor(file, { data, status }: any = {}) {
     this.file = file;
     this.id = uniqueId("upload_file_");
     this.status = status || UPLOAD_FILE_STATUS.new;

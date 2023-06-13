@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+
 import styles from "./spinner.module.css";
 
 export default function Spinner({ className, ...props }: any) {
@@ -10,14 +11,14 @@ export default function Spinner({ className, ...props }: any) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
-            <stop stopColor="currentColor" stopOpacity="0" offset="0%" />
+          <linearGradient id="a" x1="8.042%" x2="65.682%" y1="0%" y2="23.865%">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
             <stop
+              offset="63.146%"
               stopColor="currentColor"
               stopOpacity=".631"
-              offset="63.146%"
             />
-            <stop stopColor="currentColor" offset="100%" />
+            <stop offset="100%" stopColor="currentColor" />
           </linearGradient>
         </defs>
         <g fill="none" fillRule="evenodd">
@@ -30,21 +31,21 @@ export default function Spinner({ className, ...props }: any) {
             >
               <animateTransform
                 attributeName="transform"
-                type="rotate"
-                from="0 18 18"
-                to="360 18 18"
                 dur="0.9s"
+                from="0 18 18"
                 repeatCount="indefinite"
+                to="360 18 18"
+                type="rotate"
               />
             </path>
-            <circle fill="currentColor" cx="36" cy="18" r="1">
+            <circle cx="36" cy="18" fill="currentColor" r="1">
               <animateTransform
                 attributeName="transform"
-                type="rotate"
-                from="0 18 18"
-                to="360 18 18"
                 dur="0.9s"
+                from="0 18 18"
                 repeatCount="indefinite"
+                to="360 18 18"
+                type="rotate"
               />
             </circle>
           </g>

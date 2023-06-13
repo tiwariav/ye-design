@@ -13,19 +13,19 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ image, width, children, loading, ...args }) => {
+const Template = ({ children, image, loading, width, ...args }) => {
   const Image = imageMap[image];
   return (
     <Card
       image={
         Image ? (
-          <Image {...ImageBasic.args} loading={loading} aspectRatio="1/1" />
+          <Image {...ImageBasic.args} aspectRatio="1/1" loading={loading} />
         ) : null
       }
       style={{ width }}
       {...args}
     >
-      <Text minLines={1} loading={loading}>
+      <Text loading={loading} minLines={1}>
         {children}
       </Text>
     </Card>

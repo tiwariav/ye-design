@@ -53,13 +53,13 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ topNav, sideNav, hero, template, ...args }) => {
+const Template = ({ hero, sideNav, template, topNav, ...args }) => {
   const Content = templateMap[template];
   return (
     <Page
-      topNav={topNavMap[topNav]}
-      sideNav={sideNavMap[sideNav]}
       hero={heroMap[hero]}
+      sideNav={sideNavMap[sideNav]}
+      topNav={topNavMap[topNav]}
       {...args}
     >
       <Content {...Content.args} />

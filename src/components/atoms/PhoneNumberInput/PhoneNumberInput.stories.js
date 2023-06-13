@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+
 import PhoneNumberInput from "./PhoneNumberInput.js";
 
 const metadata = {
@@ -7,7 +8,7 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ width, iconBefore, iconAfter, ...args }) => {
+const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   const [eventValue, setEventValue] = useState();
   const [refValue, setRefValue] = useState();
   const [parsedValue, setParsedValue] = useState();
@@ -19,13 +20,13 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   return (
     <div style={{ width }}>
       <PhoneNumberInput
-        ref={ref}
         onChange={(event) => {
           setEventValue(event.target.value);
         }}
         onChangeValue={(value) => {
           setParsedValue(value);
         }}
+        ref={ref}
         {...args}
       />
       {eventValue !== undefined && (

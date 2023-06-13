@@ -1,18 +1,22 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  is-list, is-grid
+]}] */
+
 import { IconFilter, IconSortDescending } from "@tabler/icons-react";
-import { clsx } from "clsx";
 import React from "react";
+
 import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
 import styles from "./collection.module.css";
 
 function Collection({
   bookmarkItems,
-  title,
+  children,
+  columns,
   filter,
   sort,
+  title,
   variant = "list",
-  columns,
-  children,
   ...props
 }: any) {
   const itemStyle = {} as any;
@@ -32,27 +36,24 @@ function Collection({
           {filter ? (
             <Button
               className={styles.button}
-              size="small"
-              label="Filter"
               iconBefore={<IconFilter />}
+              label="Filter"
+              size="small"
             />
           ) : null}
           {sort ? (
             <Button
               className={styles.button}
-              size="small"
-              label="Sort"
               iconBefore={<IconSortDescending />}
+              label="Sort"
+              size="small"
             />
           ) : null}
         </div>
       ) : null}
-      <div
-        className={clsx(styles.content, styles[`is-${variant}`])}
-        style={contentStyle}
-      >
+      <div className={styles[`is-${variant}`]} style={contentStyle}>
         {React.Children.map(children, (child, index) => (
-          <div key={index} className={styles.item} style={itemStyle}>
+          <div className={styles.item} key={index} style={itemStyle}>
             {child}
           </div>
         ))}

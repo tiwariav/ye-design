@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "../NumberInput/NumberInput.js";
@@ -21,7 +22,7 @@ function removeHyphens(value, emptyValue) {
   return value ? value.replaceAll("-", "") : emptyValue;
 }
 
-const Template = ({ width, iconBefore, iconAfter, ...args }) => {
+const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
   const [eventValue, setEventValue] = useState();
@@ -36,16 +37,16 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   return (
     <div style={{ width }}>
       <NumberInput
-        ref={ref}
-        iconBefore={IconBefore ? <IconBefore /> : null}
-        iconAfter={IconAfter ? <IconAfter /> : null}
         onChange={(event) => {
           setEventValue(event.target.value);
         }}
         onChangeValue={(value) => {
           setParsedValue(value);
         }}
+        iconAfter={IconAfter ? <IconAfter /> : null}
+        iconBefore={IconBefore ? <IconBefore /> : null}
         placeholder="Enter your text"
+        ref={ref}
         {...args}
       />
       {eventValue !== undefined && (

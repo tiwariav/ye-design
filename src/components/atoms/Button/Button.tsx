@@ -1,14 +1,15 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  'is-outlined', 'is-dashed', 'is-trans', 'is-inline', 'is-neu',
-  'is-list-item', 'is-primary', 'is-filled',
-  'is-small', 'is-large',
-  'effect-cursor-tracking', 'effect-ripple',
-  'spacing-equal', 'spacing-extra', 'spacing-less', 'spacing-none'
+  is-outlined, is-dashed, is-trans, is-inline, is-neu,
+  is-list-item, is-primary, is-filled,
+  is-small, is-large,
+  effect-cursor-tracking, effect-ripple,
+  spacing-equal, spacing-extra, spacing-less, spacing-none
 ]}] */
 
 import { clsx } from "clsx";
 import { forwardRef, useEffect } from "react";
 import { useMouseHovered } from "react-use";
+
 import { usePropRef } from "../../../hooks/index.js";
 import { overrideStyleProperty } from "../../../tools/css.js";
 import Spinner from "../Spinner/Spinner.js";
@@ -61,20 +62,20 @@ const setNeuProperties = (node, options: any = {}) => {
 const Button = forwardRef(
   (
     {
-      size = "medium",
-      iconBefore,
-      iconAfter,
-      label,
-      variant = "basic",
-      effects = [],
       children,
       className,
       disabled,
-      spacing,
-      onClick,
+      effects = [],
+      iconAfter,
+      iconBefore,
       isBusy,
       isFullWidth,
+      label,
       neuOptions,
+      onClick,
+      size = "medium",
+      spacing,
+      variant = "basic",
       ...props
     }: any,
     propRef: React.ForwardedRef<Node>
@@ -120,8 +121,6 @@ const Button = forwardRef(
 
     return (
       <button
-        ref={setInnerRef}
-        type="button"
         className={clsx(
           formStyles.control,
           formStyles[`is-${variant}`],
@@ -129,11 +128,11 @@ const Button = forwardRef(
           styles[`is-${size}`],
           styles[`is-${variant}`],
           {
-            [styles[`spacing-${spacing}`]]: spacing,
+            [styles.disabled]: disabled,
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: isBusy,
             [styles.isFullWidth]: isFullWidth,
-            [styles.disabled]: disabled,
+            [styles[`spacing-${spacing}`]]: spacing,
           },
           ...effectClasses,
           className
@@ -152,9 +151,12 @@ const Button = forwardRef(
           }
         }}
         disabled={disabled || isBusy}
+        ref={setInnerRef}
+        type="button"
         {...props}
       >
         {iconBefore ? (
+          // eslint-disable-next-line css-modules/no-undef-class
           <span className={clsx(formStyles.icon, styles.icon)}>
             {iconBefore}
           </span>
@@ -171,6 +173,7 @@ const Button = forwardRef(
           </>
         )}
         {iconAfter ? (
+          // eslint-disable-next-line css-modules/no-undef-class
           <span className={clsx(formStyles.icon, styles.icon)}>
             {iconAfter}
           </span>

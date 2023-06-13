@@ -1,4 +1,5 @@
 import { IconBulb, IconHome } from "@tabler/icons-react";
+
 import Anchor from "../../atoms/Anchor/Anchor.js";
 import SideNav from "./SideNav.js";
 import SideNavGroup from "./SideNavGroup.js";
@@ -14,21 +15,21 @@ const Template = (args) => (
   <SideNav {...args}>
     <SideNavGroup>
       <Anchor
-        variant="nav-item"
+        href="/"
         iconBefore={<IconHome />}
         label="Home"
-        href="/"
+        variant="nav-item"
       />
       <Anchor
-        variant="nav-item"
+        href="/"
         iconBefore={<IconBulb />}
         label="Menu Item"
-        href="/"
+        variant="nav-item"
       />
     </SideNavGroup>
     <SideNavGroup title="Menu Group">
-      <Anchor variant="nav-item" label="Menu Item" href="/" />
-      <Anchor variant="nav-item" label="Menu Item" href="/" />
+      <Anchor href="/" label="Menu Item" variant="nav-item" />
+      <Anchor href="/" label="Menu Item" variant="nav-item" />
     </SideNavGroup>
   </SideNav>
 );

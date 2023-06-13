@@ -10,14 +10,14 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ width, iconBefore, iconAfter, ...args }) => {
+const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
   return (
     <div style={{ width }}>
       <TextInput
-        iconBefore={IconBefore ? <IconBefore /> : null}
         iconAfter={IconAfter ? <IconAfter /> : null}
+        iconBefore={IconBefore ? <IconBefore /> : null}
         {...args}
       />
     </div>

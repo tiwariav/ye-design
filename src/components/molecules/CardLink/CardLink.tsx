@@ -1,5 +1,6 @@
 import { MutableRefObject, ReactNode, useRef } from "react";
 import { useEffectOnce } from "react-use";
+
 import { Card } from "../../atoms/index.js";
 
 interface CardLinkProps {
@@ -30,7 +31,7 @@ export default function CardLink({
   });
 
   return (
-    <Card ref={ref} onClick={handleClick} {...props}>
+    <Card onClick={handleClick} ref={ref} {...props}>
       {children}
     </Card>
   );

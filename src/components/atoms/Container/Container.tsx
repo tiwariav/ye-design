@@ -4,28 +4,29 @@
 ]}] */
 
 import { clsx } from "clsx";
+
 import styles from "./container.module.css";
 
 const spacingOptions = ["none", "small", "medium", "large", "horizontal"];
 
 interface ContainerProps {
-  spacing?: (typeof spacingOptions)[number];
-  children: React.ReactNode;
   align?: "center" | "left" | "right";
+  children: React.ReactNode;
   className?: string;
+  height?: "full" | "readable";
+  spacing?: (typeof spacingOptions)[number];
   variant?: "basic" | "secondary";
-  width?: "xsmall" | "small" | "medium" | "large" | "xlarge";
-  height?: "readable" | "full";
+  width?: "large" | "medium" | "small" | "xlarge" | "xsmall";
 }
 
 export default function Container({
-  spacing = "medium",
-  children,
   align,
+  children,
   className,
+  height,
+  spacing = "medium",
   variant = "basic",
   width,
-  height,
   ...props
 }: ContainerProps) {
   return (
@@ -36,8 +37,8 @@ export default function Container({
         styles[`is-${variant}`],
         {
           [styles[`align-${align}`]]: align,
-          [styles[`width-${width}`]]: width,
           [styles[`height-${height}`]]: height,
+          [styles[`width-${width}`]]: width,
         },
         className
       )}

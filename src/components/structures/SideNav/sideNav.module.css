@@ -9,15 +9,3 @@
 .with-hanging {
   padding-top: 3.5em;
 }
-
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--ye-spacing-em-large);
-  height: var(--ye-spacing-em-large);
-  margin-right: var(--ye-spacing-em-small);
-  color: inherit;
-  font-size: var(--ye-font-size-large);
-  line-height: 1;
-}

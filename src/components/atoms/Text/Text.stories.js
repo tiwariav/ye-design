@@ -1,5 +1,5 @@
-import Text from "./Text.js";
 import { TEXT_LONG } from "./__testData.js";
+import Text from "./Text.js";
 
 const metadata = {
   component: Text,

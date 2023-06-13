@@ -2,6 +2,7 @@
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
 import { InputHTMLAttributes, Ref, forwardRef, useMemo, useState } from "react";
+
 import { useMeasureInput } from "../../../hooks/index.js";
 import { isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
@@ -22,8 +23,8 @@ export interface TextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
   errors?: string[];
-  iconBefore?: React.ReactNode;
   iconAfter?: React.ReactNode;
+  iconBefore?: React.ReactNode;
   id?: string;
   innerClassNames?: {
     input?: string;
@@ -32,13 +33,13 @@ export interface TextInputProps
   isLoading?: boolean;
   label?: string;
   placeholder?: string;
-  size?: "small" | "medium" | "large";
-  style?: object;
-  spacing?: "none" | "small" | "medium" | "large";
-  value?: string;
-  variant?: (typeof variants)[number];
   required?: boolean;
   requiredText?: string;
+  size?: "large" | "medium" | "small";
+  spacing?: "large" | "medium" | "none" | "small";
+  style?: object;
+  value?: string;
+  variant?: (typeof variants)[number];
 }
 
 const TextInput = forwardRef(
@@ -46,23 +47,23 @@ const TextInput = forwardRef(
     {
       className,
       errors,
-      iconBefore,
       iconAfter,
+      iconBefore,
       id,
       innerClassNames = {},
       isBusy,
       isLoading,
       label,
-      onFocus,
       onBlur,
+      onFocus,
       placeholder,
-      size = "medium",
-      style = {},
-      spacing,
-      value,
-      variant,
       required,
       requiredText,
+      size = "medium",
+      spacing,
+      style = {},
+      value,
+      variant,
       ...props
     }: TextInputProps,
     ref: Ref<HTMLInputElement>
@@ -94,6 +95,7 @@ const TextInput = forwardRef(
           {
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
+            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasValue]: !isEmpty(value),
           },
           className
@@ -101,11 +103,11 @@ const TextInput = forwardRef(
       >
         {label ? (
           <label
-            ref={labelRef}
-            htmlFor={inputID}
             className={clsx(styles.label, {
               [styles["required"]]: required && !requiredText,
             })}
+            htmlFor={inputID}
+            ref={labelRef}
           >
             {label}
             {requiredText && ` ( ${requiredText})`}
@@ -118,8 +120,6 @@ const TextInput = forwardRef(
             </span>
           )}
           <input
-            id={inputID}
-            type="text"
             className={clsx(
               formStyles.control,
               formStyles[`is-${variant}`],
@@ -138,11 +138,6 @@ const TextInput = forwardRef(
                   : ""
                 : placeholder
             }
-            required={required}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            ref={ref}
-            value={value}
             style={
               input
                 ? {
@@ -151,6 +146,13 @@ const TextInput = forwardRef(
                   }
                 : style
             }
+            id={inputID}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            ref={ref}
+            required={required}
+            type="text"
+            value={value}
             {...props}
           />
           {iconAfter && (
@@ -162,11 +164,11 @@ const TextInput = forwardRef(
           )}
           {isLoading && (
             <ContentLoader
-              viewBox={`0 0 100 100`}
-              preserveAspectRatio="none"
               className={styles.loader}
+              preserveAspectRatio="none"
+              viewBox={`0 0 100 100`}
             >
-              <rect x="0" y="0" width={100} height={100} />
+              <rect height={100} width={100} x="0" y="0" />
             </ContentLoader>
           )}
           {isBusy && <Spinner className={styles.spinner} />}

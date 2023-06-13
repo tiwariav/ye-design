@@ -1,3 +1,7 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  is-flat, is-underlined, is-logo-hanging
+]}] */
+
 import { IconMenu } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import {
@@ -10,11 +14,12 @@ import {
 } from "react";
 import { useToggle, useWindowScroll, useWindowSize } from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
+
 import { BREAKPOINTS } from "../../../styles/media.js";
 import styleUtils from "../../../styles/utils/flex.module.css";
 import { Button, Container } from "../../atoms/index.js";
-import styles from "./topNav.module.css";
 import TopNavItem from "./TopNavItem.js";
+import styles from "./topNav.module.css";
 
 const variantOptions = ["basic", "transparent", "flat", "underlined"] as const;
 
@@ -26,10 +31,10 @@ interface TopNavProps {
   contentRight?: ReactNode;
   drawer?: boolean;
   expandedHeight?: number;
-  hideOnScroll?: boolean | "contentLeft";
+  hideOnScroll?: "contentLeft" | boolean;
   innerClassNames?: {
-    isExpanded?: string;
     container?: string;
+    isExpanded?: string;
   };
   isExpanded?: boolean;
   leftNavIcon?: ReactNode;
@@ -39,8 +44,8 @@ interface TopNavProps {
   rightNavIcon?: ReactNode;
   sideNavToggle?: boolean;
   style?: CSSProperties;
-  toggleSideNav?: Function;
-  toggleDrawer?: Function;
+  toggleDrawer?: (boolean) => void;
+  toggleSideNav?: (boolean) => void;
   variant?: (typeof variantOptions)[number];
   withSideNav?: boolean;
 }
@@ -63,8 +68,8 @@ export default function TopNav({
   rightNavIcon,
   sideNavToggle,
   style,
-  toggleSideNav,
   toggleDrawer,
+  toggleSideNav,
   variant,
   withSideNav,
   ...props
@@ -102,14 +107,13 @@ export default function TopNav({
 
   return (
     <div
-      ref={ref}
       className={clsx(
         styles.root,
         styles[`is-${variant}`],
         {
-          [styles.withSideNav]: withSideNav,
-          [styles.sideNavToggled]: sideNavToggle,
           [styles.hasDrawer]: showDrawer,
+          [styles.sideNavToggled]: sideNavToggle,
+          [styles.withSideNav]: withSideNav,
         },
         className,
         innerClassNames
@@ -118,6 +122,7 @@ export default function TopNav({
             }
           : {}
       )}
+      ref={ref}
       style={{ ...rootStyle, ...style }}
       {...props}
     >
@@ -126,13 +131,14 @@ export default function TopNav({
       )}
       <Container
         className={clsx(styles.container, innerClassNames.container, {
+          // eslint-disable-next-line css-modules/no-undef-class
           [styles.hasMultiRow]: multiRow,
         })}
       >
         {/* left nav icon */}
         {smallerWidth !== false && withSideNav && leftNavIcon !== null && (
           <div className={clsx(styles.contentMenuIcon)}>
-            <Button variant="trans" spacing="none" onClick={toggleSideNav}>
+            <Button onClick={toggleSideNav} spacing="none" variant="trans">
               {leftNavIcon || <IconMenu />}
             </Button>
           </div>
@@ -151,7 +157,7 @@ export default function TopNav({
         )}
         {/* left content */}
         {(smallerWidth === false || multiRow) && contentLeft && (
-          <div ref={contentLeftRef} className={styles.contentLeft}>
+          <div className={styles.contentLeft} ref={contentLeftRef}>
             {contentLeft}
           </div>
         )}
@@ -185,9 +191,9 @@ export default function TopNav({
                   )}
                 >
                   <Button
-                    variant="trans"
-                    spacing="none"
                     onClick={toggleDrawer || toggleLocalDrawer}
+                    spacing="none"
+                    variant="trans"
                   >
                     {rightNavIcon || <IconMenu />}
                   </Button>
@@ -200,6 +206,7 @@ export default function TopNav({
       {smallerWidth && hasContextMenu && (
         <div
           className={clsx(styleUtils.flexColumn, styles.contentMenu, {
+            // eslint-disable-next-line css-modules/no-undef-class
             [styles.open]: showDrawer,
           })}
         >

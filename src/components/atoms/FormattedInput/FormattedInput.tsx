@@ -7,19 +7,20 @@ import {
   useMemo,
   useState,
 } from "react";
+
 import { TextInputProps } from "../TextInput/TextInput.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./formattedInput.module.css";
 
 export interface FromattedInputProps extends TextInputProps {
-  emptyValue?: undefined | null | string | number;
-  format?: Function;
+  emptyValue?: null | number | string | undefined;
+  format?: (string) => any;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
-  onChangeValue?: Function;
-  parse?: Function;
+  onChangeValue?: (any) => any;
+  parse?: (string, any) => any;
   value?: string;
 }
 
@@ -51,17 +52,17 @@ export default forwardRef(
     const handleChange = useCallback(
       (event) => {
         // to get new formatted text when input value is changed by user
-        let formattedValue = format
+        const formattedValue = format
           ? format(event.target.value)
           : event.target.value;
         setFormattedValue(formattedValue);
         onChange && onChange(event);
         // to update the value when input value is changed by user
-        const newNumberValue = parse
+        const newParsedValue = parse
           ? parse(formattedValue, emptyValue)
           : event.target.value;
-        setParsedValue(newNumberValue);
-        onChangeValue && onChangeValue(newNumberValue);
+        setParsedValue(newParsedValue);
+        onChangeValue && onChangeValue(newParsedValue);
       },
       [emptyValue, format, onChange, onChangeValue, parse]
     );
@@ -89,10 +90,10 @@ export default forwardRef(
          * the handleChange function.
          */}
         <input
-          ref={ref}
           className={styles.numberInput}
           id={formattedInputID}
           readOnly
+          ref={ref}
           value={parsedValue}
           {...hiddenInputProps}
         />

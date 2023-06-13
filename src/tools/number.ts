@@ -8,10 +8,10 @@ interface FormatNumberProps extends Intl.NumberFormatOptions {
 export function formatNumber(
   value,
   {
-    nullValue,
     fractionDigits = 2,
     maximumFractionDigits,
     minimumFractionDigits,
+    nullValue,
     ...options
   }: FormatNumberProps = {}
 ) {

@@ -1,21 +1,22 @@
 import { clsx } from "clsx";
+
 import ContentLoader from "../../../vendors/ContentLoader.js";
 import styles from "./textGroupLoader.module.css";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
 
 export default function TextLoader({
+  className,
   iconAfter,
   iconBefore,
-  className,
   ...props
 }: any) {
   return (
     <span className={clsx(styles.loader, className)} {...props}>
       {iconBefore ? (
         <ContentLoader
-          uniqueKey={TEST_UNIQUE_KEY}
           className={styles.loaderIcon}
+          uniqueKey={TEST_UNIQUE_KEY}
           viewBox="0 0 24 24"
         >
           {/* Only SVG shapes */}
@@ -24,19 +25,19 @@ export default function TextLoader({
       ) : null}
 
       <ContentLoader
-        uniqueKey={TEST_UNIQUE_KEY}
         className={styles.loaderText}
-        viewBox="0 0 100 24"
         preserveAspectRatio="xMaxYMid slice"
+        uniqueKey={TEST_UNIQUE_KEY}
+        viewBox="0 0 100 24"
       >
         {/* Only SVG shapes */}
-        <rect x="0" y="2" width="100%" height="20" />
+        <rect height="20" width="100%" x="0" y="2" />
       </ContentLoader>
 
       {iconAfter ? (
         <ContentLoader
-          uniqueKey={TEST_UNIQUE_KEY}
           className={styles.loaderIcon}
+          uniqueKey={TEST_UNIQUE_KEY}
           viewBox="0 0 24 24"
         >
           {/* Only SVG shapes */}

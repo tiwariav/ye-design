@@ -1,5 +1,7 @@
 import type { Meta } from "@storybook/react";
+
 import { useEffect, useRef, useState } from "react";
+
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "./NumberInput.js";
@@ -10,7 +12,7 @@ const metadata: Meta<typeof NumberInput> = {
 
 export default metadata;
 
-const Template = ({ width, iconBefore, iconAfter, ...args }) => {
+const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
   const [eventValue, setEventValue] = useState("");
@@ -25,17 +27,17 @@ const Template = ({ width, iconBefore, iconAfter, ...args }) => {
   return (
     <div style={{ width }}>
       <NumberInput
-        ref={ref}
-        formatOptions={{ maximumFractionDigits: 0 }}
-        iconBefore={IconBefore ? <IconBefore /> : null}
-        iconAfter={IconAfter ? <IconAfter /> : null}
         onChange={(event) => {
           setEventValue(event.target.value);
         }}
         onChangeValue={(value) => {
           setParsedValue(value);
         }}
+        formatOptions={{ maximumFractionDigits: 0 }}
+        iconAfter={IconAfter ? <IconAfter /> : null}
+        iconBefore={IconBefore ? <IconBefore /> : null}
         placeholder="Enter your text"
+        ref={ref}
         {...args}
       />
       {

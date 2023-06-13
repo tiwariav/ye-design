@@ -3,6 +3,7 @@ import { FormItemProps } from "antd/es/form/index.js";
 import { clsx } from "clsx";
 import { isDate, isObject } from "lodash-es";
 import React, { ReactElement, useCallback, useMemo, useState } from "react";
+
 import styles from "./antFormItemWrapper.module.css";
 
 interface AntFormItemWrapperProps extends FormItemProps {
@@ -61,16 +62,13 @@ export default function AntFormItemWrapper({
       onKeyPress: handleKeyPress,
       ...(loading ? { isLoading: loading } : {}),
       ...(label ? { label } : {}),
-      // @ts-ignore
+      // @ts-ignore: TS2339 because Rules type has no prop required
       required: rules?.find((item) => item.required),
     };
   }, [handleBlur, handleKeyPress, label, loading, rules]);
 
   return (
     <Form.Item
-      validateTrigger={validateTrigger}
-      className={clsx(styles.root, className)}
-      rules={rules}
       getValueFromEvent={(event: EventValue) => {
         return !isObject(event) || isDate(event)
           ? event
@@ -79,6 +77,9 @@ export default function AntFormItemWrapper({
                 ? Number(event.target.value)
                 : event.target.value);
       }}
+      className={clsx(styles.root, className)}
+      rules={rules}
+      validateTrigger={validateTrigger}
       {...props}
     >
       {React.cloneElement(children, overrideProps)}

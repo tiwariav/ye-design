@@ -12,7 +12,6 @@ export default metadata;
 const Template = ({ coverImage, ...args }) => {
   return (
     <ProfileTemplate
-      coverImage={<Image src={coverImage} style={{ height: 200 }} />}
       contentLeft={
         <Container style={{ textAlign: "center" }}>
           <Image
@@ -26,6 +25,7 @@ const Template = ({ coverImage, ...args }) => {
           </p>
         </Container>
       }
+      coverImage={<Image src={coverImage} style={{ height: 200 }} />}
       {...args}
     >
       {Array.from({ length: 4 }).fill(

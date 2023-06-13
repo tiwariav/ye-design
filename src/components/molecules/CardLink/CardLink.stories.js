@@ -1,4 +1,5 @@
 import { useRef } from "react";
+
 import { Anchor } from "../../atoms/index.js";
 import CardLink from "./CardLink.js";
 
@@ -8,13 +9,13 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ width, iconBefore, iconAfter, ...args }) => {
+const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   const linkRef = useRef(null);
 
   return (
     <div style={{ width }}>
       <CardLink linkRef={linkRef} {...args}>
-        <Anchor ref={linkRef} href="#nowhere">
+        <Anchor href="#nowhere" ref={linkRef}>
           Main Link
         </Anchor>
         <div>Some more content</div>

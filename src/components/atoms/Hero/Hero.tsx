@@ -1,7 +1,8 @@
 import { clsx } from "clsx";
+
 import styles from "./hero.module.css";
 
-function Hero({ title, midContent, children }: any) {
+function Hero({ children, midContent, title }: any) {
   return (
     <div className={clsx(styles.hero)}>
       <div className={clsx(styles.content)}>

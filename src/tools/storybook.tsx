@@ -5,13 +5,14 @@ import {
   IconSquareRoundedChevronRightFilled,
 } from "@tabler/icons-react";
 import { ThemeContext } from "wo-library/contexts/index.js";
+
 import defaultThemeStyleOptions from "../styles/themes/index.js";
 
 export const withThemeProvider = (Story, context) => {
   return (
     <ThemeContext.ThemeProvider
-      themeVariants={defaultThemeStyleOptions}
       activeThemeName={context.globals.theme}
+      themeVariants={defaultThemeStyleOptions}
     >
       <Story {...context} />
     </ThemeContext.ThemeProvider>

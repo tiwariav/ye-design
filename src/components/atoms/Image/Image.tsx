@@ -2,18 +2,19 @@
 
 import { clsx } from "clsx";
 import { useEffect, useMemo, useState } from "react";
+
 import Spinner from "../Spinner/Spinner.js";
 import ImageLoader from "./ImageLoader.js";
 import styles from "./image.module.css";
 
 function Image({
-  aspectRatio,
-  variant = "basic",
   Element = "img",
-  loading,
-  isBusy,
-  style = {},
+  aspectRatio,
   className,
+  isBusy,
+  loading,
+  style = {},
+  variant = "basic",
   ...props
 }: any) {
   const [contentStyle, setContentStyle] = useState({});

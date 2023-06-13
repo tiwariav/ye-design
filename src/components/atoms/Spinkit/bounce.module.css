@@ -11,6 +11,7 @@
   background-color: #333;
   border-radius: 100%;
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+
   @media screen and (prefers-reduced-motion: reduce) {
     animation: none;
   }

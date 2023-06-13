@@ -19,9 +19,9 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   return (
     <Anchor
+      href="/"
       iconAfter={IconAfter ? <IconAfter /> : null}
       iconBefore={IconBefore ? <IconBefore /> : null}
-      href="/"
       {...args}
     />
   );

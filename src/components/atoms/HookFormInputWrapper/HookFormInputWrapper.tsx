@@ -23,10 +23,8 @@ export default function HookFormInputWrapper({
 }: HookFormInputWrapperProps): ReactElement {
   return (
     <Controller
-      control={control}
-      name={name}
       render={({
-        field: { onChange: onChangeValue, onBlur: onBlurValue, value, ref },
+        field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
         fieldState: { error },
       }) =>
         React.Children.map(children, (child) =>
@@ -40,6 +38,8 @@ export default function HookFormInputWrapper({
           })
         )
       }
+      control={control}
+      name={name}
       {...props}
     />
   );

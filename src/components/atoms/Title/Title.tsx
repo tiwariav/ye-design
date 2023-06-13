@@ -1,17 +1,23 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  is-tinyline, is-tinyline-left,
+  align-center
+]}] */
+
 import { clsx } from "clsx";
+
 import styles from "./title.module.css";
 
 interface TitleProps {
-  className?: string;
   align?: "center" | "left" | "right";
-  variant?: "basic" | "tinyline" | "tyline-left";
   as?: any;
+  className?: string;
+  variant?: "basic" | "tinyline" | "tyline-left";
 }
 export default function Title({
-  className,
   align,
-  variant,
   as,
+  className,
+  variant,
   ...props
 }: TitleProps) {
   const As = as || "div";
@@ -20,8 +26,8 @@ export default function Title({
       className={clsx(
         styles.root,
         {
-          [styles[`is-${variant}`]]: variant,
           [styles[`align-${align}`]]: align,
+          [styles[`is-${variant}`]]: variant,
         },
         className
       )}

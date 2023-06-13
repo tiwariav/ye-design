@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
+
 import NumberInput from "../NumberInput/NumberInput.js";
 import HookFormInputWrapper from "./HookFormInputWrapper.js";
 
@@ -9,10 +10,10 @@ const metadata = {
 
 export default metadata;
 
-function InputWrapper({ name, control, ...props }) {
+function InputWrapper({ control, name, ...props }) {
   return (
     <HookFormInputWrapper control={control} name={name}>
-      <NumberInput size="small" variant="material" label={name} {...props} />
+      <NumberInput label={name} size="small" variant="material" {...props} />
     </HookFormInputWrapper>
   );
 }
@@ -32,18 +33,18 @@ const Template = () => {
           gridTemplateColumns: "1fr 1fr",
         }}
       >
-        <InputWrapper name={"NumberInput"} control={control} />
-        <InputWrapper name={"NumberInput (format)"} control={control} format />
+        <InputWrapper control={control} name={"NumberInput"} />
+        <InputWrapper control={control} format name={"NumberInput (format)"} />
         <InputWrapper
-          name={"NumberInput (format and empty value)"}
           control={control}
-          format
           emptyValue={null}
+          format
+          name={"NumberInput (format and empty value)"}
         />
         <InputWrapper
-          name={"NumberInput (format & parse)"}
           control={control}
           format
+          name={"NumberInput (format & parse)"}
           parse
         />
         <div>

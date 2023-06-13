@@ -1,16 +1,17 @@
 import { clsx } from "clsx";
+
 import Spinner from "../Spinner/Spinner.js";
-import styles from "./tag.module.css";
 import TagLoader from "./TagLoader.js";
+import styles from "./tag.module.css";
 
 function Tag({
   children,
-  iconBefore,
-  iconAfter,
-  loading,
-  isBusy,
-  style,
   className,
+  iconAfter,
+  iconBefore,
+  isBusy,
+  loading,
+  style,
   ...props
 }: any) {
   return (

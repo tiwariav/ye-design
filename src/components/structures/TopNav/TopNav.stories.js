@@ -5,6 +5,7 @@ import {
   IconSearch,
   IconSpider,
 } from "@tabler/icons-react";
+
 import { Button, TextInput } from "../../atoms/index.js";
 import TopNav from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
@@ -13,15 +14,15 @@ const iconMap = { IconFish, IconSpider };
 const itemsMap = {
   Button: (
     <TopNavItem>
-      <Button size="small" label="Button" variant="outlined" />
+      <Button label="Button" size="small" variant="outlined" />
     </TopNavItem>
   ),
   ButtonWithIcon: (
     <TopNavItem>
       <Button
-        size="small"
         iconBefore={<IconLogin />}
         label="Button"
+        size="small"
         variant="outlined"
       />
     </TopNavItem>
@@ -29,9 +30,9 @@ const itemsMap = {
   ButtonWithSeparator: (
     <TopNavItem hasSeparator>
       <Button
-        size="small"
         iconBefore={<IconMicrophone />}
         label="Button"
+        size="small"
         variant="outlined"
       />
     </TopNavItem>
@@ -40,9 +41,9 @@ const itemsMap = {
     <TopNavItem>
       <TextInput
         iconBefore={<IconSearch />}
-        variant="borderless"
         placeholder="Search Here"
         style={{ minWidth: 240 }}
+        variant="borderless"
       />
     </TopNavItem>
   ),
@@ -69,13 +70,13 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ logo, contentLeft, contentRight, ...args }) => {
+const Template = ({ contentLeft, contentRight, logo, ...args }) => {
   const Logo = iconMap[logo];
   return (
     <TopNav
-      logo={Logo ? <Logo /> : null}
       contentLeft={contentLeft.map((item) => itemsMap[item])}
       contentRight={contentRight.map((item) => itemsMap[item])}
+      logo={Logo ? <Logo /> : null}
       {...args}
     />
   );
@@ -129,24 +130,24 @@ export const MultiRow = {
 };
 
 export const Expanded = {
+  argTypes: {
+    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
+  },
   args: {
     ...Basic.args,
     isExpanded: true,
     isShrinking: 0,
   },
-  argTypes: {
-    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
-  },
   render: (args) => <Template {...args} />,
 };
 
 export const HangingLogo = {
+  argTypes: {
+    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
+  },
   args: {
     ...Basic.args,
     logoVariant: "hanging",
-  },
-  argTypes: {
-    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
   },
   render: (args) => <Template {...args} />,
 };

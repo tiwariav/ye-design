@@ -1,19 +1,20 @@
 import { clsx } from "clsx";
+
 import Spinner from "../Spinner/Spinner.js";
-import styles from "./text.module.css";
 import TextLoader from "./TextLoader.js";
+import styles from "./text.module.css";
 
 function Text({
   children,
-  loading,
-  isBusy,
-  minLines = 1,
-  maxLines,
-  lineHeight,
-  style,
   className,
   inline,
+  isBusy,
+  lineHeight,
   loaderStyles,
+  loading,
+  maxLines,
+  minLines = 1,
+  style,
   ...props
 }: any) {
   const textStyles = {} as any;
@@ -36,8 +37,8 @@ function Text({
     >
       {loading ? (
         <TextLoader
-          lines={minLines}
           className={styles.loader}
+          lines={minLines}
           style={{ height: textStyles.minHeight, ...loaderStyles }}
         />
       ) : (

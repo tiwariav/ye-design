@@ -1,16 +1,17 @@
 import { clsx } from "clsx";
+
 import Spinner from "../Spinner/Spinner.js";
-import styles from "./textGroup.module.css";
 import TextGroupLoader from "./TextGroupLoader.js";
+import styles from "./textGroup.module.css";
 
 function TextGroup({
   children,
-  iconBefore,
-  iconAfter,
-  loading,
-  isBusy,
-  style,
   className,
+  iconAfter,
+  iconBefore,
+  isBusy,
+  loading,
+  style,
   ...props
 }: any) {
   return (

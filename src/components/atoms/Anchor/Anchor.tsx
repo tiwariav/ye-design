@@ -1,5 +1,12 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  is-small, is-large,
+  is-list-item, is-nav-item,
+  is-outlined, is-filled, is-basic, is-color
+]}] */
+
 import { clsx } from "clsx";
-import { AnchorHTMLAttributes, forwardRef, ReactNode } from "react";
+import { AnchorHTMLAttributes, ReactNode, forwardRef } from "react";
+
 import styles from "./anchor.module.css";
 
 const sizes = ["small", "medium", "large"] as const;
@@ -14,16 +21,16 @@ const variants = [
 
 interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   as?: any;
-  size?: (typeof sizes)[number];
+  children: any;
+  className?: any;
+  effects?: any;
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   label?: string;
-  variant?: (typeof variants)[number];
-  effects?: any;
-  children: any;
-  className?: any;
-  spacing?: any;
   noVisited?: any;
+  size?: (typeof sizes)[number];
+  spacing?: any;
+  variant?: (typeof variants)[number];
 }
 
 /**
@@ -33,16 +40,16 @@ const Anchor = forwardRef(
   (
     {
       as,
-      size = "medium",
-      iconBefore,
-      iconAfter,
-      label,
-      variant = "basic",
-      effects = [],
       children,
       className,
-      spacing,
+      effects = [],
+      iconAfter,
+      iconBefore,
+      label,
       noVisited,
+      size = "medium",
+      spacing,
+      variant = "basic",
       ...props
     }: AnchorProps,
     ref
@@ -52,18 +59,19 @@ const Anchor = forwardRef(
 
     return (
       <As
-        ref={ref}
         className={clsx(
           styles.anchor,
           ...effectClasses,
           {
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.noVisited]: noVisited,
             [styles[`is-${size}`]]: size,
             [styles[`is-${variant}`]]: variant,
             [styles[`spacing-${spacing}`]]: spacing,
-            [styles.noVisited]: noVisited,
           },
           className
         )}
+        ref={ref}
         {...props}
       >
         {iconBefore ? (

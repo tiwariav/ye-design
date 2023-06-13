@@ -3,6 +3,7 @@
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
 import { forwardRef, useMemo } from "react";
+
 import { SVGPathFlag, SVGPathPin } from "../../../svg/paths/index.js";
 import { VARIANT_OPTIONS } from "./options.js";
 import styles from "./symbol.module.css";
@@ -22,7 +23,7 @@ function imageTransform(variant) {
 }
 
 const Symbol = forwardRef(
-  ({ className, fill, imageSrc, imageProps, variant, ...props }: any, ref) => {
+  ({ className, fill, imageProps, imageSrc, variant, ...props }: any, ref) => {
     const maskID = useMemo(() => uniqueId("svgMask_"), []);
 
     return (
@@ -34,26 +35,26 @@ const Symbol = forwardRef(
         {...props}
       >
         <mask id={maskID}>
-          <rect width="100%" height="100%" fill="black" />
+          <rect fill="black" height="100%" width="100%" />
           {variant === VARIANT_OPTIONS.circle ? (
-            <circle r="5" cx="5" cy="5" fill="white" />
+            <circle cx="5" cy="5" fill="white" r="5" />
           ) : variant === VARIANT_OPTIONS.triangle ? (
-            <circle r="5" cx="5" cy="5" fill="white" />
+            <circle cx="5" cy="5" fill="white" r="5" />
           ) : variant === VARIANT_OPTIONS.pin ? (
             <SVGPathPin fill="white" transform="translate(.95 0)" />
           ) : variant === VARIANT_OPTIONS.flag ? (
             <SVGPathFlag fill="white" transform="translate(.3 0)" />
           ) : (
-            <rect width="100%" height="100%" fill="white" />
+            <rect fill="white" height="100%" width="100%" />
           )}
         </mask>
-        <rect width="100%" height="100%" mask={`url(#${maskID})`} fill={fill} />
+        <rect fill={fill} height="100%" mask={`url(#${maskID})`} width="100%" />
         {imageSrc ? (
           <image
-            href={imageSrc}
-            width="100%"
             height="100%"
+            href={imageSrc}
             transform={imageTransform(variant)}
+            width="100%"
             {...imageProps}
           />
         ) : null}

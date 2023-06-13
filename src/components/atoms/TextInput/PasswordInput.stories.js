@@ -6,7 +6,7 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ width, iconBefore, iconAfter, ...args }) => {
+const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   return (
     <div style={{ width }}>
       <PasswordInput {...args} />

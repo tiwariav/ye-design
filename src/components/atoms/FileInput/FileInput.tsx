@@ -4,35 +4,36 @@ import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce, uniqueId } from "lodash-es";
 import { useMemo, useState } from "react";
+
 import { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
 import { Button } from "../Button/index.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
+import TextInput from "../TextInput/TextInput.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
-import TextInput from "../TextInput/TextInput.js";
 import styles from "./fileInput.module.css";
 
 export const variants = ["basic", "outlined", "dashed", "borderless"];
 
 export default function FileInput({
-  size = "medium",
-  iconBefore,
-  iconAfter,
-  label,
-  variant,
-  onFocus,
-  onBlur,
-  id,
-  isBusy,
-  spacing,
   className,
-  innerClassNames = {},
   files,
+  iconAfter,
+  iconBefore,
+  id,
+  innerClassNames = {},
+  isBusy,
+  label,
+  onBlur,
+  onChange,
+  onFocus,
+  placeholder = "Browse",
+  size = "medium",
+  spacing,
   updateFiles,
   uploadFiles,
-  placeholder = "Browse",
-  onChange,
+  variant,
   ...props
 }: any) {
   const [hasFocus, setHasFocus] = useState(false);
@@ -86,12 +87,12 @@ export default function FileInput({
           </span>
         )}
         <input
-          id={fileInputID}
-          type="file"
           className={clsx(styles.input)}
-          onFocus={handleFocus}
+          id={fileInputID}
           onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={handleFocus}
+          type="file"
           {...props}
         />
         <span className={clsx(styles.placeholder, innerClassNames.input)}>
@@ -122,9 +123,9 @@ export default function FileInput({
                     </div>
                     <div>
                       <CircleProgress
-                        squareSize={18}
-                        progress={item.progress}
                         className={styles.listItemProgress}
+                        progress={item.progress}
+                        squareSize={18}
                       />
                     </div>
                   </>
@@ -141,8 +142,8 @@ export default function FileInput({
                     <div>
                       <Button
                         onClick={() => updateFiles([item], "remove")}
-                        variant="trans"
                         spacing="equal"
+                        variant="trans"
                       >
                         <IconTrashXFilled />
                       </Button>
@@ -158,8 +159,8 @@ export default function FileInput({
                     <div>
                       <Button
                         onClick={() => uploadFiles([item])}
-                        variant="trans"
                         spacing="equal"
+                        variant="trans"
                       >
                         <IconReload />
                       </Button>
@@ -167,8 +168,8 @@ export default function FileInput({
                     <div>
                       <Button
                         onClick={() => updateFiles([item], "remove")}
-                        variant="trans"
                         spacing="equal"
+                        variant="trans"
                       >
                         <IconTrashXFilled />
                       </Button>
@@ -181,23 +182,23 @@ export default function FileInput({
                 item.data.map((dataItem, dataIndex) =>
                   dataItem.type === "password" ? (
                     <TextInput
-                      innerClassNames={{ input: styles.listItemDataInput }}
-                      key={index}
-                      size="small"
                       onChange={(event) =>
                         handleDataChange(event, item, dataIndex)
                       }
                       defaultValue={dataItem.value}
+                      innerClassNames={{ input: styles.listItemDataInput }}
+                      key={index}
                       label={dataItem.label}
                       placeholder={dataItem.placeholder}
+                      size="small"
                       type={dataItem.type || "text"}
                     />
                   ) : dataItem.type === "preview" ? (
                     <img
-                      id={dataItem.resource}
-                      src={dataItem.resource}
                       alt={dataItem.name}
                       className={styles.previewImage}
+                      id={dataItem.resource}
+                      src={dataItem.resource}
                     />
                   ) : null
                 )}

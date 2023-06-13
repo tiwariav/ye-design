@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { ReactNode, useMemo } from "react";
+
 import styles from "./circleProgress.module.css";
 
 function getFillColor(percentage) {
@@ -13,8 +14,8 @@ function getFillColor(percentage) {
 
 function getCircleStyles(
   radius: number,
-  arcRotation: number = 0,
-  completion: number = 0
+  arcRotation = 0,
+  completion = 0
 ) {
   // Arc length at 100% coverage is the circle circumference
   const strokeDasharray = radius * Math.PI * 2;
@@ -55,11 +56,11 @@ function CenterText({
     text && (
       <text
         className={clsx([styles.text], className)}
+        dominantBaseline="middle"
         fill={fill}
+        textAnchor="middle"
         x="50%"
         y={`${50 + (100 - arcHeight) / 2}%`}
-        dominantBaseline="middle"
-        textAnchor="middle"
       >
         {getTextContent(text, progress, percentage)}
       </text>
@@ -76,7 +77,6 @@ interface CircleProgressProps {
   innerClassNames?: {
     text?: string;
   };
-  isLarge?: boolean;
   progress: [number, number];
   progressText?: "parts" | "progress" | string;
   squareSize?: number;
@@ -114,7 +114,7 @@ export default function CircleProgress({
     const completion =
       progress[0] && progress[1] ? (100 * progress[0]) / progress[1] : 0;
     const fill = color || getFillColor(completion);
-    const { radius, arcRotation } = initData;
+    const { arcRotation, radius } = initData;
     const circleStyles = getCircleStyles(radius, arcRotation, completion);
     return { circleStyles, completion, fill };
   }, [color, initData, progress]);
@@ -126,32 +126,32 @@ export default function CircleProgress({
       {...props}
     >
       <svg
-        width={squareSize}
         height={(squareSize * arcHeight) / 100}
         viewBox={initData.viewBox}
+        width={squareSize}
       >
         <circle
           className={styles.circleBackground}
-          style={{ stroke: circleBackground }}
           cx={squareSize / 2}
           cy={squareSize / 2}
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
+          style={{ stroke: circleBackground }}
         />
         <circle
           className={clsx(styles.circleProgress, {
             [styles.strokeRound]: arcHeight === 100,
           })}
-          cx={squareSize / 2}
-          cy={squareSize / 2}
-          r={initData.radius}
-          strokeWidth={`${strokeWidth}px`}
           transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
             squareSize / 2
           })`}
-          style={progressData.circleStyles}
-          stroke={progressData.fill}
+          cx={squareSize / 2}
+          cy={squareSize / 2}
           markerEnd="url(#round)"
+          r={initData.radius}
+          stroke={progressData.fill}
+          strokeWidth={`${strokeWidth}px`}
+          style={progressData.circleStyles}
         />
         <CenterText
           arcHeight={arcHeight}

@@ -9,7 +9,7 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ width, height, color, ...args }) => (
+const Template = ({ color, height, width, ...args }) => (
   <div style={{ position: "relative" }}>
     <SpinnerComponent style={{ color, height, width }} {...args} />
   </div>

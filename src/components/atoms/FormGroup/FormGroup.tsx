@@ -1,6 +1,6 @@
 import styles from "./formGroup.module.css";
 
-export default function FormGroup({ label, error, children, ...props }: any) {
+export default function FormGroup({ children, error, label, ...props }: any) {
   return (
     <div className={styles.container} {...props}>
       {label ? (

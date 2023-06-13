@@ -54,11 +54,6 @@
   box-shadow: none;
 }
 
-.top-nav-item {
-  display: flex;
-  align-items: center;
-}
-
 .content-left {
   display: flex;
   flex: 1;
@@ -81,22 +76,6 @@
   }
 }
 
-.has-separator {
-  position: relative;
-  margin-right: var(--ye-em-base);
-  padding-right: var(--ye-spacing-em-normal);
-
-  &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 100%;
-    background-color: var(--ye-color-black-10);
-    content: "";
-  }
-}
-
 .content-menu {
   z-index: -1;
   display: none;
@@ -110,15 +89,6 @@
     &.open {
       display: flex;
       transform: translateX(0);
-    }
-  }
-
-  & .has-separator {
-    margin-right: 0;
-    padding-right: 0;
-
-    &::after {
-      content: none;
     }
   }
 }

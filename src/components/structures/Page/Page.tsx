@@ -2,20 +2,21 @@ import { clsx } from "clsx";
 import React, { useMemo, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useToggle } from "react-use";
+
 import styles from "./page.module.css";
 
 function Page({
   children,
   hero,
+  innerClassName = {},
   isCentered,
   sideNav,
   sideNavIsSticky,
   sideNavOnTop,
   topNav,
-  topNavIsFixed,
   topNavCanExpand,
+  topNavIsFixed,
   topNavShrinkOffset = 0,
-  innerClassName = {},
 }: any) {
   // TODO: create a LayoutProvider to manage topnav and sidenav states
   const topNavRef = React.useRef<HTMLDivElement>(null);
@@ -76,27 +77,28 @@ function Page({
     <div className={clsx(styles.root)}>
       {topNav ? (
         <div
-          ref={topNavRef}
           className={clsx({
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.hasSideNavToggle]: sideNavToggle,
             [styles.isFixed]: topNavIsFixed,
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.sideNavTop]: sideNavOnTop,
-            [styles.hasSideNavToggle]: sideNavToggle,
           })}
+          ref={topNavRef}
         >
           {clonedTopNav}
         </div>
       ) : null}
       <main
         className={clsx(styles.main, {
-          [styles.withTopNavFixed]: topNavIsFixed,
           [styles.isCentered]: isCentered,
+          [styles.withTopNavFixed]: topNavIsFixed,
         })}
       >
         {topNavCanExpand ? (
           <div
-            ref={spacerRef}
             className={styles.spacer}
+            ref={spacerRef}
             style={{ top: topNavMaxHeight + topNavShrinkOffset }}
           />
         ) : null}
@@ -105,17 +107,18 @@ function Page({
           {sideNav ? (
             <div
               className={clsx(styles.sideNav, innerClassName.sideNav, {
+                // eslint-disable-next-line css-modules/no-undef-class
                 [styles.isSticky]: sideNavIsSticky,
+                [styles.sideNavToggle]: sideNavToggle,
                 // eslint-disable-next-line css-modules/no-undef-class
                 [styles.topNavTop]: sideNavIsSticky && !sideNavOnTop,
-                [styles.sideNavToggle]: sideNavToggle,
               })}
             >
               <div
-                className={styles.sideNavBackdrop}
                 onClick={() => {
                   if (sideNavToggle) toggleSideNav();
                 }}
+                className={styles.sideNavBackdrop}
               />
               {clonedSideNav}
             </div>

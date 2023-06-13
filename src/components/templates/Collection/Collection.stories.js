@@ -7,7 +7,7 @@ const metadata = {
 
 export default metadata;
 
-const Template = ({ content, cardWidth, variant, ...args }) => {
+const Template = ({ cardWidth, content, variant, ...args }) => {
   const cardLayout = variant === "grid" ? "vertical" : "horizontal";
   const itemArgs = {
     ...CardWithImage.args,

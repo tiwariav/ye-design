@@ -1,5 +1,6 @@
 import { isNil } from "lodash-es";
 import { Ref, forwardRef, useCallback, useRef } from "react";
+
 import { formatNumber, stringToNumber } from "../../../tools/number.js";
 import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
 import { FormattedInput } from "../FormattedInput/index.js";
@@ -7,15 +8,15 @@ import { FormattedInput } from "../FormattedInput/index.js";
 export interface NumberInputProps
   extends Omit<FromattedInputProps, "format" | "parse"> {
   format?: boolean;
-  parse?: boolean;
   formatOptions?: object;
+  parse?: boolean;
 }
 
 // storybook events dont work when default export name is same as file name
 
 export default forwardRef(
   (
-    { format, parse, formatOptions = {}, ...props }: NumberInputProps,
+    { format, formatOptions = {}, parse, ...props }: NumberInputProps,
     ref: Ref<HTMLInputElement>
   ) => {
     const textValueRef = useRef("");
@@ -52,7 +53,7 @@ export default forwardRef(
 
     const parseFunction = useCallback(
       (formattedValue, emptyValue) => {
-        let textValue = textValueRef.current;
+        const textValue = textValueRef.current;
         if (textValue === undefined) return;
         const unformattedValue = format
           ? stringToNumber(formattedValue, emptyValue)
@@ -66,10 +67,10 @@ export default forwardRef(
 
     return (
       <FormattedInput
-        ref={ref}
         format={format ? formatFunction : undefined}
-        parse={parse ? parseFunction : undefined}
         hiddenInputProps={{ type: "number" }}
+        parse={parse ? parseFunction : undefined}
+        ref={ref}
         {...props}
       />
     );

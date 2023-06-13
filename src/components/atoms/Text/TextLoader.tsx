@@ -7,19 +7,20 @@ export default function TextLoader({ lines = 1, ...props }: any) {
 
   return (
     <ContentLoader
+      preserveAspectRatio="none"
       uniqueKey={TEST_UNIQUE_KEY}
       viewBox={`0 0 100 ${height}`}
-      preserveAspectRatio="none"
       {...props}
     >
       {/* Only SVG shapes */}
+      {/* eslint-disable-next-line prefer-spread */}
       {Array.apply(null, { length: lines || 1 }).map((item, index) => (
         <rect
-          x="0"
-          y={index * 24 + 3}
-          width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
           height="20"
           key={index}
+          width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
+          x="0"
+          y={index * 24 + 3}
         />
       ))}
     </ContentLoader>

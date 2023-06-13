@@ -6,6 +6,7 @@
 
 import { clsx } from "clsx";
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
+
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import styles from "./card.module.css";
@@ -24,10 +25,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   floating?: (typeof floatOptions)[number];
   flying?: (typeof floatOptions)[number];
   height?: (typeof heightOptions)[number];
+  image?: any;
   innerClassNames?: {
     content?: string;
   };
-  image?: any;
   layout?: (typeof layoutOptions)[number];
   variant?: (typeof variantOptions)[number];
   viewMode?: (typeof viewModeOptions)[number];
@@ -43,8 +44,8 @@ const Card = forwardRef(
       floating,
       flying,
       height,
-      innerClassNames = {},
       image,
+      innerClassNames = {},
       layout = "vertical",
       variant = "basic",
       viewMode = "full",

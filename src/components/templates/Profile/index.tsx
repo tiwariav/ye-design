@@ -1,13 +1,14 @@
 import { clsx } from "clsx";
 import React from "react";
+
 import Container from "../../atoms/Container/Container.js";
 import styles from "./profile.module.css";
 
 function Profile({
-  coverImage,
-  contentLeft,
   children,
   className,
+  contentLeft,
+  coverImage,
   ...props
 }: any) {
   const itemStyle = {};
@@ -18,7 +19,7 @@ function Profile({
         <div className={styles.aside}>{contentLeft}</div>
         <div className={styles.content}>
           {React.Children.map(children, (child, index) => (
-            <div key={index} className={styles.item} style={itemStyle}>
+            <div className={styles.item} key={index} style={itemStyle}>
               {child}
             </div>
           ))}
