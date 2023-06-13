@@ -1,3 +1,5 @@
+## [1.12.7](https://github.com/tiwariav/ye-design/compare/v1.12.6...v1.12.7) (2023-06-13)
+
 ## [1.12.6](https://github.com/tiwariav/ye-design/compare/v1.12.5...v1.12.6) (2023-06-09)
 
 
