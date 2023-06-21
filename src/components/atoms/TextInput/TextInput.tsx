@@ -1,4 +1,4 @@
-/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material'] }] */
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material', 'is-basic', 'is-dashed'] }] */
 import { clsx } from "clsx";
 import { omit, uniqueId } from "lodash-es";
 import { InputHTMLAttributes, Ref, forwardRef, useMemo, useState } from "react";
