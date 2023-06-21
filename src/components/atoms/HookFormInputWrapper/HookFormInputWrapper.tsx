@@ -1,14 +1,18 @@
 import React, { ReactElement } from "react";
-import { Controller } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  ControllerProps,
+  useFormContext,
+} from "react-hook-form";
 
-interface HookFormInputWrapperProps {
-  children: any;
-  control: any;
-  name: string;
+interface HookFormInputWrapperProps extends ControllerProps {
+  children: ReactElement;
+  control?: Control;
   onChange?: (...event: any[]) => void;
 }
 
-function appendToPropMethod(method, propMethod) {
+function prependToPropMethod(method, propMethod) {
   return (...args) => {
     method(...args);
     propMethod && propMethod(...args);
@@ -18,9 +22,14 @@ function appendToPropMethod(method, propMethod) {
 export default function HookFormInputWrapper({
   children,
   control,
-  name,
   ...props
 }: HookFormInputWrapperProps): ReactElement {
+  const formMethods = useFormContext();
+  if (!formMethods && !control) {
+    throw new Error(
+      "HookFormInputWrapper must be used inside a HookForm or with a control prop"
+    );
+  }
   return (
     <Controller
       render={({
@@ -30,16 +39,15 @@ export default function HookFormInputWrapper({
         React.Children.map(children, (child) =>
           React.cloneElement(child, {
             error,
-            onBlur: appendToPropMethod(onBlurValue, child.props.onBlur),
-            onChange: appendToPropMethod(onChangeValue, child.props.onChange),
+            onBlur: prependToPropMethod(onBlurValue, child.props.onBlur),
+            onChange: prependToPropMethod(onChangeValue, child.props.onChange),
             onChangeValue,
             ref,
             value,
           })
         )
       }
-      control={control}
-      name={name}
+      control={formMethods?.control || control}
       {...props}
     />
   );

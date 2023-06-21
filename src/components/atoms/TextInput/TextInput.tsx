@@ -1,9 +1,10 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material'] }] */
 import { clsx } from "clsx";
-import { uniqueId } from "lodash-es";
+import { omit, uniqueId } from "lodash-es";
 import { InputHTMLAttributes, Ref, forwardRef, useMemo, useState } from "react";
 
 import { useMeasureInput } from "../../../hooks/index.js";
+import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import { isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
 import Spinner from "../Spinner/Spinner.js";
@@ -63,7 +64,7 @@ const TextInput = forwardRef(
       spacing,
       style = {},
       value,
-      variant,
+      variant = "basic",
       ...props
     }: TextInputProps,
     ref: Ref<HTMLInputElement>
@@ -86,6 +87,7 @@ const TextInput = forwardRef(
     };
 
     const [labelRef, { input }] = useMeasureInput();
+    console.log(variant, styles[`is-${variant}`]);
     return (
       <div
         className={clsx(
@@ -139,9 +141,9 @@ const TextInput = forwardRef(
                 : placeholder
             }
             style={
-              input
+              input && variant === "material"
                 ? {
-                    paddingTop: `calc(${input.paddingTop}px + var(--input-padding-top))`,
+                    paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
                     ...style,
                   }
                 : style
@@ -153,7 +155,7 @@ const TextInput = forwardRef(
             required={required}
             type="text"
             value={value}
-            {...props}
+            {...omit(props, EXCLUDE_HANDLERS)}
           />
           {iconAfter && (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>

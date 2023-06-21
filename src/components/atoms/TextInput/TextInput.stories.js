@@ -1,9 +1,14 @@
 import { storyIconMap } from "../../../tools/storybook.js";
 import TextInput from "./TextInput.js";
 
+const iconOptions = {
+  options: Object.keys(storyIconMap),
+  type: "select",
+};
 const metadata = {
   argTypes: {
-    icon: { control: { options: Object.keys(storyIconMap), type: "select" } },
+    iconAfter: iconOptions,
+    iconBefore: iconOptions,
   },
   component: TextInput,
 };

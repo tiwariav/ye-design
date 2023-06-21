@@ -1,13 +1,11 @@
 .root {
-  --input-padding-top: var(--ye-spacing-rem-small);
-  --input-padding-right: var(--ye-spacing-rem-small);
-  --input-padding-bottom: var(--ye-spacing-rem-small);
-  --input-padding-left: var(--ye-spacing-rem-small);
+  --module-input-padding-top: var(--ye-spacing-rem-small);
+  --module-input-padding-right: var(--ye-spacing-rem-small);
+  --module-input-padding-bottom: var(--ye-spacing-rem-small);
+  --module-input-padding-left: var(--ye-spacing-rem-small);
 
   position: relative;
   width: 100%;
-  background-color: var(--ye-color-input-background);
-  border-radius: var(--ye-input-border-radius);
 }
 
 .input-wrapper {
@@ -17,22 +15,19 @@
 
 .label {
   margin-bottom: var(--ye-spacing-em-xsmall);
-  padding: var(--input-padding-top) var(--input-padding-right)
-    var(--input-padding-bottom) var(--input-padding-left);
+  padding: var(--module-input-padding-top) var(--module-input-padding-right)
+    var(--module-input-padding-bottom) var(--module-input-padding-left);
   line-height: var(--ye-line-height);
 }
 
 .text-input {
-  --color-body-with-opacity: #939fa480;
-
   width: 100%;
-  padding: var(--input-padding-top) var(--input-padding-right)
-    var(--input-padding-bottom) var(--input-padding-left);
+  padding: var(--module-input-padding-top) var(--module-input-padding-right)
+    var(--module-input-padding-bottom) var(--module-input-padding-left);
   color: inherit;
   font-family: var(--ye-fontfamily-input);
+  background-color: var(--ye-color-input-background);
   border-color: var(--color-body-with-opacity);
-  border-style: solid;
-  border-width: var(--ye-input-border-width);
   border-radius: var(--ye-input-border-radius);
   box-shadow: var(--ye-input-shadow);
 
@@ -63,19 +58,17 @@
 }
 
 .padded-left {
-  --input-padding-left: calc(
+  --module-input-padding-left: calc(
     var(--ye-spacing-em-large) + var(--ye-spacing-em-large) +
       var(--ye-spacing-em-small)
   );
 }
 
 .padded-right {
-  --input-padding-right: var(--ye-spacing-em-xhuge);
+  --module-input-padding-right: var(--ye-spacing-em-xhuge);
 }
 
 .loader {
-  --loader-line-height: calc(var(--ye-line-height) * 1em);
-
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -83,8 +76,18 @@
   border-radius: var(--ye-input-border-radius);
 }
 
-/* vairants */
-.is-outlined {
+/* variants */
+.is-basic,
+.is-material {
+  & .text-input {
+    border-style: solid;
+    border-width: var(--ye-input-border-width);
+  }
+}
+
+.is-outlined,
+.is-dashed {
+  border-width: var(--ye-input-border-width);
   transition-property: background-color, color;
 
   &.has-focus,
@@ -94,17 +97,19 @@
 }
 
 .is-material {
-  --input-padding-top: calc(var(--ye-spacing-rem-xlarge));
-  --input-padding-bottom: calc(var(--ye-spacing-rem-tiny) + var(--ye-rem-unit));
+  --module-input-padding-top: calc(var(--ye-spacing-rem-xlarge));
+  --module-input-padding-bottom: calc(
+    var(--ye-spacing-rem-tiny) + var(--ye-rem-unit)
+  );
 
   & .label {
     --calc-xy-padding: calc(
-      var(--input-padding-top) + var(--input-padding-bottom)
+      var(--module-input-padding-top) + var(--module-input-padding-bottom)
     );
 
     position: absolute;
     top: calc((var(--calc-xy-padding) / 2) + 1px);
-    left: calc(var(--input-padding-left) + var(--ye-spacing-rem-tiny));
+    left: calc(var(--module-input-padding-left) + var(--ye-spacing-rem-tiny));
     z-index: 1;
     display: flex;
     margin: 0;
@@ -129,7 +134,7 @@
     transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
       translateY(
         calc(
-          var(--input-padding-bottom) - var(--input-padding-top) +
+          var(--module-input-padding-bottom) - var(--module-input-padding-top) +
             var(--ye-spacing-rem-tiny)
         )
       );

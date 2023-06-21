@@ -24,8 +24,9 @@
   font-size: var(--ye-font-size-large);
 }
 
-/* vairants */
+/* variants */
 .is-borderless {
+  border: none;
   box-shadow: none;
 
   &.has-focus,
@@ -38,7 +39,7 @@
 .is-dashed {
   padding: var(--ye-button-outline-padding);
   border-color: var(--ye-color-text);
-  border-width: var(--ye-button-outline-border-width);
+  border-width: var(--ye-control-outline-border-width);
   box-shadow: none;
 }
 

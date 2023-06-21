@@ -151,30 +151,25 @@
 }
 
 .is-neu {
-  --color-neu-background-dark: #ddddde;
-  --color-neu-background-light: #fff;
-  --color-neu-shadow-dark: #b3b4b4;
-  --color-neu-shadow-light: #fff;
-
   background: linear-gradient(
     145deg,
-    var(--color-neu-background-dark),
-    var(--color-neu-background-light)
+    var(--ye-color-neu-background-dark),
+    var(--ye-color-neu-background-light)
   );
   border-radius: var(--ye-radius-normal);
-  box-shadow: 2px 2px 5px var(--color-neu-shadow-dark),
-    -2px -2px 5px var(--color-neu-shadow-light);
+  box-shadow: 2px 2px 5px var(--ye-color-neu-shadow-dark),
+    -2px -2px 5px var(--ye-color-neu-shadow-light);
 
   &.has-hover,
   &:hover {
-    box-shadow: 1px 1px 2px var(--color-neu-shadow-dark),
-      -1px -1px 2px var(--color-neu-shadow-light);
+    box-shadow: 1px 1px 2px var(--ye-color-neu-shadow-dark),
+      -1px -1px 2px var(--ye-color-neu-shadow-light);
   }
 
   &.has-focus,
   &:focus,
   &:active {
-    box-shadow: inset 0 0 1px var(--color-neu-shadow-dark);
+    box-shadow: inset 0 0 1px var(--ye-color-neu-shadow-dark);
   }
 }
 
@@ -217,17 +212,15 @@
 
 .effect-cursor-tracking {
   &::after {
-    --size: 0;
-
     top: var(--effect-tracking-y);
     left: var(--effect-tracking-x);
     width: 7.5em;
     height: 7.5em;
     background: radial-gradient(
-      circle closest-side,
-      var(--ye-color-shadow),
-      transparent
-    )
+        circle closest-side,
+        var(--ye-color-shadow),
+        transparent
+      )
       center/15000%;
     transform: translate(-50%, -50%) scale(0);
     opacity: 0.33;
@@ -235,8 +228,6 @@
 
   &:hover::after,
   &:focus::after {
-    --size: 5em;
-
     transform: translate(-50%, -50%) scale(1);
   }
 }
@@ -275,9 +266,6 @@
 }
 
 .spinner {
-  top: 1px;
-  right: 1px;
-  bottom: 1px;
-  left: 1px;
+  inset: 1px;
   border-radius: var(--ye-button-border-radius);
 }

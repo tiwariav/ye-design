@@ -1,6 +1,7 @@
-import { useForm } from "react-hook-form";
+import { useWatch } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
 
+import HookForm from "../HookForm.js";
 import NumberInput from "../NumberInput/NumberInput.js";
 import HookFormInputWrapper from "./HookFormInputWrapper.js";
 
@@ -10,19 +11,16 @@ const metadata = {
 
 export default metadata;
 
-function InputWrapper({ control, name, ...props }) {
+function InputWrapper({ name, ...props }) {
   return (
-    <HookFormInputWrapper control={control} name={name}>
+    <HookFormInputWrapper name={name}>
       <NumberInput label={name} size="small" variant="material" {...props} />
     </HookFormInputWrapper>
   );
 }
 
-const Template = () => {
-  const { control, watch } = useForm({
-    mode: "onChange",
-  });
-  const watchAll = watch();
+function FormContent() {
+  const watchAll = useWatch();
   return (
     <div>
       <div
@@ -33,23 +31,17 @@ const Template = () => {
           gridTemplateColumns: "1fr 1fr",
         }}
       >
-        <InputWrapper control={control} name={"NumberInput"} />
-        <InputWrapper control={control} format name={"NumberInput (format)"} />
+        <InputWrapper name={"NumberInput"} />
+        <InputWrapper format name={"NumberInput (format)"} />
         <InputWrapper
-          control={control}
           emptyValue={null}
           format
           name={"NumberInput (format and empty value)"}
         />
-        <InputWrapper
-          control={control}
-          format
-          name={"NumberInput (format & parse)"}
-          parse
-        />
+        <InputWrapper format name={"NumberInput (format & parse)"} parse />
         <div>
           <label>Input</label>:{" "}
-          <HookFormInputWrapper control={control} name="input">
+          <HookFormInputWrapper name="input">
             <input />
           </HookFormInputWrapper>
         </div>
@@ -59,6 +51,14 @@ const Template = () => {
         <JSONTree data={watchAll} />
       </div>
     </div>
+  );
+}
+
+const Template = () => {
+  return (
+    <HookForm mode="onChange">
+      <FormContent />
+    </HookForm>
   );
 };
 

@@ -8,6 +8,7 @@ export { default as Container } from "./Container/Container.js";
 export { default as Divider } from "./Divider/Divider.js";
 export { FileInput } from "./FileInput/index.js";
 export { default as Hero } from "./Hero/Hero.js";
+export { default as HookForm } from "./HookForm.js";
 export { HookFormInputWrapper } from "./HookFormInputWrapper/index.js";
 export { default as Image } from "./Image/Image.js";
 export { default as ImageLoader } from "./Image/ImageLoader.js";

@@ -44,8 +44,10 @@
   --ye-color-bg-scrollbar: #f5f5f5;
   --ye-color-input-focus-border: rgb(64 169 255);
   --ye-color-input-focus-shadow: rgb(64 164 255 / 0.75);
-
-  /* TODO: focus and visited color to be different */
+  --ye-color-neu-background-dark: #ddddde;
+  --ye-color-neu-background-light: #fff;
+  --ye-color-neu-shadow-dark: #b3b4b4;
+  --ye-color-neu-shadow-light: #fff;
   --ye-color-text-anchor-focus: #40a9ff;
   --ye-color-text-anchor-visited: #005086;
   --ye-color-text-content: var(--ye-color-black);
@@ -184,11 +186,12 @@
   --ye-button-shadow: var(--ye-shadow-pressable);
 
   /* FORM */
+  --ye-control-outline-border-width: 1px;
+  --ye-control-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-normal);
   --ye-control-outline-padding: calc(
       var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
     )
     calc(var(--ye-spacing-em-normal) - var(--ye-button-outline-border-width));
-  --ye-control-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-normal);
   --ye-input-border-width: 0;
   --ye-input-border-radius: 3em;
   --ye-input-shadow: var(--ye-shadow-inset);

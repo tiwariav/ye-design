@@ -2,9 +2,10 @@
 
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { debounce, uniqueId } from "lodash-es";
+import { debounce, omit, uniqueId } from "lodash-es";
 import { useMemo, useState } from "react";
 
+import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
 import { Button } from "../Button/index.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
@@ -93,7 +94,7 @@ export default function FileInput({
           onChange={handleChange}
           onFocus={handleFocus}
           type="file"
-          {...props}
+          {...omit(props, EXCLUDE_HANDLERS)}
         />
         <span className={clsx(styles.placeholder, innerClassNames.input)}>
           {placeholder}

@@ -1,8 +1,9 @@
 .root {
   position: relative;
-  width: var(--sk-size);
-  height: var(--sk-size);
+  width: var(--module-spinkit-size);
+  height: var(--module-spinkit-size);
   animation: chase 2.5s infinite linear both;
+
   @media screen and (prefers-reduced-motion: reduce) {
     animation: none;
   }
@@ -15,6 +16,7 @@
   width: 100%;
   height: 100%;
   animation: dot 2s infinite ease-in-out both;
+
   @media screen and (prefers-reduced-motion: reduce) {
     animation: none;
   }
@@ -23,10 +25,11 @@
     display: block;
     width: 25%;
     height: 25%;
-    background-color: var(--sk-color);
+    background-color: var(--module-spinkit-color);
     border-radius: 100%;
     animation: dot-before 2s infinite ease-in-out both;
     content: "";
+
     @media screen and (prefers-reduced-motion: reduce) {
       animation: none;
     }
