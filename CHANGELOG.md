@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/tiwariav/ye-design/compare/v1.12.7...v2.0.0) (2023-06-21)
+
+
+### Bug Fixes
+
+* TextInput style for non-material variants ([b496c46](https://github.com/tiwariav/ye-design/commit/b496c46e950d6736513137cb4dc60ca820071cee))
+
+
+### BREAKING CHANGES
+
+* Input styles updated
+
 ## [1.12.7](https://github.com/tiwariav/ye-design/compare/v1.12.6...v1.12.7) (2023-06-13)
 
 ## [1.12.6](https://github.com/tiwariav/ye-design/compare/v1.12.5...v1.12.6) (2023-06-09)
