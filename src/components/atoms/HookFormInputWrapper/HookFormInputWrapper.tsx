@@ -7,6 +7,7 @@ import {
 } from "react-hook-form";
 
 interface HookFormInputWrapperProps extends ControllerProps {
+  childProps?: Record<string, any>;
   children: ReactElement;
   control?: Control;
   onChange?: (...event: any[]) => void;
@@ -20,6 +21,7 @@ function prependToPropMethod(method, propMethod) {
 }
 
 export default function HookFormInputWrapper({
+  childProps,
   children,
   control,
   ...props
@@ -44,6 +46,7 @@ export default function HookFormInputWrapper({
             onChangeValue,
             ref,
             value,
+            ...childProps,
           })
         )
       }
