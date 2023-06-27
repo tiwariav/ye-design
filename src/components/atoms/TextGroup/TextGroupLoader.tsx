@@ -13,7 +13,7 @@ export default function TextLoader({
 }: any) {
   return (
     <span className={clsx(styles.loader, className)} {...props}>
-      {iconBefore ? (
+      {iconBefore && (
         <ContentLoader
           className={styles.loaderIcon}
           uniqueKey={TEST_UNIQUE_KEY}
@@ -22,7 +22,7 @@ export default function TextLoader({
           {/* Only SVG shapes */}
           <circle cx="12" cy="12" r="12" />
         </ContentLoader>
-      ) : null}
+      )}
 
       <ContentLoader
         className={styles.loaderText}
@@ -34,7 +34,7 @@ export default function TextLoader({
         <rect height="20" width="100%" x="0" y="2" />
       </ContentLoader>
 
-      {iconAfter ? (
+      {iconAfter && (
         <ContentLoader
           className={styles.loaderIcon}
           uniqueKey={TEST_UNIQUE_KEY}
@@ -43,7 +43,7 @@ export default function TextLoader({
           {/* Only SVG shapes */}
           <circle cx="12" cy="12" r="12" />
         </ContentLoader>
-      ) : null}
+      )}
     </span>
   );
 }

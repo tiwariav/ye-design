@@ -44,10 +44,12 @@ function Page({
   const clonedTopNav = useMemo(() => {
     if (topNav) {
       const extraProps = {
+        isExpanded: undefined,
         sideNavToggle,
         toggleSideNav,
+        variant: undefined,
         withSideNav: !!sideNav,
-      } as any;
+      };
       if (topNavExpanded) {
         extraProps.isExpanded = true;
       }
@@ -64,7 +66,8 @@ function Page({
       const extraProps = {
         sideNavToggle,
         toggleSideNav,
-      } as any;
+        topNavExpanded: undefined,
+      };
       if (topNavExpanded) {
         extraProps.topNavExpanded = true;
       }
@@ -75,7 +78,7 @@ function Page({
 
   return (
     <div className={clsx(styles.root)}>
-      {topNav ? (
+      {topNav && (
         <div
           className={clsx({
             // eslint-disable-next-line css-modules/no-undef-class
@@ -88,23 +91,23 @@ function Page({
         >
           {clonedTopNav}
         </div>
-      ) : null}
+      )}
       <main
         className={clsx(styles.main, {
           [styles.isCentered]: isCentered,
           [styles.withTopNavFixed]: topNavIsFixed,
         })}
       >
-        {topNavCanExpand ? (
+        {topNavCanExpand && (
           <div
             className={styles.spacer}
             ref={spacerRef}
             style={{ top: topNavMaxHeight + topNavShrinkOffset }}
           />
-        ) : null}
-        {hero ? <div>{hero}</div> : null}
+        )}
+        {hero && <div>{hero}</div>}
         <div className={styles.container}>
-          {sideNav ? (
+          {sideNav && (
             <div
               className={clsx(styles.sideNav, innerClassName.sideNav, {
                 // eslint-disable-next-line css-modules/no-undef-class
@@ -122,7 +125,7 @@ function Page({
               />
               {clonedSideNav}
             </div>
-          ) : null}
+          )}
           <div className={styles.content}>{children}</div>
         </div>
       </main>

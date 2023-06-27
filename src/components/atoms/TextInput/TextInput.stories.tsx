@@ -21,8 +21,8 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   return (
     <div style={{ width }}>
       <TextInput
-        iconAfter={IconAfter ? <IconAfter /> : null}
-        iconBefore={IconBefore ? <IconBefore /> : null}
+        iconAfter={IconAfter && <IconAfter />}
+        iconBefore={IconBefore && <IconBefore />}
         {...args}
       />
     </div>

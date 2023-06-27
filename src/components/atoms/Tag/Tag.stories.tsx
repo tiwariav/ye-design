@@ -20,8 +20,8 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
   const IconBefore = storyIconMap[iconBefore];
   return (
     <Tag
-      iconAfter={IconAfter ? <IconAfter /> : null}
-      iconBefore={IconBefore ? <IconBefore /> : null}
+      iconAfter={IconAfter && <IconAfter />}
+      iconBefore={IconBefore && <IconBefore />}
       {...args}
     />
   );

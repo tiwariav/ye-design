@@ -20,18 +20,18 @@ function Tag({
         <TagLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
-          {iconBefore ? (
+          {iconBefore && (
             <span className={clsx(styles.icon)}>{iconBefore}</span>
-          ) : null}
+          )}
           {children}
-          {iconAfter ? (
+          {iconAfter && (
             <span className={clsx(styles.icon, styles.isAfter)}>
               {iconAfter}
             </span>
-          ) : null}
+          )}
         </>
       )}
-      {isBusy ? <Spinner /> : null}
+      {isBusy && <Spinner />}
     </span>
   );
 }

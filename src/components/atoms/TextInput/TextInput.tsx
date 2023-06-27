@@ -7,6 +7,7 @@ import { useMeasureInput } from "../../../hooks/index.js";
 import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import { isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
+import Label from "../Label.js";
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
@@ -87,7 +88,6 @@ const TextInput = forwardRef(
     };
 
     const [labelRef, { input }] = useMeasureInput();
-    console.log(variant, styles[`is-${variant}`]);
     return (
       <div
         className={clsx(
@@ -103,18 +103,14 @@ const TextInput = forwardRef(
           className
         )}
       >
-        {label ? (
-          <label
-            className={clsx(styles.label, {
-              [styles["required"]]: required && !requiredText,
-            })}
-            htmlFor={inputID}
-            ref={labelRef}
-          >
-            {label}
-            {requiredText && ` ( ${requiredText})`}
-          </label>
-        ) : null}
+        <Label
+          className={clsx(styles[`is-${variant}`])}
+          inputId={inputID}
+          ref={labelRef}
+          required={required}
+        >
+          {label}
+        </Label>
         <div className={styles.inputWrapper}>
           {iconBefore && (
             <span className={clsx(styles.iconWrapper)}>

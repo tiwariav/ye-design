@@ -31,14 +31,14 @@ function FormContent() {
           gridTemplateColumns: "1fr 1fr",
         }}
       >
-        <InputWrapper name={"NumberInput"} />
-        <InputWrapper format name={"NumberInput (format)"} />
+        <InputWrapper name="NumberInput" />
+        <InputWrapper format name="NumberInput (format)" />
         <InputWrapper
           emptyValue={null}
           format
-          name={"NumberInput (format and empty value)"}
+          name="NumberInput (format and empty value)"
         />
-        <InputWrapper format name={"NumberInput (format & parse)"} parse />
+        <InputWrapper format name="NumberInput (format & parse)" parse />
         <div>
           <label>Input</label>:{" "}
           <HookFormInputWrapper name="input">

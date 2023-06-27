@@ -18,9 +18,9 @@ const Template = ({ children, image, loading, width, ...args }) => {
   return (
     <Card
       image={
-        Image ? (
+        Image && (
           <Image {...ImageBasic.args} aspectRatio="1/1" loading={loading} />
-        ) : null
+        )
       }
       style={{ width }}
       {...args}

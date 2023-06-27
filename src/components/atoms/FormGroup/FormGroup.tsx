@@ -11,7 +11,7 @@ export default function FormGroup({ children, error, label, ...props }: any) {
       ) : (
         children
       )}
-      {error ? <div className={styles.error}>{error.message}</div> : null}
+      {error && <div className={styles.error}>{error.message}</div>}
     </div>
   );
 }

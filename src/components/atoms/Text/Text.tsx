@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import { CSSProperties } from "react";
 
 import Spinner from "../Spinner/Spinner.js";
 import TextLoader from "./TextLoader.js";
@@ -17,7 +18,7 @@ function Text({
   style,
   ...props
 }: any) {
-  const textStyles = {} as any;
+  const textStyles: CSSProperties = {};
   const inlineHeight = lineHeight || 1.5;
   if (maxLines) {
     textStyles.maxHeight = `${maxLines * inlineHeight}em`;
@@ -44,7 +45,7 @@ function Text({
       ) : (
         children
       )}
-      {isBusy ? <Spinner /> : null}
+      {isBusy && <Spinner />}
     </Wrapper>
   );
 }

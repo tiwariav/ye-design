@@ -3,7 +3,7 @@
 ]}] */
 
 import { IconFilter, IconSortDescending } from "@tabler/icons-react";
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
@@ -19,8 +19,8 @@ function Collection({
   variant = "list",
   ...props
 }: any) {
-  const itemStyle = {} as any;
-  const contentStyle = {} as any;
+  const itemStyle: CSSProperties = {};
+  const contentStyle: CSSProperties = {};
   if (columns) {
     if (variant === "list") {
       itemStyle.width = `${100 / columns}%`;
@@ -31,26 +31,26 @@ function Collection({
   return (
     <Container {...props}>
       <h1 className={styles.title}>{title}</h1>
-      {(filter && filter.length > 0) || (sort && sort.length > 0) ? (
+      {((filter && filter.length > 0) || (sort && sort.length > 0)) && (
         <div className={styles.options}>
-          {filter ? (
+          {filter && (
             <Button
               className={styles.button}
               iconBefore={<IconFilter />}
               label="Filter"
               size="small"
             />
-          ) : null}
-          {sort ? (
+          )}
+          {sort && (
             <Button
               className={styles.button}
               iconBefore={<IconSortDescending />}
               label="Sort"
               size="small"
             />
-          ) : null}
+          )}
         </div>
-      ) : null}
+      )}
       <div className={styles[`is-${variant}`]} style={contentStyle}>
         {React.Children.map(children, (child, index) => (
           <div className={styles.item} key={index} style={itemStyle}>

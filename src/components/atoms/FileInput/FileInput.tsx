@@ -99,12 +99,12 @@ export default function FileInput({
         <span className={clsx(styles.placeholder, innerClassNames.input)}>
           {placeholder}
         </span>
-        {iconAfter ? (
+        {iconAfter && (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
             <span className={clsx(formStyles.icon)}>{iconAfter}</span>
           </span>
-        ) : null}
-        {isBusy ? <Spinner className={styles.spinner} /> : null}
+        )}
+        {isBusy && <Spinner className={styles.spinner} />}
       </label>
       {files && files.length > 0 && (
         <div>
@@ -150,33 +150,38 @@ export default function FileInput({
                       </Button>
                     </div>
                   </>
-                ) : item.status === UPLOAD_FILE_STATUS.failed ? (
-                  <>
-                    <div
-                      className={clsx(styles.listItemStatusText, styles.failed)}
-                    >
-                      Failed
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => uploadFiles([item])}
-                        spacing="equal"
-                        variant="trans"
+                ) : (
+                  item.status === UPLOAD_FILE_STATUS.failed && (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.listItemStatusText,
+                          styles.failed
+                        )}
                       >
-                        <IconReload />
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => updateFiles([item], "remove")}
-                        spacing="equal"
-                        variant="trans"
-                      >
-                        <IconTrashXFilled />
-                      </Button>
-                    </div>
-                  </>
-                ) : null}
+                        Failed
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => uploadFiles([item])}
+                          spacing="equal"
+                          variant="trans"
+                        >
+                          <IconReload />
+                        </Button>
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => updateFiles([item], "remove")}
+                          spacing="equal"
+                          variant="trans"
+                        >
+                          <IconTrashXFilled />
+                        </Button>
+                      </div>
+                    </>
+                  )
+                )}
               </div>
               {item.data &&
                 item.data.length > 0 &&
@@ -194,14 +199,16 @@ export default function FileInput({
                       size="small"
                       type={dataItem.type || "text"}
                     />
-                  ) : dataItem.type === "preview" ? (
-                    <img
-                      alt={dataItem.name}
-                      className={styles.previewImage}
-                      id={dataItem.resource}
-                      src={dataItem.resource}
-                    />
-                  ) : null
+                  ) : (
+                    dataItem.type === "preview" && (
+                      <img
+                        alt={dataItem.name}
+                        className={styles.previewImage}
+                        id={dataItem.resource}
+                        src={dataItem.resource}
+                      />
+                    )
+                  )
                 )}
             </div>
           ))}

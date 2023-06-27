@@ -76,7 +76,7 @@ const Template = ({ contentLeft, contentRight, logo, ...args }) => {
     <TopNav
       contentLeft={contentLeft.map((item) => itemsMap[item])}
       contentRight={contentRight.map((item) => itemsMap[item])}
-      logo={Logo ? <Logo /> : null}
+      logo={Logo && <Logo />}
       {...args}
     />
   );

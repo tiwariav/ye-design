@@ -50,7 +50,6 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
 
 export const Basic = {
   args: {
-    // placeholder: "Enter your password",
     width: 240,
   },
   render: (args) => <Template {...args} />,

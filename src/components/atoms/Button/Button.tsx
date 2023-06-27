@@ -155,12 +155,12 @@ const Button = forwardRef(
         type="button"
         {...props}
       >
-        {iconBefore ? (
+        {iconBefore && (
           // eslint-disable-next-line css-modules/no-undef-class
           <span className={clsx(formStyles.icon, styles.icon)}>
             {iconBefore}
           </span>
-        ) : null}
+        )}
         {(iconBefore || iconAfter) && (label || children) ? (
           <span>
             {label}
@@ -172,13 +172,13 @@ const Button = forwardRef(
             {children}
           </>
         )}
-        {iconAfter ? (
+        {iconAfter && (
           // eslint-disable-next-line css-modules/no-undef-class
           <span className={clsx(formStyles.icon, styles.icon)}>
             {iconAfter}
           </span>
-        ) : null}
-        {isBusy ? <Spinner className={styles.spinner} /> : null}
+        )}
+        {isBusy && <Spinner className={styles.spinner} />}
       </button>
     );
   }

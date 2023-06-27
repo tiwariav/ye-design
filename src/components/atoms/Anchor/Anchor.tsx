@@ -74,14 +74,12 @@ const Anchor = forwardRef(
         ref={ref}
         {...props}
       >
-        {iconBefore ? (
-          <span className={clsx(styles.icon)}>{iconBefore}</span>
-        ) : null}
+        {iconBefore && <span className={clsx(styles.icon)}>{iconBefore}</span>}
         {label}
         {children}
-        {iconAfter ? (
+        {iconAfter && (
           <span className={clsx(styles.icon, styles.isAfter)}>{iconAfter}</span>
-        ) : null}
+        )}
       </As>
     );
   }

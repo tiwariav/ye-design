@@ -33,9 +33,9 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
         onChangeValue={(value) => {
           setParsedValue(value);
         }}
-        formatOptions={{ maximumFractionDigits: 0 }}
-        iconAfter={IconAfter ? <IconAfter /> : null}
-        iconBefore={IconBefore ? <IconBefore /> : null}
+        format={{ maximumFractionDigits: 0 }}
+        iconAfter={IconAfter && <IconAfter />}
+        iconBefore={IconBefore && <IconBefore />}
         placeholder="Enter your text"
         ref={ref}
         {...args}

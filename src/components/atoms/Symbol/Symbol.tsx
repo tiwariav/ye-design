@@ -30,7 +30,7 @@ const Symbol = forwardRef(
       <svg
         className={clsx(styles.root, className)}
         ref={ref}
-        viewBox={"0 0 10 10"}
+        viewBox="0 0 10 10"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
@@ -49,7 +49,7 @@ const Symbol = forwardRef(
           )}
         </mask>
         <rect fill={fill} height="100%" mask={`url(#${maskID})`} width="100%" />
-        {imageSrc ? (
+        {imageSrc && (
           <image
             height="100%"
             href={imageSrc}
@@ -57,7 +57,7 @@ const Symbol = forwardRef(
             width="100%"
             {...imageProps}
           />
-        ) : null}
+        )}
       </svg>
     );
   }

@@ -1,6 +1,6 @@
 import { isFinite, isNumber, isString } from "lodash-es";
 
-interface FormatNumberProps extends Intl.NumberFormatOptions {
+export interface FormatNumberProps extends Intl.NumberFormatOptions {
   fractionDigits?: number;
   nullValue?: string;
 }

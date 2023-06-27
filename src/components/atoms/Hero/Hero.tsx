@@ -6,10 +6,8 @@ function Hero({ children, midContent, title }: any) {
   return (
     <div className={clsx(styles.hero)}>
       <div className={clsx(styles.content)}>
-        {title ? <h1 className={clsx(styles.title)}>{title}</h1> : null}
-        {midContent ? (
-          <div className={styles.contentMid}>{midContent}</div>
-        ) : null}
+        {title && <h1 className={clsx(styles.title)}>{title}</h1>}
+        {midContent && <div className={styles.contentMid}>{midContent}</div>}
         {children}
       </div>
     </div>

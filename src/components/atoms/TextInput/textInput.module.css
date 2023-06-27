@@ -3,6 +3,7 @@
   --module-input-padding-right: var(--ye-spacing-rem-small);
   --module-input-padding-bottom: var(--ye-spacing-rem-small);
   --module-input-padding-left: var(--ye-spacing-rem-small);
+  --module-loader-z: calc(var(--z-index-base) + 2);
 
   position: relative;
   width: 100%;
@@ -11,13 +12,6 @@
 .input-wrapper {
   position: relative;
   display: flex;
-}
-
-.label {
-  margin-bottom: var(--ye-spacing-em-xsmall);
-  padding: var(--module-input-padding-top) var(--module-input-padding-right)
-    var(--module-input-padding-bottom) var(--module-input-padding-left);
-  line-height: var(--ye-line-height);
 }
 
 .text-input {
@@ -70,7 +64,7 @@
 
 .loader {
   position: absolute;
-  z-index: 2;
+  z-index: var(--module-loader-z);
   width: 100%;
   height: 100%;
   border-radius: var(--ye-input-border-radius);
@@ -110,7 +104,7 @@
     position: absolute;
     top: calc((var(--calc-xy-padding) / 2) + 1px);
     left: calc(var(--module-input-padding-left) + var(--ye-spacing-rem-tiny));
-    z-index: 1;
+    z-index: calc(var(--module-loader-z) - 1);
     display: flex;
     margin: 0;
     padding: 0;
@@ -155,9 +149,4 @@
 .error-item {
   margin: var(--ye-spacing-em-tiny) 0 0;
   padding-bottom: var(--ye-spacing-em-tiny);
-}
-
-.required::after {
-  color: var(--ye-color-danger);
-  content: " *";
 }
