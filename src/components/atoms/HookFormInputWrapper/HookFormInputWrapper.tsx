@@ -1,17 +1,21 @@
 import { ErrorMessage } from "@hookform/error-message";
-import React, { ReactElement } from "react";
+import React, {
+  JSXElementConstructor,
+  ReactElement,
+  type ReactNode,
+} from "react";
 import {
-  Control,
   Controller,
-  ControllerProps,
-  useFormContext,
+  type ControllerProps,
   useFormState,
 } from "react-hook-form";
 
-import styles from "./hookFormWrapper.module.css";
-interface HookFormInputWrapperProps extends ControllerProps {
-  children: ReactElement;
-  control?: Control;
+import CustomError from "./CustomError.js";
+
+interface HookFormInputWrapperProps
+  extends Omit<ControllerProps, "control" | "render"> {
+  children: ReactElement<any, JSXElementConstructor<any> | string>;
+  control: any;
   name: string;
   onChange?: (...event: any[]) => void;
   showError?: boolean;
@@ -30,13 +34,7 @@ export default function HookFormInputWrapper({
   name,
   showError,
   ...props
-}: HookFormInputWrapperProps): ReactElement {
-  const formMethods = useFormContext();
-  if (!formMethods && !control) {
-    throw new Error(
-      "HookFormInputWrapper must be used inside a HookForm or with a control prop"
-    );
-  }
+}: HookFormInputWrapperProps): ReactNode {
   const { errors } = useFormState({ control });
   return (
     <>
@@ -55,24 +53,17 @@ export default function HookFormInputWrapper({
               ref,
               value,
             })
-          )
+          )?.[0]
         }
-        control={formMethods?.control || control}
+        control={control}
         name={name}
         {...props}
       />
+
       {showError && (
         <ErrorMessage
           render={({ messages }) =>
-            messages && (
-              <div className={styles.errors}>
-                {Object.entries(messages).map(([type, message]) => (
-                  <p className={styles.errorItem} key={type}>
-                    {message}
-                  </p>
-                ))}
-              </div>
-            )
+            messages && <CustomError messages={messages} />
           }
           errors={errors}
           name={name}
