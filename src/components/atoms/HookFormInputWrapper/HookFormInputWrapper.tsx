@@ -43,11 +43,9 @@ export default function HookFormInputWrapper({
       <Controller
         render={({
           field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
-          fieldState: { error },
         }) =>
           React.Children.map(children, (child) =>
             React.cloneElement(child, {
-              error,
               onBlur: prependToPropMethod(onBlurValue, child.props.onBlur),
               onChange: prependToPropMethod(
                 onChangeValue,
