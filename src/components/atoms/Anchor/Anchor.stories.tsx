@@ -23,7 +23,9 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
       iconAfter={IconAfter && <IconAfter />}
       iconBefore={IconBefore && <IconBefore />}
       {...args}
-    />
+    >
+      Anchor
+    </Anchor>
   );
 };
 

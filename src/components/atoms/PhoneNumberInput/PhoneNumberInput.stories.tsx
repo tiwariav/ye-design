@@ -9,10 +9,10 @@ const metadata = {
 export default metadata;
 
 const Template = ({ iconAfter, iconBefore, width, ...args }) => {
-  const [eventValue, setEventValue] = useState();
-  const [refValue, setRefValue] = useState();
+  const [eventValue, setEventValue] = useState<string>();
+  const [refValue, setRefValue] = useState<string>();
   const [parsedValue, setParsedValue] = useState();
-  const ref = useRef();
+  const ref = useRef<HTMLInputElement>();
 
   useEffect(() => {
     setRefValue(ref.current?.value);

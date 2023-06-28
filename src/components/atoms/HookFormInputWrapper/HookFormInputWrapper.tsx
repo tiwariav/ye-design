@@ -6,7 +6,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-interface HookFormInputWrapperProps extends ControllerProps {
+interface HookFormInputWrapperProps extends Omit<ControllerProps, "render"> {
   children: ReactElement;
   control?: Control;
   onChange?: (...event: any[]) => void;
@@ -36,16 +36,14 @@ export default function HookFormInputWrapper({
         field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
         fieldState: { error },
       }) =>
-        React.Children.map(children, (child) =>
-          React.cloneElement(child, {
-            error,
-            onBlur: prependToPropMethod(onBlurValue, child.props.onBlur),
-            onChange: prependToPropMethod(onChangeValue, child.props.onChange),
-            onChangeValue,
-            ref,
-            value,
-          })
-        )
+        React.cloneElement(children, {
+          error,
+          onBlur: prependToPropMethod(onBlurValue, children.props.onBlur),
+          onChange: prependToPropMethod(onChangeValue, children.props.onChange),
+          onChangeValue,
+          ref,
+          value,
+        })
       }
       control={formMethods?.control || control}
       {...props}
