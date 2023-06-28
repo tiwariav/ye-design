@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/tiwariav/ye-design/compare/v2.0.0...v2.1.0) (2023-06-28)
+
+
+### Features
+
+* add Label component ([f075ea2](https://github.com/tiwariav/ye-design/commit/f075ea2a5524b0c285df0c422b179602306a8401))
+
 # [2.0.0](https://github.com/tiwariav/ye-design/compare/v1.12.7...v2.0.0) (2023-06-21)
 
 
