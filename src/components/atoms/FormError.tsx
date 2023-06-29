@@ -1,6 +1,6 @@
 import { MultipleFieldErrors } from "react-hook-form";
 
-import styles from "./hookFormWrapper.module.css";
+import styles from "./formError.module.css";
 
 const CustomError = ({
   messages,
@@ -8,9 +8,9 @@ const CustomError = ({
   messages: MultipleFieldErrors | string;
 }) => {
   return (
-    <div className={styles.errors}>
+    <div className={styles.root}>
       {Object.entries(messages).map(([type, message]) => (
-        <p className={styles.errorItem} key={type}>
+        <p className={styles.item} key={type}>
           {message}
         </p>
       ))}
