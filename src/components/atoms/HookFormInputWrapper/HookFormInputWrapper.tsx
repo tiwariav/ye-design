@@ -1,15 +1,24 @@
-import React, { ReactElement } from "react";
+import { ErrorMessage } from "@hookform/error-message";
+import React, {
+  JSXElementConstructor,
+  ReactElement,
+  type ReactNode,
+} from "react";
 import {
-  Control,
   Controller,
-  ControllerProps,
-  useFormContext,
+  type ControllerProps,
+  useFormState,
 } from "react-hook-form";
 
-interface HookFormInputWrapperProps extends Omit<ControllerProps, "render"> {
-  children: ReactElement;
-  control?: Control;
+import CustomError from "./CustomError.js";
+
+interface HookFormInputWrapperProps
+  extends Omit<ControllerProps, "control" | "render"> {
+  children: ReactElement<any, JSXElementConstructor<any> | string>;
+  control: any;
+  name: string;
   onChange?: (...event: any[]) => void;
+  showError?: boolean;
 }
 
 function prependToPropMethod(method, propMethod) {
@@ -22,31 +31,44 @@ function prependToPropMethod(method, propMethod) {
 export default function HookFormInputWrapper({
   children,
   control,
+  name,
+  showError,
   ...props
-}: HookFormInputWrapperProps): ReactElement {
-  const formMethods = useFormContext();
-  if (!formMethods && !control) {
-    throw new Error(
-      "HookFormInputWrapper must be used inside a HookForm or with a control prop"
-    );
-  }
+}: HookFormInputWrapperProps): ReactNode {
+  const { errors } = useFormState({ control });
   return (
-    <Controller
-      render={({
-        field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
-        fieldState: { error },
-      }) =>
-        React.cloneElement(children, {
-          error,
-          onBlur: prependToPropMethod(onBlurValue, children.props.onBlur),
-          onChange: prependToPropMethod(onChangeValue, children.props.onChange),
-          onChangeValue,
-          ref,
-          value,
-        })
-      }
-      control={formMethods?.control || control}
-      {...props}
-    />
+    <>
+      <Controller
+        render={({
+          field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
+        }) =>
+          React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              onBlur: prependToPropMethod(onBlurValue, child.props.onBlur),
+              onChange: prependToPropMethod(
+                onChangeValue,
+                child.props.onChange
+              ),
+              onChangeValue,
+              ref,
+              value,
+            })
+          )?.[0]
+        }
+        control={control}
+        name={name}
+        {...props}
+      />
+
+      {showError && (
+        <ErrorMessage
+          render={({ messages }) =>
+            messages && <CustomError messages={messages} />
+          }
+          errors={errors}
+          name={name}
+        />
+      )}
+    </>
   );
 }

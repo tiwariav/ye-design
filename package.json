@@ -26,7 +26,8 @@
     "test": "jest --coverage --json --outputFile=./reports/test-report.json"
   },
   "dependencies": {
-    "@tabler/icons-react": "^2.23.0",
+    "@hookform/error-message": "^2.0.1",
+    "@tabler/icons-react": "^2.22.0",
     "animejs": "^3.2.1",
     "clsx": "^1.2.1",
     "default-import": "^1.1.5",

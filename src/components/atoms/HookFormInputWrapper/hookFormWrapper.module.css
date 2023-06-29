@@ -1,0 +1,10 @@
+.errors {
+  color: var(--color-negative);
+  font-weight: var(--ye-font-weight-normal);
+  font-size: var(--ye-font-size-xsmall);
+}
+
+.error-item {
+  margin: var(--ye-spacing-em-tiny) 0 0;
+  padding-bottom: var(--ye-spacing-em-tiny);
+}
