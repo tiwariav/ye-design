@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/tiwariav/ye-design/compare/v2.1.1...v2.1.2) (2023-06-29)
+
+
+### Bug Fixes
+
+* remove errors from TextInput ([21bcaa2](https://github.com/tiwariav/ye-design/commit/21bcaa204cfddeedc95a584bbaaa822b20b47f00))
+
 ## [2.1.1](https://github.com/tiwariav/ye-design/compare/v2.1.0...v2.1.1) (2023-06-29)
 
 
