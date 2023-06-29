@@ -1,3 +1,12 @@
+## [2.1.1](https://github.com/tiwariav/ye-design/compare/v2.1.0...v2.1.1) (2023-06-29)
+
+
+### Bug Fixes
+
+* hook form erg msg component added in wrapper ([851f9b6](https://github.com/tiwariav/ye-design/commit/851f9b6e78aeefe46c5dbcd7eefe8a5c75a33dd7))
+* hook form erg msg component added in wrapper ([3f56472](https://github.com/tiwariav/ye-design/commit/3f5647214e9f8eb9b3f6ace835795d42960e917d))
+* hook form erg msg component added in wrapper ([46e3062](https://github.com/tiwariav/ye-design/commit/46e306283c8b551ced4b1359fa23dbb602a7bcf4))
+
 # [2.1.0](https://github.com/tiwariav/ye-design/compare/v2.0.0...v2.1.0) (2023-06-28)
 
 
