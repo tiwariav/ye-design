@@ -5,6 +5,7 @@ import {
   IconSearch,
   IconSpider,
 } from "@tabler/icons-react";
+import { CSSProperties } from "react";
 
 import { Button, TextInput } from "../../atoms/index.js";
 import TopNav from "./TopNav.js";
@@ -48,7 +49,7 @@ const itemsMap = {
     </TopNavItem>
   ),
 };
-const fixedStyles = {
+const fixedStyles: CSSProperties = {
   left: 0,
   position: "fixed",
   right: 0,

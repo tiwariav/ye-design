@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "../NumberInput/NumberInput.js";
-import FormattedInputa from "./FormattedInput.js";
+import FormattedInput from "./FormattedInput.js";
 
 const metadata = {
   argTypes: {
     icon: { control: { options: Object.keys(storyIconMap), type: "select" } },
   },
-  component: FormattedInputa,
+  component: FormattedInput,
 };
 
 export default metadata;
@@ -22,13 +22,18 @@ function removeHyphens(value, emptyValue) {
   return value ? value.replaceAll("-", "") : emptyValue;
 }
 
-const Template = ({ iconAfter, iconBefore, width, ...args }) => {
+const Template = ({
+  iconAfter = "None",
+  iconBefore = "None",
+  width = 240,
+  ...args
+}) => {
   const IconBefore = storyIconMap[iconBefore];
   const IconAfter = storyIconMap[iconAfter];
-  const [eventValue, setEventValue] = useState();
-  const [refValue, setRefValue] = useState();
+  const [eventValue, setEventValue] = useState<string>();
+  const [refValue, setRefValue] = useState<string>();
   const [parsedValue, setParsedValue] = useState();
-  const ref = useRef();
+  const ref = useRef<HTMLInputElement>();
 
   useEffect(() => {
     setRefValue(ref.current.value);
@@ -72,7 +77,6 @@ export const Basic = {
   args: {
     format: addHyphens,
     parse: removeHyphens,
-    width: 240,
   },
   render: (args) => <Template {...args} />,
 };
@@ -80,14 +84,12 @@ export const Basic = {
 export const FormatOnly = {
   args: {
     format: addHyphens,
-    width: 240,
   },
   render: (args) => <Template {...args} />,
 };
 export const ParseOnly = {
   args: {
     parse: addHyphens,
-    width: 240,
   },
   render: (args) => <Template {...args} />,
 };

@@ -17,7 +17,7 @@ const variantOptions = ["basic", "borderless"] as const;
 const viewModeOptions = ["full", "thumb"] as const;
 const heightOptions = ["full"] as const;
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   as?: any;
   busy?: boolean;
   children: ReactNode;

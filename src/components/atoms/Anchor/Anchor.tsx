@@ -19,7 +19,7 @@ const variants = [
   "color",
 ] as const;
 
-interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   as?: any;
   children: any;
   className?: any;
