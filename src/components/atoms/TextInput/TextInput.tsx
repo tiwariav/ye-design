@@ -24,7 +24,6 @@ export const variants = [
 export interface TextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
-  errors?: string[];
   iconAfter?: React.ReactNode;
   iconBefore?: React.ReactNode;
   id?: string;
@@ -48,7 +47,6 @@ const TextInput = forwardRef(
   (
     {
       className,
-      errors,
       iconAfter,
       iconBefore,
       id,
@@ -171,13 +169,6 @@ const TextInput = forwardRef(
           )}
           {isBusy && <Spinner className={styles.spinner} />}
         </div>
-        {errors && errors.length > 0 && (
-          <div className={styles.errors}>
-            {errors.map((message) => (
-              <p className={styles.errorItem}>{message}</p>
-            ))}
-          </div>
-        )}
       </div>
     );
   }
