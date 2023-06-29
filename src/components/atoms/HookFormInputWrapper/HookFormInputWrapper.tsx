@@ -1,23 +1,28 @@
-import { ErrorMessage } from "@hookform/error-message";
 import React, {
-  JSXElementConstructor,
+  ChangeEventHandler,
   ReactElement,
   type ReactNode,
+  Suspense,
 } from "react";
 import {
+  Control,
   Controller,
   type ControllerProps,
   useFormState,
 } from "react-hook-form";
 
-import CustomError from "./CustomError.js";
+import FormError from "../FormError.js";
 
+const ErrorMessage = React.lazy(() =>
+  import("@hookform/error-message").then((module_) => ({
+    default: module_.ErrorMessage,
+  }))
+);
 interface HookFormInputWrapperProps
   extends Omit<ControllerProps, "control" | "render"> {
-  children: ReactElement<any, JSXElementConstructor<any> | string>;
-  control: any;
-  name: string;
-  onChange?: (...event: any[]) => void;
+  children: ReactElement;
+  control?: Control;
+  onChange?: ChangeEventHandler;
   showError?: boolean;
 }
 
@@ -32,7 +37,7 @@ export default function HookFormInputWrapper({
   children,
   control,
   name,
-  showError,
+  showError = true,
   ...props
 }: HookFormInputWrapperProps): ReactNode {
   const { errors } = useFormState({ control });
@@ -42,32 +47,31 @@ export default function HookFormInputWrapper({
         render={({
           field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
         }) =>
-          React.Children.map(children, (child) =>
-            React.cloneElement(child, {
-              onBlur: prependToPropMethod(onBlurValue, child.props.onBlur),
-              onChange: prependToPropMethod(
-                onChangeValue,
-                child.props.onChange
-              ),
+          React.cloneElement(children, {
+            onBlur: prependToPropMethod(onBlurValue, children.props.onBlur),
+            onChange: prependToPropMethod(
               onChangeValue,
-              ref,
-              value,
-            })
-          )?.[0]
+              children.props.onChange
+            ),
+            onChangeValue,
+            ref,
+            value,
+          })
         }
         control={control}
         name={name}
         {...props}
       />
-
       {showError && (
-        <ErrorMessage
-          render={({ messages }) =>
-            messages && <CustomError messages={messages} />
-          }
-          errors={errors}
-          name={name}
-        />
+        <Suspense>
+          <ErrorMessage
+            render={({ messages }) =>
+              messages && <FormError messages={messages} />
+            }
+            errors={errors}
+            name={name}
+          />
+        </Suspense>
       )}
     </>
   );
