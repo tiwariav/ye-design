@@ -52,7 +52,7 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
               <em>({typeof refValue})</em>
             </p>
             <button onClick={() => setRefValue(ref.current.value)}>
-              Update
+              Get latest Ref value
             </button>
           </div>
           <p>
@@ -86,7 +86,9 @@ const PresetValueTemplate = (args) => {
   const [value, setValue] = useState(2000.01);
   return (
     <div>
-      <Button onClick={() => setValue(value + 0.01)}>Update</Button>
+      <Button onClick={() => setValue(value + 0.01)}>
+        Update Preset Value
+      </Button>
       <Template value={value} {...args} />
     </div>
   );

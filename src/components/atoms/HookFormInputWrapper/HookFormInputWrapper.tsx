@@ -5,11 +5,11 @@ import React, {
   Suspense,
 } from "react";
 import {
-  Control,
   Controller,
   type ControllerProps,
   useFormState,
 } from "react-hook-form";
+import { SetOptional } from "type-fest";
 
 import FormError from "../FormError.js";
 
@@ -19,9 +19,8 @@ const ErrorMessage = React.lazy(() =>
   }))
 );
 interface HookFormInputWrapperProps
-  extends Omit<ControllerProps, "control" | "render"> {
+  extends SetOptional<ControllerProps, "control" | "render"> {
   children: ReactElement;
-  control?: Control;
   onChange?: ChangeEventHandler;
   showError?: boolean;
 }

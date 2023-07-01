@@ -32,7 +32,6 @@ const Template = ({ iconAfter, iconBefore, ...args }) => {
 export const Basic = {
   args: {
     effects: ["cursor-tracking", "ripple"],
-    label: "Anchor",
   },
   parameters: {
     jest: ["Anchor.test.js"],
