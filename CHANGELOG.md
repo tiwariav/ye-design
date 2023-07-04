@@ -1,3 +1,11 @@
+## [2.1.3](https://github.com/tiwariav/ye-design/compare/v2.1.2...v2.1.3) (2023-07-04)
+
+
+### Bug Fixes
+
+* add missing attributes to Label component ([88f2726](https://github.com/tiwariav/ye-design/commit/88f2726108922c59c82483d48053d109a4983e41))
+* udpate HookFormInputWrapper props ([40b562a](https://github.com/tiwariav/ye-design/commit/40b562ae8b4437fbe8d24c8e2726d5ee625deeb4))
+
 ## [2.1.2](https://github.com/tiwariav/ye-design/compare/v2.1.1...v2.1.2) (2023-06-29)
 
 
