@@ -65,6 +65,7 @@ const variants = [
   "inline",
   "list-item",
   "outlined",
+  "primary",
   "filled",
   "neu",
 ] as const;
