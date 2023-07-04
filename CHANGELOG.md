@@ -1,3 +1,10 @@
+## [2.1.5](https://github.com/tiwariav/ye-design/compare/v2.1.4...v2.1.5) (2023-07-04)
+
+
+### Bug Fixes
+
+* add miossing button variant type ([aee3309](https://github.com/tiwariav/ye-design/commit/aee3309eea74f40683c78dfe2feae3609f5143a3))
+
 ## [2.1.4](https://github.com/tiwariav/ye-design/compare/v2.1.3...v2.1.4) (2023-07-04)
 
 ## [2.1.3](https://github.com/tiwariav/ye-design/compare/v2.1.2...v2.1.3) (2023-07-04)
