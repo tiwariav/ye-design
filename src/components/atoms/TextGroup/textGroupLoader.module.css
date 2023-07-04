@@ -12,7 +12,7 @@
   flex: 1;
   min-width: 24px;
 
-  @nest .loader-icon + & {
+  .loader-icon + & {
     margin-left: var(--ye-spacing-em-xsmall);
   }
 

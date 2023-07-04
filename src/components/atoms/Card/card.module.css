@@ -29,13 +29,15 @@
   transition-duration: var(--ye-transition-duration);
   transition-property: visibility;
 
-  @nest .image + & {
+  .image + & {
     margin-top: var(--ye-spacing-em-xsmall);
   }
 
-  @nest .is-horizontal .image + & {
-    margin-top: 0;
-    margin-left: var(--ye-spacing-em-small);
+  .is-horizontal {
+    & .image + & {
+      margin-top: 0;
+      margin-left: var(--ye-spacing-em-small);
+    }
   }
 }
 
