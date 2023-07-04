@@ -8,10 +8,12 @@ interface LabelProps extends ComponentPropsWithRef<"label"> {
   className?: string;
   inputId: string;
   required?: boolean | string;
+  withFocus?: boolean;
+  withValue?: boolean;
 }
 
 export default forwardRef<HTMLLabelElement, LabelProps>(
-  ({ children, className, inputId, required }, ref) => {
+  ({ children, className, inputId, required, withFocus, withValue }, ref) => {
     const requiredText = isString(required) && required;
     return (
       children && (
@@ -20,6 +22,8 @@ export default forwardRef<HTMLLabelElement, LabelProps>(
             styles.root,
             {
               [styles.required]: required && !requiredText,
+              [styles.withFocus]: withFocus,
+              [styles.withValue]: withValue,
             },
             className
           )}

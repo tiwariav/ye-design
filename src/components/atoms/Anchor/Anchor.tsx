@@ -5,7 +5,12 @@
 ]}] */
 
 import { clsx } from "clsx";
-import { AnchorHTMLAttributes, ReactNode, forwardRef } from "react";
+import {
+  AnchorHTMLAttributes,
+  ElementType,
+  ReactNode,
+  forwardRef,
+} from "react";
 
 import styles from "./anchor.module.css";
 
@@ -18,18 +23,18 @@ const variants = [
   "nav-item",
   "color",
 ] as const;
+const effects = ["ripple", "cursor-tracking"] as const;
+const spacing = ["none", "less", "equal", "extra"] as const;
 
 export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  as?: any;
-  children: any;
-  className?: any;
-  effects?: any;
+  as?: ElementType;
+  effects?: (typeof effects)[number][];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   label?: string;
-  noVisited?: any;
+  noVisited?: boolean;
   size?: (typeof sizes)[number];
-  spacing?: any;
+  spacing?: (typeof spacing)[number];
   variant?: (typeof variants)[number];
 }
 

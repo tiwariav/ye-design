@@ -7,7 +7,7 @@
 ]}] */
 
 import { clsx } from "clsx";
-import { forwardRef, useEffect } from "react";
+import { ButtonHTMLAttributes, ReactNode, forwardRef, useEffect } from "react";
 import { useMouseHovered } from "react-use";
 
 import { usePropRef } from "../../../hooks/index.js";
@@ -56,10 +56,36 @@ const setNeuProperties = (node, options: any = {}) => {
   );
 };
 
+const effects = ["ripple", "cursor-tracking"] as const;
+const spacing = ["none", "less", "equal", "extra"] as const;
+const sizes = ["small", "medium", "large"] as const;
+const variants = [
+  "basic",
+  "trans",
+  "inline",
+  "list-item",
+  "outlined",
+  "filled",
+  "neu",
+] as const;
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  effects?: (typeof effects)[number][];
+  iconAfter?: ReactNode;
+  iconBefore?: ReactNode;
+  isBusy?: boolean;
+  isFullWidth?: boolean;
+  label?: string;
+  neuOptions?: object;
+  size?: (typeof sizes)[number];
+  spacing?: (typeof spacing)[number];
+  variant?: (typeof variants)[number];
+}
+
 /**
  * Primary UI component for user interaction
  */
-const Button = forwardRef(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -77,8 +103,8 @@ const Button = forwardRef(
       spacing,
       variant = "basic",
       ...props
-    }: any,
-    propRef: React.ForwardedRef<Node>
+    },
+    propRef
   ) => {
     const { innerRef, setInnerRef } = usePropRef(propRef);
 
