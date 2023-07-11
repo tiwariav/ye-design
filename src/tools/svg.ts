@@ -1,13 +1,23 @@
-export function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+export function polarToCartesian(
+  centerX: number,
+  centerY: number,
+  radius: number,
+  angleInDegrees: number,
+) {
   const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180;
-
   return {
     x: centerX + radius * Math.cos(angleInRadians),
     y: centerY + radius * Math.sin(angleInRadians),
   };
 }
 
-export function describeArc(x, y, radius, startAngle, endAngle) {
+export function describeArc(
+  x: number,
+  y: number,
+  radius: number,
+  startAngle: number,
+  endAngle: number,
+) {
   const start = polarToCartesian(x, y, radius, endAngle);
   const end = polarToCartesian(x, y, radius, startAngle);
 
@@ -28,12 +38,12 @@ export function describeArc(x, y, radius, startAngle, endAngle) {
   ].join(" ");
 }
 
-export function svgNodeToData(element) {
+export function svgNodeToData(element: Node) {
   const serialized = new XMLSerializer().serializeToString(element);
   return `data:image/svg+xml;utf8,${encodeURIComponent(serialized)}`;
 }
 
-export async function svgResponseToData(response) {
+export async function svgResponseToData(response: Response) {
   const text = await response.text();
   return `data:image/svg+xml;utf8,${encodeURIComponent(text)}`;
 }

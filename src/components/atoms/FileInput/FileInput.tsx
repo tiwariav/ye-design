@@ -3,10 +3,16 @@
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce, omit, uniqueId } from "lodash-es";
-import { useMemo, useState } from "react";
+import {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  ReactNode,
+  useMemo,
+  useState,
+} from "react";
 
 import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
-import { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
+import UploadFile, { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
 import { Button } from "../Button/index.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
@@ -15,7 +21,37 @@ import TextInput from "../TextInput/TextInput.js";
 import formStyles from "../form.module.css";
 import styles from "./fileInput.module.css";
 
-export const variants = ["basic", "outlined", "dashed", "borderless"];
+const FILE_INPUT_VARIANT_OPTIONS = [
+  "basic",
+  "outlined",
+  "dashed",
+  "borderless",
+];
+const FILE_INPUT_SIZE_OPTIONS = ["small", "medium", "large"];
+const FILE_INPUT_SPACING_OPTIONS = ["none", "less", "equal", "extra"];
+
+interface FileInputProps
+  extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
+  files: UploadFile[];
+  iconAfter?: ReactNode;
+  iconBefore?: ReactNode;
+  innerClassNames?: {
+    input?: string;
+    label?: string;
+    placeholder?: string;
+  };
+  isBusy?: boolean;
+  label?: ReactNode;
+  placeholder?: string;
+  size?: (typeof FILE_INPUT_SIZE_OPTIONS)[number];
+  spacing?: (typeof FILE_INPUT_SPACING_OPTIONS)[number];
+  updateFiles: (
+    files: (File | UploadFile)[],
+    action: "add" | "remove" | "update",
+  ) => void;
+  uploadFiles: (files: UploadFile[]) => void;
+  variant?: (typeof FILE_INPUT_VARIANT_OPTIONS)[number];
+}
 
 export default function FileInput({
   className,
@@ -36,37 +72,39 @@ export default function FileInput({
   uploadFiles,
   variant,
   ...props
-}: any) {
+}: FileInputProps) {
   const [hasFocus, setHasFocus] = useState(false);
   const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
-  const handleFocus = (event) => {
+  const handleFocus: typeof onFocus = (event) => {
     setHasFocus(true);
-    if (onFocus) {
-      onFocus(event);
-    }
-  };
-  const handleBlur = (event) => {
-    setHasFocus(false);
-    if (onBlur) {
-      onBlur(event);
-    }
+    onFocus?.(event);
   };
 
-  const handleChange = (event) => {
+  const handleBlur: typeof onBlur = (event) => {
+    setHasFocus(false);
+    onBlur?.(event);
+  };
+
+  const handleChange: typeof onChange = (event) => {
     if (event.target.files.length > 0) {
       updateFiles([...event.target.files], "add");
     }
-    if (onChange) {
-      onChange(event);
-    }
+    onChange?.(event);
   };
 
-  const handleDataChange = debounce((event, file, dataIndex) => {
-    const fileData = [...file.data];
-    fileData[dataIndex].value = event.target.value;
-    updateFiles([{ ...file, data: fileData }], "update");
-  }, 500);
+  const handleDataChange = debounce(
+    (
+      event: ChangeEvent<HTMLInputElement>,
+      file: UploadFile,
+      dataIndex: number,
+    ) => {
+      const fileData = [...file.data];
+      fileData[dataIndex].value = event.target.value;
+      updateFiles([{ ...file, data: fileData }], "update");
+    },
+    500,
+  );
 
   return (
     <div className={clsx(className)}>
@@ -78,7 +116,7 @@ export default function FileInput({
           {
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
-          }
+          },
         )}
       >
         {label && <span className={styles.label}>{label}</span>}
@@ -112,12 +150,12 @@ export default function FileInput({
             <div key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
-                {item.status === UPLOAD_FILE_STATUS.uploading ? (
+                {item.status === UPLOAD_FILE_STATUS.UPLOADING ? (
                   <>
                     <div
                       className={clsx(
                         styles.listItemStatusText,
-                        styles.progress
+                        styles.progress,
                       )}
                     >
                       Uploading...
@@ -130,12 +168,12 @@ export default function FileInput({
                       />
                     </div>
                   </>
-                ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
+                ) : item.status === UPLOAD_FILE_STATUS.UPLOADED ? (
                   <>
                     <div
                       className={clsx(
                         styles.listItemStatusText,
-                        styles.success
+                        styles.success,
                       )}
                     >
                       Uploaded
@@ -151,12 +189,12 @@ export default function FileInput({
                     </div>
                   </>
                 ) : (
-                  item.status === UPLOAD_FILE_STATUS.failed && (
+                  item.status === UPLOAD_FILE_STATUS.FAILED && (
                     <>
                       <div
                         className={clsx(
                           styles.listItemStatusText,
-                          styles.failed
+                          styles.failed,
                         )}
                       >
                         Failed
@@ -208,7 +246,7 @@ export default function FileInput({
                         src={dataItem.resource}
                       />
                     )
-                  )
+                  ),
                 )}
             </div>
           ))}

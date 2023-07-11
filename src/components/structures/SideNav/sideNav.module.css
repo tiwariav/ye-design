@@ -3,7 +3,9 @@
   height: 100%;
   max-height: calc(100vh - 2rem);
   background-color: var(--ye-color-background-content);
-  box-shadow: 0 -1px 0 var(--ye-color-background), var(--ye-shadow-floating-low);
+  box-shadow:
+    0 -1px 0 var(--ye-color-background),
+    var(--ye-shadow-floating-low);
 }
 
 .with-hanging {

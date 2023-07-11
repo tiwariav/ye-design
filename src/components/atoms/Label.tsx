@@ -25,7 +25,7 @@ export default forwardRef<HTMLLabelElement, LabelProps>(
               [styles.withFocus]: withFocus,
               [styles.withValue]: withValue,
             },
-            className
+            className,
           )}
           htmlFor={inputId}
           ref={ref}
@@ -35,5 +35,5 @@ export default forwardRef<HTMLLabelElement, LabelProps>(
         </label>
       )
     );
-  }
+  },
 );

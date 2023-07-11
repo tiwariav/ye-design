@@ -16,7 +16,7 @@ import FormError from "../FormError.js";
 const ErrorMessage = React.lazy(() =>
   import("@hookform/error-message").then((module_) => ({
     default: module_.ErrorMessage,
-  }))
+  })),
 );
 interface HookFormInputWrapperProps
   extends SetOptional<ControllerProps, "control" | "render"> {
@@ -25,10 +25,13 @@ interface HookFormInputWrapperProps
   showError?: boolean;
 }
 
-function prependToPropMethod(method, propMethod) {
-  return (...args) => {
+function prependToPropMethod<TMethod extends (...args: unknown[]) => unknown>(
+  method: TMethod,
+  propMethod?: TMethod,
+) {
+  return (...args: Parameters<TMethod>) => {
     method(...args);
-    propMethod && propMethod(...args);
+    propMethod?.(...args);
   };
 }
 
@@ -47,13 +50,16 @@ export default function HookFormInputWrapper({
           field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
         }) =>
           React.cloneElement(children, {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             onBlur: prependToPropMethod(onBlurValue, children.props.onBlur),
             onChange: prependToPropMethod(
               onChangeValue,
-              children.props.onChange
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+              children.props.onChange,
             ),
             onChangeValue,
             ref,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             value,
           })
         }

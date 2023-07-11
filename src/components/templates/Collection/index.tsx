@@ -3,14 +3,35 @@
 ]}] */
 
 import { IconFilter, IconSortDescending } from "@tabler/icons-react";
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 
 import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
 import styles from "./collection.module.css";
 
-function Collection({
-  bookmarkItems,
+type FilterOption = {
+  key: string;
+  name: string;
+  options: string[];
+};
+
+type SortOption = {
+  key: string;
+  name: string;
+};
+
+const COLLECTION_VARIANT_OPTIONS = ["list", "grid"];
+
+interface CollectionProps {
+  children: ReactNode;
+  columns?: number;
+  filter?: FilterOption[];
+  sort?: SortOption[];
+  title?: string;
+  variant?: (typeof COLLECTION_VARIANT_OPTIONS)[number];
+}
+
+export default function Collection({
   children,
   columns,
   filter,
@@ -18,7 +39,7 @@ function Collection({
   title,
   variant = "list",
   ...props
-}: any) {
+}: CollectionProps) {
   const itemStyle: CSSProperties = {};
   const contentStyle: CSSProperties = {};
   if (columns) {
@@ -61,5 +82,3 @@ function Collection({
     </Container>
   );
 }
-
-export default Collection;

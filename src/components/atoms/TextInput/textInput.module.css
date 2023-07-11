@@ -33,7 +33,8 @@
   &:focus {
     border-color: var(--ye-color-input-focus-border);
     outline: none;
-    box-shadow: inset 0 0 0 var(--ye-color-shadow-inset),
+    box-shadow:
+      inset 0 0 0 var(--ye-color-shadow-inset),
       0 0 0 1px var(--ye-color-input-focus-shadow);
   }
 }

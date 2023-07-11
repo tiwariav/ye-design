@@ -1,3 +1,4 @@
+import { StoryContext } from "@storybook/react";
 import {
   IconBallBowling,
   IconDogBowl,
@@ -8,10 +9,10 @@ import { ThemeContext } from "wo-library/contexts/index.js";
 
 import defaultThemeStyleOptions from "../styles/themes/index.js";
 
-export const withThemeProvider = (Story, context) => {
+export const withThemeProvider = (Story, context: StoryContext) => {
   return (
     <ThemeContext.ThemeProvider
-      activeThemeName={context.globals.theme}
+      activeThemeName={context.globals.theme as string}
       themeVariants={defaultThemeStyleOptions}
     >
       <Story {...context} />

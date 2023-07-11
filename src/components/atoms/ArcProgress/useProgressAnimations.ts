@@ -1,7 +1,10 @@
 import anime from "animejs";
 import { useEffect } from "react";
 
-export default function useProgressAnimation(percentage, animeId) {
+export default function useProgressAnimation(
+  percentage: number,
+  animeId: string,
+) {
   useEffect(() => {
     const animeProps = {
       delay: 1000,

@@ -1,3 +1,3 @@
-export function posixPath(path) {
+export function posixPath(path: string) {
   return path.replaceAll("\\", "/");
 }

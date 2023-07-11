@@ -1,10 +1,17 @@
 import { clsx } from "clsx";
-import React from "react";
+import { Children, ReactNode } from "react";
 
-import Container from "../../atoms/Container/Container.js";
+import Container, { ContainerProps } from "../../atoms/Container/Container.js";
 import styles from "./details.module.css";
 
-function Details({
+interface DetailsProps extends ContainerProps {
+  contentSide?: ReactNode;
+  hasSeparator?: boolean;
+  headerMain?: ReactNode;
+  headerSide?: ReactNode;
+}
+
+export default function Details({
   children,
   className,
   contentSide,
@@ -12,7 +19,7 @@ function Details({
   headerMain,
   headerSide,
   ...props
-}: any) {
+}: DetailsProps) {
   const itemStyle = {};
   return (
     <Container
@@ -25,7 +32,7 @@ function Details({
       </div>
       <div className={styles.container}>
         <div className={styles.content}>
-          {React.Children.map(children, (child, index) => (
+          {Children.map(children, (child, index) => (
             <div className={styles.item} key={index} style={itemStyle}>
               {child}
             </div>
@@ -36,7 +43,3 @@ function Details({
     </Container>
   );
 }
-
-Details.propTypes = {};
-
-export default Details;

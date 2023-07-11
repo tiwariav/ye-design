@@ -1,4 +1,4 @@
-import parsePhoneNumber, { AsYouType } from "libphonenumber-js";
+import { AsYouType, parsePhoneNumber } from "libphonenumber-js";
 import { isNil } from "lodash-es";
 import { Ref, forwardRef, useCallback, useRef, useState } from "react";
 
@@ -9,29 +9,29 @@ import FormattedInput, {
 // offset between uppercase ascii and regional indicator symbols
 const OFFSET = 127_397;
 
-function getFlagEmoji(countryCode) {
+function getFlagEmoji(countryCode: string) {
   return countryCode
     .toUpperCase()
     .replaceAll(/./g, (char) =>
-      String.fromCodePoint(char.codePointAt(0) + OFFSET)
+      String.fromCodePoint(char.codePointAt(0) + OFFSET),
     );
 }
 
-type PhoneNumberInputProps = FromattedInputProps
+type PhoneNumberInputProps = FromattedInputProps;
 
 export default forwardRef(
   ({ ...props }: PhoneNumberInputProps, ref: Ref<HTMLInputElement>) => {
     const textValueRef = useRef("");
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 
-    const formatFunction = useCallback((value) => {
+    const formatFunction = useCallback((value: number | string) => {
       if (isNil(value)) {
         textValueRef.current = value;
         return;
       }
       value = value.toString();
       textValueRef.current = value;
-      const phoneNumber = parsePhoneNumber(value, { defaultCountry: "IN" });
+      const phoneNumber = parsePhoneNumber(value, "IN");
       if (phoneNumber?.country) {
         setFlag(getFlagEmoji(phoneNumber.country));
         return new AsYouType().input(value);
@@ -39,7 +39,7 @@ export default forwardRef(
       return textValueRef.current.replaceAll(/[^\d+]/g, "");
     }, []);
 
-    const parseFunction = useCallback((formattedValue, emptyValue) => {
+    const parseFunction = useCallback((formattedValue: string) => {
       const textValue = textValueRef.current;
       if (isNil(textValue) || isNil(formattedValue)) return;
       return formattedValue.replaceAll(" ", "");
@@ -55,5 +55,5 @@ export default forwardRef(
         {...props}
       />
     );
-  }
+  },
 );

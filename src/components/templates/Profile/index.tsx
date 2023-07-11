@@ -1,16 +1,21 @@
 import { clsx } from "clsx";
-import React from "react";
+import React, { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import Container from "../../atoms/Container/Container.js";
 import styles from "./profile.module.css";
 
-function Profile({
+interface ProfileProps extends ComponentPropsWithoutRef<"div"> {
+  contentLeft?: ReactNode;
+  coverImage?: ReactNode;
+}
+
+export default function Profile({
   children,
   className,
   contentLeft,
   coverImage,
   ...props
-}: any) {
+}: ProfileProps) {
   const itemStyle = {};
   return (
     <Container className={clsx(className)} {...props}>
@@ -28,7 +33,3 @@ function Profile({
     </Container>
   );
 }
-
-Profile.propTypes = {};
-
-export default Profile;

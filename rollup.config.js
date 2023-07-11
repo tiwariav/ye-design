@@ -12,7 +12,6 @@ import {
   postcssConfig,
   rollupInputMap,
 } from "wo-library/tools/rollup/index.js";
-// import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 
 const postcss = defaultImport(_postcss);
 const typescript = defaultImport(_typescript);
@@ -47,7 +46,6 @@ const config = [
     perf: isDev,
     plugins: [
       ...bundleCss(import.meta.url, STYLES_DIR, { extension: "*.css" }),
-      // sizeSnapshot(),
       ...devPlugins,
     ],
   },

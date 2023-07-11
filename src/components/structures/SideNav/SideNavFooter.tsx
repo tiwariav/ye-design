@@ -1,12 +1,17 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 
 import styles from "./sideNavFooter.module.css";
+
+interface SideNavFooterProps extends ComponentPropsWithoutRef<"div"> {
+  hasSeparator?: boolean;
+}
 
 export default function SideNavFooter({
   children,
   hasSeparator,
   ...props
-}: any) {
+}: SideNavFooterProps) {
   return (
     <div
       className={clsx(styles.root, {

@@ -81,7 +81,7 @@
   }
 
   &.disabled {
-    color: #576878;
+    color: var(--ye-color-disabled-button);
   }
 }
 
@@ -157,12 +157,14 @@
     var(--ye-color-neu-background-light)
   );
   border-radius: var(--ye-radius-normal);
-  box-shadow: 2px 2px 5px var(--ye-color-neu-shadow-dark),
+  box-shadow:
+    2px 2px 5px var(--ye-color-neu-shadow-dark),
     -2px -2px 5px var(--ye-color-neu-shadow-light);
 
   &.has-hover,
   &:hover {
-    box-shadow: 1px 1px 2px var(--ye-color-neu-shadow-dark),
+    box-shadow:
+      1px 1px 2px var(--ye-color-neu-shadow-dark),
       -1px -1px 2px var(--ye-color-neu-shadow-light);
   }
 
@@ -216,12 +218,7 @@
     left: var(--effect-tracking-x);
     width: 7.5em;
     height: 7.5em;
-    background: radial-gradient(
-        circle closest-side,
-        var(--ye-color-shadow),
-        transparent
-      )
-      center/15000%;
+    background: var(--ye-gradient-button-tracker);
     transform: translate(-50%, -50%) scale(0);
     opacity: 0.33;
   }
@@ -244,9 +241,7 @@
   &:focus::before {
     width: var(--effect-ripple-diameter);
     height: var(--effect-ripple-diameter);
-    background: var(--ye-color-ripple)
-      radial-gradient(circle, transparent 1%, var(--ye-color-ripple) 1%)
-      center/15000%;
+    background: var(--ye-gradient-button-ripple);
     opacity: 0.025;
   }
 

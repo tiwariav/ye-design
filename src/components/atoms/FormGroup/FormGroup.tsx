@@ -1,6 +1,20 @@
+import { ReactNode } from "react";
+
 import styles from "./formGroup.module.css";
 
-export default function FormGroup({ children, error, label, ...props }: any) {
+interface FormGroupProps extends React.ComponentPropsWithoutRef<"div"> {
+  error?: {
+    message: string;
+  };
+  label?: ReactNode;
+}
+
+export default function FormGroup({
+  children,
+  error,
+  label,
+  ...props
+}: FormGroupProps) {
   return (
     <div className={styles.container} {...props}>
       {label ? (

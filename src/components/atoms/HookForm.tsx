@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   FormProvider,
   SubmitHandler,
@@ -10,7 +11,7 @@ interface HookFormProps<TFieldValues> extends UseFormProps<TFieldValues> {
   onSubmit?: SubmitHandler<TFieldValues>;
 }
 
-export default function HookForm<TFieldValues>({
+function HookForm<TFieldValues>({
   children,
   criteriaMode = "all",
   mode = "onBlur",
@@ -20,7 +21,9 @@ export default function HookForm<TFieldValues>({
   const methods = useForm({ criteriaMode, mode, ...props });
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+      <form onSubmit={() => methods.handleSubmit(onSubmit)}>{children}</form>
     </FormProvider>
   );
 }
+
+export default memo(HookForm);

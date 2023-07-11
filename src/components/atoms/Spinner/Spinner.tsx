@@ -1,8 +1,12 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 
 import styles from "./spinner.module.css";
 
-export default function Spinner({ className, ...props }: any) {
+export default function Spinner({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<"span">) {
   return (
     <span className={clsx(styles.container, className)} {...props}>
       <svg

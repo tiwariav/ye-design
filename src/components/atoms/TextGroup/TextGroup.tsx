@@ -1,22 +1,30 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import Spinner from "../Spinner/Spinner.js";
 import TextGroupLoader from "./TextGroupLoader.js";
 import styles from "./textGroup.module.css";
 
-function TextGroup({
+interface TextGroupProps extends ComponentPropsWithoutRef<"span"> {
+  iconAfter?: ReactNode;
+  iconBefore?: ReactNode;
+  isBusy?: boolean;
+  isLoading?: boolean;
+}
+
+export default function TextGroup({
   children,
   className,
   iconAfter,
   iconBefore,
   isBusy,
-  loading,
+  isLoading,
   style,
   ...props
-}: any) {
+}: TextGroupProps) {
   return (
     <span className={clsx(styles.container, className)} {...props}>
-      {loading ? (
+      {isLoading ? (
         <TextGroupLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
@@ -35,4 +43,3 @@ function TextGroup({
     </span>
   );
 }
-export default TextGroup;

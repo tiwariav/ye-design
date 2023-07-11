@@ -1,8 +1,15 @@
+import { ComponentPropsWithoutRef } from "react";
+
 import ContentLoader from "../../../vendors/ContentLoader.js";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
 
-export default function TextLoader({ lines = 1, ...props }: any) {
+interface TextLoaderProps
+  extends ComponentPropsWithoutRef<typeof ContentLoader> {
+  lines?: number;
+}
+
+export default function TextLoader({ lines = 1, ...props }: TextLoaderProps) {
   const height = 24 * (lines || 1);
 
   return (
@@ -13,16 +20,17 @@ export default function TextLoader({ lines = 1, ...props }: any) {
       {...props}
     >
       {/* Only SVG shapes */}
-      {/* eslint-disable-next-line prefer-spread */}
-      {Array.apply(null, { length: lines || 1 }).map((item, index) => (
-        <rect
-          height="20"
-          key={index}
-          width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
-          x="0"
-          y={index * 24 + 3}
-        />
-      ))}
+      {Array.from({ length: lines })
+        .fill(null)
+        .map((_item, index) => (
+          <rect
+            height="20"
+            key={index}
+            width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
+            x="0"
+            y={index * 24 + 3}
+          />
+        ))}
     </ContentLoader>
   );
 }

@@ -4,15 +4,14 @@
 ]}] */
 
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 
 import styles from "./container.module.css";
 
 const spacingOptions = ["none", "small", "medium", "large", "horizontal"];
 
-interface ContainerProps {
+export interface ContainerProps extends ComponentPropsWithoutRef<"div"> {
   align?: "center" | "left" | "right";
-  children: React.ReactNode;
-  className?: string;
   height?: "full" | "readable";
   spacing?: (typeof spacingOptions)[number];
   variant?: "basic" | "secondary";
@@ -40,7 +39,7 @@ export default function Container({
           [styles[`height-${height}`]]: height,
           [styles[`width-${width}`]]: width,
         },
-        className
+        className,
       )}
       {...props}
     >

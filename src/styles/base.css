@@ -56,6 +56,16 @@
   --ye-color-white-75: rgb(255 255 255 / 0.75);
   --ye-color-white-50: rgb(255 255 255 / 0.5);
   --ye-color-white-10: rgb(255 255 255 / 0.1);
+  --ye-color-disabled-button: #576878;
+  --ye-gradient-button-tracker: radial-gradient(
+      circle closest-side,
+      var(--ye-color-shadow),
+      transparent
+    )
+    center/15000%;
+  --ye-gradient-button-ripple: var(--ye-color-ripple)
+    radial-gradient(circle, transparent 1%, var(--ye-color-ripple) 1%)
+    center/15000%;
 
   /* ====== */
 

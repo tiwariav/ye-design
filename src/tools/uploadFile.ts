@@ -1,22 +1,38 @@
 import { uniqueId } from "lodash-es";
 
-export const UPLOAD_FILE_STATUS = {
-  failed: "failed",
-  new: "new",
-  uploaded: "uploaded",
-  uploading: "uploading",
+export enum UPLOAD_FILE_STATUS {
+  FAILED,
+  NEW,
+  UPLOADED,
+  UPLOADING,
+}
+
+type UploadFileData = {
+  label: string;
+  name: string;
+  placeholder?: string;
+  resource?: string;
+  type: string;
+  value: string;
+};
+
+type UploadFileInitOptions = {
+  data?: UploadFileData[];
+
+  status?: UPLOAD_FILE_STATUS;
 };
 
 export default class UploadFile {
-  data: any;
-  file: any;
-  id: any;
-  status: any;
+  data: UploadFileData[];
+  file: File;
+  id: string;
+  progress?: [number, number];
+  status: UPLOAD_FILE_STATUS;
 
-  constructor(file, { data, status }: any = {}) {
+  constructor(file: File, { data, status }: UploadFileInitOptions) {
     this.file = file;
     this.id = uniqueId("upload_file_");
-    this.status = status || UPLOAD_FILE_STATUS.new;
+    this.status = status || UPLOAD_FILE_STATUS.NEW;
     this.data = data;
   }
 }

@@ -21,7 +21,7 @@ import { Button, Container } from "../../atoms/index.js";
 import TopNavItem from "./TopNavItem.js";
 import styles from "./topNav.module.css";
 
-const variantOptions = ["basic", "transparent", "flat", "underlined"] as const;
+const variantOptions = ["basic", "transparent", "flat", "underlined"];
 
 interface TopNavProps {
   banner?: ReactNode;
@@ -120,7 +120,7 @@ export default function TopNav({
           ? {
               [innerClassNames.isExpanded]: isExpanded,
             }
-          : {}
+          : {},
       )}
       ref={ref}
       style={{ ...rootStyle, ...style }}
@@ -148,7 +148,7 @@ export default function TopNav({
           <div
             className={clsx(
               styles["logo-container"],
-              styles[`is-logo-${logoVariant}`]
+              styles[`is-logo-${logoVariant}`],
             )}
             style={isExpanded ? { height: expandedHeight } : undefined}
           >
@@ -165,7 +165,7 @@ export default function TopNav({
           <div
             className={clsx(
               styleUtils.flexAlignCenter,
-              styles.contentRightWrapper
+              styles.contentRightWrapper,
             )}
           >
             {/* right content */}
@@ -173,7 +173,7 @@ export default function TopNav({
               <div
                 className={clsx(
                   styleUtils.flexAlignCenter,
-                  styles.contentRight
+                  styles.contentRight,
                 )}
               >
                 {contentRight}
@@ -187,7 +187,7 @@ export default function TopNav({
                 <TopNavItem
                   className={clsx(
                     styles.contentMenuIcon,
-                    styles.contentMenuIconRight
+                    styles.contentMenuIconRight,
                   )}
                 >
                   <Button
@@ -220,7 +220,7 @@ export default function TopNav({
               <div
                 className={clsx(
                   styleUtils.flexColumn,
-                  styles.contentMenuBottom
+                  styles.contentMenuBottom,
                 )}
               >
                 {contentRight}

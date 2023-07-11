@@ -1,16 +1,22 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 
 import ContentLoader from "../../../vendors/ContentLoader.js";
 import styles from "./textGroupLoader.module.css";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
 
-export default function TextLoader({
+export interface TextGroupLoaderProps extends ComponentPropsWithoutRef<"span"> {
+  iconAfter?: boolean;
+  iconBefore?: boolean;
+}
+
+export default function TextGroupLoader({
   className,
   iconAfter,
   iconBefore,
   ...props
-}: any) {
+}: TextGroupLoaderProps) {
   return (
     <span className={clsx(styles.loader, className)} {...props}>
       {iconBefore && (

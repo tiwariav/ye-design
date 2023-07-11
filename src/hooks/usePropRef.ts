@@ -2,7 +2,7 @@ import { isFunction, isObject } from "lodash-es";
 import { useCallback, useRef } from "react";
 
 const usePropRef = <T = Node>(propRef: React.ForwardedRef<T>) => {
-  const innerRef = useRef(null);
+  const innerRef = useRef<T>(null);
   const setInnerRef = useCallback(
     (node: T) => {
       if (propRef) {
@@ -14,7 +14,7 @@ const usePropRef = <T = Node>(propRef: React.ForwardedRef<T>) => {
       }
       innerRef.current = node;
     },
-    [propRef]
+    [propRef],
   );
 
   return { innerRef, setInnerRef };

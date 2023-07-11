@@ -40,7 +40,7 @@ export default function AntFormItemWrapper({
         onBlur(event);
       }
     },
-    [virgin, onBlur]
+    [virgin, onBlur],
   );
 
   const handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> =
@@ -53,7 +53,7 @@ export default function AntFormItemWrapper({
           onKeyPress(event);
         }
       },
-      [virgin, onKeyPress]
+      [virgin, onKeyPress],
     );
 
   const overrideProps = useMemo(() => {

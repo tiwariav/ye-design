@@ -1,11 +1,15 @@
-export function range(start, stop, step) {
+export function range(start: number, stop: number, step: number) {
   return Array.from(
     { length: (stop - start) / step + 1 },
-    (_, index) => start + index * step
+    (_, index) => start + index * step,
   );
 }
 
-export function addOrUpdate(array = [], object, key) {
+export function addOrUpdate(
+  array: unknown[] = [],
+  object: object,
+  key: string,
+) {
   const newArray = [...array];
   const existingIndex = newArray.findIndex((item) => item[key] === object[key]);
   if (existingIndex >= 0) {

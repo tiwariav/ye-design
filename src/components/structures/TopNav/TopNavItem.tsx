@@ -1,8 +1,17 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 
 import styles from "./topNavItem.module.css";
 
-export default function TopNavItem({ children, hasSeparator, ...props }: any) {
+interface TopNavItemProps extends ComponentPropsWithoutRef<"div"> {
+  hasSeparator?: boolean;
+}
+
+export default function TopNavItem({
+  children,
+  hasSeparator,
+  ...props
+}: TopNavItemProps) {
   return (
     <div
       className={clsx(styles.root, {

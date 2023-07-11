@@ -1,19 +1,19 @@
 import { isFinite, isNumber, isString } from "lodash-es";
 
-export interface FormatNumberProps extends Intl.NumberFormatOptions {
+export interface FormatNumberOptions extends Intl.NumberFormatOptions {
   fractionDigits?: number;
   nullValue?: string;
 }
 
 export function formatNumber(
-  value,
+  value: number | string,
   {
     fractionDigits = 2,
     maximumFractionDigits,
     minimumFractionDigits,
     nullValue,
     ...options
-  }: FormatNumberProps = {}
+  }: FormatNumberOptions = {},
 ) {
   const number = stringToNumber(value, nullValue);
   if (!isFinite(number)) {
@@ -21,27 +21,27 @@ export function formatNumber(
   }
   const adjustedMinFractionDigits = Math.max(
     minimumFractionDigits ?? fractionDigits,
-    isString(value) && value.endsWith(".") ? 1 : 0
+    isString(value) && value.endsWith(".") ? 1 : 0,
   );
   return number.toLocaleString("en-IN", {
     maximumFractionDigits: Math.max(
       maximumFractionDigits ?? fractionDigits,
-      adjustedMinFractionDigits
+      adjustedMinFractionDigits,
     ),
     minimumFractionDigits: adjustedMinFractionDigits,
     ...options,
   });
 }
 
-interface FormatNumberSuffixProps extends FormatNumberProps {
+interface FormatNumberSuffixOptions extends FormatNumberOptions {
   suffix?: string;
 }
 
 export function formatNumberWithSuffix(
-  value,
-  { nullValue, suffix = "", ...options }: FormatNumberSuffixProps = {}
+  value: number | string,
+  { nullValue, suffix = "", ...options }: FormatNumberSuffixOptions = {},
 ) {
-  let parsedNumber = Number.parseFloat(value);
+  let parsedNumber = isNumber(value) ? value : Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {
     return nullValue;
   }
@@ -63,17 +63,20 @@ export function formatNumberWithSuffix(
   return `${formatNumber(parsedNumber, options)}${suffixString}`;
 }
 
-export function stringToNumber(value, nanValue?: any) {
+export function stringToNumber(
+  value: number | string,
+  nanValue?: number | string,
+) {
   if (isNumber(value)) return value;
   const number = Number.parseFloat(
-    isString(value) ? value.replaceAll(",", "") : value
+    isString(value) ? value.replaceAll(",", "") : value,
   );
   if (Number.isNaN(number)) return nanValue;
   return number;
 }
 
-export function ordinalNumber(value) {
-  if (!value) {
+export function ordinalNumber(value: number) {
+  if (!isNumber(value)) {
     return value;
   }
   switch (value) {

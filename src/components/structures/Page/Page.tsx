@@ -1,14 +1,32 @@
 import { clsx } from "clsx";
-import React, { useMemo, useState } from "react";
+import React, { ReactElement, ReactNode, useMemo, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useToggle } from "react-use";
 
 import styles from "./page.module.css";
 
-function Page({
+interface PageProps {
+  children?: ReactNode;
+  hero?: ReactNode;
+  innerClassNames?: {
+    content?: string;
+    hero?: string;
+    sideNav?: string;
+  };
+  isCentered?: boolean;
+  sideNav?: ReactElement;
+  sideNavIsSticky?: boolean;
+  sideNavOnTop?: boolean;
+  topNav?: ReactElement;
+  topNavCanExpand?: boolean;
+  topNavIsFixed?: boolean;
+  topNavShrinkOffset?: number;
+}
+
+export default function Page({
   children,
   hero,
-  innerClassName = {},
+  innerClassNames = {},
   isCentered,
   sideNav,
   sideNavIsSticky,
@@ -17,7 +35,7 @@ function Page({
   topNavCanExpand,
   topNavIsFixed,
   topNavShrinkOffset = 0,
-}: any) {
+}: PageProps) {
   // TODO: create a LayoutProvider to manage topnav and sidenav states
   const topNavRef = React.useRef<HTMLDivElement>(null);
   const [spacerRef, spacerInView] = useInView();
@@ -38,7 +56,7 @@ function Page({
 
   const topNavExpanded = useMemo(
     () => topNavIsFixed && spacerInView,
-    [spacerInView, topNavIsFixed]
+    [spacerInView, topNavIsFixed],
   );
 
   const clonedTopNav = useMemo(() => {
@@ -109,7 +127,7 @@ function Page({
         <div className={styles.container}>
           {sideNav && (
             <div
-              className={clsx(styles.sideNav, innerClassName.sideNav, {
+              className={clsx(styles.sideNav, innerClassNames.sideNav, {
                 // eslint-disable-next-line css-modules/no-undef-class
                 [styles.isSticky]: sideNavIsSticky,
                 [styles.sideNavToggle]: sideNavToggle,
@@ -132,5 +150,3 @@ function Page({
     </div>
   );
 }
-
-export default Page;

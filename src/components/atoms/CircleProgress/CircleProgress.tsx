@@ -12,11 +12,7 @@ function getFillColor(percentage) {
   return "#04844B";
 }
 
-function getCircleStyles(
-  radius: number,
-  arcRotation = 0,
-  completion = 0
-) {
+function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
   // Arc length at 100% coverage is the circle circumference
   const strokeDasharray = radius * Math.PI * 2;
   const rotationOffset = (2 * radius * (arcRotation - 90) * Math.PI) / 180;
@@ -27,7 +23,16 @@ function getCircleStyles(
   return { strokeDasharray, strokeDashoffset };
 }
 
-function getTextContent(text, progress, percentage) {
+const CIRCLE_PROGRESS_TEXT_OPTIONS = ["parts", "percent", "value"];
+type TextContentOptions =
+  | (typeof CIRCLE_PROGRESS_TEXT_OPTIONS)[number]
+  | string;
+
+function getTextContent(
+  text: TextContentOptions,
+  progress: [number, number],
+  percentage: number,
+) {
   switch (text) {
     case "parts": {
       return progress[0] / progress[1];
@@ -44,6 +49,15 @@ function getTextContent(text, progress, percentage) {
   }
 }
 
+interface CenterTextProps {
+  arcHeight: number;
+  className?: string;
+  fill?: string;
+  percentage: number;
+  progress: [number, number];
+  text?: TextContentOptions;
+}
+
 function CenterText({
   arcHeight,
   className,
@@ -51,7 +65,7 @@ function CenterText({
   percentage,
   progress,
   text,
-}) {
+}: CenterTextProps) {
   return (
     text && (
       <text

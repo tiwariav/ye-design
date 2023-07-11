@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 
 import styles from "./hero.module.css";
 
-function Hero({ children, midContent, title }: any) {
+export default function Hero({ children, midContent, title }: any) {
   return (
     <div className={clsx(styles.hero)}>
       <div className={clsx(styles.content)}>
@@ -13,7 +13,3 @@ function Hero({ children, midContent, title }: any) {
     </div>
   );
 }
-
-Hero.propTypes = {};
-
-export default Hero;

@@ -29,11 +29,11 @@ export default function ArcProgress({
   // calculate percentage
   const percentage = useMemo(
     () => 100 * (progress[0] / progress[1]),
-    [progress]
+    [progress],
   );
   const animeId = useMemo(() => uniqueId(), []);
   const angles = useMemo(() => {
-    const value = [];
+    const value: [number, number][] = [];
     const parts = Array.from<number>({ length: segments }).fill(100 / segments);
     let startAngle = -90;
     for (let index = 0; index < parts.length; index++) {
@@ -58,7 +58,7 @@ export default function ArcProgress({
               50 - strokeWidth,
               50 - strokeWidth * 2,
               startAngle,
-              endAngle
+              endAngle,
             )}
             fill="none"
             key={index}

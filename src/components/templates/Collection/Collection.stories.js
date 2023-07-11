@@ -21,7 +21,7 @@ const Template = ({ cardWidth, content, variant, ...args }) => {
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem
           molestiae odio et dolor.
-        </CardWithImage>
+        </CardWithImage>,
       )}
     </Collection>
   );

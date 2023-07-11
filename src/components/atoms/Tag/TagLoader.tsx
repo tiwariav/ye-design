@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 
 import ContentLoader from "../../../vendors/ContentLoader.js";
+import { TextGroupLoaderProps } from "../TextGroup/TextGroupLoader.js";
 import styles from "./tagLoader.module.css";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
@@ -10,7 +11,7 @@ export default function TagLoader({
   iconAfter,
   iconBefore,
   ...props
-}: any) {
+}: TextGroupLoaderProps) {
   return (
     <span className={clsx(styles.loader, className)} {...props}>
       {iconBefore && (

@@ -14,7 +14,7 @@ import {
 
 import styles from "./anchor.module.css";
 
-const sizes = ["small", "medium", "large"] as const;
+const sizes = ["small", "medium", "large"];
 const variants = [
   "basic",
   "list-item",
@@ -22,12 +22,12 @@ const variants = [
   "filled",
   "nav-item",
   "color",
-] as const;
-const effects = ["ripple", "cursor-tracking"] as const;
-const spacing = ["none", "less", "equal", "extra"] as const;
+];
+const effects = ["ripple", "cursor-tracking"];
+const spacing = ["none", "less", "equal", "extra"];
 
 export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  as?: ElementType;
+  Element?: ElementType;
   effects?: (typeof effects)[number][];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
@@ -44,7 +44,7 @@ export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 const Anchor = forwardRef(
   (
     {
-      as,
+      Element,
       children,
       className,
       effects = [],
@@ -57,13 +57,12 @@ const Anchor = forwardRef(
       variant = "basic",
       ...props
     }: AnchorProps,
-    ref
+    ref,
   ) => {
-    const As = as || "a";
     const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
     return (
-      <As
+      <Element
         className={clsx(
           styles.anchor,
           ...effectClasses,
@@ -74,7 +73,7 @@ const Anchor = forwardRef(
             [styles[`is-${variant}`]]: variant,
             [styles[`spacing-${spacing}`]]: spacing,
           },
-          className
+          className,
         )}
         ref={ref}
         {...props}
@@ -85,9 +84,9 @@ const Anchor = forwardRef(
         {iconAfter && (
           <span className={clsx(styles.icon, styles.isAfter)}>{iconAfter}</span>
         )}
-      </As>
+      </Element>
     );
-  }
+  },
 );
 
 export default Anchor;

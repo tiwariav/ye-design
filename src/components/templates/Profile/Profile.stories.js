@@ -33,7 +33,7 @@ const Template = ({ coverImage, ...args }) => {
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem
           molestiae odio et dolor.
-        </CardHorizontal>
+        </CardHorizontal>,
       )}
     </ProfileTemplate>
   );

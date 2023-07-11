@@ -1,8 +1,16 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import Spinner from "../Spinner/Spinner.js";
 import TagLoader from "./TagLoader.js";
 import styles from "./tag.module.css";
+
+interface TagProps extends ComponentPropsWithoutRef<"span"> {
+  iconAfter?: ReactNode;
+  iconBefore?: ReactNode;
+  isBusy?: boolean;
+  isLoading?: boolean;
+}
 
 function Tag({
   children,
@@ -10,13 +18,13 @@ function Tag({
   iconAfter,
   iconBefore,
   isBusy,
-  loading,
+  isLoading,
   style,
   ...props
-}: any) {
+}: TagProps) {
   return (
     <span className={clsx(styles.container, className)} {...props}>
-      {loading ? (
+      {isLoading ? (
         <TagLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
