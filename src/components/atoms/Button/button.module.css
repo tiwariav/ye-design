@@ -203,11 +203,8 @@
   transition-duration: 0.5s;
   transition-property: transform, opacity;
   content: "";
-}
 
-@media screen and (prefers-reduced-motion: reduce) {
-  .effect-cursor-tracking::after,
-  .effect-ripple::before {
+  @media screen and (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }

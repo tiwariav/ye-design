@@ -159,9 +159,9 @@
   }
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
-  .root,
-  .is-logo-hanging {
+.root,
+.is-logo-hanging {
+  @media screen and (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }

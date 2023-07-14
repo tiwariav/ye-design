@@ -210,11 +210,8 @@
 
   /* TOPNAV */
   --ye-topnav-expanded-color-bg: transparent;
-}
 
-/* media property import from ./media.css not working here */
-@media (width <= 991px) {
-  :root {
+  @media (width <= 991px) {
     --ye-layout-side-nav-width: 240px;
     --ye-layout-side-nav-toggle-width: 0;
   }

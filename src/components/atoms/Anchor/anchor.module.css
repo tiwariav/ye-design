@@ -2,6 +2,10 @@
   display: inline-flex;
   color: var(--ye-color-text);
   text-decoration: none;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 /* sizes */
@@ -158,10 +162,4 @@
 .is-after {
   margin-right: calc(-1 * var(--ye-em-unit));
   margin-left: var(--ye-spacing-em-tiny);
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-  .anchor {
-    transition: none;
-  }
 }
