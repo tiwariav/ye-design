@@ -44,7 +44,6 @@ interface FileInputProps
     files: (File | UploadFile)[],
     action: "add" | "remove" | "update",
   ) => void;
-  uploadFiles: (files: UploadFile[]) => void;
   variant?: (typeof FILE_INPUT_VARIANT_OPTIONS)[number];
 }
 
@@ -64,7 +63,6 @@ export default function FileInput({
   size,
   spacing,
   updateFiles,
-  uploadFiles,
   variant,
   ...props
 }: FileInputProps) {
@@ -198,7 +196,7 @@ export default function FileInput({
                       </div>
                       <div>
                         <Button
-                          onClick={() => uploadFiles([item])}
+                          onClick={() => updateFiles([item], "add")}
                           spacing="equal"
                           variant="trans"
                         >

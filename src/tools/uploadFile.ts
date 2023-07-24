@@ -1,11 +1,11 @@
 import { uniqueId } from "lodash-es";
 
-export const UPLOAD_FILE_STATUS = [
-  "failed",
-  "new",
-  "uploaded",
-  "uploading",
-] as const;
+export const UPLOAD_FILE_STATUS = {
+  failed: "failed",
+  new: "new",
+  uploaded: "uploaded",
+  uploading: "uploading",
+} as const;
 
 type UploadFileData = {
   label: string;
@@ -16,9 +16,10 @@ type UploadFileData = {
   value: string;
 };
 
-type UploadFileInitOptions = {
+export type UploadFileInitOptions = {
   data?: UploadFileData[];
-  status?: (typeof UPLOAD_FILE_STATUS)[number];
+  status?: keyof typeof UPLOAD_FILE_STATUS;
+  type?: string;
 };
 
 export default class UploadFile {
@@ -26,12 +27,14 @@ export default class UploadFile {
   file: File;
   id: string;
   progress?: [number, number];
-  status: (typeof UPLOAD_FILE_STATUS)[number];
+  status: keyof typeof UPLOAD_FILE_STATUS;
+  type?: string;
 
-  constructor(file: File, { data, status }: UploadFileInitOptions) {
+  constructor(file: File, { data, status, type }: UploadFileInitOptions = {}) {
     this.file = file;
     this.id = uniqueId("upload_file_");
     this.status = status || "new";
     this.data = data;
+    this.type = type;
   }
 }

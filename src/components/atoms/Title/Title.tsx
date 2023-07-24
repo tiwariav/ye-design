@@ -12,17 +12,18 @@ const TITLE_ALIGN_OPTIONS = ["center"] as const;
 const TITLE_VARIANT_OPTIONS = ["tinyline", "tinyline-left"] as const;
 
 interface TitleProps extends ComponentPropsWithoutRef<"div"> {
-  Element?: ElementType;
   align?: (typeof TITLE_ALIGN_OPTIONS)[number];
+  as?: ElementType;
   variant?: (typeof TITLE_VARIANT_OPTIONS)[number];
 }
 export default function Title({
-  Element = "div",
   align,
+  as = "div",
   className,
   variant,
   ...props
 }: TitleProps) {
+  const Element = as;
   return (
     <Element
       className={clsx(
