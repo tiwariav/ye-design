@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { omit, uniqueId } from "lodash-es";
 import {
   CSSProperties,
-  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
   ReactNode,
   forwardRef,
   useMemo,
@@ -20,18 +20,11 @@ import Spinner from "../Spinner/Spinner.js";
 import formStyles from "../form.module.css";
 import styles from "./textInput.module.css";
 
-const TEXT_INPUT_VARIANT_OPTIONS = [
-  "basic",
-  "outlined",
-  "dashed",
-  "borderless",
-  "material",
-];
-const TEXT_INPUT_SIZE_OPTIONS = ["small", "medium", "large"];
-const TEXT_INPUT_SPACING_OPTIONS = ["none", "less", "equal", "extra"];
+const TEXT_INPUT_VARIANT_OPTIONS = ["outlined", "dashed", "material"] as const;
+const TEXT_INPUT_SIZE_OPTIONS = ["small", "large"] as const;
 
 export interface TextInputProps
-  extends Omit<ComponentPropsWithRef<"input">, "size"> {
+  extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   innerClassNames?: {
@@ -44,139 +37,140 @@ export interface TextInputProps
   required?: boolean;
   requiredText?: string;
   size?: (typeof TEXT_INPUT_SIZE_OPTIONS)[number];
-  spacing?: (typeof TEXT_INPUT_SPACING_OPTIONS)[number];
   style?: CSSProperties;
   value?: string;
   variant?: (typeof TEXT_INPUT_VARIANT_OPTIONS)[number];
 }
 
-function TextInput(
-  {
-    className,
-    iconAfter,
-    iconBefore,
-    id,
-    innerClassNames = {},
-    isBusy,
-    isLoading,
-    label,
-    onBlur,
-    onFocus,
-    placeholder,
-    required,
-    requiredText,
-    size = "medium",
-    spacing,
-    style = {},
-    value,
-    variant = "basic",
-    ...props
-  }: TextInputProps,
-  ref: TextInputProps["ref"],
-) {
-  const [hasFocus, setHasFocus] = useState(false);
+const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  (
+    {
+      className,
+      iconAfter,
+      iconBefore,
+      id,
+      innerClassNames = {},
+      isBusy,
+      isLoading,
+      label,
+      onBlur,
+      onFocus,
+      placeholder,
+      required,
+      requiredText,
+      size,
+      style = {},
+      value,
+      variant,
+      ...props
+    },
+    ref,
+  ) => {
+    const [hasFocus, setHasFocus] = useState(false);
 
-  const inputID = useMemo(() => id || uniqueId("textInput_"), [id]);
+    const inputID = useMemo(() => id || uniqueId("textInput_"), [id]);
 
-  const handleFocus: typeof onFocus = (event) => {
-    setHasFocus(true);
-    if (onFocus) {
-      onFocus(event);
-    }
-  };
-  const handleBlur: typeof onBlur = (event) => {
-    setHasFocus(false);
-    if (onBlur) {
-      onBlur(event);
-    }
-  };
+    const handleFocus: typeof onFocus = (event) => {
+      setHasFocus(true);
+      if (onFocus) {
+        onFocus(event);
+      }
+    };
+    const handleBlur: typeof onBlur = (event) => {
+      setHasFocus(false);
+      if (onBlur) {
+        onBlur(event);
+      }
+    };
 
-  const [labelRef, { input }] = useMeasureInput();
-  return (
-    <div
-      className={clsx(
-        styles.root,
-        formStyles[`is-${size}`],
-        styles[`is-${variant}`],
-        {
-          // eslint-disable-next-line css-modules/no-undef-class
-          [styles.hasFocus]: hasFocus,
-          // eslint-disable-next-line css-modules/no-undef-class
-          [styles.hasValue]: !isEmpty(value),
-        },
-        className,
-      )}
-    >
-      <Label
-        className={clsx(styles[`is-${variant}`])}
-        inputId={inputID}
-        ref={labelRef}
-        required={required}
+    const [labelRef, { input }] = useMeasureInput();
+    return (
+      <div
+        className={clsx(
+          styles.root,
+          size && formStyles[`is-${size}`],
+          variant && styles[`is-${variant}`],
+          {
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.hasFocus]: hasFocus,
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.hasValue]: !isEmpty(value),
+          },
+          className,
+        )}
       >
-        {label}
-      </Label>
-      <div className={styles.inputWrapper}>
-        {iconBefore && (
-          <span className={clsx(styles.iconWrapper)}>
-            <span className={clsx(formStyles.icon)}>{iconBefore}</span>
-          </span>
-        )}
-        <input
-          className={clsx(
-            formStyles.control,
-            formStyles[`is-${variant}`],
-            {
-              [styles.paddedLeft]: iconBefore,
-              [styles.paddedRight]: iconAfter,
-              [styles[`space-${spacing}`]]: spacing,
-            },
-            styles.textInput,
-            innerClassNames.input,
-          )}
-          placeholder={
-            variant === "material"
-              ? !isEmpty(value) || hasFocus
-                ? placeholder
-                : ""
-              : placeholder
-          }
-          style={
-            input && variant === "material"
-              ? {
-                  paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
-                  ...style,
-                }
-              : style
-          }
-          id={inputID}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          ref={ref}
+        <Label
+          // eslint-disable-next-line css-modules/no-undef-class
+          className={styles.label}
+          inputId={inputID}
+          ref={labelRef}
           required={required}
-          type="text"
-          value={value}
-          {...omit(props, EXCLUDE_HANDLERS)}
-        />
-        {iconAfter && (
-          <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-            <span className={clsx(formStyles.icon, innerClassNames.input)}>
-              {iconAfter}
+        >
+          {label}
+        </Label>
+        <div className={styles.inputWrapper}>
+          {iconBefore && (
+            <span className={clsx(styles.iconWrapper)}>
+              <span className={clsx(formStyles.icon)}>{iconBefore}</span>
             </span>
-          </span>
-        )}
-        {isLoading && (
-          <ContentLoader
-            className={styles.loader}
-            preserveAspectRatio="none"
-            viewBox={`0 0 100 100`}
-          >
-            <rect height={100} width={100} x="0" y="0" />
-          </ContentLoader>
-        )}
-        {isBusy && <Spinner className={styles.spinner} />}
+          )}
+          <input
+            className={clsx(
+              formStyles.control,
+              // @ts-ignore: TS7057 because of the `variant` prop
+              variant && formStyles[`is-${variant}`],
+              {
+                [styles.paddedLeft]: iconBefore,
+                [styles.paddedRight]: iconAfter,
+              },
+              styles.textInput,
+              innerClassNames.input,
+            )}
+            placeholder={
+              variant === "material"
+                ? !isEmpty(value) || hasFocus
+                  ? placeholder
+                  : ""
+                : placeholder
+            }
+            style={
+              input && variant === "material"
+                ? {
+                    paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
+                    ...style,
+                  }
+                : style
+            }
+            id={inputID}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            ref={ref}
+            required={required}
+            type="text"
+            value={value}
+            {...omit(props, EXCLUDE_HANDLERS)}
+          />
+          {iconAfter && (
+            <span className={clsx(styles.iconWrapper, styles.iconRight)}>
+              <span className={clsx(formStyles.icon, innerClassNames.input)}>
+                {iconAfter}
+              </span>
+            </span>
+          )}
+          {isLoading && (
+            <ContentLoader
+              className={styles.loader}
+              preserveAspectRatio="none"
+              viewBox={`0 0 100 100`}
+            >
+              <rect height={100} width={100} x="0" y="0" />
+            </ContentLoader>
+          )}
+          {isBusy && <Spinner className={styles.spinner} />}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  },
+);
 
-export default forwardRef(TextInput);
+export default TextInput;

@@ -1,22 +1,26 @@
-import { formatNumber, formatNumberWithSuffix } from "../number.js";
+import {
+  FormatNumberSuffixOptions,
+  formatNumber,
+  formatNumberWithSuffix,
+} from "../number.js";
+
+type TEST_DATA = [[string, FormatNumberSuffixOptions?], string | undefined][];
 
 const SOME_STRING = "some string";
-const NON_NUMBERS = [
+const NON_NUMBERS: TEST_DATA = [
   [[SOME_STRING], undefined],
   [[SOME_STRING, { nullValue: "xx" }], "xx"],
   [[""], undefined],
-  [[null], undefined],
-  [[], undefined],
 ];
 
-function testArray(tests) {
+function testArray(tests: TEST_DATA) {
   for (const item of tests) {
     const output = formatNumber(item[0][0], item[0][1]);
     expect(output).toBe(item[1]);
   }
 }
 
-function testArrayWithSuffix(tests) {
+function testArrayWithSuffix(tests: TEST_DATA) {
   for (const item of tests) {
     const output = formatNumberWithSuffix(item[0][0], item[0][1]);
     expect(output).toBe(item[1]);
@@ -29,7 +33,7 @@ describe("format number", () => {
   });
 
   test("should return correct number of decimals", () => {
-    const tests = [
+    const tests: TEST_DATA = [
       [["1"], "1.00"],
       [["-1"], "-1.00"],
       [["1.001"], "1.00"],
@@ -40,7 +44,7 @@ describe("format number", () => {
   });
 
   test("should round off correctly", () => {
-    const tests = [
+    const tests: TEST_DATA = [
       [["1.006"], "1.01"],
       [["1.005"], "1.01"],
       [["1.004"], "1.00"],
@@ -49,7 +53,7 @@ describe("format number", () => {
   });
 
   test("should format correctly", () => {
-    const tests = [
+    const tests: TEST_DATA = [
       [["0"], "0.00"],
       [["-0.002"], "-0.00"],
       [["-0.05"], "-0.05"],
@@ -78,7 +82,7 @@ describe("format number with suffix", () => {
   });
 
   test("should format correctly", () => {
-    const tests = [
+    const tests: TEST_DATA = [
       [["1"], "1.00"],
       [["10"], "10.00"],
       [["100"], "100.00"],

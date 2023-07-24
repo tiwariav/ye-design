@@ -1,33 +1,22 @@
-import { storyIconMap } from "../../../tools/storybook.js";
+import { Meta } from "@storybook/react";
+
+import { storyIconControl } from "../../../tools/storybook.js";
 import TextInput from "./TextInput.js";
 
-const iconOptions = {
-  options: Object.keys(storyIconMap),
-  type: "select",
-};
-const metadata = {
+const metadata: Meta<typeof TextInput> = {
   argTypes: {
-    iconAfter: iconOptions,
-    iconBefore: iconOptions,
+    iconAfter: storyIconControl,
+    iconBefore: storyIconControl,
   },
   component: TextInput,
+  render: (args) => (
+    <div style={{ width: 240 }}>
+      <TextInput {...args} />
+    </div>
+  ),
 };
 
 export default metadata;
-
-const Template = ({ iconAfter, iconBefore, width, ...args }) => {
-  const IconBefore = storyIconMap[iconBefore];
-  const IconAfter = storyIconMap[iconAfter];
-  return (
-    <div style={{ width }}>
-      <TextInput
-        iconAfter={IconAfter && <IconAfter />}
-        iconBefore={IconBefore && <IconBefore />}
-        {...args}
-      />
-    </div>
-  );
-};
 
 export const Basic = {
   args: {
@@ -37,7 +26,6 @@ export const Basic = {
   parameters: {
     jest: ["TextInput.test.js"],
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const Outlined = {
@@ -45,7 +33,6 @@ export const Outlined = {
     ...Basic.args,
     variant: "outlined",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const Dashed = {
@@ -53,7 +40,6 @@ export const Dashed = {
     ...Basic.args,
     variant: "dashed",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const Borderless = {
@@ -61,7 +47,6 @@ export const Borderless = {
     ...Basic.args,
     variant: "borderless",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const withIcon = {
@@ -70,5 +55,4 @@ export const withIcon = {
     iconAfter: "AiOutlineEye",
     iconBefore: "AiOutlineSearch",
   },
-  render: (args) => <Template {...args} />,
 };

@@ -1,86 +1,90 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  'is-basic', 'is-horizontal', 'is-borderless', 'view-thumb',
+  'variant-basic', 'layout-horizontal', 'variant-borderless', 'view-thumb',
   'floating-highest', 'floating-high', 'floating-medium', 'floating-low', 'floating-lowest', 'floating-none',
   'height-full'
 ]}] */
 
 import { clsx } from "clsx";
 import {
-  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
   ElementType,
   ReactNode,
   forwardRef,
 } from "react";
 
+import { COMPONENT_FLOAT } from "../../../tools/constants/props.js";
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import styles from "./card.module.css";
 
-const CARD_FLOAT_OPTIONS = ["highest", "high", "medium", "low", "lowest"];
-const CARD_LAYOUT_OPTIONS = ["horizontal", "vertical"];
-const CARD_VARIANT_OPTIONS = ["basic", "borderless"];
-const CARD_VIEW_MODE_OPTIONS = ["full", "thumb"];
-const CARD_HEIGHT_OPTIONS = ["full"];
+export const CARD_LAYOUTS = ["horizontal"] as const;
+export const CARD_VARIANTS = ["basic", "borderless"] as const;
+export const CARD_VIEW_MODES = ["thumb"] as const;
+export const CARD_HEIGHTS = ["full"] as const;
+export const CARD_FLYING = ["medium"] as const;
 
-export interface CardProps extends ComponentPropsWithRef<"div"> {
-  Element?: ElementType;
-  floating?: (typeof CARD_FLOAT_OPTIONS)[number];
-  flying?: (typeof CARD_FLOAT_OPTIONS)[number];
-  height?: (typeof CARD_HEIGHT_OPTIONS)[number];
+export interface CardProps extends ComponentPropsWithoutRef<"div"> {
+  as?: ElementType;
+  floating?: (typeof COMPONENT_FLOAT)[number];
+  flying?: (typeof CARD_FLYING)[number];
+  height?: (typeof CARD_HEIGHTS)[number];
   image?: ReactNode;
   innerClassNames?: {
     content?: string;
   };
   isBusy?: boolean;
-  layout?: (typeof CARD_LAYOUT_OPTIONS)[number];
-  variant?: (typeof CARD_VARIANT_OPTIONS)[number];
-  viewMode?: (typeof CARD_VIEW_MODE_OPTIONS)[number];
+  layout?: (typeof CARD_LAYOUTS)[number];
+  variant?: (typeof CARD_VARIANTS)[number];
+  viewMode?: (typeof CARD_VIEW_MODES)[number];
 }
 
-function Card(
-  {
-    Element = "div",
-    children,
-    className,
-    floating,
-    flying,
-    height,
-    image,
-    innerClassNames = {},
-    isBusy,
-    layout = "vertical",
-    variant = "basic",
-    viewMode = "full",
-    ...props
-  }: CardProps,
-  ref: CardProps["ref"],
-) {
-  return (
-    <Element
-      className={clsx(
-        styles.card,
-        styles[`is-${variant}`],
-        styles[`is-${layout}`],
-        styles[`view-${viewMode}`],
-        {
-          [styles[`floating-${floating}`]]: floating,
-          [styles[`flying-${flying}`]]: flying,
-          [styles[`height-${height}`]]: height,
-        },
-        className,
-      )}
-      ref={ref}
-      {...props}
-    >
-      {image && <div className={styles.image}>{image}</div>}
-      {children && (
-        <div className={clsx([styles.content], innerClassNames.content)}>
-          {children}
-        </div>
-      )}
-      {isBusy && <Spinner />}
-    </Element>
-  );
-}
+const Card = forwardRef<HTMLDivElement, CardProps>(
+  (
+    {
+      as = "div",
+      children,
+      className,
+      floating,
+      flying,
+      height,
+      image,
+      innerClassNames = {},
+      isBusy,
+      layout,
+      variant = "basic",
+      viewMode,
+      ...props
+    },
+    ref,
+  ) => {
+    const Element = as;
+    return (
+      <Element
+        className={clsx(
+          styles.card,
+          styles[`variant-${variant}`],
+          // @ts-ignore: TS7057 because no styles for some variant yet
+          layout && styles[`layout-${layout}`],
+          viewMode && styles[`view-${viewMode}`],
+          floating && styles[`floating-${floating}`],
+          // @ts-ignore: TS7057 because no styles for some variant yet
+          flying && styles[`flying-${flying}`],
+          height && styles[`height-${height}`],
+          className,
+        )}
+        ref={ref}
+        {...props}
+      >
+        {image && <div className={styles.image}>{image}</div>}
+        {children && (
+          <div className={clsx([styles.content], innerClassNames.content)}>
+            {children}
+          </div>
+        )}
+        {isBusy && <Spinner />}
+      </Element>
+    );
+  },
+);
 
-export default forwardRef(Card);
+export default Card;

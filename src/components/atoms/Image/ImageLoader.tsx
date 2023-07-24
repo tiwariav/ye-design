@@ -1,8 +1,10 @@
+import { IContentLoaderProps } from "react-content-loader";
+
 import ContentLoader from "../../../vendors/ContentLoader.js";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
 
-export default function ImageLoader(props) {
+export default function ImageLoader(props: IContentLoaderProps) {
   return (
     <ContentLoader
       preserveAspectRatio="xMidYMid slice"

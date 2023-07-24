@@ -2,29 +2,19 @@
 
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
-import {
-  ComponentPropsWithRef,
-  ComponentPropsWithoutRef,
-  forwardRef,
-  useMemo,
-} from "react";
+import { ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 
 import { SVGPathFlag, SVGPathPin } from "../../../svg/paths/index.js";
 import styles from "./symbol.module.css";
 
-enum SYMBOL_VARIANT_OPTIONS {
-  CIRCLE,
-  FLAG,
-  PIN,
-  TRIANGLE,
-}
+const SYMBOL_VARIANTS = ["circle", "flag", "pin", "triangle"] as const;
 
-function imageTransform(variant) {
+function imageTransform(variant: (typeof SYMBOL_VARIANTS)[number]) {
   switch (variant) {
-    case SYMBOL_VARIANT_OPTIONS.PIN: {
+    case "pin": {
       return "translate(0 -0.5)";
     }
-    case SYMBOL_VARIANT_OPTIONS.FLAG: {
+    case "flag": {
       return "translate(0 -0.75)";
     }
     default: {
@@ -32,53 +22,52 @@ function imageTransform(variant) {
     }
   }
 }
-interface SymbolProps extends ComponentPropsWithRef<"svg"> {
+interface SymbolProps extends ComponentPropsWithoutRef<"svg"> {
   fill?: string;
   imageProps?: ComponentPropsWithoutRef<"image">;
   imageSrc?: string;
-  variant?: SYMBOL_VARIANT_OPTIONS;
+  variant?: (typeof SYMBOL_VARIANTS)[number];
 }
 
-function Symbol(
-  { className, fill, imageProps, imageSrc, variant, ...props }: SymbolProps,
-  ref: SymbolProps["ref"],
-) {
-  const maskID = useMemo(() => uniqueId("svgMask_"), []);
+const Symbol = forwardRef<SVGSVGElement, SymbolProps>(
+  ({ className, fill, imageProps, imageSrc, variant, ...props }, ref) => {
+    const maskID = useMemo(() => uniqueId("svgMask_"), []);
 
-  return (
-    <svg
-      className={clsx(styles.root, className)}
-      ref={ref}
-      viewBox="0 0 10 10"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <mask id={maskID}>
-        <rect fill="black" height="100%" width="100%" />
-        {variant === SYMBOL_VARIANT_OPTIONS.CIRCLE ? (
-          <circle cx="5" cy="5" fill="white" r="5" />
-        ) : variant === SYMBOL_VARIANT_OPTIONS.TRIANGLE ? (
-          <circle cx="5" cy="5" fill="white" r="5" />
-        ) : variant === SYMBOL_VARIANT_OPTIONS.PIN ? (
-          <SVGPathPin fill="white" transform="translate(.95 0)" />
-        ) : variant === SYMBOL_VARIANT_OPTIONS.FLAG ? (
-          <SVGPathFlag fill="white" transform="translate(.3 0)" />
-        ) : (
-          <rect fill="white" height="100%" width="100%" />
+    return (
+      <svg
+        className={clsx(styles.root, className)}
+        ref={ref}
+        viewBox="0 0 10 10"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+      >
+        <mask id={maskID}>
+          <rect fill="black" height="100%" width="100%" />
+          {variant === "circle" ? (
+            <circle cx="5" cy="5" fill="white" r="5" />
+          ) : variant === "triangle" ? (
+            <circle cx="5" cy="5" fill="white" r="5" />
+          ) : variant === "pin" ? (
+            <SVGPathPin fill="white" transform="translate(.95 0)" />
+          ) : variant === "flag" ? (
+            <SVGPathFlag fill="white" transform="translate(.3 0)" />
+          ) : (
+            <rect fill="white" height="100%" width="100%" />
+          )}
+        </mask>
+        <rect fill={fill} height="100%" mask={`url(#${maskID})`} width="100%" />
+        {imageSrc && (
+          <image
+            height="100%"
+            href={imageSrc}
+            transform={variant && imageTransform(variant)}
+            width="100%"
+            {...imageProps}
+          />
         )}
-      </mask>
-      <rect fill={fill} height="100%" mask={`url(#${maskID})`} width="100%" />
-      {imageSrc && (
-        <image
-          height="100%"
-          href={imageSrc}
-          transform={imageTransform(variant)}
-          width="100%"
-          {...imageProps}
-        />
-      )}
-    </svg>
-  );
-}
+      </svg>
+    );
+  },
+);
 
-export default forwardRef(Symbol);
+export default Symbol;

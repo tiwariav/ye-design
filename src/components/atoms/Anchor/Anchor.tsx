@@ -1,88 +1,84 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  is-small, is-large,
-  is-list-item, is-nav-item,
-  is-outlined, is-filled, is-basic, is-color
+  size-small, size-large,
+  variant-list-item, variant-nav-item, variant-outlined,
+  variant-filled, variant-basic, variant-color,
+  spacing-less, spacing-extra,
 ]}] */
 
 import { clsx } from "clsx";
 import {
-  AnchorHTMLAttributes,
+  ComponentPropsWithoutRef,
   ElementType,
   ReactNode,
   forwardRef,
 } from "react";
 
+import {
+  COMPONENT_SIZES,
+  COMPONENT_SPACINGS,
+} from "../../../tools/constants/props.js";
 import styles from "./anchor.module.css";
 
-const sizes = ["small", "medium", "large"];
-const variants = [
-  "basic",
-  "list-item",
-  "outlined",
-  "filled",
-  "nav-item",
+export const ANCHOR_VARIANTS = [
   "color",
-];
-const effects = ["ripple", "cursor-tracking"];
-const spacing = ["none", "less", "equal", "extra"];
+  "filled",
+  "list-item",
+  "nav-item",
+  "outlined",
+] as const;
 
-export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  Element?: ElementType;
-  effects?: (typeof effects)[number][];
+export interface AnchorProps extends ComponentPropsWithoutRef<"a"> {
+  as?: ElementType;
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
-  label?: string;
   noVisited?: boolean;
-  size?: (typeof sizes)[number];
-  spacing?: (typeof spacing)[number];
-  variant?: (typeof variants)[number];
+  size?: (typeof COMPONENT_SIZES)[number];
+  spacing?: (typeof COMPONENT_SPACINGS)[number];
+  variant?: (typeof ANCHOR_VARIANTS)[number];
 }
 
 /**
  * Primary UI component for user interaction
  */
-const Anchor = forwardRef(
+const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
   (
     {
-      Element,
+      as = "a",
       children,
       className,
-      effects = [],
       iconAfter,
       iconBefore,
-      label,
       noVisited,
-      size = "medium",
+      size,
       spacing,
-      variant = "basic",
+      variant,
       ...props
-    }: AnchorProps,
+    },
     ref,
   ) => {
-    const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
-
+    const Element = as;
     return (
       <Element
         className={clsx(
           styles.anchor,
-          ...effectClasses,
           {
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.noVisited]: noVisited,
-            [styles[`is-${size}`]]: size,
-            [styles[`is-${variant}`]]: variant,
-            [styles[`spacing-${spacing}`]]: spacing,
           },
+          size && styles[`size-${size}`],
+          variant && styles[`variant-${variant}`],
+          spacing && styles[`spacing-${spacing}`],
           className,
         )}
         ref={ref}
         {...props}
       >
         {iconBefore && <span className={clsx(styles.icon)}>{iconBefore}</span>}
-        {label}
         {children}
         {iconAfter && (
-          <span className={clsx(styles.icon, styles.isAfter)}>{iconAfter}</span>
+          <span className={clsx(styles.icon, styles.iconAfter)}>
+            {iconAfter}
+          </span>
         )}
       </Element>
     );

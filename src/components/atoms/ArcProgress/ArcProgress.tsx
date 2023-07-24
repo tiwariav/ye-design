@@ -1,3 +1,6 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  segment-1, segment-2, segment-3, segment-4
+]}] */
 import { IconArrowLeftRhombus } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
@@ -10,21 +13,22 @@ import useProgressAnimation from "./useProgressAnimations.js";
 interface ArcProgressProps {
   children: ReactNode;
   className?: string;
-  colors?: string[];
+  innerClassNames?: {
+    [key: `segment${number}`]: string;
+    segment?: string;
+  };
   progress: [number, number];
   segments?: number;
   strokeWidth?: number;
-  text?: string;
 }
 
 export default function ArcProgress({
   children,
   className,
-  colors = ["#eb5757", "#f2c94c", "#2f80ed", "#6fcf97"],
+  innerClassNames,
   progress,
   segments = 4,
   strokeWidth = 2,
-  text,
 }: ArcProgressProps) {
   // calculate percentage
   const percentage = useMemo(
@@ -53,6 +57,13 @@ export default function ArcProgress({
       <svg className={styles.svg} viewBox="0 0 100 50">
         {angles.map(([startAngle, endAngle], index) => (
           <path
+            className={clsx(
+              styles.segment,
+              // @ts-ignore: TS7053 because of dynamic key
+              styles[`segment${index + 1}`],
+              innerClassNames?.segment,
+              innerClassNames?.[`segment${index + 1}`],
+            )}
             d={describeArc(
               50,
               50 - strokeWidth,
@@ -62,7 +73,6 @@ export default function ArcProgress({
             )}
             fill="none"
             key={index}
-            stroke={colors[index] || "#000"}
             strokeLinecap="round"
             strokeWidth={strokeWidth}
           />
@@ -76,7 +86,7 @@ export default function ArcProgress({
       </div>
       <div className={styles.content}>
         <div className={clsx(styles.text)} id={`anime_text__${animeId}`}>
-          {text || percentage}
+          {percentage}
         </div>
         {children}
       </div>

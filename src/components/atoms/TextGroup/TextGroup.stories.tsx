@@ -1,31 +1,18 @@
-import { storyIconMap } from "../../../tools/storybook.js";
+import { Meta } from "@storybook/react";
+
+import { storyIconControl } from "../../../tools/storybook.js";
 import TextGroup from "./TextGroup.js";
 
-const metadata = {
+const metadata: Meta<typeof TextGroup> = {
   argTypes: {
-    iconAfter: {
-      control: { options: Object.keys(storyIconMap), type: "select" },
-    },
-    iconBefore: {
-      control: { options: Object.keys(storyIconMap), type: "select" },
-    },
+    iconAfter: storyIconControl,
+    iconBefore: storyIconControl,
   },
   component: TextGroup,
+  render: (args) => <TextGroup className="story-bordered" {...args} />,
 };
 
 export default metadata;
-
-const Template = ({ iconAfter, iconBefore, ...args }) => {
-  const IconAfter = storyIconMap[iconAfter];
-  const IconBefore = storyIconMap[iconBefore];
-  return (
-    <TextGroup
-      iconAfter={IconAfter && <IconAfter />}
-      iconBefore={IconBefore && <IconBefore />}
-      {...args}
-    />
-  );
-};
 
 export const Basic = {
   args: {
@@ -33,7 +20,6 @@ export const Basic = {
     iconAfter: "AiFillRightCircle",
     iconBefore: "AiFillLeftCircle",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const Loading = {
@@ -41,5 +27,4 @@ export const Loading = {
     ...Basic.args,
     loading: true,
   },
-  render: (args) => <Template {...args} />,
 };

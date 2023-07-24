@@ -1,64 +1,118 @@
-import { storyIconMap } from "../../../tools/storybook.js";
-import Button from "./Button.js";
+import { Meta, StoryObj } from "@storybook/react";
 
-const metadata = {
+import { COMPONENT_SIZES } from "../../../tools/constants/props.js";
+import { storyIconMap } from "../../../tools/storybook.js";
+import Button, {
+  BUTTON_EFFECTS,
+  BUTTON_SPACINGS,
+  BUTTON_VARIANTS,
+} from "./Button.js";
+
+const metadata: Meta<typeof Button> = {
   argTypes: {
     iconAfter: {
-      control: { options: Object.keys(storyIconMap), type: "select" },
+      mapping: storyIconMap,
+      options: Object.keys(storyIconMap),
     },
     iconBefore: {
-      control: { options: Object.keys(storyIconMap), type: "select" },
+      mapping: storyIconMap,
+      options: Object.keys(storyIconMap),
     },
   },
+  args: {
+    children: "Button",
+  },
   component: Button,
+  render: (args) => <Button {...args} />,
 };
 
 export default metadata;
 
-const Template = ({ iconAfter, iconBefore, ...args }) => {
-  const IconAfter = storyIconMap[iconAfter];
-  const IconBefore = storyIconMap[iconBefore];
-  return (
-    <Button
-      iconAfter={IconAfter && <IconAfter />}
-      iconBefore={IconBefore && <IconBefore />}
-      {...args}
-    />
-  );
-};
+type Story = StoryObj<typeof Button>;
 
-export const Basic = {
-  args: {
-    effects: ["cursor-tracking", "ripple"],
-    label: "Button",
-  },
-  parameters: {
-    jest: ["Button.test.js"],
-  },
-  render: (args) => <Template {...args} />,
-};
+export const Basic: Story = {};
 
-export const Outlined = {
-  args: {
-    ...Basic.args,
-    variant: "outlined",
-  },
-  render: (args) => <Template {...args} />,
-};
-
-export const Dashed = {
-  args: {
-    ...Basic.args,
-    variant: "dashed",
-  },
-  render: (args) => <Template {...args} />,
-};
-
-export const withIcon = {
+export const WithIcon: Story = {
   args: {
     ...Basic.args,
     iconAfter: "IconSquareRoundedChevronLeftFilled",
     iconBefore: "IconSquareRoundedChevronRightFilled",
   },
-  render: (args) => <Template {...args} />,
+};
+
+export const Effects: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Button {...args}>Button</Button>
+      </div>
+      {BUTTON_EFFECTS.map((effect) => (
+        <div>
+          <Button effects={[effect]} {...args}>
+            '{effect}' Button
+          </Button>
+        </div>
+      ))}
+      <div>
+        <Button effects={[...BUTTON_EFFECTS]} {...args}>
+          All effects Button
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Button variant="outlined" {...args}>
+          Button
+        </Button>
+      </div>
+      {COMPONENT_SIZES.map((size) => (
+        <div>
+          <Button size={size} variant="outlined" {...args}>
+            '{size}' Button
+          </Button>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const Spacings: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Button variant="outlined" {...args}>
+          Button
+        </Button>
+      </div>
+      {BUTTON_SPACINGS.map((spacing) => (
+        <div>
+          <Button spacing={spacing} variant="outlined" {...args}>
+            '{spacing}' Button
+          </Button>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Button {...args}>Button</Button>
+      </div>
+      {BUTTON_VARIANTS.map((variant) => (
+        <div>
+          <Button variant={variant} {...args}>
+            '{variant}' button
+          </Button>
+        </div>
+      ))}
+    </div>
+  ),
 };

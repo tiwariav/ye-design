@@ -41,3 +41,23 @@
   border-radius: var(--ye-radius-small);
   transform-origin: right;
 }
+
+.segment {
+  stroke: #000;
+}
+
+.segment-1 {
+  stroke: #eb5757;
+}
+
+.segment-2 {
+  stroke: #f2c94c;
+}
+
+.segment-3 {
+  stroke: #2f80ed;
+}
+
+.segment-4 {
+  stroke: #6fcf97;
+}

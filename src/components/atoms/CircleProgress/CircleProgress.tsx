@@ -1,15 +1,19 @@
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
+  progress-none, progress-partial, progress-full
+]}] */
+
 import { clsx } from "clsx";
 import { ReactNode, useMemo } from "react";
 
 import styles from "./circleProgress.module.css";
 
-function getFillColor(percentage) {
+function getProgressClass(percentage: number) {
   if (percentage <= 0) {
-    return "#C23934";
+    return "progressNone";
   } else if (percentage < 100) {
-    return "#FF9F00";
+    return "progressPartial";
   }
-  return "#04844B";
+  return "progressFull";
 }
 
 function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
@@ -85,14 +89,17 @@ function CenterText({
 interface CircleProgressProps {
   arcHeight?: number;
   children?: ReactNode;
-  circleBackground?: string;
   className?: string;
   color?: string;
   innerClassNames?: {
+    circleBackground?: string;
+    progressFull?: string;
+    progressNone?: string;
+    progressPartial?: string;
     text?: string;
   };
   progress: [number, number];
-  progressText?: "parts" | "progress" | string;
+  progressText?: "parts" | "percent" | "value" | string;
   squareSize?: number;
   strokeWidth?: number;
 }
@@ -100,9 +107,7 @@ interface CircleProgressProps {
 export default function CircleProgress({
   arcHeight = 100,
   children,
-  circleBackground,
   className,
-  color,
   innerClassNames = {},
   progress,
   progressText,
@@ -112,26 +117,36 @@ export default function CircleProgress({
 }: CircleProgressProps) {
   const initData = useMemo(() => {
     // Size of the enclosing square
+    const height = (squareSize * arcHeight) / 100;
     const dia = (squareSize * 100) / arcHeight;
     const squareHeight = (dia * arcHeight) / 100;
     // SVG centers the stroke width on the radius, subtract out so circle fits in square
     const radius = (squareSize - strokeWidth) / 2;
     // Enclose cicle in a circumscribing square
-    const viewBox = `0 0 ${squareSize} ${(squareSize * arcHeight) / 100}`;
+    const viewBox = `0 0 ${squareSize} ${height}`;
     const calcRadius = radius;
     const arcRotation =
-      90 + Math.acos((arcHeight - calcRadius) / calcRadius) * (180 / Math.PI);
-    return { arcRotation, dia, radius, squareHeight, viewBox };
+      90 +
+      Math.acos((height - strokeWidth - calcRadius) / calcRadius) *
+        (180 / Math.PI);
+    return { arcRotation, dia, height, radius, squareHeight, viewBox };
   }, [arcHeight, squareSize, strokeWidth]);
 
-  const progressData = useMemo(() => {
+  const progressData: {
+    circleStyles: {
+      strokeDasharray: number;
+      strokeDashoffset: number;
+    };
+    completion: number;
+    progressClass: ReturnType<typeof getProgressClass>;
+  } = useMemo(() => {
     const completion =
       progress[0] && progress[1] ? (100 * progress[0]) / progress[1] : 0;
-    const fill = color || getFillColor(completion);
+    const progressClass = getProgressClass(completion);
     const { arcRotation, radius } = initData;
     const circleStyles = getCircleStyles(radius, arcRotation, completion);
-    return { circleStyles, completion, fill };
-  }, [color, initData, progress]);
+    return { circleStyles, completion, progressClass: progressClass };
+  }, [initData, progress]);
 
   return (
     <div
@@ -150,12 +165,16 @@ export default function CircleProgress({
           cy={squareSize / 2}
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
-          style={{ stroke: circleBackground }}
         />
         <circle
-          className={clsx(styles.circleProgress, {
-            [styles.strokeRound]: arcHeight === 100,
-          })}
+          className={clsx(
+            styles.circleProgress,
+            {
+              [styles.strokeRound]: arcHeight === 100,
+            },
+            styles[progressData.progressClass],
+            innerClassNames[progressData.progressClass],
+          )}
           transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
             squareSize / 2
           })`}
@@ -163,14 +182,16 @@ export default function CircleProgress({
           cy={squareSize / 2}
           markerEnd="url(#round)"
           r={initData.radius}
-          stroke={progressData.fill}
           strokeWidth={`${strokeWidth}px`}
           style={progressData.circleStyles}
         />
         <CenterText
+          className={clsx(
+            innerClassNames.text,
+            styles[progressData.progressClass],
+            innerClassNames[progressData.progressClass],
+          )}
           arcHeight={arcHeight}
-          className={innerClassNames.text}
-          fill={progressData.fill}
           percentage={progressData.completion}
           progress={progress}
           text={progressText}

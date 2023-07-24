@@ -1,8 +1,9 @@
-import coolNFreshStyle from "./cool-n-fresh.module.css";
+import freshStyle from "./fresh.module.css";
 import trustyStyle from "./trusty.module.css";
 
 const themes = {
-  "cool-n-fresh": coolNFreshStyle.root,
+  default: "",
+  fresh: freshStyle.root,
   trusty: trustyStyle.root,
 };
 

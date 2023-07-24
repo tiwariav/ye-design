@@ -1,15 +1,18 @@
 import { IconCircleChevronRight } from "@tabler/icons-react";
-import React from "react";
+import { Children, ComponentPropsWithoutRef } from "react";
 
 import styles from "./bookmark.module.css";
 
-function Bookmark({ children, ...props }) {
+export default function Bookmark({
+  children,
+  ...props
+}: ComponentPropsWithoutRef<"div">) {
   return (
     <div className={styles.bookmark} {...props}>
-      {React.Children.map(children, (child, index) => (
+      {Children.map(children, (child, index) => (
         <span className={styles.item}>
           <span className={styles.text}>{child}</span>
-          {index < React.Children.count(children) - 1 && (
+          {index < Children.count(children) - 1 && (
             <span className={styles.separator}>
               <IconCircleChevronRight />
             </span>
@@ -19,5 +22,3 @@ function Bookmark({ children, ...props }) {
     </div>
   );
 }
-
-export default Bookmark;

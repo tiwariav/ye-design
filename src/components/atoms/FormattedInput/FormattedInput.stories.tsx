@@ -1,5 +1,7 @@
+import { StoryObj } from "@storybook/react";
 import { useEffect, useRef, useState } from "react";
 
+import { NanValue } from "../../../tools/number.js";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "../NumberInput/NumberInput.js";
@@ -7,36 +9,38 @@ import FormattedInput from "./FormattedInput.js";
 
 const metadata = {
   argTypes: {
-    icon: { control: { options: Object.keys(storyIconMap), type: "select" } },
+    iconAfter: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
+    iconBefore: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
   },
   component: FormattedInput,
 };
 
 export default metadata;
 
-function addHyphens(value) {
+type Story = StoryObj<typeof FormattedInput>;
+
+function addHyphens(value: string) {
   return value ? [...value].filter((item) => item !== "-").join("-") : value;
 }
 
-function removeHyphens(value, emptyValue) {
+function removeHyphens(value: string, emptyValue: NanValue) {
   return value ? value.replaceAll("-", "") : emptyValue;
 }
 
 const Template = ({
-  iconAfter = "None",
-  iconBefore = "None",
   width = 240,
   ...args
+}: {
+  value?: string;
+  width?: number | string;
 }) => {
-  const IconBefore = storyIconMap[iconBefore];
-  const IconAfter = storyIconMap[iconAfter];
   const [eventValue, setEventValue] = useState<string>();
   const [refValue, setRefValue] = useState<string>();
-  const [parsedValue, setParsedValue] = useState();
-  const ref = useRef<HTMLInputElement>();
+  const [parsedValue, setParsedValue] = useState<NanValue>("");
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setRefValue(ref.current.value);
+    if (ref.current) setRefValue(ref.current.value);
   }, [eventValue]);
 
   return (
@@ -45,11 +49,9 @@ const Template = ({
         onChange={(event) => {
           setEventValue(event.target.value);
         }}
-        onChangeValue={(value) => {
+        onChangeValue={(value: NanValue) => {
           setParsedValue(value);
         }}
-        iconAfter={IconAfter && <IconAfter />}
-        iconBefore={IconBefore && <IconBefore />}
         placeholder="Enter your text"
         ref={ref}
         {...args}
@@ -73,7 +75,7 @@ const Template = ({
   );
 };
 
-export const Basic = {
+export const Basic: Story = {
   args: {
     format: addHyphens,
     parse: removeHyphens,
@@ -81,20 +83,25 @@ export const Basic = {
   render: (args) => <Template {...args} />,
 };
 
-export const FormatOnly = {
+export const FormatOnly: Story = {
   args: {
     format: addHyphens,
   },
   render: (args) => <Template {...args} />,
 };
-export const ParseOnly = {
+export const ParseOnly: Story = {
   args: {
     parse: addHyphens,
   },
   render: (args) => <Template {...args} />,
 };
 
-const PresetValueTemplate = ({ width, ...args }) => {
+const PresetValueTemplate = ({
+  width = 240,
+  ...args
+}: {
+  width?: number | string;
+}) => {
   const [value, setValue] = useState("Apples");
   return (
     <div style={{ width }}>
@@ -104,7 +111,7 @@ const PresetValueTemplate = ({ width, ...args }) => {
   );
 };
 
-export const PresetValue = {
+export const PresetValue: Story = {
   args: {
     ...Basic.args,
   },

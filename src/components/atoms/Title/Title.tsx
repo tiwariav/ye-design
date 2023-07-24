@@ -8,8 +8,8 @@ import { ComponentPropsWithoutRef, ElementType } from "react";
 
 import styles from "./title.module.css";
 
-const TITLE_ALIGN_OPTIONS = ["center", "left", "right"];
-const TITLE_VARIANT_OPTIONS = ["basic", "tinyline", "tinyline-left"];
+const TITLE_ALIGN_OPTIONS = ["center"] as const;
+const TITLE_VARIANT_OPTIONS = ["tinyline", "tinyline-left"] as const;
 
 interface TitleProps extends ComponentPropsWithoutRef<"div"> {
   Element?: ElementType;
@@ -27,10 +27,8 @@ export default function Title({
     <Element
       className={clsx(
         styles.root,
-        {
-          [styles[`align-${align}`]]: align,
-          [styles[`is-${variant}`]]: variant,
-        },
+        align && [styles[`align-${align}`]],
+        variant && [styles[`is-${variant}`]],
         className,
       )}
       {...props}

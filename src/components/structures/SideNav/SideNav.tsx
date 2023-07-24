@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef } from "react";
 
 import styles from "./sideNav.module.css";
 
-interface SideNavProps extends ComponentPropsWithoutRef<"div"> {
+export interface SideNavProps extends ComponentPropsWithoutRef<"div"> {
   withHanging?: boolean;
 }
 

@@ -3,6 +3,8 @@ import React, { ReactElement, ReactNode, useMemo, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useToggle } from "react-use";
 
+import { SideNavProps } from "../SideNav/SideNav.js";
+import { TopNavProps } from "../TopNav/TopNav.js";
 import styles from "./page.module.css";
 
 interface PageProps {
@@ -61,8 +63,7 @@ export default function Page({
 
   const clonedTopNav = useMemo(() => {
     if (topNav) {
-      const extraProps = {
-        isExpanded: undefined,
+      const extraProps: TopNavProps = {
         sideNavToggle,
         toggleSideNav,
         variant: undefined,
@@ -81,18 +82,11 @@ export default function Page({
 
   const clonedSideNav = useMemo(() => {
     if (sideNav) {
-      const extraProps = {
-        sideNavToggle,
-        toggleSideNav,
-        topNavExpanded: undefined,
-      };
-      if (topNavExpanded) {
-        extraProps.topNavExpanded = true;
-      }
+      const extraProps: SideNavProps = {};
       return React.cloneElement(sideNav, extraProps);
     }
     return null;
-  }, [sideNav, sideNavToggle, toggleSideNav, topNavExpanded]);
+  }, [sideNav]);
 
   return (
     <div className={clsx(styles.root)}>

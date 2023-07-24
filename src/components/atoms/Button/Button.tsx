@@ -1,29 +1,39 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  is-outlined, is-dashed, is-trans, is-inline, is-neu,
-  is-list-item, is-primary, is-filled,
-  is-small, is-large,
+  variant-outlined, variant-dashed, variant-trans, variant-inline, variant-neu,
+  variant-list-item, variant-primary, variant-filled,
+  size-small, size-large,
   effect-cursor-tracking, effect-ripple,
   spacing-equal, spacing-extra, spacing-less, spacing-none
 ]}] */
 
 import { clsx } from "clsx";
 import {
-  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
   MutableRefObject,
   ReactNode,
   forwardRef,
   useEffect,
 } from "react";
 import { useMouseHovered } from "react-use";
+import { overrideStyleProperty } from "wo-library/tools/css.js";
 
 import { usePropRef } from "../../../hooks/index.js";
-import { overrideStyleProperty } from "../../../tools/css.js";
+import {
+  COMPONENT_SIZES,
+  COMPONENT_SPACINGS,
+} from "../../../tools/constants/props.js";
 import Spinner from "../Spinner/Spinner.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
 import styles from "./button.module.css";
 
-const setRippleProperties = (node: HTMLElement, initial, x = 0, y = 0) => {
+const setRippleProperties = (
+  node: HTMLElement | null,
+  initial: boolean,
+  x = 0,
+  y = 0,
+) => {
+  if (!node) return;
   node.style.setProperty("--ye-effect-ripple-x", `${x}px`);
   node.style.setProperty("--ye-effect-ripple-y", `${y}px`);
   if (initial) {
@@ -71,11 +81,13 @@ const setNeuProperties = (node: HTMLElement, options: NeuOptions = {}) => {
   );
 };
 
-const BUTTON_EFFECT_OPTIONS = ["ripple", "cursor-tracking"];
-const BUTTON_SPACING_OPTIONS = ["none", "less", "equal", "extra"];
-const BUTTON_SIZE_OPTIONS = ["small", "medium", "large"];
-const BUTTON_VARIANT_OPTIONS = [
-  "basic",
+export const BUTTON_EFFECTS = ["ripple", "cursor-tracking"] as const;
+export const BUTTON_SPACINGS = [
+  ...COMPONENT_SPACINGS,
+  "none",
+  "equal",
+] as const;
+export const BUTTON_VARIANTS = [
   "trans",
   "inline",
   "list-item",
@@ -83,21 +95,21 @@ const BUTTON_VARIANT_OPTIONS = [
   "primary",
   "filled",
   "neu",
-];
+] as const;
 
 type SharedButtonProps = {
-  effects?: (typeof BUTTON_EFFECT_OPTIONS)[number][];
+  effects?: (typeof BUTTON_EFFECTS)[number][];
   neuOptions?: NeuOptions;
-  variant?: (typeof BUTTON_VARIANT_OPTIONS)[number];
+  variant?: (typeof BUTTON_VARIANTS)[number];
 };
 
 function useButtonEffects({
-  effects,
+  effects = [],
   innerRef,
   neuOptions,
   variant,
 }: SharedButtonProps & {
-  innerRef: MutableRefObject<HTMLButtonElement>;
+  innerRef: MutableRefObject<HTMLButtonElement | null>;
 }) {
   const mouseData = useMouseHovered(innerRef, {
     bound: true,
@@ -124,107 +136,107 @@ function useButtonEffects({
 }
 
 export interface ButtonProps
-  extends ComponentPropsWithRef<"button">,
+  extends ComponentPropsWithoutRef<"button">,
     SharedButtonProps {
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   isBusy?: boolean;
   isFullWidth?: boolean;
-  label?: string;
-  size?: (typeof BUTTON_SIZE_OPTIONS)[number];
-  spacing?: (typeof BUTTON_SPACING_OPTIONS)[number];
+  size?: (typeof COMPONENT_SIZES)[number];
+  spacing?: (typeof BUTTON_SPACINGS)[number];
 }
 
 /**
  * Primary UI component for user interaction
  */
-function Button(
-  {
-    children,
-    className,
-    disabled,
-    effects = [],
-    iconAfter,
-    iconBefore,
-    isBusy,
-    isFullWidth,
-    label,
-    neuOptions,
-    onClick,
-    size = "medium",
-    spacing,
-    variant = "basic",
-    ...props
-  }: ButtonProps,
-  propRef: ButtonProps["ref"],
-) {
-  const { innerRef, setInnerRef } = usePropRef(propRef);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      className,
+      disabled,
+      effects = [],
+      iconAfter,
+      iconBefore,
+      isBusy,
+      isFullWidth,
+      neuOptions,
+      onClick,
+      size,
+      spacing,
+      variant,
+      ...props
+    },
+    propRef,
+  ) => {
+    const { innerRef, setInnerRef } = usePropRef(propRef);
 
-  useButtonEffects({
-    effects,
-    innerRef,
-    neuOptions,
-    variant,
-  });
+    useButtonEffects({
+      effects,
+      innerRef,
+      neuOptions,
+      variant,
+    });
 
-  const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
+    const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
-  return (
-    <button
-      className={clsx(
-        formStyles.control,
-        formStyles[`is-${variant}`],
-        styles.root,
-        styles[`is-${size}`],
-        styles[`is-${variant}`],
-        {
-          [styles.disabled]: disabled,
+    return (
+      <button
+        className={clsx(
+          formStyles.control,
+          styles.root,
+          // @ts-ignore: TS7057 because no styles for some variant yet
+          variant && formStyles[`variant-${variant}`],
+          // @ts-ignore: TS7057 because no styles for some variant yet
+          size && styles[`size-${size}`],
+          variant && styles[`variant-${variant}`],
+          {
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.hasFocus]: isBusy,
+            [styles.isDisabled]: disabled,
+            [styles.isFullWidth]: isFullWidth,
+          },
+          spacing && styles[`spacing-${spacing}`],
+          ...effectClasses,
+          className,
+        )}
+        onClick={(event) => {
+          if (effects.includes("ripple")) {
+            setRippleProperties(
+              innerRef.current,
+              false,
+              event.nativeEvent.offsetX,
+              event.nativeEvent.offsetY,
+            );
+          }
+          onClick?.(event);
+        }}
+        disabled={disabled || isBusy}
+        ref={setInnerRef}
+        type="button"
+        {...props}
+      >
+        {iconBefore && (
           // eslint-disable-next-line css-modules/no-undef-class
-          [styles.hasFocus]: isBusy,
-          [styles.isFullWidth]: isFullWidth,
-          [styles[`spacing-${spacing}`]]: spacing,
-        },
-        ...effectClasses,
-        className,
-      )}
-      onClick={(event) => {
-        if (effects.includes("ripple")) {
-          setRippleProperties(
-            innerRef.current,
-            false,
-            event.nativeEvent.offsetX,
-            event.nativeEvent.offsetY,
-          );
-        }
-        onClick?.(event);
-      }}
-      disabled={disabled || isBusy}
-      ref={setInnerRef}
-      type="button"
-      {...props}
-    >
-      {iconBefore && (
-        // eslint-disable-next-line css-modules/no-undef-class
-        <span className={clsx(formStyles.icon, styles.icon)}>{iconBefore}</span>
-      )}
-      {(iconBefore || iconAfter) && (label || children) ? (
-        <span>
-          {label}
-          {children}
-        </span>
-      ) : (
-        <>
-          {label}
-          {children}
-        </>
-      )}
-      {iconAfter && (
-        // eslint-disable-next-line css-modules/no-undef-class
-        <span className={clsx(formStyles.icon, styles.icon)}>{iconAfter}</span>
-      )}
-      {isBusy && <Spinner className={styles.spinner} />}
-    </button>
-  );
-}
+          <span className={clsx(formStyles.icon, styles.icon)}>
+            {iconBefore}
+          </span>
+        )}
+        {(iconBefore || iconAfter) && children ? (
+          <span>{children}</span>
+        ) : (
+          children
+        )}
+        {iconAfter && (
+          // eslint-disable-next-line css-modules/no-undef-class
+          <span className={clsx(formStyles.icon, styles.icon)}>
+            {iconAfter}
+          </span>
+        )}
+        {isBusy && <Spinner className={styles.spinner} />}
+      </button>
+    );
+  },
+);
 
-export default forwardRef(Button);
+export default Button;

@@ -8,7 +8,7 @@
 }
 
 .title {
-  margin-bottom: var(--ye-spacing-em-xtiny);
+  margin-bottom: var(--ye-em-unit);
 }
 
 .options {

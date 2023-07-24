@@ -20,7 +20,7 @@ type SortOption = {
   name: string;
 };
 
-const COLLECTION_VARIANT_OPTIONS = ["list", "grid"];
+const COLLECTION_VARIANT_OPTIONS = ["list", "grid"] as const;
 
 interface CollectionProps {
   children: ReactNode;
@@ -58,17 +58,19 @@ export default function Collection({
             <Button
               className={styles.button}
               iconBefore={<IconFilter />}
-              label="Filter"
               size="small"
-            />
+            >
+              Filter
+            </Button>
           )}
           {sort && (
             <Button
               className={styles.button}
               iconBefore={<IconSortDescending />}
-              label="Sort"
               size="small"
-            />
+            >
+              Filter
+            </Button>
           )}
         </div>
       )}

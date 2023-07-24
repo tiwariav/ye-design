@@ -1,18 +1,20 @@
+import { Meta } from "@storybook/react";
 import { useEffect, useRef, useState } from "react";
 
+import { NanValue } from "../../../tools/number.js";
+import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
 import PhoneNumberInput from "./PhoneNumberInput.js";
 
-const metadata = {
-  component: PhoneNumberInput,
-};
-
-export default metadata;
-
-const Template = ({ iconAfter, iconBefore, width, ...args }) => {
+const Template = ({
+  iconAfter,
+  iconBefore,
+  width,
+  ...args
+}: FromattedInputProps) => {
   const [eventValue, setEventValue] = useState<string>();
   const [refValue, setRefValue] = useState<string>();
-  const [parsedValue, setParsedValue] = useState();
-  const ref = useRef<HTMLInputElement>();
+  const [parsedValue, setParsedValue] = useState<NanValue>("");
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setRefValue(ref.current?.value);
@@ -48,9 +50,15 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   );
 };
 
+const metadata: Meta<typeof PhoneNumberInput> = {
+  component: PhoneNumberInput,
+  render: (args) => <Template {...args} />,
+};
+
+export default metadata;
+
 export const Basic = {
   args: {
     width: 240,
   },
-  render: (args) => <Template {...args} />,
 };

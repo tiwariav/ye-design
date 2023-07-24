@@ -21,9 +21,10 @@ import { Button, Container } from "../../atoms/index.js";
 import TopNavItem from "./TopNavItem.js";
 import styles from "./topNav.module.css";
 
-const variantOptions = ["basic", "transparent", "flat", "underlined"];
+const variantOptions = ["transparent", "flat", "underlined"] as const;
+const LOGO_VARIANTS = ["hanging"] as const;
 
-interface TopNavProps {
+export interface TopNavProps {
   banner?: ReactNode;
   className?: string;
   contentLeft?: ReactNode;
@@ -39,13 +40,13 @@ interface TopNavProps {
   isExpanded?: boolean;
   leftNavIcon?: ReactNode;
   logo?: ReactNode;
-  logoVariant?: string;
+  logoVariant?: (typeof LOGO_VARIANTS)[number];
   multiRow?: boolean;
   rightNavIcon?: ReactNode;
   sideNavToggle?: boolean;
   style?: CSSProperties;
-  toggleDrawer?: (boolean) => void;
-  toggleSideNav?: (boolean) => void;
+  toggleDrawer?: (value?: boolean) => void;
+  toggleSideNav?: (value?: boolean) => void;
   variant?: (typeof variantOptions)[number];
   withSideNav?: boolean;
 }
@@ -63,7 +64,7 @@ export default function TopNav({
   isExpanded,
   leftNavIcon,
   logo,
-  logoVariant = "basic",
+  logoVariant,
   multiRow,
   rightNavIcon,
   sideNavToggle,
@@ -79,13 +80,13 @@ export default function TopNav({
   const scrollDirection = useScrollDirection();
   const [smallerWidth, setSmallerWidth] = useState<boolean>();
 
-  const ref = useRef<HTMLDivElement>();
-  const contentLeftRef = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
+  const contentLeftRef = useRef<HTMLDivElement>(null);
   const { y: scrollY } = useWindowScroll();
 
   const showDrawer = drawer || localDrawer;
   const rootStyle = useMemo(() => {
-    if (!(hideOnScroll || ref.current)) return {};
+    if (!(hideOnScroll && ref.current)) return {};
     const isScrollingDown =
       scrollDirection === "down" && scrollY > ref.current.offsetHeight;
     if (!isScrollingDown || showDrawer) return {};
@@ -109,18 +110,14 @@ export default function TopNav({
     <div
       className={clsx(
         styles.root,
-        styles[`is-${variant}`],
+        variant && styles[`is-${variant}`],
         {
           [styles.hasDrawer]: showDrawer,
           [styles.sideNavToggled]: sideNavToggle,
           [styles.withSideNav]: withSideNav,
         },
         className,
-        innerClassNames
-          ? {
-              [innerClassNames.isExpanded]: isExpanded,
-            }
-          : {},
+        isExpanded && innerClassNames.isExpanded,
       )}
       ref={ref}
       style={{ ...rootStyle, ...style }}
@@ -138,7 +135,11 @@ export default function TopNav({
         {/* left nav icon */}
         {smallerWidth !== false && withSideNav && leftNavIcon !== null && (
           <div className={clsx(styles.contentMenuIcon)}>
-            <Button onClick={toggleSideNav} spacing="none" variant="trans">
+            <Button
+              onClick={() => toggleSideNav?.()}
+              spacing="none"
+              variant="trans"
+            >
               {leftNavIcon || <IconMenu />}
             </Button>
           </div>
@@ -148,7 +149,7 @@ export default function TopNav({
           <div
             className={clsx(
               styles["logo-container"],
-              styles[`is-logo-${logoVariant}`],
+              logoVariant && styles[`is-logo-${logoVariant}`],
             )}
             style={isExpanded ? { height: expandedHeight } : undefined}
           >
@@ -191,7 +192,7 @@ export default function TopNav({
                   )}
                 >
                   <Button
-                    onClick={toggleDrawer || toggleLocalDrawer}
+                    onClick={() => toggleDrawer?.() || toggleLocalDrawer()}
                     spacing="none"
                     variant="trans"
                   >

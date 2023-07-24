@@ -27,3 +27,33 @@
   display: flex;
   transform: translateX(-50%) translateY(-50%);
 }
+
+.progress-none {
+  &.circle-progress {
+    stroke: #c23934;
+  }
+
+  &.text {
+    fill: #c23934;
+  }
+}
+
+.progress-partial {
+  &.circle-progress {
+    stroke: #ff9f00;
+  }
+
+  &.text {
+    fill: #ff9f00;
+  }
+}
+
+.progress-full {
+  &.circle-progress {
+    stroke: #04844b;
+  }
+
+  &.text {
+    fill: #04844b;
+  }
+}

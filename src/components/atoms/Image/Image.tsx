@@ -13,7 +13,7 @@ import Spinner from "../Spinner/Spinner.js";
 import ImageLoader from "./ImageLoader.js";
 import styles from "./image.module.css";
 
-const IMAGE_VARIANT_OPTIONS = ["basic", "circular"];
+const IMAGE_VARIANT_OPTIONS = ["basic", "circular"] as const;
 
 interface ImageProps extends ComponentPropsWithoutRef<"img"> {
   Element?: ElementType;
@@ -41,10 +41,10 @@ export default function Image({
 
   useEffect(() => {
     if (aspectRatio || variant === "circular") {
-      const ratio =
-        variant === "circular"
-          ? [1, 1]
-          : aspectRatio.split("/").map((item) => Number.parseInt(item));
+      let ratio = [1, 1];
+      if (aspectRatio && variant !== "circular") {
+        ratio = aspectRatio.split("/").map((item) => Number.parseInt(item));
+      }
       setContentStyle({ paddingBottom: `${(100 * ratio[1]) / ratio[0]}%` });
     }
   }, [aspectRatio, variant]);

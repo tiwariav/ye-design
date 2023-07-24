@@ -1,6 +1,9 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  'is-secondary', 'align-center', 'width-xsmall', 'width-small', 'height-readable', 'height-full',
-  'space-none', 'space-small', 'space-large', 'space-horizontal'
+  variant-secondary,
+  align-center,
+  width-xsmall, width-small,
+  height-readable, height-full,
+  spacing-none, spacing-small, spacing-large, spacing-horizontal
 ]}] */
 
 import { clsx } from "clsx";
@@ -8,14 +11,21 @@ import { ComponentPropsWithoutRef } from "react";
 
 import styles from "./container.module.css";
 
-const spacingOptions = ["none", "small", "medium", "large", "horizontal"];
+export const CONTAINER_SPACINGS = [
+  "none",
+  "small",
+  "large",
+  "horizontal",
+] as const;
+export const CONTAINER_HEIGHTS = ["readable", "full"] as const;
+export const CONTAINER_WIDTHS = ["small", "xsmall"] as const;
 
 export interface ContainerProps extends ComponentPropsWithoutRef<"div"> {
-  align?: "center" | "left" | "right";
-  height?: "full" | "readable";
-  spacing?: (typeof spacingOptions)[number];
-  variant?: "basic" | "secondary";
-  width?: "large" | "medium" | "small" | "xlarge" | "xsmall";
+  align?: "center";
+  height?: (typeof CONTAINER_HEIGHTS)[number];
+  spacing?: (typeof CONTAINER_SPACINGS)[number];
+  variant?: "secondary";
+  width?: (typeof CONTAINER_WIDTHS)[number];
 }
 
 export default function Container({
@@ -23,8 +33,8 @@ export default function Container({
   children,
   className,
   height,
-  spacing = "medium",
-  variant = "basic",
+  spacing,
+  variant,
   width,
   ...props
 }: ContainerProps) {
@@ -32,13 +42,11 @@ export default function Container({
     <div
       className={clsx(
         styles.container,
-        styles[`space-${spacing}`],
-        styles[`is-${variant}`],
-        {
-          [styles[`align-${align}`]]: align,
-          [styles[`height-${height}`]]: height,
-          [styles[`width-${width}`]]: width,
-        },
+        spacing && styles[`spacing-${spacing}`],
+        variant && styles[`variant-${variant}`],
+        height && [styles[`height-${height}`]],
+        align && [styles[`align-${align}`]],
+        width && [styles[`width-${width}`]],
         className,
       )}
       {...props}

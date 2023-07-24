@@ -13,10 +13,11 @@ export default function CardLink({
   linkRef,
   ...props
 }: CardLinkProps) {
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
-    const noTextSelected = !window.getSelection().toString();
+    if (window === undefined) return;
+    const noTextSelected = !window.getSelection()?.toString();
 
     if (noTextSelected) {
       linkRef.current.click();

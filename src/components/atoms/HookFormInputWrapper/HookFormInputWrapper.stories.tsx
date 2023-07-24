@@ -1,8 +1,10 @@
+import { StoryObj } from "@storybook/react";
 import { useWatch } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
+import { SetRequired } from "type-fest";
 
 import HookForm from "../HookForm.js";
-import NumberInput from "../NumberInput/NumberInput.js";
+import NumberInput, { NumberInputProps } from "../NumberInput/NumberInput.js";
 import HookFormInputWrapper from "./HookFormInputWrapper.js";
 
 const metadata = {
@@ -11,7 +13,12 @@ const metadata = {
 
 export default metadata;
 
-function InputWrapper({ name, ...props }) {
+type Story = StoryObj<typeof HookFormInputWrapper>;
+
+function InputWrapper({
+  name,
+  ...props
+}: SetRequired<NumberInputProps, "name">) {
   return (
     <HookFormInputWrapper name={name}>
       <NumberInput label={name} size="small" variant="material" {...props} />
@@ -62,6 +69,6 @@ const Template = () => {
   );
 };
 
-export const Basic = {
-  render: (args) => <Template {...args} />,
+export const Basic: Story = {
+  render: () => <Template />,
 };

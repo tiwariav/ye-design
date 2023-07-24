@@ -1,8 +1,10 @@
 import { isFunction, isObject } from "lodash-es";
-import { useCallback, useRef } from "react";
+import { MutableRefObject, useCallback, useRef } from "react";
 
-const usePropRef = <T = Node>(propRef: React.ForwardedRef<T>) => {
-  const innerRef = useRef<T>(null);
+export default function usePropRef<T = Node>(
+  propRef: React.ForwardedRef<T> | undefined,
+) {
+  const innerRef: MutableRefObject<T | null> = useRef<T>(null);
   const setInnerRef = useCallback(
     (node: T) => {
       if (propRef) {
@@ -18,6 +20,4 @@ const usePropRef = <T = Node>(propRef: React.ForwardedRef<T>) => {
   );
 
   return { innerRef, setInnerRef };
-};
-
-export default usePropRef;
+}

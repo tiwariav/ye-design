@@ -6,8 +6,8 @@ export function range(start: number, stop: number, step: number) {
 }
 
 export function addOrUpdate(
-  array: unknown[] = [],
-  object: object,
+  array: Record<string, unknown>[] = [],
+  object: Record<string, unknown>,
   key: string,
 ) {
   const newArray = [...array];

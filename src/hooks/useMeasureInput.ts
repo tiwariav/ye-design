@@ -1,6 +1,5 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react";
-
-import { cssVariable } from "../tools/css.js";
+import { RefObject, useEffect, useRef, useState } from "react";
+import { cssVariable } from "wo-library/tools/css.js";
 
 type CalculatedInputStyles = {
   input?: {
@@ -10,10 +9,10 @@ type CalculatedInputStyles = {
 };
 
 export default function useMeasureInput(): [
-  MutableRefObject<HTMLLabelElement>,
+  RefObject<HTMLLabelElement>,
   CalculatedInputStyles,
 ] {
-  const labelRef = useRef<HTMLLabelElement>();
+  const labelRef = useRef<HTMLLabelElement>(null);
   const [extraStyles, setExtraStyles] = useState<CalculatedInputStyles>({});
 
   useEffect(() => {

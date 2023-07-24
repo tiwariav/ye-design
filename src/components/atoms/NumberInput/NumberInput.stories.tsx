@@ -1,27 +1,32 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { useEffect, useRef, useState } from "react";
 
+import { NanValue } from "../../../tools/number.js";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
-import NumberInput from "./NumberInput.js";
+import NumberInput, { NumberInputProps } from "./NumberInput.js";
 
 const metadata: Meta<typeof NumberInput> = {
+  argTypes: {
+    iconAfter: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
+    iconBefore: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
+  },
   component: NumberInput,
 };
 
 export default metadata;
 
-const Template = ({ iconAfter, iconBefore, width, ...args }) => {
-  const IconBefore = storyIconMap[iconBefore];
-  const IconAfter = storyIconMap[iconAfter];
+type Story = StoryObj<typeof NumberInput>;
+
+const Template = ({ width = 240, ...args }: NumberInputProps) => {
   const [eventValue, setEventValue] = useState("");
   const [refValue, setRefValue] = useState("");
-  const [parsedValue, setParsedValue] = useState("");
-  const ref = useRef<HTMLInputElement>();
+  const [parsedValue, setParsedValue] = useState<NanValue>("");
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setRefValue(ref.current.value);
+    if (ref.current) setRefValue(ref.current.value);
   }, [eventValue]);
 
   return (
@@ -34,8 +39,6 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
           setParsedValue(value);
         }}
         format={{ maximumFractionDigits: 0 }}
-        iconAfter={IconAfter && <IconAfter />}
-        iconBefore={IconBefore && <IconBefore />}
         placeholder="Enter your text"
         ref={ref}
         {...args}
@@ -51,7 +54,11 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
               Ref Value: <strong>{refValue}</strong>{" "}
               <em>({typeof refValue})</em>
             </p>
-            <button onClick={() => setRefValue(ref.current.value)}>
+            <button
+              onClick={() => {
+                if (ref.current) setRefValue(ref.current.value);
+              }}
+            >
               Get latest Ref value
             </button>
           </div>
@@ -65,24 +72,23 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   );
 };
 
-export const Basic = {
+export const Basic: Story = {
   args: {
     width: 240,
   },
   render: (args) => <Template {...args} />,
 };
 
-export const Formatted = {
+export const Formatted: Story = {
   args: {
     format: true,
     parse: true,
     placeholder: "Enter your text",
-    width: 240,
   },
   render: (args) => <Template {...args} />,
 };
 
-const PresetValueTemplate = (args) => {
+const PresetValueTemplate = (args: NumberInputProps) => {
   const [value, setValue] = useState(2000.01);
   return (
     <div>
@@ -94,7 +100,7 @@ const PresetValueTemplate = (args) => {
   );
 };
 
-export const PresetValue = {
+export const PresetValue: Story = {
   args: {
     format: true,
   },

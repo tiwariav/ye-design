@@ -1,10 +1,10 @@
 import { clsx } from "clsx";
 import { isString } from "lodash-es";
-import { ComponentPropsWithRef, forwardRef } from "react";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 import styles from "./label.module.css";
 
-interface LabelProps extends ComponentPropsWithRef<"label"> {
+interface LabelProps extends ComponentPropsWithoutRef<"label"> {
   className?: string;
   inputId: string;
   required?: boolean | string;

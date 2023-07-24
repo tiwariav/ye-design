@@ -1,6 +1,6 @@
 import { AsYouType, parsePhoneNumber } from "libphonenumber-js";
 import { isNil } from "lodash-es";
-import { Ref, forwardRef, useCallback, useRef, useState } from "react";
+import { forwardRef, useCallback, useRef, useState } from "react";
 
 import FormattedInput, {
   FromattedInputProps,
@@ -13,21 +13,19 @@ function getFlagEmoji(countryCode: string) {
   return countryCode
     .toUpperCase()
     .replaceAll(/./g, (char) =>
-      String.fromCodePoint(char.codePointAt(0) + OFFSET),
+      String.fromCodePoint((char.codePointAt(0) as number) + OFFSET),
     );
 }
 
-type PhoneNumberInputProps = FromattedInputProps;
-
-export default forwardRef(
-  ({ ...props }: PhoneNumberInputProps, ref: Ref<HTMLInputElement>) => {
+const PhoneNumberInput = forwardRef<HTMLInputElement, FromattedInputProps>(
+  (props, ref) => {
     const textValueRef = useRef("");
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 
     const formatFunction = useCallback((value: number | string) => {
       if (isNil(value)) {
         textValueRef.current = value;
-        return;
+        return "";
       }
       value = value.toString();
       textValueRef.current = value;
@@ -57,3 +55,5 @@ export default forwardRef(
     );
   },
 );
+
+export default PhoneNumberInput;

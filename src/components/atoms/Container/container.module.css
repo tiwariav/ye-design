@@ -3,24 +3,24 @@
   padding: var(--ye-em-base);
 }
 
-.space-none {
+.spacing-none {
   padding: 0;
 }
 
-.space-small {
+.spacing-small {
   padding: var(--ye-spacing-em-xsmall);
 }
 
-.space-large {
-  padding: var(--ye-em-xlarge);
+.spacing-large {
+  padding: var(--ye-spacing-em-xlarge);
 }
 
-.space-horizontal {
+.spacing-horizontal {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.is-secondary {
+.variant-secondary {
   background-color: var(--ye-color-background-secondary);
 }
 

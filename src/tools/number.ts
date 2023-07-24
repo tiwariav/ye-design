@@ -23,7 +23,7 @@ export function formatNumber(
     minimumFractionDigits ?? fractionDigits,
     isString(value) && value.endsWith(".") ? 1 : 0,
   );
-  return number.toLocaleString("en-IN", {
+  return number?.toLocaleString("en-IN", {
     maximumFractionDigits: Math.max(
       maximumFractionDigits ?? fractionDigits,
       adjustedMinFractionDigits,
@@ -33,7 +33,7 @@ export function formatNumber(
   });
 }
 
-interface FormatNumberSuffixOptions extends FormatNumberOptions {
+export interface FormatNumberSuffixOptions extends FormatNumberOptions {
   suffix?: string;
 }
 
@@ -60,13 +60,15 @@ export function formatNumberWithSuffix(
   if (suffixString) {
     suffixString = ` ${suffixString}`;
   }
-  return `${formatNumber(parsedNumber, options)}${suffixString}`;
+  const formattedNumber = formatNumber(parsedNumber, options);
+  return formattedNumber === undefined
+    ? ""
+    : `${formattedNumber}${suffixString}`;
 }
 
-export function stringToNumber(
-  value: number | string,
-  nanValue?: number | string,
-) {
+export type NanValue = null | number | string | undefined;
+
+export function stringToNumber(value: number | string, nanValue?: NanValue) {
   if (isNumber(value)) return value;
   const number = Number.parseFloat(
     isString(value) ? value.replaceAll(",", "") : value,

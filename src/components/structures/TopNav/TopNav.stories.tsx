@@ -1,3 +1,4 @@
+import { Meta, StoryObj } from "@storybook/react";
 import {
   IconFish,
   IconLogin,
@@ -8,34 +9,30 @@ import {
 import { CSSProperties } from "react";
 
 import { Button, TextInput } from "../../atoms/index.js";
-import TopNav from "./TopNav.js";
+import TopNav, { TopNavProps } from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
 
 const iconMap = { IconFish, IconSpider };
 const itemsMap = {
   Button: (
     <TopNavItem>
-      <Button label="Button" size="small" variant="outlined" />
+      <Button size="small" variant="outlined">
+        Button
+      </Button>
     </TopNavItem>
   ),
   ButtonWithIcon: (
     <TopNavItem>
-      <Button
-        iconBefore={<IconLogin />}
-        label="Button"
-        size="small"
-        variant="outlined"
-      />
+      <Button iconBefore={<IconLogin />} size="small" variant="outlined">
+        Button
+      </Button>
     </TopNavItem>
   ),
   ButtonWithSeparator: (
     <TopNavItem hasSeparator>
-      <Button
-        iconBefore={<IconMicrophone />}
-        label="Button"
-        size="small"
-        variant="outlined"
-      />
+      <Button iconBefore={<IconMicrophone />} size="small" variant="outlined">
+        Button
+      </Button>
     </TopNavItem>
   ),
   SearchInput: (
@@ -44,7 +41,6 @@ const itemsMap = {
         iconBefore={<IconSearch />}
         placeholder="Search Here"
         style={{ minWidth: 240 }}
-        variant="borderless"
       />
     </TopNavItem>
   ),
@@ -56,7 +52,7 @@ const fixedStyles: CSSProperties = {
   top: 0,
 };
 
-const metadata = {
+const metadata: Meta<typeof TopNav> = {
   argTypes: {
     contentLeft: {
       control: { options: Object.keys(itemsMap), type: "inline-check" },
@@ -67,26 +63,17 @@ const metadata = {
     logo: { control: { options: Object.keys(iconMap), type: "select" } },
   },
   component: TopNav,
+  render: (args) => <TopNav {...args} />,
 };
 
 export default metadata;
 
-const Template = ({ contentLeft, contentRight, logo, ...args }) => {
-  const Logo = iconMap[logo];
-  return (
-    <TopNav
-      contentLeft={contentLeft.map((item) => itemsMap[item])}
-      contentRight={contentRight.map((item) => itemsMap[item])}
-      logo={Logo && <Logo />}
-      {...args}
-    />
-  );
-};
+type Story = StoryObj<typeof TopNav>;
 
-const FixedTemplate = (props) => (
+const FixedTemplate = (props: TopNavProps) => (
   <div style={{ paddingTop: 120 }}>
     <div style={fixedStyles}>
-      <Template {...props} />
+      <TopNav {...props} />
     </div>
     <div style={{ backgroundColor: "rgba(0,0,0,0.1)", height: "200vh" }}>
       Long content ...
@@ -100,7 +87,6 @@ export const Basic = {
     contentRight: ["ButtonWithSeparator", "Button"],
     logo: "IconSpider",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const Transparent = {
@@ -108,10 +94,9 @@ export const Transparent = {
     ...Basic.args,
     variant: "transparent",
   },
-  render: (args) => <Template {...args} />,
 };
 
-export const Fixed = {
+export const Fixed: Story = {
   args: {
     ...Basic.args,
     hideOnScroll: true,
@@ -120,7 +105,7 @@ export const Fixed = {
   render: (args) => <FixedTemplate {...args} />,
 };
 
-export const MultiRow = {
+export const MultiRow: Story = {
   args: {
     ...Basic.args,
     hideOnScroll: "contentLeft",
@@ -139,7 +124,6 @@ export const Expanded = {
     isExpanded: true,
     isShrinking: 0,
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const HangingLogo = {
@@ -150,5 +134,4 @@ export const HangingLogo = {
     ...Basic.args,
     logoVariant: "hanging",
   },
-  render: (args) => <Template {...args} />,
 };

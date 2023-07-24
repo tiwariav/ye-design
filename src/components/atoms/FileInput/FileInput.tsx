@@ -12,8 +12,8 @@ import {
 } from "react";
 
 import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
-import UploadFile, { UPLOAD_FILE_STATUS } from "../../../tools/uploadFile.js";
-import { Button } from "../Button/index.js";
+import UploadFile from "../../../tools/uploadFile.js";
+import Button from "../Button/Button.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
 import TextInput from "../TextInput/TextInput.js";
@@ -21,14 +21,9 @@ import TextInput from "../TextInput/TextInput.js";
 import formStyles from "../form.module.css";
 import styles from "./fileInput.module.css";
 
-const FILE_INPUT_VARIANT_OPTIONS = [
-  "basic",
-  "outlined",
-  "dashed",
-  "borderless",
-];
-const FILE_INPUT_SIZE_OPTIONS = ["small", "medium", "large"];
-const FILE_INPUT_SPACING_OPTIONS = ["none", "less", "equal", "extra"];
+const FILE_INPUT_VARIANT_OPTIONS = ["outlined"] as const;
+const FILE_INPUT_SIZE_OPTIONS = ["small", "large"] as const;
+const FILE_INPUT_SPACING_OPTIONS = ["none", "less", "equal", "extra"] as const;
 
 interface FileInputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
@@ -66,7 +61,7 @@ export default function FileInput({
   onChange,
   onFocus,
   placeholder = "Browse",
-  size = "medium",
+  size,
   spacing,
   updateFiles,
   uploadFiles,
@@ -87,7 +82,7 @@ export default function FileInput({
   };
 
   const handleChange: typeof onChange = (event) => {
-    if (event.target.files.length > 0) {
+    if (event.target.files && event.target.files.length > 0) {
       updateFiles([...event.target.files], "add");
     }
     onChange?.(event);
@@ -99,7 +94,7 @@ export default function FileInput({
       file: UploadFile,
       dataIndex: number,
     ) => {
-      const fileData = [...file.data];
+      const fileData = file.data ? [...file.data] : [];
       fileData[dataIndex].value = event.target.value;
       updateFiles([{ ...file, data: fileData }], "update");
     },
@@ -110,9 +105,9 @@ export default function FileInput({
     <div className={clsx(className)}>
       <label
         className={clsx(
-          formStyles[`is-${size}`],
+          size && formStyles[`is-${size}`],
           styles.wrapper,
-          styles[`is-${variant}`],
+          variant && styles[`is-${variant}`],
           {
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
@@ -150,7 +145,7 @@ export default function FileInput({
             <div key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
-                {item.status === UPLOAD_FILE_STATUS.UPLOADING ? (
+                {item.status === "uploading" ? (
                   <>
                     <div
                       className={clsx(
@@ -160,15 +155,17 @@ export default function FileInput({
                     >
                       Uploading...
                     </div>
-                    <div>
-                      <CircleProgress
-                        className={styles.listItemProgress}
-                        progress={item.progress}
-                        squareSize={18}
-                      />
-                    </div>
+                    {item.progress && (
+                      <div>
+                        <CircleProgress
+                          className={styles.listItemProgress}
+                          progress={item.progress}
+                          squareSize={18}
+                        />
+                      </div>
+                    )}
                   </>
-                ) : item.status === UPLOAD_FILE_STATUS.UPLOADED ? (
+                ) : item.status === "uploaded" ? (
                   <>
                     <div
                       className={clsx(
@@ -189,7 +186,7 @@ export default function FileInput({
                     </div>
                   </>
                 ) : (
-                  item.status === UPLOAD_FILE_STATUS.FAILED && (
+                  item.status === "failed" && (
                     <>
                       <div
                         className={clsx(

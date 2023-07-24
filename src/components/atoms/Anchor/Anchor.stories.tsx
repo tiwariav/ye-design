@@ -1,65 +1,98 @@
-import { storyIconMap } from "../../../tools/storybook.js";
-import Anchor from "./Anchor.js";
-const metadata = {
+import { Meta, StoryObj } from "@storybook/react";
+
+import {
+  COMPONENT_SIZES,
+  COMPONENT_SPACINGS,
+} from "../../../tools/constants/props.js";
+import { storyIconControl, storyIconMap } from "../../../tools/storybook.js";
+import Anchor, { ANCHOR_VARIANTS } from "./Anchor.js";
+
+const metadata: Meta<typeof Anchor> = {
   argTypes: {
-    iconAfter: {
-      control: { options: Object.keys(storyIconMap), type: "select" },
-    },
-    iconBefore: {
-      control: { options: Object.keys(storyIconMap), type: "select" },
-    },
+    iconAfter: storyIconControl,
+    iconBefore: storyIconControl,
+  },
+  args: {
+    children: "Anchor",
   },
   component: Anchor,
+  render: (args) => <Anchor href="/" {...args} />,
 };
-
 export default metadata;
 
-const Template = ({ iconAfter, iconBefore, ...args }) => {
-  const IconAfter = storyIconMap[iconAfter];
-  const IconBefore = storyIconMap[iconBefore];
-  return (
-    <Anchor
-      href="/"
-      iconAfter={IconAfter && <IconAfter />}
-      iconBefore={IconBefore && <IconBefore />}
-      {...args}
-    >
-      Anchor
-    </Anchor>
-  );
-};
+type Story = StoryObj<typeof Anchor>;
 
-export const Basic = {
-  args: {
-    effects: ["cursor-tracking", "ripple"],
-  },
-  parameters: {
-    jest: ["Anchor.test.js"],
-  },
-  render: (args) => <Template {...args} />,
-};
+export const Basic: Story = {};
 
-export const Outlined = {
+export const WithIcon: Story = {
   args: {
     ...Basic.args,
-    variant: "outlined",
+    iconAfter: storyIconMap.IconSquareRoundedChevronLeftFilled,
+    iconBefore: storyIconMap.IconSquareRoundedChevronRightFilled,
   },
-  render: (args) => <Template {...args} />,
 };
 
-export const Dashed = {
-  args: {
-    ...Basic.args,
-    variant: "dashed",
-  },
-  render: (args) => <Template {...args} />,
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Anchor href="/" variant="outlined" {...args}>
+          Anchor
+        </Anchor>
+      </div>
+      {COMPONENT_SIZES.map((size) => (
+        <div>
+          <Anchor href="/" size={size} variant="outlined" {...args}>
+            '{size}' anchor
+          </Anchor>
+        </div>
+      ))}
+    </div>
+  ),
 };
 
-export const withIcon = {
+export const Spacings: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Anchor href="/" variant="outlined" {...args}>
+          Anchor
+        </Anchor>
+      </div>
+      {COMPONENT_SPACINGS.map((spacing) => (
+        <div>
+          <Anchor href="/" spacing={spacing} variant="outlined" {...args}>
+            '{spacing}' anchor
+          </Anchor>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <div>
+        <Anchor href="/" {...args}>
+          Anchor
+        </Anchor>
+      </div>
+      {ANCHOR_VARIANTS.map((variant) => (
+        <div>
+          <Anchor href="/" variant={variant} {...args}>
+            '{variant}' anchor
+          </Anchor>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const NoVisited: Story = {
   args: {
-    ...Basic.args,
-    iconAfter: "IconSquareRoundedChevronLeftFilled",
-    iconBefore: "IconSquareRoundedChevronRightFilled",
+    children: "Color anchor",
+    noVisited: true,
+    variant: "color",
   },
-  render: (args) => <Template {...args} />,
 };
