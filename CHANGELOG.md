@@ -1,3 +1,10 @@
+## [2.1.9](https://github.com/tiwariav/ye-design/compare/v2.1.8...v2.1.9) (2023-07-25)
+
+
+### Bug Fixes
+
+* remove uploadFiles prop from fileinput ([cfab3f9](https://github.com/tiwariav/ye-design/commit/cfab3f9c8e261b249a335c3e247d0cab121c483d))
+
 ## [2.1.8](https://github.com/tiwariav/ye-design/compare/v2.1.7...v2.1.8) (2023-07-24)
 
 ## [2.1.7](https://github.com/tiwariav/ye-design/compare/v2.1.6...v2.1.7) (2023-07-14)
