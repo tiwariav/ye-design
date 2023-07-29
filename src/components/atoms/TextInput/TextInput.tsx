@@ -91,16 +91,14 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           size && formStyles[`is-${size}`],
           variant && styles[`is-${variant}`],
           {
-            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
-            // eslint-disable-next-line css-modules/no-undef-class
+
             [styles.hasValue]: !isEmpty(value),
           },
           className,
         )}
       >
         <Label
-          // eslint-disable-next-line css-modules/no-undef-class
           className={styles.label}
           inputId={inputID}
           ref={labelRef}

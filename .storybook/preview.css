@@ -57,3 +57,10 @@
 .story-bordered {
   border: 1px solid var(--ye-color-black-10);
 }
+
+.story-bg-container {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(0 0 0 / 0.05);
+}

@@ -128,7 +128,6 @@ export default function TopNav({
       )}
       <Container
         className={clsx(styles.container, innerClassNames.container, {
-          // eslint-disable-next-line css-modules/no-undef-class
           [styles.hasMultiRow]: multiRow,
         })}
       >
@@ -207,7 +206,6 @@ export default function TopNav({
       {smallerWidth && hasContextMenu && (
         <div
           className={clsx(styleUtils.flexColumn, styles.contentMenu, {
-            // eslint-disable-next-line css-modules/no-undef-class
             [styles.open]: showDrawer,
           })}
         >

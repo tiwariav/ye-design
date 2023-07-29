@@ -93,10 +93,9 @@ export default function Page({
       {topNav && (
         <div
           className={clsx({
-            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasSideNavToggle]: sideNavToggle,
             [styles.isFixed]: topNavIsFixed,
-            // eslint-disable-next-line css-modules/no-undef-class
+
             [styles.sideNavTop]: sideNavOnTop,
           })}
           ref={topNavRef}
@@ -122,10 +121,9 @@ export default function Page({
           {sideNav && (
             <div
               className={clsx(styles.sideNav, innerClassNames.sideNav, {
-                // eslint-disable-next-line css-modules/no-undef-class
                 [styles.isSticky]: sideNavIsSticky,
                 [styles.sideNavToggle]: sideNavToggle,
-                // eslint-disable-next-line css-modules/no-undef-class
+
                 [styles.topNavTop]: sideNavIsSticky && !sideNavOnTop,
               })}
             >
