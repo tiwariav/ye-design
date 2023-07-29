@@ -73,9 +73,6 @@ const Template = ({ width = 240, ...args }: NumberInputProps) => {
 };
 
 export const Basic: Story = {
-  args: {
-    width: 240,
-  },
   render: (args) => <Template {...args} />,
 };
 
@@ -105,4 +102,32 @@ export const PresetValue: Story = {
     format: true,
   },
   render: (args) => <PresetValueTemplate {...args} />,
+};
+
+const displayData = (data: any) => {
+  window.alert(JSON.stringify(data, null, 2));
+};
+
+const ManageStateWithPasedValueTemplate = (args: NumberInputProps) => {
+  const [value, setValue] = useState<NanValue>();
+  return (
+    <div>
+      <Template
+        onChangeValue={(parsedValue) => {
+          setValue(parsedValue);
+        }}
+        value={value as number}
+        {...args}
+      />
+      <Button onClick={() => displayData({ value })}> Submit </Button>
+    </div>
+  );
+};
+
+export const StateManagedWithParsedValue: Story = {
+  args: {
+    format: true,
+    parse: true,
+  },
+  render: (args) => <ManageStateWithPasedValueTemplate {...args} />,
 };

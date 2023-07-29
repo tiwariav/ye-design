@@ -37,6 +37,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         const formattedValue = formatNumber(value, {
           minimumFractionDigits: 0,
           nullValue,
+          preserveTrailingZeros: true,
           ...formatOptions,
         });
         if (formattedValue === undefined) return "";

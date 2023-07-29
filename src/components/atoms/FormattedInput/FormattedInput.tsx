@@ -5,6 +5,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -44,6 +45,8 @@ const FormattedInput = forwardRef<HTMLInputElement, FromattedInputProps>(
     ref,
   ) => {
     const [parsedValue, setParsedValue] = useState<NanValue>(value || "");
+    const parsedValueRef = useRef<NanValue>(parsedValue);
+    parsedValueRef.current = parsedValue;
     const [formattedValue, setFormattedValue] = useState("");
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");
@@ -71,7 +74,10 @@ const FormattedInput = forwardRef<HTMLInputElement, FromattedInputProps>(
     useEffect(() => {
       const newValue = value || defaultValue?.toString() || "";
       const newFormattedValue = format ? format(newValue) : newValue;
-      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : newValue);
+      const newParsedValue = parse && parse(newFormattedValue, emptyValue);
+      const isParseDiff = newParsedValue !== parsedValueRef.current;
+      if (parse && !isParseDiff) return;
+      setParsedValue(newParsedValue ?? newValue);
       setFormattedValue(newFormattedValue);
     }, [emptyValue, format, parse, ref, value, defaultValue]);
 

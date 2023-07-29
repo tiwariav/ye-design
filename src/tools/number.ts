@@ -3,6 +3,7 @@ import { isFinite, isNumber, isString } from "lodash-es";
 export interface FormatNumberOptions extends Intl.NumberFormatOptions {
   fractionDigits?: number;
   nullValue?: string;
+  preserveTrailingZeros?: boolean;
 }
 
 export function formatNumber(
@@ -12,17 +13,32 @@ export function formatNumber(
     maximumFractionDigits,
     minimumFractionDigits,
     nullValue,
+    preserveTrailingZeros = false,
     ...options
   }: FormatNumberOptions = {},
-) {
-  const number = stringToNumber(value, nullValue);
-  if (!isFinite(number)) {
-    return nullValue;
-  }
+): FormatNumberOptions["nullValue"] | string {
   const adjustedMinFractionDigits = Math.max(
     minimumFractionDigits ?? fractionDigits,
     isString(value) && value.endsWith(".") ? 1 : 0,
   );
+
+  if (preserveTrailingZeros && isString(value) && value.includes(".")) {
+    const decimalPlaces = value.includes(".") ? value.split(".")[1].length : 0;
+    return formatNumber(value, {
+      // eslint-disable-next-line prefer-rest-params
+      ...(arguments[1] as FormatNumberOptions),
+      fractionDigits: Math.min(fractionDigits, decimalPlaces),
+      minimumFractionDigits: Math.min(decimalPlaces, fractionDigits),
+      preserveTrailingZeros: false,
+    });
+  }
+
+  const number = stringToNumber(value, nullValue);
+
+  if (!isFinite(number)) {
+    return nullValue;
+  }
+
   return number?.toLocaleString("en-IN", {
     maximumFractionDigits: Math.max(
       maximumFractionDigits ?? fractionDigits,
