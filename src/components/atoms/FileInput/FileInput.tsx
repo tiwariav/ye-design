@@ -107,7 +107,6 @@ export default function FileInput({
           styles.wrapper,
           variant && styles[`is-${variant}`],
           {
-            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
           },
         )}

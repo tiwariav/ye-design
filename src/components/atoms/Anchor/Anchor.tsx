@@ -62,7 +62,6 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
         className={clsx(
           styles.anchor,
           {
-            // eslint-disable-next-line css-modules/no-undef-class
             [styles.noVisited]: noVisited,
           },
           size && styles[`size-${size}`],

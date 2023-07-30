@@ -7,6 +7,7 @@ import React, {
 import {
   Controller,
   type ControllerProps,
+  FieldValues,
   useFormState,
 } from "react-hook-form";
 import { SetOptional } from "type-fest";
@@ -18,12 +19,13 @@ const ErrorMessage = React.lazy(() =>
     default: module_.ErrorMessage,
   })),
 );
-interface HookFormInputWrapperProps
-  extends SetOptional<ControllerProps, "control" | "render"> {
-  children: ReactElement;
-  onChange?: ChangeEventHandler;
-  showError?: boolean;
-}
+
+export type HookFormInputWrapperProps<TValues extends FieldValues> =
+  SetOptional<ControllerProps<TValues>, "control" | "render"> & {
+    children: ReactElement;
+    onChange?: ChangeEventHandler;
+    showError?: boolean;
+  };
 
 function prependToPropMethod<TMethod extends (...args: unknown[]) => unknown>(
   method: TMethod,
@@ -35,13 +37,13 @@ function prependToPropMethod<TMethod extends (...args: unknown[]) => unknown>(
   };
 }
 
-export default function HookFormInputWrapper({
+export default function HookFormInputWrapper<TValues extends FieldValues>({
   children,
   control,
   name,
   showError = true,
   ...props
-}: HookFormInputWrapperProps): ReactNode {
+}: HookFormInputWrapperProps<TValues>): ReactNode {
   const { errors } = useFormState({ control });
   return (
     <>

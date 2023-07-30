@@ -191,7 +191,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           size && styles[`size-${size}`],
           variant && styles[`variant-${variant}`],
           {
-            // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: isBusy,
             [styles.isDisabled]: disabled,
             [styles.isFullWidth]: isFullWidth,
@@ -217,7 +216,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {iconBefore && (
-          // eslint-disable-next-line css-modules/no-undef-class
           <span className={clsx(formStyles.icon, styles.icon)}>
             {iconBefore}
           </span>
@@ -228,7 +226,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           children
         )}
         {iconAfter && (
-          // eslint-disable-next-line css-modules/no-undef-class
           <span className={clsx(formStyles.icon, styles.icon)}>
             {iconAfter}
           </span>
