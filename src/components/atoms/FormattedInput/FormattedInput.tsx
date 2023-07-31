@@ -42,8 +42,12 @@ export default forwardRef(
     }: FromattedInputProps,
     ref: MutableRefObject<HTMLInputElement>
   ) => {
-    const [parsedValue, setParsedValue] = useState(value || "");
-    const [formattedValue, setFormattedValue] = useState<string>("");
+    const [parsedValue, setParsedValue] = useState<string | undefined>(
+      format?.(defaultValue)
+    );
+    const [formattedValue, setFormattedValue] = useState<string | undefined>(
+      parse?.(parsedValue) || ""
+    );
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");
       return [numberId, "formattedInputText_" + numberId];
@@ -56,23 +60,24 @@ export default forwardRef(
           ? format(event.target.value)
           : event.target.value;
         setFormattedValue(formattedValue);
-        onChange && onChange(event);
-        // to update the value when input value is changed by user
         const newParsedValue = parse
           ? parse(formattedValue, emptyValue)
-          : event.target.value;
+          : formattedValue;
         setParsedValue(newParsedValue);
-        onChangeValue && onChangeValue(newParsedValue);
+        onChange?.(event);
       },
-      [emptyValue, format, onChange, onChangeValue, parse]
+      [emptyValue, format, onChange, parse]
     );
 
     useEffect(() => {
-      const newValue = value || defaultValue;
-      const newFormattedValue = format ? format(newValue) : newValue;
-      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : newValue);
+      onChangeValue?.(parsedValue);
+    }, [onChangeValue, parsedValue]);
+
+    useEffect(() => {
+      const newFormattedValue = format ? format(value) : value;
+      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : value);
       setFormattedValue(newFormattedValue);
-    }, [emptyValue, format, parse, ref, value, defaultValue]);
+    }, [emptyValue, format, parse, value]);
 
     return (
       <div className={styles.root}>

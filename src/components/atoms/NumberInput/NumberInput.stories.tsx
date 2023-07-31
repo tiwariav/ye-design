@@ -33,7 +33,7 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
         onChangeValue={(value) => {
           setParsedValue(value);
         }}
-        formatOptions={{ maximumFractionDigits: 0 }}
+        // formatOptions={{ maximumFractionDigits: 0 }}
         iconAfter={IconAfter ? <IconAfter /> : null}
         iconBefore={IconBefore ? <IconBefore /> : null}
         placeholder="Enter your text"
@@ -97,4 +97,31 @@ export const PresetValue = {
     format: true,
   },
   render: (args) => <PresetValueTemplate {...args} />,
+};
+
+const ManageStateWithPasedValueTemplate = (args) => {
+  const [value, setValue] = useState();
+  return (
+    <div>
+      <Template
+        onChange={(event) => {
+          console.log(event.target.value);
+          setValue(event.target.value);
+        }}
+        onChangeValue={(parsedValue) => {
+          console.log(parsedValue);
+        }}
+        value={value}
+        {...args}
+      />
+    </div>
+  );
+};
+
+export const StateManagedWithParsedValue = {
+  args: {
+    format: true,
+    parse: true,
+  },
+  render: (args) => <ManageStateWithPasedValueTemplate {...args} />,
 };

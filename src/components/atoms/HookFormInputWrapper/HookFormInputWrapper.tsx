@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { Controller } from "react-hook-form";
+import React, { ReactElement, useMemo } from "react";
+import { Controller, useController } from "react-hook-form";
 
 interface HookFormInputWrapperProps {
   children: any;
@@ -17,30 +17,37 @@ function appendToPropMethod(method, propMethod) {
 
 export default function HookFormInputWrapper({
   children,
-  control,
-  name,
   ...props
 }: HookFormInputWrapperProps): ReactElement {
-  return (
-    <Controller
-      render={({
-        field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
-        fieldState: { error },
-      }) =>
-        React.Children.map(children, (child) =>
-          React.cloneElement(child, {
-            error,
-            onBlur: appendToPropMethod(onBlurValue, child.props.onBlur),
-            onChange: appendToPropMethod(onChangeValue, child.props.onChange),
-            onChangeValue,
-            ref,
-            value,
-          })
-        )
-      }
-      control={control}
-      name={name}
-      {...props}
-    />
-  );
+  const {
+    field: { onBlur, onChange, ref, value },
+    fieldState: { error },
+  } = useController(props);
+  const child = React.Children.only(children);
+  const changeHandlers = useMemo(() => {
+    return {
+      onChange:
+        child.props.parse || child.props.format
+          ? child.props.onChange
+          : appendToPropMethod(onChange, child.props.onChange),
+      onChangeValue:
+        child.props.parse || child.props.format
+          ? appendToPropMethod(onChange, child.props.onChangeValue)
+          : child.props.onChangeValue,
+    };
+  }, [
+    child.props.parse,
+    child.props.format,
+    child.props.onChange,
+    child.props.onChangeValue,
+    onChange,
+  ]);
+
+  return React.cloneElement(child, {
+    error,
+    onBlur: appendToPropMethod(onBlur, child.props.onBlur),
+    ...changeHandlers,
+    ref,
+    value,
+  });
 }
