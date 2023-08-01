@@ -27,10 +27,8 @@ const Template = ({ iconAfter, iconBefore, width, ...args }) => {
   return (
     <div style={{ width }}>
       <NumberInput
-        onChange={(event) => {
+        onChange={(event, value) => {
           setEventValue(event.target.value);
-        }}
-        onChangeValue={(value) => {
           setParsedValue(value);
         }}
         // formatOptions={{ maximumFractionDigits: 0 }}
@@ -105,11 +103,7 @@ const ManageStateWithPasedValueTemplate = (args) => {
     <div>
       <Template
         onChange={(event) => {
-          console.log(event.target.value);
           setValue(event.target.value);
-        }}
-        onChangeValue={(parsedValue) => {
-          console.log(parsedValue);
         }}
         value={value}
         {...args}

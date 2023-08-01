@@ -17,7 +17,7 @@ function getFlagEmoji(countryCode) {
     );
 }
 
-type PhoneNumberInputProps = FromattedInputProps
+type PhoneNumberInputProps = FromattedInputProps;
 
 export default forwardRef(
   ({ ...props }: PhoneNumberInputProps, ref: Ref<HTMLInputElement>) => {

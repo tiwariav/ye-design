@@ -1,18 +1,11 @@
-import React, { ReactElement, useMemo } from "react";
-import { Controller, useController } from "react-hook-form";
+import React, { ChangeEvent, ReactElement, useMemo } from "react";
+import { useController } from "react-hook-form";
 
 interface HookFormInputWrapperProps {
   children: any;
   control: any;
   name: string;
   onChange?: (...event: any[]) => void;
-}
-
-function appendToPropMethod(method, propMethod) {
-  return (...args) => {
-    method(...args);
-    propMethod && propMethod(...args);
-  };
 }
 
 export default function HookFormInputWrapper({
@@ -24,28 +17,30 @@ export default function HookFormInputWrapper({
     fieldState: { error },
   } = useController(props);
   const child = React.Children.only(children);
-  const changeHandlers = useMemo(() => {
-    return {
-      onChange:
-        child.props.parse || child.props.format
-          ? child.props.onChange
-          : appendToPropMethod(onChange, child.props.onChange),
-      onChangeValue:
-        child.props.parse || child.props.format
-          ? appendToPropMethod(onChange, child.props.onChangeValue)
-          : child.props.onChangeValue,
-    };
-  }, [
-    child.props.parse,
-    child.props.format,
-    child.props.onChange,
-    child.props.onChangeValue,
-    onChange,
-  ]);
+  const changeHandlers = useMemo(
+    () => ({
+      onBlur: (event: FocusEvent) => {
+        onBlur();
+        child.props.onBlur?.(event);
+      },
+      onChange: (
+        event: ChangeEvent<HTMLInputElement>,
+        value?: any,
+        shouldUpdate?: boolean
+      ) => {
+        if (shouldUpdate) {
+          onChange(value);
+        } else if (value === undefined) {
+          onChange(event);
+        }
+        child.props.onChange?.(event, value, shouldUpdate);
+      },
+    }),
+    [child.props, onBlur, onChange]
+  );
 
   return React.cloneElement(child, {
     error,
-    onBlur: appendToPropMethod(onBlur, child.props.onBlur),
     ...changeHandlers,
     ref,
     value,

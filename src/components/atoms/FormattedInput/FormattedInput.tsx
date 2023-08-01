@@ -1,25 +1,28 @@
 import { uniqueId } from "lodash-es";
 import {
+  ChangeEvent,
   MutableRefObject,
   forwardRef,
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
+import { useLatest } from "react-use";
 
 import { TextInputProps } from "../TextInput/TextInput.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./formattedInput.module.css";
 
-export interface FromattedInputProps extends TextInputProps {
+export interface FromattedInputProps extends Omit<TextInputProps, "onChange"> {
   emptyValue?: null | number | string | undefined;
   format?: (string) => any;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
-  onChangeValue?: (any) => any;
+  onChange?: (event: ChangeEvent, value: any, shouldUpdate: boolean) => void;
   parse?: (string, any) => any;
   value?: string;
 }
@@ -35,19 +38,20 @@ export default forwardRef(
       isBusy,
       isLoading,
       onChange,
-      onChangeValue,
       parse,
       value,
       ...props
     }: FromattedInputProps,
     ref: MutableRefObject<HTMLInputElement>
   ) => {
+    const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<string | undefined>(
       format?.(defaultValue)
     );
     const [parsedValue, setParsedValue] = useState<string | undefined>(
       parse?.(formattedValue, emptyValue)
     );
+    const currentParsedValue = useLatest(parsedValue);
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");
       return [numberId, "formattedInputText_" + numberId];
@@ -55,6 +59,7 @@ export default forwardRef(
 
     const handleChange = useCallback(
       (event) => {
+        modified.current = true;
         // to get new formatted text when input value is changed by user
         const formattedValue = format
           ? format(event.target.value)
@@ -64,16 +69,17 @@ export default forwardRef(
           ? parse(formattedValue, emptyValue)
           : formattedValue;
         setParsedValue(newParsedValue);
-        onChange?.(event);
+        onChange?.(
+          event,
+          newParsedValue,
+          newParsedValue !== currentParsedValue.current
+        );
       },
-      [emptyValue, format, onChange, parse]
+      [currentParsedValue, emptyValue, format, onChange, parse]
     );
 
     useEffect(() => {
-      onChangeValue?.(parsedValue);
-    }, [onChangeValue, parsedValue]);
-
-    useEffect(() => {
+      if (!modified.current && !value) return;
       const newFormattedValue = format ? format(value) : value;
       setParsedValue(parse ? parse(newFormattedValue, emptyValue) : value);
       setFormattedValue(newFormattedValue);

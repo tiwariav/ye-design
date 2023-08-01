@@ -17,7 +17,7 @@ export interface NumberInputProps
 export default forwardRef(
   (
     { format, formatOptions = {}, parse, ...props }: NumberInputProps,
-    ref: Ref<HTMLInputElement>,
+    ref: Ref<HTMLInputElement>
   ) => {
     const textValueRef = useRef<string>();
 
@@ -48,7 +48,7 @@ export default forwardRef(
         }
         return formattedValue;
       },
-      [format, formatOptions],
+      [format, formatOptions]
     );
 
     const parseFunction = useCallback(
@@ -62,7 +62,7 @@ export default forwardRef(
           ? unformattedValue
           : unformattedValue.toString();
       },
-      [format, parse],
+      [format, parse]
     );
 
     return (
@@ -75,5 +75,5 @@ export default forwardRef(
         {...props}
       />
     );
-  },
+  }
 );

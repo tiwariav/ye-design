@@ -1,7 +1,13 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material'] }] */
 import { clsx } from "clsx";
 import { uniqueId } from "lodash-es";
-import { InputHTMLAttributes, Ref, forwardRef, useMemo, useState } from "react";
+import {
+  InputHTMLAttributes,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { useMeasureInput } from "../../../hooks/index.js";
 import { isEmpty } from "../../../tools/utils.js";
@@ -42,10 +48,11 @@ export interface TextInputProps
   variant?: (typeof variants)[number];
 }
 
-const TextInput = forwardRef(
+const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       className,
+      defaultValue,
       errors,
       iconAfter,
       iconBefore,
@@ -65,10 +72,11 @@ const TextInput = forwardRef(
       value,
       variant,
       ...props
-    }: TextInputProps,
-    ref: Ref<HTMLInputElement>
+    },
+    ref
   ) => {
     const [hasFocus, setHasFocus] = useState(false);
+    const [hasValue, setHasValue] = useState(!isEmpty(value || defaultValue));
 
     const inputID = useMemo(() => id || uniqueId("textInput_"), [id]);
 
@@ -86,6 +94,11 @@ const TextInput = forwardRef(
     };
 
     const [labelRef, { input }] = useMeasureInput();
+
+    useEffect(() => {
+      setHasValue(!isEmpty(value));
+    }, [value]);
+
     return (
       <div
         className={clsx(
@@ -96,7 +109,7 @@ const TextInput = forwardRef(
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
             // eslint-disable-next-line css-modules/no-undef-class
-            [styles.hasValue]: !isEmpty(value),
+            [styles.hasValue]: hasValue,
           },
           className
         )}
@@ -104,6 +117,8 @@ const TextInput = forwardRef(
         {label ? (
           <label
             className={clsx(styles.label, {
+              [styles.paddedLeft]: iconBefore,
+              [styles.paddedRight]: iconAfter,
               [styles["required"]]: required && !requiredText,
             })}
             htmlFor={inputID}
@@ -133,7 +148,7 @@ const TextInput = forwardRef(
             )}
             placeholder={
               variant === "material"
-                ? !isEmpty(value) || hasFocus
+                ? hasValue || hasFocus
                   ? placeholder
                   : ""
                 : placeholder
