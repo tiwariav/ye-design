@@ -52,10 +52,8 @@ const Template = ({
   return (
     <div style={{ width }}>
       <NumberInput
-        onChange={(event) => {
+        onChange={(event, value) => {
           setEventValue(event.target.value);
-        }}
-        onChangeValue={(value: NumberLike) => {
           setParsedValue(value);
         }}
         placeholder="Enter your text"

@@ -1,12 +1,15 @@
 import { uniqueId } from "lodash-es";
 import {
+  ChangeEvent,
   ChangeEventHandler,
   forwardRef,
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
+import { useLatest } from "react-use";
 
 import { NumberLike } from "../../../tools/number.js";
 import { TextInputProps } from "../TextInput/TextInput.js";
@@ -18,14 +21,18 @@ export type FormattedInputParse = (
   emptyValue: NumberLike,
 ) => NumberLike;
 
-export interface FormattedInputProps extends TextInputProps {
+export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
   emptyValue?: NumberLike;
   format?: (value: NumberLike) => string | undefined;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
-  onChangeValue?: (value: NumberLike) => void;
+  onChange?: (
+    event: ChangeEvent<HTMLInputElement>,
+    value: NumberLike,
+    shouldUpdate: boolean,
+  ) => void;
   parse?: FormattedInputParse;
   value?: number | string;
 }
@@ -41,19 +48,20 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       isBusy,
       isLoading,
       onChange,
-      onChangeValue,
       parse,
       value,
       ...props
     },
     ref,
   ) => {
+    const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<
       number | string | undefined
     >(format?.(defaultValue as NumberLike));
     const [parsedValue, setParsedValue] = useState<NumberLike>(
       parse?.(formattedValue, emptyValue),
     );
+    const currentParsedValue = useLatest(parsedValue);
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");
       return [numberId, "formattedInputText_" + numberId];
@@ -61,6 +69,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
 
     const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
+        modified.current = true;
         // to get new formatted text when input value is changed by user
         const formattedValue = format
           ? format(event.target.value)
@@ -70,16 +79,17 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
           ? parse(formattedValue, emptyValue)
           : formattedValue;
         setParsedValue(newParsedValue);
-        onChange?.(event);
+        onChange?.(
+          event,
+          newParsedValue,
+          newParsedValue !== currentParsedValue.current,
+        );
       },
-      [emptyValue, format, onChange, parse],
+      [currentParsedValue, emptyValue, format, onChange, parse],
     );
 
     useEffect(() => {
-      onChangeValue?.(parsedValue);
-    }, [onChangeValue, parsedValue]);
-
-    useEffect(() => {
+      if (!modified.current && !value) return;
       const newFormattedValue = format ? format(value) : value;
       setParsedValue(parse ? parse(newFormattedValue, emptyValue) : value);
       setFormattedValue(newFormattedValue);

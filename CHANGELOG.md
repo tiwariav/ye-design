@@ -1,6 +1,5 @@
 ## [2.1.11](https://github.com/tiwariav/ye-design/compare/v2.1.10...v2.1.11) (2023-08-01)
 
-
 ### Bug Fixes
 
 * add 1.x to release branches ([ce6918f](https://github.com/tiwariav/ye-design/commit/ce6918f439ef2963fde6606a02cd1a0f493154d2))
@@ -64,6 +63,12 @@
 ### BREAKING CHANGES
 
 * Input styles updated
+
+## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
+
+### Bug Fixes
+
+* FormattedInput initial values ([35de969](https://github.com/tiwariav/ye-design/commit/35de9693da598dc243baf5286abd0cdbee8bec16))
 
 ## [1.12.8](https://github.com/tiwariav/ye-design/compare/v1.12.7...v1.12.8) (2023-08-01)
 

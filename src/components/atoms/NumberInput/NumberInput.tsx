@@ -21,7 +21,7 @@ export interface NumberInputProps
 }
 
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
-  ({ format, parse, value, ...props }, ref) => {
+  ({ format, parse, ...props }, ref) => {
     const textValueRef = useRef<NumberLike>();
 
     const formatFunction = useCallback(
@@ -77,7 +77,6 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         inputMode="decimal"
         parse={parseFunction}
         ref={ref}
-        value={value?.toString()}
         {...props}
       />
     );

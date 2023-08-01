@@ -22,10 +22,8 @@ const Template = ({
   return (
     <div style={{ width }}>
       <PhoneNumberInput
-        onChange={(event) => {
+        onChange={(event, value) => {
           setEventValue(event.target.value);
-        }}
-        onChangeValue={(value) => {
           setParsedValue(value);
         }}
         ref={ref}

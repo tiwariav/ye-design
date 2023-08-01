@@ -1,6 +1,8 @@
 import React, {
+  ChangeEvent,
   ChangeEventHandler,
   ComponentPropsWithRef,
+  FocusEvent,
   ReactElement,
   type ReactNode,
   Suspense,
@@ -13,6 +15,7 @@ import {
 } from "react-hook-form";
 import { SetOptional } from "type-fest";
 
+import { NumberLike } from "../../../tools/number.js";
 import FormError from "../FormError.js";
 
 const ErrorMessage = React.lazy(() =>
@@ -22,28 +25,24 @@ const ErrorMessage = React.lazy(() =>
   })),
 );
 
+export type ChangeHandler = (
+  event: ChangeEvent<HTMLInputElement>,
+  value?: NumberLike,
+  shouldUpdate?: boolean,
+) => void;
+
 export type HookFormInputWrapperProps<TValues extends FieldValues> =
   SetOptional<ControllerProps<TValues>, "control" | "render"> & {
     children: ReactElement<
       ComponentPropsWithRef<"input"> & {
         format: boolean;
-        onChangeValue: (value: any) => void;
+        onChange: ChangeHandler;
         parse: boolean;
       }
     >;
     onChange?: ChangeEventHandler;
     showError?: boolean;
   };
-
-function prependToPropMethod<TMethod extends (...args: any[]) => any>(
-  method: TMethod,
-  propMethod?: TMethod,
-) {
-  return (...args: Parameters<TMethod>) => {
-    method(...args);
-    propMethod?.(...args);
-  };
-}
 
 export default function HookFormInputWrapper<TValues extends FieldValues>({
   children,
@@ -56,29 +55,27 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
     formState: { errors },
   } = useController({ name, ...props });
   const child = React.Children.only(children);
-  const changeHandlers = useMemo(() => {
-    return {
-      onChange:
-        child.props.parse || child.props.format
-          ? child.props.onChange
-          : prependToPropMethod(onChange, child.props.onChange),
-      onChangeValue:
-        child.props.parse || child.props.format
-          ? prependToPropMethod(onChange, child.props.onChangeValue)
-          : child.props.onChangeValue,
-    };
-  }, [
-    child.props.parse,
-    child.props.format,
-    child.props.onChange,
-    child.props.onChangeValue,
-    onChange,
-  ]);
+  const changeHandlers = useMemo(
+    () => ({
+      onBlur: (event: FocusEvent<HTMLInputElement>) => {
+        onBlur();
+        child.props.onBlur?.(event);
+      },
+      onChange: ((event, value, shouldUpdate) => {
+        if (shouldUpdate) {
+          onChange(value);
+        } else if (value === undefined) {
+          onChange(event);
+        }
+        child.props.onChange?.(event, value, shouldUpdate);
+      }) as ChangeHandler,
+    }),
+    [child.props, onBlur, onChange],
+  );
 
   return (
     <>
       {React.cloneElement(child, {
-        onBlur: prependToPropMethod(onBlur, child.props.onBlur),
         ...changeHandlers,
         ref,
         value,

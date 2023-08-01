@@ -5,6 +5,7 @@ import { SetRequired } from "type-fest";
 
 import HookForm from "../HookForm.js";
 import NumberInput, { NumberInputProps } from "../NumberInput/NumberInput.js";
+import PhoneNumberInput from "../PhoneNumberInput/PhoneNumberInput.js";
 import HookFormInputWrapper from "./HookFormInputWrapper.js";
 
 const metadata = {
@@ -46,6 +47,13 @@ function FormContent() {
           name="NumberInput (format and empty value)"
         />
         <InputWrapper format name="NumberInput (format & parse)" parse />
+        <HookFormInputWrapper name="Phone number">
+          <PhoneNumberInput
+            label="Phone number"
+            size="small"
+            variant="material"
+          />
+        </HookFormInputWrapper>
         <div>
           <label>Input</label>:{" "}
           <HookFormInputWrapper name="input">

@@ -6,6 +6,7 @@ import {
   ComponentPropsWithoutRef,
   ReactNode,
   forwardRef,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -46,6 +47,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       className,
+      defaultValue,
       iconAfter,
       iconBefore,
       id,
@@ -67,6 +69,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) => {
     const [hasFocus, setHasFocus] = useState(false);
+    const [hasValue, setHasValue] = useState(!isEmpty(value || defaultValue));
 
     const inputID = useMemo(() => id || uniqueId("textInput_"), [id]);
 
@@ -84,6 +87,11 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     };
 
     const [labelRef, { input }] = useMeasureInput();
+
+    useEffect(() => {
+      setHasValue(!isEmpty(value));
+    }, [value]);
+
     return (
       <div
         className={clsx(
@@ -92,14 +100,17 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           variant && styles[`is-${variant}`],
           {
             [styles.hasFocus]: hasFocus,
-
-            [styles.hasValue]: !isEmpty(value),
+            // eslint-disable-next-line css-modules/no-undef-class
+            [styles.hasValue]: hasValue,
           },
           className,
         )}
       >
         <Label
-          className={styles.label}
+          className={clsx(styles.label, {
+            [styles.paddedLeft]: iconBefore,
+            [styles.paddedRight]: iconAfter,
+          })}
           inputId={inputID}
           ref={labelRef}
           required={required}
@@ -126,7 +137,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             )}
             placeholder={
               variant === "material"
-                ? !isEmpty(value) || hasFocus
+                ? hasValue || hasFocus
                   ? placeholder
                   : ""
                 : placeholder
