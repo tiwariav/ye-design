@@ -22,7 +22,11 @@ export interface FromattedInputProps extends Omit<TextInputProps, "onChange"> {
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
-  onChange?: (event: ChangeEvent, value: any, shouldUpdate: boolean) => void;
+  onChange?: (
+    event: ChangeEvent<HTMLInputElement>,
+    value: any,
+    shouldUpdate: boolean
+  ) => void;
   parse?: (string, any) => any;
   value?: string;
 }
