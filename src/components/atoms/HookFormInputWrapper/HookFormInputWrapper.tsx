@@ -1,33 +1,41 @@
 import React, {
   ChangeEventHandler,
+  ComponentPropsWithRef,
   ReactElement,
   type ReactNode,
   Suspense,
+  useMemo,
 } from "react";
 import {
-  Controller,
   type ControllerProps,
   FieldValues,
-  useFormState,
+  useController,
 } from "react-hook-form";
 import { SetOptional } from "type-fest";
 
 import FormError from "../FormError.js";
 
 const ErrorMessage = React.lazy(() =>
-  import("@hookform/error-message").then((module_) => ({
-    default: module_.ErrorMessage,
+  import("@hookform/error-message").then(({ ErrorMessage }) => ({
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    default: ErrorMessage,
   })),
 );
 
 export type HookFormInputWrapperProps<TValues extends FieldValues> =
   SetOptional<ControllerProps<TValues>, "control" | "render"> & {
-    children: ReactElement;
+    children: ReactElement<
+      ComponentPropsWithRef<"input"> & {
+        format: boolean;
+        onChangeValue: (value: any) => void;
+        parse: boolean;
+      }
+    >;
     onChange?: ChangeEventHandler;
     showError?: boolean;
   };
 
-function prependToPropMethod<TMethod extends (...args: unknown[]) => unknown>(
+function prependToPropMethod<TMethod extends (...args: any[]) => any>(
   method: TMethod,
   propMethod?: TMethod,
 ) {
@@ -39,44 +47,48 @@ function prependToPropMethod<TMethod extends (...args: unknown[]) => unknown>(
 
 export default function HookFormInputWrapper<TValues extends FieldValues>({
   children,
-  control,
   name,
-  showError = true,
+  showError,
   ...props
 }: HookFormInputWrapperProps<TValues>): ReactNode {
-  const { errors } = useFormState({ control });
+  const {
+    field: { onBlur, onChange, ref, value },
+    formState: { errors },
+  } = useController({ name, ...props });
+  const child = React.Children.only(children);
+  const changeHandlers = useMemo(() => {
+    return {
+      onChange:
+        child.props.parse || child.props.format
+          ? child.props.onChange
+          : prependToPropMethod(onChange, child.props.onChange),
+      onChangeValue:
+        child.props.parse || child.props.format
+          ? prependToPropMethod(onChange, child.props.onChangeValue)
+          : child.props.onChangeValue,
+    };
+  }, [
+    child.props.parse,
+    child.props.format,
+    child.props.onChange,
+    child.props.onChangeValue,
+    onChange,
+  ]);
+
   return (
     <>
-      <Controller
-        render={({
-          field: { onBlur: onBlurValue, onChange: onChangeValue, ref, value },
-        }) =>
-          React.cloneElement(children, {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            onBlur: prependToPropMethod(onBlurValue, children.props.onBlur),
-            onChange: prependToPropMethod(
-              onChangeValue,
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              children.props.onChange,
-            ),
-            onChangeValue,
-            ref,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            value,
-          })
-        }
-        control={control}
-        name={name}
-        {...props}
-      />
+      {React.cloneElement(child, {
+        onBlur: prependToPropMethod(onBlur, child.props.onBlur),
+        ...changeHandlers,
+        ref,
+        value,
+      })}
       {showError && (
         <Suspense>
           <ErrorMessage
-            render={({ messages }) =>
-              messages && <FormError messages={messages} />
-            }
             errors={errors}
             name={name}
+            render={({ messages }) => <FormError messages={messages} />}
           />
         </Suspense>
       )}

@@ -1,8 +1,8 @@
 import { Meta } from "@storybook/react";
 import { useEffect, useRef, useState } from "react";
 
-import { NanValue } from "../../../tools/number.js";
-import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
+import { NumberLike } from "../../../tools/number.js";
+import { FormattedInputProps } from "../FormattedInput/FormattedInput.js";
 import PhoneNumberInput from "./PhoneNumberInput.js";
 
 const Template = ({
@@ -10,10 +10,10 @@ const Template = ({
   iconBefore,
   width,
   ...args
-}: FromattedInputProps) => {
+}: FormattedInputProps) => {
   const [eventValue, setEventValue] = useState<string>();
   const [refValue, setRefValue] = useState<string>();
-  const [parsedValue, setParsedValue] = useState<NanValue>("");
+  const [parsedValue, setParsedValue] = useState<NumberLike>("");
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

@@ -8,24 +8,29 @@ import {
   useState,
 } from "react";
 
-import { NanValue } from "../../../tools/number.js";
+import { NumberLike } from "../../../tools/number.js";
 import { TextInputProps } from "../TextInput/TextInput.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./formattedInput.module.css";
 
-export interface FromattedInputProps extends TextInputProps {
-  emptyValue?: NanValue;
-  format?: (value: string) => string;
+export type FormattedInputParse = (
+  value: number | string | undefined,
+  emptyValue: NumberLike,
+) => NumberLike;
+
+export interface FormattedInputProps extends TextInputProps {
+  emptyValue?: NumberLike;
+  format?: (value: NumberLike) => string | undefined;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
-  onChangeValue?: (value: NanValue) => void;
-  parse?: (value: string, emptyValue: NanValue) => NanValue;
-  value?: string;
+  onChangeValue?: (value: NumberLike) => void;
+  parse?: FormattedInputParse;
+  value?: number | string;
 }
 
-const FormattedInput = forwardRef<HTMLInputElement, FromattedInputProps>(
+const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
   (
     {
       defaultValue,
@@ -43,8 +48,12 @@ const FormattedInput = forwardRef<HTMLInputElement, FromattedInputProps>(
     },
     ref,
   ) => {
-    const [parsedValue, setParsedValue] = useState<NanValue>(value || "");
-    const [formattedValue, setFormattedValue] = useState("");
+    const [formattedValue, setFormattedValue] = useState<
+      number | string | undefined
+    >(format?.(defaultValue as NumberLike));
+    const [parsedValue, setParsedValue] = useState<NumberLike>(
+      parse?.(formattedValue, emptyValue),
+    );
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");
       return [numberId, "formattedInputText_" + numberId];
@@ -57,23 +66,24 @@ const FormattedInput = forwardRef<HTMLInputElement, FromattedInputProps>(
           ? format(event.target.value)
           : event.target.value;
         setFormattedValue(formattedValue);
-        onChange && onChange(event);
-        // to update the value when input value is changed by user
         const newParsedValue = parse
           ? parse(formattedValue, emptyValue)
-          : event.target.value;
+          : formattedValue;
         setParsedValue(newParsedValue);
-        onChangeValue && onChangeValue(newParsedValue);
+        onChange?.(event);
       },
-      [emptyValue, format, onChange, onChangeValue, parse],
+      [emptyValue, format, onChange, parse],
     );
 
     useEffect(() => {
-      const newValue = value || defaultValue?.toString() || "";
-      const newFormattedValue = format ? format(newValue) : newValue;
-      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : newValue);
+      onChangeValue?.(parsedValue);
+    }, [onChangeValue, parsedValue]);
+
+    useEffect(() => {
+      const newFormattedValue = format ? format(value) : value;
+      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : value);
       setFormattedValue(newFormattedValue);
-    }, [emptyValue, format, parse, ref, value, defaultValue]);
+    }, [emptyValue, format, parse, value]);
 
     return (
       <div className={styles.root}>

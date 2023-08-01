@@ -66,9 +66,9 @@ export function formatNumberWithSuffix(
     : `${formattedNumber}${suffixString}`;
 }
 
-export type NanValue = null | number | string | undefined;
+export type NumberLike = null | number | string | undefined;
 
-export function stringToNumber(value: number | string, nanValue?: NanValue) {
+export function stringToNumber(value: number | string, nanValue?: NumberLike) {
   if (isNumber(value)) return value;
   const number = Number.parseFloat(
     isString(value) ? value.replaceAll(",", "") : value,

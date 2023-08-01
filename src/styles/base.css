@@ -205,6 +205,7 @@
   --ye-input-border-width: 0;
   --ye-input-border-radius: 3em;
   --ye-input-shadow: var(--ye-shadow-inset);
+  --ye-z-base: 1;
 
   /* COMPONENTS SPECIFIC */
 

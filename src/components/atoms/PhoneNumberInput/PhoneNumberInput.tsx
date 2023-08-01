@@ -1,9 +1,11 @@
 import { AsYouType, parsePhoneNumber } from "libphonenumber-js";
-import { isNil } from "lodash-es";
+import { isNil, isString } from "lodash-es";
 import { forwardRef, useCallback, useRef, useState } from "react";
 
+import { NumberLike } from "../../../tools/number.js";
 import FormattedInput, {
-  FromattedInputProps,
+  FormattedInputParse,
+  FormattedInputProps,
 } from "../FormattedInput/FormattedInput.js";
 
 // offset between uppercase ascii and regional indicator symbols
@@ -17,15 +19,15 @@ function getFlagEmoji(countryCode: string) {
     );
 }
 
-const PhoneNumberInput = forwardRef<HTMLInputElement, FromattedInputProps>(
+const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
   (props, ref) => {
-    const textValueRef = useRef("");
+    const textValueRef = useRef<NumberLike>();
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 
-    const formatFunction = useCallback((value: number | string) => {
+    const formatFunction = useCallback((value: NumberLike) => {
       if (isNil(value)) {
         textValueRef.current = value;
-        return "";
+        return;
       }
       value = value.toString();
       textValueRef.current = value;
@@ -37,10 +39,12 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FromattedInputProps>(
       return textValueRef.current.replaceAll(/[^\d+]/g, "");
     }, []);
 
-    const parseFunction = useCallback((formattedValue: string) => {
+    const parseFunction = useCallback<FormattedInputParse>((formattedValue) => {
       const textValue = textValueRef.current;
       if (isNil(textValue) || isNil(formattedValue)) return;
-      return formattedValue.replaceAll(" ", "");
+      return isString(formattedValue)
+        ? formattedValue.replaceAll(" ", "")
+        : formattedValue;
     }, []);
 
     return (

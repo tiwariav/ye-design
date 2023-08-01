@@ -38,7 +38,7 @@ export interface TextInputProps
   requiredText?: string;
   size?: (typeof TEXT_INPUT_SIZE_OPTIONS)[number];
   style?: CSSProperties;
-  value?: string;
+  value?: number | string;
   variant?: (typeof TEXT_INPUT_VARIANT_OPTIONS)[number];
 }
 

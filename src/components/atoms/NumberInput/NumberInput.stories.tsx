@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { useEffect, useRef, useState } from "react";
 
-import { NanValue } from "../../../tools/number.js";
+import { NumberLike } from "../../../tools/number.js";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput, { NumberInputProps } from "./NumberInput.js";
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof NumberInput>;
 const Template = ({ width = 240, ...args }: NumberInputProps) => {
   const [eventValue, setEventValue] = useState("");
   const [refValue, setRefValue] = useState("");
-  const [parsedValue, setParsedValue] = useState<NanValue>("");
+  const [parsedValue, setParsedValue] = useState<NumberLike>("");
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -38,7 +38,6 @@ const Template = ({ width = 240, ...args }: NumberInputProps) => {
         onChangeValue={(value) => {
           setParsedValue(value);
         }}
-        format={{ maximumFractionDigits: 0 }}
         placeholder="Enter your text"
         ref={ref}
         {...args}
@@ -105,4 +104,31 @@ export const PresetValue: Story = {
     format: true,
   },
   render: (args) => <PresetValueTemplate {...args} />,
+};
+
+const ManageStateWithPasedValueTemplate = (args: NumberInputProps) => {
+  const [value, setValue] = useState("");
+  return (
+    <div>
+      <Template
+        onChange={(event) => {
+          console.log(event.target.value);
+          setValue(event.target.value);
+        }}
+        onChangeValue={(parsedValue) => {
+          console.log(parsedValue);
+        }}
+        value={value}
+        {...args}
+      />
+    </div>
+  );
+};
+
+export const StateManagedWithParsedValue: Story = {
+  args: {
+    format: true,
+    parse: true,
+  },
+  render: (args) => <ManageStateWithPasedValueTemplate {...args} />,
 };

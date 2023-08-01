@@ -5,16 +5,18 @@ import styles from "./formError.module.css";
 const CustomError = ({
   messages,
 }: {
-  messages: MultipleFieldErrors | string;
+  messages?: MultipleFieldErrors | string;
 }) => {
   return (
-    <div className={styles.root}>
-      {Object.entries(messages).map(([type, message]) => (
-        <p className={styles.item} key={type}>
-          {message}
-        </p>
-      ))}
-    </div>
+    messages && (
+      <div className={styles.root}>
+        {Object.entries(messages).map(([type, message]) => (
+          <p className={styles.item} key={type}>
+            {message}
+          </p>
+        ))}
+      </div>
+    )
   );
 };
 

@@ -3,7 +3,7 @@
   --module-input-padding-right: var(--ye-spacing-rem-small);
   --module-input-padding-bottom: var(--ye-spacing-rem-small);
   --module-input-padding-left: var(--ye-spacing-rem-small);
-  --module-loader-z: calc(var(--z-index-base) + 2);
+  --module-loader-z: calc(var(--ye-z-base) + 2);
 
   position: relative;
   width: 100%;

@@ -3,15 +3,18 @@ import { forwardRef, useCallback, useRef } from "react";
 
 import {
   FormatNumberOptions,
-  NanValue,
+  NumberLike,
   formatNumber,
   stringToNumber,
 } from "../../../tools/number.js";
-import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
+import {
+  FormattedInputParse,
+  FormattedInputProps,
+} from "../FormattedInput/FormattedInput.js";
 import { FormattedInput } from "../FormattedInput/index.js";
 
 export interface NumberInputProps
-  extends Omit<FromattedInputProps, "format" | "parse" | "value"> {
+  extends Omit<FormattedInputProps, "format" | "parse" | "value"> {
   format?: FormatNumberOptions | boolean;
   parse?: boolean;
   value?: number | string;
@@ -19,13 +22,13 @@ export interface NumberInputProps
 
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   ({ format, parse, value, ...props }, ref) => {
-    const textValueRef = useRef("");
+    const textValueRef = useRef<NumberLike>();
 
     const formatFunction = useCallback(
-      (value: string) => {
+      (value: NumberLike) => {
         if (!format || isNil(value)) {
           textValueRef.current = value;
-          return "";
+          return;
         }
         value = value.toString();
         textValueRef.current = value;
@@ -53,12 +56,12 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
       [format],
     );
 
-    const parseFunction = useCallback(
-      (formattedValue: string, emptyValue: NanValue) => {
+    const parseFunction = useCallback<FormattedInputParse>(
+      (formattedValue, emptyValue) => {
         const textValue = textValueRef.current;
-        if (textValue === undefined) return "";
+        if (isNil(textValue)) return emptyValue;
         const unformattedValue = format
-          ? stringToNumber(formattedValue, emptyValue)
+          ? stringToNumber(formattedValue as number | string, emptyValue)
           : textValue;
         return parse || isNil(unformattedValue)
           ? unformattedValue
@@ -71,7 +74,8 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
       <FormattedInput
         format={format ? formatFunction : undefined}
         hiddenInputProps={{ type: "number" }}
-        parse={parse ? parseFunction : undefined}
+        inputMode="decimal"
+        parse={parseFunction}
         ref={ref}
         value={value?.toString()}
         {...props}

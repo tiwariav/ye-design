@@ -2,7 +2,6 @@
 
 ## [2.1.9](https://github.com/tiwariav/ye-design/compare/v2.1.8...v2.1.9) (2023-07-25)
 
-
 ### Bug Fixes
 
 * remove uploadFiles prop from fileinput ([cfab3f9](https://github.com/tiwariav/ye-design/commit/cfab3f9c8e261b249a335c3e247d0cab121c483d))
@@ -15,7 +14,6 @@
 
 ## [2.1.5](https://github.com/tiwariav/ye-design/compare/v2.1.4...v2.1.5) (2023-07-04)
 
-
 ### Bug Fixes
 
 * add miossing button variant type ([aee3309](https://github.com/tiwariav/ye-design/commit/aee3309eea74f40683c78dfe2feae3609f5143a3))
@@ -24,7 +22,6 @@
 
 ## [2.1.3](https://github.com/tiwariav/ye-design/compare/v2.1.2...v2.1.3) (2023-07-04)
 
-
 ### Bug Fixes
 
 * add missing attributes to Label component ([88f2726](https://github.com/tiwariav/ye-design/commit/88f2726108922c59c82483d48053d109a4983e41))
@@ -32,13 +29,11 @@
 
 ## [2.1.2](https://github.com/tiwariav/ye-design/compare/v2.1.1...v2.1.2) (2023-06-29)
 
-
 ### Bug Fixes
 
 * remove errors from TextInput ([21bcaa2](https://github.com/tiwariav/ye-design/commit/21bcaa204cfddeedc95a584bbaaa822b20b47f00))
 
 ## [2.1.1](https://github.com/tiwariav/ye-design/compare/v2.1.0...v2.1.1) (2023-06-29)
-
 
 ### Bug Fixes
 
@@ -48,27 +43,28 @@
 
 # [2.1.0](https://github.com/tiwariav/ye-design/compare/v2.0.0...v2.1.0) (2023-06-28)
 
-
 ### Features
 
 * add Label component ([f075ea2](https://github.com/tiwariav/ye-design/commit/f075ea2a5524b0c285df0c422b179602306a8401))
 
 # [2.0.0](https://github.com/tiwariav/ye-design/compare/v1.12.7...v2.0.0) (2023-06-21)
 
-
 ### Bug Fixes
 
 * TextInput style for non-material variants ([b496c46](https://github.com/tiwariav/ye-design/commit/b496c46e950d6736513137cb4dc60ca820071cee))
-
 
 ### BREAKING CHANGES
 
 * Input styles updated
 
+## [1.12.8](https://github.com/tiwariav/ye-design/compare/v1.12.7...v1.12.8) (2023-08-01)
+
+* add 1.x to release branches ([ce6918f](https://github.com/tiwariav/ye-design/commit/ce6918f439ef2963fde6606a02cd1a0f493154d2))
+* numberinput formatting with both format and parse ([425fe7b](https://github.com/tiwariav/ye-design/commit/425fe7b99f86f3b6a519feb9ed501e0d9b5d1f38))
+
 ## [1.12.7](https://github.com/tiwariav/ye-design/compare/v1.12.6...v1.12.7) (2023-06-13)
 
 ## [1.12.6](https://github.com/tiwariav/ye-design/compare/v1.12.5...v1.12.6) (2023-06-09)
-
 
 ### Bug Fixes
 
@@ -76,13 +72,11 @@
 
 ## [1.12.5](https://github.com/tiwariav/ye-design/compare/v1.12.4...v1.12.5) (2023-06-07)
 
-
 ### Bug Fixes
 
 * props name changed that was always truthy ([d7018f6](https://github.com/tiwariav/ye-design/commit/d7018f67d056c5283edc3526788a33b72fa36526))
 
 ## [1.12.4](https://github.com/tiwariav/ye-design/compare/v1.12.3...v1.12.4) (2023-06-05)
-
 
 ### Bug Fixes
 
@@ -90,13 +84,11 @@
 
 ## [1.12.3](https://github.com/tiwariav/ye-design/compare/v1.12.2...v1.12.3) (2023-06-05)
 
-
 ### Bug Fixes
 
 * add name prop to AntFormItemWrapperProps ([4bf0567](https://github.com/tiwariav/ye-design/commit/4bf05679749fab6cf9382a84fa6e167f0a8542eb))
 
 ## [1.12.2](https://github.com/tiwariav/ye-design/compare/v1.12.1...v1.12.2) (2023-06-05)
-
 
 ### Bug Fixes
 
@@ -105,7 +97,6 @@
 
 ## [1.12.1](https://github.com/tiwariav/ye-design/compare/v1.12.0...v1.12.1) (2023-06-02)
 
-
 ### Bug Fixes
 
 * rollup config path in package.json ([cba4a8f](https://github.com/tiwariav/ye-design/commit/cba4a8f4d0f489841325a9301d23476f0e85503b))
@@ -113,13 +104,11 @@
 
 # [1.12.0](https://github.com/tiwariav/ye-design/compare/v1.11.2...v1.12.0) (2023-06-01)
 
-
 ### Features
 
 * add phone number input ([9223f36](https://github.com/tiwariav/ye-design/commit/9223f3646cba04a7211d876189ae1a464308c5fc))
 
 ## [1.11.2](https://github.com/tiwariav/ye-design/compare/v1.11.1...v1.11.2) (2023-05-31)
-
 
 ### Bug Fixes
 
@@ -127,18 +116,15 @@
 
 ## [1.11.1](https://github.com/tiwariav/ye-design/compare/v1.11.0...v1.11.1) (2023-05-29)
 
-
 ### Bug Fixes
 
 * remove hardocded debug statements from NumberInput ([b35c00f](https://github.com/tiwariav/ye-design/commit/b35c00f4e1b1e956428384dc59351074a60018c2))
 
 # [1.11.0](https://github.com/tiwariav/ye-design/compare/v1.10.4...v1.11.0) (2023-05-29)
 
-
 ### Bug Fixes
 
 * password input visibility ([d2b6743](https://github.com/tiwariav/ye-design/commit/d2b6743528992f266a82911c542b495bd398a6d6))
-
 
 ### Features
 
@@ -150,7 +136,6 @@
 
 ## [1.10.2](https://github.com/tiwariav/ye-design/compare/v1.10.1...v1.10.2) (2023-04-26)
 
-
 ### Bug Fixes
 
 * added emptyvalue prop to numberinput ([8719cc9](https://github.com/tiwariav/ye-design/commit/8719cc946bb360780d015f252602e1b19655623a))
@@ -159,13 +144,11 @@
 
 ## [1.10.1](https://github.com/tiwariav/ye-design/compare/v1.10.0...v1.10.1) (2023-04-24)
 
-
 ### Bug Fixes
 
 * added inital value for textinput ([dbe133f](https://github.com/tiwariav/ye-design/commit/dbe133fe06b46de2fa0497ce35221408d5a81f4c))
 
 # [1.10.0](https://github.com/tiwariav/ye-design/compare/v1.9.4...v1.10.0) (2023-04-19)
-
 
 ### Features
 
@@ -173,13 +156,11 @@
 
 ## [1.9.4](https://github.com/tiwariav/ye-design/compare/v1.9.3...v1.9.4) (2023-04-07)
 
-
 ### Bug Fixes
 
 * tsconfig for jest and rollup ([b21b878](https://github.com/tiwariav/ye-design/commit/b21b87851fbd7b31e57ab2302379a3a7b93f1173))
 
 ## [1.9.3](https://github.com/tiwariav/ye-design/compare/v1.9.2...v1.9.3) (2023-04-06)
-
 
 ### Bug Fixes
 
@@ -189,13 +170,11 @@
 
 ## [1.9.1](https://github.com/tiwariav/ye-design/compare/v1.9.0...v1.9.1) (2023-04-05)
 
-
 ### Bug Fixes
 
 * input innerClassNamse default ([c805be1](https://github.com/tiwariav/ye-design/commit/c805be1c8f531b2748a785c2750b2198b9d27421))
 
 # [1.9.0](https://github.com/tiwariav/ye-design/compare/v1.8.2...v1.9.0) (2023-04-05)
-
 
 ### Features
 
@@ -207,13 +186,11 @@
 
 # [1.8.0](https://github.com/tiwariav/ye-design/compare/v1.7.9...v1.8.0) (2023-03-22)
 
-
 ### Features
 
 * add fractionDigits to formatNumber for simpler cases ([ea3c0ac](https://github.com/tiwariav/ye-design/commit/ea3c0ace5f32267b3ba1e436b993a3af1050d09e))
 
 ## [1.7.9](https://github.com/tiwariav/ye-design/compare/v1.7.8...v1.7.9) (2023-03-21)
-
 
 ### Bug Fixes
 
@@ -221,13 +198,11 @@
 
 ## [1.7.8](https://github.com/tiwariav/ye-design/compare/v1.7.7...v1.7.8) (2023-03-17)
 
-
 ### Bug Fixes
 
 * fix error on number input in format function ([25193b5](https://github.com/tiwariav/ye-design/commit/25193b5e7996d7a886fa078ec048d41cf00942b7))
 
 ## [1.7.7](https://github.com/tiwariav/ye-design/compare/v1.7.6...v1.7.7) (2023-03-16)
-
 
 ### Bug Fixes
 
@@ -235,20 +210,17 @@
 
 ## [1.7.6](https://github.com/tiwariav/ye-design/compare/v1.7.5...v1.7.6) (2023-03-15)
 
-
 ### Bug Fixes
 
 * default min fraction digits ([2f36a53](https://github.com/tiwariav/ye-design/commit/2f36a530166e01614fcafeedb73634f4982827ae))
 
 ## [1.7.5](https://github.com/tiwariav/ye-design/compare/v1.7.4...v1.7.5) (2023-03-15)
 
-
 ### Bug Fixes
 
 * format number relation between min and max fraction ([f4df44d](https://github.com/tiwariav/ye-design/commit/f4df44ddb2b590cae2cd4b64403c506b518001dd))
 
 ## [1.7.4](https://github.com/tiwariav/ye-design/compare/v1.7.3...v1.7.4) (2023-03-15)
-
 
 ### Bug Fixes
 
@@ -259,7 +231,6 @@
 
 ## [1.7.2](https://github.com/tiwariav/ye-design/compare/v1.7.1...v1.7.2) (2023-03-10)
 
-
 ### Bug Fixes
 
 * fix storybook config import ([97cec80](https://github.com/tiwariav/ye-design/commit/97cec809c4f70f8243c0d1f1772752ceca1250f3))
@@ -268,13 +239,11 @@
 
 # [1.7.0](https://github.com/tiwariav/ye-design/compare/v1.6.12...v1.7.0) (2023-03-03)
 
-
 ### Features
 
 * mark sideEffects as false for webpack ([5e813f2](https://github.com/tiwariav/ye-design/commit/5e813f2a6c997f7741d671f02372c0071e76ad91))
 
 ## [1.6.12](https://github.com/tiwariav/ye-design/compare/v1.6.11...v1.6.12) (2023-03-02)
-
 
 ### Bug Fixes
 
@@ -282,13 +251,11 @@
 
 ## [1.6.11](https://github.com/tiwariav/ye-design/compare/v1.6.10...v1.6.11) (2023-02-18)
 
-
 ### Bug Fixes
 
 * fix react-icons imports ([d2d8c6d](https://github.com/tiwariav/ye-design/commit/d2d8c6dc80d395143e7c68fc8888fbd4dab0fe34))
 
 ## [1.6.10](https://github.com/tiwariav/ye-design/compare/v1.6.9...v1.6.10) (2023-02-16)
-
 
 ### Bug Fixes
 
@@ -296,20 +263,17 @@
 
 ## [1.6.9](https://github.com/tiwariav/ye-design/compare/v1.6.8...v1.6.9) (2023-02-15)
 
-
 ### Performance Improvements
 
 * update react-icons import to esm ([cd820d8](https://github.com/tiwariav/ye-design/commit/cd820d813df3dc114b55edf68c80cc5dd852f559))
 
 ## [1.6.8](https://github.com/tiwariav/ye-design/compare/v1.6.7...v1.6.8) (2023-02-14)
 
-
 ### Bug Fixes
 
 * fix page sidenav responsive breakpoints ([4ca6fa2](https://github.com/tiwariav/ye-design/commit/4ca6fa242ad9c7e12fb75bb4b1856e27cfe2bdbb))
 
 ## [1.6.7](https://github.com/tiwariav/ye-design/compare/v1.6.6...v1.6.7) (2023-02-12)
-
 
 ### Performance Improvements
 
@@ -318,13 +282,11 @@
 
 ## [1.6.6](https://github.com/tiwariav/ye-design/compare/v1.6.5...v1.6.6) (2023-02-11)
 
-
 ### Performance Improvements
 
 * udpate packages ([8c66561](https://github.com/tiwariav/ye-design/commit/8c665610a511839342183d8381cb996aa2f7fec3))
 
 ## [1.6.5](https://github.com/tiwariav/ye-design/compare/v1.6.4...v1.6.5) (2023-02-11)
-
 
 ### Performance Improvements
 
@@ -332,13 +294,11 @@
 
 ## [1.6.4](https://github.com/tiwariav/ye-design/compare/v1.6.3...v1.6.4) (2023-02-11)
 
-
 ### Bug Fixes
 
 * remove box-shadow-inset variable causing unknown error ([95bf501](https://github.com/tiwariav/ye-design/commit/95bf501013c2ebdbc907e659b150fe80c5a0eec2))
 
 ## [1.6.3](https://github.com/tiwariav/ye-design/compare/v1.6.2...v1.6.3) (2023-02-10)
-
 
 ### Bug Fixes
 
@@ -346,13 +306,11 @@
 
 ## [1.6.2](https://github.com/tiwariav/ye-design/compare/v1.6.1...v1.6.2) (2023-02-09)
 
-
 ### Bug Fixes
 
 * improve typing ([3028cbb](https://github.com/tiwariav/ye-design/commit/3028cbb7a7e77212924ce45ac8410ae4b03fa3a9))
 
 ## [1.6.1](https://github.com/tiwariav/ye-design/compare/v1.6.0...v1.6.1) (2023-02-05)
-
 
 ### Performance Improvements
 
@@ -360,13 +318,11 @@
 
 # [1.6.0](https://github.com/tiwariav/ye-design/compare/v1.5.2...v1.6.0) (2023-02-04)
 
-
 ### Features
 
 * add display font family type ([6011a95](https://github.com/tiwariav/ye-design/commit/6011a95b2902251e5216503ad2c8f3d40f80050f))
 
 ## [1.5.2](https://github.com/tiwariav/ye-design/compare/v1.5.1...v1.5.2) (2023-01-27)
-
 
 ### Performance Improvements
 
@@ -374,13 +330,11 @@
 
 ## [1.5.1](https://github.com/tiwariav/ye-design/compare/v1.5.0...v1.5.1) (2023-01-24)
 
-
 ### Bug Fixes
 
 * rollup postcss config for custom media queries ([97250a9](https://github.com/tiwariav/ye-design/commit/97250a9ece31eeebbe62b0f6d9354f65aad91970))
 
 # [1.5.0](https://github.com/tiwariav/ye-design/compare/v1.4.7...v1.5.0) (2023-01-24)
-
 
 ### Features
 
@@ -388,11 +342,9 @@
 
 ## [1.4.7](https://github.com/tiwariav/ye-design/compare/v1.4.6...v1.4.7) (2023-01-21)
 
-
 ### Bug Fixes
 
 * circleprogress using nan as stroke offset ([d1e0634](https://github.com/tiwariav/ye-design/commit/d1e0634386e04570d4d99f88e5ce1a7003189890))
-
 
 ### Performance Improvements
 
@@ -400,13 +352,11 @@
 
 ## [1.4.6](https://github.com/tiwariav/ye-design/compare/v1.4.5...v1.4.6) (2023-01-19)
 
-
 ### Performance Improvements
 
 * update packages ([622452c](https://github.com/tiwariav/ye-design/commit/622452c2011179f62967d43f609c3649bc9c7426))
 
 ## [1.4.5](https://github.com/tiwariav/ye-design/compare/v1.4.4...v1.4.5) (2023-01-11)
-
 
 ### Bug Fixes
 
@@ -414,13 +364,11 @@
 
 ## [1.4.4](https://github.com/tiwariav/ye-design/compare/v1.4.3...v1.4.4) (2023-01-11)
 
-
 ### Performance Improvements
 
 * update packages ([e88ddfc](https://github.com/tiwariav/ye-design/commit/e88ddfc7cecba255f775d616daa544df5fbbba26))
 
 ## [1.4.3](https://github.com/tiwariav/ye-design/compare/v1.4.2...v1.4.3) (2023-01-11)
-
 
 ### Bug Fixes
 
@@ -428,13 +376,11 @@
 
 ## [1.4.2](https://github.com/tiwariav/ye-design/compare/v1.4.1...v1.4.2) (2023-01-09)
 
-
 ### Bug Fixes
 
 * hook import ([2995c28](https://github.com/tiwariav/ye-design/commit/2995c28d2be7a4a2a69fa545c6343ddc817f436e))
 
 ## [1.4.1](https://github.com/tiwariav/ye-design/compare/v1.4.0...v1.4.1) (2023-01-09)
-
 
 ### Performance Improvements
 
@@ -442,11 +388,9 @@
 
 # [1.4.0](https://github.com/tiwariav/ye-design/compare/v1.3.23...v1.4.0) (2023-01-08)
 
-
 ### Bug Fixes
 
 * rollup config for styles ([826583a](https://github.com/tiwariav/ye-design/commit/826583aef39908985f9d3cf38c262cb1b6efddc4))
-
 
 ### Features
 
@@ -454,13 +398,11 @@
 
 ## [1.3.23](https://github.com/tiwariav/ye-design/compare/v1.3.22...v1.3.23) (2023-01-07)
 
-
 ### Bug Fixes
 
 * remove repeated conditions from topnav ([0a6b87a](https://github.com/tiwariav/ye-design/commit/0a6b87a2bf7364cb476bfb1a57926b263d9ede48))
 
 ## [1.3.22](https://github.com/tiwariav/ye-design/compare/v1.3.21...v1.3.22) (2023-01-06)
-
 
 ### Bug Fixes
 
@@ -468,13 +410,11 @@
 
 ## [1.3.21](https://github.com/tiwariav/ye-design/compare/v1.3.20...v1.3.21) (2023-01-06)
 
-
 ### Bug Fixes
 
 * topnav design for mobile ([64fb118](https://github.com/tiwariav/ye-design/commit/64fb118fb2c9bb5c4281f10bd11b4a5af5b8283f))
 
 ## [1.3.20](https://github.com/tiwariav/ye-design/compare/v1.3.19...v1.3.20) (2022-12-29)
-
 
 ### Bug Fixes
 
@@ -482,13 +422,11 @@
 
 ## [1.3.19](https://github.com/tiwariav/ye-design/compare/v1.3.18...v1.3.19) (2022-12-26)
 
-
 ### Bug Fixes
 
 * number input empty when backspace ([4c5e239](https://github.com/tiwariav/ye-design/commit/4c5e239d6fe1c6d9b617d5fbe47755b4d9c67f32))
 
 ## [1.3.18](https://github.com/tiwariav/ye-design/compare/v1.3.17...v1.3.18) (2022-12-26)
-
 
 ### Bug Fixes
 
@@ -496,13 +434,11 @@
 
 ## [1.3.17](https://github.com/tiwariav/ye-design/compare/v1.3.16...v1.3.17) (2022-12-26)
 
-
 ### Bug Fixes
 
 * storybook configxx ([a506b3d](https://github.com/tiwariav/ye-design/commit/a506b3df0b293d87f26ba554f01bff7b8d867550))
 
 ## [1.3.16](https://github.com/tiwariav/ye-design/compare/v1.3.15...v1.3.16) (2022-12-26)
-
 
 ### Bug Fixes
 
@@ -510,13 +446,11 @@
 
 ## [1.3.15](https://github.com/tiwariav/ye-design/compare/v1.3.14...v1.3.15) (2022-12-21)
 
-
 ### Bug Fixes
 
 * circle stroke value for 0 percent ([f05cf51](https://github.com/tiwariav/ye-design/commit/f05cf5110df2fce7e2846f19bf66002a981483bd))
 
 ## [1.3.14](https://github.com/tiwariav/ye-design/compare/v1.3.13...v1.3.14) (2022-12-19)
-
 
 ### Bug Fixes
 
@@ -525,13 +459,11 @@
 
 ## [1.3.13](https://github.com/tiwariav/ye-design/compare/v1.3.12...v1.3.13) (2022-12-08)
 
-
 ### Bug Fixes
 
 * remove html overflow auto and change height to min-height ([a1b380e](https://github.com/tiwariav/ye-design/commit/a1b380e0f75d824efb85cfb2f6a14f2fddaf45fd))
 
 ## [1.3.12](https://github.com/tiwariav/ye-design/compare/v1.3.11...v1.3.12) (2022-12-08)
-
 
 ### Bug Fixes
 
@@ -539,13 +471,11 @@
 
 ## [1.3.11](https://github.com/tiwariav/ye-design/compare/v1.3.10...v1.3.11) (2022-12-07)
 
-
 ### Bug Fixes
 
 * topnav conditions for mobile view ([bf7952f](https://github.com/tiwariav/ye-design/commit/bf7952f358a893cadf65d97f9ef1694e747ca137))
 
 ## [1.3.10](https://github.com/tiwariav/ye-design/compare/v1.3.9...v1.3.10) (2022-12-07)
-
 
 ### Bug Fixes
 
@@ -553,13 +483,11 @@
 
 ## [1.3.9](https://github.com/tiwariav/ye-design/compare/v1.3.8...v1.3.9) (2022-11-23)
 
-
 ### Bug Fixes
 
 * revert antd to v4 ([f5f9607](https://github.com/tiwariav/ye-design/commit/f5f96070fb8203b7c00d3c97f400bba50afda96d))
 
 ## [1.3.8](https://github.com/tiwariav/ye-design/compare/v1.3.7...v1.3.8) (2022-11-23)
-
 
 ### Bug Fixes
 
@@ -567,13 +495,11 @@
 
 ## [1.3.7](https://github.com/tiwariav/ye-design/compare/v1.3.6...v1.3.7) (2022-11-21)
 
-
 ### Bug Fixes
 
 * revert antd upgrade ([d4362fa](https://github.com/tiwariav/ye-design/commit/d4362fa66eb4a10f2cdd7893b1790cdc6162b066))
 
 ## [1.3.6](https://github.com/tiwariav/ye-design/compare/v1.3.5...v1.3.6) (2022-11-20)
-
 
 ### Bug Fixes
 
@@ -581,13 +507,11 @@
 
 ## [1.3.5](https://github.com/tiwariav/ye-design/compare/v1.3.4...v1.3.5) (2022-11-19)
 
-
 ### Bug Fixes
 
 * update package versions ([27e8840](https://github.com/tiwariav/ye-design/commit/27e8840261c7c0b238af628203d1cf2a773df930))
 
 ## [1.3.4](https://github.com/tiwariav/ye-design/compare/v1.3.3...v1.3.4) (2022-11-13)
-
 
 ### Bug Fixes
 
@@ -600,13 +524,11 @@
 
 ## [1.3.3](https://github.com/tiwariav/ye-design/compare/v1.3.2...v1.3.3) (2022-11-04)
 
-
 ### Bug Fixes
 
 * update package versions ([b730aba](https://github.com/tiwariav/ye-design/commit/b730abaf2c43eaa8334d9e2437cc8a8a30aaed74))
 
 ## [1.3.2](https://github.com/tiwariav/ye-design/compare/v1.3.1...v1.3.2) (2022-11-03)
-
 
 ### Bug Fixes
 
@@ -614,13 +536,11 @@
 
 ## [1.3.1](https://github.com/tiwariav/ye-design/compare/v1.3.0...v1.3.1) (2022-11-01)
 
-
 ### Bug Fixes
 
 * package lock ([ea16476](https://github.com/tiwariav/ye-design/commit/ea164769b2a663161c82132b4e0cdd8ce75cdedc))
 
 ## [1.3.0](https://github.com/tiwariav/ye-design/compare/v1.2.0...v1.3.0) (2022-11-01)
-
 
 ### Features
 
@@ -628,14 +548,12 @@
 
 ## [1.2.0](https://github.com/tiwariav/ye-design/compare/v1.0.0...v1.2.0) (2022-10-29)
 
-
 ### Bug Fixes
 
 * hide right icon for no data ([73010a9](https://github.com/tiwariav/ye-design/commit/73010a9350eb9e7ac4b5231fbda4aea9cd2b11de))
 * topnav banner css ([dcfcfb9](https://github.com/tiwariav/ye-design/commit/dcfcfb9c511934814295f0cb0ea21590cd8e9592))
 
 ## 1.0.0 (2022-09-23)
-
 
 ### ⚠ BREAKING CHANGES
 
@@ -667,7 +585,6 @@
 * spinkit loaders ([ae0d8de](https://github.com/tiwariav/ye-design/commit/ae0d8de7b842300e796b7fcbddd370ccfc0250c1))
 * symbol ([fb4d40f](https://github.com/tiwariav/ye-design/commit/fb4d40fa5e4931fe4c20774382cbebfc604077ab))
 * topnav drawer ([970aae1](https://github.com/tiwariav/ye-design/commit/970aae18cd4a3643e996a53970b16ffa736deb81))
-
 
 ### Bug Fixes
 
@@ -707,7 +624,6 @@
 * textinput placeholder for non material variants ([031affc](https://github.com/tiwariav/ye-design/commit/031affcd791c140750b52bef724816ef61a68c2b))
 * top nav fixed ([77b94ee](https://github.com/tiwariav/ye-design/commit/77b94ee1e08c0301cbe8f7e9a42884635123bef4))
 * topnav banner style ([8f821a0](https://github.com/tiwariav/ye-design/commit/8f821a0b79e684606819e2334575161b745b672d))
-
 
 ### Code Refactoring
 
