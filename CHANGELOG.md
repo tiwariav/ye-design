@@ -1,3 +1,10 @@
+## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
+
+
+### Bug Fixes
+
+* FormattedInput initial values ([35de969](https://github.com/tiwariav/ye-design/commit/35de9693da598dc243baf5286abd0cdbee8bec16))
+
 ## [1.12.8](https://github.com/tiwariav/ye-design/compare/v1.12.7...v1.12.8) (2023-08-01)
 
 
