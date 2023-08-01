@@ -46,7 +46,7 @@ export default forwardRef(
       format?.(defaultValue)
     );
     const [formattedValue, setFormattedValue] = useState<string | undefined>(
-      parse?.(parsedValue) || ""
+      parse?.(parsedValue, emptyValue) || ""
     );
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");
