@@ -1,3 +1,11 @@
+## [2.1.11](https://github.com/tiwariav/ye-design/compare/v2.1.10...v2.1.11) (2023-08-01)
+
+
+### Bug Fixes
+
+* add 1.x to release branches ([ce6918f](https://github.com/tiwariav/ye-design/commit/ce6918f439ef2963fde6606a02cd1a0f493154d2))
+* numberinput formatting with both format and parse ([425fe7b](https://github.com/tiwariav/ye-design/commit/425fe7b99f86f3b6a519feb9ed501e0d9b5d1f38))
+
 ## [2.1.10](https://github.com/tiwariav/ye-design/compare/v2.1.9...v2.1.10) (2023-07-29)
 
 ## [2.1.9](https://github.com/tiwariav/ye-design/compare/v2.1.8...v2.1.9) (2023-07-25)
