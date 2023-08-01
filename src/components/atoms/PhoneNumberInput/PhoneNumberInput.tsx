@@ -1,4 +1,9 @@
-import { AsYouType, parsePhoneNumber } from "libphonenumber-js";
+import {
+  AsYouType,
+  ParseError,
+  PhoneNumber,
+  parsePhoneNumber,
+} from "libphonenumber-js";
 import { isNil, isString } from "lodash-es";
 import { forwardRef, useCallback, useRef, useState } from "react";
 
@@ -19,6 +24,16 @@ function getFlagEmoji(countryCode: string) {
     );
 }
 
+function getPhoneNumber(value: string) {
+  try {
+    return parsePhoneNumber(value, "IN");
+  } catch (error) {
+    if (!(error instanceof ParseError && error.message === "TOO_SHORT")) {
+      throw error;
+    }
+  }
+}
+
 const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
   (props, ref) => {
     const textValueRef = useRef<NumberLike>();
@@ -31,12 +46,11 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       }
       value = value.toString();
       textValueRef.current = value;
-      const phoneNumber = parsePhoneNumber(value, "IN");
-      if (phoneNumber?.country) {
-        setFlag(getFlagEmoji(phoneNumber.country));
-        return new AsYouType().input(value);
-      }
-      return textValueRef.current.replaceAll(/[^\d+]/g, "");
+      const phoneNumber = getPhoneNumber(value) as PhoneNumber;
+      if (!phoneNumber?.country)
+        return textValueRef.current.replaceAll(/[^\d+]/g, "");
+      setFlag(getFlagEmoji(phoneNumber.country));
+      return new AsYouType().input(value);
     }, []);
 
     const parseFunction = useCallback<FormattedInputParse>((formattedValue) => {
