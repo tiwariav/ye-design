@@ -42,11 +42,11 @@ export default forwardRef(
     }: FromattedInputProps,
     ref: MutableRefObject<HTMLInputElement>
   ) => {
-    const [parsedValue, setParsedValue] = useState<string | undefined>(
+    const [formattedValue, setFormattedValue] = useState<string | undefined>(
       format?.(defaultValue)
     );
-    const [formattedValue, setFormattedValue] = useState<string | undefined>(
-      parse?.(parsedValue, emptyValue) || ""
+    const [parsedValue, setParsedValue] = useState<string | undefined>(
+      parse?.(formattedValue, emptyValue)
     );
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
       const numberId = id || uniqueId("formattedInput_");

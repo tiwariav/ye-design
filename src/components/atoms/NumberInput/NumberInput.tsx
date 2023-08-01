@@ -19,7 +19,7 @@ export default forwardRef(
     { format, formatOptions = {}, parse, ...props }: NumberInputProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const textValueRef = useRef("");
+    const textValueRef = useRef();
 
     const formatFunction = useCallback(
       (value) => {
@@ -54,7 +54,7 @@ export default forwardRef(
     const parseFunction = useCallback(
       (formattedValue, emptyValue) => {
         const textValue = textValueRef.current;
-        if (textValue === undefined) return;
+        if (isNil(textValue)) return emptyValue;
         const unformattedValue = format
           ? stringToNumber(formattedValue, emptyValue)
           : textValue;
