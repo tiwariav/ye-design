@@ -7,7 +7,7 @@ import { ReactNode, useMemo } from "react";
 
 import styles from "./circleProgress.module.css";
 
-function getProgressClass(percentage: number) {
+export function getProgressClass(percentage: number) {
   if (percentage <= 0) {
     return "progressNone";
   } else if (percentage < 100) {
@@ -90,7 +90,6 @@ interface CircleProgressProps {
   arcHeight?: number;
   children?: ReactNode;
   className?: string;
-  color?: string;
   innerClassNames?: {
     circleBackground?: string;
     progressFull?: string;
@@ -160,7 +159,10 @@ export default function CircleProgress({
         width={squareSize}
       >
         <circle
-          className={styles.circleBackground}
+          className={clsx(
+            styles.circleBackground,
+            innerClassNames.circleBackground,
+          )}
           cx={squareSize / 2}
           cy={squareSize / 2}
           r={initData.radius}

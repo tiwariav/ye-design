@@ -5,11 +5,9 @@ import CircleProgress from "./CircleProgress.js";
 const metadata: Meta<typeof CircleProgress> = {
   argTypes: {
     arcHeight: { control: { max: 100, min: 0, type: "range" } },
-    color: { control: "color" },
   },
   args: {
     arcHeight: 100,
-    color: "var(--ye-color-primary)",
     progress: [25, 100],
     progressText: "percent",
     squareSize: 100,
