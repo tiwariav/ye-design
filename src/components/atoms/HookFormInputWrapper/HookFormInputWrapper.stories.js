@@ -21,6 +21,9 @@ function InputWrapper({ control, name, ...props }) {
 
 const Template = () => {
   const { control, watch } = useForm({
+    defaultValues: {
+      "NumberInput (format with default)": "1234",
+    },
     mode: "onChange",
   });
   const watchAll = watch();
@@ -36,6 +39,11 @@ const Template = () => {
       >
         <InputWrapper control={control} name={"NumberInput"} />
         <InputWrapper control={control} format name={"NumberInput (format)"} />
+        <InputWrapper
+          control={control}
+          format
+          name={"NumberInput (format with default)"}
+        />
         <InputWrapper
           control={control}
           emptyValue={null}

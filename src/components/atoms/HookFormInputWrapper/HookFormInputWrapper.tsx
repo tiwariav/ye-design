@@ -10,12 +10,14 @@ interface HookFormInputWrapperProps {
 
 export default function HookFormInputWrapper({
   children,
+  name,
   ...props
 }: HookFormInputWrapperProps): ReactElement {
   const {
     field: { onBlur, onChange, ref, value },
     fieldState: { error },
-  } = useController(props);
+    formState: { defaultValues },
+  } = useController({ name, ...props });
   const child = React.Children.only(children);
   const changeHandlers = useMemo(
     () => ({
@@ -40,9 +42,10 @@ export default function HookFormInputWrapper({
   );
 
   return React.cloneElement(child, {
+    defaultValue: defaultValues[name],
     error,
-    ...changeHandlers,
     ref,
     value,
+    ...changeHandlers,
   });
 }
