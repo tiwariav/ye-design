@@ -41,11 +41,18 @@ export default function HookFormInputWrapper({
     [child.props, onBlur, onChange]
   );
 
-  return React.cloneElement(child, {
-    defaultValue: defaultValues[name],
-    error,
-    ref,
-    value,
-    ...changeHandlers,
-  });
+  const cloneProps = useMemo(() => {
+    const response = {
+      error,
+      ref,
+      value,
+      ...changeHandlers,
+    } as typeof child.props;
+    if (defaultValues[name] !== undefined) {
+      response.defaultValue = defaultValues[name];
+    }
+    return response;
+  }, [changeHandlers, child, defaultValues, error, name, ref, value]);
+
+  return React.cloneElement(child, cloneProps);
 }
