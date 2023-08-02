@@ -1,14 +1,18 @@
 import { isNil } from "lodash-es";
 import { Ref, forwardRef, useCallback, useRef } from "react";
 
-import { formatNumber, stringToNumber } from "../../../tools/number.js";
+import {
+  FormatNumberProps,
+  formatNumber,
+  stringToNumber,
+} from "../../../tools/number.js";
 import { FromattedInputProps } from "../FormattedInput/FormattedInput.js";
 import { FormattedInput } from "../FormattedInput/index.js";
 
 export interface NumberInputProps
   extends Omit<FromattedInputProps, "format" | "parse"> {
   format?: boolean;
-  formatOptions?: object;
+  formatOptions?: FormatNumberProps;
   parse?: boolean;
 }
 
@@ -32,15 +36,19 @@ export default forwardRef(
         if (value.endsWith(".") || value === "-") {
           return value;
         }
+        const newValueDecimals = value.split(".")[1]?.length;
+        const minimumFractionDigits =
+          formatOptions.minimumFractionDigits ?? newValueDecimals ?? 0;
         const nullValue = value ? "0" : "";
         const formattedValue = formatNumber(value, {
-          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
           nullValue,
           ...formatOptions,
+          minimumFractionDigits,
         });
-        if (
-          value.split(".")[1]?.length > formattedValue.split(".")[1]?.length
-        ) {
+        if (newValueDecimals > formattedValue.split(".")[1]?.length) {
+          // if the input value decimals are more than format options,
+          // reduce the decimals for input to parseFucntion
           const newSplits = value.split(".");
           textValueRef.current = `${newSplits[0]}.${
             formattedValue.split(".")[1]

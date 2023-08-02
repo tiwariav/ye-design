@@ -1,6 +1,6 @@
 import { isFinite, isNumber, isString } from "lodash-es";
 
-interface FormatNumberProps extends Intl.NumberFormatOptions {
+export interface FormatNumberProps extends Intl.NumberFormatOptions {
   fractionDigits?: number;
   nullValue?: string;
 }
@@ -23,12 +23,15 @@ export function formatNumber(
     minimumFractionDigits ?? fractionDigits,
     isString(value) && value.endsWith(".") ? 1 : 0
   );
+  const adjustedMaxFractionDigits =
+    maximumFractionDigits ??
+    Math.max(fractionDigits, adjustedMinFractionDigits);
   return number.toLocaleString("en-IN", {
-    maximumFractionDigits: Math.max(
-      maximumFractionDigits ?? fractionDigits,
-      adjustedMinFractionDigits
+    maximumFractionDigits: adjustedMaxFractionDigits,
+    minimumFractionDigits: Math.min(
+      adjustedMinFractionDigits,
+      adjustedMaxFractionDigits
     ),
-    minimumFractionDigits: adjustedMinFractionDigits,
     ...options,
   });
 }

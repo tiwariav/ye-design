@@ -50,9 +50,9 @@ export default forwardRef(
   ) => {
     const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<string | undefined>(
-      format?.(defaultValue)
+      () => format?.(defaultValue)
     );
-    const [parsedValue, setParsedValue] = useState<string | undefined>(
+    const [parsedValue, setParsedValue] = useState<string | undefined>(() =>
       parse?.(formattedValue, emptyValue)
     );
     const currentParsedValue = useLatest(parsedValue);
@@ -83,10 +83,17 @@ export default forwardRef(
     );
 
     useEffect(() => {
+      // return if value is not modified and is empty, to avoid
+      // re-render for defaultValue
       if (!modified.current && !value) return;
       const newFormattedValue = format ? format(value) : value;
-      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : value);
-      setFormattedValue(newFormattedValue);
+      const newParsedValue = parse
+        ? parse(newFormattedValue, emptyValue)
+        : value;
+      setParsedValue(newParsedValue);
+      if (format && newFormattedValue !== format(newParsedValue)) {
+        setFormattedValue(newFormattedValue);
+      }
     }, [emptyValue, format, parse, value]);
 
     return (
