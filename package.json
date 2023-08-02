@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "1.12.10",
+  "version": "1.12.11",
   "type": "module",
   "sideEffects": false,
   "engines": {

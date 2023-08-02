@@ -1,3 +1,10 @@
+## [1.12.11](https://github.com/tiwariav/ye-design/compare/v1.12.10...v1.12.11) (2023-08-02)
+
+
+### Bug Fixes
+
+* number input formatting when ending in zeros after decimal ([018a85a](https://github.com/tiwariav/ye-design/commit/018a85ace269a369ef2f5099be71f6dc54e23bd7))
+
 ## [1.12.10](https://github.com/tiwariav/ye-design/compare/v1.12.9...v1.12.10) (2023-08-01)
 
 
