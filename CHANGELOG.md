@@ -1,3 +1,10 @@
+## [1.12.13](https://github.com/tiwariav/ye-design/compare/v1.12.12...v1.12.13) (2023-08-02)
+
+
+### Bug Fixes
+
+* disable defaultvalue override when undefined ([c8db795](https://github.com/tiwariav/ye-design/commit/c8db7955d173f0622ed5a9f714bf5016e24ba08b))
+
 ## [1.12.12](https://github.com/tiwariav/ye-design/compare/v1.12.11...v1.12.12) (2023-08-02)
 
 
