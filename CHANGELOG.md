@@ -1,3 +1,10 @@
+## [1.12.12](https://github.com/tiwariav/ye-design/compare/v1.12.11...v1.12.12) (2023-08-02)
+
+
+### Bug Fixes
+
+* enable defaultValue in HookFormInputWrapper ([aca6c25](https://github.com/tiwariav/ye-design/commit/aca6c25d630a40bb1a6481cfed18389d3d8c3e9f))
+
 ## [1.12.11](https://github.com/tiwariav/ye-design/compare/v1.12.10...v1.12.11) (2023-08-02)
 
 
