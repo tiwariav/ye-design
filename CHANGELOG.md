@@ -1,3 +1,10 @@
+## [1.12.10](https://github.com/tiwariav/ye-design/compare/v1.12.9...v1.12.10) (2023-08-01)
+
+
+### Bug Fixes
+
+* remove the usage of onChangeValue from FormattedInput ([2a11898](https://github.com/tiwariav/ye-design/commit/2a11898799b18abd5161d8d6fedf61107a9e56b5))
+
 ## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
 
 
