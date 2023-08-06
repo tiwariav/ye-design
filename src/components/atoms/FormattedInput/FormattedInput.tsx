@@ -89,11 +89,21 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     );
 
     useEffect(() => {
+      // return if value is not modified and is empty, to avoid
+      // re-render for defaultValue
       if (!modified.current && !value) return;
       const newFormattedValue = format ? format(value) : value;
-      setParsedValue(parse ? parse(newFormattedValue, emptyValue) : value);
-      setFormattedValue(newFormattedValue);
-    }, [emptyValue, format, parse, value]);
+      const newParsedValue = parse
+        ? parse(newFormattedValue, emptyValue)
+        : value;
+      if (!format || newParsedValue !== currentParsedValue.current) {
+        setFormattedValue(newFormattedValue);
+      }
+      setParsedValue(newParsedValue);
+      if (format && newFormattedValue !== format(newParsedValue)) {
+        setFormattedValue(newFormattedValue);
+      }
+    }, [currentParsedValue, emptyValue, format, parse, value]);
 
     return (
       <div className={styles.root}>

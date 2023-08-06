@@ -1,3 +1,29 @@
+## [1.12.13](https://github.com/tiwariav/ye-design/compare/v1.12.12...v1.12.13) (2023-08-02)
+
+### Bug Fixes
+
+* disable defaultvalue override when undefined ([c8db795](https://github.com/tiwariav/ye-design/commit/c8db7955d173f0622ed5a9f714bf5016e24ba08b))
+
+## [1.12.12](https://github.com/tiwariav/ye-design/compare/v1.12.11...v1.12.12) (2023-08-02)
+
+### Bug Fixes
+
+* enable defaultValue in HookFormInputWrapper ([aca6c25](https://github.com/tiwariav/ye-design/commit/aca6c25d630a40bb1a6481cfed18389d3d8c3e9f))
+
+## [1.12.11](https://github.com/tiwariav/ye-design/compare/v1.12.10...v1.12.11) (2023-08-02)
+
+### Bug Fixes
+
+* number input formatting when ending in zeros after decimal ([018a85a](https://github.com/tiwariav/ye-design/commit/018a85ace269a369ef2f5099be71f6dc54e23bd7))
+
+## [1.12.10](https://github.com/tiwariav/ye-design/compare/v1.12.9...v1.12.10) (2023-08-01)
+
+### Bug Fixes
+
+* remove the usage of onChangeValue from FormattedInput ([2a11898](https://github.com/tiwariav/ye-design/commit/2a11898799b18abd5161d8d6fedf61107a9e56b5))
+
+## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
+
 ## [2.1.11](https://github.com/tiwariav/ye-design/compare/v2.1.10...v2.1.11) (2023-08-01)
 
 ### Bug Fixes

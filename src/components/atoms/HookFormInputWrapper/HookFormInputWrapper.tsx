@@ -22,22 +22,20 @@ const ErrorMessage = React.lazy(() =>
   import("@hookform/error-message").then(({ ErrorMessage }) => ({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     default: ErrorMessage,
-  })),
+  }))
 );
 
 export type ChangeHandler = (
   event: ChangeEvent<HTMLInputElement>,
   value?: NumberLike,
-  shouldUpdate?: boolean,
+  shouldUpdate?: boolean
 ) => void;
 
 export type HookFormInputWrapperProps<TValues extends FieldValues> =
   SetOptional<ControllerProps<TValues>, "control" | "render"> & {
     children: ReactElement<
       ComponentPropsWithRef<"input"> & {
-        format: boolean;
         onChange: ChangeHandler;
-        parse: boolean;
       }
     >;
     onChange?: ChangeEventHandler;
@@ -52,7 +50,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
 }: HookFormInputWrapperProps<TValues>): ReactNode {
   const {
     field: { onBlur, onChange, ref, value },
-    formState: { errors },
+    formState: { defaultValues, errors },
   } = useController({ name, ...props });
   const child = React.Children.only(children);
   const changeHandlers = useMemo(
@@ -61,7 +59,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         onBlur();
         child.props.onBlur?.(event);
       },
-      onChange: ((event, value, shouldUpdate) => {
+      onChange: ((event, value, shouldUpdate = true) => {
         if (shouldUpdate) {
           onChange(value);
         } else if (value === undefined) {
@@ -70,16 +68,24 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         child.props.onChange?.(event, value, shouldUpdate);
       }) as ChangeHandler,
     }),
-    [child.props, onBlur, onChange],
+    [child.props, onBlur, onChange]
   );
+
+  const cloneProps = useMemo(() => {
+    const response = {
+      ref,
+      value,
+      ...changeHandlers,
+    } as typeof child.props;
+    if (defaultValues?.[name] !== undefined) {
+      response.defaultValue = defaultValues[name];
+    }
+    return response;
+  }, [changeHandlers, child, defaultValues, name, ref, value]);
 
   return (
     <>
-      {React.cloneElement(child, {
-        ...changeHandlers,
-        ref,
-        value,
-      })}
+      {React.cloneElement(child, cloneProps)}
       {showError && (
         <Suspense>
           <ErrorMessage
