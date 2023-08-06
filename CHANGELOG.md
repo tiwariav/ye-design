@@ -24,6 +24,14 @@
 
 ## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
 
+## [2.1.12](https://github.com/tiwariav/ye-design/compare/v2.1.11...v2.1.12) (2023-08-01)
+
+### Bug Fixes
+
+* add circleprogress classname ([4fcede5](https://github.com/tiwariav/ye-design/commit/4fcede5702625dc27d246e432a9cef018abb72b4))
+* FormattedInput initial values ([35de969](https://github.com/tiwariav/ye-design/commit/35de9693da598dc243baf5286abd0cdbee8bec16))
+* remove the usage of onChangeValue from FormattedInput ([2a11898](https://github.com/tiwariav/ye-design/commit/2a11898799b18abd5161d8d6fedf61107a9e56b5))
+
 ## [2.1.11](https://github.com/tiwariav/ye-design/compare/v2.1.10...v2.1.11) (2023-08-01)
 
 ### Bug Fixes
