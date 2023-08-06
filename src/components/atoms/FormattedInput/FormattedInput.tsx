@@ -90,11 +90,14 @@ export default forwardRef(
       const newParsedValue = parse
         ? parse(newFormattedValue, emptyValue)
         : value;
+      if (!format || newParsedValue !== currentParsedValue.current) {
+        setFormattedValue(newFormattedValue);
+      }
       setParsedValue(newParsedValue);
       if (format && newFormattedValue !== format(newParsedValue)) {
         setFormattedValue(newFormattedValue);
       }
-    }, [emptyValue, format, parse, value]);
+    }, [currentParsedValue, emptyValue, format, parse, value]);
 
     return (
       <div className={styles.root}>

@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
 
 import NumberInput from "../NumberInput/NumberInput.js";
 import PhoneNumberInput from "../PhoneNumberInput/PhoneNumberInput.js";
+import { Button } from "../index.js";
 import HookFormInputWrapper from "./HookFormInputWrapper.js";
 
 const metadata = {
@@ -20,12 +22,13 @@ function InputWrapper({ control, name, ...props }) {
 }
 
 const Template = () => {
-  const { control, watch } = useForm({
+  const { control, setValue, watch } = useForm({
     defaultValues: {
-      "NumberInput (format with default)": "1234",
+      "NumberInput (format with default)": "1234.1003",
     },
     mode: "onChange",
   });
+  const [updateValue, setUpdateValue] = useState(2000.001);
   const watchAll = watch();
   return (
     <div>
@@ -42,6 +45,7 @@ const Template = () => {
         <InputWrapper
           control={control}
           format
+          formatOptions={{ maximumFractionDigits: 4 }}
           name={"NumberInput (format with default)"}
         />
         <InputWrapper
@@ -68,6 +72,16 @@ const Template = () => {
           <HookFormInputWrapper control={control} name="input">
             <input />
           </HookFormInputWrapper>
+        </div>
+        <div>
+          <Button
+            onClick={() => {
+              setValue("NumberInput (format with default)", updateValue + 0.01);
+              setUpdateValue(updateValue + 0.01);
+            }}
+          >
+            Update Value
+          </Button>
         </div>
       </div>
       <div style={{ fontSize: ".75rem", fontWeight: 500, marginTop: "1rem" }}>
