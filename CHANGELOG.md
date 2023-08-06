@@ -1,3 +1,10 @@
+## [1.12.14](https://github.com/tiwariav/ye-design/compare/v1.12.13...v1.12.14) (2023-08-06)
+
+
+### Bug Fixes
+
+* text value without `format` option not working ([9cd18e9](https://github.com/tiwariav/ye-design/commit/9cd18e9d54adc30c73500a575fa2587aa7717c16))
+
 ## [1.12.13](https://github.com/tiwariav/ye-design/compare/v1.12.12...v1.12.13) (2023-08-02)
 
 
