@@ -1,4 +1,4 @@
-import { isFinite, isNumber, isString } from "lodash-es";
+import { isFinite, isNil, isNumber, isString } from "lodash-es";
 
 export interface FormatNumberOptions extends Intl.NumberFormatOptions {
   fractionDigits?: number;
@@ -11,22 +11,22 @@ export function formatNumber(
     fractionDigits = 2,
     maximumFractionDigits,
     minimumFractionDigits,
-    nullValue,
+    nullValue = "",
     ...options
-  }: FormatNumberOptions = {}
+  }: FormatNumberOptions = {},
 ) {
   const number = stringToNumber(value, nullValue);
-  if (!isFinite(number)) {
+  if (!isFinite(number) || isNil(number)) {
     return nullValue;
   }
   const adjustedMinFractionDigits = Math.max(
     minimumFractionDigits ?? fractionDigits,
-    isString(value) && value.endsWith(".") ? 1 : 0
+    isString(value) && value.endsWith(".") ? 1 : 0,
   );
-  return number?.toLocaleString("en-IN", {
+  return number.toLocaleString("en-IN", {
     maximumFractionDigits: Math.max(
       maximumFractionDigits ?? fractionDigits,
-      adjustedMinFractionDigits
+      adjustedMinFractionDigits,
     ),
     ...options,
   });
@@ -38,7 +38,7 @@ export interface FormatNumberSuffixOptions extends FormatNumberOptions {
 
 export function formatNumberWithSuffix(
   value: number | string,
-  { nullValue, suffix = "", ...options }: FormatNumberSuffixOptions = {}
+  { nullValue, suffix = "", ...options }: FormatNumberSuffixOptions = {},
 ) {
   let parsedNumber = isNumber(value) ? value : Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {
@@ -70,7 +70,7 @@ export type NumberLike = null | number | string | undefined;
 export function stringToNumber(value: number | string, nanValue?: NumberLike) {
   if (isNumber(value)) return value;
   const number = Number.parseFloat(
-    isString(value) ? value.replaceAll(",", "") : value
+    isString(value) ? value.replaceAll(",", "") : value,
   );
   if (Number.isNaN(number)) return nanValue;
   return number;

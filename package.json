@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
-    "@rollup/plugin-terser": "^0.4.3",
     "@tabler/icons-react": "^2.30.0",
     "animejs": "^3.2.1",
     "clsx": "^2.0.0",

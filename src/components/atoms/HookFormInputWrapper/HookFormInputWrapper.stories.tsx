@@ -76,7 +76,10 @@ const FormContent = () => {
         <div>
           <Button
             onClick={() => {
-              setValue("NumberInput (format with default)", updateValue + 0.01);
+              setValue(
+                "NumberInput (format with default)",
+                (updateValue + 0.01).toString(),
+              );
               setUpdateValue(updateValue + 0.01);
             }}
           >
