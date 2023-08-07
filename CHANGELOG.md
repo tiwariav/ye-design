@@ -1,3 +1,15 @@
+## [2.1.13](https://github.com/tiwariav/ye-design/compare/v2.1.12...v2.1.13) (2023-08-07)
+
+
+### Bug Fixes
+
+* disable defaultvalue override when undefined ([c8db795](https://github.com/tiwariav/ye-design/commit/c8db7955d173f0622ed5a9f714bf5016e24ba08b))
+* enable defaultValue in HookFormInputWrapper ([aca6c25](https://github.com/tiwariav/ye-design/commit/aca6c25d630a40bb1a6481cfed18389d3d8c3e9f))
+* number input formatting when ending in zeros after decimal ([018a85a](https://github.com/tiwariav/ye-design/commit/018a85ace269a369ef2f5099be71f6dc54e23bd7))
+* phonenumber input too short value error ([e3eaf56](https://github.com/tiwariav/ye-design/commit/e3eaf56a71705cd3fb71543530fc9c3511295887))
+* return type of formatNumber set as string ([956791a](https://github.com/tiwariav/ye-design/commit/956791a171ba43c0fafd0be07fc7725bd56ebc0e))
+* text value without `format` option not working ([9cd18e9](https://github.com/tiwariav/ye-design/commit/9cd18e9d54adc30c73500a575fa2587aa7717c16))
+
 ## [1.12.13](https://github.com/tiwariav/ye-design/compare/v1.12.12...v1.12.13) (2023-08-02)
 
 ### Bug Fixes
