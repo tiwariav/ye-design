@@ -28,7 +28,7 @@ export default function HookFormInputWrapper({
       onChange: (
         event: ChangeEvent<HTMLInputElement>,
         value?: any,
-        shouldUpdate,
+        shouldUpdate?: boolean,
       ) => {
         if (shouldUpdate) {
           onChange(value);
