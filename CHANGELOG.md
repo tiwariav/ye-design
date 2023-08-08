@@ -1,3 +1,11 @@
+## [1.12.15](https://github.com/tiwariav/ye-design/compare/v1.12.14...v1.12.15) (2023-08-08)
+
+
+### Bug Fixes
+
+* remove default value of shouldUpdate in HookFormInputWrapper  method ([f74701d](https://github.com/tiwariav/ye-design/commit/f74701d0a719d248caba46131faa5dbd6584059a))
+* update semantic version ([325979e](https://github.com/tiwariav/ye-design/commit/325979e7a3beab812b7ffd552102fce1dedc60e9))
+
 ## [1.12.14](https://github.com/tiwariav/ye-design/compare/v1.12.13...v1.12.14) (2023-08-06)
 
 
