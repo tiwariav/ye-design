@@ -28,7 +28,7 @@ export default function HookFormInputWrapper({
       onChange: (
         event: ChangeEvent<HTMLInputElement>,
         value?: any,
-        shouldUpdate = true
+        shouldUpdate,
       ) => {
         if (shouldUpdate) {
           onChange(value);
@@ -38,7 +38,7 @@ export default function HookFormInputWrapper({
         child.props.onChange?.(event, value, shouldUpdate);
       },
     }),
-    [child.props, onBlur, onChange]
+    [child.props, onBlur, onChange],
   );
 
   const cloneProps = useMemo(() => {
