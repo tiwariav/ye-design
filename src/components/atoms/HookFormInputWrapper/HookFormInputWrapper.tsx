@@ -22,13 +22,13 @@ const ErrorMessage = React.lazy(() =>
   import("@hookform/error-message").then(({ ErrorMessage }) => ({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     default: ErrorMessage,
-  }))
+  })),
 );
 
 export type ChangeHandler = (
   event: ChangeEvent<HTMLInputElement>,
   value?: NumberLike,
-  shouldUpdate?: boolean
+  shouldUpdate?: boolean,
 ) => void;
 
 export type HookFormInputWrapperProps<TValues extends FieldValues> =
@@ -59,7 +59,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         onBlur();
         child.props.onBlur?.(event);
       },
-      onChange: ((event, value, shouldUpdate = true) => {
+      onChange: ((event, value, shouldUpdate) => {
         if (shouldUpdate) {
           onChange(value);
         } else if (value === undefined) {
@@ -68,7 +68,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         child.props.onChange?.(event, value, shouldUpdate);
       }) as ChangeHandler,
     }),
-    [child.props, onBlur, onChange]
+    [child.props, onBlur, onChange],
   );
 
   const cloneProps = useMemo(() => {
