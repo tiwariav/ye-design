@@ -1,0 +1,8 @@
+.root {
+  font-family: "Twemoji Country Flags", var(--ye-font-family-body);
+}
+
+.flag-icon {
+  padding-right: var(--ye-spacing-rem-xsmall);
+  font-size: var(--ye-font-size-huge);
+}

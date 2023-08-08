@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
+    "paths": {
+      "country-flag-emoji-polyfill": [
+        "node_modules/country-flag-emoji-polyfill/dist/index.d.ts"
+      ]
+    },
     // enable to debug
     // "diagnostics": true,
     "esModuleInterop": true,
