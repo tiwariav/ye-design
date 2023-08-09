@@ -41,7 +41,7 @@
     "react-use": "^17.4.0",
     "tslib": "^2.6.1",
     "type-fest": "^4.1.0",
-    "wo-library": "^2.0.15"
+    "wo-library": "^2.0.16"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
