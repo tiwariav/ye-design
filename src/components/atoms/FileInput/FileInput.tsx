@@ -25,9 +25,9 @@ const FILE_INPUT_VARIANT_OPTIONS = ["outlined"] as const;
 const FILE_INPUT_SIZE_OPTIONS = ["small", "large"] as const;
 const FILE_INPUT_SPACING_OPTIONS = ["none", "less", "equal", "extra"] as const;
 
-interface FileInputProps
+export interface FileInputProps<TFile extends UploadFile = UploadFile>
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
-  files: UploadFile[];
+  files: TFile[];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   innerClassNames?: {
@@ -40,14 +40,14 @@ interface FileInputProps
   placeholder?: string;
   size?: (typeof FILE_INPUT_SIZE_OPTIONS)[number];
   spacing?: (typeof FILE_INPUT_SPACING_OPTIONS)[number];
-  updateFiles: (
-    files: (File | UploadFile)[],
+  updateFiles?: (
+    files: (File | TFile)[],
     action: "add" | "remove" | "update",
-  ) => void;
+  ) => Promise<void> | void;
   variant?: (typeof FILE_INPUT_VARIANT_OPTIONS)[number];
 }
 
-export default function FileInput({
+export default function FileInput<TFile extends UploadFile = UploadFile>({
   className,
   files,
   iconAfter,
@@ -65,7 +65,7 @@ export default function FileInput({
   updateFiles,
   variant,
   ...props
-}: FileInputProps) {
+}: FileInputProps<TFile>) {
   const [hasFocus, setHasFocus] = useState(false);
   const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
@@ -79,22 +79,22 @@ export default function FileInput({
     onBlur?.(event);
   };
 
-  const handleChange: typeof onChange = (event) => {
-    if (event.target.files && event.target.files.length > 0) {
-      updateFiles([...event.target.files], "add");
+  const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0 && updateFiles) {
+      await updateFiles([...event.target.files], "add");
     }
     onChange?.(event);
   };
 
   const handleDataChange = debounce(
-    (
+    async (
       event: ChangeEvent<HTMLInputElement>,
-      file: UploadFile,
+      file: TFile,
       dataIndex: number,
     ) => {
       const fileData = file.data ? [...file.data] : [];
       fileData[dataIndex].value = event.target.value;
-      updateFiles([{ ...file, data: fileData }], "update");
+      await updateFiles?.([{ ...file, data: fileData }], "update");
     },
     500,
   );
@@ -121,7 +121,7 @@ export default function FileInput({
           className={clsx(styles.input)}
           id={fileInputID}
           onBlur={handleBlur}
-          onChange={handleChange}
+          onChange={(event) => void handleChange(event)}
           onFocus={handleFocus}
           type="file"
           {...omit(props, EXCLUDE_HANDLERS)}
@@ -174,7 +174,7 @@ export default function FileInput({
                     </div>
                     <div>
                       <Button
-                        onClick={() => updateFiles([item], "remove")}
+                        onClick={() => void updateFiles?.([item], "remove")}
                         spacing="equal"
                         variant="trans"
                       >
@@ -195,7 +195,7 @@ export default function FileInput({
                       </div>
                       <div>
                         <Button
-                          onClick={() => updateFiles([item], "add")}
+                          onClick={() => void updateFiles?.([item], "add")}
                           spacing="equal"
                           variant="trans"
                         >
@@ -204,7 +204,7 @@ export default function FileInput({
                       </div>
                       <div>
                         <Button
-                          onClick={() => updateFiles([item], "remove")}
+                          onClick={() => void updateFiles?.([item], "remove")}
                           spacing="equal"
                           variant="trans"
                         >
@@ -221,7 +221,7 @@ export default function FileInput({
                   dataItem.type === "password" ? (
                     <TextInput
                       onChange={(event) =>
-                        handleDataChange(event, item, dataIndex)
+                        void handleDataChange(event, item, dataIndex)
                       }
                       defaultValue={dataItem.value}
                       innerClassNames={{ input: styles.listItemDataInput }}
