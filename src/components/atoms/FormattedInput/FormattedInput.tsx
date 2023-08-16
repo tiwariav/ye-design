@@ -18,7 +18,7 @@ import styles from "./formattedInput.module.css";
 
 export type FormattedInputParse = (
   value: number | string | undefined,
-  emptyValue: NumberLike
+  emptyValue: NumberLike,
 ) => NumberLike;
 
 export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
@@ -31,7 +31,7 @@ export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
   onChange?: (
     event: ChangeEvent<HTMLInputElement>,
     value: NumberLike,
-    shouldUpdate: boolean
+    shouldUpdate: boolean,
   ) => void;
   parse?: FormattedInputParse;
   value?: number | string;
@@ -52,14 +52,14 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       value,
       ...props
     },
-    ref
+    ref,
   ) => {
     const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<
       number | string | undefined
     >(format?.(defaultValue as NumberLike));
     const [parsedValue, setParsedValue] = useState<NumberLike>(
-      parse?.(formattedValue, emptyValue)
+      parse?.(formattedValue, emptyValue),
     );
     const currentParsedValue = useLatest(parsedValue);
     const [formattedInputID, formattedInputTextID] = useMemo(() => {
@@ -71,21 +71,21 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       (event) => {
         modified.current = true;
         // to get new formatted text when input value is changed by user
-        const formattedValue = format
+        const newFormattedValue = format
           ? format(event.target.value)
           : event.target.value;
-        setFormattedValue(formattedValue);
+        setFormattedValue(newFormattedValue);
         const newParsedValue = parse
-          ? parse(formattedValue, emptyValue)
-          : formattedValue;
+          ? parse(newFormattedValue, emptyValue)
+          : newFormattedValue;
         setParsedValue(newParsedValue);
         onChange?.(
           event,
           newParsedValue,
-          newParsedValue !== currentParsedValue.current
+          newParsedValue !== currentParsedValue.current,
         );
       },
-      [currentParsedValue, emptyValue, format, onChange, parse]
+      [currentParsedValue, emptyValue, format, onChange, parse],
     );
 
     useEffect(() => {
@@ -96,13 +96,10 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       const newParsedValue = parse
         ? parse(newFormattedValue, emptyValue)
         : value;
-      if (!format || newParsedValue !== currentParsedValue.current) {
+      if (!format || newFormattedValue !== format(newParsedValue)) {
         setFormattedValue(newFormattedValue);
       }
       setParsedValue(newParsedValue);
-      if (format && newFormattedValue !== format(newParsedValue)) {
-        setFormattedValue(newFormattedValue);
-      }
     }, [currentParsedValue, emptyValue, format, parse, value]);
 
     return (
@@ -130,7 +127,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
         />
       </div>
     );
-  }
+  },
 );
 
 export default FormattedInput;

@@ -1,3 +1,20 @@
+## [2.1.16](https://github.com/tiwariav/ye-design/compare/v2.1.15...v2.1.16) (2023-08-16)
+
+
+### Bug Fixes
+
+* fix issue adding trailing 0 with format enabled in NumberInput ([c6d19a3](https://github.com/tiwariav/ye-design/commit/c6d19a3e885664f3f1caf9ef74ed0ec35443f370))
+
+## [2.1.15](https://github.com/tiwariav/ye-design/compare/v2.1.14...v2.1.15) (2023-08-11)
+
+## [2.1.14](https://github.com/tiwariav/ye-design/compare/v2.1.13...v2.1.14) (2023-08-09)
+
+
+### Bug Fixes
+
+* remove default value of shouldUpdate in HookFormInputWrapper  method ([f74701d](https://github.com/tiwariav/ye-design/commit/f74701d0a719d248caba46131faa5dbd6584059a))
+* update semantic version ([325979e](https://github.com/tiwariav/ye-design/commit/325979e7a3beab812b7ffd552102fce1dedc60e9))
+
 ## [1.12.15](https://github.com/tiwariav/ye-design/compare/v1.12.14...v1.12.15) (2023-08-08)
 
 

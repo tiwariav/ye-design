@@ -1,6 +1,6 @@
 import { StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
 import { SetRequired } from "type-fest";
 
@@ -30,12 +30,7 @@ function InputWrapper({
 }
 
 const FormContent = () => {
-  const { setValue, watch } = useForm({
-    defaultValues: {
-      "NumberInput (format with default)": "1234.1003",
-    },
-    mode: "onChange",
-  });
+  const { setValue, watch } = useFormContext();
   const [updateValue, setUpdateValue] = useState(2000.001);
   const watchAll = watch();
   return (
@@ -52,7 +47,7 @@ const FormContent = () => {
         <InputWrapper format name="NumberInput (format)" />
         <InputWrapper
           format={{ maximumFractionDigits: 4 }}
-          name={"NumberInput (format with default)"}
+          name="NumberInput (format with default)"
         />
         <InputWrapper
           emptyValue={null}
@@ -97,7 +92,12 @@ const FormContent = () => {
 
 const Template = () => {
   return (
-    <HookForm mode="onChange">
+    <HookForm
+      defaultValues={{
+        "NumberInput (format with default)": "1234.1003",
+      }}
+      mode="onChange"
+    >
       <FormContent />
     </HookForm>
   );

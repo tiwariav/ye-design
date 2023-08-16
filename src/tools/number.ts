@@ -24,10 +24,10 @@ export function formatNumber(
     isString(value) && value.endsWith(".") ? 1 : 0,
   );
   return number.toLocaleString("en-IN", {
-    maximumFractionDigits: Math.max(
-      maximumFractionDigits ?? fractionDigits,
-      adjustedMinFractionDigits,
-    ),
+    maximumFractionDigits:
+      maximumFractionDigits ?? fractionDigits ?? adjustedMinFractionDigits,
+    minimumFractionDigits:
+      minimumFractionDigits ?? fractionDigits ?? adjustedMinFractionDigits,
     ...options,
   });
 }

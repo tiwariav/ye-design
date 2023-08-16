@@ -35,19 +35,23 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         if (value.endsWith(".") || value === "-") {
           return value;
         }
-        const newValueDecimals = value.split(".")[1]?.length;
+        const newValueDecimals = value.split(".")[1]?.length ?? 0;
         const nullValue = value ? "0" : "";
         const formatOptions = isObject(format) ? format : {};
         const minimumFractionDigits =
-          formatOptions.minimumFractionDigits ?? newValueDecimals ?? 0;
+          formatOptions.minimumFractionDigits ??
+          Math.min(
+            newValueDecimals,
+            formatOptions.maximumFractionDigits || 2,
+          ) ??
+          0;
         const formattedValue = formatNumber(value, {
-          maximumFractionDigits: 2,
           nullValue,
           ...formatOptions,
           minimumFractionDigits,
         });
         if (formattedValue === undefined) return "";
-        if (newValueDecimals > formattedValue.split(".")[1]?.length) {
+        if (newValueDecimals > (formattedValue.split(".")[1]?.length || 0)) {
           // if the input value decimals are more than format options,
           // reduce the decimals for input to parseFucntion
           const newSplits = value.split(".");
@@ -57,7 +61,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         }
         return formattedValue;
       },
-      [format]
+      [format],
     );
 
     const parseFunction = useCallback<FormattedInputParse>(
@@ -71,7 +75,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           ? unformattedValue
           : unformattedValue.toString();
       },
-      [format, parse]
+      [format, parse],
     );
 
     return (
@@ -84,7 +88,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 export default NumberInput;
