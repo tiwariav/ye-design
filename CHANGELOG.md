@@ -1,3 +1,10 @@
+## [2.1.16](https://github.com/tiwariav/ye-design/compare/v2.1.15...v2.1.16) (2023-08-16)
+
+
+### Bug Fixes
+
+* fix issue adding trailing 0 with format enabled in NumberInput ([c6d19a3](https://github.com/tiwariav/ye-design/commit/c6d19a3e885664f3f1caf9ef74ed0ec35443f370))
+
 ## [2.1.15](https://github.com/tiwariav/ye-design/compare/v2.1.14...v2.1.15) (2023-08-11)
 
 ## [2.1.14](https://github.com/tiwariav/ye-design/compare/v2.1.13...v2.1.14) (2023-08-09)
