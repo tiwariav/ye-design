@@ -1,3 +1,10 @@
+## [1.12.16](https://github.com/tiwariav/ye-design/compare/v1.12.15...v1.12.16) (2023-08-17)
+
+
+### Bug Fixes
+
+* onChange not working for FormattedInput when `emptyValue` present without `format` ([dddfd65](https://github.com/tiwariav/ye-design/commit/dddfd6552af903feb0c7357c9bbf594f2e9d370b))
+
 ## [1.12.15](https://github.com/tiwariav/ye-design/compare/v1.12.14...v1.12.15) (2023-08-08)
 
 
