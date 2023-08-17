@@ -23,7 +23,7 @@ export type FormattedInputParse = (
 
 export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
   emptyValue?: NumberLike;
-  format?: (value: NumberLike) => string | undefined;
+  format?: (value: NumberLike) => string;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;

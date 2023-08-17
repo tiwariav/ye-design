@@ -1,4 +1,4 @@
-import { isNil, isObject } from "lodash-es";
+import { isEmpty, isNil, isObject } from "lodash-es";
 import { forwardRef, useCallback, useRef } from "react";
 
 import {
@@ -27,8 +27,8 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     const formatFunction = useCallback(
       (value: NumberLike) => {
         if (!format || isNil(value)) {
-          textValueRef.current = value;
-          return;
+          textValueRef.current = "";
+          return "";
         }
         value = value.toString();
         textValueRef.current = value;
@@ -67,7 +67,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     const parseFunction = useCallback<FormattedInputParse>(
       (formattedValue, emptyValue) => {
         const textValue = textValueRef.current;
-        if (isNil(textValue)) return emptyValue;
+        if (isEmpty(textValue)) return emptyValue;
         const unformattedValue = format
           ? stringToNumber(formattedValue as number | string, emptyValue)
           : textValue;
@@ -80,7 +80,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
     return (
       <FormattedInput
-        format={format ? formatFunction : undefined}
+        format={formatFunction}
         hiddenInputProps={{ type: "number" }}
         inputMode="decimal"
         parse={parseFunction}
