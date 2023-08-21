@@ -48,8 +48,8 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
 
     const formatFunction = useCallback((value: NumberLike) => {
       if (isNil(value)) {
-        textValueRef.current = value;
-        return;
+        textValueRef.current = "";
+        return "";
       }
       value = value.toString();
       textValueRef.current = value;
