@@ -1,3 +1,10 @@
+## [2.1.17](https://github.com/tiwariav/ye-design/compare/v2.1.16...v2.1.17) (2023-08-21)
+
+
+### Bug Fixes
+
+* added polyfill for country flags emoji on windows ([d566f7c](https://github.com/tiwariav/ye-design/commit/d566f7c979cbfefcb75b00d1c2dcbb35779d7756))
+
 ## [2.1.16](https://github.com/tiwariav/ye-design/compare/v2.1.15...v2.1.16) (2023-08-16)
 
 
