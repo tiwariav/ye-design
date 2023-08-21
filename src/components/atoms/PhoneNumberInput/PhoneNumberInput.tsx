@@ -1,3 +1,4 @@
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 import {
   AsYouType,
   ParseError,
@@ -6,12 +7,14 @@ import {
 } from "libphonenumber-js";
 import { isNil, isString } from "lodash-es";
 import { forwardRef, useCallback, useRef, useState } from "react";
+import { useEffectOnce } from "react-use";
 
 import { NumberLike } from "../../../tools/number.js";
 import FormattedInput, {
   FormattedInputParse,
   FormattedInputProps,
 } from "../FormattedInput/FormattedInput.js";
+import styles from "./phoneNumberInput.module.css";
 
 // offset between uppercase ascii and regional indicator symbols
 const OFFSET = 127_397;
@@ -39,6 +42,10 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     const textValueRef = useRef<NumberLike>();
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 
+    useEffectOnce(() => {
+      polyfillCountryFlagEmojis();
+    });
+
     const formatFunction = useCallback((value: NumberLike) => {
       if (isNil(value)) {
         textValueRef.current = "";
@@ -63,6 +70,10 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
 
     return (
       <FormattedInput
+        innerClassNames={{
+          iconBefore: styles.flagIcon,
+        }}
+        className={styles.root}
         defaultValue="+91"
         format={formatFunction}
         iconBefore={flag}

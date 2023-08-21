@@ -29,6 +29,8 @@ export interface TextInputProps
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   innerClassNames?: {
+    iconAfter?: string;
+    iconBefore?: string;
     input?: string;
   };
   isBusy?: boolean;
@@ -120,7 +122,11 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className={styles.inputWrapper}>
           {iconBefore && (
             <span className={clsx(styles.iconWrapper)}>
-              <span className={clsx(formStyles.icon)}>{iconBefore}</span>
+              <span
+                className={clsx(formStyles.icon, innerClassNames.iconBefore)}
+              >
+                {iconBefore}
+              </span>
             </span>
           )}
           <input
@@ -161,7 +167,9 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           />
           {iconAfter && (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-              <span className={clsx(formStyles.icon, innerClassNames.input)}>
+              <span
+                className={clsx(formStyles.icon, innerClassNames.iconAfter)}
+              >
                 {iconAfter}
               </span>
             </span>

@@ -30,6 +30,7 @@
     "@tabler/icons-react": "^2.30.0",
     "animejs": "^3.2.1",
     "clsx": "^2.0.0",
+    "country-flag-emoji-polyfill": "^0.1.4",
     "default-import": "^1.1.5",
     "libphonenumber-js": "^1.10.39",
     "lodash-es": "^4.17.21",
