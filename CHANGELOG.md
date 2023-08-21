@@ -1,3 +1,15 @@
+# [1.13.0](https://github.com/tiwariav/ye-design/compare/v1.12.16...v1.13.0) (2023-08-21)
+
+
+### Bug Fixes
+
+* hook-form-wrapper single error case ([c42f3d1](https://github.com/tiwariav/ye-design/commit/c42f3d1e33796dffcdb493eb9c52a168cc046fff))
+
+
+### Features
+
+* add latest code for hook-form-input-wrapper on 1.x ([d768bcc](https://github.com/tiwariav/ye-design/commit/d768bccd71469744766ea2773daf17d516ab4832))
+
 ## [1.12.16](https://github.com/tiwariav/ye-design/compare/v1.12.15...v1.12.16) (2023-08-17)
 
 
