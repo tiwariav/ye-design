@@ -94,9 +94,6 @@ export default forwardRef(
         setFormattedValue(newFormattedValue);
       }
       setParsedValue(newParsedValue);
-      if (format && newFormattedValue !== format(newParsedValue)) {
-        setFormattedValue(newFormattedValue);
-      }
     }, [currentParsedValue, emptyValue, format, parse, value]);
 
     return (

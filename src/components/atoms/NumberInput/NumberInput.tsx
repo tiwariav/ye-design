@@ -1,4 +1,4 @@
-import { isNil } from "lodash-es";
+import { isEmpty, isNil } from "lodash-es";
 import { Ref, forwardRef, useCallback, useRef } from "react";
 
 import {
@@ -29,7 +29,7 @@ export default forwardRef(
       (value) => {
         if (!format || isNil(value)) {
           textValueRef.current = value;
-          return;
+          return value;
         }
         value = value.toString();
         textValueRef.current = value;
@@ -62,7 +62,7 @@ export default forwardRef(
     const parseFunction = useCallback(
       (formattedValue, emptyValue) => {
         const textValue = textValueRef.current;
-        if (isNil(textValue)) return emptyValue;
+        if (isEmpty(textValue)) return emptyValue;
         const unformattedValue = format
           ? stringToNumber(formattedValue, emptyValue)
           : textValue;
@@ -75,7 +75,7 @@ export default forwardRef(
 
     return (
       <FormattedInput
-        format={format ? formatFunction : undefined}
+        format={formatFunction}
         hiddenInputProps={{ type: "number" }}
         inputMode="decimal"
         parse={parseFunction}
