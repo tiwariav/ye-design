@@ -1,5 +1,7 @@
+/* eslint-disable perfectionist/sort-objects */
 import type { Primitive, SetOptional } from "type-fest";
 
+import { isObject } from "lodash-es";
 import React, {
   type ChangeEvent,
   type ChangeEventHandler,
@@ -22,13 +24,13 @@ const ErrorMessage = React.lazy(() =>
   import("@hookform/error-message").then(({ ErrorMessage }) => ({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     default: ErrorMessage,
-  })),
+  }))
 );
 
 export type ChangeHandler = (
   event: ChangeEvent<HTMLInputElement>,
   value?: Primitive,
-  shouldUpdate?: boolean,
+  shouldUpdate?: boolean
 ) => void;
 
 export type HookFormInputWrapperProps<TValues extends FieldValues> =
@@ -38,20 +40,21 @@ export type HookFormInputWrapperProps<TValues extends FieldValues> =
         onChange: ChangeHandler;
       }
     >;
+    hideError?: boolean;
     onChange?: ChangeEventHandler;
-    showError?: boolean;
   };
 
 export default function HookFormInputWrapper<TValues extends FieldValues>({
   children,
+  hideError,
   name,
-  showError,
   ...props
 }: HookFormInputWrapperProps<TValues>): ReactNode {
   const {
     field: { onBlur, onChange, ref, value },
     formState: { defaultValues, errors },
   } = useController({ name, ...props });
+
   const child = React.Children.only(children);
   const changeHandlers = useMemo(
     () => ({
@@ -68,7 +71,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         child.props.onChange?.(event, value, shouldUpdate);
       }) as ChangeHandler,
     }),
-    [child.props, onBlur, onChange],
+    [child.props, onBlur, onChange]
   );
 
   const cloneProps = useMemo(() => {
@@ -86,12 +89,16 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
   return (
     <>
       {React.cloneElement(child, cloneProps)}
-      {showError && (
+      {!hideError && (
         <Suspense>
           <ErrorMessage
+            render={({ messages, message }) => (
+              <FormError
+                messages={isObject(messages) ? messages : { message }}
+              />
+            )}
             errors={errors}
             name={name}
-            render={({ messages }) => <FormError messages={messages} />}
           />
         </Suspense>
       )}
