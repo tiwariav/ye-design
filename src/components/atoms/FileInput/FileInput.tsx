@@ -163,7 +163,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                     )}
                   </>
                 ) : item.status === "uploaded" ? (
-                  <>
+                  <div className={styles.uploadSection}>
                     <div
                       className={clsx(
                         styles.listItemStatusText,
@@ -181,7 +181,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                         <IconTrashXFilled />
                       </Button>
                     </div>
-                  </>
+                  </div>
                 ) : (
                   item.status === "failed" && (
                     <>
