@@ -60,6 +60,10 @@
   border-style: solid;
   border-width: var(--ye-button-outline-border-width);
   border-radius: var(--ye-radius-normal);
+
+  @media (--media-max-sm) {
+    flex-direction: column;
+  }
 }
 
 .list-item-progress {
@@ -116,4 +120,9 @@
   max-width: 400px;
   max-height: 160px;
   margin-top: var(--ye-spacing-rem-small);
+}
+
+.upload-section {
+  display: flex;
+  align-items: center;
 }

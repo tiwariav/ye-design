@@ -77,7 +77,7 @@ export default function FileInput({
           {
             // eslint-disable-next-line css-modules/no-undef-class
             [styles.hasFocus]: hasFocus,
-          }
+          },
         )}
       >
         {label && <span className={styles.label}>{label}</span>}
@@ -111,71 +111,76 @@ export default function FileInput({
             <div key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
-                {item.status === UPLOAD_FILE_STATUS.uploading ? (
-                  <>
-                    <div
-                      className={clsx(
-                        styles.listItemStatusText,
-                        styles.progress
-                      )}
-                    >
-                      Uploading...
-                    </div>
-                    <div>
-                      <CircleProgress
-                        className={styles.listItemProgress}
-                        progress={item.progress}
-                        squareSize={18}
-                      />
-                    </div>
-                  </>
-                ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
-                  <>
-                    <div
-                      className={clsx(
-                        styles.listItemStatusText,
-                        styles.success
-                      )}
-                    >
-                      Uploaded
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => updateFiles([item], "remove")}
-                        spacing="equal"
-                        variant="trans"
+                <div className={styles.uploadSection}>
+                  {item.status === UPLOAD_FILE_STATUS.uploading ? (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.listItemStatusText,
+                          styles.progress,
+                        )}
                       >
-                        <IconTrashXFilled />
-                      </Button>
-                    </div>
-                  </>
-                ) : item.status === UPLOAD_FILE_STATUS.failed ? (
-                  <>
-                    <div
-                      className={clsx(styles.listItemStatusText, styles.failed)}
-                    >
-                      Failed
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => uploadFiles([item])}
-                        spacing="equal"
-                        variant="trans"
+                        Uploading...
+                      </div>
+                      <div>
+                        <CircleProgress
+                          className={styles.listItemProgress}
+                          progress={item.progress}
+                          squareSize={18}
+                        />
+                      </div>
+                    </>
+                  ) : item.status === UPLOAD_FILE_STATUS.uploaded ? (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.listItemStatusText,
+                          styles.success,
+                        )}
                       >
-                        <IconReload />
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => updateFiles([item], "remove")}
-                        spacing="equal"
-                        variant="trans"
+                        Uploaded
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => updateFiles([item], "remove")}
+                          spacing="equal"
+                          variant="trans"
+                        >
+                          <IconTrashXFilled />
+                        </Button>
+                      </div>
+                    </>
+                  ) : item.status === UPLOAD_FILE_STATUS.failed ? (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.listItemStatusText,
+                          styles.failed,
+                        )}
                       >
-                        <IconTrashXFilled />
-                      </Button>
-                    </div>
-                  </>
-                ) : null}
+                        Failed
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => uploadFiles([item])}
+                          spacing="equal"
+                          variant="trans"
+                        >
+                          <IconReload />
+                        </Button>
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => updateFiles([item], "remove")}
+                          spacing="equal"
+                          variant="trans"
+                        >
+                          <IconTrashXFilled />
+                        </Button>
+                      </div>
+                    </>
+                  ) : null}
+                </div>
               </div>
               {item.data &&
                 item.data.length > 0 &&
@@ -200,7 +205,7 @@ export default function FileInput({
                       id={dataItem.resource}
                       src={dataItem.resource}
                     />
-                  ) : null
+                  ) : null,
                 )}
             </div>
           ))}
