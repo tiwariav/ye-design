@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/tiwariav/ye-design/compare/v2.1.18...v2.2.0) (2023-08-28)
+
+
+### Features
+
+* the delete button hide when we open ecas modal in mobile browser ([5073f4c](https://github.com/tiwariav/ye-design/commit/5073f4c8361f5fdadc2d360c8bdc3963d9ceff77))
+
 ## [2.1.18](https://github.com/tiwariav/ye-design/compare/v2.1.17...v2.1.18) (2023-08-22)
 
 ## [2.1.17](https://github.com/tiwariav/ye-design/compare/v2.1.16...v2.1.17) (2023-08-21)
