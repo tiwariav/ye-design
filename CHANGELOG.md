@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/tiwariav/ye-design/compare/v1.13.0...v1.13.1) (2023-08-28)
+
+
+### Bug Fixes
+
+* fix styles for FileInput status ([65f7afd](https://github.com/tiwariav/ye-design/commit/65f7afd659936e289cfd351157888908f35ca8fb))
+
 # [1.13.0](https://github.com/tiwariav/ye-design/compare/v1.12.16...v1.13.0) (2023-08-21)
 
 
