@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/tiwariav/ye-design/compare/v2.2.0...v2.2.1) (2023-08-30)
+
+
+### Bug Fixes
+
+* fix FileInput innerClassNames type ([708cb3c](https://github.com/tiwariav/ye-design/commit/708cb3cda96fecb139495fb1e946daf61007779f))
+
 # [2.2.0](https://github.com/tiwariav/ye-design/compare/v2.1.18...v2.2.0) (2023-08-28)
 
 
