@@ -8,7 +8,7 @@ import {
   useForm,
 } from "react-hook-form";
 
-interface HookFormProps<TFieldValues extends FieldValues>
+export interface HookFormProps<TFieldValues extends FieldValues>
   extends UseFormProps<TFieldValues> {
   children: React.ReactNode;
   onInvalid?: SubmitErrorHandler<TFieldValues>;
