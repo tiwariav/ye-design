@@ -33,6 +33,7 @@ export interface FileInputProps<TFile extends UploadFile = UploadFile>
   innerClassNames?: {
     input?: string;
     label?: string;
+    listItemDataInput?: string;
     placeholder?: string;
   };
   isBusy?: boolean;
