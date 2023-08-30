@@ -8,7 +8,7 @@ import {
   useForm,
 } from "react-hook-form";
 
-interface HookFormProps<TFieldValues extends FieldValues>
+export interface HookFormProps<TFieldValues extends FieldValues>
   extends UseFormProps<TFieldValues> {
   children: React.ReactNode;
   onInvalid?: SubmitErrorHandler<TFieldValues>;
@@ -30,7 +30,11 @@ export default function HookForm<TFieldValues extends FieldValues>({
   return (
     <FormProvider {...methods}>
       <form
-        onSubmit={() => onValid && methods.handleSubmit(onValid, onInvalid)}
+        onSubmit={(event) => {
+          if (onValid) {
+            void methods.handleSubmit(onValid, onInvalid)(event);
+          }
+        }}
       >
         {children}
       </form>
