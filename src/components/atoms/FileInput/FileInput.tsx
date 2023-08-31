@@ -143,65 +143,36 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
             <div key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
-                {item.status === "uploading" ? (
-                  <>
-                    <div
-                      className={clsx(
-                        styles.listItemStatusText,
-                        styles.progress,
-                      )}
-                    >
-                      Uploading...
-                    </div>
-                    {item.progress && (
-                      <div>
-                        <CircleProgress
-                          className={styles.listItemProgress}
-                          progress={item.progress}
-                          squareSize={18}
-                        />
-                      </div>
-                    )}
-                  </>
-                ) : item.status === "uploaded" ? (
-                  <div className={styles.uploadSection}>
-                    <div
-                      className={clsx(
-                        styles.listItemStatusText,
-                        styles.success,
-                      )}
-                    >
-                      Uploaded
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => void updateFiles?.([item], "remove")}
-                        spacing="equal"
-                        variant="trans"
-                      >
-                        <IconTrashXFilled />
-                      </Button>
-                    </div>
-                  </div>
-                ) : (
-                  item.status === "failed" && (
+                <div className={styles.uploadSection}>
+                  {item.status === "uploading" ? (
                     <>
                       <div
                         className={clsx(
                           styles.listItemStatusText,
-                          styles.failed,
+                          styles.progress,
                         )}
                       >
-                        Failed
+                        Uploading...
                       </div>
-                      <div>
-                        <Button
-                          onClick={() => void updateFiles?.([item], "add")}
-                          spacing="equal"
-                          variant="trans"
-                        >
-                          <IconReload />
-                        </Button>
+                      {item.progress && (
+                        <div>
+                          <CircleProgress
+                            className={styles.listItemProgress}
+                            progress={item.progress}
+                            squareSize={18}
+                          />
+                        </div>
+                      )}
+                    </>
+                  ) : item.status === "uploaded" ? (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.listItemStatusText,
+                          styles.success,
+                        )}
+                      >
+                        Uploaded
                       </div>
                       <div>
                         <Button
@@ -213,8 +184,39 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                         </Button>
                       </div>
                     </>
-                  )
-                )}
+                  ) : (
+                    item.status === "failed" && (
+                      <>
+                        <div
+                          className={clsx(
+                            styles.listItemStatusText,
+                            styles.failed,
+                          )}
+                        >
+                          Failed
+                        </div>
+                        <div>
+                          <Button
+                            onClick={() => void updateFiles?.([item], "add")}
+                            spacing="equal"
+                            variant="trans"
+                          >
+                            <IconReload />
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            onClick={() => void updateFiles?.([item], "remove")}
+                            spacing="equal"
+                            variant="trans"
+                          >
+                            <IconTrashXFilled />
+                          </Button>
+                        </div>
+                      </>
+                    )
+                  )}
+                </div>
               </div>
               {item.data &&
                 item.data.length > 0 &&
