@@ -1,5 +1,18 @@
-## [2.2.1](https://github.com/tiwariav/ye-design/compare/v2.2.0...v2.2.1) (2023-08-30)
+# [2.3.0](https://github.com/tiwariav/ye-design/compare/v2.2.1...v2.3.0) (2023-08-31)
 
+
+### Bug Fixes
+
+* fix styles for FileInput status ([65f7afd](https://github.com/tiwariav/ye-design/commit/65f7afd659936e289cfd351157888908f35ca8fb))
+* hook-form-wrapper single error case ([c42f3d1](https://github.com/tiwariav/ye-design/commit/c42f3d1e33796dffcdb493eb9c52a168cc046fff))
+* onChange not working for FormattedInput when `emptyValue` present without `format` ([dddfd65](https://github.com/tiwariav/ye-design/commit/dddfd6552af903feb0c7357c9bbf594f2e9d370b))
+
+
+### Features
+
+* add latest code for hook-form-input-wrapper on 1.x ([d768bcc](https://github.com/tiwariav/ye-design/commit/d768bccd71469744766ea2773daf17d516ab4832))
+
+## [2.2.1](https://github.com/tiwariav/ye-design/compare/v2.2.0...v2.2.1) (2023-08-30)
 
 ### Bug Fixes
 
@@ -7,15 +20,11 @@
 
 # [2.2.0](https://github.com/tiwariav/ye-design/compare/v2.1.18...v2.2.0) (2023-08-28)
 
-
 ### Features
 
 * the delete button hide when we open ecas modal in mobile browser ([5073f4c](https://github.com/tiwariav/ye-design/commit/5073f4c8361f5fdadc2d360c8bdc3963d9ceff77))
 
-## [2.1.18](https://github.com/tiwariav/ye-design/compare/v2.1.17...v2.1.18) (2023-08-22)
-
 ## [2.1.17](https://github.com/tiwariav/ye-design/compare/v2.1.16...v2.1.17) (2023-08-21)
-
 
 ### Bug Fixes
 
@@ -23,34 +32,16 @@
 
 ## [2.1.16](https://github.com/tiwariav/ye-design/compare/v2.1.15...v2.1.16) (2023-08-16)
 
-
 ### Bug Fixes
 
 * fix issue adding trailing 0 with format enabled in NumberInput ([c6d19a3](https://github.com/tiwariav/ye-design/commit/c6d19a3e885664f3f1caf9ef74ed0ec35443f370))
 
-## [2.1.15](https://github.com/tiwariav/ye-design/compare/v2.1.14...v2.1.15) (2023-08-11)
-
 ## [2.1.14](https://github.com/tiwariav/ye-design/compare/v2.1.13...v2.1.14) (2023-08-09)
 
-
 ### Bug Fixes
 
 * remove default value of shouldUpdate in HookFormInputWrapper  method ([f74701d](https://github.com/tiwariav/ye-design/commit/f74701d0a719d248caba46131faa5dbd6584059a))
 * update semantic version ([325979e](https://github.com/tiwariav/ye-design/commit/325979e7a3beab812b7ffd552102fce1dedc60e9))
-
-## [1.12.15](https://github.com/tiwariav/ye-design/compare/v1.12.14...v1.12.15) (2023-08-08)
-
-
-### Bug Fixes
-
-* remove default value of shouldUpdate in HookFormInputWrapper  method ([f74701d](https://github.com/tiwariav/ye-design/commit/f74701d0a719d248caba46131faa5dbd6584059a))
-* update semantic version ([325979e](https://github.com/tiwariav/ye-design/commit/325979e7a3beab812b7ffd552102fce1dedc60e9))
-
-## [1.12.14](https://github.com/tiwariav/ye-design/compare/v1.12.13...v1.12.14) (2023-08-06)
-
-### Bug Fixes
-
-* text value without `format` option not working ([9cd18e9](https://github.com/tiwariav/ye-design/commit/9cd18e9d54adc30c73500a575fa2587aa7717c16))
 
 ## [2.1.13](https://github.com/tiwariav/ye-design/compare/v2.1.12...v2.1.13) (2023-08-07)
 
@@ -62,32 +53,6 @@
 * phonenumber input too short value error ([e3eaf56](https://github.com/tiwariav/ye-design/commit/e3eaf56a71705cd3fb71543530fc9c3511295887))
 * return type of formatNumber set as string ([956791a](https://github.com/tiwariav/ye-design/commit/956791a171ba43c0fafd0be07fc7725bd56ebc0e))
 * text value without `format` option not working ([9cd18e9](https://github.com/tiwariav/ye-design/commit/9cd18e9d54adc30c73500a575fa2587aa7717c16))
-
-## [1.12.13](https://github.com/tiwariav/ye-design/compare/v1.12.12...v1.12.13) (2023-08-02)
-
-### Bug Fixes
-
-* disable defaultvalue override when undefined ([c8db795](https://github.com/tiwariav/ye-design/commit/c8db7955d173f0622ed5a9f714bf5016e24ba08b))
-
-## [1.12.12](https://github.com/tiwariav/ye-design/compare/v1.12.11...v1.12.12) (2023-08-02)
-
-### Bug Fixes
-
-* enable defaultValue in HookFormInputWrapper ([aca6c25](https://github.com/tiwariav/ye-design/commit/aca6c25d630a40bb1a6481cfed18389d3d8c3e9f))
-
-## [1.12.11](https://github.com/tiwariav/ye-design/compare/v1.12.10...v1.12.11) (2023-08-02)
-
-### Bug Fixes
-
-* number input formatting when ending in zeros after decimal ([018a85a](https://github.com/tiwariav/ye-design/commit/018a85ace269a369ef2f5099be71f6dc54e23bd7))
-
-## [1.12.10](https://github.com/tiwariav/ye-design/compare/v1.12.9...v1.12.10) (2023-08-01)
-
-### Bug Fixes
-
-* remove the usage of onChangeValue from FormattedInput ([2a11898](https://github.com/tiwariav/ye-design/commit/2a11898799b18abd5161d8d6fedf61107a9e56b5))
-
-## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
 
 ## [2.1.12](https://github.com/tiwariav/ye-design/compare/v2.1.11...v2.1.12) (2023-08-01)
 
@@ -104,27 +69,17 @@
 * add 1.x to release branches ([ce6918f](https://github.com/tiwariav/ye-design/commit/ce6918f439ef2963fde6606a02cd1a0f493154d2))
 * numberinput formatting with both format and parse ([425fe7b](https://github.com/tiwariav/ye-design/commit/425fe7b99f86f3b6a519feb9ed501e0d9b5d1f38))
 
-## [2.1.10](https://github.com/tiwariav/ye-design/compare/v2.1.9...v2.1.10) (2023-07-29)
-
 ## [2.1.9](https://github.com/tiwariav/ye-design/compare/v2.1.8...v2.1.9) (2023-07-25)
 
 ### Bug Fixes
 
 * remove uploadFiles prop from fileinput ([cfab3f9](https://github.com/tiwariav/ye-design/commit/cfab3f9c8e261b249a335c3e247d0cab121c483d))
 
-## [2.1.8](https://github.com/tiwariav/ye-design/compare/v2.1.7...v2.1.8) (2023-07-24)
-
-## [2.1.7](https://github.com/tiwariav/ye-design/compare/v2.1.6...v2.1.7) (2023-07-14)
-
-## [2.1.6](https://github.com/tiwariav/ye-design/compare/v2.1.5...v2.1.6) (2023-07-11)
-
 ## [2.1.5](https://github.com/tiwariav/ye-design/compare/v2.1.4...v2.1.5) (2023-07-04)
 
 ### Bug Fixes
 
 * add miossing button variant type ([aee3309](https://github.com/tiwariav/ye-design/commit/aee3309eea74f40683c78dfe2feae3609f5143a3))
-
-## [2.1.4](https://github.com/tiwariav/ye-design/compare/v2.1.3...v2.1.4) (2023-07-04)
 
 ## [2.1.3](https://github.com/tiwariav/ye-design/compare/v2.1.2...v2.1.3) (2023-07-04)
 
@@ -162,6 +117,43 @@
 ### BREAKING CHANGES
 
 * Input styles updated
+
+## [1.12.15](https://github.com/tiwariav/ye-design/compare/v1.12.14...v1.12.15) (2023-08-08)
+
+### Bug Fixes
+
+* remove default value of shouldUpdate in HookFormInputWrapper  method ([f74701d](https://github.com/tiwariav/ye-design/commit/f74701d0a719d248caba46131faa5dbd6584059a))
+* update semantic version ([325979e](https://github.com/tiwariav/ye-design/commit/325979e7a3beab812b7ffd552102fce1dedc60e9))
+
+## [1.12.14](https://github.com/tiwariav/ye-design/compare/v1.12.13...v1.12.14) (2023-08-06)
+
+### Bug Fixes
+
+* text value without `format` option not working ([9cd18e9](https://github.com/tiwariav/ye-design/commit/9cd18e9d54adc30c73500a575fa2587aa7717c16))
+
+## [1.12.13](https://github.com/tiwariav/ye-design/compare/v1.12.12...v1.12.13) (2023-08-02)
+
+### Bug Fixes
+
+* disable defaultvalue override when undefined ([c8db795](https://github.com/tiwariav/ye-design/commit/c8db7955d173f0622ed5a9f714bf5016e24ba08b))
+
+## [1.12.12](https://github.com/tiwariav/ye-design/compare/v1.12.11...v1.12.12) (2023-08-02)
+
+### Bug Fixes
+
+* enable defaultValue in HookFormInputWrapper ([aca6c25](https://github.com/tiwariav/ye-design/commit/aca6c25d630a40bb1a6481cfed18389d3d8c3e9f))
+
+## [1.12.11](https://github.com/tiwariav/ye-design/compare/v1.12.10...v1.12.11) (2023-08-02)
+
+### Bug Fixes
+
+* number input formatting when ending in zeros after decimal ([018a85a](https://github.com/tiwariav/ye-design/commit/018a85ace269a369ef2f5099be71f6dc54e23bd7))
+
+## [1.12.10](https://github.com/tiwariav/ye-design/compare/v1.12.9...v1.12.10) (2023-08-01)
+
+### Bug Fixes
+
+* remove the usage of onChangeValue from FormattedInput ([2a11898](https://github.com/tiwariav/ye-design/commit/2a11898799b18abd5161d8d6fedf61107a9e56b5))
 
 ## [1.12.9](https://github.com/tiwariav/ye-design/compare/v1.12.8...v1.12.9) (2023-08-01)
 
