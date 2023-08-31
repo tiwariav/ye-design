@@ -1,3 +1,17 @@
+# [2.3.0](https://github.com/tiwariav/ye-design/compare/v2.2.1...v2.3.0) (2023-08-31)
+
+
+### Bug Fixes
+
+* fix styles for FileInput status ([65f7afd](https://github.com/tiwariav/ye-design/commit/65f7afd659936e289cfd351157888908f35ca8fb))
+* hook-form-wrapper single error case ([c42f3d1](https://github.com/tiwariav/ye-design/commit/c42f3d1e33796dffcdb493eb9c52a168cc046fff))
+* onChange not working for FormattedInput when `emptyValue` present without `format` ([dddfd65](https://github.com/tiwariav/ye-design/commit/dddfd6552af903feb0c7357c9bbf594f2e9d370b))
+
+
+### Features
+
+* add latest code for hook-form-input-wrapper on 1.x ([d768bcc](https://github.com/tiwariav/ye-design/commit/d768bccd71469744766ea2773daf17d516ab4832))
+
 ## [2.2.1](https://github.com/tiwariav/ye-design/compare/v2.2.0...v2.2.1) (2023-08-30)
 
 ### Bug Fixes
