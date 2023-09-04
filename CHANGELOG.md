@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/tiwariav/ye-design/compare/v2.3.0...v2.3.1) (2023-09-04)
+
+
+### ♻️ Code Refactors
+
+* update semantic release config to include refactor commits ([db4ba39](https://github.com/tiwariav/ye-design/commit/db4ba390b23c70db947f7b3b515e4abd6f232527))
+
 <!-- markdownlint-disable MD001 -->
 
 # [2.3.0](https://github.com/tiwariav/ye-design/compare/v2.2.1...v2.3.0) (2023-08-31)
