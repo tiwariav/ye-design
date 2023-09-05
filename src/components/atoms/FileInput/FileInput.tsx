@@ -1,8 +1,9 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
 
-import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
+import { IconReload, IconTrashXFilled, IconEye, IconEyeOff} from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce, omit, uniqueId } from "lodash-es";
+import { useToggle } from "react-use";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -68,6 +69,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   ...props
 }: FileInputProps<TFile>) {
   const [hasFocus, setHasFocus] = useState(false);
+  const [password, togglePassword] = useToggle(false);
   const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
   const handleFocus: typeof onFocus = (event) => {
@@ -232,7 +234,25 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                       label={dataItem.label}
                       placeholder={dataItem.placeholder}
                       size="small"
-                      type={dataItem.type || "text"}
+                      style={{ paddingTop: 12 }}
+                      type={password ? "text" : dataItem.type}
+                      iconAfter={
+                        password ? (
+                          <IconEyeOff
+                            width="80"
+                            height="80"
+                            strokeWidth="1.75"
+                            onClick={togglePassword}
+                          />
+                        ) : (
+                          <IconEye
+                            width="80"
+                            height="80"
+                            strokeWidth="1.75"
+                            onClick={togglePassword}
+                          />
+                        )
+                      }
                     />
                   ) : (
                     dataItem.type === "preview" && (
