@@ -4,6 +4,7 @@ import { IconReload, IconTrashXFilled, IconEye, IconEyeOff} from "@tabler/icons-
 import { clsx } from "clsx";
 import { debounce, omit, uniqueId } from "lodash-es";
 import { useToggle } from "react-use";
+import PasswordInput from "../TextInput/PasswordInput.js";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -224,9 +225,9 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                 item.data.length > 0 &&
                 item.data.map((dataItem, dataIndex) =>
                   dataItem.type === "password" ? (
-                    <TextInput
+                    <PasswordInput
                       onChange={(event) =>
-                        void handleDataChange(event, item, dataIndex)
+                        handleDataChange(event, item, dataIndex)
                       }
                       defaultValue={dataItem.value}
                       innerClassNames={{ input: styles.listItemDataInput }}
@@ -235,24 +236,6 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                       placeholder={dataItem.placeholder}
                       size="small"
                       style={{ paddingTop: 12 }}
-                      type={password ? "text" : dataItem.type}
-                      iconAfter={
-                        password ? (
-                          <IconEyeOff
-                            width="80"
-                            height="80"
-                            strokeWidth="1.75"
-                            onClick={togglePassword}
-                          />
-                        ) : (
-                          <IconEye
-                            width="80"
-                            height="80"
-                            strokeWidth="1.75"
-                            onClick={togglePassword}
-                          />
-                        )
-                      }
                     />
                   ) : (
                     dataItem.type === "preview" && (
