@@ -1,9 +1,8 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
 
-import { IconReload, IconTrashXFilled, IconEye, IconEyeOff} from "@tabler/icons-react";
+import { IconReload, IconTrashXFilled} from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce, omit, uniqueId } from "lodash-es";
-import { useToggle } from "react-use";
 import PasswordInput from "../TextInput/PasswordInput.js";
 import {
   ChangeEvent,
@@ -70,7 +69,6 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   ...props
 }: FileInputProps<TFile>) {
   const [hasFocus, setHasFocus] = useState(false);
-  const [password, togglePassword] = useToggle(false);
   const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
 
   const handleFocus: typeof onFocus = (event) => {
