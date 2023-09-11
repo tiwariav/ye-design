@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/tiwariav/ye-design/compare/v2.3.1...v2.3.2) (2023-09-11)
+
+
+### 🐛 Bug Fixes
+
+* `useId` for generating ids ([6cb6f7e](https://github.com/tiwariav/ye-design/commit/6cb6f7e4e8c2c78fcf9510fd65ebc044cd028471))
+
 ## [2.3.1](https://github.com/tiwariav/ye-design/compare/v2.3.0...v2.3.1) (2023-09-04)
 
 
