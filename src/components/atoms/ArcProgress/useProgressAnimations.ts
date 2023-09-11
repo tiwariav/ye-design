@@ -12,12 +12,12 @@ export default function useProgressAnimation(
     };
     anime({
       rotateZ: [0, (180 * percentage) / 100],
-      targets: `#anime_indicator__${animeId}`,
+      targets: `#${animeId}-animeIndicator`,
       ...animeProps,
     });
     anime({
       round: 1,
-      targets: `#anime_text__${animeId}`,
+      targets: `#${animeId}-animeText`,
       textContent: [0, percentage],
       ...animeProps,
       easing: "easeOutElastic(1, 2)",

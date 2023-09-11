@@ -199,6 +199,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           ...effectClasses,
           className,
         )}
+        disabled={disabled || isBusy}
         onClick={(event) => {
           if (effects.includes("ripple")) {
             setRippleProperties(
@@ -210,7 +211,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           }
           onClick?.(event);
         }}
-        disabled={disabled || isBusy}
         ref={setInnerRef}
         type="button"
         {...props}

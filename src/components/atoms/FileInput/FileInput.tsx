@@ -2,12 +2,12 @@
 
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { debounce, omit, uniqueId } from "lodash-es";
+import { debounce, omit } from "lodash-es";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
   ReactNode,
-  useMemo,
+  useId,
   useState,
 } from "react";
 
@@ -68,7 +68,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   ...props
 }: FileInputProps<TFile>) {
   const [hasFocus, setHasFocus] = useState(false);
-  const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
+  const fileInputId = useId();
 
   const handleFocus: typeof onFocus = (event) => {
     setHasFocus(true);
@@ -120,7 +120,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
         )}
         <input
           className={clsx(styles.input)}
-          id={fileInputID}
+          id={fileInputId}
           onBlur={handleBlur}
           onChange={(event) => void handleChange(event)}
           onFocus={handleFocus}
@@ -223,13 +223,13 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                 item.data.map((dataItem, dataIndex) =>
                   dataItem.type === "password" ? (
                     <TextInput
-                      onChange={(event) =>
-                        void handleDataChange(event, item, dataIndex)
-                      }
                       defaultValue={dataItem.value}
                       innerClassNames={{ input: styles.listItemDataInput }}
                       key={index}
                       label={dataItem.label}
+                      onChange={(event) =>
+                        void handleDataChange(event, item, dataIndex)
+                      }
                       placeholder={dataItem.placeholder}
                       size="small"
                       type={dataItem.type || "text"}

@@ -9,10 +9,12 @@ import Anchor, { ANCHOR_VARIANTS } from "./Anchor.js";
 
 const metadata: Meta<typeof Anchor> = {
   argTypes: {
+    as: { control: "text" },
     iconAfter: storyIconControl,
     iconBefore: storyIconControl,
   },
   args: {
+    as: "a",
     children: "Anchor",
   },
   component: Anchor,

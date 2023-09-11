@@ -91,13 +91,13 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
       {showError && (
         <Suspense>
           <ErrorMessage
+            errors={errors}
+            name={name}
             render={({ message, messages }) => (
               <FormError
                 messages={isObject(messages) ? messages : { message }}
               />
             )}
-            errors={errors}
-            name={name}
           />
         </Suspense>
       )}

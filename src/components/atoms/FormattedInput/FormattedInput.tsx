@@ -1,11 +1,10 @@
-import { uniqueId } from "lodash-es";
 import {
   ChangeEvent,
   ChangeEventHandler,
   forwardRef,
   useCallback,
   useEffect,
-  useMemo,
+  useId,
   useRef,
   useState,
 } from "react";
@@ -62,10 +61,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       parse?.(formattedValue, emptyValue),
     );
     const currentParsedValue = useLatest(parsedValue);
-    const [formattedInputID, formattedInputTextID] = useMemo(() => {
-      const numberId = id || uniqueId("formattedInput_");
-      return [numberId, "formattedInputText_" + numberId];
-    }, [id]);
+    const inputId = useId();
 
     const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
@@ -105,7 +101,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     return (
       <div className={styles.root}>
         <TextInput
-          id={formattedInputTextID}
+          id={`${inputId}-formattedInputText`}
           isBusy={isBusy}
           isLoading={isLoading}
           onChange={handleChange}
@@ -119,7 +115,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
          */}
         <input
           className={styles.numberInput}
-          id={formattedInputID}
+          id={inputId}
           readOnly
           ref={ref}
           value={parsedValue ?? undefined}

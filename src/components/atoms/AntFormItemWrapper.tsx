@@ -69,6 +69,7 @@ export default function AntFormItemWrapper({
 
   return (
     <Form.Item
+      className={clsx(styles.root, className)}
       getValueFromEvent={(event: EventValue) => {
         return !isObject(event) || isDate(event)
           ? event
@@ -77,7 +78,6 @@ export default function AntFormItemWrapper({
                 ? Number(event.target.value)
                 : event.target.value);
       }}
-      className={clsx(styles.root, className)}
       rules={rules}
       validateTrigger={validateTrigger}
       {...props}

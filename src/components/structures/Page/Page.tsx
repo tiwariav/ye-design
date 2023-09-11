@@ -128,10 +128,10 @@ export default function Page({
               })}
             >
               <div
+                className={styles.sideNavBackdrop}
                 onClick={() => {
                   if (sideNavToggle) toggleSideNav();
                 }}
-                className={styles.sideNavBackdrop}
               />
               {clonedSideNav}
             </div>

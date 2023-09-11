@@ -70,13 +70,13 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
 
     return (
       <FormattedInput
-        innerClassNames={{
-          iconBefore: styles.flagIcon,
-        }}
         className={styles.root}
         defaultValue="+91"
         format={formatFunction}
         iconBefore={flag}
+        innerClassNames={{
+          iconBefore: styles.flagIcon,
+        }}
         parse={parseFunction}
         ref={ref}
         {...props}

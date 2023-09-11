@@ -8,6 +8,7 @@ function Template({ files, ...args }: FileInputProps) {
   const [allFiles, setFiles] = useState(files);
   return (
     <FileInput
+      files={allFiles}
       updateFiles={(files) =>
         setFiles(
           files.map((item) =>
@@ -15,7 +16,6 @@ function Template({ files, ...args }: FileInputProps) {
           ),
         )
       }
-      files={allFiles}
       {...args}
     />
   );
@@ -44,6 +44,7 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
   return (
     <>
       <FileInput
+        files={allFiles}
         updateFiles={(files) =>
           setFiles(
             files.map((item) => {
@@ -56,7 +57,6 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
             }),
           )
         }
-        files={allFiles}
         {...args}
       />
       <div>{allFiles.map((file) => file.text || "")}</div>
