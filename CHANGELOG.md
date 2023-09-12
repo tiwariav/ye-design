@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/tiwariav/ye-design/compare/v2.3.2...v2.3.3) (2023-09-12)
+
+
+### 🐛 Bug Fixes
+
+* allow react nodes as input labels ([693e5a8](https://github.com/tiwariav/ye-design/commit/693e5a82501b472ccb8e7d385ce6e02df0530cbd))
+
 ## [2.3.2](https://github.com/tiwariav/ye-design/compare/v2.3.1...v2.3.2) (2023-09-11)
 
 
