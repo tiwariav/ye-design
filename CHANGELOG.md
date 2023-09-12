@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/tiwariav/ye-design/compare/v2.3.3...v2.3.4) (2023-09-12)
+
+
+### ♻️ Code Refactors
+
+* update eslint config ([1dacd9c](https://github.com/tiwariav/ye-design/commit/1dacd9c7c1213fdc1ff1af0746d261581a3f635f))
+
 ## [2.3.3](https://github.com/tiwariav/ye-design/compare/v2.3.2...v2.3.3) (2023-09-12)
 
 
