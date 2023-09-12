@@ -7,7 +7,7 @@ export const UPLOAD_FILE_STATUS = {
   uploading: "uploading",
 } as const;
 
-type UploadFileData = {
+export type UploadFileData = {
   label: string;
   name: string;
   placeholder?: string;

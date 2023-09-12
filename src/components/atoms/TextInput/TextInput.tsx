@@ -35,7 +35,7 @@ export interface TextInputProps
   };
   isBusy?: boolean;
   isLoading?: boolean;
-  label?: string;
+  label?: ReactNode;
   placeholder?: string;
   required?: boolean;
   requiredText?: string;
