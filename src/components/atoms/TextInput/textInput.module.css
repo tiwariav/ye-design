@@ -84,11 +84,12 @@
 .is-dashed {
   border-width: var(--ye-input-border-width);
   transition-property: background-color, color;
+}
 
-  &.has-focus,
-  &:focus {
-    background-color: var(--ye-color-text);
-  }
+.has-focus,
+.is-outlined::focus,
+.is-dashed:focus {
+  background-color: var(--ye-color-text);
 }
 
 .is-material {
@@ -139,4 +140,11 @@
 
 .spinner {
   border-radius: var(--ye-radius-small);
+}
+
+/* to avoid undef error */
+/* stylelint-disable-next-line no-descending-specificity */
+.has-focus,
+.label {
+  /* no styles */
 }

@@ -179,3 +179,10 @@
     background-color: var(--ye-color-background);
   }
 }
+
+/* to avoid undef error */
+/* stylelint-disable-next-line no-descending-specificity */
+.has-multi-row,
+.open {
+  /* no styles */
+}
