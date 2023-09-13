@@ -223,18 +223,19 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                 item.data.length > 0 &&
                 item.data.map((dataItem, dataIndex) =>
                   dataItem.type === "password" ? (
-                    <PasswordInput
-                      onChange={(event) =>
-                        handleDataChange(event, item, dataIndex)
-                      }
-                      defaultValue={dataItem.value}
-                      innerClassNames={{ input: styles.listItemDataInput }}
-                      key={index}
-                      label={dataItem.label}
-                      placeholder={dataItem.placeholder}
-                      size="small"
-                      style={{ paddingTop: 12 }}
-                    />
+                    <>
+                      <div>{dataItem.label}</div>
+                      <PasswordInput
+                        onChange={(event) =>
+                          handleDataChange(event, item, dataIndex)
+                        }
+                        defaultValue={dataItem.value}
+                        innerClassNames={{ input: styles.listItemDataInput }}
+                        key={index}
+                        size="small"
+                        variant="outlined"
+                      />
+                    </>
                   ) : (
                     dataItem.type === "preview" && (
                       <img
