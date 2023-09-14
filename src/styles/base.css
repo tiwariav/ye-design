@@ -12,6 +12,15 @@
   --ye-bp-min-xl: 1200px;
   --ye-bp-min-xxl: 1400px;
 
+  /* BREAKPOINTS */
+  --ye-width-smobile : 360px;
+  --ye-width-mobile : 480px;
+  --ye-width-tablet : 780px;
+  --ye-width-slaptop : 1080px;
+  --ye-width-laptop : 1200px;
+  --ye-width-sdesktop : 1440px;
+  --ye-width-desktop : 1920px;
+
   /* COLORS */
 
   /* color definitions */
