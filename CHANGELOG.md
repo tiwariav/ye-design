@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/tiwariav/ye-design/compare/v2.3.4...v2.3.5) (2023-09-14)
+
+
+### 🐛 Bug Fixes
+
+* fix password input styling for file input ([4650ea0](https://github.com/tiwariav/ye-design/commit/4650ea03054a55fc58a21e42ef06a0fe6c0fc5df))
+
 ## [2.3.4](https://github.com/tiwariav/ye-design/compare/v2.3.3...v2.3.4) (2023-09-12)
 
 
