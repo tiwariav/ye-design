@@ -1,7 +1,7 @@
 .root {
+  display: block;
   margin-bottom: var(--ye-spacing-em-xsmall);
-  padding: var(--module-input-padding-top) var(--module-input-padding-right)
-    var(--module-input-padding-bottom) var(--module-input-padding-left);
+  padding-left: var(--ye-spacing-em-tiny);
   line-height: var(--ye-line-height);
 
   &.is-material {

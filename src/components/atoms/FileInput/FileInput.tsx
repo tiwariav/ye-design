@@ -2,7 +2,7 @@
 
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { debounce, omit } from "lodash-es";
+import { debounce } from "lodash-es";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -11,12 +11,11 @@ import {
   useState,
 } from "react";
 
-import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import UploadFile from "../../../tools/uploadFile.js";
 import Button from "../Button/Button.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
-import TextInput from "../TextInput/TextInput.js";
+import PasswordInput from "../TextInput/PasswordInput.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
 import styles from "./fileInput.module.css";
@@ -125,7 +124,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
           onChange={(event) => void handleChange(event)}
           onFocus={handleFocus}
           type="file"
-          {...omit(props, EXCLUDE_HANDLERS)}
+          {...props}
         />
         <span className={clsx(styles.placeholder, innerClassNames.input)}>
           {placeholder}
@@ -222,17 +221,18 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                 item.data.length > 0 &&
                 item.data.map((dataItem, dataIndex) =>
                   dataItem.type === "password" ? (
-                    <TextInput
+                    <PasswordInput
                       defaultValue={dataItem.value}
-                      innerClassNames={{ input: styles.listItemDataInput }}
+                      innerClassNames={{
+                        input: styles.listItemDataInput,
+                        label: styles.listItemDataLabel,
+                      }}
                       key={index}
-                      label={dataItem.label}
                       onChange={(event) =>
                         void handleDataChange(event, item, dataIndex)
                       }
-                      placeholder={dataItem.placeholder}
                       size="small"
-                      type={dataItem.type || "text"}
+                      {...dataItem.props}
                     />
                   ) : (
                     dataItem.type === "preview" && (

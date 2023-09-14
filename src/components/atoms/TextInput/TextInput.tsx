@@ -1,6 +1,7 @@
-/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material', 'is-basic', 'is-dashed'] }] */
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed:
+  ['is-outlined', 'is-material', 'is-basic', 'is-dashed']
+}] */
 import { clsx } from "clsx";
-import { omit } from "lodash-es";
 import {
   CSSProperties,
   ComponentPropsWithoutRef,
@@ -12,7 +13,6 @@ import {
 } from "react";
 
 import { useMeasureInput } from "../../../hooks/index.js";
-import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import { isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
 import Label from "../Label.js";
@@ -32,6 +32,7 @@ export interface TextInputProps
     iconAfter?: string;
     iconBefore?: string;
     input?: string;
+    label?: string;
   };
   isBusy?: boolean;
   isLoading?: boolean;
@@ -109,10 +110,14 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         )}
       >
         <Label
-          className={clsx(styles.label, {
-            [styles.paddedLeft]: iconBefore,
-            [styles.paddedRight]: iconAfter,
-          })}
+          className={clsx(
+            styles.label,
+            {
+              [styles.paddedLeft]: iconBefore,
+              [styles.paddedRight]: iconAfter,
+            },
+            innerClassNames.label,
+          )}
           inputId={inputId}
           ref={labelRef}
           required={required}
@@ -163,7 +168,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             }
             type="text"
             value={value}
-            {...omit(props, EXCLUDE_HANDLERS)}
+            {...props}
           />
           {iconAfter && (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>
