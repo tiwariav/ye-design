@@ -26,7 +26,7 @@
     width: 25%;
     height: 25%;
     background-color: var(--module-spinkit-color);
-    border-radius: 100%;
+    border-radius: var(--ye-radius-circle);
     animation: dot-before 2s infinite ease-in-out both;
     content: "";
 

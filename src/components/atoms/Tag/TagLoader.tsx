@@ -1,17 +1,22 @@
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 
 import ContentLoader from "../../../vendors/ContentLoader.js";
-import { TextGroupLoaderProps } from "../TextGroup/TextGroupLoader.js";
 import styles from "./tagLoader.module.css";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
+
+export interface TagLoaderProps extends ComponentPropsWithoutRef<"span"> {
+  iconAfter?: boolean;
+  iconBefore?: boolean;
+}
 
 export default function TagLoader({
   className,
   iconAfter,
   iconBefore,
   ...props
-}: TextGroupLoaderProps) {
+}: TagLoaderProps) {
   return (
     <span className={clsx(styles.loader, className)} {...props}>
       {iconBefore && (

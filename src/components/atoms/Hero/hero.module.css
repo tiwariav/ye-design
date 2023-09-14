@@ -3,8 +3,8 @@
   align-items: center;
   width: 100%;
   min-height: 90vh;
-  padding-top: 2.5em;
-  padding-bottom: 2.5em;
+  padding-top: var(--ye-spacing-rem-xhuge);
+  padding-bottom: var(--ye-spacing-rem-xhuge);
   background-color: var(--ye-color-background);
 }
 

@@ -3,27 +3,6 @@
   margin-bottom: var(--ye-spacing-em-xsmall);
   padding-left: var(--ye-spacing-em-tiny);
   line-height: var(--ye-line-height);
-
-  &.is-material {
-    --block-xy-padding: calc(
-      var(--input-padding-top) + var(--input-padding-bottom)
-    );
-
-    position: absolute;
-    top: calc(var(--block-xy-padding) / 2 + 1px);
-    left: calc(var(--input-padding-left) + var(--ye-spacing-rem-tiny));
-    z-index: var(--z-index-label);
-    width: calc(100% - var(--input-padding-left) - var(--input-padding-right));
-    margin: 0;
-    padding: 0;
-    color: var(--ye-color-text-light);
-    font-weight: 300;
-    transform-origin: 0 center;
-    cursor: text;
-    transition-timing-function: var(--ye-transition-function);
-    transition-duration: calc(var(--ye-transition-duration) / 2);
-    transition-property: transform;
-  }
 }
 
 .with-value,

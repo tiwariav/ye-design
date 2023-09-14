@@ -1,6 +1,6 @@
 .root {
   width: 70px;
-  margin: 100px auto 0;
+  margin: var(--ye-gap-normal) auto 0;
   text-align: center;
 }
 
@@ -8,8 +8,8 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  background-color: #333;
-  border-radius: 100%;
+  background-color: var(--ye-color-accent-dark);
+  border-radius: var(--ye-radius-circle);
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 
   @media screen and (prefers-reduced-motion: reduce) {

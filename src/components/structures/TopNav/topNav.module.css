@@ -1,7 +1,7 @@
 @import url("../../../styles/media.css");
 
 .root {
-  z-index: 100;
+  z-index: var(--ye-z-topnav);
   width: 100%;
   background-color: var(--ye-color-background);
   box-shadow: var(--ye-shadow-floating-low);
@@ -77,7 +77,7 @@
 }
 
 .content-menu {
-  z-index: -1;
+  z-index: var(--ye-z-behind);
   display: none;
   align-items: stretch;
   height: fit-content;
@@ -96,8 +96,8 @@
 .content-menu-icon {
   display: flex;
   align-items: center;
-  font-size: 2em;
-  fill: #000;
+  font-size: var(--ye-font-size-huge);
+  fill: var(--ye-color-black);
 
   @media (--media-min-xl) {
     display: none;
@@ -123,7 +123,7 @@
 .logo-container {
   display: flex;
   justify-content: center;
-  font-size: 2.5em;
+  font-size: var(--ye-font-size-mammoth);
   line-height: 1;
   transition: var(--ye-transition-duration) height ease-in-out;
 
@@ -153,9 +153,9 @@
   transition-property: height;
 
   & .logo {
-    z-index: 103;
-    height: 112px;
-    font-size: 112px;
+    z-index: calc(var(--ye-z-topnav) + 1);
+    height: var(--ye-size-hanging-logo);
+    font-size: var(--ye-size-hanging-logo);
   }
 }
 

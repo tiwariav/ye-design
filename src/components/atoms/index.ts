@@ -18,7 +18,6 @@ export { default as Spinner } from "./Spinner/Spinner.js";
 export { default as Symbol } from "./Symbol/Symbol.js";
 export { default as Tag } from "./Tag/Tag.js";
 export { default as Text } from "./Text/Text.js";
-export { default as TextGroup } from "./TextGroup/TextGroup.js";
 export { default as TextIcon } from "./TextIcon/TextIcon.js";
 export { default as TextInput } from "./TextInput/TextInput.js";
 export { default as Title } from "./Title/Title.js";

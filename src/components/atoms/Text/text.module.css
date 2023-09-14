@@ -4,7 +4,6 @@
   width: 100%;
   max-width: 720px;
   overflow: hidden;
-  box-orient: vertical;
 
   &.inline {
     display: inline-flex;

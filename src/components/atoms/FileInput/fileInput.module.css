@@ -25,12 +25,12 @@
   overflow: hidden;
 
   &:hover + .placeholder {
-    border-color: #40a9ff;
+    border-color: var(--ye-color-text-anchor-focus);
   }
 
   &:focus + .placeholder {
-    background-color: #f4f5f6;
-    border-color: #40a9ff;
+    background-color: var(--ye-color-input-focus-placeholder);
+    border-color: var(--ye-color-text-anchor-focus);
     outline: none;
     box-shadow: var(--ye-shadow-inset-none);
   }
@@ -67,8 +67,8 @@
 }
 
 .list-item-progress {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: var(--ye-spacing-em-tiny);
+  margin-bottom: var(--ye-spacing-em-tiny);
 }
 
 .list-item-text {
@@ -85,7 +85,7 @@
 }
 
 .list-item-status-text {
-  margin-right: 0.25rem;
+  margin-right: var(--ye-spacing-em-tiny);
 }
 
 /* variants */

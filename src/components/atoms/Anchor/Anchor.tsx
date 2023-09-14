@@ -17,6 +17,7 @@ import {
   COMPONENT_SIZES,
   COMPONENT_SPACINGS,
 } from "../../../tools/constants/props.js";
+import { IconSpan } from "../../../wrappers/span.js";
 import styles from "./anchor.module.css";
 
 export const ANCHOR_VARIANTS = [
@@ -73,12 +74,10 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
         ref={ref}
         {...props}
       >
-        {iconBefore && <span className={clsx(styles.icon)}>{iconBefore}</span>}
+        {iconBefore && <IconSpan>{iconBefore}</IconSpan>}
         {children}
         {iconAfter && (
-          <span className={clsx(styles.icon, styles.iconAfter)}>
-            {iconAfter}
-          </span>
+          <IconSpan className={styles.iconAfter}>{iconAfter}</IconSpan>
         )}
       </Element>
     );

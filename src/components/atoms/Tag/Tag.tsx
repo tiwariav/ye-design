@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 
+import { IconSpan } from "../../../wrappers/span.js";
 import Spinner from "../Spinner/Spinner.js";
 import TagLoader from "./TagLoader.js";
 import styles from "./tag.module.css";
@@ -28,14 +29,10 @@ function Tag({
         <TagLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
-          {iconBefore && (
-            <span className={clsx(styles.icon)}>{iconBefore}</span>
-          )}
+          {iconBefore && <IconSpan>{iconBefore}</IconSpan>}
           {children}
           {iconAfter && (
-            <span className={clsx(styles.icon, styles.isAfter)}>
-              {iconAfter}
-            </span>
+            <IconSpan className={styles.isAfter}>{iconAfter}</IconSpan>
           )}
         </>
       )}

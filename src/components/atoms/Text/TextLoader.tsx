@@ -20,17 +20,15 @@ export default function TextLoader({ lines = 1, ...props }: TextLoaderProps) {
       {...props}
     >
       {/* Only SVG shapes */}
-      {Array.from({ length: lines })
-        .fill(null)
-        .map((_item, index) => (
-          <rect
-            height="20"
-            key={index}
-            width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
-            x="0"
-            y={index * 24 + 3}
-          />
-        ))}
+      {Array.from({ length: lines }, (_item, index) => (
+        <rect
+          height="20"
+          key={index}
+          width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
+          x="0"
+          y={index * 24 + 3}
+        />
+      ))}
     </ContentLoader>
   );
 }

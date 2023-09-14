@@ -16,6 +16,8 @@ const Template = ({ width, ...args }) => (
 export const Basic = {
   args: {
     children: TEXT_LONG,
+    isLoading: true,
+    minLines: 5,
     width: 800,
   },
   render: (args) => <Template {...args} />,

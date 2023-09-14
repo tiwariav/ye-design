@@ -1,4 +1,4 @@
-import { Horizontal as CardHorizontal } from "../../atoms/Card/Card.stories.js";
+import LoremCard from "../../__stories/LoremCard.js";
 import Container from "../../atoms/Container/Container.js";
 import Image from "../../atoms/Image/Image.js";
 import ProfileTemplate from "./index.js";
@@ -28,13 +28,7 @@ const Template = ({ coverImage, ...args }) => {
       coverImage={<Image src={coverImage} style={{ height: 200 }} />}
       {...args}
     >
-      {Array.from({ length: 4 }).fill(
-        <CardHorizontal {...CardHorizontal.args}>
-          Expedita possimus dolor est unde possimus. Velit est qui alias
-          veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem
-          molestiae odio et dolor.
-        </CardHorizontal>,
-      )}
+      {Array.from({ length: 4 }).fill(<LoremCard />)}
     </ProfileTemplate>
   );
 };
