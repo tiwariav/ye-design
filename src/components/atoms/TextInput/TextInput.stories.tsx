@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
 
-import { storyIconControl } from "../../../tools/storybook.js";
+import { storyIconControl, storyIconMap } from "../../../tools/storybook.js";
 import TextInput from "./TextInput.js";
 
 const metadata: Meta<typeof TextInput> = {
@@ -52,7 +52,7 @@ export const Borderless = {
 export const withIcon = {
   args: {
     ...Basic.args,
-    iconAfter: "AiOutlineEye",
-    iconBefore: "AiOutlineSearch",
+    iconAfter: storyIconMap.Search,
+    iconBefore: storyIconMap.DogBowl,
   },
 };

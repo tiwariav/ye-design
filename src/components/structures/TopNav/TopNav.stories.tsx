@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import {
-  IconFish,
+  IconDogBowl,
   IconLogin,
   IconMicrophone,
   IconSearch,
-  IconSpider,
 } from "@tabler/icons-react";
 import { CSSProperties } from "react";
 
@@ -12,7 +11,7 @@ import { Button, TextInput } from "../../atoms/index.js";
 import TopNav, { TopNavProps } from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
 
-const iconMap = { IconFish, IconSpider };
+const iconMap = { DogBowl: <IconDogBowl /> };
 const itemsMap = {
   Button: (
     <TopNavItem>
@@ -55,12 +54,21 @@ const fixedStyles: CSSProperties = {
 const metadata: Meta<typeof TopNav> = {
   argTypes: {
     contentLeft: {
-      control: { options: Object.keys(itemsMap), type: "inline-check" },
+      control: {
+        mapping: itemsMap,
+        options: Object.keys(itemsMap),
+        type: "inline-check",
+      },
     },
     contentRight: {
       control: { options: Object.keys(itemsMap), type: "inline-check" },
     },
-    logo: { control: { options: Object.keys(iconMap), type: "select" } },
+    logo: {
+      control: {
+        mapping: iconMap,
+        options: Object.keys(iconMap),
+      },
+    },
   },
   component: TopNav,
   render: (args) => <TopNav {...args} />,
@@ -85,7 +93,6 @@ export const Basic = {
   args: {
     contentLeft: ["SearchInput"],
     contentRight: ["ButtonWithSeparator", "Button"],
-    logo: "IconSpider",
   },
 };
 

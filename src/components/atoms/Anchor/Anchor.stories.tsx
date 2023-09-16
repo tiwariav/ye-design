@@ -29,8 +29,8 @@ export const Basic: Story = {};
 export const WithIcon: Story = {
   args: {
     ...Basic.args,
-    iconAfter: storyIconMap.IconSquareRoundedChevronLeftFilled,
-    iconBefore: storyIconMap.IconSquareRoundedChevronRightFilled,
+    iconAfter: storyIconMap.SquareRoundedChevronRightFilled,
+    iconBefore: storyIconMap.SquareRoundedChevronLeftFilled,
   },
 };
 
