@@ -1,3 +1,10 @@
+## [2.3.7](https://github.com/tiwariav/ye-design/compare/v2.3.6...v2.3.7) (2023-09-16)
+
+
+### 🐛 Bug Fixes
+
+* add custom media queries to output ([85200d0](https://github.com/tiwariav/ye-design/commit/85200d0e42b068e0c7766b247f17f6dd7b52bac1))
+
 ## [2.3.6](https://github.com/tiwariav/ye-design/compare/v2.3.5...v2.3.6) (2023-09-14)
 
 
