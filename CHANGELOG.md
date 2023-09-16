@@ -1,3 +1,10 @@
+## [2.3.8](https://github.com/tiwariav/ye-design/compare/v2.3.7...v2.3.8) (2023-09-16)
+
+
+### 🐛 Bug Fixes
+
+* remove console log from Anchor ([069c29e](https://github.com/tiwariav/ye-design/commit/069c29e22e39921d0aaacd7e72bcd928666f00bc))
+
 ## [2.3.7](https://github.com/tiwariav/ye-design/compare/v2.3.6...v2.3.7) (2023-09-16)
 
 
