@@ -165,7 +165,7 @@
   --ye-gap-normal: 100px;
 
   /* sizes */
-  --ye-size-hanging-logo: 7em;
+  --ye-size-hanging-logo: 7rem;
 
   /* radii */
   --ye-radius-tiny: var(--ye-em-unit);

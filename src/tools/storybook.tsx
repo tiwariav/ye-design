@@ -1,19 +1,22 @@
 import {
   IconBallBowling,
   IconDogBowl,
+  IconSearch,
   IconSquareRoundedChevronLeftFilled,
   IconSquareRoundedChevronRightFilled,
 } from "@tabler/icons-react";
 
 export const storyIconMap = {
-  IconBallBowling: <IconBallBowling />,
-  IconDogBowl: <IconDogBowl />,
-  IconSquareRoundedChevronLeftFilled: <IconSquareRoundedChevronLeftFilled />,
-  IconSquareRoundedChevronRightFilled: <IconSquareRoundedChevronRightFilled />,
-  None: null,
+  BallBowling: <IconBallBowling />,
+  DogBowl: <IconDogBowl />,
+  Search: <IconSearch />,
+  SquareRoundedChevronLeftFilled: <IconSquareRoundedChevronLeftFilled />,
+  SquareRoundedChevronRightFilled: <IconSquareRoundedChevronRightFilled />,
 };
 
+const noneMap = { None: null };
+
 export const storyIconControl = {
-  mapping: storyIconMap,
+  mapping: { ...storyIconMap, ...noneMap },
   options: Object.keys(storyIconMap),
 };
