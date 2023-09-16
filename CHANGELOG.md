@@ -1,3 +1,10 @@
+## [2.3.6](https://github.com/tiwariav/ye-design/compare/v2.3.5...v2.3.6) (2023-09-14)
+
+
+### ♻️ Code Refactors
+
+* apply stricter linting ([962f1c4](https://github.com/tiwariav/ye-design/commit/962f1c4f219108b6bb075cbfd416aaa1cfd4dbf4))
+
 ## [2.3.5](https://github.com/tiwariav/ye-design/compare/v2.3.4...v2.3.5) (2023-09-14)
 
 
