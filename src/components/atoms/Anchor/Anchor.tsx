@@ -57,7 +57,6 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
     },
     ref,
   ) => {
-    console.log(as, children, props);
     const Element = as || "a";
     return (
       <Element
