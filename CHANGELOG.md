@@ -1,3 +1,10 @@
+## [2.3.9](https://github.com/tiwariav/ye-design/compare/v2.3.8...v2.3.9) (2023-09-17)
+
+
+### 🐛 Bug Fixes
+
+* set showError to true be default for HookFormInputWrapper ([0d562aa](https://github.com/tiwariav/ye-design/commit/0d562aaa718accdd0417560c6d6e3aca1df7b3ad))
+
 ## [2.3.8](https://github.com/tiwariav/ye-design/compare/v2.3.7...v2.3.8) (2023-09-16)
 
 
