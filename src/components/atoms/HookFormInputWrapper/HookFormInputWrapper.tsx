@@ -46,7 +46,7 @@ export type HookFormInputWrapperProps<TValues extends FieldValues> =
 export default function HookFormInputWrapper<TValues extends FieldValues>({
   children,
   name,
-  showError,
+  showError = true,
   ...props
 }: HookFormInputWrapperProps<TValues>): ReactNode {
   const {
