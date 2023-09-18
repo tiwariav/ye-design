@@ -30,11 +30,9 @@ export default function HookForm<TFieldValues extends FieldValues>({
   return (
     <FormProvider {...methods}>
       <form
-        onSubmit={(event) => {
-          if (onValid) {
-            void methods.handleSubmit(onValid, onInvalid)(event);
-          }
-        }}
+        onSubmit={
+          onValid ? methods.handleSubmit(onValid, onInvalid) : undefined
+        }
       >
         {children}
       </form>

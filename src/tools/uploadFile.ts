@@ -1,5 +1,7 @@
 import { uniqueId } from "lodash-es";
 
+import { TextInputProps } from "../components/atoms/TextInput/TextInput.js";
+
 export const UPLOAD_FILE_STATUS = {
   failed: "failed",
   new: "new",
@@ -7,13 +9,12 @@ export const UPLOAD_FILE_STATUS = {
   uploading: "uploading",
 } as const;
 
-type UploadFileData = {
-  label: string;
+export type UploadFileData = {
   name: string;
-  placeholder?: string;
+  props?: Partial<TextInputProps>;
   resource?: string;
-  type: string;
-  value: string;
+  type: "password" | "preview";
+  value?: string;
 };
 
 export type UploadFileInitOptions = {

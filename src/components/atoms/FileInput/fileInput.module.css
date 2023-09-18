@@ -25,12 +25,12 @@
   overflow: hidden;
 
   &:hover + .placeholder {
-    border-color: #40a9ff;
+    border-color: var(--ye-color-text-anchor-focus);
   }
 
   &:focus + .placeholder {
-    background-color: #f4f5f6;
-    border-color: #40a9ff;
+    background-color: var(--ye-color-input-focus-background);
+    border-color: var(--ye-color-text-anchor-focus);
     outline: none;
     box-shadow: var(--ye-shadow-inset-none);
   }
@@ -76,7 +76,11 @@
 }
 
 .list-item-data-input {
-  padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-xsmall);
+  padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-small);
+}
+
+.list-item-data-input,
+.list-item-data-label {
   font-size: var(--ye-font-size-xsmall);
 }
 
@@ -125,4 +129,9 @@
 .upload-section {
   display: flex;
   align-items: center;
+}
+
+/* to avoid undef error */
+.has-focus {
+  /* no styles */
 }

@@ -42,7 +42,7 @@ const config = [
     input: rollupInputMap(import.meta.url, STYLES_DIR, {
       extension: "!(*.module).css",
     }),
-    output: getCssOutputOptions("./dist/styles"),
+    output: getCssOutputOptions("./dist"),
     perf: isDev,
     plugins: [
       ...bundleCss(import.meta.url, STYLES_DIR, { extension: "*.css" }),

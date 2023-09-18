@@ -261,3 +261,10 @@
   inset: 1px;
   border-radius: var(--ye-button-border-radius);
 }
+
+/* to avoid undef error */
+/* stylelint-disable-next-line no-descending-specificity */
+.has-focus,
+.icon {
+  /* no styles */
+}

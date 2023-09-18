@@ -1,3 +1,4 @@
+import { isObject } from "lodash-es";
 import React, {
   ChangeEvent,
   ChangeEventHandler,
@@ -52,6 +53,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
     field: { onBlur, onChange, ref, value },
     formState: { defaultValues, errors },
   } = useController({ name, ...props });
+
   const child = React.Children.only(children);
   const changeHandlers = useMemo(
     () => ({
@@ -91,7 +93,11 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
           <ErrorMessage
             errors={errors}
             name={name}
-            render={({ messages }) => <FormError messages={messages} />}
+            render={({ message, messages }) => (
+              <FormError
+                messages={isObject(messages) ? messages : { message }}
+              />
+            )}
           />
         </Suspense>
       )}

@@ -3,8 +3,7 @@
 ]}] */
 import { IconArrowLeftRhombus } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { uniqueId } from "lodash-es";
-import { ReactNode, useMemo } from "react";
+import { ReactNode, useId, useMemo } from "react";
 
 import { describeArc } from "../../../tools/svg.js";
 import styles from "./arcProgress.module.css";
@@ -31,11 +30,8 @@ export default function ArcProgress({
   strokeWidth = 2,
 }: ArcProgressProps) {
   // calculate percentage
-  const percentage = useMemo(
-    () => 100 * (progress[0] / progress[1]),
-    [progress],
-  );
-  const animeId = useMemo(() => uniqueId(), []);
+  const percentage = 100 * (progress[0] / progress[1]);
+  const animeId = useId();
   const angles = useMemo(() => {
     const value: [number, number][] = [];
     const parts = Array.from<number>({ length: segments }).fill(100 / segments);
@@ -78,14 +74,11 @@ export default function ArcProgress({
           />
         ))}
       </svg>
-      <div
-        className={clsx(styles.indicator)}
-        id={`anime_indicator__${animeId}`}
-      >
+      <div className={clsx(styles.indicator)} id={`${animeId}-animeIndicator`}>
         <IconArrowLeftRhombus />
       </div>
       <div className={styles.content}>
-        <div className={clsx(styles.text)} id={`anime_text__${animeId}`}>
+        <div className={clsx(styles.text)} id={`${animeId}-animeText`}>
           {percentage}
         </div>
         {children}

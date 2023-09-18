@@ -163,3 +163,8 @@
   margin-right: calc(-1 * var(--ye-em-unit));
   margin-left: var(--ye-spacing-em-tiny);
 }
+
+/* to avoid undef error */
+.no-visited {
+  /* no styles */
+}

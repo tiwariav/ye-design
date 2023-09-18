@@ -43,7 +43,7 @@ export interface AnchorProps extends ComponentPropsWithoutRef<"a"> {
 const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
   (
     {
-      as = "a",
+      as,
       children,
       className,
       iconAfter,
@@ -56,7 +56,8 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
     },
     ref,
   ) => {
-    const Element = as;
+    console.log(as, children, props);
+    const Element = as || "a";
     return (
       <Element
         className={clsx(

@@ -177,23 +177,23 @@ export default function CircleProgress({
             styles[progressData.progressClass],
             innerClassNames[progressData.progressClass],
           )}
-          transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
-            squareSize / 2
-          })`}
           cx={squareSize / 2}
           cy={squareSize / 2}
           markerEnd="url(#round)"
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
           style={progressData.circleStyles}
+          transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
+            squareSize / 2
+          })`}
         />
         <CenterText
+          arcHeight={arcHeight}
           className={clsx(
             innerClassNames.text,
             styles[progressData.progressClass],
             innerClassNames[progressData.progressClass],
           )}
-          arcHeight={arcHeight}
           percentage={progressData.completion}
           progress={progress}
           text={progressText}

@@ -113,3 +113,12 @@
   width: 100%;
   height: 0;
 }
+
+/* to avoid undef error */
+/* stylelint-disable-next-line no-descending-specificity */
+.has-side-nav-toggle,
+.side-nav-top,
+.is-sticky,
+.top-nav-top {
+  /* no styles */
+}

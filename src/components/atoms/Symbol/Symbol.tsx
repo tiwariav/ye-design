@@ -1,8 +1,7 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-small'] }] */
 
 import { clsx } from "clsx";
-import { uniqueId } from "lodash-es";
-import { ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
+import { ComponentPropsWithoutRef, forwardRef, useId } from "react";
 
 import { SVGPathFlag, SVGPathPin } from "../../../svg/paths/index.js";
 import styles from "./symbol.module.css";
@@ -31,7 +30,7 @@ interface SymbolProps extends ComponentPropsWithoutRef<"svg"> {
 
 const Symbol = forwardRef<SVGSVGElement, SymbolProps>(
   ({ className, fill, imageProps, imageSrc, variant, ...props }, ref) => {
-    const maskID = useMemo(() => uniqueId("svgMask_"), []);
+    const maskId = useId();
 
     return (
       <svg
@@ -41,7 +40,7 @@ const Symbol = forwardRef<SVGSVGElement, SymbolProps>(
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
-        <mask id={maskID}>
+        <mask id={maskId}>
           <rect fill="black" height="100%" width="100%" />
           {variant === "circle" ? (
             <circle cx="5" cy="5" fill="white" r="5" />
@@ -55,7 +54,7 @@ const Symbol = forwardRef<SVGSVGElement, SymbolProps>(
             <rect fill="white" height="100%" width="100%" />
           )}
         </mask>
-        <rect fill={fill} height="100%" mask={`url(#${maskID})`} width="100%" />
+        <rect fill={fill} height="100%" mask={`url(#${maskId})`} width="100%" />
         {imageSrc && (
           <image
             height="100%"

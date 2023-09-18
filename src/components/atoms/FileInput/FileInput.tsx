@@ -2,21 +2,20 @@
 
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { debounce, omit, uniqueId } from "lodash-es";
+import { debounce } from "lodash-es";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
   ReactNode,
-  useMemo,
+  useId,
   useState,
 } from "react";
 
-import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import UploadFile from "../../../tools/uploadFile.js";
 import Button from "../Button/Button.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import Spinner from "../Spinner/Spinner.js";
-import TextInput from "../TextInput/TextInput.js";
+import PasswordInput from "../TextInput/PasswordInput.js";
 // eslint-disable-next-line css-modules/no-unused-class
 import formStyles from "../form.module.css";
 import styles from "./fileInput.module.css";
@@ -68,7 +67,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   ...props
 }: FileInputProps<TFile>) {
   const [hasFocus, setHasFocus] = useState(false);
-  const fileInputID = useMemo(() => id || uniqueId("fileInput_"), [id]);
+  const fileInputId = useId();
 
   const handleFocus: typeof onFocus = (event) => {
     setHasFocus(true);
@@ -120,12 +119,12 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
         )}
         <input
           className={clsx(styles.input)}
-          id={fileInputID}
+          id={fileInputId}
           onBlur={handleBlur}
           onChange={(event) => void handleChange(event)}
           onFocus={handleFocus}
           type="file"
-          {...omit(props, EXCLUDE_HANDLERS)}
+          {...props}
         />
         <span className={clsx(styles.placeholder, innerClassNames.input)}>
           {placeholder}
@@ -143,65 +142,36 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
             <div key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
-                {item.status === "uploading" ? (
-                  <>
-                    <div
-                      className={clsx(
-                        styles.listItemStatusText,
-                        styles.progress,
-                      )}
-                    >
-                      Uploading...
-                    </div>
-                    {item.progress && (
-                      <div>
-                        <CircleProgress
-                          className={styles.listItemProgress}
-                          progress={item.progress}
-                          squareSize={18}
-                        />
-                      </div>
-                    )}
-                  </>
-                ) : item.status === "uploaded" ? (
-                  <div className={styles.uploadSection}>
-                    <div
-                      className={clsx(
-                        styles.listItemStatusText,
-                        styles.success,
-                      )}
-                    >
-                      Uploaded
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => void updateFiles?.([item], "remove")}
-                        spacing="equal"
-                        variant="trans"
-                      >
-                        <IconTrashXFilled />
-                      </Button>
-                    </div>
-                  </div>
-                ) : (
-                  item.status === "failed" && (
+                <div className={styles.uploadSection}>
+                  {item.status === "uploading" ? (
                     <>
                       <div
                         className={clsx(
                           styles.listItemStatusText,
-                          styles.failed,
+                          styles.progress,
                         )}
                       >
-                        Failed
+                        Uploading...
                       </div>
-                      <div>
-                        <Button
-                          onClick={() => void updateFiles?.([item], "add")}
-                          spacing="equal"
-                          variant="trans"
-                        >
-                          <IconReload />
-                        </Button>
+                      {item.progress && (
+                        <div>
+                          <CircleProgress
+                            className={styles.listItemProgress}
+                            progress={item.progress}
+                            squareSize={18}
+                          />
+                        </div>
+                      )}
+                    </>
+                  ) : item.status === "uploaded" ? (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.listItemStatusText,
+                          styles.success,
+                        )}
+                      >
+                        Uploaded
                       </div>
                       <div>
                         <Button
@@ -213,24 +183,56 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                         </Button>
                       </div>
                     </>
-                  )
-                )}
+                  ) : (
+                    item.status === "failed" && (
+                      <>
+                        <div
+                          className={clsx(
+                            styles.listItemStatusText,
+                            styles.failed,
+                          )}
+                        >
+                          Failed
+                        </div>
+                        <div>
+                          <Button
+                            onClick={() => void updateFiles?.([item], "add")}
+                            spacing="equal"
+                            variant="trans"
+                          >
+                            <IconReload />
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            onClick={() => void updateFiles?.([item], "remove")}
+                            spacing="equal"
+                            variant="trans"
+                          >
+                            <IconTrashXFilled />
+                          </Button>
+                        </div>
+                      </>
+                    )
+                  )}
+                </div>
               </div>
               {item.data &&
                 item.data.length > 0 &&
                 item.data.map((dataItem, dataIndex) =>
                   dataItem.type === "password" ? (
-                    <TextInput
+                    <PasswordInput
+                      defaultValue={dataItem.value}
+                      innerClassNames={{
+                        input: styles.listItemDataInput,
+                        label: styles.listItemDataLabel,
+                      }}
+                      key={index}
                       onChange={(event) =>
                         void handleDataChange(event, item, dataIndex)
                       }
-                      defaultValue={dataItem.value}
-                      innerClassNames={{ input: styles.listItemDataInput }}
-                      key={index}
-                      label={dataItem.label}
-                      placeholder={dataItem.placeholder}
                       size="small"
-                      type={dataItem.type || "text"}
+                      {...dataItem.props}
                     />
                   ) : (
                     dataItem.type === "preview" && (

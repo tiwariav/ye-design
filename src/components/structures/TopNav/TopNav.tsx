@@ -100,7 +100,6 @@ export default function TopNav({
 
   useEffect(() => {
     // NOTE: smallerWidth is undefined server side because width is Infinity
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     setSmallerWidth(width <= BREAKPOINTS.lg);
   }, [width]);
 

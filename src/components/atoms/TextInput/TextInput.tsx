@@ -1,18 +1,16 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material', 'is-basic', 'is-dashed'] }] */
 import { clsx } from "clsx";
-import { omit, uniqueId } from "lodash-es";
 import {
   CSSProperties,
   ComponentPropsWithoutRef,
   ReactNode,
   forwardRef,
   useEffect,
-  useMemo,
+  useId,
   useState,
 } from "react";
 
 import { useMeasureInput } from "../../../hooks/index.js";
-import { EXCLUDE_HANDLERS } from "../../../tools/input.js";
 import { isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
 import Label from "../Label.js";
@@ -32,10 +30,11 @@ export interface TextInputProps
     iconAfter?: string;
     iconBefore?: string;
     input?: string;
+    label?: string;
   };
   isBusy?: boolean;
   isLoading?: boolean;
-  label?: string;
+  label?: ReactNode;
   placeholder?: string;
   required?: boolean;
   requiredText?: string;
@@ -73,7 +72,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const [hasFocus, setHasFocus] = useState(false);
     const [hasValue, setHasValue] = useState(!isEmpty(value || defaultValue));
 
-    const inputID = useMemo(() => id || uniqueId("textInput_"), [id]);
+    const inputId = useId();
 
     const handleFocus: typeof onFocus = (event) => {
       setHasFocus(true);
@@ -109,11 +108,15 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         )}
       >
         <Label
-          className={clsx(styles.label, {
-            [styles.paddedLeft]: iconBefore,
-            [styles.paddedRight]: iconAfter,
-          })}
-          inputId={inputID}
+          className={clsx(
+            styles.label,
+            {
+              [styles.paddedLeft]: iconBefore,
+              [styles.paddedRight]: iconAfter,
+            },
+            innerClassNames.label,
+          )}
+          inputId={inputId}
           ref={labelRef}
           required={required}
         >
@@ -141,6 +144,9 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               styles.textInput,
               innerClassNames.input,
             )}
+            id={inputId}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
             placeholder={
               variant === "material"
                 ? hasValue || hasFocus
@@ -148,6 +154,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                   : ""
                 : placeholder
             }
+            ref={ref}
+            required={required}
             style={
               input && variant === "material"
                 ? {
@@ -156,14 +164,9 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                   }
                 : style
             }
-            id={inputID}
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            ref={ref}
-            required={required}
             type="text"
             value={value}
-            {...omit(props, EXCLUDE_HANDLERS)}
+            {...props}
           />
           {iconAfter && (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>

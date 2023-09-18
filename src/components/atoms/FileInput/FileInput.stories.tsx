@@ -8,6 +8,7 @@ function Template({ files, ...args }: FileInputProps) {
   const [allFiles, setFiles] = useState(files);
   return (
     <FileInput
+      files={allFiles}
       updateFiles={(files) =>
         setFiles(
           files.map((item) =>
@@ -15,16 +16,12 @@ function Template({ files, ...args }: FileInputProps) {
           ),
         )
       }
-      files={allFiles}
       {...args}
     />
   );
 }
 
 const metadata: Meta<FileInputProps> = {
-  argTypes: {
-    onChange: { action: "onChange" },
-  },
   component: FileInput,
   render: (args) => <Template {...args} />,
 };
@@ -44,6 +41,7 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
   return (
     <>
       <FileInput
+        files={allFiles}
         updateFiles={(files) =>
           setFiles(
             files.map((item) => {
@@ -56,7 +54,6 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
             }),
           )
         }
-        files={allFiles}
         {...args}
       />
       <div>{allFiles.map((file) => file.text || "")}</div>
@@ -65,5 +62,42 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
 }
 
 export const CustomFileObject: Story = {
-  render: (args) => FileObjectTemplate(args),
+  render: (args) => <FileObjectTemplate {...args} />,
+};
+
+function PasswordTemplate({ files = [], ...args }: FileInputProps) {
+  const [allFiles, setFiles] = useState(files);
+  return (
+    <FileInput
+      files={allFiles}
+      updateFiles={(files) =>
+        setFiles(
+          files.map((item) => {
+            console.log(item);
+            if (!(item instanceof File)) {
+              console.log(item.file.name);
+              return item;
+            }
+            const file = new UploadFile(item);
+            file.data = [
+              {
+                name: "password",
+                props: {
+                  label: "Password",
+                  variant: "outlined",
+                },
+                type: "password",
+              },
+            ];
+            return file;
+          }),
+        )
+      }
+      {...args}
+    />
+  );
+}
+
+export const WithPassword: Story = {
+  render: (args) => <PasswordTemplate {...args} />,
 };
