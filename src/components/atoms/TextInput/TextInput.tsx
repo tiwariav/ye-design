@@ -1,28 +1,35 @@
-/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed:
-  ['is-outlined', 'is-material', 'is-basic', 'is-dashed']
-}] */
+/* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed:[
+  'variant-outlined', 'variant-material', 'variant-basic', 'variant-dashed',
+  'variant-borderless'
+]}] */
 import { clsx } from "clsx";
 import {
-  CSSProperties,
   ComponentPropsWithoutRef,
+  FocusEventHandler,
   ReactNode,
   forwardRef,
+  useCallback,
   useEffect,
   useId,
+  useMemo,
   useState,
 } from "react";
 
 import { useMeasureInput } from "../../../hooks/index.js";
-import { isEmpty } from "../../../tools/utils.js";
+import { COMPONENT_SIZES } from "../../../tools/constants/props.js";
+import { inSubArray, isEmpty } from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
+import { FormIconSpan } from "../../../wrappers/span.js";
+import { FORM_CONTROL_VARIANTS, FormInputControl } from "../FormControl.js";
+import InputWrapper from "../InputWrapper.js";
 import Label from "../Label.js";
 import Spinner from "../Spinner/Spinner.js";
-// eslint-disable-next-line css-modules/no-unused-class
-import formStyles from "../form.module.css";
 import styles from "./textInput.module.css";
 
-const TEXT_INPUT_VARIANT_OPTIONS = ["outlined", "dashed", "material"] as const;
-const TEXT_INPUT_SIZE_OPTIONS = ["small", "large"] as const;
+export const TEXT_INPUT_VARIANTS = [
+  ...FORM_CONTROL_VARIANTS,
+  "material",
+] as const;
 
 export interface TextInputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
@@ -37,13 +44,10 @@ export interface TextInputProps
   isBusy?: boolean;
   isLoading?: boolean;
   label?: ReactNode;
-  placeholder?: string;
   required?: boolean;
-  requiredText?: string;
-  size?: (typeof TEXT_INPUT_SIZE_OPTIONS)[number];
-  style?: CSSProperties;
+  size?: (typeof COMPONENT_SIZES)[number];
   value?: number | string;
-  variant?: (typeof TEXT_INPUT_VARIANT_OPTIONS)[number];
+  variant?: (typeof TEXT_INPUT_VARIANTS)[number];
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -53,61 +57,56 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       defaultValue,
       iconAfter,
       iconBefore,
-      id,
       innerClassNames = {},
       isBusy,
       isLoading,
       label,
       onBlur,
-      onFocus,
-      placeholder,
       required,
-      requiredText,
       size,
-      style = {},
+      style,
       value,
-      variant,
+      variant = "basic",
       ...props
     },
     ref,
   ) => {
-    const [hasFocus, setHasFocus] = useState(false);
     const [hasValue, setHasValue] = useState(!isEmpty(value || defaultValue));
-
     const inputId = useId();
 
-    const handleFocus: typeof onFocus = (event) => {
-      setHasFocus(true);
-      if (onFocus) {
-        onFocus(event);
-      }
-    };
-    const handleBlur: typeof onBlur = (event) => {
-      setHasFocus(false);
-      if (onBlur) {
-        onBlur(event);
-      }
-    };
-
     const [labelRef, { input }] = useMeasureInput();
+
+    const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
+      (event) => {
+        setHasValue(!isEmpty(event.target.value));
+        onBlur?.(event);
+      },
+      [onBlur],
+    );
+
+    const inputStyle = useMemo(() => {
+      const originalStyle = style || {};
+      return input && variant === "material"
+        ? {
+            paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
+            ...originalStyle,
+          }
+        : originalStyle;
+    }, [input, style, variant]);
 
     useEffect(() => {
       setHasValue(!isEmpty(value));
     }, [value]);
 
     return (
-      <div
+      <InputWrapper
         className={clsx(
           styles.root,
-          size && formStyles[`is-${size}`],
-          variant && styles[`is-${variant}`],
-          {
-            [styles.hasFocus]: hasFocus,
-            // eslint-disable-next-line css-modules/no-undef-class
-            [styles.hasValue]: hasValue,
-          },
+          variant && styles[`variant-${variant}`],
+          hasValue && styles.hasValue,
           className,
         )}
+        size={size}
       >
         <Label
           className={clsx(
@@ -127,18 +126,13 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className={styles.inputWrapper}>
           {iconBefore && (
             <span className={clsx(styles.iconWrapper)}>
-              <span
-                className={clsx(formStyles.icon, innerClassNames.iconBefore)}
-              >
+              <FormIconSpan className={innerClassNames.iconBefore}>
                 {iconBefore}
-              </span>
+              </FormIconSpan>
             </span>
           )}
-          <input
+          <FormInputControl
             className={clsx(
-              formStyles.control,
-              // @ts-ignore: TS7057 because of the `variant` prop
-              variant && formStyles[`is-${variant}`],
               {
                 [styles.paddedLeft]: iconBefore,
                 [styles.paddedRight]: iconAfter,
@@ -148,35 +142,19 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             )}
             id={inputId}
             onBlur={handleBlur}
-            onFocus={handleFocus}
-            placeholder={
-              variant === "material"
-                ? hasValue || hasFocus
-                  ? placeholder
-                  : ""
-                : placeholder
-            }
             ref={ref}
             required={required}
-            style={
-              input && variant === "material"
-                ? {
-                    paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
-                    ...style,
-                  }
-                : style
-            }
+            style={inputStyle}
             type="text"
             value={value}
+            variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
             {...props}
           />
           {iconAfter && (
             <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-              <span
-                className={clsx(formStyles.icon, innerClassNames.iconAfter)}
-              >
+              <FormIconSpan className={innerClassNames.iconAfter}>
                 {iconAfter}
-              </span>
+              </FormIconSpan>
             </span>
           )}
           {isLoading && (
@@ -190,7 +168,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           )}
           {isBusy && <Spinner className={styles.spinner} />}
         </div>
-      </div>
+      </InputWrapper>
     );
   },
 );

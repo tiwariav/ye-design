@@ -18,5 +18,5 @@ const noneMap = { None: null };
 
 export const storyIconControl = {
   mapping: { ...storyIconMap, ...noneMap },
-  options: Object.keys(storyIconMap),
+  options: [...Object.keys(storyIconMap), "None"],
 };

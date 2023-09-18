@@ -10,3 +10,35 @@
   font-size: var(--ye-font-size-em);
   line-height: 1;
 }
+
+.form-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ye-spacing-em-large);
+  height: var(--ye-spacing-em-large);
+  color: inherit;
+  font-size: var(--ye-font-size-em);
+  line-height: 1;
+
+  &:not(:last-child) {
+    margin-right: var(--ye-spacing-em-xsmall);
+  }
+
+  &:not(:first-child) {
+    margin-left: var(--ye-spacing-em-xsmall);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

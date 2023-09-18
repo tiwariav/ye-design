@@ -11,18 +11,21 @@ import {
   useState,
 } from "react";
 
+import {
+  COMPONENT_SIZES,
+  COMPONENT_SPACINGS,
+} from "../../../tools/constants/props.js";
 import UploadFile from "../../../tools/uploadFile.js";
+import { FormIconSpan } from "../../../wrappers/span.js";
 import Button from "../Button/Button.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
+import InputWrapper from "../InputWrapper.js";
 import Spinner from "../Spinner/Spinner.js";
 import PasswordInput from "../TextInput/PasswordInput.js";
-// eslint-disable-next-line css-modules/no-unused-class
-import formStyles from "../form.module.css";
 import styles from "./fileInput.module.css";
 
-const FILE_INPUT_VARIANT_OPTIONS = ["outlined"] as const;
-const FILE_INPUT_SIZE_OPTIONS = ["small", "large"] as const;
-const FILE_INPUT_SPACING_OPTIONS = ["none", "less", "equal", "extra"] as const;
+const FILE_INPUT_VARIANTS = ["outlined"] as const;
+const FILE_INPUT_SPACINGS = [...COMPONENT_SPACINGS, "none", "equal"] as const;
 
 export interface FileInputProps<TFile extends UploadFile = UploadFile>
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
@@ -38,13 +41,13 @@ export interface FileInputProps<TFile extends UploadFile = UploadFile>
   isBusy?: boolean;
   label?: ReactNode;
   placeholder?: string;
-  size?: (typeof FILE_INPUT_SIZE_OPTIONS)[number];
-  spacing?: (typeof FILE_INPUT_SPACING_OPTIONS)[number];
+  size?: (typeof COMPONENT_SIZES)[number];
+  spacing?: (typeof FILE_INPUT_SPACINGS)[number];
   updateFiles?: (
     files: (File | TFile)[],
     action: "add" | "remove" | "update",
   ) => Promise<void> | void;
-  variant?: (typeof FILE_INPUT_VARIANT_OPTIONS)[number];
+  variant?: (typeof FILE_INPUT_VARIANTS)[number];
 }
 
 export default function FileInput<TFile extends UploadFile = UploadFile>({
@@ -101,20 +104,16 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
 
   return (
     <div className={clsx(className)}>
-      <label
-        className={clsx(
-          size && formStyles[`is-${size}`],
-          styles.wrapper,
-          variant && styles[`is-${variant}`],
-          {
-            [styles.hasFocus]: hasFocus,
-          },
-        )}
+      <InputWrapper
+        as="label"
+        className={clsx(styles.wrapper, variant && styles[`is-${variant}`], {
+          [styles.hasFocus]: hasFocus,
+        })}
       >
         {label && <span className={styles.label}>{label}</span>}
         {iconBefore && (
           <span className={clsx(styles.iconWrapper)}>
-            <span className={clsx(formStyles.icon)}>{iconBefore}</span>
+            <FormIconSpan>{iconBefore}</FormIconSpan>
           </span>
         )}
         <input
@@ -131,11 +130,11 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
         </span>
         {iconAfter && (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
-            <span className={clsx(formStyles.icon)}>{iconAfter}</span>
+            <FormIconSpan>{iconAfter}</FormIconSpan>
           </span>
         )}
         {isBusy && <Spinner className={styles.spinner} />}
-      </label>
+      </InputWrapper>
       {files && files.length > 0 && (
         <div>
           {files.map((item, index) => (
@@ -177,7 +176,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                         <Button
                           onClick={() => void updateFiles?.([item], "remove")}
                           spacing="equal"
-                          variant="trans"
+                          variant="borderless"
                         >
                           <IconTrashXFilled />
                         </Button>
@@ -198,7 +197,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                           <Button
                             onClick={() => void updateFiles?.([item], "add")}
                             spacing="equal"
-                            variant="trans"
+                            variant="borderless"
                           >
                             <IconReload />
                           </Button>
@@ -207,7 +206,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                           <Button
                             onClick={() => void updateFiles?.([item], "remove")}
                             spacing="equal"
-                            variant="trans"
+                            variant="borderless"
                           >
                             <IconTrashXFilled />
                           </Button>

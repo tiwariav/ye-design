@@ -136,7 +136,7 @@ export default function TopNav({
             <Button
               onClick={() => toggleSideNav?.()}
               spacing="none"
-              variant="trans"
+              variant="borderless"
             >
               {leftNavIcon || <IconMenu />}
             </Button>
@@ -192,7 +192,7 @@ export default function TopNav({
                   <Button
                     onClick={() => toggleDrawer?.() || toggleLocalDrawer()}
                     spacing="none"
-                    variant="trans"
+                    variant="borderless"
                   >
                     {rightNavIcon || <IconMenu />}
                   </Button>

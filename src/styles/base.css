@@ -128,6 +128,7 @@
   --ye-shadow-neu-hover: 1px 1px 2px var(--ye-color-neu-shadow-dark),
     -1px -1px 2px var(--ye-color-neu-shadow-light);
   --ye-shadow-neu-focus: inset 0 0 1px var(--ye-color-neu-shadow-dark);
+  --ye-shadow-input-focus-bottom: 0 2px 1px -1px var(--ye-color-input-focus-shadow);
   --ye-shadow-input-focus: inset 0 0 0 var(--ye-color-shadow-inset),
     0 0 0 1px var(--ye-color-input-focus-shadow);
   --ye-shadow-drawer: 0 -1px 0 var(--ye-color-background),

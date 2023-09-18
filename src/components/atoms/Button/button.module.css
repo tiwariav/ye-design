@@ -7,22 +7,13 @@
   border-color: var(--ye-color-border);
   border-width: var(--ye-button-border-width);
   border-radius: var(--ye-button-border-radius);
-  box-shadow: var(--ye-button-shadow);
   cursor: var(--ye-button-cursor);
-  transition-timing-function: var(--ye-transition-function);
-  transition-duration: var(--ye-transition-duration);
   transition-property: box-shadow, background-color, color;
 
-  &.has-hover,
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-within {
     outline: none;
-    box-shadow: var(--ye-button-hover-shadow);
-  }
-
-  &.has-focus,
-  &:focus {
-    outline: none;
-    box-shadow: var(--ye-button-focus-shadow);
   }
 }
 
@@ -63,9 +54,29 @@
   padding: 0;
 }
 
-.variant-trans {
+/* variants */
+
+.variant-primary {
+  color: var(--ye-color-white);
+  background-color: var(--ye-color-primary);
+}
+
+.variant-basic,
+.variant-primary {
+  box-shadow: var(--ye-button-shadow);
+
+  &:hover,
+  &:focus {
+    box-shadow: var(--ye-button-hover-shadow);
+  }
+
+  &:focus-within {
+    box-shadow: var(--ye-button-focus-shadow);
+  }
+}
+
+.variant-borderless {
   background-color: transparent;
-  box-shadow: none;
 
   &:hover,
   &:focus {
@@ -101,11 +112,6 @@
   }
 }
 
-.variant-primary {
-  color: var(--ye-color-white);
-  background-color: var(--ye-color-primary);
-}
-
 .variant-outlined,
 .variant-dashed {
   border-color: var(--ye-color-text);
@@ -117,8 +123,6 @@
   border-style: solid;
   transition-property: background-color, color;
 
-  &.has-focus,
-  &.has-hover,
   &:hover,
   &:focus {
     color: var(--ye-color-background);
@@ -131,8 +135,6 @@
   color: var(--ye-color-background);
   background-color: var(--ye-color-text);
 
-  &.has-focus,
-  &.has-hover,
   &:hover,
   &:focus {
     background-color: var(--ye-color-black-50);
@@ -141,8 +143,6 @@
 }
 
 .variant-dashed {
-  &.has-focus,
-  &.has-hover,
   &:hover,
   &:focus {
     border-style: solid;
@@ -159,12 +159,10 @@
   border-radius: var(--ye-radius-normal);
   box-shadow: var(--ye-shadow-neu);
 
-  &.has-hover,
   &:hover {
     box-shadow: var(--ye-shadow-neu-hover);
   }
 
-  &.has-focus,
   &:focus,
   &:active {
     box-shadow: var(--ye-shadow-neu-focus);
@@ -260,7 +258,7 @@
 
 /* to avoid undef error */
 /* stylelint-disable-next-line no-descending-specificity */
-.has-focus,
+.variant-basic,
 .icon {
   /* no styles */
 }

@@ -7,6 +7,12 @@
 
   position: relative;
   width: 100%;
+
+  & ::placeholder {
+    color: rgba(0 0 0 / 0.4);
+    font-weight: 400;
+    font-size: var(--ye-font-size-small);
+  }
 }
 
 .input-wrapper {
@@ -19,11 +25,9 @@
   padding: var(--module-input-padding-top) var(--module-input-padding-right)
     var(--module-input-padding-bottom) var(--module-input-padding-left);
   color: inherit;
-  font-family: var(--ye-fontfamily-input);
+  font-family: var(--ye-font-family-input);
   background-color: var(--ye-color-input-background);
-  border-color: var(--color-body-with-opacity);
   border-radius: var(--ye-input-border-radius);
-  box-shadow: var(--ye-input-shadow);
 
   &:hover,
   &:focus {
@@ -70,31 +74,50 @@
 }
 
 /* variants */
-.is-basic,
-.is-material {
+
+.variant-basic,
+.variant-material {
   & .text-input {
+    border-color: var(--ye-color-background-secondary);
     border-style: solid;
     border-width: var(--ye-input-border-width);
+    box-shadow: var(--ye-input-shadow);
   }
 }
 
-.is-outlined,
-.is-dashed {
+.variant-outlined,
+.variant-dashed {
   border-width: var(--ye-input-border-width);
   transition-property: background-color, color;
 }
 
-.has-focus,
-.is-outlined:focus,
-.is-dashed:focus {
-  background-color: var(--ye-color-text);
+.variant-borderless {
+  & .text-input {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+
+    &:focus {
+      box-shadow: var(--ye-shadow-input-focus-bottom);
+    }
+  }
 }
 
-.is-material {
+.variant-material {
   --module-input-padding-top: calc(var(--ye-spacing-rem-xlarge));
   --module-input-padding-bottom: calc(
     var(--ye-spacing-rem-tiny) + var(--ye-rem-unit)
   );
+
+  & ::placeholder {
+    transform: scale(0);
+    transform-origin: left bottom;
+    opacity: 0;
+    transition-timing-function: var(--ye-transition-function);
+    transition-duration: calc(var(--ye-transition-duration) / 2);
+    transition-property: opacity, transform;
+  }
 
   & .label {
     --calc-xy-padding: calc(
@@ -122,17 +145,25 @@
     background-color: var(--ye-color-input-focus-background);
   }
 
-  &.has-value .label,
-  &.has-focus .label {
-    font-weight: 500;
-    transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
-      translateY(
-        calc(
-          var(--module-input-padding-bottom) - var(--module-input-padding-top) +
-            var(--ye-spacing-rem-tiny)
-        )
-      );
-    transition-duration: var(--ye-transition-duration);
+  &:focus-within,
+  &.has-value {
+    & ::placeholder {
+      transform: scale(1);
+      opacity: 1;
+      transition-duration: calc(var(--ye-transition-duration));
+    }
+
+    & .label {
+      font-weight: 500;
+      transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
+        translateY(
+          calc(
+            var(--module-input-padding-bottom) - var(--module-input-padding-top) +
+              var(--ye-spacing-rem-tiny)
+          )
+        );
+      transition-duration: var(--ye-transition-duration);
+    }
   }
 }
 
@@ -142,7 +173,7 @@
 
 /* to avoid undef error */
 /* stylelint-disable-next-line no-descending-specificity */
-.has-focus,
+.has-value,
 .label {
   /* no styles */
 }

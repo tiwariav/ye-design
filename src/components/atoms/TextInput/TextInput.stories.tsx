@@ -1,7 +1,7 @@
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
 import { storyIconControl, storyIconMap } from "../../../tools/storybook.js";
-import TextInput from "./TextInput.js";
+import TextInput, { TEXT_INPUT_VARIANTS } from "./TextInput.js";
 
 const metadata: Meta<typeof TextInput> = {
   argTypes: {
@@ -18,6 +18,8 @@ const metadata: Meta<typeof TextInput> = {
 
 export default metadata;
 
+type Story = StoryObj<typeof TextInput>;
+
 export const Basic = {
   args: {
     placeholder: "Enter your text",
@@ -28,31 +30,27 @@ export const Basic = {
   },
 };
 
-export const Outlined = {
-  args: {
-    ...Basic.args,
-    variant: "outlined",
-  },
-};
-
-export const Dashed = {
-  args: {
-    ...Basic.args,
-    variant: "dashed",
-  },
-};
-
-export const Borderless = {
-  args: {
-    ...Basic.args,
-    variant: "borderless",
-  },
-};
-
-export const withIcon = {
+export const WithIcon = {
   args: {
     ...Basic.args,
     iconAfter: storyIconMap.Search,
     iconBefore: storyIconMap.DogBowl,
   },
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      {TEXT_INPUT_VARIANTS.map((variant) => (
+        <div>
+          <TextInput
+            label={`'${variant}' Text Input`}
+            placeholder="Enter your text"
+            variant={variant}
+            {...args}
+          />
+        </div>
+      ))}
+    </div>
+  ),
 };

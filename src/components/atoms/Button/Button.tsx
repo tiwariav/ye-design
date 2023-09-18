@@ -1,6 +1,6 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  variant-outlined, variant-dashed, variant-trans, variant-inline, variant-neu,
-  variant-list-item, variant-primary, variant-filled,
+  variant-outlined, variant-dashed, variant-inline, variant-neu, variant-list-item,
+  variant-primary, variant-filled, variant-basic, variant-borderless,
   size-small, size-large,
   effect-cursor-tracking, effect-ripple,
   spacing-equal, spacing-extra, spacing-less, spacing-none
@@ -22,9 +22,10 @@ import {
   COMPONENT_SIZES,
   COMPONENT_SPACINGS,
 } from "../../../tools/constants/props.js";
+import { inSubArray } from "../../../tools/utils.js";
+import { FormIconSpan } from "../../../wrappers/span.js";
+import { FORM_CONTROL_VARIANTS, FormButtonControl } from "../FormControl.js";
 import Spinner from "../Spinner/Spinner.js";
-// eslint-disable-next-line css-modules/no-unused-class
-import formStyles from "../form.module.css";
 import styles from "./button.module.css";
 
 const setRippleProperties = (
@@ -88,10 +89,9 @@ export const BUTTON_SPACINGS = [
   "equal",
 ] as const;
 export const BUTTON_VARIANTS = [
-  "trans",
+  ...FORM_CONTROL_VARIANTS,
   "inline",
   "list-item",
-  "outlined",
   "primary",
   "filled",
   "neu",
@@ -164,7 +164,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       size,
       spacing,
-      variant,
+      variant = "basic",
       ...props
     },
     propRef,
@@ -181,17 +181,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
 
     return (
-      <button
+      <FormButtonControl
         className={clsx(
-          formStyles.control,
           styles.root,
-          // @ts-ignore: TS7057 because no styles for some variant yet
-          variant && formStyles[`variant-${variant}`],
-          // @ts-ignore: TS7057 because no styles for some variant yet
           size && styles[`size-${size}`],
           variant && styles[`variant-${variant}`],
           {
-            [styles.hasFocus]: isBusy,
             [styles.isDisabled]: disabled,
             [styles.isFullWidth]: isFullWidth,
           },
@@ -213,12 +208,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         }}
         ref={setInnerRef}
         type="button"
+        variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
         {...props}
       >
         {iconBefore && (
-          <span className={clsx(formStyles.icon, styles.icon)}>
-            {iconBefore}
-          </span>
+          <FormIconSpan className={styles.icon}>{iconBefore}</FormIconSpan>
         )}
         {(iconBefore || iconAfter) && children ? (
           <span>{children}</span>
@@ -226,12 +220,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           children
         )}
         {iconAfter && (
-          <span className={clsx(formStyles.icon, styles.icon)}>
-            {iconAfter}
-          </span>
+          <FormIconSpan className={styles.icon}>{iconAfter}</FormIconSpan>
         )}
         {isBusy && <Spinner className={styles.spinner} />}
-      </button>
+      </FormButtonControl>
     );
   },
 );

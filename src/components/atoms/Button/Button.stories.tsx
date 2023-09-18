@@ -103,9 +103,6 @@ export const Spacings: Story = {
 export const Variants: Story = {
   render: (args) => (
     <div className="story-grid">
-      <div>
-        <Button {...args}>Button</Button>
-      </div>
       {BUTTON_VARIANTS.map((variant) => (
         <div>
           <Button variant={variant} {...args}>

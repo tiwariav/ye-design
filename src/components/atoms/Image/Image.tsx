@@ -63,7 +63,7 @@ export default function Image({
       ) : (
         image
       )}
-      {isBusy ? <Spinner className={styles.spinner} /> : null}
+      {isBusy && <Spinner className={styles.spinner} />}
     </div>
   );
 }

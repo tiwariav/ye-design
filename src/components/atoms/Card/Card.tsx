@@ -1,6 +1,7 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
   'variant-basic', 'layout-horizontal', 'variant-borderless', 'view-thumb',
   'floating-highest', 'floating-high', 'floating-medium', 'floating-low', 'floating-lowest', 'floating-none',
+  'flying-medium',
   'height-full'
 ]}] */
 
@@ -14,7 +15,6 @@ import {
 
 import { COMPONENT_FLOAT } from "../../../tools/constants/props.js";
 import Spinner from "../Spinner/Spinner.js";
-// eslint-disable-next-line css-modules/no-unused-class
 import styles from "./card.module.css";
 
 export const CARD_LAYOUTS = ["horizontal"] as const;
@@ -63,11 +63,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         className={clsx(
           styles.card,
           styles[`variant-${variant}`],
-          // @ts-ignore: TS7057 because no styles for some variant yet
           layout && styles[`layout-${layout}`],
           viewMode && styles[`view-${viewMode}`],
           floating && styles[`floating-${floating}`],
-          // @ts-ignore: TS7057 because no styles for some variant yet
           flying && styles[`flying-${flying}`],
           height && styles[`height-${height}`],
           className,
