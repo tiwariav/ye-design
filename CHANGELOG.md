@@ -1,3 +1,10 @@
+## [2.3.10](https://github.com/tiwariav/ye-design/compare/v2.3.9...v2.3.10) (2023-09-18)
+
+
+### ♻️ Code Refactors
+
+* move common form styles to reusable components ([bcebe88](https://github.com/tiwariav/ye-design/commit/bcebe887439308fab700487698ea020a884cd4e8))
+
 ## [2.3.9](https://github.com/tiwariav/ye-design/compare/v2.3.8...v2.3.9) (2023-09-17)
 
 
