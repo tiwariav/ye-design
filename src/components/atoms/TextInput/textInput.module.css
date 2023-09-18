@@ -87,7 +87,7 @@
 }
 
 .has-focus,
-.is-outlined::focus,
+.is-outlined:focus,
 .is-dashed:focus {
   background-color: var(--ye-color-text);
 }

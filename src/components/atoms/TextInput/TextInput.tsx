@@ -1,6 +1,5 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined', 'is-material', 'is-basic', 'is-dashed'] }] */
 import { clsx } from "clsx";
-import { omit } from "lodash-es";
 import {
   CSSProperties,
   ComponentPropsWithoutRef,

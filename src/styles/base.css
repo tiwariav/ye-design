@@ -5,12 +5,15 @@
   /* ====== */
 
   /* BREAKPOINTS */
-  --ye-bp-max-xs: 575px;
-  --ye-bp-min-sm: 576px;
-  --ye-bp-min-md: 768px;
-  --ye-bp-min-lg: 992px;
-  --ye-bp-min-xl: 1200px;
-  --ye-bp-min-xxl: 1400px;
+  --ye-width-smobile : 360px;
+  --ye-width-mobile : 480px;
+  --ye-width-tablet : 780px;
+  --ye-width-slaptop : 1080px;
+  --ye-width-laptop : 1200px;
+  --ye-width-sdesktop : 1440px;
+  --ye-width-desktop : 1920px;
+
+
 
   /* BREAKPOINTS */
   --ye-width-smobile : 360px;
@@ -187,6 +190,9 @@
   --ye-height-input: 2.5rem;
   --ye-height-input-inner: calc(var(--ye-height-input) - 2px);
 
+  /* SIZE */
+  --ye-size-icon-hanging: 112px;
+
   /* ====== */
 
   /* BUTTONS */
@@ -215,6 +221,14 @@
   --ye-input-border-radius: 3em;
   --ye-input-shadow: var(--ye-shadow-inset);
   --ye-z-base: 1;
+
+  /* z-indexes */
+  --z-index-above-modal: 1001;
+  --z-index-ant-modal: 1000;
+  --z-index-modal: 101;
+  --z-index-below-modal: 100;
+  --z-index-base: 1;
+  --z-index-below-base: -1;
 
   /* COMPONENTS SPECIFIC */
 
