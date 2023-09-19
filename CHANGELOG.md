@@ -1,3 +1,10 @@
+## [2.4.0](https://github.com/tiwariav/ye-design/compare/v2.3.10...v2.4.0) (2023-09-19)
+
+
+### ✨ Features
+
+* add support for react-select in HookFormInputWrapper ([26a4617](https://github.com/tiwariav/ye-design/commit/26a4617bee190050b7268737568704e42ed6dbb4))
+
 ## [2.3.10](https://github.com/tiwariav/ye-design/compare/v2.3.9...v2.3.10) (2023-09-18)
 
 
