@@ -16,8 +16,8 @@ import {
 } from "react-hook-form";
 import { SetOptional } from "type-fest";
 
-import { NumberLike } from "../../../tools/number.js";
 import FormError from "../FormError.js";
+import { InputFormValue } from "../TextInput/TextInput.js";
 
 const ErrorMessage = React.lazy(() =>
   import("@hookform/error-message").then(({ ErrorMessage }) => ({
@@ -28,7 +28,7 @@ const ErrorMessage = React.lazy(() =>
 
 export type ChangeHandler = (
   event: ChangeEvent<HTMLInputElement>,
-  value?: NumberLike,
+  value?: { action: "select-option" } | InputFormValue,
   shouldUpdate?: boolean,
 ) => void;
 
@@ -62,7 +62,10 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         child.props.onBlur?.(event);
       },
       onChange: ((event, value, shouldUpdate) => {
-        if (shouldUpdate) {
+        if (
+          shouldUpdate ||
+          (isObject(value) && value.action === "select-option")
+        ) {
           onChange(value);
         } else if (value === undefined) {
           onChange(event);

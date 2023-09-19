@@ -31,6 +31,9 @@ export const TEXT_INPUT_VARIANTS = [
   "material",
 ] as const;
 
+export type InputDomValue = number | string | undefined;
+export type InputFormValue = InputDomValue | null;
+
 export interface TextInputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
   iconAfter?: ReactNode;
@@ -46,7 +49,7 @@ export interface TextInputProps
   label?: ReactNode;
   required?: boolean;
   size?: (typeof COMPONENT_SIZES)[number];
-  value?: number | string;
+  value?: InputDomValue;
   variant?: (typeof TEXT_INPUT_VARIANTS)[number];
 }
 
