@@ -3,7 +3,6 @@ import { forwardRef, useCallback, useRef } from "react";
 
 import {
   FormatNumberOptions,
-  NumberLike,
   formatNumber,
   stringToNumber,
 } from "../../../tools/number.js";
@@ -12,6 +11,7 @@ import {
   FormattedInputProps,
 } from "../FormattedInput/FormattedInput.js";
 import { FormattedInput } from "../FormattedInput/index.js";
+import { InputDomValue, InputFormValue } from "../TextInput/TextInput.js";
 
 export interface NumberInputProps
   extends Omit<FormattedInputProps, "format" | "parse" | "value"> {
@@ -22,17 +22,17 @@ export interface NumberInputProps
 
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   ({ format, parse, ...props }, ref) => {
-    const textValueRef = useRef<NumberLike>();
+    const textValueRef = useRef<InputFormValue>();
 
     const formatFunction = useCallback(
-      (value: NumberLike) => {
-        if (!format || isNil(value)) {
+      (value: InputDomValue) => {
+        if (isNil(value)) {
           textValueRef.current = "";
           return "";
         }
         value = value.toString();
         textValueRef.current = value;
-        if (value.endsWith(".") || value === "-") {
+        if (!format || value.endsWith(".") || value === "-") {
           return value;
         }
         const newValueDecimals = value.split(".")[1]?.length ?? 0;
@@ -85,6 +85,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         inputMode="decimal"
         parse={parseFunction}
         ref={ref}
+        type={format ? "text" : "number"}
         {...props}
       />
     );

@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { useEffect, useRef, useState } from "react";
 
-import { NumberLike } from "../../../tools/number.js";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
+import { InputFormValue } from "../TextInput/TextInput.js";
 import NumberInput, { NumberInputProps } from "./NumberInput.js";
 
 const metadata: Meta<typeof NumberInput> = {
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof NumberInput>;
 const Template = ({ width = 240, ...args }: NumberInputProps) => {
   const [eventValue, setEventValue] = useState("");
   const [refValue, setRefValue] = useState("");
-  const [parsedValue, setParsedValue] = useState<NumberLike>("");
+  const [parsedValue, setParsedValue] = useState<InputFormValue>("");
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
