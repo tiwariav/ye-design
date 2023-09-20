@@ -12,6 +12,9 @@
 }
 
 .form-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--ye-spacing-em-normal);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -20,22 +23,7 @@
   color: inherit;
   font-size: var(--ye-font-size-em);
   line-height: 1;
-
-  &:not(:last-child) {
-    margin-right: var(--ye-spacing-em-xsmall);
-  }
-
-  &:not(:first-child) {
-    margin-left: var(--ye-spacing-em-xsmall);
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:first-child {
-    margin-left: 0;
-  }
+  transform: translateY(-50%);
 
   & img {
     max-width: 100%;

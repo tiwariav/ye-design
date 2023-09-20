@@ -41,16 +41,8 @@
   }
 }
 
-.icon-wrapper {
-  position: absolute;
-  top: 50%;
-  left: var(--ye-spacing-em-large);
-  display: inline-flex;
-  transform: translateY(-50%);
-}
-
 .icon-right {
-  right: var(--ye-spacing-em-large);
+  right: var(--ye-spacing-em-normal);
   left: auto;
 }
 
