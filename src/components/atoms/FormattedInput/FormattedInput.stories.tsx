@@ -2,10 +2,10 @@ import { StoryObj } from "@storybook/react";
 import { isString } from "lodash-es";
 import { useEffect, useRef, useState } from "react";
 
-import { NumberLike } from "../../../tools/number.js";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "../NumberInput/NumberInput.js";
+import { InputFormValue } from "../TextInput/TextInput.js";
 import FormattedInput from "./FormattedInput.js";
 
 const metadata = {
@@ -20,7 +20,7 @@ export default metadata;
 
 type Story = StoryObj<typeof FormattedInput>;
 
-function addHyphens(value: NumberLike) {
+function addHyphens(value: InputFormValue) {
   return isString(value)
     ? [...value].filter((item) => item !== "-").join("-")
     : String(value);
@@ -28,7 +28,7 @@ function addHyphens(value: NumberLike) {
 
 function removeHyphens(
   value: number | string | undefined,
-  emptyValue: NumberLike,
+  emptyValue: InputFormValue,
 ) {
   return isString(value) ? value.replaceAll("-", "") : emptyValue;
 }
@@ -42,7 +42,7 @@ const Template = ({
 }) => {
   const [eventValue, setEventValue] = useState<string>();
   const [refValue, setRefValue] = useState<string>();
-  const [parsedValue, setParsedValue] = useState<NumberLike>("");
+  const [parsedValue, setParsedValue] = useState<InputFormValue>("");
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

@@ -10,26 +10,30 @@ import {
 } from "react";
 import { useLatest } from "react-use";
 
-import { NumberLike } from "../../../tools/number.js";
-import { TextInputProps } from "../TextInput/TextInput.js";
+import {
+  InputDomValue,
+  InputFormValue,
+  TextInputProps,
+} from "../TextInput/TextInput.js";
 import { TextInput } from "../TextInput/index.js";
 import styles from "./formattedInput.module.css";
 
 export type FormattedInputParse = (
-  value: number | string | undefined,
-  emptyValue: NumberLike,
-) => NumberLike;
+  value: InputDomValue,
+  emptyValue: InputFormValue,
+) => InputFormValue;
 
 export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
-  emptyValue?: NumberLike;
-  format?: (value: NumberLike) => string;
+  defaultValue?: InputDomValue;
+  emptyValue?: InputFormValue;
+  format?: (value: InputDomValue) => string;
   hiddenInputProps?: object;
   id?: string;
   isBusy?: boolean;
   isLoading?: boolean;
   onChange?: (
     event: ChangeEvent<HTMLInputElement>,
-    value: NumberLike,
+    value: InputFormValue,
     shouldUpdate: boolean,
   ) => void;
   parse?: FormattedInputParse;
@@ -54,12 +58,8 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     ref,
   ) => {
     const modified = useRef(false);
-    const [formattedValue, setFormattedValue] = useState<
-      number | string | undefined
-    >(format?.(defaultValue as NumberLike));
-    const [parsedValue, setParsedValue] = useState<NumberLike>(
-      parse?.(formattedValue, emptyValue),
-    );
+    const [formattedValue, setFormattedValue] = useState<InputDomValue>("");
+    const [parsedValue, setParsedValue] = useState<InputFormValue>("");
     const currentParsedValue = useLatest(parsedValue);
     const inputId = useId();
 
@@ -87,16 +87,21 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     useEffect(() => {
       // return if value is not modified and is empty, to avoid
       // re-render for defaultValue
-      if (!modified.current && !value) return;
-      const newFormattedValue = format ? format(value) : value;
+      const newValue = !modified.current && !value ? defaultValue : value;
+      const newFormattedValue = format ? format(newValue) : newValue;
       const newParsedValue = parse
         ? parse(newFormattedValue, emptyValue)
-        : value;
-      if (!format || newFormattedValue !== format(newParsedValue)) {
+        : newValue;
+      if (
+        !format ||
+        !modified.current ||
+        (newParsedValue !== null &&
+          newFormattedValue !== format(newParsedValue))
+      ) {
         setFormattedValue(newFormattedValue);
       }
       setParsedValue(newParsedValue);
-    }, [currentParsedValue, emptyValue, format, parse, value]);
+    }, [currentParsedValue, defaultValue, emptyValue, format, parse, value]);
 
     return (
       <div className={styles.root}>
@@ -118,7 +123,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
           id={inputId}
           readOnly
           ref={ref}
-          value={parsedValue ?? undefined}
+          value={parsedValue ?? ""}
           {...hiddenInputProps}
         />
       </div>
