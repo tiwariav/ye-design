@@ -1,3 +1,13 @@
+## [2.4.1](https://github.com/tiwariav/ye-design/compare/v2.4.0...v2.4.1) (2023-09-20)
+
+
+### 🐛 Bug Fixes
+
+* allow value update without format prop in NumberInput ([562d272](https://github.com/tiwariav/ye-design/commit/562d272516a8af14b97a3757324a9548225ed6b0)), closes [#181](https://github.com/tiwariav/ye-design/issues/181)
+* improve invalid numbers handling in PhoneNumberInput ([90e0839](https://github.com/tiwariav/ye-design/commit/90e083922240e03ad10f9f7b9764421609604eeb)), closes [#176](https://github.com/tiwariav/ye-design/issues/176)
+* improve setting FormattedInput defaultValue ([e65b2d5](https://github.com/tiwariav/ye-design/commit/e65b2d5ca6c0b6ad4365f7b8fb88134c92a6e1c3))
+* remove redundant `span`s from TextInput icon ([de336d0](https://github.com/tiwariav/ye-design/commit/de336d09a92f717b29e3ac0a2e50c7cdaffe86fe))
+
 ## [2.4.0](https://github.com/tiwariav/ye-design/compare/v2.3.10...v2.4.0) (2023-09-19)
 
 
