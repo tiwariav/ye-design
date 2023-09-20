@@ -3,6 +3,15 @@
 }
 
 .flag-icon {
-  padding-right: var(--ye-spacing-rem-xsmall);
-  font-size: var(--ye-font-size-huge);
+  position: absolute;
+  top: auto;
+  bottom: calc(var(--ye-spacing-rem-xsmall) - 1px);
+  left: calc(var(--ye-spacing-rem-normal) - 1px);
+  height: var(--ye-spacing-em-normal);
+  font-size: var(--ye-font-size-large);
+  transform: none;
+}
+
+.label {
+  --module-input-padding-left: var(--ye-spacing-rem-normal);
 }
