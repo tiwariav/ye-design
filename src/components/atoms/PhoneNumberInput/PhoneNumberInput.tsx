@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 import {
   AsYouType,
@@ -44,7 +45,7 @@ function getPhoneNumber(value: string) {
 }
 
 const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
-  ({ defaultValue = "+91", ...props }, ref) => {
+  ({ defaultValue = "+91", variant, ...props }, ref) => {
     const textValueRef = useRef<string>(defaultValue.toString());
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 
@@ -84,16 +85,17 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
 
     return (
       <FormattedInput
-        className={styles.root}
+        className={clsx(
+          styles.root,
+          variant === "material" && styles.variantMaterial,
+        )}
         defaultValue={defaultValue}
         format={formatFunction}
         iconBefore={flag}
-        innerClassNames={{
-          iconBefore: styles.flagIcon,
-          label: styles.label,
-        }}
+        innerClassNames={{ iconBefore: styles.flagIcon, label: styles.label }}
         parse={parseFunction}
         ref={ref}
+        variant={variant}
         {...props}
       />
     );
