@@ -1,23 +1,32 @@
-.root {
-  width: 100%;
-  height: 1px;
-  margin-top: var(--ye-spacing-em-small);
-  margin-bottom: var(--ye-spacing-em-small);
-  background-color: var(--ye-color-black-10);
-  border: 0;
-}
+@layer ye-components {
+  .root {
+    width: 100%;
+    height: 1px;
+    background-color: var(--ye-color-black-10);
+    border: 0;
+  }
 
-.space-none {
-  margin-top: 0;
-  margin-bottom: 0;
-}
+  .space-medium {
+    margin-top: var(--ye-spacing-em-small);
+    margin-bottom: var(--ye-spacing-em-small);
+  }
 
-.space-small {
-  margin-top: var(--ye-spacing-em-xsmall);
-  margin-bottom: var(--ye-spacing-em-xsmall);
-}
+  .space-none {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-.space-large {
-  margin-top: var(--ye-em-xlarge);
-  margin-bottom: var(--ye-em-xlarge);
+  .space-small {
+    margin-top: var(--ye-spacing-em-xsmall);
+    margin-bottom: var(--ye-spacing-em-xsmall);
+  }
+
+  .space-large {
+    margin-top: var(--ye-em-xlarge);
+    margin-bottom: var(--ye-em-xlarge);
+  }
+
+  /* stylelint-disable-next-line block-no-empty */
+  .is-vertical {
+  }
 }

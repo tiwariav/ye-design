@@ -1,13 +1,15 @@
-.root {
-  padding: var(--ye-em-base) 0;
+@layer ye-structures {
+  .root {
+    padding: var(--ye-em-base) 0;
 
-  & + .root {
-    border-top: 1px solid var(--ye-color-black-10);
+    & + .root {
+      border-top: 1px solid var(--ye-color-black-10);
+    }
   }
-}
 
-.title {
-  padding: var(--ye-spacing-em-small) var(--ye-em-base);
-  color: var(--ye-color-black-50);
-  font-weight: 300;
+  .title {
+    padding: var(--ye-spacing-em-small) var(--ye-em-base);
+    color: var(--ye-color-black-50);
+    font-weight: 300;
+  }
 }

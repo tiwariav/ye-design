@@ -1,7 +1,9 @@
-.root {
-  position: relative;
-}
+@layer ye-structures {
+  .root {
+    position: relative;
+  }
 
-.has-separator {
-  position: relatives;
+  .has-separator {
+    position: relatives;
+  }
 }

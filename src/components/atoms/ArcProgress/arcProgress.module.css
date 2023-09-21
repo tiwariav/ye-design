@@ -1,63 +1,65 @@
-.root {
-  --module-arc-radius: 1.875em;
+@layer ye-components {
+  .root {
+    --module-arc-radius: 1.875em;
 
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 120px;
-  overflow: hidden;
-}
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 120px;
+    overflow: hidden;
+  }
 
-.svg {
-  width: auto;
-  height: 100%;
-}
+  .svg {
+    width: auto;
+    height: 100%;
+  }
 
-.content {
-  position: absolute;
-  bottom: calc(-1 * var(--module-arc-radius));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(2 * var(--module-arc-radius));
-  height: calc(2 * var(--module-arc-radius));
-  padding-bottom: var(--ye-font-size-large);
-  line-height: 1;
-  border-radius: var(--module-arc-radius);
-  box-shadow: var(--ye-shadow-floating-medium);
-}
+  .content {
+    position: absolute;
+    bottom: calc(-1 * var(--module-arc-radius));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(2 * var(--module-arc-radius));
+    height: calc(2 * var(--module-arc-radius));
+    padding-bottom: var(--ye-font-size-large);
+    line-height: 1;
+    border-radius: var(--module-arc-radius);
+    box-shadow: var(--ye-shadow-floating-medium);
+  }
 
-.text {
-  font-weight: bold;
-}
+  .text {
+    font-weight: bold;
+  }
 
-.indicator {
-  position: absolute;
-  right: 50%;
-  bottom: 0;
-  display: flex;
-  width: 2.25em;
-  color: var(--ye-color-primary);
-  border-radius: var(--ye-radius-small);
-  transform-origin: right;
-}
+  .indicator {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    display: flex;
+    width: 2.25em;
+    color: var(--ye-color-primary);
+    border-radius: var(--ye-radius-small);
+    transform-origin: right;
+  }
 
-.segment {
-  stroke: #000;
-}
+  .segment {
+    stroke: #000;
+  }
 
-.segment-1 {
-  stroke: #eb5757;
-}
+  .segment-1 {
+    stroke: #eb5757;
+  }
 
-.segment-2 {
-  stroke: #f2c94c;
-}
+  .segment-2 {
+    stroke: #f2c94c;
+  }
 
-.segment-3 {
-  stroke: #2f80ed;
-}
+  .segment-3 {
+    stroke: #2f80ed;
+  }
 
-.segment-4 {
-  stroke: #6fcf97;
+  .segment-4 {
+    stroke: #6fcf97;
+  }
 }

@@ -16,7 +16,6 @@ import { useToggle, useWindowScroll, useWindowSize } from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
 
 import { BREAKPOINTS } from "../../../styles/media.js";
-import styleUtils from "../../../styles/utils/flex.module.css";
 import { Button, Container } from "../../atoms/index.js";
 import TopNavItem from "./TopNavItem.js";
 import styles from "./topNav.module.css";
@@ -162,18 +161,12 @@ export default function TopNav({
         )}
         {hasContextMenu && (
           <div
-            className={clsx(
-              styleUtils.flexAlignCenter,
-              styles.contentRightWrapper,
-            )}
+            className={clsx(styles.flexAlignCenter, styles.contentRightWrapper)}
           >
             {/* right content */}
             {contentRight && (
               <div
-                className={clsx(
-                  styleUtils.flexAlignCenter,
-                  styles.contentRight,
-                )}
+                className={clsx(styles.flexAlignCenter, styles.contentRight)}
               >
                 {contentRight}
               </div>
@@ -204,22 +197,17 @@ export default function TopNav({
       {/* right content menu */}
       {smallerWidth && hasContextMenu && (
         <div
-          className={clsx(styleUtils.flexColumn, styles.contentMenu, {
+          className={clsx(styles.flexColumn, styles.contentMenu, {
             [styles.open]: showDrawer,
           })}
         >
           {contentMenu || (
             <>
-              <div
-                className={clsx(styleUtils.flexColumn, styles.contentMenuTop)}
-              >
+              <div className={clsx(styles.flexColumn, styles.contentMenuTop)}>
                 {contentLeft}
               </div>
               <div
-                className={clsx(
-                  styleUtils.flexColumn,
-                  styles.contentMenuBottom,
-                )}
+                className={clsx(styles.flexColumn, styles.contentMenuBottom)}
               >
                 {contentRight}
               </div>

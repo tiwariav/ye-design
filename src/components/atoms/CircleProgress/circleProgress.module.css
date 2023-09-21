@@ -1,59 +1,61 @@
-.root {
-  position: relative;
-  overflow: hidden;
-}
-
-.circle-background,
-.circle-progress {
-  fill: none;
-}
-
-.circle-background {
-  stroke: #ddd;
-}
-
-.stroke-round {
-  stroke-linecap: round;
-}
-
-.text {
-  font-weight: bold;
-}
-
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: flex;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.progress-none {
-  &.circle-progress {
-    stroke: #c23934;
+@layer ye-components {
+  .root {
+    position: relative;
+    overflow: hidden;
   }
 
-  &.text {
-    fill: #c23934;
-  }
-}
-
-.progress-partial {
-  &.circle-progress {
-    stroke: #ff9f00;
+  .circle-background,
+  .circle-progress {
+    fill: none;
   }
 
-  &.text {
-    fill: #ff9f00;
-  }
-}
-
-.progress-full {
-  &.circle-progress {
-    stroke: #04844b;
+  .circle-background {
+    stroke: #ddd;
   }
 
-  &.text {
-    fill: #04844b;
+  .stroke-round {
+    stroke-linecap: round;
+  }
+
+  .text {
+    font-weight: bold;
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .progress-none {
+    &.circle-progress {
+      stroke: #c23934;
+    }
+
+    &.text {
+      fill: #c23934;
+    }
+  }
+
+  .progress-partial {
+    &.circle-progress {
+      stroke: #ff9f00;
+    }
+
+    &.text {
+      fill: #ff9f00;
+    }
+  }
+
+  .progress-full {
+    &.circle-progress {
+      stroke: #04844b;
+    }
+
+    &.text {
+      fill: #04844b;
+    }
   }
 }

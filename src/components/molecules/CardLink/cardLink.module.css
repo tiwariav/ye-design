@@ -1,3 +1,5 @@
-.root {
-  cursor: pointer;
+@layer ye-components {
+  .root {
+    cursor: pointer;
+  }
 }

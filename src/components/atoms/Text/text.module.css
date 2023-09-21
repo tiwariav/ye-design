@@ -1,24 +1,26 @@
-.text {
-  position: relative;
-  display: block;
-  width: 100%;
-  max-width: 720px;
-  overflow: hidden;
+@layer ye-components {
+  .text {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    overflow: hidden;
 
-  &.inline {
-    display: inline-flex;
+    &.inline {
+      display: inline-flex;
+    }
   }
-}
 
-.loader {
-  display: block;
-  width: 100%;
-  height: 1em;
-  margin: auto;
-}
+  .loader {
+    display: block;
+    width: 100%;
+    height: 1em;
+    margin: auto;
+  }
 
-.inline {
-  & .loader {
-    display: inline-block;
+  .inline {
+    & .loader {
+      display: inline-block;
+    }
   }
 }

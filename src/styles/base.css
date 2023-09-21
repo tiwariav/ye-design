@@ -1,10 +1,16 @@
 @import url("normalize.css");
 @import url("./media.css");
 
+/* https://css-tricks.com/css-cascade-layers */
+@layer ye-reset, ye-defaults, ye-wrappers, ye-base-components, ye-components;
+@layer ye-structures, ye-templates, ye-overrides;
+
 :root {
   /* ====== */
 
   /* BREAKPOINTS */
+
+  /* keep sync with './media.css' */
   --ye-breakpoint-xs: 360px;
   --ye-breakpoint-sm: 480px;
   --ye-breakpoint-md: 780px;
@@ -216,7 +222,6 @@
 
   /* FORM */
   --ye-control-outline-border-width: 1px;
-  --ye-control-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-normal);
   --ye-control-outline-padding: calc(
       var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
     )
@@ -239,66 +244,68 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer reset {
+  * {
+    box-sizing: border-box;
+  }
 
-html,
-body {
-  min-height: 100%;
-}
+  html,
+  body {
+    min-height: 100%;
+  }
 
-html {
-  background-color: var(--ye-color-background);
-}
+  html {
+    background-color: var(--ye-color-background);
+  }
 
-body {
-  overflow-x: hidden;
-  color: var(--ye-color-text);
-  font-weight: var(--ye-font-weight-normal);
-  font-size: var(--ye-font-size-normal);
-  font-size: clamp(100%, 1rem + 2vw, var(--ye-font-size-normal));
-  font-family: var(--ye-font-family-body);
-  line-height: var(--ye-line-height);
-  background-color: var(--ye-color-background);
-}
+  body {
+    overflow-x: hidden;
+    color: var(--ye-color-text);
+    font-weight: var(--ye-font-weight-normal);
+    font-size: var(--ye-font-size-normal);
+    font-size: clamp(100%, 1rem + 2vw, var(--ye-font-size-normal));
+    font-family: var(--ye-font-family-body);
+    line-height: var(--ye-line-height);
+    background-color: var(--ye-color-background);
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: var(--ye-font-weight-bold);
-  font-family: var(--ye-font-family-display);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: var(--ye-font-weight-bold);
+    font-family: var(--ye-font-family-display);
+  }
 
-h1 {
-  font-size: var(--ye-font-size-mammoth);
-}
+  h1 {
+    font-size: var(--ye-font-size-mammoth);
+  }
 
-h2 {
-  font-size: var(--ye-font-size-xhuge);
-}
+  h2 {
+    font-size: var(--ye-font-size-xhuge);
+  }
 
-h3 {
-  font-size: var(--ye-font-size-huge);
-}
+  h3 {
+    font-size: var(--ye-font-size-huge);
+  }
 
-h4 {
-  font-size: var(--ye-font-size-xlarge);
-}
+  h4 {
+    font-size: var(--ye-font-size-xlarge);
+  }
 
-h5 {
-  font-size: var(--ye-font-size-large);
-}
+  h5 {
+    font-size: var(--ye-font-size-large);
+  }
 
-h6 {
-  font-size: var(--ye-font-size-normal);
-}
+  h6 {
+    font-size: var(--ye-font-size-normal);
+  }
 
-code {
-  font-family: var(--ye-font-family-mono);
+  code {
+    font-family: var(--ye-font-family-mono);
+  }
 }
 
 .custom-scrollbar {

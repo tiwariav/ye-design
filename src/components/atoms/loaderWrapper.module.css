@@ -1,9 +1,11 @@
-.root {
-  position: absolute;
-  inset: 0;
-  z-index: var(--ye-z-base);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(255 255 255 / 0.5);
+@layer ye-components {
+  .root {
+    position: absolute;
+    inset: 0;
+    z-index: var(--ye-z-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255 255 255 / 0.5);
+  }
 }

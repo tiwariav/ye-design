@@ -1,38 +1,40 @@
-.root {
-  position: relative;
-  font-family: var(--ye-font-family-title);
-}
-
-.is-tinyline,
-.is-tinyline-left {
-  padding-bottom: var(--ye-spacing-rem-small);
-  text-align: center;
-
-  &::after {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    height: 2px;
-    background: var(--ye-color-black-10);
-    content: "";
+@layer ye-components {
+  .root {
+    position: relative;
+    font-family: var(--ye-font-family-title);
   }
-}
 
-.is-tinyline {
-  &::after {
-    left: 50%;
-    width: 40px;
-    transform: translateX(-50%);
+  .is-tinyline,
+  .is-tinyline-left {
+    padding-bottom: var(--ye-spacing-rem-small);
+    text-align: center;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 2px;
+      background: var(--ye-color-black-10);
+      content: "";
+    }
   }
-}
 
-.is-tinyline-left {
-  &::after {
-    left: 0.125em;
-    width: 80px;
+  .is-tinyline {
+    &::after {
+      left: 50%;
+      width: 40px;
+      transform: translateX(-50%);
+    }
   }
-}
 
-.align-center {
-  text-align: center;
+  .is-tinyline-left {
+    &::after {
+      left: 0.125em;
+      width: 80px;
+    }
+  }
+
+  .align-center {
+    text-align: center;
+  }
 }

@@ -1,11 +1,13 @@
-.container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--ye-spacing-em-huge);
-  height: var(--ye-spacing-em-huge);
-  color: var(--ye-color-white);
-  font-size: var(--ye-font-size-tiny);
-  background-color: var(--ye-color-black-10);
-  border-radius: var(--ye-radius-normal);
+@layer ye-components {
+  .container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ye-spacing-em-huge);
+    height: var(--ye-spacing-em-huge);
+    color: var(--ye-color-white);
+    font-size: var(--ye-font-size-tiny);
+    background-color: var(--ye-color-black-10);
+    border-radius: var(--ye-radius-normal);
+  }
 }

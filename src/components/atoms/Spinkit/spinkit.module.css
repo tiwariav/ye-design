@@ -1,4 +1,6 @@
-.root {
-  --module-spinkit-size: 40px;
-  --module-spinkit-color: #333;
+@layer ye-components {
+  .root {
+    --module-spinkit-size: 40px;
+    --module-spinkit-color: #333;
+  }
 }
