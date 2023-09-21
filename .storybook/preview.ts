@@ -1,7 +1,5 @@
 import { Preview } from "@storybook/react";
 
-import "../src/styles/base.css";
-import "../src/styles/media.css";
 import "./preview.css";
 
 const preview: Preview = {

@@ -1,5 +1,5 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  'space-none', 'space-small', 'space-large'
+  'space-none', 'space-small', 'space-large', 'space-medium'
 ]}] */
 
 import { clsx } from "clsx";
@@ -7,7 +7,7 @@ import React, { ComponentPropsWithoutRef } from "react";
 
 import styles from "./divider.module.css";
 
-const DIVIDER_SPACING_OPTIONS = ["none", "small", "medium", "large"];
+const DIVIDER_SPACING_OPTIONS = ["none", "small", "medium", "large"] as const;
 
 interface DividerProps extends ComponentPropsWithoutRef<"div"> {
   spacing?: (typeof DIVIDER_SPACING_OPTIONS)[number];
@@ -25,7 +25,7 @@ export default function Divider({
     {
       className: clsx(
         styles.root,
-        { "is-vertical": vertical },
+        vertical && styles.isVertical,
         styles[`space-${spacing}`],
         className,
       ),

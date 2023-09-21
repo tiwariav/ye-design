@@ -1,4 +1,7 @@
 /* stylelint-disable scale-unlimited/declaration-strict-value */
+
+@import url("../src/styles/base.css");
+
 * {
   box-sizing: border-box;
 }

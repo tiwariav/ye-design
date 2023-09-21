@@ -5,12 +5,13 @@
   /* ====== */
 
   /* BREAKPOINTS */
-  --ye-bp-max-xs: 575px;
-  --ye-bp-min-sm: 576px;
-  --ye-bp-min-md: 768px;
-  --ye-bp-min-lg: 992px;
-  --ye-bp-min-xl: 1200px;
-  --ye-bp-min-xxl: 1400px;
+  --ye-breakpoint-xs: 360px;
+  --ye-breakpoint-sm: 480px;
+  --ye-breakpoint-md: 780px;
+  --ye-breakpoint-lg: 1080px;
+  --ye-breakpoint-xl: 1200px;
+  --ye-breakpoint-xxl: 1440px;
+  --ye-breakpoint-xxxl: 1920px;
 
   /* COLORS */
 

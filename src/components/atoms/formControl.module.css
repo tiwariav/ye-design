@@ -8,8 +8,7 @@
   transition-duration: var(--ye-transition-duration);
   transition-property: box-shadow, border-radius;
 
-  &:focus,
-  &:focus-within {
+  &:focus {
     box-shadow: var(--ye-button-focus-shadow);
   }
 
@@ -23,7 +22,6 @@
   border: none;
   box-shadow: none;
 
-  &.has-focus,
   &:focus {
     box-shadow: none;
   }

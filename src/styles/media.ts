@@ -1,4 +1,6 @@
 /* eslint-disable perfectionist/sort-objects */
+
+// keep sync with './src/styles/media.css'
 export const BREAKPOINTS = {
   xs: 360,
   sm: 480,

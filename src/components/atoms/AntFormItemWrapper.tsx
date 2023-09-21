@@ -1,10 +1,13 @@
-import { Form } from "antd";
+import { Form as _Form } from "antd";
 import { FormItemProps } from "antd/es/form/index.js";
 import { clsx } from "clsx";
+import { defaultImport } from "default-import";
 import { isDate, isObject } from "lodash-es";
 import React, { ReactElement, useCallback, useMemo, useState } from "react";
 
 import styles from "./antFormItemWrapper.module.css";
+
+const Form = defaultImport(_Form);
 
 interface AntFormItemWrapperProps extends FormItemProps {
   children: ReactElement;

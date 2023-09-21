@@ -43,7 +43,6 @@ export function svgNodeToData(element: Node) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(serialized)}`;
 }
 
-export async function svgResponseToData(response: Response) {
-  const text = await response.text();
-  return `data:image/svg+xml;utf8,${encodeURIComponent(text)}`;
+export function responseTextToData(response: string) {
+  return `data:image/svg+xml;utf8,${encodeURIComponent(response)}`;
 }
