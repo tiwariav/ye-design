@@ -1,3 +1,22 @@
+## [3.0.0](https://github.com/tiwariav/ye-design/compare/v2.4.1...v3.0.0) (2023-09-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* `dist.css` has been removed from the final bundle.
+Now each component imports its own styles to reduce the final bundle size of css.
+
+### ✨ Features
+
+* add css cascade layers ([3ca2e01](https://github.com/tiwariav/ye-design/commit/3ca2e014289389dbcea52768fa7382e88bd651f8))
+
+
+### 🐛 Bug Fixes
+
+* fix label style for PhoneNumberInput ([d38d470](https://github.com/tiwariav/ye-design/commit/d38d470e8b04c9aa51ba433b4ef0271d0b707692))
+* fix story imports into another story ([c763c70](https://github.com/tiwariav/ye-design/commit/c763c7096a5460b14fd75ffc2c24d3d3b6ed326d))
+* use defaultImport for antd components ([9af244b](https://github.com/tiwariav/ye-design/commit/9af244b5aebc4ae15e6c159a2fda0e310518a33b))
+
 ## [2.4.1](https://github.com/tiwariav/ye-design/compare/v2.4.0...v2.4.1) (2023-09-20)
 
 
