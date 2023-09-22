@@ -1,33 +1,52 @@
-import { WithImage as CardWithImage } from "../../atoms/Card/Card.stories.js";
-import Collection from "./index.js";
+import { Meta, ReactRenderer, StoryObj } from "@storybook/react";
+import { ArgsStoryFn } from "@storybook/types";
 
-const metadata = {
-  component: Collection,
+import {
+  Template as CardTemplate,
+  WithImage as CardWithImage,
+} from "../../atoms/Card/Card.stories.js";
+import Collection, { CollectionProps } from "./index.js";
+
+type TemplateProps = Omit<CollectionProps, "children"> & {
+  cardWidth?: number;
+  variant?: "grid" | "list";
 };
 
-export default metadata;
-
-const Template = ({ cardWidth, content, variant, ...args }) => {
-  const cardLayout = variant === "grid" ? "vertical" : "horizontal";
+export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
+  cardWidth,
+  variant,
+  ...args
+}) => {
   const itemArgs = {
     ...CardWithImage.args,
-    layout: cardLayout,
     style: { width: cardWidth },
   };
+  if (variant === "grid") {
+    itemArgs.layout = "horizontal";
+  }
   return (
     <Collection {...args} variant={variant}>
-      {Array.from({ length: 32 }).fill(
-        <CardWithImage {...itemArgs}>
+      {Array.from({ length: 32 }, () => (
+        <CardTemplate {...itemArgs}>
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem
           molestiae odio et dolor.
-        </CardWithImage>,
-      )}
+        </CardTemplate>
+      ))}
     </Collection>
   );
 };
 
-export const Basic = {
+const metadata: Meta<typeof Collection> = {
+  component: Collection,
+  render: Template,
+};
+
+export default metadata;
+
+type Story = StoryObj<typeof Collection>;
+
+export const Basic: Story = {
   args: {
     filter: [
       {
@@ -47,7 +66,6 @@ export const Basic = {
     ],
     title: "A list of items",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const FixedColumns = {
@@ -56,14 +74,12 @@ export const FixedColumns = {
     columns: 2,
     title: "A list of items, with fixed number of columns",
   },
-  render: (args) => <Template {...args} />,
 };
 
 export const Grid = {
   args: {
     ...Basic.args,
     title: "A grid of items",
-    variant: "grid",
+    variant: "grid" as const,
   },
-  render: (args) => <Template {...args} />,
 };

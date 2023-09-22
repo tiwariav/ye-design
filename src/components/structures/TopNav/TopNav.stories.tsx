@@ -5,7 +5,6 @@ import {
   IconMicrophone,
   IconSearch,
 } from "@tabler/icons-react";
-import { CSSProperties } from "react";
 
 import { Button, TextInput } from "../../atoms/index.js";
 import TopNav, { TopNavProps } from "./TopNav.js";
@@ -44,12 +43,6 @@ const itemsMap = {
     </TopNavItem>
   ),
 };
-const fixedStyles: CSSProperties = {
-  left: 0,
-  position: "fixed",
-  right: 0,
-  top: 0,
-};
 
 const metadata: Meta<typeof TopNav> = {
   argTypes: {
@@ -78,9 +71,9 @@ export default metadata;
 
 type Story = StoryObj<typeof TopNav>;
 
-const FixedTemplate = (props: TopNavProps) => (
+export const FixedTemplate = (props: TopNavProps) => (
   <div style={{ paddingTop: 120 }}>
-    <div style={fixedStyles}>
+    <div className="story-topnav-fixed">
       <TopNav {...props} />
     </div>
     <div style={{ backgroundColor: "rgba(0,0,0,0.1)", height: "200vh" }}>
@@ -89,14 +82,14 @@ const FixedTemplate = (props: TopNavProps) => (
   </div>
 );
 
-export const Basic = {
+export const Basic: Story = {
   args: {
     contentLeft: ["SearchInput"],
     contentRight: ["ButtonWithSeparator", "Button"],
   },
 };
 
-export const Transparent = {
+export const Transparent: Story = {
   args: {
     ...Basic.args,
     variant: "transparent",
@@ -122,21 +115,14 @@ export const MultiRow: Story = {
   render: (args) => <FixedTemplate {...args} />,
 };
 
-export const Expanded = {
-  argTypes: {
-    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
-  },
+export const Expanded: Story = {
   args: {
     ...Basic.args,
     isExpanded: true,
-    isShrinking: 0,
   },
 };
 
-export const HangingLogo = {
-  argTypes: {
-    isShrinking: { control: { max: 72, min: 0, step: 1, type: "range" } },
-  },
+export const HangingLogo: Story = {
   args: {
     ...Basic.args,
     logoVariant: "hanging",

@@ -1,19 +1,25 @@
+import { Meta, StoryObj } from "@storybook/react";
+import { ComponentProps } from "react";
+
 import { TEXT_LONG } from "./__testData.js";
 import Text from "./Text.js";
 
-const metadata = {
+const metadata: Meta<typeof Text> = {
   component: Text,
 };
 
 export default metadata;
 
-const Template = ({ width, ...args }) => (
+type TemplateProps = ComponentProps<typeof Text> & { width: number };
+type Story = StoryObj<TemplateProps>;
+
+const Template = ({ width, ...args }: TemplateProps) => (
   <div style={{ border: "1px solid var(--ye-color-black-10)", width }}>
     <Text {...args} />
   </div>
 );
 
-export const Basic = {
+export const Basic: Story = {
   args: {
     children: TEXT_LONG,
     isLoading: true,
@@ -23,7 +29,7 @@ export const Basic = {
   render: (args) => <Template {...args} />,
 };
 
-export const FixedLines = {
+export const FixedLines: Story = {
   args: {
     ...Basic.args,
     maxLines: 5,
@@ -32,10 +38,10 @@ export const FixedLines = {
   render: (args) => <Template {...args} />,
 };
 
-export const Loading = {
+export const Loading: Story = {
   args: {
     ...FixedLines.args,
-    loading: true,
+    isLoading: true,
   },
   render: (args) => <Template {...args} />,
 };

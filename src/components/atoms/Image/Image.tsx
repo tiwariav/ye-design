@@ -15,7 +15,7 @@ import styles from "./image.module.css";
 
 const IMAGE_VARIANT_OPTIONS = ["basic", "circular"] as const;
 
-interface ImageProps extends ComponentPropsWithoutRef<"img"> {
+export interface ImageProps extends ComponentPropsWithoutRef<"img"> {
   Element?: ElementType;
   aspectRatio?: `${number}/${number}`;
   isBusy?: boolean;

@@ -1,23 +1,31 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, ReactRenderer, StoryObj } from "@storybook/react";
+import { ArgsStoryFn } from "@storybook/types";
+import { ComponentProps } from "react";
 
 import Image from "./Image.js";
 
-const metadata: Meta<typeof Image> = {
+type TemplateProps = ComponentProps<typeof Image> & { width?: number };
+
+export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
+  width,
+  ...args
+}) => (
+  <div style={{ width }}>
+    <Image {...args} />
+  </div>
+);
+
+const metadata: Meta<TemplateProps> = {
   component: Image,
-  render: ({ width, ...args }) => (
-    <div style={{ width }}>
-      <Image {...args} />
-    </div>
-  ),
+  render: Template,
 };
 
 export default metadata;
 
-type Story = StoryObj<typeof Image>;
+type Story = StoryObj<TemplateProps>;
 
 export const Basic: Story = {
   args: {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     src: `${process.env.STORYBOOK_IMAGE_SRC}/160`,
     width: 160,
   },

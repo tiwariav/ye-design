@@ -22,7 +22,7 @@ type SortOption = {
 
 const COLLECTION_VARIANT_OPTIONS = ["list", "grid"] as const;
 
-interface CollectionProps {
+export interface CollectionProps {
   children: ReactNode;
   columns?: number;
   filter?: FilterOption[];

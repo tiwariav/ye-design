@@ -1,7 +1,11 @@
-import { Meta, StoryContext, StoryObj } from "@storybook/react";
+import { Meta, ReactRenderer, StoryObj } from "@storybook/react";
+import { ArgsStoryFn } from "@storybook/types";
 
 import { COMPONENT_FLOAT } from "../../../tools/constants/props.js";
-import ImageMeta, { Basic as ImageBasic } from "../Image/Image.stories.js";
+import {
+  Basic as ImageBasic,
+  Template as ImageTemplate,
+} from "../Image/Image.stories.js";
 import Card, {
   CARD_FLYING,
   CARD_HEIGHTS,
@@ -12,14 +16,17 @@ import Card, {
 } from "./Card.js";
 
 const imageMap = {
-  ImageBasic: ImageMeta?.render?.(
-    { ...ImageBasic.args, width: 64 },
-    {} as StoryContext,
-  ),
+  ImageBasic: <ImageTemplate {...ImageBasic.args} />,
   None: null,
 };
 
-const metadata: Meta<CardProps & { width: number }> = {
+type TemplateProps = CardProps & { width?: number };
+export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
+  width,
+  ...args
+}) => <Card style={{ width }} {...args} />;
+
+const metadata: Meta<TemplateProps> = {
   argTypes: {
     image: { mapping: imageMap, options: Object.keys(imageMap) },
     width: { control: { max: 320, min: 80, type: "range" } },
@@ -28,8 +35,7 @@ const metadata: Meta<CardProps & { width: number }> = {
     children: "Card content",
   },
   component: Card,
-  render: ({ width, ...args }) => <Card style={{ width }} {...args} />,
-  title: "Components/Atoms/Card",
+  render: Template,
 };
 
 export default metadata;
