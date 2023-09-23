@@ -1,32 +1,30 @@
-.icon {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: var(--ye-spacing-em-large);
-  height: var(--ye-spacing-em-large);
-  margin-right: var(--ye-spacing-em-xsmall);
-  color: inherit;
-  font-size: var(--ye-font-size-em);
-  line-height: 1;
-}
+@layer ye-wrappers {
+  .icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--ye-spacing-em-large);
+    height: var(--ye-spacing-em-large);
+    margin-right: var(--ye-spacing-em-xsmall);
+    color: inherit;
+    font-size: var(--ye-font-size-em);
+    line-height: 1;
+  }
 
-.form-icon {
-  position: absolute;
-  top: 50%;
-  left: var(--ye-spacing-em-normal);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--ye-spacing-em-large);
-  height: var(--ye-spacing-em-large);
-  color: inherit;
-  font-size: var(--ye-font-size-em);
-  line-height: 1;
-  transform: translateY(-50%);
+  .form-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ye-spacing-em-large);
+    height: var(--ye-spacing-em-large);
+    color: inherit;
+    font-size: var(--ye-font-size-em);
+    line-height: 1;
 
-  & img {
-    max-width: 100%;
-    max-height: 100%;
+    & img,
+    & svg {
+      height: 100%;
+    }
   }
 }

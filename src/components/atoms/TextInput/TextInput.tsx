@@ -128,7 +128,9 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         </Label>
         <div className={styles.inputWrapper}>
           {iconBefore && (
-            <FormIconSpan className={innerClassNames.iconBefore}>
+            <FormIconSpan
+              className={clsx(styles.icon, innerClassNames.iconBefore)}
+            >
               {iconBefore}
             </FormIconSpan>
           )}
@@ -153,7 +155,11 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           />
           {iconAfter && (
             <FormIconSpan
-              className={clsx(styles.iconRight, innerClassNames.iconAfter)}
+              className={clsx(
+                styles.icon,
+                styles.iconRight,
+                innerClassNames.iconAfter,
+              )}
             >
               {iconAfter}
             </FormIconSpan>

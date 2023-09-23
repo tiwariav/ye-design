@@ -1,9 +1,8 @@
-@import url("normalize.css");
-@import url("./media.css");
-
 /* https://css-tricks.com/css-cascade-layers */
 @layer ye-reset, ye-defaults, ye-wrappers, ye-base-components, ye-components;
 @layer ye-structures, ye-templates, ye-overrides;
+
+@import url("./media.css");
 
 :root {
   /* ====== */
@@ -244,7 +243,7 @@
   }
 }
 
-@layer reset {
+@layer ye-reset {
   * {
     box-sizing: border-box;
   }

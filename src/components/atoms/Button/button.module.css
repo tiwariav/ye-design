@@ -1,6 +1,7 @@
 @layer ye-components {
   .root {
     position: relative;
+    gap: var(--ye-spacing-em-xsmall);
     padding: var(--ye-button-padding);
     overflow: hidden;
     color: var(--ye-color-text);
@@ -26,6 +27,13 @@
 
   .is-full-width {
     width: 100%;
+  }
+
+  .icon {
+    /* stylelint-disable scale-unlimited/declaration-strict-value */
+    margin-top: -3px;
+    margin-bottom: -3px;
+    /* stylelint-enable scale-unlimited/declaration-strict-value */
   }
 
   .spacing-equal {
@@ -260,8 +268,7 @@
 
   /* to avoid undef error */
   /* stylelint-disable-next-line no-descending-specificity */
-  .variant-basic,
-  .icon {
+  .variant-basic {
     /* no styles */
   }
 }
