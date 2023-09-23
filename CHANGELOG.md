@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/tiwariav/ye-design/compare/v3.0.0...v3.0.1) (2023-09-23)
+
+
+### 🐛 Bug Fixes
+
+* improve form control icon styles ([51f60fa](https://github.com/tiwariav/ye-design/commit/51f60faf2bf0ae226527d0fa2a576c0ec374a715))
+
 ## [3.0.0](https://github.com/tiwariav/ye-design/compare/v2.4.1...v3.0.0) (2023-09-22)
 
 
