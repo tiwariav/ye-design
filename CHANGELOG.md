@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/tiwariav/ye-design/compare/v3.0.1...v3.0.2) (2023-09-24)
+
+
+### 🐛 Bug Fixes
+
+* add normalize.css to base.css ([0cc3940](https://github.com/tiwariav/ye-design/commit/0cc394018d2dc0aeb8cfe9c8a3aae52030e286f1))
+
 ## [3.0.1](https://github.com/tiwariav/ye-design/compare/v3.0.0...v3.0.1) (2023-09-23)
 
 
