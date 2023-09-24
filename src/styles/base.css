@@ -2,6 +2,7 @@
 @layer ye-reset, ye-defaults, ye-wrappers, ye-base-components, ye-components;
 @layer ye-structures, ye-templates, ye-overrides;
 
+@import url("normalize.css") layer(ye-reset);
 @import url("./media.css");
 
 :root {
