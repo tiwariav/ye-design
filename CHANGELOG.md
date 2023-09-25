@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/tiwariav/ye-design/compare/v3.0.4...v3.0.5) (2023-09-25)
+
+
+### ♻️ Code Refactors
+
+* update wo-library ([c50aa85](https://github.com/tiwariav/ye-design/commit/c50aa85bf99c021ca005d21339d46f7b1f72508d))
+
 ## [3.0.4](https://github.com/tiwariav/ye-design/compare/v3.0.3...v3.0.4) (2023-09-25)
 
 
