@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/tiwariav/ye-design/compare/v3.0.2...v3.0.3) (2023-09-25)
+
+
+### 🐛 Bug Fixes
+
+* fix page sidenav style ([bc48a0e](https://github.com/tiwariav/ye-design/commit/bc48a0e8899a32a94766c36d651121889ff74513))
+
 ## [3.0.2](https://github.com/tiwariav/ye-design/compare/v3.0.1...v3.0.2) (2023-09-24)
 
 
