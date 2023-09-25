@@ -1,3 +1,4 @@
+import postcssGlobalData from "@csstools/postcss-global-data";
 import _typescript from "@rollup/plugin-typescript";
 import { defaultImport } from "default-import";
 import _postcss from "rollup-plugin-postcss";
@@ -18,6 +19,12 @@ const typescript = defaultImport(_typescript);
 
 const isDev = Boolean(process.env.ROLLUP_WATCH);
 const STYLES_DIR = "src/styles";
+
+postcssConfig.plugins.splice(
+  0,
+  0,
+  postcssGlobalData({ files: ["./src/styles/media.css"] }),
+);
 
 const config = [
   {

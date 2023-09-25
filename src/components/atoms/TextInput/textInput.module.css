@@ -71,7 +71,7 @@
   .variant-basic,
   .variant-material {
     & .text-input {
-      border-color: var(--ye-color-background-secondary);
+      border-color: var(--ye-color-input-border);
       border-style: solid;
       border-width: var(--ye-input-border-width);
       box-shadow: var(--ye-input-shadow);

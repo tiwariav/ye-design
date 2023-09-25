@@ -1,4 +1,16 @@
 @layer ye-structures {
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ye-spacing-em-normal);
+  }
+
+  .flex-align-center {
+    display: flex;
+    gap: var(--ye-spacing-em-normal);
+    align-items: center;
+  }
+
   .root {
     z-index: var(--ye-z-topnav);
     width: 100%;
@@ -177,18 +189,6 @@
     &.is-transparent {
       background-color: var(--ye-color-background);
     }
-  }
-
-  .flex-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ye-spacing-em-normal);
-  }
-
-  .flex-align-center {
-    display: flex;
-    gap: var(--ye-spacing-em-normal);
-    align-items: center;
   }
 
   /* to avoid undef error */
