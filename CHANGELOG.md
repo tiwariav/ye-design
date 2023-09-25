@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/tiwariav/ye-design/compare/v3.0.3...v3.0.4) (2023-09-25)
+
+
+### 🐛 Bug Fixes
+
+* add missing style imports ([cff9656](https://github.com/tiwariav/ye-design/commit/cff9656a9c2ecd6ec3eb2d767fd176866e7cd613))
+
 ## [3.0.3](https://github.com/tiwariav/ye-design/compare/v3.0.2...v3.0.3) (2023-09-25)
 
 
