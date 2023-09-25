@@ -34,6 +34,7 @@
     transition: width ease-in-out 0.5s;
 
     &.top-nav-top {
+      position: relative;
       top: 4.5rem;
       height: calc(100vh - 4.5rem);
     }
