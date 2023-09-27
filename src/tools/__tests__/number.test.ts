@@ -8,9 +8,9 @@ type TEST_DATA = [[string, FormatNumberSuffixOptions?], string | undefined][];
 
 const SOME_STRING = "some string";
 const NON_NUMBERS: TEST_DATA = [
-  [[SOME_STRING], undefined],
+  [[SOME_STRING], ""],
   [[SOME_STRING, { nullValue: "xx" }], "xx"],
-  [[""], undefined],
+  [[""], ""],
 ];
 
 function testArray(tests: TEST_DATA) {
@@ -28,6 +28,19 @@ function testArrayWithSuffix(tests: TEST_DATA) {
 }
 
 describe("format number", () => {
+  test("max fraction digit 0", () => {
+    // max fration digits should not be less than min fraction digits
+    const output = formatNumber(85_752.384_823_3, { maximumFractionDigits: 0 });
+    expect(output).toBe("85,752");
+  });
+
+  test("fraction digits 0", () => {
+    const output = formatNumber(85_752.384_823_3, {
+      fractionDigits: 0,
+    });
+    expect(output).toBe("85,752");
+  });
+
   test("should return null-value for non-numbers", () => {
     testArray(NON_NUMBERS);
   });
