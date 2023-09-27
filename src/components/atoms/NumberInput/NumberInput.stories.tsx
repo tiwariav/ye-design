@@ -78,7 +78,9 @@ export const Basic: Story = {
 
 export const Formatted: Story = {
   args: {
-    format: true,
+    format: {
+      // maximumFractionDigits: 2,
+    },
     parse: true,
     placeholder: "Enter your text",
   },

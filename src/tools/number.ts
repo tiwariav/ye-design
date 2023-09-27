@@ -20,10 +20,7 @@ export function formatNumber(
     return nullValue;
   }
   const adjustedMinFractionDigits = Math.max(
-    Math.min(
-      minimumFractionDigits ?? fractionDigits,
-      maximumFractionDigits ?? Number.POSITIVE_INFINITY,
-    ),
+    minimumFractionDigits ?? maximumFractionDigits ?? fractionDigits,
     isString(value) && value.endsWith(".") ? 1 : 0,
   );
   return number.toLocaleString("en-IN", {
@@ -31,10 +28,7 @@ export function formatNumber(
       maximumFractionDigits ?? fractionDigits,
       adjustedMinFractionDigits,
     ),
-    minimumFractionDigits: Math.min(
-      minimumFractionDigits ?? fractionDigits,
-      adjustedMinFractionDigits,
-    ),
+    minimumFractionDigits: adjustedMinFractionDigits,
     ...options,
   });
 }
