@@ -1,3 +1,12 @@
+## [3.0.6](https://github.com/tiwariav/ye-design/compare/v3.0.5...v3.0.6) (2023-09-27)
+
+
+### 🐛 Bug Fixes
+
+* 0 maxFractionDigits ([ec45dd3](https://github.com/tiwariav/ye-design/commit/ec45dd3e6453f8c8890c5bbcf5104ba405555725))
+* page innerClassNames ([076e8cd](https://github.com/tiwariav/ye-design/commit/076e8cdf8d3eff988bebdfeeb83002229c12bc72))
+* use maximumFractionDigits in NumberInput when 0 ([565f0d1](https://github.com/tiwariav/ye-design/commit/565f0d13aeba17b93630d1c87f52f59aa97da898))
+
 ## [3.0.5](https://github.com/tiwariav/ye-design/compare/v3.0.4...v3.0.5) (2023-09-25)
 
 
