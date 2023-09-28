@@ -99,6 +99,7 @@ interface CircleProgressProps {
   };
   progress: [number, number];
   progressText?: "parts" | "percent" | "value" | string;
+  roundEdges?: boolean;
   squareSize?: number;
   strokeWidth?: number;
 }
@@ -110,6 +111,7 @@ export default function CircleProgress({
   innerClassNames = {},
   progress,
   progressText,
+  roundEdges = true,
   squareSize = 20,
   strokeWidth = 2,
   ...props
@@ -132,10 +134,8 @@ export default function CircleProgress({
   }, [arcHeight, squareSize, strokeWidth]);
 
   const progressData: {
-    circleStyles: {
-      strokeDasharray: number;
-      strokeDashoffset: number;
-    };
+    circleBackgroundStyles: ReturnType<typeof getCircleStyles>;
+    circleStyles: ReturnType<typeof getCircleStyles>;
     completion: number;
     progressClass: ReturnType<typeof getProgressClass>;
   } = useMemo(() => {
@@ -144,7 +144,13 @@ export default function CircleProgress({
     const progressClass = getProgressClass(completion);
     const { arcRotation, radius } = initData;
     const circleStyles = getCircleStyles(radius, arcRotation, completion);
-    return { circleStyles, completion, progressClass: progressClass };
+    const circleBackgroundStyles = getCircleStyles(radius, arcRotation, 100);
+    return {
+      circleBackgroundStyles,
+      circleStyles,
+      completion,
+      progressClass: progressClass,
+    };
   }, [initData, progress]);
 
   return (
@@ -167,12 +173,16 @@ export default function CircleProgress({
           cy={squareSize / 2}
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
+          style={progressData.circleBackgroundStyles}
+          transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
+            squareSize / 2
+          })`}
         />
         <circle
           className={clsx(
             styles.circleProgress,
             {
-              [styles.strokeRound]: arcHeight === 100,
+              [styles.strokeRound]: roundEdges,
             },
             styles[progressData.progressClass],
             innerClassNames[progressData.progressClass],
