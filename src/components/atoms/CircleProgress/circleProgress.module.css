@@ -1,5 +1,9 @@
 @layer ye-components {
   .root {
+    --color-progress-none: #c23934;
+    --color-progress-partial: #ff9f00;
+    --color-progress-full: #04844b;
+
     position: relative;
     overflow: hidden;
   }
@@ -31,31 +35,31 @@
 
   .progress-none {
     &.circle-progress {
-      stroke: #c23934;
+      stroke: var(--color-progress-none);
     }
 
     &.text {
-      fill: #c23934;
+      fill: var(--color-progress-none);
     }
   }
 
   .progress-partial {
     &.circle-progress {
-      stroke: #ff9f00;
+      stroke: var(--color-progress-partial)
     }
 
     &.text {
-      fill: #ff9f00;
+      fill: var(--color-progress-partial);
     }
   }
 
   .progress-full {
     &.circle-progress {
-      stroke: #04844b;
+      stroke: var(--color-progress-full);
     }
 
     &.text {
-      fill: #04844b;
+      fill: var(--color-progress-full);
     }
   }
 }
