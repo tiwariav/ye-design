@@ -18,13 +18,13 @@ export function getProgressClass(percentage: number) {
 
 function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
   // Arc length at 100% coverage is the circle circumference
-  const strokeDasharray = radius * Math.PI * 2;
+  const strokeDasharray = radius * Math.PI * 2; // 2πr
   const rotationOffset = (2 * radius * (arcRotation - 90) * Math.PI) / 180;
   // Scale 100% coverage overlay with the actual percent
   const strokeDashoffset =
     rotationOffset +
     ((strokeDasharray - rotationOffset) * (100 - completion)) / 100;
-  return { strokeDasharray, strokeDashoffset };
+  return { rotationOffset, strokeDasharray, strokeDashoffset };
 }
 
 const CIRCLE_PROGRESS_TEXT_OPTIONS = ["parts", "percent", "value"];
@@ -144,7 +144,10 @@ export default function CircleProgress({
     const progressClass = getProgressClass(completion);
     const { arcRotation, radius } = initData;
     const circleStyles = getCircleStyles(radius, arcRotation, completion);
-    const circleBackgroundStyles = getCircleStyles(radius, arcRotation, 100);
+    const circleBackgroundStyles = {
+      ...circleStyles,
+      strokeDashoffset: circleStyles.rotationOffset,
+    };
     return {
       circleBackgroundStyles,
       circleStyles,
@@ -152,6 +155,10 @@ export default function CircleProgress({
       progressClass: progressClass,
     };
   }, [initData, progress]);
+
+  const circleTransform = `rotate(${initData.arcRotation} ${squareSize / 2} ${
+    squareSize / 2
+  })`;
 
   return (
     <div
@@ -174,9 +181,7 @@ export default function CircleProgress({
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
           style={progressData.circleBackgroundStyles}
-          transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
-            squareSize / 2
-          })`}
+          transform={circleTransform}
         />
         <circle
           className={clsx(
@@ -193,9 +198,7 @@ export default function CircleProgress({
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
           style={progressData.circleStyles}
-          transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
-            squareSize / 2
-          })`}
+          transform={circleTransform}
         />
         <CenterText
           arcHeight={arcHeight}
