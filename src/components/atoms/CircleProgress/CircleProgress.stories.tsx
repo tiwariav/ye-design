@@ -1,16 +1,19 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import CircleProgress from "./CircleProgress.js";
+import styles from "./circleProgress.stories.module.css";
 
 const metadata: Meta<typeof CircleProgress> = {
   argTypes: {
     arcHeight: { control: { max: 100, min: 0, type: "range" } },
+    strokeWidth: { control: { max: 100, min: 0, type: "range" } },
   },
   args: {
     arcHeight: 100,
     progress: [25, 100],
     progressText: "percent",
     squareSize: 100,
+    strokeWidth: 10,
   },
   component: CircleProgress,
   render: (args) => <CircleProgress {...args} />,
@@ -71,6 +74,31 @@ export const StrokeWidth: Story = {
       <CircleProgress {...args} />
       <CircleProgress {...args} strokeWidth={5} />
       <CircleProgress {...args} strokeWidth={15} />
+    </div>
+  ),
+};
+
+export const Color: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      <CircleProgress
+        {...args}
+        innerClassNames={{
+          progressPartial: styles.redProgress,
+        }}
+      />
+      <CircleProgress
+        {...args}
+        innerClassNames={{
+          progressPartial: styles.greenProgress,
+        }}
+      />
+      <CircleProgress
+        {...args}
+        innerClassNames={{
+          progressPartial: styles.orangeProgress,
+        }}
+      />
     </div>
   ),
 };
