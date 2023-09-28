@@ -24,7 +24,7 @@ function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
   const strokeDashoffset =
     rotationOffset +
     ((strokeDasharray - rotationOffset) * (100 - completion)) / 100;
-  return { strokeDasharray, strokeDashoffset };
+  return { rotationOffset, strokeDasharray, strokeDashoffset };
 }
 
 const CIRCLE_PROGRESS_TEXT_OPTIONS = ["parts", "percent", "value"];
@@ -86,6 +86,11 @@ function CenterText({
   );
 }
 
+type CircleStyle = {
+  strokeDasharray: number;
+  strokeDashoffset: number;
+};
+
 interface CircleProgressProps {
   arcHeight?: number;
   children?: ReactNode;
@@ -99,6 +104,7 @@ interface CircleProgressProps {
   };
   progress: [number, number];
   progressText?: "parts" | "percent" | "value" | string;
+  roundEdges?: boolean;
   squareSize?: number;
   strokeWidth?: number;
 }
@@ -110,6 +116,7 @@ export default function CircleProgress({
   innerClassNames = {},
   progress,
   progressText,
+  roundEdges = true,
   squareSize = 20,
   strokeWidth = 2,
   ...props
@@ -132,10 +139,8 @@ export default function CircleProgress({
   }, [arcHeight, squareSize, strokeWidth]);
 
   const progressData: {
-    circleStyles: {
-      strokeDasharray: number;
-      strokeDashoffset: number;
-    };
+    circleBackgroundStyles: CircleStyle;
+    circleStyles: CircleStyle;
     completion: number;
     progressClass: ReturnType<typeof getProgressClass>;
   } = useMemo(() => {
@@ -143,9 +148,25 @@ export default function CircleProgress({
       progress[0] && progress[1] ? (100 * progress[0]) / progress[1] : 0;
     const progressClass = getProgressClass(completion);
     const { arcRotation, radius } = initData;
-    const circleStyles = getCircleStyles(radius, arcRotation, completion);
-    return { circleStyles, completion, progressClass: progressClass };
+    const { rotationOffset, ...circleStyles } = getCircleStyles(
+      radius,
+      arcRotation,
+      completion,
+    );
+    return {
+      circleBackgroundStyles: {
+        strokeDasharray: circleStyles.strokeDasharray,
+        strokeDashoffset: rotationOffset,
+      },
+      circleStyles,
+      completion,
+      progressClass,
+    };
   }, [initData, progress]);
+
+  const circleTransform = `rotate(${initData.arcRotation} ${squareSize / 2} ${
+    squareSize / 2
+  })`;
 
   return (
     <div
@@ -167,12 +188,14 @@ export default function CircleProgress({
           cy={squareSize / 2}
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
+          style={progressData.circleBackgroundStyles}
+          transform={circleTransform}
         />
         <circle
           className={clsx(
             styles.circleProgress,
             {
-              [styles.strokeRound]: arcHeight === 100,
+              [styles.strokeRound]: roundEdges,
             },
             styles[progressData.progressClass],
             innerClassNames[progressData.progressClass],
@@ -183,9 +206,7 @@ export default function CircleProgress({
           r={initData.radius}
           strokeWidth={`${strokeWidth}px`}
           style={progressData.circleStyles}
-          transform={`rotate(${initData.arcRotation} ${squareSize / 2} ${
-            squareSize / 2
-          })`}
+          transform={circleTransform}
         />
         <CenterText
           arcHeight={arcHeight}

@@ -15,6 +15,7 @@
 
   .circle-background {
     stroke: #ddd;
+    stroke-linecap: round;
   }
 
   .stroke-round {

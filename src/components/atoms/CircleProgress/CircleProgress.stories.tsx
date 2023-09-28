@@ -13,7 +13,7 @@ const metadata: Meta<typeof CircleProgress> = {
     progress: [25, 100],
     progressText: "percent",
     squareSize: 100,
-    strokeWidth: 10,
+    strokeWidth: 4,
   },
   component: CircleProgress,
   render: (args) => <CircleProgress {...args} />,
