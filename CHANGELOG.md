@@ -1,3 +1,10 @@
+## [3.0.7](https://github.com/tiwariav/ye-design/compare/v3.0.6...v3.0.7) (2023-09-28)
+
+
+### 🐛 Bug Fixes
+
+* circle progress colors props ([90a04f9](https://github.com/tiwariav/ye-design/commit/90a04f9b9335c509c64b135ec4c47d40420fbbf5))
+
 ## [3.0.6](https://github.com/tiwariav/ye-design/compare/v3.0.5...v3.0.6) (2023-09-27)
 
 
