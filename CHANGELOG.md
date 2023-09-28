@@ -1,3 +1,10 @@
+## [3.0.8](https://github.com/tiwariav/ye-design/compare/v3.0.7...v3.0.8) (2023-09-28)
+
+
+### 🐛 Bug Fixes
+
+* round edges in small arc length ([1d7d62d](https://github.com/tiwariav/ye-design/commit/1d7d62d4666d9c8d4b3b7b30b0c8618976c64995))
+
 ## [3.0.7](https://github.com/tiwariav/ye-design/compare/v3.0.6...v3.0.7) (2023-09-28)
 
 
