@@ -1,3 +1,26 @@
+## [3.0.8](https://github.com/tiwariav/ye-design/compare/v3.0.7...v3.0.8) (2023-09-28)
+
+
+### 🐛 Bug Fixes
+
+* round edges in small arc length ([1d7d62d](https://github.com/tiwariav/ye-design/commit/1d7d62d4666d9c8d4b3b7b30b0c8618976c64995))
+
+## [3.0.7](https://github.com/tiwariav/ye-design/compare/v3.0.6...v3.0.7) (2023-09-28)
+
+
+### 🐛 Bug Fixes
+
+* circle progress colors props ([90a04f9](https://github.com/tiwariav/ye-design/commit/90a04f9b9335c509c64b135ec4c47d40420fbbf5))
+
+## [3.0.6](https://github.com/tiwariav/ye-design/compare/v3.0.5...v3.0.6) (2023-09-27)
+
+
+### 🐛 Bug Fixes
+
+* 0 maxFractionDigits ([ec45dd3](https://github.com/tiwariav/ye-design/commit/ec45dd3e6453f8c8890c5bbcf5104ba405555725))
+* page innerClassNames ([076e8cd](https://github.com/tiwariav/ye-design/commit/076e8cdf8d3eff988bebdfeeb83002229c12bc72))
+* use maximumFractionDigits in NumberInput when 0 ([565f0d1](https://github.com/tiwariav/ye-design/commit/565f0d13aeba17b93630d1c87f52f59aa97da898))
+
 ## [3.0.5](https://github.com/tiwariav/ye-design/compare/v3.0.4...v3.0.5) (2023-09-25)
 
 

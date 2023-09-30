@@ -86,6 +86,11 @@ function CenterText({
   );
 }
 
+type CircleStyle = {
+  strokeDasharray: number;
+  strokeDashoffset: number;
+};
+
 interface CircleProgressProps {
   arcHeight?: number;
   children?: ReactNode;
@@ -134,8 +139,8 @@ export default function CircleProgress({
   }, [arcHeight, squareSize, strokeWidth]);
 
   const progressData: {
-    circleBackgroundStyles: ReturnType<typeof getCircleStyles>;
-    circleStyles: ReturnType<typeof getCircleStyles>;
+    circleBackgroundStyles: CircleStyle;
+    circleStyles: CircleStyle;
     completion: number;
     progressClass: ReturnType<typeof getProgressClass>;
   } = useMemo(() => {
@@ -143,16 +148,19 @@ export default function CircleProgress({
       progress[0] && progress[1] ? (100 * progress[0]) / progress[1] : 0;
     const progressClass = getProgressClass(completion);
     const { arcRotation, radius } = initData;
-    const circleStyles = getCircleStyles(radius, arcRotation, completion);
-    const circleBackgroundStyles = {
-      ...circleStyles,
-      strokeDashoffset: circleStyles.rotationOffset,
-    };
+    const { rotationOffset, ...circleStyles } = getCircleStyles(
+      radius,
+      arcRotation,
+      completion,
+    );
     return {
-      circleBackgroundStyles,
+      circleBackgroundStyles: {
+        strokeDasharray: circleStyles.strokeDasharray,
+        strokeDashoffset: rotationOffset,
+      },
       circleStyles,
       completion,
-      progressClass: progressClass,
+      progressClass,
     };
   }, [initData, progress]);
 

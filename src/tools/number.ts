@@ -20,14 +20,15 @@ export function formatNumber(
     return nullValue;
   }
   const adjustedMinFractionDigits = Math.max(
-    minimumFractionDigits ?? fractionDigits,
+    minimumFractionDigits ?? maximumFractionDigits ?? fractionDigits,
     isString(value) && value.endsWith(".") ? 1 : 0,
   );
   return number.toLocaleString("en-IN", {
-    maximumFractionDigits:
-      maximumFractionDigits ?? fractionDigits ?? adjustedMinFractionDigits,
-    minimumFractionDigits:
-      minimumFractionDigits ?? fractionDigits ?? adjustedMinFractionDigits,
+    maximumFractionDigits: Math.max(
+      maximumFractionDigits ?? fractionDigits,
+      adjustedMinFractionDigits,
+    ),
+    minimumFractionDigits: adjustedMinFractionDigits,
     ...options,
   });
 }
@@ -38,7 +39,7 @@ export interface FormatNumberSuffixOptions extends FormatNumberOptions {
 
 export function formatNumberWithSuffix(
   value: number | string,
-  { nullValue, suffix = "", ...options }: FormatNumberSuffixOptions = {},
+  { nullValue = "", suffix = "", ...options }: FormatNumberSuffixOptions = {},
 ) {
   let parsedNumber = isNumber(value) ? value : Number.parseFloat(value);
   if (Number.isNaN(parsedNumber)) {

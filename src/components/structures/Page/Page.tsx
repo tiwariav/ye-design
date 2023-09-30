@@ -11,6 +11,7 @@ interface PageProps {
   children?: ReactNode;
   hero?: ReactNode;
   innerClassNames?: {
+    container?: string;
     content?: string;
     hero?: string;
     sideNav?: string;
@@ -117,7 +118,7 @@ export default function Page({
           />
         )}
         {hero && <div>{hero}</div>}
-        <div className={styles.container}>
+        <div className={clsx(styles.container, innerClassNames.container)}>
           {sideNav && (
             <div
               className={clsx(styles.sideNav, innerClassNames.sideNav, {
@@ -136,7 +137,9 @@ export default function Page({
               {clonedSideNav}
             </div>
           )}
-          <div className={styles.content}>{children}</div>
+          <div className={clsx(styles.content, innerClassNames.content)}>
+            {children}
+          </div>
         </div>
       </main>
     </div>

@@ -42,7 +42,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           formatOptions.minimumFractionDigits ??
           Math.min(
             newValueDecimals,
-            formatOptions.maximumFractionDigits || 2,
+            formatOptions.maximumFractionDigits ?? 2,
           ) ??
           0;
         const formattedValue = formatNumber(value, {
