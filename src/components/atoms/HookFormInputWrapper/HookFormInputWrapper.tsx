@@ -57,27 +57,31 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
 
   const child = React.Children.only(children);
 
-  const handleHookFormChange = useCallback((
-    event: ChangeEvent<HTMLInputElement>,
-    value: unknown,
-    shouldUpdate?: boolean,
-  ) => {
-    // for react-select compatibility
-    if (
-      isObject(value) &&
-      "action" in value &&
-      value?.action === "select-option"
-    ) {
-      onChange(event);
-    }
-    if (shouldUpdate) {
-      onChange(value);
-      return;
-    }
-    if (value === undefined) {
-      onChange(event);
-    }
-  }, [onChange]);
+  const handleHookFormChange = useCallback(
+    (
+      event: ChangeEvent<HTMLInputElement>,
+      value: unknown,
+      shouldUpdate?: boolean,
+    ) => {
+      // for react-select compatibility
+      if (
+        isObject(value) &&
+        "action" in value &&
+        value?.action === "select-option"
+      ) {
+        onChange(event);
+        return;
+      }
+      if (shouldUpdate) {
+        onChange(value);
+        return;
+      }
+      if (value === undefined) {
+        onChange(event);
+      }
+    },
+    [onChange],
+  );
 
   const changeHandlers = useMemo(
     () => ({

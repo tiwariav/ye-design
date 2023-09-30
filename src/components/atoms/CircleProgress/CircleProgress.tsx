@@ -18,7 +18,7 @@ export function getProgressClass(percentage: number) {
 
 function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
   // Arc length at 100% coverage is the circle circumference
-  const strokeDasharray = radius * Math.PI * 2; // 2πr
+  const strokeDasharray = radius * Math.PI * 2;
   const rotationOffset = (2 * radius * (arcRotation - 90) * Math.PI) / 180;
   // Scale 100% coverage overlay with the actual percent
   const strokeDashoffset =
