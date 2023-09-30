@@ -137,7 +137,9 @@ export default function Page({
               {clonedSideNav}
             </div>
           )}
-          <div className={clsx(styles.content, innerClassNames.content)}>{children}</div>
+          <div className={clsx(styles.content, innerClassNames.content)}>
+            {children}
+          </div>
         </div>
       </main>
     </div>
