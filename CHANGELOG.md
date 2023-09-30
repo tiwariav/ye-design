@@ -1,3 +1,12 @@
+## [3.0.9](https://github.com/tiwariav/ye-design/compare/v3.0.8...v3.0.9) (2023-09-30)
+
+
+### 🐛 Bug Fixes
+
+* add early return to fix control flow in handleHookFormChange ([053312d](https://github.com/tiwariav/ye-design/commit/053312d996ba6638a81f6193d4aa885495951596))
+* hook form input wrapper react select ([82a0419](https://github.com/tiwariav/ye-design/commit/82a0419b380cc0ad1fba2cfe79d72f3515cc394f))
+* remove redundant calculations ([10166fb](https://github.com/tiwariav/ye-design/commit/10166fb0b6445c34e380d436a9dc592ab6d6bf66))
+
 ## [3.0.8](https://github.com/tiwariav/ye-design/compare/v3.0.7...v3.0.8) (2023-09-28)
 
 
