@@ -7,6 +7,7 @@ import React, {
   ReactElement,
   type ReactNode,
   Suspense,
+  useCallback,
   useMemo,
 } from "react";
 import {
@@ -55,6 +56,29 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
   } = useController({ name, ...props });
 
   const child = React.Children.only(children);
+
+  const handleHookFormChange = useCallback((
+    event: ChangeEvent<HTMLInputElement>,
+    value: unknown,
+    shouldUpdate?: boolean,
+  ) => {
+    // for react-select compatibility
+    if (
+      isObject(value) &&
+      "action" in value &&
+      value?.action === "select-option"
+    ) {
+      onChange(event);
+    }
+    if (shouldUpdate) {
+      onChange(value);
+      return;
+    }
+    if (value === undefined) {
+      onChange(event);
+    }
+  }, [onChange]);
+
   const changeHandlers = useMemo(
     () => ({
       onBlur: (event: FocusEvent<HTMLInputElement>) => {
@@ -62,18 +86,11 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         child.props.onBlur?.(event);
       },
       onChange: ((event, value, shouldUpdate) => {
-        if (
-          shouldUpdate ||
-          (isObject(value) && value.action === "select-option")
-        ) {
-          onChange(value);
-        } else if (value === undefined) {
-          onChange(event);
-        }
+        handleHookFormChange(event, value, shouldUpdate);
         child.props.onChange?.(event, value, shouldUpdate);
       }) as ChangeHandler,
     }),
-    [child.props, onBlur, onChange],
+    [child.props, handleHookFormChange, onBlur],
   );
 
   const cloneProps = useMemo(() => {
