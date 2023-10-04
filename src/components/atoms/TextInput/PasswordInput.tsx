@@ -1,6 +1,7 @@
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useState } from "react";
 
+import { Button } from "../index.js";
 import TextInput, { TextInputProps } from "./TextInput.js";
 
 export default function PasswordInput(props: TextInputProps) {
@@ -8,11 +9,13 @@ export default function PasswordInput(props: TextInputProps) {
   return (
     <TextInput
       iconAfter={
-        showPassword ? (
-          <IconEye onClick={() => setShowPassword(false)} />
-        ) : (
-          <IconEyeOff onClick={() => setShowPassword(true)} />
-        )
+        <Button spacing="none" variant="borderless">
+          {showPassword ? (
+            <IconEye onClick={() => setShowPassword(false)} />
+          ) : (
+            <IconEyeOff onClick={() => setShowPassword(true)} />
+          )}
+        </Button>
       }
       type={showPassword ? "text" : "password"}
       {...props}

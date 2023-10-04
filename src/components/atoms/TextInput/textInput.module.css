@@ -1,9 +1,9 @@
 @layer ye-components {
   .root {
     --module-input-padding-top: var(--ye-spacing-rem-small);
-    --module-input-padding-right: var(--ye-spacing-rem-small);
+    --module-input-padding-right: var(--ye-spacing-rem-normal);
     --module-input-padding-bottom: var(--ye-spacing-rem-small);
-    --module-input-padding-left: var(--ye-spacing-rem-small);
+    --module-input-padding-left: var(--ye-spacing-rem-normal);
     --module-loader-z: calc(var(--ye-z-base) + 2);
 
     position: relative;
@@ -42,20 +42,30 @@
     }
   }
 
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: var(--ye-spacing-em-normal);
+    transform: translateY(-50%);
+  }
+
   .icon-right {
-    right: var(--ye-spacing-em-normal);
+    right: var(--ye-spacing-rem-normal);
     left: auto;
   }
 
   .padded-left {
     --module-input-padding-left: calc(
-      var(--ye-spacing-em-large) + var(--ye-spacing-em-large) +
-        var(--ye-spacing-em-small)
+      var(--ye-spacing-em-large) + var(--ye-spacing-rem-normal) +
+        var(--ye-spacing-rem-small)
     );
   }
 
   .padded-right {
-    --module-input-padding-right: var(--ye-spacing-em-xhuge);
+    --module-input-padding-right: calc(
+      var(--ye-spacing-em-large) + var(--ye-spacing-rem-normal) +
+        var(--ye-spacing-rem-small)
+    );
   }
 
   .loader {
@@ -163,13 +173,6 @@
 
   .spinner {
     border-radius: var(--ye-radius-small);
-  }
-
-  .icon {
-    position: absolute;
-    top: 50%;
-    left: var(--ye-spacing-em-normal);
-    transform: translateY(-50%);
   }
 
   /* to avoid undef error */

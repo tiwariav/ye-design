@@ -8,7 +8,6 @@
     height: var(--ye-spacing-em-large);
     margin-right: var(--ye-spacing-em-xsmall);
     color: inherit;
-    font-size: var(--ye-font-size-em);
     line-height: 1;
   }
 
@@ -19,7 +18,6 @@
     width: var(--ye-spacing-em-large);
     height: var(--ye-spacing-em-large);
     color: inherit;
-    font-size: var(--ye-font-size-em);
     line-height: 1;
 
     & img,

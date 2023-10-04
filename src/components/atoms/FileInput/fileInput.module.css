@@ -76,10 +76,6 @@
     flex: 1;
   }
 
-  .list-item-data-input {
-    padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-small);
-  }
-
   .list-item-data-input,
   .list-item-data-label {
     font-size: var(--ye-font-size-xsmall);
