@@ -1,3 +1,10 @@
+## [3.0.10](https://github.com/tiwariav/ye-design/compare/v3.0.9...v3.0.10) (2023-10-04)
+
+
+### 🐛 Bug Fixes
+
+* fix input icon styles ([b0b3709](https://github.com/tiwariav/ye-design/commit/b0b3709b8bf5c6f1e625f441f688d4d5fb1f15c5))
+
 ## [3.0.9](https://github.com/tiwariav/ye-design/compare/v3.0.8...v3.0.9) (2023-09-30)
 
 
