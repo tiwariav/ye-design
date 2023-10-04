@@ -1,7 +1,7 @@
 @layer ye-structures {
   .root {
     --z-index-stack-1: 1;
-    --z-index-stack-2: 101;
+    --z-index-stack-2: 100;
 
     position: relative;
     min-height: 100vh;
