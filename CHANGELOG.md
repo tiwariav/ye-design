@@ -1,3 +1,10 @@
+## [3.0.11](https://github.com/tiwariav/ye-design/compare/v3.0.10...v3.0.11) (2023-10-06)
+
+
+### 🐛 Bug Fixes
+
+* update z-index variables ([f208eda](https://github.com/tiwariav/ye-design/commit/f208eda4933860c74761e13d465f5ca0fb0ba03b))
+
 ## [3.0.10](https://github.com/tiwariav/ye-design/compare/v3.0.9...v3.0.10) (2023-10-04)
 
 
