@@ -73,9 +73,7 @@ function PasswordTemplate({ files = [], ...args }: FileInputProps) {
       updateFiles={(files) =>
         setFiles(
           files.map((item) => {
-            console.log(item);
             if (!(item instanceof File)) {
-              console.log(item.file.name);
               return item;
             }
             const file = new UploadFile(item);
