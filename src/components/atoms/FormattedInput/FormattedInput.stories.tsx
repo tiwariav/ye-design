@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
 import NumberInput from "../NumberInput/NumberInput.js";
-import { InputFormValue } from "../TextInput/TextInput.js";
+import { InputFormValue, TEXT_INPUT_VARIANTS } from "../TextInput/TextInput.js";
 import FormattedInput from "./FormattedInput.js";
 
 const metadata = {
@@ -120,4 +120,21 @@ export const PresetValue: Story = {
     ...Basic.args,
   },
   render: (args) => <PresetValueTemplate {...args} />,
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="story-grid">
+      {TEXT_INPUT_VARIANTS.map((variant) => (
+        <div>
+          <FormattedInput
+            label={`'${variant}' Text Input`}
+            placeholder="Enter your text"
+            variant={variant}
+            {...args}
+          />
+        </div>
+      ))}
+    </div>
+  ),
 };
