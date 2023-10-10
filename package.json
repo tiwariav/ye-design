@@ -17,6 +17,7 @@
     "analyze": "source-map-explorer 'dist/**/*.js' --no-border-checks",
     "build": "rollup --config rollup.config.js",
     "dev": "rollup -w --config rollup.config.js --watch.onEnd 'yalc push dist'",
+    "postinstall": "patch-package",
     "postversion": "cp -r package.json ..",
     "precommit": "lint-staged",
     "prepare": "(test -d '.git' && husky install) || true",
@@ -32,10 +33,12 @@
     "clsx": "^2.0.0",
     "country-flag-emoji-polyfill": "^0.1.4",
     "default-import": "^1.1.5",
+    "glob": "^10.3.10",
     "libphonenumber-js": "^1.10.44",
     "lodash-es": "^4.17.21",
     "micromatch": "^4.0.5",
     "normalize.css": "^8.0.1",
+    "patch-package": "^8.0.0",
     "paths.macro": "^3.0.1",
     "react-content-loader": "^6.2.1",
     "react-intersection-observer": "^9.5.2",
@@ -43,7 +46,7 @@
     "style-inject": "^0.3.0",
     "tslib": "^2.6.2",
     "type-fest": "^4.3.1",
-    "wo-library": "^3.0.7"
+    "wo-library": "^3.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
@@ -129,6 +132,7 @@
     "lint-staged": "^14.0.1",
     "postcss": "^8.4.30",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-global-import": "^1.0.6",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^9.1.4",
     "prettier": "^3.0.3",

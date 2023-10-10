@@ -3,6 +3,7 @@ import _typescript from "@rollup/plugin-typescript";
 import { defaultImport } from "default-import";
 import _postcss from "rollup-plugin-postcss";
 import {
+  addCssImportBanner,
   bundleCss,
   cjsOutputOptions,
   commonPlugins,
@@ -28,8 +29,13 @@ postcssConfig.plugins.splice(
 
 const config = [
   {
-    input: rollupInputMap(import.meta.url, "src"),
-    output: esOutputOptions,
+    input: rollupInputMap(import.meta.url, "src", {
+      excludeDirectories: ["styles"],
+    }),
+    output: {
+      ...esOutputOptions,
+      banner: addCssImportBanner,
+    },
     perf: isDev,
     plugins: [
       ...commonPlugins,
