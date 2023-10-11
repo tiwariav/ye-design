@@ -1,3 +1,10 @@
+## [3.1.0](https://github.com/tiwariav/ye-design/compare/v3.0.11...v3.1.0) (2023-10-11)
+
+
+### ✨ Features
+
+* enable individual css extraction for modules ([7927982](https://github.com/tiwariav/ye-design/commit/792798264be5c916cd013f290473cb2942aeabd3))
+
 ## [3.0.11](https://github.com/tiwariav/ye-design/compare/v3.0.10...v3.0.11) (2023-10-06)
 
 
