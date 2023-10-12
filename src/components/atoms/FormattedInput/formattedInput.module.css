@@ -1,9 +1,10 @@
 @layer ye-components {
   .root {
     position: relative;
+    width: 100%;
   }
 
-  .number-input {
+  .hidden-input {
     position: absolute;
     top: 0;
     bottom: 0;
