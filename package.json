@@ -46,7 +46,7 @@
     "style-inject": "^0.3.0",
     "tslib": "^2.6.2",
     "type-fest": "^4.4.0",
-    "wo-library": "^3.2.2"
+    "wo-library": "^3.2.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
