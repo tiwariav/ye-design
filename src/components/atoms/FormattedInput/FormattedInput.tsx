@@ -32,7 +32,7 @@ export interface FormattedInputProps
   hiddenInputProps?: object;
   id?: string;
   innerClassNames?: TextInputProps["innerClassNames"] & {
-    textInput: string;
+    textInput?: string;
   };
   isBusy?: boolean;
   isLoading?: boolean;
