@@ -1,3 +1,11 @@
+## [3.1.1](https://github.com/tiwariav/ye-design/compare/v3.1.0...v3.1.1) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* formatted input id ([b03bafa](https://github.com/tiwariav/ye-design/commit/b03bafa74385c2ed9997f61d4ccef1fb5b31f630))
+* remove redundant story ([bc00876](https://github.com/tiwariav/ye-design/commit/bc00876a1bffe5936a8e4ed1522e5f03d35ca1c0))
+
 ## [3.1.0](https://github.com/tiwariav/ye-design/compare/v3.0.11...v3.1.0) (2023-10-11)
 
 
