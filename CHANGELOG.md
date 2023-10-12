@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/tiwariav/ye-design/compare/v3.1.1...v3.1.2) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* corrected css for long names in fileinput ([cef6f7a](https://github.com/tiwariav/ye-design/commit/cef6f7aaa37555cbea5f0b2abbb6170ead6d1806))
+
 ## [3.1.1](https://github.com/tiwariav/ye-design/compare/v3.1.0...v3.1.1) (2023-10-12)
 
 
