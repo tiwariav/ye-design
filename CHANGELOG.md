@@ -1,3 +1,15 @@
+## [3.1.3](https://github.com/tiwariav/ye-design/compare/v3.1.2...v3.1.3) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* formatted input width ([3e0ea43](https://github.com/tiwariav/ye-design/commit/3e0ea43565963549c740d3f7c979aa4b9a7f4fe1))
+
+
+### ♻️ Code Refactors
+
+* reuse global type declarations from wo-library ([fecaded](https://github.com/tiwariav/ye-design/commit/fecaded322e1290f2e44ab4b50b3f1a2bb07d88c))
+
 ## [3.1.2](https://github.com/tiwariav/ye-design/compare/v3.1.1...v3.1.2) (2023-10-12)
 
 
