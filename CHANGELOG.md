@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/tiwariav/ye-design/compare/v3.1.3...v3.1.4) (2023-10-12)
+
+
+### ♻️ Code Refactors
+
+* add reference to wo-library window types ([c6a3b77](https://github.com/tiwariav/ye-design/commit/c6a3b775e4342b6a03a4274ea803b563007d6660))
+
 ## [3.1.3](https://github.com/tiwariav/ye-design/compare/v3.1.2...v3.1.3) (2023-10-12)
 
 
