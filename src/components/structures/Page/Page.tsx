@@ -1,5 +1,11 @@
 import { clsx } from "clsx";
-import React, { ReactElement, ReactNode, useMemo, useState } from "react";
+import React, {
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useInView } from "react-intersection-observer";
 import { useToggle } from "react-use";
 
@@ -20,7 +26,7 @@ interface PageProps {
   sideNav?: ReactElement;
   sideNavIsSticky?: boolean;
   sideNavOnTop?: boolean;
-  topNav?: ReactElement;
+  topNav?: ReactElement<TopNavProps>;
   topNavCanExpand?: boolean;
   topNavIsFixed?: boolean;
   topNavShrinkOffset?: number;
@@ -47,7 +53,7 @@ export default function Page({
   const [topNavMaxHeight, setTopNavMaxHeight] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (topNavRef.current) {
       const scopeTopNavMaxHeight = topNavRef.current.offsetHeight;
       if (!topNavMaxHeight) {
@@ -67,7 +73,7 @@ export default function Page({
       const extraProps: TopNavProps = {
         sideNavToggle,
         toggleSideNav,
-        variant: undefined,
+        variant: topNav.props.variant,
         withSideNav: !!sideNav,
       };
       if (topNavExpanded) {
