@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
 import UploadFile from "../../../tools/uploadFile.js";
+import { Button } from "../index.js";
 import FileInput, { FileInputProps } from "./FileInput.js";
 
 function Template({ files, ...args }: FileInputProps) {
@@ -98,4 +99,18 @@ function PasswordTemplate({ files = [], ...args }: FileInputProps) {
 
 export const WithPassword: Story = {
   render: (args) => <PasswordTemplate {...args} />,
+};
+
+const PlaceholderTemplate = (args: FileInputProps) => {
+  return (
+    <Template
+      placeholder={<Button variant="primary"> Upload file </Button>}
+      {...args}
+    />
+  );
+};
+
+export const NonStringPlaceholder: Story = {
+  ...Basic,
+  render: PlaceholderTemplate,
 };

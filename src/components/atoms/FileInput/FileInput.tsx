@@ -2,7 +2,7 @@
 
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { debounce } from "lodash-es";
+import { debounce, isString } from "lodash-es";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -28,7 +28,7 @@ const FILE_INPUT_VARIANTS = ["outlined"] as const;
 const FILE_INPUT_SPACINGS = [...COMPONENT_SPACINGS, "none", "equal"] as const;
 
 export interface FileInputProps<TFile extends UploadFile = UploadFile>
-  extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
+  extends Omit<ComponentPropsWithoutRef<"input">, "placeholder" | "size"> {
   files: TFile[];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
@@ -40,7 +40,7 @@ export interface FileInputProps<TFile extends UploadFile = UploadFile>
   };
   isBusy?: boolean;
   label?: ReactNode;
-  placeholder?: string;
+  placeholder?: ReactNode;
   size?: (typeof COMPONENT_SIZES)[number];
   spacing?: (typeof FILE_INPUT_SPACINGS)[number];
   updateFiles?: (
@@ -102,6 +102,8 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
     500,
   );
 
+  const PlaceholderWrapper = isString(placeholder) ? Button : "label";
+
   return (
     <div className={clsx(className)}>
       <InputWrapper
@@ -125,9 +127,15 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
           type="file"
           {...props}
         />
-        <span className={clsx(styles.placeholder, innerClassNames.input)}>
+        <PlaceholderWrapper
+          className={clsx(styles.placeholder, innerClassNames?.placeholder)}
+          onClick={() => {
+            // eslint-disable-next-line unicorn/prefer-query-selector
+            document.getElementById(fileInputId)?.click();
+          }}
+        >
           {placeholder}
-        </span>
+        </PlaceholderWrapper>
         {iconAfter && (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
             <FormIconSpan>{iconAfter}</FormIconSpan>
