@@ -231,8 +231,8 @@
   --ye-input-shadow: var(--ye-shadow-inset);
   --ye-z-behind: -1;
   --ye-z-base: 1;
-  --ye-z-topnav: 101;
-  --ye-z-modal: 100;
+  --ye-z-topnav: 100;
+  --ye-z-modal: 101;
 
   /* COMPONENTS SPECIFIC */
 
