@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/tiwariav/ye-design/compare/v3.1.4...v3.1.5) (2023-10-15)
+
+
+### 🐛 Bug Fixes
+
+* increase z index of modal ([5ab54ba](https://github.com/tiwariav/ye-design/commit/5ab54baa426143f3209838afee893632edde2860))
+
 ## [3.1.4](https://github.com/tiwariav/ye-design/compare/v3.1.3...v3.1.4) (2023-10-12)
 
 
