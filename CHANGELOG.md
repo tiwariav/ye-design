@@ -1,3 +1,10 @@
+## [3.2.0](https://github.com/tiwariav/ye-design/compare/v3.1.5...v3.2.0) (2023-10-18)
+
+
+### ✨ Features
+
+* update media breakpoints based on recent usage ([ec44b15](https://github.com/tiwariav/ye-design/commit/ec44b153c2458179779001e55d1ab5775e527c96))
+
 ## [3.1.5](https://github.com/tiwariav/ye-design/compare/v3.1.4...v3.1.5) (2023-10-15)
 
 
