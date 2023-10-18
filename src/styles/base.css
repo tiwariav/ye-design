@@ -12,12 +12,11 @@
 
   /* keep sync with './media.css' */
   --ye-breakpoint-xs: 360px;
-  --ye-breakpoint-sm: 480px;
-  --ye-breakpoint-md: 780px;
-  --ye-breakpoint-lg: 1080px;
-  --ye-breakpoint-xl: 1200px;
-  --ye-breakpoint-xxl: 1440px;
-  --ye-breakpoint-xxxl: 1920px;
+  --ye-breakpoint-sm: 600px;
+  --ye-breakpoint-md: 960px;
+  --ye-breakpoint-lg: 1200px;
+  --ye-breakpoint-xl: 1440px;
+  --ye-breakpoint-xxl: 1920px;
 
   /* COLORS */
 
