@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/tiwariav/ye-design/compare/v3.2.0...v3.2.1) (2023-10-19)
+
+
+### 🐛 Bug Fixes
+
+* toggle-drawer in topnav ([c7e1468](https://github.com/tiwariav/ye-design/commit/c7e14684f201d6ef251f8a273506cd9c4fd8e3c2))
+
 ## [3.2.0](https://github.com/tiwariav/ye-design/compare/v3.1.5...v3.2.0) (2023-10-18)
 
 

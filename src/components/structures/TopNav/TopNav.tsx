@@ -12,7 +12,12 @@ import {
   useRef,
   useState,
 } from "react";
-import { useToggle, useWindowScroll, useWindowSize } from "react-use";
+import {
+  useToggle,
+  useUpdateEffect,
+  useWindowScroll,
+  useWindowSize,
+} from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
 
 import { BREAKPOINTS } from "../../../styles/media.js";
@@ -75,7 +80,7 @@ export default function TopNav({
   ...props
 }: TopNavProps) {
   const { width } = useWindowSize();
-  const [localDrawer, toggleLocalDrawer] = useToggle(false);
+  const [showDrawer, toggleLocalDrawer] = useToggle(false);
   const scrollDirection = useScrollDirection();
   const [smallerWidth, setSmallerWidth] = useState<boolean>();
 
@@ -83,7 +88,10 @@ export default function TopNav({
   const contentLeftRef = useRef<HTMLDivElement>(null);
   const { y: scrollY } = useWindowScroll();
 
-  const showDrawer = drawer || localDrawer;
+  useUpdateEffect(() => {
+    toggleLocalDrawer(drawer);
+  }, [drawer, toggleLocalDrawer]);
+
   const rootStyle = useMemo(() => {
     if (!(hideOnScroll && ref.current)) return {};
     const isScrollingDown =
