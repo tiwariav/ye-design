@@ -1,3 +1,15 @@
+## [3.3.0](https://github.com/tiwariav/ye-design/compare/v3.2.1...v3.3.0) (2023-10-21)
+
+
+### ✨ Features
+
+* add ScrollContext to integrate with overlayscrollbars ([3b8b370](https://github.com/tiwariav/ye-design/commit/3b8b370da564c73dd7d56c53d6af87f6e1ba65ae))
+
+
+### 🐛 Bug Fixes
+
+* add className prop to HookForm ([7c2ceef](https://github.com/tiwariav/ye-design/commit/7c2ceef896674381771f2b1021e2b01c1600ada0))
+
 ## [3.2.1](https://github.com/tiwariav/ye-design/compare/v3.2.0...v3.2.1) (2023-10-19)
 
 
