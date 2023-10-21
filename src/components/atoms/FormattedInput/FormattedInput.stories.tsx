@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { storyIconMap } from "../../../tools/storybook.js";
 import Button from "../Button/Button.js";
-import NumberInput from "../NumberInput/NumberInput.js";
 import { InputFormValue } from "../TextInput/TextInput.js";
-import FormattedInput from "./FormattedInput.js";
+import FormattedInput, { FormattedInputProps } from "./FormattedInput.js";
 
 const metadata = {
   argTypes: {
@@ -33,13 +32,7 @@ function removeHyphens(
   return isString(value) ? value.replaceAll("-", "") : emptyValue;
 }
 
-const Template = ({
-  width = 240,
-  ...args
-}: {
-  value?: number | string;
-  width?: number | string;
-}) => {
+const Template = (args: FormattedInputProps) => {
   const [eventValue, setEventValue] = useState<string>();
   const [refValue, setRefValue] = useState<string>();
   const [parsedValue, setParsedValue] = useState<InputFormValue>("");
@@ -50,8 +43,8 @@ const Template = ({
   }, [eventValue]);
 
   return (
-    <div style={{ width }}>
-      <NumberInput
+    <div>
+      <FormattedInput
         onChange={(event, value) => {
           setEventValue(event.target.value);
           setParsedValue(value);
@@ -100,15 +93,10 @@ export const ParseOnly: Story = {
   render: (args) => <Template {...args} />,
 };
 
-const PresetValueTemplate = ({
-  width = 240,
-  ...args
-}: {
-  width?: number | string;
-}) => {
+const PresetValueTemplate = (args: FormattedInputProps) => {
   const [value, setValue] = useState("Apples");
   return (
-    <div style={{ width }}>
+    <div>
       <Button onClick={() => setValue(value + "a")}>Update</Button>
       <Template {...args} value={value} />
     </div>
