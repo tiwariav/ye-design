@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -23,12 +24,16 @@ export type FormattedInputParse = (
   emptyValue: InputFormValue,
 ) => InputFormValue;
 
-export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
+export interface FormattedInputProps
+  extends Omit<TextInputProps, "innerClassNames" | "onChange"> {
   defaultValue?: InputDomValue;
   emptyValue?: InputFormValue;
   format?: (value: InputDomValue) => string;
   hiddenInputProps?: object;
   id?: string;
+  innerClassNames?: TextInputProps["innerClassNames"] & {
+    textInput?: string;
+  };
   isBusy?: boolean;
   isLoading?: boolean;
   onChange?: (
@@ -43,11 +48,13 @@ export interface FormattedInputProps extends Omit<TextInputProps, "onChange"> {
 const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
   (
     {
+      className,
       defaultValue,
       emptyValue,
       format,
       hiddenInputProps = {},
       id,
+      innerClassNames = {},
       isBusy,
       isLoading,
       onChange,
@@ -104,9 +111,11 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     }, [currentParsedValue, defaultValue, emptyValue, format, parse, value]);
 
     return (
-      <div className={styles.root}>
+      <div className={clsx(styles.root, className)}>
         <TextInput
+          className={innerClassNames.textInput}
           id={`${inputId}-formattedInputText`}
+          innerClassNames={innerClassNames}
           isBusy={isBusy}
           isLoading={isLoading}
           onChange={handleChange}
@@ -119,7 +128,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
          * the handleChange function.
          */}
         <input
-          className={styles.numberInput}
+          className={styles.hiddenInput}
           id={inputId}
           readOnly
           ref={ref}

@@ -1,3 +1,77 @@
+## [3.3.0](https://github.com/tiwariav/ye-design/compare/v3.2.1...v3.3.0) (2023-10-21)
+
+
+### ✨ Features
+
+* add ScrollContext to integrate with overlayscrollbars ([3b8b370](https://github.com/tiwariav/ye-design/commit/3b8b370da564c73dd7d56c53d6af87f6e1ba65ae))
+
+
+### 🐛 Bug Fixes
+
+* add className prop to HookForm ([7c2ceef](https://github.com/tiwariav/ye-design/commit/7c2ceef896674381771f2b1021e2b01c1600ada0))
+
+## [3.2.1](https://github.com/tiwariav/ye-design/compare/v3.2.0...v3.2.1) (2023-10-19)
+
+
+### 🐛 Bug Fixes
+
+* toggle-drawer in topnav ([c7e1468](https://github.com/tiwariav/ye-design/commit/c7e14684f201d6ef251f8a273506cd9c4fd8e3c2))
+
+## [3.2.0](https://github.com/tiwariav/ye-design/compare/v3.1.5...v3.2.0) (2023-10-18)
+
+
+### ✨ Features
+
+* update media breakpoints based on recent usage ([ec44b15](https://github.com/tiwariav/ye-design/commit/ec44b153c2458179779001e55d1ab5775e527c96))
+
+## [3.1.5](https://github.com/tiwariav/ye-design/compare/v3.1.4...v3.1.5) (2023-10-15)
+
+
+### 🐛 Bug Fixes
+
+* increase z index of modal ([5ab54ba](https://github.com/tiwariav/ye-design/commit/5ab54baa426143f3209838afee893632edde2860))
+
+## [3.1.4](https://github.com/tiwariav/ye-design/compare/v3.1.3...v3.1.4) (2023-10-12)
+
+
+### ♻️ Code Refactors
+
+* add reference to wo-library window types ([c6a3b77](https://github.com/tiwariav/ye-design/commit/c6a3b775e4342b6a03a4274ea803b563007d6660))
+
+## [3.1.3](https://github.com/tiwariav/ye-design/compare/v3.1.2...v3.1.3) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* formatted input width ([3e0ea43](https://github.com/tiwariav/ye-design/commit/3e0ea43565963549c740d3f7c979aa4b9a7f4fe1))
+
+
+### ♻️ Code Refactors
+
+* reuse global type declarations from wo-library ([fecaded](https://github.com/tiwariav/ye-design/commit/fecaded322e1290f2e44ab4b50b3f1a2bb07d88c))
+
+## [3.1.2](https://github.com/tiwariav/ye-design/compare/v3.1.1...v3.1.2) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* corrected css for long names in fileinput ([cef6f7a](https://github.com/tiwariav/ye-design/commit/cef6f7aaa37555cbea5f0b2abbb6170ead6d1806))
+
+## [3.1.1](https://github.com/tiwariav/ye-design/compare/v3.1.0...v3.1.1) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* formatted input id ([b03bafa](https://github.com/tiwariav/ye-design/commit/b03bafa74385c2ed9997f61d4ccef1fb5b31f630))
+* remove redundant story ([bc00876](https://github.com/tiwariav/ye-design/commit/bc00876a1bffe5936a8e4ed1522e5f03d35ca1c0))
+
+## [3.1.0](https://github.com/tiwariav/ye-design/compare/v3.0.11...v3.1.0) (2023-10-11)
+
+
+### ✨ Features
+
+* enable individual css extraction for modules ([7927982](https://github.com/tiwariav/ye-design/commit/792798264be5c916cd013f290473cb2942aeabd3))
+
 ## [3.0.11](https://github.com/tiwariav/ye-design/compare/v3.0.10...v3.0.11) (2023-10-06)
 
 

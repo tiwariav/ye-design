@@ -11,6 +11,7 @@ import {
 export interface HookFormProps<TFieldValues extends FieldValues>
   extends UseFormProps<TFieldValues> {
   children: React.ReactNode;
+  className?: string;
   onInvalid?: SubmitErrorHandler<TFieldValues>;
   onValid?: SubmitHandler<TFieldValues>;
 }
@@ -20,6 +21,7 @@ export type ResolverFieldValues<TResolver extends Resolver> =
 
 export default function HookForm<TFieldValues extends FieldValues>({
   children,
+  className,
   criteriaMode = "all",
   mode = "onBlur",
   onInvalid,
@@ -30,6 +32,7 @@ export default function HookForm<TFieldValues extends FieldValues>({
   return (
     <FormProvider {...methods}>
       <form
+        className={className}
         onSubmit={
           onValid ? methods.handleSubmit(onValid, onInvalid) : undefined
         }

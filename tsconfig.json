@@ -26,10 +26,9 @@
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "strict": true,
     "target": "es2017"
   },
   "include": ["src", "types"],
-  "exclude": ["**/__snapshots__", "node_modules"]
+  "exclude": ["**/__snapshots__"]
 }

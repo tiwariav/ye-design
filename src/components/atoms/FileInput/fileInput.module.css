@@ -66,6 +66,7 @@
 
   .list-item-text {
     flex: 1;
+    hyphens: auto;
   }
 
   .list-item-data-input,

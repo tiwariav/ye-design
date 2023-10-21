@@ -3,10 +3,9 @@
 // keep sync with './src/styles/media.css'
 export const BREAKPOINTS = {
   xs: 360,
-  sm: 480,
-  md: 780,
-  lg: 1080,
-  xl: 1200,
-  xxl: 1440,
-  xxxl: 1920,
+  sm: 600,
+  md: 960,
+  lg: 1200,
+  xl: 1440,
+  xxl: 1920,
 };

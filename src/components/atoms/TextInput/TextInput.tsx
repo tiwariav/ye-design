@@ -38,6 +38,7 @@ export interface TextInputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
+  id?: string;
   innerClassNames?: {
     iconAfter?: string;
     iconBefore?: string;
@@ -60,6 +61,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       defaultValue,
       iconAfter,
       iconBefore,
+      id,
       innerClassNames = {},
       isBusy,
       isLoading,
@@ -120,7 +122,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             },
             innerClassNames.label,
           )}
-          inputId={inputId}
+          inputId={id ?? inputId}
           ref={labelRef}
           required={required}
         >
@@ -143,7 +145,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               styles.textInput,
               innerClassNames.input,
             )}
-            id={inputId}
+            id={id ?? inputId}
             onBlur={handleBlur}
             ref={ref}
             required={required}
