@@ -83,11 +83,14 @@ export default function Page({
 
   const clonedSideNav = useMemo(() => {
     if (sideNav) {
-      const extraProps: SideNavProps = {};
+      const extraProps: SideNavProps = {
+        sideNavToggle,
+        toggleSideNav,
+      };
       return React.cloneElement(sideNav, extraProps);
     }
     return null;
-  }, [sideNav]);
+  }, [sideNav, sideNavToggle, toggleSideNav]);
 
   return (
     <div className={clsx(styles.root)}>
@@ -96,7 +99,6 @@ export default function Page({
           className={clsx({
             [styles.hasSideNavToggle]: sideNavToggle,
             [styles.isFixed]: topNavIsFixed,
-
             [styles.sideNavTop]: sideNavOnTop,
           })}
           ref={topNavRef}
