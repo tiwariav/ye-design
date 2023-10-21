@@ -107,7 +107,8 @@ export const PresetValue: Story = {
 };
 
 const ManageStateWithPasedValueTemplate = (args: NumberInputProps) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<number | string>("");
+
   return (
     <div>
       <Template
@@ -117,6 +118,11 @@ const ManageStateWithPasedValueTemplate = (args: NumberInputProps) => {
         value={value}
         {...args}
       />
+      <Button
+        onClick={() => setValue(Math.round(Math.random() * 10_000).toString())}
+      >
+        Set random value
+      </Button>
     </div>
   );
 };

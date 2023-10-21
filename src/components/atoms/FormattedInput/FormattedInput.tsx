@@ -38,8 +38,8 @@ export interface FormattedInputProps
   isLoading?: boolean;
   onChange?: (
     event: ChangeEvent<HTMLInputElement>,
-    value: InputFormValue,
-    shouldUpdate: boolean,
+    value?: InputFormValue,
+    shouldUpdate?: boolean,
   ) => void;
   parse?: FormattedInputParse;
   value?: number | string;
@@ -50,7 +50,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     {
       className,
       defaultValue,
-      emptyValue,
+      emptyValue = "",
       format,
       hiddenInputProps = {},
       id,
@@ -79,7 +79,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
           : event.target.value;
         setFormattedValue(newFormattedValue);
         const newParsedValue = parse
-          ? parse(newFormattedValue, emptyValue)
+          ? parse(newFormattedValue, emptyValue) ?? emptyValue
           : newFormattedValue;
         setParsedValue(newParsedValue);
         onChange?.(
@@ -99,14 +99,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       const newParsedValue = parse
         ? parse(newFormattedValue, emptyValue)
         : newValue;
-      if (
-        !format ||
-        !modified.current ||
-        (newParsedValue !== null &&
-          newFormattedValue !== format(newParsedValue))
-      ) {
-        setFormattedValue(newFormattedValue);
-      }
+      setFormattedValue(newFormattedValue);
       setParsedValue(newParsedValue);
     }, [currentParsedValue, defaultValue, emptyValue, format, parse, value]);
 
