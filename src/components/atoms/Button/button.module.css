@@ -2,6 +2,7 @@
   .root {
     position: relative;
     gap: var(--ye-spacing-em-xsmall);
+    align-items: center;
     padding: var(--ye-button-padding);
     overflow: hidden;
     color: var(--ye-color-text);
@@ -27,13 +28,6 @@
 
   .is-full-width {
     width: 100%;
-  }
-
-  .icon {
-    /* stylelint-disable scale-unlimited/declaration-strict-value */
-    margin-top: -3px;
-    margin-bottom: -3px;
-    /* stylelint-enable scale-unlimited/declaration-strict-value */
   }
 
   .spacing-equal {
@@ -124,6 +118,7 @@
 
   .variant-outlined,
   .variant-dashed {
+    padding: var(--ye-button-outline-padding);
     border-color: var(--ye-color-text);
     border-width: var(--ye-button-outline-border-width);
     box-shadow: none;
@@ -182,6 +177,15 @@
   /* sizes */
 
   .size-small {
+    --ye-button-padding: calc(
+        var(--ye-spacing-rem-xsmall) - var(--ye-button-border-width)
+      )
+      var(--ye-spacing-em-large);
+    --ye-button-outline-padding: calc(
+        var(--ye-spacing-rem-xsmall) - var(--ye-button-outline-border-width)
+      )
+      var(--ye-spacing-em-large);
+
     font-size: var(--ye-font-size-small);
   }
 
@@ -268,7 +272,8 @@
 
   /* to avoid undef error */
   /* stylelint-disable-next-line no-descending-specificity */
-  .variant-basic {
+  .variant-basic,
+  .icon {
     /* no styles */
   }
 }

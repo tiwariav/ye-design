@@ -26,8 +26,8 @@ export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
   }
   return (
     <Collection {...args} variant={variant}>
-      {Array.from({ length: 32 }, () => (
-        <CardTemplate {...itemArgs}>
+      {Array.from({ length: 32 }, (_, index) => (
+        <CardTemplate key={index} {...itemArgs}>
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem
           molestiae odio et dolor.

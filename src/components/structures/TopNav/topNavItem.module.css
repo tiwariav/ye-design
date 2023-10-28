@@ -5,18 +5,19 @@
   }
 
   .has-separator {
-    position: relative;
-    margin-right: var(--ye-em-base);
-    padding-right: var(--ye-spacing-em-normal);
+    @media (--media-min-xl) {
+      position: relative;
+      padding-right: var(--ye-spacing-em-normal);
 
-    &::after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 1px;
-      height: 100%;
-      background-color: var(--ye-color-black-10);
-      content: "";
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background-color: var(--ye-color-black-10);
+        content: "";
+      }
     }
   }
 }

@@ -2,7 +2,6 @@
 @layer ye-reset, ye-defaults, ye-wrappers, ye-base-components, ye-components;
 @layer ye-structures, ye-templates, ye-overrides;
 
-@import url("wo-library/styles/base.css");
 @import url("normalize.css") layer(ye-reset);
 
 :root {
@@ -193,6 +192,7 @@
 
   /* LAYOUTS */
 
+  --ye-layout-side-nav-offset: 0px;
   --ye-layout-side-nav-width: 160px;
   --ye-layout-side-nav-toggle-width: 56px;
 
@@ -206,17 +206,20 @@
 
   /* BUTTONS */
   --ye-button-border-radius: 3em;
-  --ye-button-border-width: 0;
+  --ye-button-border-width: 0px;
   --ye-button-cursor: pointer;
   --ye-button-outline-border-width: 1px;
   --ye-button-focus-shadow: var(--ye-shadow-pressed);
   --ye-button-font-weight: var(--ye-font-weight-semibold);
   --ye-button-hover-shadow: var(--ye-shadow-hovered);
-  --ye-button-padding: var(--ye-spacing-em-small) var(--ye-spacing-em-large);
-  --ye-button-outline-padding: calc(
-      var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
+  --ye-button-padding: calc(
+      var(--ye-spacing-rem-small) - var(--ye-button-border-width)
     )
-    calc(var(--ye-spacing-em-large) - var(--ye-button-outline-border-width));
+    var(--ye-spacing-em-large);
+  --ye-button-outline-padding: calc(
+      var(--ye-spacing-rem-small) - var(--ye-button-outline-border-width)
+    )
+    var(--ye-spacing-em-large);
   --ye-button-shadow: var(--ye-shadow-pressable);
 
   /* FORM */
@@ -230,7 +233,7 @@
   --ye-input-shadow: var(--ye-shadow-inset);
   --ye-z-behind: -1;
   --ye-z-base: 1;
-  --ye-z-topnav: 100;
+  --ye-z-topnav: 10;
   --ye-z-modal: 101;
 
   /* COMPONENTS SPECIFIC */
@@ -238,7 +241,7 @@
   /* TOPNAV */
   --ye-topnav-expanded-color-bg: transparent;
 
-  @media (width <= 991px) {
+  @media (width <= 600px) {
     --ye-layout-side-nav-width: 240px;
     --ye-layout-side-nav-toggle-width: 0;
   }

@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react";
 import { ComponentProps } from "react";
 
-import LoremCard from "../../__stories/LoremCard.js";
+import { LoremCard } from "../../__stories/CardTemplates.js";
 import Details from "./index.js";
 
 export const Template = (args: ComponentProps<typeof Details>) => (
