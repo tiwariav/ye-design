@@ -103,10 +103,9 @@ export const WithPassword: Story = {
 
 const PlaceholderTemplate = (args: FileInputProps) => {
   return (
-    <Template
-      placeholder={<Button variant="primary"> Upload file </Button>}
-      {...args}
-    />
+    <Template {...args}>
+      <Button variant="primary"> Upload file </Button>
+    </Template>
   );
 };
 
