@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "3.2.1",
+  "version": "3.3.1",
   "type": "module",
   "sideEffects": false,
   "engines": {
@@ -46,7 +46,8 @@
     "style-inject": "^0.3.0",
     "tslib": "^2.6.2",
     "type-fest": "^4.4.0",
-    "wo-library": "^3.2.3"
+    "use-immer": "^0.9.0",
+    "wo-library": "^3.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
@@ -130,6 +131,7 @@
     "jest-junit": "^16.0.0",
     "jest-transform-stub": "^2.0.0",
     "lint-staged": "^14.0.1",
+    "lorem-ipsum": "^2.0.8",
     "postcss": "^8.4.31",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-global-import": "^1.0.6",
@@ -161,12 +163,16 @@
   },
   "peerDependencies": {
     "antd": "^5.10.0",
+    "overlayscrollbars-react": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0"
   },
   "peerDependenciesMeta": {
     "antd": {
+      "optional": true
+    },
+    "overlayscrollbars-react": {
       "optional": true
     },
     "react-dom": {
