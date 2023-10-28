@@ -77,7 +77,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) => {
     const [hasValue, setHasValue] = useState(!isEmpty(value || defaultValue));
-    const inputId = useId();
+    let inputId = useId();
+    inputId = id ?? inputId;
 
     const [labelRef, { input }] = useMeasureInput();
 
@@ -122,7 +123,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             },
             innerClassNames.label,
           )}
-          inputId={id ?? inputId}
+          inputId={inputId}
           ref={labelRef}
           required={required}
         >
@@ -145,7 +146,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               styles.textInput,
               innerClassNames.input,
             )}
-            id={id ?? inputId}
+            id={inputId}
             onBlur={handleBlur}
             ref={ref}
             required={required}

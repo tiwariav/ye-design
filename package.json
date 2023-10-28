@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
+    "@storybook/jest": "^0.2.3",
     "@tabler/icons-react": "^2.39.0",
     "animejs": "^3.2.1",
     "clsx": "^2.0.0",

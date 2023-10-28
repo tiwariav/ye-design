@@ -66,9 +66,10 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
   ) => {
     const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<InputDomValue>("");
-    const [parsedValue, setParsedValue] = useState<InputFormValue>("");
+    const [parsedValue, setParsedValue] = useState<InputFormValue>(emptyValue);
     const currentParsedValue = useLatest(parsedValue);
-    const inputId = useId();
+    let inputId = useId();
+    inputId = id ?? inputId;
 
     const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
@@ -78,9 +79,11 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
           ? format(event.target.value)
           : event.target.value;
         setFormattedValue(newFormattedValue);
-        const newParsedValue = parse
-          ? parse(newFormattedValue, emptyValue) ?? emptyValue
-          : newFormattedValue;
+        const newParsedValue = newFormattedValue
+          ? parse
+            ? parse(newFormattedValue, emptyValue) ?? emptyValue
+            : newFormattedValue
+          : emptyValue;
         setParsedValue(newParsedValue);
         onChange?.(
           event,
@@ -92,10 +95,10 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     );
 
     useEffect(() => {
-      // return if value is not modified and is empty, to avoid
       // re-render for defaultValue
       const newValue = !modified.current && !value ? defaultValue : value;
-      const newFormattedValue = format ? format(newValue) : newValue;
+      const newFormattedValue =
+        format && newValue ? format(newValue) : newValue;
       const newParsedValue = parse
         ? parse(newFormattedValue, emptyValue)
         : newValue;
