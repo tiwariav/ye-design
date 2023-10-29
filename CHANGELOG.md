@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/tiwariav/ye-design/compare/v3.4.0...v3.4.1) (2023-10-29)
+
+
+### 🐛 Bug Fixes
+
+* fix storybook autodocs failing to load ([1be4e0e](https://github.com/tiwariav/ye-design/commit/1be4e0e0f4b77ede415e48f19acae6e57e0e92b2))
+
 ## [3.4.0](https://github.com/tiwariav/ye-design/compare/v3.3.1...v3.4.0) (2023-10-28)
 
 
