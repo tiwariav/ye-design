@@ -16,7 +16,7 @@ import {
   useState,
 } from "react";
 import { useToggle, useWindowSize } from "react-use";
-import { useScrollDirection } from "wo-library/hooks";
+import { useScrollDirection } from "wo-library/hooks/index.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
 import usePropRef from "../../../hooks/usePropRef.js";

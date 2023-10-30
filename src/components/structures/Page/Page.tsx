@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { isObject } from "lodash";
+import { isObject } from "lodash-es";
 import React, { ReactElement, ReactNode, useMemo } from "react";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
