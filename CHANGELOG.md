@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/tiwariav/ye-design/compare/v3.4.1...v3.4.2) (2023-10-30)
+
+
+### 🐛 Bug Fixes
+
+* fix imports ([6653cb2](https://github.com/tiwariav/ye-design/commit/6653cb20896c2a1667a05a368135ae2905c96168))
+
 ## [3.4.1](https://github.com/tiwariav/ye-design/compare/v3.4.0...v3.4.1) (2023-10-29)
 
 
