@@ -5,7 +5,7 @@ import Spinner from "../Spinner/Spinner.js";
 import TextLoader from "./TextLoader.js";
 import styles from "./text.module.css";
 
-interface TextProps extends ComponentPropsWithoutRef<"div"> {
+export interface TextProps extends ComponentPropsWithoutRef<"div"> {
   inline?: boolean;
   isBusy?: boolean;
   isLoading?: boolean;

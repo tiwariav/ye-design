@@ -1,6 +1,7 @@
 @layer ye-components {
   .anchor {
     display: inline-flex;
+    align-items: center;
     color: var(--ye-color-text);
     text-decoration: none;
 
@@ -108,7 +109,7 @@
     border-width: var(--ye-button-outline-border-width);
     border-radius: var(--ye-button-border-radius);
     transition-timing-function: var(--ye-transition-function);
-    transition-duration: 200ms;
+    transition-duration: var(--ye-transition-duration);
     transition-property: box-shadow, border-radius, background-color, color;
   }
 

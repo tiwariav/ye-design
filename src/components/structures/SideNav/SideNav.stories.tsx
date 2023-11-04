@@ -1,34 +1,38 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { IconBulb, IconHome } from "@tabler/icons-react";
+import { loremIpsum } from "lorem-ipsum";
+import { ComponentProps } from "react";
+import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
-import Anchor from "../../atoms/Anchor/Anchor.js";
-import SideNav from "./SideNav.js";
-import SideNavGroup from "./SideNavGroup.js";
+import { BasicSideNav } from "../../__stories/SideNavTemplates.js";
+import SideNav, { SideNavToggle } from "./SideNav.js";
+import { SideNavTitle } from "./SideNavGroup.js";
 
-export const Template = (args: Story["args"]) => (
-  <SideNav {...args}>
-    <SideNavGroup>
-      <Anchor href="/" iconBefore={<IconHome />} variant="nav-item">
-        Home
-      </Anchor>
-      <Anchor href="/" iconBefore={<IconBulb />} variant="nav-item">
-        Menu Item
-      </Anchor>
-    </SideNavGroup>
-    <SideNavGroup title="Menu Group">
-      <Anchor href="/" variant="nav-item">
-        Menu Item
-      </Anchor>
-      <Anchor href="/" variant="nav-item">
-        Menu Item
-      </Anchor>
-    </SideNavGroup>
-  </SideNav>
+const Template = (args: ComponentProps<typeof BasicSideNav>) => (
+  <div
+    className="story-bg-container story-flex"
+    style={{ backgroundImage: randomGradientGenerator(20) }}
+  >
+    <div className="story-flex">
+      <BasicSideNav {...args} />
+    </div>
+    <div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: loremIpsum({
+            count: 10,
+            format: "html",
+            units: "paragraphs",
+          }),
+        }}
+        style={{ maxWidth: 400 }}
+      />
+    </div>
+  </div>
 );
 
 const metadata: Meta<typeof SideNav> = {
   component: SideNav,
-  render: (args) => <Template {...args} />,
+  render: Template,
 };
 
 export default metadata;
@@ -36,3 +40,28 @@ export default metadata;
 type Story = StoryObj<typeof SideNav>;
 
 export const Basic: Story = {};
+
+export const Sticky: Story = {
+  args: { sticky: true },
+  render: (args) => (
+    <div className="story-flex">
+      <Template
+        {...args}
+        toggleIcon={
+          <SideNavTitle icon={<SideNavToggle />}>Sticky</SideNavTitle>
+        }
+      />
+      <Template
+        groups={3}
+        {...args}
+        sticky={{ bottom: true }}
+        toggleIcon={
+          <SideNavTitle icon={<SideNavToggle />}>Sticky Bottom</SideNavTitle>
+        }
+      />
+    </div>
+  ),
+};
+export const FullHeight: Story = {
+  args: { isFullHeight: true },
+};

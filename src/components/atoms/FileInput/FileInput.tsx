@@ -125,7 +125,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
           type="file"
           {...props}
         />
-        <span className={clsx(styles.placeholder, innerClassNames.input)}>
+        <span className={clsx(styles.placeholder, innerClassNames.placeholder)}>
           {placeholder}
         </span>
         {iconAfter && (

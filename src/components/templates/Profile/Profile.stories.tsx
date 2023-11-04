@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ComponentProps } from "react";
 
-import LoremCard from "../../__stories/LoremCard.js";
+import { LoremCard } from "../../__stories/CardTemplates.js";
 import Container from "../../atoms/Container/Container.js";
 import Image from "../../atoms/Image/Image.js";
 import Profile from "./index.js";
