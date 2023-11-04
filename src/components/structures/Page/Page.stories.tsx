@@ -1,6 +1,8 @@
 import { Meta } from "@storybook/react";
 import { ComponentProps } from "react";
+import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
+import { BasicSideNav } from "../../__stories/SideNavTemplates.js";
 import Hero from "../../atoms/Hero/Hero.js";
 import { Basic as HeroBasic } from "../../atoms/Hero/Hero.stories.js";
 import {
@@ -17,24 +19,20 @@ import {
   Basic as ProfileBasic,
   Template as ProfileTemplate,
 } from "../../templates/Profile/Profile.stories.js";
-import {
-  Basic as SideNavBasic,
-  Template as SideNavTemplate,
-} from "../SideNav/SideNav.stories.js";
-import {
-  Basic as TopNavBasic,
-  HangingLogo as TopNavHangingLogo,
-} from "../TopNav/TopNav.stories.js";
+import { Basic as SideNavBasic } from "../SideNav/SideNav.stories.js";
+import TopNavMeta from "../TopNav/TopNav.stories.js";
 import { TopNav } from "../index.js";
 import Page from "./Page.js";
 
 const topNavMap = {
-  ImageBasic: <TopNav {...TopNavBasic.args} />,
-  TopNavHangingLogo: <TopNav {...TopNavHangingLogo.args} />,
+  ImageBasic: <TopNav {...TopNavMeta.args} sticky variant="transparent" />,
+  TopNavHangingLogo: <TopNav {...TopNavMeta.args} logoVariant="hanging" />,
 };
 
 const sideNavMap = {
-  SideNavBasic: <SideNavTemplate {...SideNavBasic.args} />,
+  SideNavBasic: (
+    <BasicSideNav {...SideNavBasic.args} isFullHeight={false} sticky />
+  ),
 };
 const heroMap = { HeroBasic: <Hero {...HeroBasic.args} /> };
 const templateMap = {
@@ -70,7 +68,12 @@ const metadata: Meta<typeof Page> = {
   component: Page,
   decorators: [
     (Story) => (
-      <div style={{ margin: "-1rem" }}>
+      <div
+        style={{
+          backgroundImage: randomGradientGenerator(20),
+          margin: "-1rem",
+        }}
+      >
         <Story />
       </div>
     ),
@@ -83,18 +86,23 @@ export default metadata;
 export const Basic = {
   args: {
     sideNav: "SideNavBasic",
-    sideNavIsSticky: true,
     template: "CollectionBasic",
-    topNav: "TopNavHangingLogo",
-    topNavIsFixed: true,
+    topNav: "ImageBasic",
   },
 };
 
 export const WithHero = {
   args: {
-    ...Basic.args,
     hero: "HeroBasic",
     sideNav: "SideNavBasic",
     topNav: "TopNavHangingLogo",
+  },
+};
+
+export const VariantSTC = {
+  args: {
+    sideNav: "SideNavBasic",
+    topNav: "ImageBasic",
+    variant: "[S][TC]",
   },
 };

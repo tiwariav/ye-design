@@ -4,24 +4,30 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: var(--ye-spacing-em-large);
-    height: var(--ye-spacing-em-large);
+    height: calc(1em * var(--ye-line-height));
     margin-right: var(--ye-spacing-em-xsmall);
     color: inherit;
     line-height: 1;
+
+    & svg,
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .form-icon {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: var(--ye-spacing-em-large);
-    height: var(--ye-spacing-em-large);
+    height: calc(1em * var(--ye-line-height));
     color: inherit;
     line-height: 1;
 
-    & img,
-    & svg {
+    & svg,
+    & img {
+      width: 100%;
       height: 100%;
     }
   }

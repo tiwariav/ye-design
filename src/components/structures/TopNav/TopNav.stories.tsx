@@ -5,36 +5,40 @@ import {
   IconMicrophone,
   IconSearch,
 } from "@tabler/icons-react";
+import clsx from "clsx";
+import { loremIpsum } from "lorem-ipsum";
+import { useRef } from "react";
+import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
 import { Button, TextInput } from "../../atoms/index.js";
-import TopNav, { TopNavProps } from "./TopNav.js";
+import TopNav, { TOPNAV_VARIANTS, TopNavProps } from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
 
 const iconMap = { DogBowl: <IconDogBowl /> };
 const itemsMap = {
   Button: (
-    <TopNavItem>
+    <TopNavItem key={1}>
       <Button size="small" variant="outlined">
         Button
       </Button>
     </TopNavItem>
   ),
   ButtonWithIcon: (
-    <TopNavItem>
-      <Button iconBefore={<IconLogin />} size="small" variant="outlined">
+    <TopNavItem key={2}>
+      <Button iconBefore={<IconLogin />} variant="outlined">
         Button
       </Button>
     </TopNavItem>
   ),
   ButtonWithSeparator: (
-    <TopNavItem hasSeparator>
-      <Button iconBefore={<IconMicrophone />} size="small" variant="outlined">
+    <TopNavItem hasSeparator key={3}>
+      <Button iconBefore={<IconMicrophone />} variant="outlined">
         Button
       </Button>
     </TopNavItem>
   ),
   SearchInput: (
-    <TopNavItem>
+    <TopNavItem key={4}>
       <TextInput
         iconBefore={<IconSearch />}
         placeholder="Search Here"
@@ -42,6 +46,30 @@ const itemsMap = {
       />
     </TopNavItem>
   ),
+};
+
+const Template = ({ className, ...props }: TopNavProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      className={clsx("story-height-scroll", className)}
+      ref={ref}
+      style={{ backgroundImage: randomGradientGenerator(20) }}
+    >
+      <TopNav containerRef={ref} {...props} />
+      <div className="story-box story-height-overflow">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: loremIpsum({
+              count: 4,
+              format: "html",
+              units: "paragraphs",
+            }),
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 const metadata: Meta<typeof TopNav> = {
@@ -63,68 +91,58 @@ const metadata: Meta<typeof TopNav> = {
       },
     },
   },
+  args: {
+    contentLeft: [itemsMap.SearchInput],
+    contentRight: [itemsMap.ButtonWithSeparator, itemsMap.Button],
+    logo: iconMap.DogBowl,
+  },
   component: TopNav,
-  render: (args) => <TopNav {...args} />,
+  render: Template,
 };
 
 export default metadata;
 
 type Story = StoryObj<typeof TopNav>;
 
-export const FixedTemplate = (props: TopNavProps) => (
-  <div style={{ paddingTop: 120 }}>
-    <div className="story-topnav-fixed">
-      <TopNav {...props} />
-    </div>
-    <div style={{ backgroundColor: "rgba(0,0,0,0.1)", height: "200vh" }}>
-      Long content ...
-    </div>
-  </div>
-);
+export const Basic: Story = {};
 
-export const Basic: Story = {
-  args: {
-    contentLeft: ["SearchInput"],
-    contentRight: ["ButtonWithSeparator", "Button"],
-  },
+export const Sticky: Story = {
+  args: { banner: <div>What a great day!</div> },
+  render: (args) => (
+    <div className="story-grid">
+      <Template {...args} className="story-grid-row" logo="fixed" sticky />
+      <Template {...args} logo="hideOnScroll" sticky={{ hideOnScroll: true }} />
+      <Template {...args} logo="shrinkOffset" sticky={{ shrinkOffset: 100 }} />
+    </div>
+  ),
 };
 
-export const Transparent: Story = {
-  args: {
-    ...Basic.args,
-    variant: "transparent",
-  },
-};
-
-export const Fixed: Story = {
-  args: {
-    ...Basic.args,
-    hideOnScroll: true,
-    variant: "transparent",
-  },
-  render: (args) => <FixedTemplate {...args} />,
+export const Variants: Story = {
+  args: { sticky: true },
+  render: (args) => (
+    <div className="story-grid">
+      {TOPNAV_VARIANTS.map((variant) => (
+        <Template variant={variant} {...args} logo={variant} />
+      ))}
+    </div>
+  ),
 };
 
 export const MultiRow: Story = {
   args: {
-    ...Basic.args,
-    hideOnScroll: "contentLeft",
     multiRow: true,
     variant: "transparent",
   },
-  render: (args) => <FixedTemplate {...args} />,
 };
 
-export const Expanded: Story = {
+export const WithBanner: Story = {
   args: {
-    ...Basic.args,
-    isExpanded: true,
+    banner: <div>What a great day!</div>,
   },
 };
 
 export const HangingLogo: Story = {
   args: {
-    ...Basic.args,
     logoVariant: "hanging",
   },
 };

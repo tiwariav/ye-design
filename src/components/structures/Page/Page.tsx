@@ -1,17 +1,15 @@
 import { clsx } from "clsx";
-import React, {
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import { useInView } from "react-intersection-observer";
-import { useToggle } from "react-use";
+import { isObject } from "lodash";
+import React, { ReactElement, ReactNode, useMemo } from "react";
 
-import { SideNavProps } from "../SideNav/SideNav.js";
+import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import { SideNavProps, SideNavToggle } from "../SideNav/SideNav.js";
 import { TopNavProps } from "../TopNav/TopNav.js";
 import styles from "./page.module.css";
+
+const variantTSC = "[T][SC]";
+const variantSTC = "[S][TC]";
+const variantOptions = [variantTSC, variantSTC] as const;
 
 interface PageProps {
   children?: ReactNode;
@@ -20,129 +18,68 @@ interface PageProps {
     container?: string;
     content?: string;
     hero?: string;
-    sideNav?: string;
   };
   isCentered?: boolean;
-  sideNav?: ReactElement;
-  sideNavIsSticky?: boolean;
-  sideNavOnTop?: boolean;
+  sideNav?: ReactElement<SideNavProps>;
   topNav?: ReactElement<TopNavProps>;
-  topNavCanExpand?: boolean;
-  topNavIsFixed?: boolean;
-  topNavShrinkOffset?: number;
+  variant?: (typeof variantOptions)[number];
 }
 
-export default function Page({
+function PageInner({
   children,
   hero,
   innerClassNames = {},
   isCentered,
   sideNav,
-  sideNavIsSticky,
-  sideNavOnTop,
   topNav,
-  topNavCanExpand,
-  topNavIsFixed,
-  topNavShrinkOffset = 0,
+  variant = variantTSC,
 }: PageProps) {
-  // TODO: create a LayoutProvider to manage topnav and sidenav states
-  const topNavRef = React.useRef<HTMLDivElement>(null);
-  const [spacerRef, spacerInView] = useInView();
-  const [sideNavToggle, toggleSideNav] = useToggle(false);
+  const topNavMemo = useMemo(() => {
+    if (!topNav) return null;
+    const topNavProps = ({ ...topNav?.props } || {}) as TopNavProps;
+    if (sideNav && topNavProps.sticky) {
+      topNavProps.sideNavIcon = <SideNavToggle />;
+    }
+    return React.cloneElement(topNav, topNavProps);
+  }, [topNav, sideNav]);
 
-  const [topNavMaxHeight, setTopNavMaxHeight] = useState(0);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (topNavRef.current) {
-      const scopeTopNavMaxHeight = topNavRef.current.offsetHeight;
-      if (!topNavMaxHeight) {
-        setTopNavMaxHeight(scopeTopNavMaxHeight);
-        setLoading(false);
+  const sideNavMemo = useMemo(() => {
+    if (!sideNav) return null;
+    const topNavProps = topNav?.props || {};
+    const sideNavProps = { ...sideNav?.props };
+    if (
+      variant === variantTSC &&
+      sideNavProps.sticky &&
+      topNavProps.sticky &&
+      (!isObject(topNavProps.sticky) ||
+        !topNavProps.sticky.hideOnScroll ||
+        topNavProps.variant !== "transparent")
+    ) {
+      if (sideNavProps.sticky === true) {
+        sideNavProps.sticky = { topNavOffset: true };
+      } else {
+        sideNavProps.sticky.topNavOffset = true;
       }
     }
-  }, [topNavMaxHeight]);
-
-  const topNavExpanded = useMemo(
-    () => topNavIsFixed && spacerInView,
-    [spacerInView, topNavIsFixed],
-  );
-
-  const clonedTopNav = useMemo(() => {
-    if (topNav) {
-      const extraProps: TopNavProps = {
-        sideNavToggle,
-        toggleSideNav,
-        variant: topNav.props.variant,
-        withSideNav: !!sideNav,
-      };
-      if (topNavExpanded) {
-        extraProps.isExpanded = true;
-      }
-      if (topNavExpanded || loading) {
-        extraProps.variant = "transparent";
-      }
-      return React.cloneElement(topNav, extraProps);
-    }
-    return null;
-  }, [topNav, sideNav, sideNavToggle, toggleSideNav, topNavExpanded, loading]);
-
-  const clonedSideNav = useMemo(() => {
-    if (sideNav) {
-      const extraProps: SideNavProps = {};
-      return React.cloneElement(sideNav, extraProps);
-    }
-    return null;
-  }, [sideNav]);
+    return React.cloneElement(sideNav, sideNavProps);
+  }, [sideNav, topNav?.props, variant]);
 
   return (
-    <div className={clsx(styles.root)}>
-      {topNav && (
-        <div
-          className={clsx({
-            [styles.hasSideNavToggle]: sideNavToggle,
-            [styles.isFixed]: topNavIsFixed,
-
-            [styles.sideNavTop]: sideNavOnTop,
-          })}
-          ref={topNavRef}
-        >
-          {clonedTopNav}
-        </div>
-      )}
+    <div
+      className={clsx(styles.root, {
+        [styles.variantStc]: variant === variantSTC,
+      })}
+    >
+      {variant === variantTSC ? topNavMemo : sideNavMemo}
       <main
         className={clsx(styles.main, {
           [styles.isCentered]: isCentered,
-          [styles.withTopNavFixed]: topNavIsFixed,
         })}
       >
-        {topNavCanExpand && (
-          <div
-            className={styles.spacer}
-            ref={spacerRef}
-            style={{ top: topNavMaxHeight + topNavShrinkOffset }}
-          />
-        )}
-        {hero && <div>{hero}</div>}
+        {variant === variantSTC && topNavMemo}
+        {hero}
         <div className={clsx(styles.container, innerClassNames.container)}>
-          {sideNav && (
-            <div
-              className={clsx(styles.sideNav, innerClassNames.sideNav, {
-                [styles.isSticky]: sideNavIsSticky,
-                [styles.sideNavToggle]: sideNavToggle,
-
-                [styles.topNavTop]: sideNavIsSticky && !sideNavOnTop,
-              })}
-            >
-              <div
-                className={styles.sideNavBackdrop}
-                onClick={() => {
-                  if (sideNavToggle) toggleSideNav();
-                }}
-              />
-              {clonedSideNav}
-            </div>
-          )}
+          {variant === variantTSC && sideNavMemo}
           <div className={clsx(styles.content, innerClassNames.content)}>
             {children}
           </div>
@@ -151,3 +88,11 @@ export default function Page({
     </div>
   );
 }
+
+const Page = ({ ...props }: PageProps) => (
+  <LayoutContext.LayoutProvider>
+    <PageInner {...props} />
+  </LayoutContext.LayoutProvider>
+);
+
+export default Page;

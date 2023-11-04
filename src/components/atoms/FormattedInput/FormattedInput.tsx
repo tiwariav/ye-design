@@ -99,11 +99,13 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       const newParsedValue = parse
         ? parse(newFormattedValue, emptyValue)
         : newValue;
+      // when to set formatted value
       if (
         !format ||
         !modified.current ||
-        (newParsedValue !== null &&
-          newFormattedValue !== format(newParsedValue))
+        // if format is not required for this change
+        // (for example if value is `1` but formatterValue is `1.0`)
+        newParsedValue !== currentParsedValue.current // if
       ) {
         setFormattedValue(newFormattedValue);
       }

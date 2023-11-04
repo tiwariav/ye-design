@@ -1,3 +1,17 @@
+## [3.4.0](https://github.com/tiwariav/ye-design/compare/v3.3.1...v3.4.0) (2023-10-28)
+
+
+### ✨ Features
+
+* revamp Page, TopNav and SideNav components ([0c3f47a](https://github.com/tiwariav/ye-design/commit/0c3f47ade3556bfd951027c1606b654737c4aacd))
+
+## [3.3.1](https://github.com/tiwariav/ye-design/compare/v3.3.0...v3.3.1) (2023-10-21)
+
+
+### 🐛 Bug Fixes
+
+* fix value not updating for FormattedInput after modification ([4cfd48d](https://github.com/tiwariav/ye-design/commit/4cfd48dcc181788f98f941f25cef43d0f5b3fb20))
+
 ## [3.3.0](https://github.com/tiwariav/ye-design/compare/v3.2.1...v3.3.0) (2023-10-21)
 
 

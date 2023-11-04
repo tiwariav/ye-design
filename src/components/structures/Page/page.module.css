@@ -2,7 +2,6 @@
   .root {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
   }
 
   .main {
@@ -15,89 +14,8 @@
     justify-content: center;
   }
 
-  .with-top-nav-fixed {
-    min-height: 100vh;
-  }
-
   .container {
     display: flex;
-  }
-
-  .side-nav {
-    z-index: var(--ye-z-base);
-    width: var(--ye-layout-side-nav-width);
-    max-width: 100%;
-    height: 100vh;
-    transition: width ease-in-out 0.5s;
-
-    &.top-nav-top {
-      position: relative;
-      top: 4.5rem;
-      height: calc(100vh - 4.5rem);
-    }
-
-    @media (--media-max-lg) {
-      position: fixed;
-      left: -2px;
-      z-index: var(--ye-z-topnav);
-      width: var(--ye-layout-side-nav-toggle-width);
-    }
-
-    @media (--media-min-xl) {
-      &.is-sticky {
-        position: sticky;
-        top: 0;
-      }
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
-  }
-
-  .side-nav-backdrop {
-    position: fixed;
-    inset: 0 100% 0 0;
-    display: block;
-    background: var(--ye-color-black-50);
-  }
-
-  .side-nav-toggle {
-    width: var(--ye-layout-side-nav-toggle-width);
-
-    @media (--media-max-md) {
-      width: var(--ye-layout-side-nav-width);
-
-      & .side-nav-backdrop {
-        right: 0;
-      }
-    }
-  }
-
-  .is-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--ye-z-topnav);
-    width: 100%;
-    transition: all ease-in-out 0.5s;
-    transition-property: width, left;
-
-    &.side-nav-top {
-      @media (--media-min-lg) {
-        left: var(--ye-layout-side-nav-width);
-        width: calc(100% - var(--ye-layout-side-nav-width));
-
-        &.has-side-nav-toggle {
-          left: var(--ye-layout-side-nav-toggle-width);
-          width: calc(100% - var(--ye-layout-side-nav-toggle-width));
-        }
-      }
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
   }
 
   .content {
@@ -105,20 +23,7 @@
     min-width: 0;
   }
 
-  .spacer {
-    position: absolute;
-    top: 0;
-    z-index: calc(var(--z-index-base) * -1);
-    width: 100%;
-    height: 0;
-  }
-
-  /* to avoid undef error */
-  /* stylelint-disable-next-line no-descending-specificity */
-  .has-side-nav-toggle,
-  .side-nav-top,
-  .is-sticky,
-  .top-nav-top {
-    /* no styles */
+  .variant-stc {
+    display: flex;
   }
 }
