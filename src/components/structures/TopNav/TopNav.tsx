@@ -4,7 +4,7 @@
 
 import { IconMenu } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { isObject } from "lodash-es";
+import { isEmpty, isObject } from "lodash-es";
 import {
   CSSProperties,
   ReactNode,
@@ -16,7 +16,7 @@ import {
   useState,
 } from "react";
 import { useToggle, useWindowSize } from "react-use";
-import { useScrollDirection } from "wo-library/hooks";
+import { useScrollDirection } from "wo-library/hooks/index.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
 import usePropRef from "../../../hooks/usePropRef.js";
@@ -129,7 +129,7 @@ export interface TopNavProps {
   variant?: TopNavVariant;
 }
 
-const TopNav = forwardRef<HTMLDivElement, TopNavProps>(
+const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
   (
     {
       banner,
@@ -298,5 +298,16 @@ const TopNav = forwardRef<HTMLDivElement, TopNavProps>(
     );
   },
 );
+
+const TopNav = forwardRef<HTMLDivElement, TopNavProps>((props, ref) => {
+  const layoutState = LayoutContext.useContextState();
+  return isEmpty(layoutState) ? (
+    <LayoutContext.LayoutProvider>
+      <TopNavWrapper {...props} ref={ref} />
+    </LayoutContext.LayoutProvider>
+  ) : (
+    <TopNavWrapper {...props} ref={ref} />
+  );
+});
 
 export default TopNav;
