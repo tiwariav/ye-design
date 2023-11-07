@@ -24,9 +24,6 @@
     width: 100%;
     background-color: var(--ye-color-background);
     box-shadow: var(--ye-shadow-floating-low);
-    transition-timing-function: var(--ye-transition-function);
-    transition-duration: var(--ye-transition-duration);
-    transition-property: background-color, box-shadow, padding, transform;
 
     &.has-multi-row {
       flex-wrap: wrap;
@@ -37,6 +34,14 @@
           display: flex;
         }
       }
+    }
+  }
+
+  .is-scrolled {
+    & .container {
+      transition-timing-function: var(--ye-transition-function);
+      transition-duration: var(--ye-transition-duration);
+      transition-property: background-color, box-shadow, padding, transform;
     }
   }
 

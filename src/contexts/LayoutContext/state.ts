@@ -3,8 +3,8 @@ export interface LayoutState {
     isToggled?: boolean;
   };
   topNav: {
+    isDrawerToggled?: boolean;
     isHidden?: boolean;
-    isToggled?: boolean;
   };
 }
 

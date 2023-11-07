@@ -15,7 +15,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useToggle, useWindowSize } from "react-use";
+import { useWindowSize } from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
@@ -56,15 +56,17 @@ function useVariantClassName({
 function useScrollUpdates({
   containerRef,
   contentLeftRef,
+  hideOffset = 0,
   hideOnScroll,
   rootRef,
   showDrawer,
 }: {
   containerRef?: React.MutableRefObject<HTMLDivElement | null>;
   contentLeftRef: React.MutableRefObject<HTMLDivElement | null>;
+  hideOffset?: number;
   hideOnScroll?: "contentLeft" | boolean;
   rootRef: React.MutableRefObject<HTMLDivElement | null>;
-  showDrawer: boolean;
+  showDrawer?: boolean;
 }) {
   const { direction, y: scrollY } = useScrollDirection(containerRef);
   const transform = useMemo(() => {
@@ -73,16 +75,23 @@ function useScrollUpdates({
       direction !== "down" ||
       showDrawer ||
       !rootRef.current ||
-      scrollY < rootRef.current.offsetHeight
+      scrollY + hideOffset < rootRef.current.offsetHeight
     )
       return 0;
     if (hideOnScroll === "contentLeft" && contentLeftRef.current) {
       return `${contentLeftRef.current.offsetHeight + 16}px`;
     }
-    return "-100%";
-  }, [contentLeftRef, hideOnScroll, rootRef, direction, scrollY, showDrawer]);
-
-  return { scrollY, transform };
+    return `-${rootRef.current.scrollHeight}px`;
+  }, [
+    contentLeftRef,
+    hideOffset,
+    hideOnScroll,
+    rootRef,
+    direction,
+    scrollY,
+    showDrawer,
+  ]);
+  return { direction, scrollY, transform };
 }
 
 export const IconMenuItem = ({ children, ...props }: ButtonProps) => (
@@ -121,6 +130,7 @@ export interface TopNavProps {
   sideNavIcon?: ReactNode;
   sticky?:
     | {
+        hideOffset?: number;
         hideOnScroll?: "contentLeft" | boolean;
         shrinkOffset?: number;
       }
@@ -155,29 +165,43 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
     const layoutState = LayoutContext.useContextState();
     const layoutDispatch = LayoutContext.useContextDispatch();
     const [smallerWidth, setSmallerWidth] = useState<boolean>();
-    const [showDrawer, toggleDrawer] = useToggle(false);
     const { width } = useWindowSize();
     const [contentMenuHeight, setContentMenuHeight] = useState<number>();
+    const [isReady, setIsReady] = useState(false);
 
     const contentMenuRef = useRef<HTMLDivElement>(null);
     const contentLeftRef = useRef<HTMLDivElement>(null);
     const { innerRef, setInnerRef } = usePropRef(
       ref || layoutState.refs.topNav,
     );
+    const topNavMaxHeight = useRef<number>(0);
 
-    const { hideOnScroll = false, shrinkOffset = -1 } = isObject(sticky)
-      ? sticky
-      : {};
+    const {
+      hideOffset = 0,
+      hideOnScroll = false,
+      shrinkOffset = -1,
+    } = isObject(sticky) ? sticky : {};
     const hasContextMenu = contentMenu || contentLeft || contentRight;
 
-    const { scrollY, transform } = useScrollUpdates({
+    const { direction, scrollY, transform } = useScrollUpdates({
       containerRef,
       contentLeftRef,
+      hideOffset,
       hideOnScroll,
       rootRef: innerRef,
-      showDrawer,
+      showDrawer: layoutState.topNav.isDrawerToggled,
     });
-    const topNavExpanded = scrollY < shrinkOffset;
+
+    const topNavExpanded = useMemo(() => {
+      const currentHeight = innerRef?.current?.offsetHeight || 0;
+      topNavMaxHeight.current = Math.max(
+        topNavMaxHeight.current,
+        currentHeight,
+      );
+      const diff = topNavMaxHeight.current - currentHeight;
+      return scrollY + diff < shrinkOffset;
+    }, [scrollY, innerRef, shrinkOffset]);
+
     const variantClassName = useVariantClassName({ topNavExpanded, variant });
 
     useEffect(() => {
@@ -194,20 +218,32 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       setSmallerWidth(width <= BREAKPOINTS.lg);
     }, [width]);
 
+    useLayoutEffect(() => {
+      setIsReady(true);
+    }, []);
+
     return (
       <div
         className={clsx(
           styles.root,
           variantClassName,
           {
-            [styles.hasDrawer]: showDrawer,
-            [styles.isSticky]: sticky,
+            [styles.hasDrawer]: layoutState.topNav.isDrawerToggled,
+            [styles.isScrolled]: direction,
+            [styles.isSticky]: sticky && isReady,
           },
+          ((shrinkOffset > 0 && typeof window === "undefined") ||
+            (topNavExpanded && isReady)) && [
+            styles.isExpanded,
+            innerClassNames.isExpanded,
+          ],
           className,
-          topNavExpanded && [styles.isExpanded, innerClassNames.isExpanded],
         )}
         ref={setInnerRef}
-        style={{ transform: `translateY(${transform})`, ...style }}
+        style={{
+          transform: isReady ? `translateY(${transform})` : "none",
+          ...style,
+        }}
         {...props}
       >
         {banner && <div className={styles.banner}>{banner}</div>}
@@ -250,7 +286,13 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                   smallerWidth !== false &&
                   rightNavIcon !== null &&
                   hasContextMenu && (
-                    <IconMenuItem onClick={() => toggleDrawer()}>
+                    <IconMenuItem
+                      onClick={() =>
+                        layoutDispatch.dispatch.updateTopNav({
+                          isDrawerToggled: !layoutState.topNav.isDrawerToggled,
+                        })
+                      }
+                    >
                       {rightNavIcon}
                     </IconMenuItem>
                   )}
@@ -266,11 +308,16 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                   ? styles.contentMenuMeasuring
                   : styles.contentMenuMeasured,
                 {
-                  [styles.contentMenuIsOpen]: showDrawer,
+                  [styles.contentMenuIsOpen]:
+                    layoutState.topNav.isDrawerToggled,
                 },
               )}
               ref={contentMenuRef}
-              style={showDrawer ? { height: contentMenuHeight } : {}}
+              style={
+                layoutState.topNav.isDrawerToggled
+                  ? { height: contentMenuHeight }
+                  : {}
+              }
             >
               <div className={styles.shadowWrapper}>
                 <FlexColDiv
