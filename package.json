@@ -159,6 +159,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^6.1.2",
+    "rollup-plugin-postcss": "patch:rollup-plugin-postcss@npm%3A4.0.2#~/.yarn/patches/rollup-plugin-postcss-npm-4.0.2-6f4a722324.patch",
     "rollup-plugin-progress": "^1.1.2",
     "rollup-plugin-visualizer": "^5.9.2",
     "source-map-explorer": "^2.5.3",
