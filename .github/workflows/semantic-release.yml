@@ -29,6 +29,7 @@ jobs:
             @semantic-release/git
             conventional-changelog-conventionalcommits
             pinst
+            wo-library
         env:
           HUSKY: 0
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
