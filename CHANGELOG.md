@@ -1,3 +1,15 @@
+## [3.4.3](https://github.com/tiwariav/ye-design/compare/v3.4.2...v3.4.3) (2023-11-14)
+
+
+### 🐛 Bug Fixes
+
+* improve TopNav sticky behaviout ([0c73432](https://github.com/tiwariav/ye-design/commit/0c73432a018449864fdc895c64315f1289d74a0e))
+
+
+### ♻️ Code Refactors
+
+* switch from npm to yarn ([0d1b905](https://github.com/tiwariav/ye-design/commit/0d1b9054f70acd84c65b21e48687455eb8078088))
+
 ## [3.4.2](https://github.com/tiwariav/ye-design/compare/v3.4.1...v3.4.2) (2023-10-30)
 
 
