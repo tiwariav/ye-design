@@ -56,7 +56,7 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
         }
         {...args}
       />
-      <div>{allFiles.map((file) => file.text || "")}</div>
+      <div>{allFiles.map((file) => file.text ?? "")}</div>
     </>
   );
 }

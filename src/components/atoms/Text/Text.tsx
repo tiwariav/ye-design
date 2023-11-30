@@ -29,7 +29,7 @@ function Text({
   ...props
 }: TextProps) {
   const textStyles: CSSProperties = {};
-  const inlineHeight = lineHeight || 1.5;
+  const inlineHeight = lineHeight ?? 1.5;
   if (maxLines) {
     textStyles.maxHeight = `${maxLines * inlineHeight}em`;
     textStyles.WebkitLineClamp = maxLines;

@@ -24,7 +24,7 @@ function getFlagEmoji(countryCode: string) {
   return countryCode
     .toUpperCase()
     .replaceAll(/./g, (char) =>
-      String.fromCodePoint((char.codePointAt(0) as number) + OFFSET),
+      String.fromCodePoint(char.codePointAt(0)! + OFFSET),
     );
 }
 
@@ -45,7 +45,10 @@ function getPhoneNumber(value: string) {
 }
 
 const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
-  ({ defaultValue = "+91", variant, ...props }, ref) => {
+  function PhoneNumberInputRender(
+    { defaultValue = "+91", variant, ...props },
+    ref,
+  ) {
     const textValueRef = useRef<string>(defaultValue.toString());
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 

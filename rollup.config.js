@@ -1,4 +1,5 @@
 import postcssGlobalData from "@csstools/postcss-global-data";
+import replace from "@rollup/plugin-replace";
 import _typescript from "@rollup/plugin-typescript";
 import { defaultImport } from "default-import";
 import _copy from "rollup-plugin-copy";
@@ -45,6 +46,16 @@ const config = [
       postcss(postcssConfig),
       typescript({ tsconfig: "./tsconfig.rollup.json" }),
       ...getBuildPlugins(),
+      replace({
+        patterns: [
+          {
+            // Use a regular expression to match the postinstall script
+            match: /"postinstall": "[^"]*",/,
+            // Replace it with an empty string
+            replacement: "",
+          },
+        ],
+      }),
       ...devPlugins,
     ],
   },

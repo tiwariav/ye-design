@@ -40,7 +40,7 @@ export default function Image({
   );
 
   useEffect(() => {
-    if (aspectRatio || variant === "circular") {
+    if (aspectRatio ?? variant === "circular") {
       let ratio = [1, 1];
       if (aspectRatio && variant !== "circular") {
         ratio = aspectRatio.split("/").map((item) => Number.parseInt(item));

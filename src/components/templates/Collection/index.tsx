@@ -9,16 +9,16 @@ import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
 import styles from "./collection.module.css";
 
-type FilterOption = {
+export interface FilterOption {
   key: string;
   name: string;
   options: string[];
-};
+}
 
-type SortOption = {
+export interface SortOption {
   key: string;
   name: string;
-};
+}
 
 const COLLECTION_VARIANT_OPTIONS = ["list", "grid"] as const;
 
@@ -52,7 +52,7 @@ export default function Collection({
   return (
     <Container {...props}>
       <h1 className={styles.title}>{title}</h1>
-      {((filter && filter.length > 0) || (sort && sort.length > 0)) && (
+      {((!!filter && filter.length > 0) || (sort && sort.length > 0)) && (
         <div className={styles.options}>
           {filter && (
             <Button

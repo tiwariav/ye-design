@@ -16,7 +16,7 @@ import "./scrollContext.module.css";
 import INITIAL_SCROLL_STATE, { ScrollState } from "./state.js";
 
 interface ScrollProviderProps extends OverlayScrollbarsComponentProps {
-  data?: Record<any, any>;
+  data?: object;
 }
 
 const { Context, DispatchContext, useContextDispatch, useContextState } =

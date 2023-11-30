@@ -122,7 +122,7 @@ export const Variants: Story = {
   render: (args) => (
     <div className="story-grid">
       {TOPNAV_VARIANTS.map((variant) => (
-        <Template variant={variant} {...args} logo={variant} />
+        <Template key={variant} variant={variant} {...args} logo={variant} />
       ))}
     </div>
   ),

@@ -33,8 +33,8 @@ export const Template = ({
       coverImage={<Image src={coverImage} style={{ height: 200 }} />}
       {...args}
     >
-      {Array.from({ length: 4 }, () => (
-        <LoremCard />
+      {Array.from({ length: 4 }, (_item, index) => (
+        <LoremCard key={index} />
       ))}
     </Profile>
   );

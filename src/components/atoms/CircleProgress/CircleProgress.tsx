@@ -28,9 +28,7 @@ function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
 }
 
 const CIRCLE_PROGRESS_TEXT_OPTIONS = ["parts", "percent", "value"];
-type TextContentOptions =
-  | (typeof CIRCLE_PROGRESS_TEXT_OPTIONS)[number]
-  | string;
+type TextContentOptions = (typeof CIRCLE_PROGRESS_TEXT_OPTIONS)[number];
 
 function getTextContent(
   text: TextContentOptions,
@@ -86,10 +84,10 @@ function CenterText({
   );
 }
 
-type CircleStyle = {
+interface CircleStyle {
   strokeDasharray: number;
   strokeDashoffset: number;
-};
+}
 
 interface CircleProgressProps {
   arcHeight?: number;
@@ -103,6 +101,7 @@ interface CircleProgressProps {
     text?: string;
   };
   progress: [number, number];
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   progressText?: "parts" | "percent" | "value" | string;
   roundEdges?: boolean;
   squareSize?: number;

@@ -63,9 +63,9 @@ const FormContent = () => {
           />
         </HookFormInputWrapper>
         <div>
-          <label>Input</label>:{" "}
+          <label htmlFor="input">Input</label>:{" "}
           <HookFormInputWrapper name="input">
-            <input />
+            <input id="input" />
           </HookFormInputWrapper>
         </div>
         <div>

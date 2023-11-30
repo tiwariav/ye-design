@@ -46,8 +46,8 @@ function useVariantClassName({
       return topNavExpanded && variant.expanded
         ? styles[`variant-${variant.expanded}`]
         : variant.normal
-        ? styles[`variant-${variant.normal}`]
-        : "";
+          ? styles[`variant-${variant.normal}`]
+          : "";
     }
     return variant && styles[`variant-${variant}`];
   }, [topNavExpanded, variant]);
@@ -59,7 +59,7 @@ function useScrollUpdates({
   hideOffset = 0,
   hideOnScroll,
   rootRef,
-  showDrawer,
+  showDrawer = false,
 }: {
   containerRef?: React.MutableRefObject<HTMLDivElement | null>;
   contentLeftRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -102,7 +102,7 @@ export const IconMenuItem = ({ children, ...props }: ButtonProps) => (
       variant="borderless"
       {...props}
     >
-      {children || <IconMenu />}
+      {children ?? <IconMenu />}
     </Button>
   </TopNavItem>
 );
@@ -140,7 +140,7 @@ export interface TopNavProps {
 }
 
 const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
-  (
+  function TopNavWrapperRender(
     {
       banner,
       className,
@@ -161,7 +161,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       ...props
     },
     ref,
-  ) => {
+  ) {
     const layoutState = LayoutContext.useContextState();
     const layoutDispatch = LayoutContext.useContextDispatch();
     const [smallerWidth, setSmallerWidth] = useState<boolean>();
@@ -172,7 +172,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
     const contentMenuRef = useRef<HTMLDivElement>(null);
     const contentLeftRef = useRef<HTMLDivElement>(null);
     const { innerRef, setInnerRef } = usePropRef(
-      ref || layoutState.refs.topNav,
+      ref ?? layoutState.refs.topNav,
     );
     const topNavMaxHeight = useRef<number>(0);
 
@@ -181,7 +181,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       hideOnScroll = false,
       shrinkOffset = -1,
     } = isObject(sticky) ? sticky : {};
-    const hasContextMenu = contentMenu || contentLeft || contentRight;
+    const hasContextMenu = contentMenu ?? contentLeft ?? contentRight;
 
     const { direction, scrollY, transform } = useScrollUpdates({
       containerRef,
@@ -189,11 +189,11 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       hideOffset,
       hideOnScroll,
       rootRef: innerRef,
-      showDrawer: layoutState.topNav.isDrawerToggled,
+      showDrawer: !!layoutState.topNav.isDrawerToggled,
     });
 
     const topNavExpanded = useMemo(() => {
-      const currentHeight = innerRef?.current?.offsetHeight || 0;
+      const currentHeight = innerRef?.current?.offsetHeight ?? 0;
       topNavMaxHeight.current = Math.max(
         topNavMaxHeight.current,
         currentHeight,
@@ -326,7 +326,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                     innerClassNames.contentMenu,
                   )}
                 >
-                  {contentMenu || (
+                  {contentMenu ?? (
                     <>
                       <FlexColDiv className={styles.contentMenuTop}>
                         {contentLeft}
@@ -346,15 +346,17 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
   },
 );
 
-const TopNav = forwardRef<HTMLDivElement, TopNavProps>((props, ref) => {
-  const layoutState = LayoutContext.useContextState();
-  return isEmpty(layoutState) ? (
-    <LayoutContext.LayoutProvider>
+const TopNav = forwardRef<HTMLDivElement, TopNavProps>(
+  function TopNavRender(props, ref) {
+    const layoutState = LayoutContext.useContextState();
+    return isEmpty(layoutState) ? (
+      <LayoutContext.LayoutProvider>
+        <TopNavWrapper {...props} ref={ref} />
+      </LayoutContext.LayoutProvider>
+    ) : (
       <TopNavWrapper {...props} ref={ref} />
-    </LayoutContext.LayoutProvider>
-  ) : (
-    <TopNavWrapper {...props} ref={ref} />
-  );
-});
+    );
+  },
+);
 
 export default TopNav;

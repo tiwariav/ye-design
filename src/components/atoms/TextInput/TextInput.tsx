@@ -38,7 +38,6 @@ export interface TextInputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
-  id?: string;
   innerClassNames?: {
     iconAfter?: string;
     iconBefore?: string;
@@ -55,13 +54,13 @@ export interface TextInputProps
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  (
+  function TextInputRender(
     {
       className,
       defaultValue,
       iconAfter,
       iconBefore,
-      id,
+      id = "",
       innerClassNames = {},
       isBusy,
       isLoading,
@@ -75,8 +74,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       ...props
     },
     ref,
-  ) => {
-    const [hasValue, setHasValue] = useState(!isEmpty(value || defaultValue));
+  ) {
+    const [hasValue, setHasValue] = useState(!isEmpty(value ?? defaultValue));
     const inputId = useId();
 
     const [labelRef, { input }] = useMeasureInput();
@@ -90,7 +89,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     );
 
     const inputStyle = useMemo(() => {
-      const originalStyle = style || {};
+      const originalStyle = style ?? {};
       return input && variant === "material"
         ? {
             paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
@@ -122,7 +121,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             },
             innerClassNames.label,
           )}
-          inputId={id ?? inputId}
+          htmlFor={id || inputId}
           ref={labelRef}
           required={required}
         >
@@ -145,7 +144,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               styles.textInput,
               innerClassNames.input,
             )}
-            id={id ?? inputId}
+            id={id || inputId}
             onBlur={handleBlur}
             ref={ref}
             required={required}

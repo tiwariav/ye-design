@@ -38,51 +38,49 @@ export interface CardProps extends ComponentPropsWithoutRef<"div"> {
   viewMode?: (typeof CARD_VIEW_MODES)[number];
 }
 
-const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    {
-      as = "div",
-      children,
-      className,
-      floating,
-      flying,
-      height,
-      image,
-      innerClassNames = {},
-      isBusy,
-      layout,
-      variant = "basic",
-      viewMode,
-      ...props
-    },
-    ref,
-  ) => {
-    const Element = as;
-    return (
-      <Element
-        className={clsx(
-          styles.card,
-          styles[`variant-${variant}`],
-          layout && styles[`layout-${layout}`],
-          viewMode && styles[`view-${viewMode}`],
-          floating && styles[`floating-${floating}`],
-          flying && styles[`flying-${flying}`],
-          height && styles[`height-${height}`],
-          className,
-        )}
-        ref={ref}
-        {...props}
-      >
-        {image && <div className={styles.image}>{image}</div>}
-        {children && (
-          <div className={clsx([styles.content], innerClassNames.content)}>
-            {children}
-          </div>
-        )}
-        {isBusy && <Spinner />}
-      </Element>
-    );
+const Card = forwardRef<HTMLDivElement, CardProps>(function CardRender(
+  {
+    as = "div",
+    children,
+    className,
+    floating,
+    flying,
+    height,
+    image,
+    innerClassNames = {},
+    isBusy,
+    layout,
+    variant = "basic",
+    viewMode,
+    ...props
   },
-);
+  ref,
+) {
+  const Element = as;
+  return (
+    <Element
+      className={clsx(
+        styles.card,
+        styles[`variant-${variant}`],
+        layout && styles[`layout-${layout}`],
+        viewMode && styles[`view-${viewMode}`],
+        floating && styles[`floating-${floating}`],
+        flying && styles[`flying-${flying}`],
+        height && styles[`height-${height}`],
+        className,
+      )}
+      ref={ref}
+      {...props}
+    >
+      {image && <div className={styles.image}>{image}</div>}
+      {children && (
+        <div className={clsx([styles.content], innerClassNames.content)}>
+          {children}
+        </div>
+      )}
+      {isBusy && <Spinner />}
+    </Element>
+  );
+});
 
 export default Card;

@@ -1,12 +1,12 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import { cssVariable } from "wo-library/tools/css.js";
 
-type CalculatedInputStyles = {
+interface CalculatedInputStyles {
   input?: {
     height: number;
     paddingTop: number;
   };
-};
+}
 
 export default function useMeasureInput(): [
   RefObject<HTMLLabelElement>,

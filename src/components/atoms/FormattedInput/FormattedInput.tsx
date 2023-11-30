@@ -46,7 +46,7 @@ export interface FormattedInputProps
 }
 
 const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
-  (
+  function FormattedInputRender(
     {
       className,
       defaultValue,
@@ -63,7 +63,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       ...props
     },
     ref,
-  ) => {
+  ) {
     const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<InputDomValue>("");
     const [parsedValue, setParsedValue] = useState<InputFormValue>("");

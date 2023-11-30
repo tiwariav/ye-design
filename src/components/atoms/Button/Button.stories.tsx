@@ -47,9 +47,9 @@ export const Effects: Story = {
         <Button {...args}>Button</Button>
       </div>
       {BUTTON_EFFECTS.map((effect) => (
-        <div>
+        <div key={effect}>
           <Button effects={[effect]} {...args}>
-            '{effect}' Button
+            &apos;{effect}&apos; Button
           </Button>
         </div>
       ))}
@@ -71,9 +71,9 @@ export const Sizes: Story = {
         </Button>
       </div>
       {COMPONENT_SIZES.map((size) => (
-        <div>
+        <div key={size}>
           <Button size={size} variant="outlined" {...args}>
-            '{size}' Button
+            &apos;{size}&apos; Button
           </Button>
         </div>
       ))}
@@ -90,9 +90,9 @@ export const Spacings: Story = {
         </Button>
       </div>
       {BUTTON_SPACINGS.map((spacing) => (
-        <div>
+        <div key={spacing}>
           <Button spacing={spacing} variant="outlined" {...args}>
-            '{spacing}' Button
+            &apos;{spacing}&apos; Button
           </Button>
         </div>
       ))}
@@ -104,9 +104,9 @@ export const Variants: Story = {
   render: (args) => (
     <div className="story-grid">
       {BUTTON_VARIANTS.map((variant) => (
-        <div>
+        <div key={variant}>
           <Button variant={variant} {...args}>
-            '{variant}' button
+            &apos;{variant}&apos; button
           </Button>
         </div>
       ))}

@@ -20,7 +20,7 @@ export default function InputWrapper<TElement extends ElementType>({
   size,
   ...props
 }: InputWrapperProps<TElement> & ComponentPropsWithoutRef<TElement>) {
-  const Element = as || "div";
+  const Element = as ?? "div";
   return (
     <Element
       className={clsx(size && styles[`is-${size}`], className)}

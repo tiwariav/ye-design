@@ -55,8 +55,7 @@ export default function ArcProgress({
           <path
             className={clsx(
               styles.segment,
-              // @ts-ignore: TS7053 because of dynamic key
-              styles[`segment${index + 1}`],
+              styles[`segment${index + 1}` as keyof typeof styles],
               innerClassNames?.segment,
               innerClassNames?.[`segment${index + 1}`],
             )}

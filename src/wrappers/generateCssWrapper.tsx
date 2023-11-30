@@ -11,8 +11,8 @@ export default function generateCssWrapper<
   Props extends ComponentPropsWithoutRef<C>,
 >(rootClassName: string, as?: C, defaultProps?: Props) {
   return forwardRef<Props["ref"], Props & { className: string }>(
-    ({ className, ...props }, ref) => {
-      const Component = as || "div";
+    function CssWrapper({ className, ...props }, ref) {
+      const Component = as ?? "div";
       return (
         <Component
           className={clsx(rootClassName, className)}

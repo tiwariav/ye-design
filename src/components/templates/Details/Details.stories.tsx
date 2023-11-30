@@ -6,8 +6,8 @@ import Details from "./index.js";
 
 export const Template = (args: ComponentProps<typeof Details>) => (
   <Details {...args}>
-    {Array.from({ length: 4 }, () => (
-      <LoremCard />
+    {Array.from({ length: 4 }, (_item, index) => (
+      <LoremCard key={index} />
     ))}
   </Details>
 );

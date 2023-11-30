@@ -59,7 +59,7 @@ export const Layouts: Story = {
     <div className="story-grid">
       <Card {...args} />
       {CARD_LAYOUTS.map((layout) => (
-        <Card layout={layout} {...args} />
+        <Card key={layout} layout={layout} {...args} />
       ))}
     </div>
   ),
@@ -68,9 +68,11 @@ export const Layouts: Story = {
 export const Floating: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Card children={children} {...args} />
+      <Card {...args}>{children}</Card>
       {COMPONENT_FLOAT.map((floating) => (
-        <Card children={`floating ${floating}`} floating={floating} {...args} />
+        <Card floating={floating} key={floating} {...args}>
+          floating {floating}
+        </Card>
       ))}
     </div>
   ),
@@ -79,9 +81,11 @@ export const Floating: Story = {
 export const Flying: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Card children={children} {...args} />
+      <Card {...args}>{children}</Card>
       {CARD_FLYING.map((floating) => (
-        <Card children={`flying ${floating}`} flying={floating} {...args} />
+        <Card flying={floating} key={floating} {...args}>
+          flying {floating}
+        </Card>
       ))}
     </div>
   ),
@@ -90,9 +94,11 @@ export const Flying: Story = {
 export const Height: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Card children={children} {...args} />
+      <Card {...args}>{children}</Card>
       {CARD_HEIGHTS.map((height) => (
-        <Card children={`height ${height}`} height={height} {...args} />
+        <Card height={height} key={height} {...args}>
+          height {height}
+        </Card>
       ))}
     </div>
   ),
@@ -103,7 +109,9 @@ export const Variants: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
       {CARD_VARIANTS.map((variant) => (
-        <Card children={`variant ${variant}`} variant={variant} {...args} />
+        <Card key={variant} variant={variant} {...args}>
+          variant {variant}
+        </Card>
       ))}
     </div>
   ),
@@ -115,9 +123,11 @@ export const ViewMode: Story = {
   },
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Card children={children} {...args} />
+      <Card {...args}>{children}</Card>
       {CARD_VIEW_MODES.map((viewMode) => (
-        <Card children={`viewMode ${viewMode}`} viewMode={viewMode} {...args} />
+        <Card key={viewMode} viewMode={viewMode} {...args}>
+          viewMode ${viewMode}
+        </Card>
       ))}
     </div>
   ),

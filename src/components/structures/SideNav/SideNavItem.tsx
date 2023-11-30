@@ -11,7 +11,7 @@ export interface SideNavItemProps<TElement extends ElementType = "div"> {
   icon?: ReactNode;
 }
 
-export default function SideNavItem<TElement extends ElementType = "div">({
+export default function SideNavItem<TElement extends ElementType>({
   as,
   children,
   className,
@@ -19,7 +19,7 @@ export default function SideNavItem<TElement extends ElementType = "div">({
   ...props
 }: SideNavItemProps<TElement> & ComponentPropsWithoutRef<TElement>) {
   const layoutState = LayoutContext.useContextState();
-  const Element = as || "div";
+  const Element = as ?? "div";
   return (
     <Element
       className={clsx(styles.root, className, {

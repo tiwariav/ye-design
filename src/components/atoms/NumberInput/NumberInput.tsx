@@ -21,7 +21,7 @@ export interface NumberInputProps
 }
 
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
-  ({ format, parse, ...props }, ref) => {
+  function NumberInputRender({ format = false, parse = false, ...props }, ref) {
     const textValueRef = useRef<InputFormValue>();
 
     const formatFunction = useCallback(
@@ -69,7 +69,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         const textValue = textValueRef.current;
         if (isEmpty(textValue)) return emptyValue;
         const unformattedValue = format
-          ? stringToNumber(formattedValue as number | string, emptyValue)
+          ? stringToNumber(formattedValue!, emptyValue)
           : textValue;
         return parse || isNil(unformattedValue)
           ? unformattedValue

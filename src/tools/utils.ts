@@ -1,7 +1,7 @@
 import { isNil } from "lodash-es";
 
-export function isEmpty(params: any) {
-  return isNil(params) || params === "";
+export function isEmpty<TValue>(value: TValue) {
+  return isNil(value) || value === "";
 }
 
 export function inSubArray<TArray extends [], TValue = TArray[number]>(

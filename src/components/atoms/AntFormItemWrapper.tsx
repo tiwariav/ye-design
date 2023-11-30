@@ -65,7 +65,7 @@ export default function AntFormItemWrapper({
       onKeyPress: handleKeyPress,
       ...(loading ? { isLoading: loading } : {}),
       ...(label ? { label } : {}),
-      // @ts-ignore: TS2339 because Rules type has no prop required
+      // @ts-expect-error: TS2339 because Rules type has no prop required
       required: rules?.find((item) => item.required),
     };
   }, [handleBlur, handleKeyPress, label, loading, rules]);

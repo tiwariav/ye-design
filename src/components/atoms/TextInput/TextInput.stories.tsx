@@ -42,7 +42,7 @@ export const Variants: Story = {
   render: (args) => (
     <div className="story-grid">
       {TEXT_INPUT_VARIANTS.map((variant) => (
-        <div>
+        <div key={variant}>
           <TextInput
             label={`'${variant}' Text Input`}
             placeholder="Enter your text"

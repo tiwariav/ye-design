@@ -23,13 +23,12 @@ export const Basic: Story = {};
 export const Align: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Container children="No align" className="story-bordered" {...args} />
-      <Container
-        align="center"
-        children="'center' align"
-        className="story-bordered"
-        {...args}
-      />
+      <Container className="story-bordered" {...args}>
+        No align
+      </Container>
+      <Container align="center" className="story-bordered" {...args}>
+        &apos;center&apos; align
+      </Container>
     </div>
   ),
 };
@@ -37,21 +36,21 @@ export const Align: Story = {
 export const Height: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Container children={children} className="story-bordered" {...args} />
+      <Container className="story-bordered" {...args}>
+        {children}
+      </Container>
       {CONTAINER_HEIGHTS.map((height) => (
         <Container
-          children={
-            <>
-              <p>'{height}' height</p>
-              {Array.from({ length: 10 }).map(() => (
-                <p>{metadata.args?.children}</p>
-              ))}
-            </>
-          }
           className="story-bordered"
           height={height}
+          key={height}
           {...args}
-        />
+        >
+          <p>&apos;{height}&apos; height</p>
+          {Array.from({ length: 10 }).map((_item, index) => (
+            <p key={index}>{metadata.args?.children}</p>
+          ))}
+        </Container>
       ))}
     </div>
   ),
@@ -60,19 +59,19 @@ export const Height: Story = {
 export const Spacings: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Container children={children} className="story-bordered" {...args} />
+      <Container className="story-bordered" {...args}>
+        {children}
+      </Container>
       {CONTAINER_SPACINGS.map((spacing) => (
         <Container
-          children={
-            <>
-              <p>'{spacing}' spacing</p>
-              <p>{metadata.args?.children}</p>
-            </>
-          }
           className="story-bordered"
+          key={spacing}
           spacing={spacing}
           {...args}
-        />
+        >
+          <p>&apos;{spacing}&apos; spacing</p>
+          <p>{metadata.args?.children}</p>
+        </Container>
       ))}
     </div>
   ),
@@ -81,37 +80,32 @@ export const Spacings: Story = {
 export const Variants: Story = {
   render: ({ children, ...args }) => (
     <div className="story-grid">
-      <Container children={children} className="story-bordered" {...args} />
-      <Container
-        children={
-          <>
-            <p>'secondary' variant</p>
-            <p>{metadata.args?.children}</p>
-          </>
-        }
-        className="story-bordered"
-        variant="secondary"
-        {...args}
-      />
+      <Container className="story-bordered" {...args}>
+        {children}
+      </Container>
+      <Container className="story-bordered" variant="secondary" {...args}>
+        <p>&apos;secondary&apos; variant</p>
+        <p>{metadata.args?.children}</p>
+      </Container>
     </div>
   ),
 };
 export const Widths: Story = {
   render: ({ children, ...args }) => (
     <div className="story-list">
-      <Container children={children} className="story-bordered" {...args} />
+      <Container className="story-bordered" {...args}>
+        {children}
+      </Container>
       {CONTAINER_WIDTHS.map((width) => (
         <Container
-          children={
-            <>
-              <p>'{width}' width</p>
-              <p>{metadata.args?.children}</p>
-            </>
-          }
           className="story-bordered"
+          key={width}
           width={width}
           {...args}
-        />
+        >
+          <p>&apos;{width}&apos; width</p>
+          <p>{metadata.args?.children}</p>
+        </Container>
       ))}
     </div>
   ),

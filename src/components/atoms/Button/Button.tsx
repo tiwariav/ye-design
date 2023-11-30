@@ -50,14 +50,14 @@ const setTrackingProperties = (node: HTMLElement, x = 0, y = 0) => {
   node.style.setProperty("--ye-effect-tracking-y", `${y}px`);
 };
 
-type NeuOptions = {
+interface NeuOptions {
   colors?: {
     backgroundDark?: string;
     backgroundLight?: string;
     shadowDark?: string;
     shadowLight?: string;
   };
-};
+}
 
 const setNeuProperties = (node: HTMLElement, options: NeuOptions = {}) => {
   overrideStyleProperty(
@@ -97,11 +97,11 @@ export const BUTTON_VARIANTS = [
   "neu",
 ] as const;
 
-type SharedButtonProps = {
+interface SharedButtonProps {
   effects?: (typeof BUTTON_EFFECTS)[number][];
   neuOptions?: NeuOptions;
   variant?: (typeof BUTTON_VARIANTS)[number];
-};
+}
 
 function useButtonEffects({
   effects = [],
@@ -149,83 +149,81 @@ export interface ButtonProps
 /**
  * Primary UI component for user interaction
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      children,
-      className,
-      disabled,
-      effects = [],
-      iconAfter,
-      iconBefore,
-      isBusy,
-      isFullWidth,
-      neuOptions,
-      onClick,
-      size,
-      spacing,
-      variant = "basic",
-      ...props
-    },
-    propRef,
-  ) => {
-    const { innerRef, setInnerRef } = usePropRef(propRef);
-
-    useButtonEffects({
-      effects,
-      innerRef,
-      neuOptions,
-      variant,
-    });
-
-    const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
-
-    return (
-      <FormButtonControl
-        className={clsx(
-          styles.root,
-          size && styles[`size-${size}`],
-          variant && styles[`variant-${variant}`],
-          {
-            [styles.isDisabled]: disabled,
-            [styles.isFullWidth]: isFullWidth,
-          },
-          spacing && styles[`spacing-${spacing}`],
-          ...effectClasses,
-          className,
-        )}
-        disabled={disabled || isBusy}
-        onClick={(event) => {
-          if (effects.includes("ripple")) {
-            setRippleProperties(
-              innerRef.current,
-              false,
-              event.nativeEvent.offsetX,
-              event.nativeEvent.offsetY,
-            );
-          }
-          onClick?.(event);
-        }}
-        ref={setInnerRef}
-        type="button"
-        variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
-        {...props}
-      >
-        {iconBefore && (
-          <FormIconSpan className={styles.icon}>{iconBefore}</FormIconSpan>
-        )}
-        {(iconBefore || iconAfter) && children ? (
-          <span>{children}</span>
-        ) : (
-          children
-        )}
-        {iconAfter && (
-          <FormIconSpan className={styles.icon}>{iconAfter}</FormIconSpan>
-        )}
-        {isBusy && <Spinner className={styles.spinner} />}
-      </FormButtonControl>
-    );
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function ButtonRender(
+  {
+    children,
+    className,
+    disabled = false,
+    effects = [],
+    iconAfter,
+    iconBefore,
+    isBusy = false,
+    isFullWidth = false,
+    neuOptions,
+    onClick,
+    size,
+    spacing,
+    variant = "basic",
+    ...props
   },
-);
+  propRef,
+) {
+  const { innerRef, setInnerRef } = usePropRef(propRef);
+
+  useButtonEffects({
+    effects,
+    innerRef,
+    neuOptions,
+    variant,
+  });
+
+  const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
+
+  return (
+    <FormButtonControl
+      className={clsx(
+        styles.root,
+        size && styles[`size-${size}`],
+        variant && styles[`variant-${variant}`],
+        {
+          [styles.isDisabled]: disabled,
+          [styles.isFullWidth]: isFullWidth,
+        },
+        spacing && styles[`spacing-${spacing}`],
+        ...effectClasses,
+        className,
+      )}
+      disabled={disabled || isBusy}
+      onClick={(event) => {
+        if (effects.includes("ripple")) {
+          setRippleProperties(
+            innerRef.current,
+            false,
+            event.nativeEvent.offsetX,
+            event.nativeEvent.offsetY,
+          );
+        }
+        onClick?.(event);
+      }}
+      ref={setInnerRef}
+      type="button"
+      variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
+      {...props}
+    >
+      {iconBefore && (
+        <FormIconSpan className={styles.icon}>{iconBefore}</FormIconSpan>
+      )}
+      {(iconBefore ?? iconAfter) && children ? (
+        <span>{children}</span>
+      ) : (
+        children
+      )}
+      {iconAfter && (
+        <FormIconSpan className={styles.icon}>{iconAfter}</FormIconSpan>
+      )}
+      {isBusy && <Spinner className={styles.spinner} />}
+    </FormButtonControl>
+  );
+});
 
 export default Button;

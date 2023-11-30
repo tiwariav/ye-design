@@ -37,9 +37,13 @@ function formControlProps<TElement>(
 export const FormInputControl = forwardRef<
   HTMLInputElement,
   FormControlProps & ComponentPropsWithoutRef<"input">
->((props, ref) => <input {...formControlProps(props, ref)} />);
+>(function FormInputControlRender(props, ref) {
+  return <input {...formControlProps(props, ref)} />;
+});
 
 export const FormButtonControl = forwardRef<
   HTMLButtonElement,
   FormControlProps & ComponentPropsWithoutRef<"button">
->((props, ref) => <button {...formControlProps(props, ref)} />);
+>(function FormButtonControlRender(props, ref) {
+  return <button {...formControlProps(props, ref)} />;
+});

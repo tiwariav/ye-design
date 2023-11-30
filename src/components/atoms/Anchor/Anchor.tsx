@@ -41,46 +41,44 @@ export interface AnchorProps extends ComponentPropsWithoutRef<"a"> {
 /**
  * Primary UI component for user interaction
  */
-const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-  (
-    {
-      as,
-      children,
-      className,
-      iconAfter,
-      iconBefore,
-      noVisited,
-      size,
-      spacing,
-      variant,
-      ...props
-    },
-    ref,
-  ) => {
-    const Element = as || "a";
-    return (
-      <Element
-        className={clsx(
-          styles.anchor,
-          {
-            [styles.noVisited]: noVisited,
-          },
-          size && styles[`size-${size}`],
-          variant && styles[`variant-${variant}`],
-          spacing && styles[`spacing-${spacing}`],
-          className,
-        )}
-        ref={ref}
-        {...props}
-      >
-        {iconBefore && <IconSpan>{iconBefore}</IconSpan>}
-        {children}
-        {iconAfter && (
-          <IconSpan className={styles.iconAfter}>{iconAfter}</IconSpan>
-        )}
-      </Element>
-    );
+const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(function AnchorRender(
+  {
+    as = "a",
+    children,
+    className,
+    iconAfter,
+    iconBefore,
+    noVisited,
+    size,
+    spacing,
+    variant,
+    ...props
   },
-);
+  ref,
+) {
+  const Element = as;
+  return (
+    <Element
+      className={clsx(
+        styles.anchor,
+        {
+          [styles.noVisited]: noVisited,
+        },
+        size && styles[`size-${size}`],
+        variant && styles[`variant-${variant}`],
+        spacing && styles[`spacing-${spacing}`],
+        className,
+      )}
+      ref={ref}
+      {...props}
+    >
+      {iconBefore && <IconSpan>{iconBefore}</IconSpan>}
+      {children}
+      {iconAfter && (
+        <IconSpan className={styles.iconAfter}>{iconAfter}</IconSpan>
+      )}
+    </Element>
+  );
+});
 
 export default Anchor;

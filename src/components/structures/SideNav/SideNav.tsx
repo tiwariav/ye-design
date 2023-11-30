@@ -33,7 +33,7 @@ export function SideNavToggle({ children, ...props }: ButtonProps) {
       variant="borderless"
       {...props}
     >
-      {children || <IconMenu />}
+      {children ?? <IconMenu />}
     </Button>
   );
 }
@@ -50,7 +50,7 @@ export interface SideNavProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
-  (
+  function SideNavWrapperRender(
     {
       children,
       className,
@@ -61,7 +61,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
       ...props
     }: SideNavProps,
     ref,
-  ) => {
+  ) {
     const layoutState = LayoutContext.useContextState();
     const layoutDispatch = LayoutContext.useContextDispatch();
     const { innerRef, setInnerRef } = usePropRef([
@@ -88,7 +88,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
         const toggleWidth = Number.parseInt(cssVariable(CSS_VAR_TOGGLE_WIDTH));
         if (toggleWidth) {
           newProperties[CSS_VAR_TOGGLE_WIDTH] = `${
-            toggleWidth + (scrollWidth || 0) / 2
+            toggleWidth + (scrollWidth ?? 0) / 2
           }px`;
         }
       }
@@ -108,13 +108,22 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
               isToggled: !layoutState.sideNav.isToggled,
             })
           }
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              layoutDispatch.dispatch.updateSideNav({
+                isToggled: !layoutState.sideNav.isToggled,
+              });
+            }
+          }}
+          role="button"
+          tabIndex={0}
         />
         <div
           className={clsx(
             styles.root,
             {
               [styles.isFullHeight]: isFullHeight,
-              [styles.isSticky]: sticky || isFullHeight,
+              [styles.isSticky]: !!sticky || isFullHeight,
               [styles.isStickyBottom]: bottom,
               [styles.isToggled]: layoutState.sideNav.isToggled,
             },
@@ -125,7 +134,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
           {...props}
         >
           {toggleIcon !== null &&
-            (toggleIcon || (
+            (toggleIcon ?? (
               <div className={styles.toggle}>
                 <SideNavToggle />
               </div>
@@ -145,15 +154,17 @@ const SideNavInner = ({
   </div>
 );
 
-const SideNav = forwardRef<HTMLDivElement, SideNavProps>((props, ref) => {
-  const layoutState = LayoutContext.useContextState();
-  return isEmpty(layoutState) ? (
-    <LayoutContext.LayoutProvider>
+const SideNav = forwardRef<HTMLDivElement, SideNavProps>(
+  function SideNavRender(props, ref) {
+    const layoutState = LayoutContext.useContextState();
+    return isEmpty(layoutState) ? (
+      <LayoutContext.LayoutProvider>
+        <SideNavWrapper {...props} ref={ref} />
+      </LayoutContext.LayoutProvider>
+    ) : (
       <SideNavWrapper {...props} ref={ref} />
-    </LayoutContext.LayoutProvider>
-  ) : (
-    <SideNavWrapper {...props} ref={ref} />
-  );
-});
+    );
+  },
+);
 
 export default SideNav;

@@ -68,7 +68,7 @@ export const Basic: Story = {
   },
 };
 
-export const FixedColumns = {
+export const FixedColumns: Story = {
   args: {
     ...Basic.args,
     columns: 2,
@@ -76,7 +76,7 @@ export const FixedColumns = {
   },
 };
 
-export const Grid = {
+export const Grid: Story = {
   args: {
     ...Basic.args,
     title: "A grid of items",

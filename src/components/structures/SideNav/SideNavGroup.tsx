@@ -8,11 +8,11 @@ export const SideNavTitle = (props: SideNavItemProps) => (
   <SideNavItem className={clsx(styles.title)} {...props} />
 );
 
-type SideNavGroupProps = {
+interface SideNavGroupProps {
   children: ReactNode;
   icon?: ReactNode;
   title?: ReactNode;
-};
+}
 export default function SideNavGroup({
   children,
   icon,

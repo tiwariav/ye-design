@@ -43,9 +43,9 @@ export const Sizes: Story = {
         </Anchor>
       </div>
       {COMPONENT_SIZES.map((size) => (
-        <div>
+        <div key={size}>
           <Anchor href="/" size={size} variant="outlined" {...args}>
-            '{size}' anchor
+            &apos;{size}&apos; anchor
           </Anchor>
         </div>
       ))}
@@ -62,9 +62,9 @@ export const Spacings: Story = {
         </Anchor>
       </div>
       {COMPONENT_SPACINGS.map((spacing) => (
-        <div>
+        <div key={spacing}>
           <Anchor href="/" spacing={spacing} variant="outlined" {...args}>
-            '{spacing}' anchor
+            &apos;{spacing}&apos; anchor
           </Anchor>
         </div>
       ))}
@@ -81,9 +81,9 @@ export const Variants: Story = {
         </Anchor>
       </div>
       {ANCHOR_VARIANTS.map((variant) => (
-        <div>
+        <div key={variant}>
           <Anchor href="/" variant={variant} {...args}>
-            '{variant}' anchor
+            &apos;{variant}&apos; anchor
           </Anchor>
         </div>
       ))}
