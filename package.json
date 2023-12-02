@@ -18,14 +18,12 @@
     "build": "rollup --config rollup.config.js",
     "dev": "rollup -w --config rollup.config.js --watch.onEnd 'yalc push dist'",
     "postversion": "cp -r package.json ..",
+    "postinstall": "husky install",
     "precommit": "lint-staged",
     "release": "cd dist && yarn npm publish",
     "storybook": "sb dev -p 9002",
     "build-storybook": "sb build",
-    "test": "jest --coverage --json --outputFile=./reports/test-report.json",
-    "postinstall": "husky install",
-    "prepack": "npx pinst --disable",
-    "postpack": "npx pinst --enable"
+    "test": "jest --coverage --json --outputFile=./reports/test-report.json"
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
@@ -48,7 +46,7 @@
     "tslib": "^2.6.2",
     "type-fest": "^4.8.2",
     "use-immer": "^0.9.0",
-    "wo-library": "^3.5.10"
+    "wo-library": "^3.5.12"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",

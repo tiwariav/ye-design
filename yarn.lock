@@ -5465,7 +5465,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiwariav/stylelint-config@npm:^1.0.2, @tiwariav/stylelint-config@npm:^1.0.3":
+"@tiwariav/stylelint-config@npm:^1.0.3":
   version: 1.0.3
   resolution: "@tiwariav/stylelint-config@npm:1.0.3"
   dependencies:
@@ -23735,13 +23735,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wo-library@npm:^3.5.10":
-  version: 3.5.11
-  resolution: "wo-library@npm:3.5.11"
+"wo-library@npm:^3.5.12":
+  version: 3.5.12
+  resolution: "wo-library@npm:3.5.12"
   dependencies:
     "@floating-ui/react": "npm:^0.26.3"
     "@mdx-js/react": "npm:^3.0.0"
-    "@tiwariav/stylelint-config": "npm:^1.0.2"
+    "@tiwariav/stylelint-config": "npm:^1.0.3"
     "@types/lodash-es": "npm:^4.17.12"
     clsx: "npm:^2.0.0"
     glob: "npm:^10.3.10"
@@ -23771,7 +23771,7 @@ __metadata:
       optional: true
     swiper:
       optional: true
-  checksum: eba38b20084ebbdf5dfc3420d091f18fd6fc44e95b5e676ba2050b39ee2d6091ce1481a6f8183a6e6bdeca53a8a3e528dbb9809e629f1631291e73348b8d4914
+  checksum: 2953ed51e4ca4376ae076f5e20be1cfd9692ff03b249564efd298375406088c29ce56ab8f345043d779e9ec780067f60c49a9b2430e994b67142e46ce25dd999
   languageName: node
   linkType: hard
 
@@ -24169,7 +24169,7 @@ __metadata:
     typescript-plugin-css-modules: "npm:^5.0.2"
     use-immer: "npm:^0.9.0"
     webpack: "npm:^5.89.0"
-    wo-library: "npm:^3.5.10"
+    wo-library: "npm:^3.5.12"
   peerDependencies:
     antd: ^5.10.2
     overlayscrollbars-react: ^0.5.3

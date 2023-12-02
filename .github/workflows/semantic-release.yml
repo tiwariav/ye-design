@@ -1,36 +1,18 @@
-# Workflow name
 name: "Semantic Release"
 
 on:
   push:
     branches:
       - main
-      - 1.x
-      - 2.x
 
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: yarn
-          node-version: 18
-      - run: yarn set version berry
-      - run: yarn
+      - uses: actions/checkout@v4
+      - uses: tiwariav/github-actions/setup-yarn@main
       - run: yarn build
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v4
+      - uses: tiwariav/github-actions/semantic-release@main
         with:
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-            conventional-changelog-conventionalcommits
-            pinst
-            wo-library
-        env:
-          HUSKY: 0
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}

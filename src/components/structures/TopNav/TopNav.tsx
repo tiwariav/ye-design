@@ -181,7 +181,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       hideOnScroll = false,
       shrinkOffset = -1,
     } = isObject(sticky) ? sticky : {};
-    const hasContextMenu = contentMenu ?? contentLeft ?? contentRight;
+    const hasContentMenu = contentMenu ?? contentLeft ?? contentRight;
 
     const { direction, scrollY, transform } = useScrollUpdates({
       containerRef,
@@ -273,7 +273,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                 {contentLeft}
               </div>
             )}
-            {hasContextMenu && (
+            {hasContentMenu && (
               <FlexAlignCenterDiv className={styles.contentRightWrapper}>
                 {/* right content */}
                 {contentRight && (
@@ -285,7 +285,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                 {!multiRow &&
                   smallerWidth !== false &&
                   rightNavIcon !== null &&
-                  hasContextMenu && (
+                  hasContentMenu && (
                     <IconMenuItem
                       onClick={() =>
                         layoutDispatch.dispatch.updateTopNav({
@@ -300,7 +300,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
             )}
           </Container>
           {/* right content menu */}
-          {smallerWidth && hasContextMenu && (
+          {smallerWidth && hasContentMenu && (
             <div
               className={clsx(
                 styles.contentMenuWrapper,
@@ -328,12 +328,16 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                 >
                   {contentMenu ?? (
                     <>
-                      <FlexColDiv className={styles.contentMenuTop}>
-                        {contentLeft}
-                      </FlexColDiv>
-                      <FlexColDiv className={styles.contentMenuBottom}>
-                        {contentRight}
-                      </FlexColDiv>
+                      {contentLeft && (
+                        <FlexColDiv className={styles.contentMenuTop}>
+                          {contentLeft}
+                        </FlexColDiv>
+                      )}
+                      {contentRight && (
+                        <FlexColDiv className={styles.contentMenuBottom}>
+                          {contentRight}
+                        </FlexColDiv>
+                      )}
                     </>
                   )}
                 </FlexColDiv>

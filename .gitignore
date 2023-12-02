@@ -77,4 +77,4 @@ reports
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
-.pnp.*
+.pnp.cjs

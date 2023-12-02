@@ -45,7 +45,7 @@ const config = [
       copy({ targets: [{ dest: "dist", src: "types" }] }),
       postcss(postcssConfig),
       typescript({ tsconfig: "./tsconfig.rollup.json" }),
-      ...getBuildPlugins(),
+      ...getBuildPlugins({ removePostInstall: true }),
       replace({
         patterns: [
           {
