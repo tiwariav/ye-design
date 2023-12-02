@@ -1,3 +1,15 @@
+## [3.4.4](https://github.com/tiwariav/ye-design/compare/v3.4.3...v3.4.4) (2023-12-02)
+
+
+### 🐛 Bug Fixes
+
+* remove divider from topnav if not required by content ([826e4b4](https://github.com/tiwariav/ye-design/commit/826e4b4f17ab71f828dc482fbe13d94f4cee8d2b))
+
+
+### ♻️ Code Refactors
+
+* fix for new eslint config ([a7ec8e3](https://github.com/tiwariav/ye-design/commit/a7ec8e343ec4c4b713e3552c4ddb916ee9602b44))
+
 ## [3.4.3](https://github.com/tiwariav/ye-design/compare/v3.4.2...v3.4.3) (2023-11-14)
 
 
