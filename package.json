@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "3.4.3",
+  "version": "3.4.4",
   "type": "module",
   "sideEffects": false,
   "engines": {
@@ -18,7 +18,6 @@
     "build": "rollup --config rollup.config.js",
     "dev": "rollup -w --config rollup.config.js --watch.onEnd 'yalc push dist'",
     "postversion": "cp -r package.json ..",
-    "postinstall": "husky install",
     "precommit": "lint-staged",
     "release": "cd dist && yarn npm publish",
     "storybook": "sb dev -p 9002",
