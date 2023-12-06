@@ -25,6 +25,7 @@
     @media (--media-max-sm) {
       position: fixed;
       top: 0;
+      left: 0;
       z-index: calc(var(--ye-z-topnav) - 1);
       width: var(--ye-layout-side-nav-toggle-width);
     }
@@ -62,6 +63,10 @@
 
     @media (--media-min-md) and (--media-max-md) {
       width: var(--ye-layout-side-nav-width);
+    }
+
+    @media (--media-max-sm) {
+      width: 100vw;
     }
   }
 

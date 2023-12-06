@@ -46,7 +46,7 @@
 
   .progress-partial {
     &.circle-progress {
-      stroke: var(--color-progress-partial)
+      stroke: var(--color-progress-partial);
     }
 
     &.text {
