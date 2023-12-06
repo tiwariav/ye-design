@@ -1,3 +1,10 @@
+## [3.4.5](https://github.com/tiwariav/ye-design/compare/v3.4.4...v3.4.5) (2023-12-06)
+
+
+### 🐛 Bug Fixes
+
+* fix SideNav toggled styles on small devices ([0cd45e6](https://github.com/tiwariav/ye-design/commit/0cd45e69287dcaf450db990589490727c330e339))
+
 ## [3.4.4](https://github.com/tiwariav/ye-design/compare/v3.4.3...v3.4.4) (2023-12-02)
 
 
