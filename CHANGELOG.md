@@ -1,3 +1,10 @@
+## [3.5.0](https://github.com/tiwariav/ye-design/compare/v3.4.5...v3.5.0) (2023-12-06)
+
+
+### ✨ Features
+
+* errors prop in hook form ([a6352c7](https://github.com/tiwariav/ye-design/commit/a6352c700982fb1dab2a5ae5ff778c162da44fd3))
+
 ## [3.4.5](https://github.com/tiwariav/ye-design/compare/v3.4.4...v3.4.5) (2023-12-06)
 
 
