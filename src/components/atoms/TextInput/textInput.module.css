@@ -10,7 +10,7 @@
     width: 100%;
 
     & ::placeholder {
-      color: rgba(0 0 0 / 0.4);
+      color: var(--ye-color-black-50);
       font-weight: 400;
       font-size: var(--ye-font-size-small);
     }

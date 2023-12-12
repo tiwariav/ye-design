@@ -1,6 +1,6 @@
 @layer ye-components {
   .root {
     --module-spinkit-size: 40px;
-    --module-spinkit-color: #333;
+    --module-spinkit-color: var(--ye-color-black-75);
   }
 }

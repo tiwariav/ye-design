@@ -14,7 +14,7 @@ type ErrorParams<TFieldValues extends FieldValues> = Parameters<
   UseFormSetError<TFieldValues>
 >;
 export interface HookFormProps<TFieldValues extends FieldValues>
-  extends UseFormProps<TFieldValues> {
+  extends Omit<UseFormProps<TFieldValues>, "errors"> {
   children: React.ReactNode;
   className?: string;
   errors?: Record<ErrorParams<TFieldValues>[0], string>;

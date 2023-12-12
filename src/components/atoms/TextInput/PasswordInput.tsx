@@ -1,7 +1,7 @@
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useState } from "react";
 
-import { Button } from "../index.js";
+import Button from "../Button/Button.js";
 import TextInput, { TextInputProps } from "./TextInput.js";
 
 export default function PasswordInput(props: TextInputProps) {

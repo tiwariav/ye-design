@@ -1,12 +1,10 @@
 /* eslint-disable unicorn/prefer-module */
 /* used only by storybook */
 
-const { getFinalConfig } = require("wo-library/tools/cjs/postcss.cjs");
+const { getConfig } = require("wo-library/tools/cjs/postcss.cjs");
+const globalData = require("@csstools/postcss-global-data");
 
-const config = getFinalConfig("development");
-config.plugins.splice(0, 0, [
-  "@csstools/postcss-global-data",
-  { files: ["./src/styles/media.css"] },
-]);
+const config = getConfig(process.env.NODE_ENV || "development");
+config.plugins.splice(0, 0, globalData({ files: ["./src/styles/media.css"] }));
 
 module.exports = config;
