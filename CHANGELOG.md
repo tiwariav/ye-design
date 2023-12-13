@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/tiwariav/ye-design/compare/v3.5.0...v3.5.1) (2023-12-13)
+
+
+### ♻️ Code Refactors
+
+* use new rollup config ([7d6b415](https://github.com/tiwariav/ye-design/commit/7d6b4159f314818e933de3b1fb0a1ba20a16407b))
+
 ## [3.5.0](https://github.com/tiwariav/ye-design/compare/v3.4.5...v3.5.0) (2023-12-06)
 
 
