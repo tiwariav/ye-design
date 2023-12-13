@@ -51,28 +51,30 @@ export default function ArcProgress({
   return (
     <div className={clsx(styles.root, className)}>
       <svg className={styles.svg} viewBox="0 0 100 50">
-        {angles.map(([startAngle, endAngle], index) => (
-          <path
-            className={clsx(
-              styles.segment,
-              // @ts-expect-error: TS7053 because of dynamic key
-              styles[`segment${index + 1}`],
-              innerClassNames?.segment,
-              innerClassNames?.[`segment${index + 1}`],
-            )}
-            d={describeArc(
-              50,
-              50 - strokeWidth,
-              50 - strokeWidth * 2,
-              startAngle,
-              endAngle,
-            )}
-            fill="none"
-            key={index}
-            strokeLinecap="round"
-            strokeWidth={strokeWidth}
-          />
-        ))}
+        {angles.map(([startAngle, endAngle], index) => {
+          const segmentIndex: `segment${number}` = `segment${index + 1}`;
+          return (
+            <path
+              className={clsx(
+                styles.segment,
+                styles[segmentIndex as keyof typeof styles],
+                innerClassNames?.segment,
+                innerClassNames?.[segmentIndex],
+              )}
+              d={describeArc(
+                50,
+                50 - strokeWidth,
+                50 - strokeWidth * 2,
+                startAngle,
+                endAngle,
+              )}
+              fill="none"
+              key={index}
+              strokeLinecap="round"
+              strokeWidth={strokeWidth}
+            />
+          );
+        })}
       </svg>
       <div className={clsx(styles.indicator)} id={`${animeId}-animeIndicator`}>
         <IconArrowLeftRhombus />

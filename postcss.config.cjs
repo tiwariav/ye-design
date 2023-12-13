@@ -1,6 +1,4 @@
 /* eslint-disable unicorn/prefer-module */
-/* used only by storybook */
-
 const { getConfig } = require("wo-library/tools/cjs/postcss.cjs");
 const globalData = require("@csstools/postcss-global-data");
 

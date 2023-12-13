@@ -24919,7 +24919,6 @@ __metadata:
     stylelint-config-rational-order: "npm:^0.1.2"
     stylelint-config-standard: "npm:^35.0.0"
     stylelint-declaration-block-no-ignored-properties: "npm:^2.7.0"
-    stylelint-declaration-strict-value: "npm:^1.9.2"
     ts-jest: "npm:^29.1.1"
     tsc-watch: "npm:^6.0.4"
     tslib: "npm:^2.6.2"
