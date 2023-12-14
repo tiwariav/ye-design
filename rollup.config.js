@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import {
   getCjsConfig,
   getCssConfig,
-  getTsConfig,
+  getEsConfig,
 } from "wo-library/tools/rollup/configs.js";
 import { getPublishPlugins } from "wo-library/tools/rollup/pluginSets.js";
 
@@ -15,7 +15,7 @@ cjsConfig.plugins.push(...getPublishPlugins({ removePostInstall: true }));
 
 const config = [
   cjsConfig,
-  getTsConfig(process.cwd(), { isDev }),
+  getEsConfig(process.cwd(), { isDev }),
   getCssConfig(process.cwd(), { isDev }),
 ];
 

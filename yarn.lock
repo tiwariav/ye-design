@@ -5987,22 +5987,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiwariav/stylelint-config@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@tiwariav/stylelint-config@npm:1.0.4"
-  dependencies:
-    stylelint: "npm:^16.0.2"
-    stylelint-a11y: "npm:^1.2.3"
-    stylelint-config-css-modules: "npm:^4.3.0"
-    stylelint-config-rational-order: "npm:^0.1.2"
-    stylelint-config-standard: "npm:^35.0.0"
-    stylelint-declaration-block-no-ignored-properties: "npm:^2.7.0"
-    stylelint-declaration-strict-value: "npm:^1.9.2"
-    stylelint-use-nesting: "npm:^4.1.0"
-  checksum: 5949b95fa5ed197504b4105de18acf29f74b9d62ceb9ca358997c48044ef3cc21848f27b2288112cfd706e91a7d73209aacd360bd57bc2b428baf4fe088b7a56
-  languageName: node
-  linkType: hard
-
 "@tiwariav/stylelint-config@npm:^1.0.8":
   version: 1.0.8
   resolution: "@tiwariav/stylelint-config@npm:1.0.8"
@@ -9905,13 +9889,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-color-names@npm:0.0.4":
-  version: 0.0.4
-  resolution: "css-color-names@npm:0.0.4"
-  checksum: 88ef97c25bcfb217469cdff428049022438cc546eb208210f0edec03b75050723db3ba02cd0f4959c84cd0659be0b43af3323eff80d1ba5fb15c2accf09ccbe2
-  languageName: node
-  linkType: hard
-
 "css-declaration-sorter@npm:^6.3.1":
   version: 6.4.1
   resolution: "css-declaration-sorter@npm:6.4.1"
@@ -10036,13 +10013,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-shorthand-properties@npm:^1.0.0":
-  version: 1.1.1
-  resolution: "css-shorthand-properties@npm:1.1.1"
-  checksum: f4a2acb9aa844e00ddc6bc47b7a68f2e3467f91e862253d276209f3e4f9c5821801babdfc9b8adba2b9271320bd54838953678859ef9edc33dd4b786fbe6c824
-  languageName: node
-  linkType: hard
-
 "css-tree@npm:^1.1.2, css-tree@npm:^1.1.3":
   version: 1.1.3
   resolution: "css-tree@npm:1.1.3"
@@ -10070,17 +10040,6 @@ __metadata:
     mdn-data: "npm:2.0.28"
     source-map-js: "npm:^1.0.1"
   checksum: 47e87b0f02f8ac22f57eceb65c58011dd142d2158128882a0bf963cf2eabb81a4ebbc2e3790c8289be7919fa8b83750c7b69272bd66772c708143b772ba3c186
-  languageName: node
-  linkType: hard
-
-"css-values@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "css-values@npm:0.1.0"
-  dependencies:
-    css-color-names: "npm:0.0.4"
-    ends-with: "npm:^0.2.0"
-    postcss-value-parser: "npm:^3.3.0"
-  checksum: e9269657c5483db78a6e7891a9a92a86d6724b4ff64133d90e6d09a0c8ee781dad9497cfbdd4e4b771d77faa8869fb5a457629f183eb7272875862580a9b443f
   languageName: node
   linkType: hard
 
@@ -11036,13 +10995,6 @@ __metadata:
     fast-json-parse: "npm:^1.0.3"
     objectorarray: "npm:^1.0.5"
   checksum: 8cd6dae45e693ae2b2cbff2384348d3a5e2a06cc0396dddca8165e46bd2fd8d5394d44d338ba653bbfce4aead90eca1ec1abe7203843c84155c645d283b6b884
-  languageName: node
-  linkType: hard
-
-"ends-with@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "ends-with@npm:0.2.0"
-  checksum: 9c8d0f700ab8e1422e306cd520db7ebfd0cee45e8fbc5a114ab5a121b235bc2c653ea78cff9b4c8f9420a15b625f73f1f8b64a729527512ed6c2e99b319ce2db
   languageName: node
   linkType: hard
 
@@ -21720,15 +21672,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shortcss@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "shortcss@npm:0.1.3"
-  dependencies:
-    css-shorthand-properties: "npm:^1.0.0"
-  checksum: 9fafbca3390608acafcc0cb2f3a8abe62cf51684e9189406b29f3242d4dbc93e9757a34d2017d7c3abe3b3a451b961d70acfe7e48acba5e362dbd7dd5752ca1a
-  languageName: node
-  linkType: hard
-
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
@@ -22537,15 +22480,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-a11y@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "stylelint-a11y@npm:1.2.3"
-  peerDependencies:
-    stylelint: ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
-  checksum: a6d7329a88f852770e7d796e91200f230c26e3d19cfea688ce75335dbbf5a7a31e2f171c204757094d858eebe23a4a7f0a5867c77051c962b0552cd7ead37ff2
-  languageName: node
-  linkType: hard
-
 "stylelint-config-css-modules@npm:^4.3.0":
   version: 4.3.0
   resolution: "stylelint-config-css-modules@npm:4.3.0"
@@ -22599,18 +22533,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-declaration-strict-value@npm:^1.9.2":
-  version: 1.9.2
-  resolution: "stylelint-declaration-strict-value@npm:1.9.2"
-  dependencies:
-    css-values: "npm:^0.1.0"
-    shortcss: "npm:^0.1.3"
-  peerDependencies:
-    stylelint: ">=7 <=15"
-  checksum: f47a3c703a3398a450fef96868fd16c2f4d93e819cea6cd2b8cb23619f44db840cc4e9b43faee4b5f68ccbcc4485b8e3437bd2ae0a37dd076d275b18eb00cdd6
-  languageName: node
-  linkType: hard
-
 "stylelint-order@npm:^2.2.1":
   version: 2.2.1
   resolution: "stylelint-order@npm:2.2.1"
@@ -22636,15 +22558,6 @@ __metadata:
   peerDependencies:
     stylelint: ^14.5.1 || ^15.0.0
   checksum: 5dfed5f9ac9812cd2ac6ef0272c720dee0326aaaee2998315a23bdcd71b8f04427f29cad634793eea2b45984182e20f03e90d43501e8e4d55bc956f80e2de477
-  languageName: node
-  linkType: hard
-
-"stylelint-use-nesting@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "stylelint-use-nesting@npm:4.1.0"
-  peerDependencies:
-    stylelint: ">= 10"
-  checksum: edbd74622a8e17c05e8b9a104c349466ced8cfcd9fdff53e1e30818d8f1bbafc28559718eb4965efcd6272c2a3a5cd1f858421128b9a46910d830081aff2a9e0
   languageName: node
   linkType: hard
 
@@ -24480,13 +24393,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wo-library@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "wo-library@npm:4.0.2"
+"wo-library@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "wo-library@npm:4.0.5"
   dependencies:
     "@floating-ui/react": "npm:^0.26.4"
     "@mdx-js/react": "npm:^3.0.0"
-    "@tiwariav/stylelint-config": "npm:^1.0.4"
+    "@tiwariav/stylelint-config": "npm:^1.0.8"
     "@types/lodash-es": "npm:^4.17.12"
     clsx: "npm:^2.0.0"
     glob: "npm:^10.3.10"
@@ -24516,7 +24429,7 @@ __metadata:
       optional: true
     swiper:
       optional: true
-  checksum: c889b2cf9a970f292f663e81663ea62bd0dfa8dceae44cbb106a6c015515b8ce7531106caae666167a35e7aefaea36a98ff9fde890aaad5b70a62be5e40e58f0
+  checksum: 4a7f475ec7157d6068c7d0b703ab29aa2e24d48d1de20ec170b975be80b8ad0976ba5a05a77ce6d3ecec5a6c662b096c2da617eab2732fa94bddf643bdd9c0ae
   languageName: node
   linkType: hard
 
@@ -24927,7 +24840,7 @@ __metadata:
     typescript-plugin-css-modules: "npm:^5.0.2"
     use-immer: "npm:^0.9.0"
     webpack: "npm:^5.89.0"
-    wo-library: "npm:^4.0.2"
+    wo-library: "npm:^4.0.5"
   peerDependencies:
     antd: ^5.10.2
     overlayscrollbars-react: ^0.5.3
