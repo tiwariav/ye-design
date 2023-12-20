@@ -1,3 +1,10 @@
+## [3.5.3](https://github.com/tiwariav/ye-design/compare/v3.5.2...v3.5.3) (2023-12-20)
+
+
+### 🐛 Bug Fixes
+
+* pass html for in label ([a641c9a](https://github.com/tiwariav/ye-design/commit/a641c9a20e0cb2674542fb02b2bfc69373d672f7))
+
 ## [3.5.2](https://github.com/tiwariav/ye-design/compare/v3.5.1...v3.5.2) (2023-12-14)
 
 
