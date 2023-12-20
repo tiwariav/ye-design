@@ -28,6 +28,7 @@ export default forwardRef<HTMLLabelElement, LabelProps>(function LabelRender(
           },
           className,
         )}
+        htmlFor={htmlFor}
         ref={ref}
         {...props}
       >
