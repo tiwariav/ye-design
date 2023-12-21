@@ -1,3 +1,17 @@
+## [3.5.3](https://github.com/tiwariav/ye-design/compare/v3.5.2...v3.5.3) (2023-12-20)
+
+
+### 🐛 Bug Fixes
+
+* pass html for in label ([a641c9a](https://github.com/tiwariav/ye-design/commit/a641c9a20e0cb2674542fb02b2bfc69373d672f7))
+
+## [3.5.2](https://github.com/tiwariav/ye-design/compare/v3.5.1...v3.5.2) (2023-12-14)
+
+
+### ♻️ Code Refactors
+
+* merge lint and release ci jobs ([049319e](https://github.com/tiwariav/ye-design/commit/049319ef8328e186267ce7a577676f2cc813b31f))
+
 ## [3.5.1](https://github.com/tiwariav/ye-design/compare/v3.5.0...v3.5.1) (2023-12-13)
 
 
