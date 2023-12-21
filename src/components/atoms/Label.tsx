@@ -12,7 +12,7 @@ interface LabelProps extends ComponentPropsWithoutRef<"label"> {
 }
 
 export default forwardRef<HTMLLabelElement, LabelProps>(function LabelRender(
-  { children, className, htmlFor, required, withFocus, withValue, ...props },
+  { children, className, required, withFocus, withValue, ...props },
   ref,
 ) {
   const requiredText = isString(required) && required;
@@ -28,7 +28,6 @@ export default forwardRef<HTMLLabelElement, LabelProps>(function LabelRender(
           },
           className,
         )}
-        htmlFor={htmlFor}
         ref={ref}
         {...props}
       >
