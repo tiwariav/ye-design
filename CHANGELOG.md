@@ -1,3 +1,10 @@
+## [3.5.5](https://github.com/tiwariav/ye-design/compare/v3.5.4...v3.5.5) (2023-12-23)
+
+
+### ♻️ Code Refactors
+
+* update packages ([fa66ff6](https://github.com/tiwariav/ye-design/commit/fa66ff60dfe0dbc06e09781e5b548574554c2bae))
+
 ## [3.5.4](https://github.com/tiwariav/ye-design/compare/v3.5.3...v3.5.4) (2023-12-21)
 
 
