@@ -1,3 +1,10 @@
+## [3.5.6](https://github.com/tiwariav/ye-design/compare/v3.5.5...v3.5.6) (2023-12-23)
+
+
+### ♻️ Code Refactors
+
+* add lint cache ([e27fc37](https://github.com/tiwariav/ye-design/commit/e27fc37bda0658bfef2892b5cbf008a1d09dfc56))
+
 ## [3.5.5](https://github.com/tiwariav/ye-design/compare/v3.5.4...v3.5.5) (2023-12-23)
 
 
