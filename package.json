@@ -41,11 +41,10 @@
     "react-content-loader": "^6.2.1",
     "react-intersection-observer": "^9.5.3",
     "react-use": "^17.4.2",
-    "style-inject": "^0.3.0",
     "tslib": "^2.6.2",
     "type-fest": "^4.8.3",
     "use-immer": "^0.9.0",
-    "wo-library": "^4.0.9"
+    "wo-library": "^4.0.12"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",

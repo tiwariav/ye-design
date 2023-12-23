@@ -11,9 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: tiwariav/github-actions/setup-yarn@main
-      - run: yarn eslint --quiet src
-      - run: yarn stylelint ./src/**/*.css
-      - run: yarn prettier --check src
+      - uses: tiwariav/github-actions/cache-js-linters@main
+      - run: yarn eslint --cache --cache-strategy=content --quiet --debug src
+      - run: yarn stylelint --cache ./src/**/*.css
+      - run: yarn prettier --cache --check src
       - run: yarn jscpd src
       - run: yarn build
       - uses: tiwariav/github-actions/semantic-release@main

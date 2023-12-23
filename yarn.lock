@@ -24499,9 +24499,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wo-library@npm:^4.0.9":
-  version: 4.0.9
-  resolution: "wo-library@npm:4.0.9"
+"wo-library@npm:^4.0.12":
+  version: 4.0.12
+  resolution: "wo-library@npm:4.0.12"
   dependencies:
     "@floating-ui/react": "npm:^0.26.4"
     "@mdx-js/react": "npm:^3.0.0"
@@ -24511,10 +24511,8 @@ __metadata:
     glob: "npm:^10.3.10"
     immer: "npm:^10.0.3"
     lodash-es: "npm:^4.17.21"
-    patch-package: "npm:^8.0.0"
     react-intersection-observer: "npm:^9.5.3"
     react-use: "npm:^17.4.2"
-    style-inject: "npm:^0.3.0"
     tslib: "npm:^2.6.2"
     type-fest: "npm:^4.8.3"
   peerDependencies:
@@ -24535,7 +24533,7 @@ __metadata:
       optional: true
     swiper:
       optional: true
-  checksum: 90588b8a4fe9079648e59f703481c3be57f225a55de2baf540423f31ac894b46c5e668285d17a583f6bdc76d89921fb927ad9a319d39922634f3e13495707237
+  checksum: 272da425bab5ba08fb3386fcba3713bc63adb1adb7b83f59f047c05851fd9ab91fbed20173710dcfaa79149eccb6e33d647086ffcc2da9c8a50c80f1335acdb6
   languageName: node
   linkType: hard
 
@@ -24946,7 +24944,7 @@ __metadata:
     typescript-plugin-css-modules: "npm:^5.0.2"
     use-immer: "npm:^0.9.0"
     webpack: "npm:^5.89.0"
-    wo-library: "npm:^4.0.9"
+    wo-library: "npm:^4.0.12"
   peerDependencies:
     antd: ^5.10.2
     overlayscrollbars-react: ^0.5.3

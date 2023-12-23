@@ -3,6 +3,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "declarationDir": "dist",
     "emitDeclarationOnly": true,
     "paths": {
       "country-flag-emoji-polyfill": [
@@ -18,7 +19,6 @@
     "module": "nodenext",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "dist",
     "plugins": [
       {
         "name": "typescript-plugin-css-modules",
@@ -28,13 +28,12 @@
       }
     ],
     "resolveJsonModule": true,
-    "rootDir": "src",
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
     "target": "es2022"
   },
-  "include": ["./src/**/*", "./src/**/*.json"],
+  "include": ["src"],
   "watchOptions": {
     "excludeDirectories": ["**/.yarn", "**/node_modules"],
     "watchFile": "useFsEventsOnParentDirectory"
