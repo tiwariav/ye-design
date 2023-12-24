@@ -1,3 +1,10 @@
+## [3.5.7](https://github.com/tiwariav/ye-design/compare/v3.5.6...v3.5.7) (2023-12-24)
+
+
+### 🐛 Bug Fixes
+
+* add `hasCompactMode` option for SideNav ([2d79107](https://github.com/tiwariav/ye-design/commit/2d79107acf10fedaabdb30bdc631b439424b409c))
+
 ## [3.5.6](https://github.com/tiwariav/ye-design/compare/v3.5.5...v3.5.6) (2023-12-23)
 
 
