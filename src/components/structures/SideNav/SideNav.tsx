@@ -5,6 +5,7 @@ import {
   ComponentPropsWithoutRef,
   ReactNode,
   forwardRef,
+  useEffect,
   useLayoutEffect,
 } from "react";
 import { useScrollbarWidth, useWindowSize } from "react-use";
@@ -39,6 +40,7 @@ export function SideNavToggle({ children, ...props }: ButtonProps) {
 }
 
 export interface SideNavProps extends ComponentPropsWithoutRef<"div"> {
+  hasCompactMode?: boolean;
   isFullHeight?: boolean;
   sticky?:
     | {
@@ -54,6 +56,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
     {
       children,
       className,
+      hasCompactMode = true,
       isFullHeight,
       sticky,
       style,
@@ -74,6 +77,10 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
       : {};
     const scrollWidth = useScrollbarWidth();
     const { width } = useWindowSize();
+
+    useEffect(() => {
+      layoutDispatch.dispatch.updateSideNav({ hasCompactMode });
+    }, [hasCompactMode]);
 
     useLayoutEffect(() => {
       if (!innerRef.current) return;
@@ -122,6 +129,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
           className={clsx(
             styles.root,
             {
+              [styles.hasCompactMode]: hasCompactMode,
               [styles.isFullHeight]: isFullHeight,
               [styles.isSticky]: !!sticky || isFullHeight,
               [styles.isStickyBottom]: bottom,

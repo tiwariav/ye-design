@@ -92,3 +92,7 @@ export const Sticky: Story = {
 export const FullHeight: Story = {
   args: { isFullHeight: true },
 };
+
+export const CompactMode: Story = {
+  args: { hasCompactMode: false },
+};

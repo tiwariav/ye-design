@@ -1,5 +1,6 @@
 export interface LayoutState {
   sideNav: {
+    hasCompactMode?: boolean;
     isToggled?: boolean;
   };
   topNav: {

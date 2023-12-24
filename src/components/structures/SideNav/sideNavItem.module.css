@@ -14,16 +14,18 @@
     margin-right: var(--ye-spacing-em-xsmall);
   }
 
-  .text {
-    transition: opacity var(--ye-transition-duration)
-      var(--ye-transition-function);
+  .has-compact {
+    & .text {
+      transition: opacity var(--ye-transition-duration)
+        var(--ye-transition-function);
 
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
 
-    @media (--media-min-md) and (--media-max-md) {
-      opacity: 0;
+      @media (--media-min-md) and (--media-max-md) {
+        opacity: 0;
+      }
     }
   }
 

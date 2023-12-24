@@ -23,7 +23,9 @@ export default function SideNavItem<TElement extends ElementType>({
   return (
     <Element
       className={clsx(styles.root, className, {
-        [styles.isToggled]: layoutState.sideNav.isToggled,
+        [styles.hasCompact]: layoutState.sideNav.hasCompactMode,
+        [styles.isToggled]:
+          layoutState.sideNav.isToggled && layoutState.sideNav.hasCompactMode,
       })}
       {...props}
     >

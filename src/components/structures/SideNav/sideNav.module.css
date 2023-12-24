@@ -18,15 +18,17 @@
     transition-duration: var(--ye-transition-duration);
     transition-property: width;
 
-    @media (--media-min-md) and (--media-max-md) {
-      width: var(--ye-layout-side-nav-toggle-width);
-    }
-
     @media (--media-max-sm) {
       position: fixed;
       top: 0;
       left: 0;
       z-index: calc(var(--ye-z-topnav) - 1);
+      width: var(--ye-layout-side-nav-toggle-width);
+    }
+  }
+
+  .has-compact-mode {
+    @media (--media-min-md) and (--media-max-md) {
       width: var(--ye-layout-side-nav-toggle-width);
     }
   }
@@ -57,12 +59,18 @@
   }
 
   .is-toggled {
-    @media (--media-min-lg) and (--media-max-lg) {
-      width: var(--ye-layout-side-nav-toggle-width);
+    @media (--media-min-md) and (--media-max-lg) {
+      width: 0;
     }
 
-    @media (--media-min-md) and (--media-max-md) {
-      width: var(--ye-layout-side-nav-width);
+    &.has-compact-mode {
+      @media (--media-min-lg) and (--media-max-lg) {
+        width: var(--ye-layout-side-nav-toggle-width);
+      }
+
+      @media (--media-min-md) and (--media-max-md) {
+        width: var(--ye-layout-side-nav-width);
+      }
     }
 
     @media (--media-max-sm) {
