@@ -9,6 +9,10 @@ export interface SideNavItemProps<TElement extends ElementType = "div"> {
   children?: ReactNode;
   className?: string;
   icon?: ReactNode;
+  innerClassNames?: {
+    icon?: string;
+    text?: string;
+  };
 }
 
 export default function SideNavItem<TElement extends ElementType>({
@@ -16,10 +20,12 @@ export default function SideNavItem<TElement extends ElementType>({
   children,
   className,
   icon,
+  innerClassNames = {},
   ...props
 }: SideNavItemProps<TElement> & ComponentPropsWithoutRef<TElement>) {
   const layoutState = LayoutContext.useContextState();
   const Element = as ?? "div";
+
   return (
     <Element
       className={clsx(styles.root, className, {
@@ -29,8 +35,14 @@ export default function SideNavItem<TElement extends ElementType>({
       })}
       {...props}
     >
-      {icon && <span className={styles.icon}>{icon}</span>}
-      {children && <span className={styles.text}>{children}</span>}
+      {icon && (
+        <span className={clsx(styles.icon, innerClassNames?.icon)}>{icon}</span>
+      )}
+      {children && (
+        <span className={clsx(styles.text, innerClassNames?.text)}>
+          {children}
+        </span>
+      )}
     </Element>
   );
 }
