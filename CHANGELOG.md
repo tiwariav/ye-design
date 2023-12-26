@@ -1,3 +1,10 @@
+## [3.5.8](https://github.com/tiwariav/ye-design/compare/v3.5.7...v3.5.8) (2023-12-26)
+
+
+### 🐛 Bug Fixes
+
+* side nav mobile styling ([06d90c9](https://github.com/tiwariav/ye-design/commit/06d90c92a5bcfdd2e2f4c08d604a98f845043b74))
+
 ## [3.5.7](https://github.com/tiwariav/ye-design/compare/v3.5.6...v3.5.7) (2023-12-24)
 
 
