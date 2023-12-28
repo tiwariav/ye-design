@@ -80,7 +80,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
     const { width } = useWindowSize();
     const isMobile = width < BREAKPOINTS.sm;
 
-    useLockBodyScroll(isMobile && layoutState.sideNav.isToggled);
+    useLockBodyScroll(!!isMobile && !!layoutState.sideNav.isToggled);
 
     useEffect(() => {
       layoutDispatch.dispatch.updateSideNav({ hasCompactMode });
