@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     color: var(--ye-color-black-50);
-    background-color: var(--ye-color-white-90);
+    background-color: transparent;
   }
 
   .spinner {

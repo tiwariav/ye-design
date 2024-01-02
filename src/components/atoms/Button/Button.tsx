@@ -186,7 +186,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function ButtonRender(
         size && styles[`size-${size}`],
         variant && styles[`variant-${variant}`],
         {
-          [styles.isDisabled]: disabled,
+          [styles.isDisabled]: disabled || isBusy,
           [styles.isFullWidth]: isFullWidth,
         },
         spacing && styles[`spacing-${spacing}`],
@@ -221,7 +221,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function ButtonRender(
       {iconAfter && (
         <FormIconSpan className={styles.icon}>{iconAfter}</FormIconSpan>
       )}
-      {isBusy && <Spinner className={styles.spinner} />}
+      {isBusy && <Spinner />}
     </FormButtonControl>
   );
 });
