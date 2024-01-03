@@ -88,6 +88,7 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
 
     return (
       <FormattedInput
+        autoComplete="tel-national"
         className={clsx(
           styles.root,
           variant === "material" && styles.variantMaterial,
@@ -96,8 +97,10 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
         format={formatFunction}
         iconBefore={flag}
         innerClassNames={{ iconBefore: styles.flagIcon, label: styles.label }}
+        inputMode="numeric"
         parse={parseFunction}
         ref={ref}
+        type="text"
         variant={variant}
         {...props}
       />

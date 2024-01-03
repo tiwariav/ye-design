@@ -4,6 +4,7 @@
 ]}] */
 import { clsx } from "clsx";
 import {
+  ChangeEventHandler,
   ComponentPropsWithoutRef,
   FocusEventHandler,
   ReactNode,
@@ -76,6 +77,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) {
     const [hasValue, setHasValue] = useState(!isEmpty(value ?? defaultValue));
+    const [hasFocus, setHasFocus] = useState(false);
     const inputId = useId();
 
     const [labelRef, { input }] = useMeasureInput();
@@ -83,9 +85,26 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
       (event) => {
         setHasValue(!isEmpty(event.target.value));
+        setHasFocus(false);
         onBlur?.(event);
       },
       [onBlur],
+    );
+
+    const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
+      (event) => {
+        setHasValue(!isEmpty(event.target.value));
+        props.onChange?.(event);
+      },
+      [props.onChange],
+    );
+
+    const handleFocus = useCallback<FocusEventHandler<HTMLInputElement>>(
+      (event) => {
+        setHasFocus(true);
+        props.onFocus?.(event);
+      },
+      [props.onFocus],
     );
 
     const inputStyle = useMemo(() => {
@@ -124,6 +143,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           htmlFor={id || inputId}
           ref={labelRef}
           required={required}
+          withFocus={variant === "material" && hasFocus}
+          withValue={variant === "material" && hasValue}
         >
           {label}
         </Label>
@@ -146,6 +167,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             )}
             id={id || inputId}
             onBlur={handleBlur}
+            onChange={handleChange}
+            onFocus={handleFocus}
             ref={ref}
             required={required}
             style={inputStyle}

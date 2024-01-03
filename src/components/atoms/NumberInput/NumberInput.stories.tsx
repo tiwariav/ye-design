@@ -32,6 +32,7 @@ const Template = ({ width = 240, ...args }: NumberInputProps) => {
   return (
     <div style={{ width }}>
       <NumberInput
+        label="Number Input"
         onChange={(event, value) => {
           setEventValue(event.target.value);
           setParsedValue(value);
