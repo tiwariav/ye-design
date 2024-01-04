@@ -22,7 +22,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: calc(var(--ye-z-topnav) - 1);
+      z-index: calc(var(--ye-z-topnav) + 1);
       width: var(--ye-layout-side-nav-toggle-width);
     }
   }
@@ -50,7 +50,7 @@
   .backdrop-toggled {
     @media (--media-max-sm) {
       position: fixed;
-      z-index: calc(var(--ye-z-topnav) - 2);
+      z-index: calc(var(--ye-z-topnav) + 1);
       display: block;
       width: 100%;
       background: var(--ye-color-black-50);
@@ -74,7 +74,7 @@
     }
 
     @media (--media-max-sm) {
-      width: 100vw;
+      width: fit-content;
     }
   }
 

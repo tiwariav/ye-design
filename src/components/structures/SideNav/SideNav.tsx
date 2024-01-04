@@ -8,11 +8,12 @@ import {
   useEffect,
   useLayoutEffect,
 } from "react";
-import { useScrollbarWidth, useWindowSize } from "react-use";
+import { useLockBodyScroll, useScrollbarWidth, useWindowSize } from "react-use";
 import { cssVariable } from "wo-library/tools/css.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
 import usePropRef from "../../../hooks/usePropRef.js";
+import { BREAKPOINTS } from "../../../styles/media.js";
 import { ButtonProps } from "../../atoms/Button/Button.js";
 import { Button } from "../../atoms/index.js";
 import styles from "./sideNav.module.css";
@@ -77,6 +78,9 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
       : {};
     const scrollWidth = useScrollbarWidth();
     const { width } = useWindowSize();
+    const isMobile = width < BREAKPOINTS.sm;
+
+    useLockBodyScroll(!!isMobile && !!layoutState.sideNav.isToggled);
 
     useEffect(() => {
       layoutDispatch.dispatch.updateSideNav({ hasCompactMode });
