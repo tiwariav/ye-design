@@ -72,6 +72,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       style,
       value,
       variant = "basic",
+      onChange,
+      onFocus,
       ...props
     },
     ref,
@@ -94,17 +96,17 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
       (event) => {
         setHasValue(!isEmpty(event.target.value));
-        props.onChange?.(event);
+        onChange?.(event);
       },
-      [props.onChange],
+      [onChange],
     );
 
     const handleFocus = useCallback<FocusEventHandler<HTMLInputElement>>(
       (event) => {
         setHasFocus(true);
-        props.onFocus?.(event);
+        onFocus?.(event);
       },
-      [props.onFocus],
+      [onFocus],
     );
 
     const inputStyle = useMemo(() => {
