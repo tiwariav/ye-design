@@ -1,3 +1,10 @@
+## [3.5.11](https://github.com/tiwariav/ye-design/compare/v3.5.10...v3.5.11) (2024-01-11)
+
+
+### ♻️ Code Refactors
+
+* add mixins in css ([1e53f21](https://github.com/tiwariav/ye-design/commit/1e53f2158be3ea90248ea3b50d9002c3aa82083d))
+
 ## [3.5.10](https://github.com/tiwariav/ye-design/compare/v3.5.9...v3.5.10) (2024-01-04)
 
 
