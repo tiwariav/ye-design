@@ -80,7 +80,7 @@
   .variant-primary {
     box-shadow: var(--ye-button-shadow);
 
-    @define-mixin buttonStates {
+    @mixin buttonStates {
       box-shadow: var(--ye-button-focus-shadow);
     }
   }
@@ -99,7 +99,7 @@
     border: 1px solid rgb(0 0 0 / 0.05);
     box-shadow: none;
 
-    @define-mixin buttonStates {
+    @mixin buttonStates {
       box-shadow: none;
     }
 
@@ -113,7 +113,7 @@
     border-radius: 0;
     box-shadow: none;
 
-    @define-mixin buttonStates {
+    @mixin buttonStates {
       background-color: var(--ye-color-dark-10);
       box-shadow: none;
     }
@@ -131,7 +131,7 @@
     border-style: solid;
     transition-property: background-color, color;
 
-    @define-mixin buttonStates {
+    @mixin buttonStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
       box-shadow: none;
@@ -142,14 +142,14 @@
     color: var(--ye-color-background);
     background-color: var(--ye-color-text);
 
-    @define-mixin buttonStates {
+    @mixin buttonStates {
       background-color: var(--ye-color-dark-50);
       box-shadow: none;
     }
   }
 
   .variant-dashed {
-    @define-mixin buttonStates {
+    @mixin buttonStates {
       border-style: solid;
       box-shadow: none;
     }
