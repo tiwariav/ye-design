@@ -1,3 +1,10 @@
+## [3.5.12](https://github.com/tiwariav/ye-design/compare/v3.5.11...v3.5.12) (2024-01-11)
+
+
+### 🐛 Bug Fixes
+
+* fix usage of mixins in button ([b1e976e](https://github.com/tiwariav/ye-design/commit/b1e976e349c4d923a46ef4da1439b6afbfbb2248))
+
 ## [3.5.11](https://github.com/tiwariav/ye-design/compare/v3.5.10...v3.5.11) (2024-01-11)
 
 
