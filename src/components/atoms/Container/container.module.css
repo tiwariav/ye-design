@@ -45,6 +45,8 @@
   .height-readable {
     max-height: 80vh;
     overflow: auto;
+    overscroll-behavior: auto;
+    scrollbar-gutter: auto;
   }
 
   .height-full {

@@ -14,7 +14,7 @@ type TemplateProps = ComponentProps<typeof Text> & { width: number };
 type Story = StoryObj<TemplateProps>;
 
 const Template = ({ width, ...args }: TemplateProps) => (
-  <div style={{ border: "1px solid var(--ye-color-black-10)", width }}>
+  <div style={{ border: "1px solid var(--ye-color-dark-10)", width }}>
     <Text {...args} />
   </div>
 );

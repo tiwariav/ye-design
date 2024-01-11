@@ -1,3 +1,16 @@
+@define-mixin buttonStates {
+  &:focus,
+  &:focus-within {
+    @mixin-content;
+  }
+
+  @media (--media-hover) {
+    &:hover {
+      @mixin-content;
+    }
+  }
+}
+
 @layer ye-components {
   .root {
     position: relative;
@@ -14,9 +27,7 @@
     cursor: var(--ye-button-cursor);
     transition-property: box-shadow, background-color, color;
 
-    &:hover,
-    &:focus,
-    &:focus-within {
+    @mixin buttonStates {
       outline: none;
     }
   }
@@ -61,7 +72,7 @@
   /* variants */
 
   .variant-primary {
-    color: var(--ye-color-white);
+    color: var(--ye-color-light);
     background-color: var(--ye-color-primary);
   }
 
@@ -69,12 +80,7 @@
   .variant-primary {
     box-shadow: var(--ye-button-shadow);
 
-    &:hover,
-    &:focus {
-      box-shadow: var(--ye-button-hover-shadow);
-    }
-
-    &:focus-within {
+    @define-mixin buttonStates {
       box-shadow: var(--ye-button-focus-shadow);
     }
   }
@@ -82,8 +88,7 @@
   .variant-borderless {
     background-color: transparent;
 
-    &:hover,
-    &:focus {
+    @mixin buttonStates {
       box-shadow: none;
     }
   }
@@ -94,8 +99,7 @@
     border: 1px solid rgb(0 0 0 / 0.05);
     box-shadow: none;
 
-    &:hover,
-    &:focus {
+    @define-mixin buttonStates {
       box-shadow: none;
     }
 
@@ -109,9 +113,8 @@
     border-radius: 0;
     box-shadow: none;
 
-    &:hover,
-    &:focus {
-      background-color: var(--ye-color-black-10);
+    @define-mixin buttonStates {
+      background-color: var(--ye-color-dark-10);
       box-shadow: none;
     }
   }
@@ -128,8 +131,7 @@
     border-style: solid;
     transition-property: background-color, color;
 
-    &:hover,
-    &:focus {
+    @define-mixin buttonStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
       box-shadow: none;
@@ -140,16 +142,14 @@
     color: var(--ye-color-background);
     background-color: var(--ye-color-text);
 
-    &:hover,
-    &:focus {
-      background-color: var(--ye-color-black-50);
+    @define-mixin buttonStates {
+      background-color: var(--ye-color-dark-50);
       box-shadow: none;
     }
   }
 
   .variant-dashed {
-    &:hover,
-    &:focus {
+    @define-mixin buttonStates {
       border-style: solid;
       box-shadow: none;
     }
@@ -166,8 +166,10 @@
     border-radius: var(--ye-radius-normal);
     box-shadow: var(--ye-shadow-neu);
 
-    &:hover {
-      box-shadow: var(--ye-shadow-neu-hover);
+    @media (--media-hover) {
+      &:hover {
+        box-shadow: var(--ye-shadow-neu-hover);
+      }
     }
 
     &:focus,
@@ -214,15 +216,16 @@
     transition-property: transform, opacity;
     content: "";
 
-    @media screen and (prefers-reduced-motion: reduce) {
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
+    @media screen and (--media-reduced-motion) {
       transition: none;
     }
   }
 
   .effect-cursor-tracking {
     &::after {
-      top: var(--effect-tracking-y);
-      left: var(--effect-tracking-x);
+      top: var(--ye-effect-tracking-y);
+      left: var(--ye-effect-tracking-x);
       width: 7.5em;
       height: 7.5em;
       background: var(--ye-gradient-button-tracker);
@@ -230,35 +233,40 @@
       opacity: 0.33;
     }
 
-    &:hover::after,
-    &:focus::after {
-      transform: translate(-50%, -50%) scale(1);
+    @mixin buttonStates {
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
     }
   }
 
   .effect-ripple {
     &::before {
-      top: var(--effect-ripple-y);
-      left: var(--effect-ripple-x);
+      top: var(--ye-effect-ripple-y);
+      left: var(--ye-effect-ripple-x);
       display: none;
       opacity: 0;
     }
 
-    &:hover::before,
-    &:focus::before {
-      width: var(--effect-ripple-diameter);
-      height: var(--effect-ripple-diameter);
-      background: var(--ye-gradient-button-ripple);
-      opacity: 0.025;
+    @mixin buttonStates {
+      &::before {
+        width: var(--ye-effect-ripple-diameter);
+        height: var(--ye-effect-ripple-diameter);
+        background: var(--ye-gradient-button-ripple);
+        opacity: 0.025;
+      }
     }
 
-    &:hover::before {
+    @media (--media-hover) {
       display: block;
     }
 
-    &.variant-primary:hover::before,
-    &.variant-primary:focus::before {
-      opacity: 0.125;
+    &.variant-primary {
+      @mixin buttonStates {
+        &::before {
+          opacity: 0.125;
+        }
+      }
     }
 
     &:active::before {

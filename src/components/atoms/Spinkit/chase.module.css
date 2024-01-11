@@ -1,10 +1,11 @@
 @layer ye-components {
   .root {
     position: relative;
-    width: var(--module-spinkit-size);
-    height: var(--module-spinkit-size);
+    width: var(--ye-spinkit-size);
+    height: var(--ye-spinkit-size);
     animation: chase 2.5s infinite linear both;
 
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
     @media screen and (prefers-reduced-motion: reduce) {
       animation: none;
     }
@@ -18,6 +19,7 @@
     height: 100%;
     animation: dot 2s infinite ease-in-out both;
 
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
     @media screen and (prefers-reduced-motion: reduce) {
       animation: none;
     }
@@ -26,11 +28,12 @@
       display: block;
       width: 25%;
       height: 25%;
-      background-color: var(--module-spinkit-color);
+      background-color: var(--ye-spinkit-color);
       border-radius: var(--ye-radius-circle);
       animation: dot-before 2s infinite ease-in-out both;
       content: "";
 
+      /* stylelint-disable-next-line csstools/media-use-custom-media */
       @media screen and (prefers-reduced-motion: reduce) {
         animation: none;
       }

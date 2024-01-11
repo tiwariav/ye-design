@@ -18,6 +18,7 @@
     opacity: 0.6;
     animation: sk-bounce 2s infinite ease-in-out;
 
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
     @media screen and (prefers-reduced-motion: reduce) {
       animation: none;
     }

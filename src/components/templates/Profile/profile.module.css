@@ -5,7 +5,7 @@
     margin-bottom: var(--ye-em-base);
     object-fit: cover;
     overflow: hidden;
-    background-color: var(--ye-color-black-10);
+    background-color: var(--ye-color-dark-10);
     border-radius: var(--ye-radius-normal);
   }
 
@@ -19,7 +19,7 @@
     top: -160px;
     width: 25%;
     min-width: 240px;
-    margin-right: var(--ye-em-xlarge);
+    margin-right: var(--ye-spacing-em-xlarge);
   }
 
   .content {

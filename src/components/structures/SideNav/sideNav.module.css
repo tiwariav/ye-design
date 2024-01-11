@@ -12,6 +12,8 @@
     width: var(--ye-layout-side-nav-width);
     height: max-content;
     overflow: auto;
+    overscroll-behavior: auto;
+    scrollbar-gutter: auto;
     background-color: var(--ye-color-background-content);
     box-shadow: var(--ye-shadow-drawer);
     transition-timing-function: var(--ye-transition-function);
@@ -53,7 +55,7 @@
       z-index: calc(var(--ye-z-topnav) + 1);
       display: block;
       width: 100%;
-      background: var(--ye-color-black-50);
+      background: var(--ye-color-dark-50);
       inset: 0 100% 0 0;
     }
   }

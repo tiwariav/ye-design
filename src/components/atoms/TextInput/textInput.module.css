@@ -1,16 +1,16 @@
 @layer ye-components {
   .root {
-    --module-input-padding-top: var(--ye-spacing-rem-small);
-    --module-input-padding-right: var(--ye-spacing-rem-normal);
-    --module-input-padding-bottom: var(--ye-spacing-rem-small);
-    --module-input-padding-left: var(--ye-spacing-rem-normal);
+    --ye-input-padding-top: var(--ye-spacing-rem-small);
+    --ye-input-padding-right: var(--ye-spacing-rem-normal);
+    --ye-input-padding-bottom: var(--ye-spacing-rem-small);
+    --ye-input-padding-left: var(--ye-spacing-rem-normal);
     --module-loader-z: calc(var(--ye-z-base) + 2);
 
     position: relative;
     width: 100%;
 
     & ::placeholder {
-      color: var(--ye-color-black-50);
+      color: var(--ye-color-dark-50);
       font-weight: 400;
       font-size: var(--ye-font-size-small);
     }
@@ -23,16 +23,17 @@
 
   .text-input {
     width: 100%;
-    padding: var(--module-input-padding-top) var(--module-input-padding-right)
-      var(--module-input-padding-bottom) var(--module-input-padding-left);
+    padding: var(--ye-input-padding-top) var(--ye-input-padding-right)
+      var(--ye-input-padding-bottom) var(--ye-input-padding-left);
     color: inherit;
     font-family: var(--ye-font-family-input);
     background-color: var(--ye-color-input-background);
     border-radius: var(--ye-input-border-radius);
 
-    &:hover,
-    &:focus {
-      background-color: var(--ye-color-input-focus-background);
+    @media (--media-hover) {
+      &:hover {
+        background-color: var(--ye-color-input-focus-background);
+      }
     }
 
     &:focus {
@@ -55,14 +56,14 @@
   }
 
   .padded-left {
-    --module-input-padding-left: calc(
+    --ye-input-padding-left: calc(
       var(--ye-spacing-em-large) + var(--ye-spacing-rem-normal) +
         var(--ye-spacing-rem-small)
     );
   }
 
   .padded-right {
-    --module-input-padding-right: calc(
+    --ye-input-padding-right: calc(
       var(--ye-spacing-em-large) + var(--ye-spacing-rem-normal) +
         var(--ye-spacing-rem-small)
     );
@@ -108,8 +109,8 @@
   }
 
   .variant-material {
-    --module-input-padding-top: calc(var(--ye-spacing-rem-xlarge));
-    --module-input-padding-bottom: calc(
+    --ye-input-padding-top: calc(var(--ye-spacing-rem-xlarge));
+    --ye-input-padding-bottom: calc(
       var(--ye-spacing-rem-tiny) + var(--ye-rem-unit)
     );
 
@@ -124,12 +125,12 @@
 
     & .label {
       --calc-xy-padding: calc(
-        var(--module-input-padding-top) + var(--module-input-padding-bottom)
+        var(--ye-input-padding-top) + var(--ye-input-padding-bottom)
       );
 
       position: absolute;
       top: calc((var(--calc-xy-padding) / 2) + 1px);
-      left: calc(var(--module-input-padding-left) + var(--ye-spacing-rem-tiny));
+      left: calc(var(--ye-input-padding-left) + var(--ye-spacing-rem-tiny));
       z-index: calc(var(--module-loader-z) - 1);
       display: flex;
       margin: 0;
@@ -143,8 +144,7 @@
       transition-property: transform;
     }
 
-    & .text-input:hover,
-    & .text-input:focus {
+    @media (--media-hover) {
       background-color: var(--ye-color-input-focus-background);
     }
 
@@ -162,8 +162,8 @@
           translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
           translateY(
             calc(
-              var(--module-input-padding-bottom) -
-                var(--module-input-padding-top) + var(--ye-spacing-rem-tiny)
+              var(--ye-input-padding-bottom) - var(--ye-input-padding-top) +
+                var(--ye-spacing-rem-tiny)
             )
           );
         transition-duration: var(--ye-transition-duration);

@@ -13,6 +13,7 @@
     border-radius: var(--ye-radius-circle);
     animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
     @media screen and (prefers-reduced-motion: reduce) {
       animation: none;
     }

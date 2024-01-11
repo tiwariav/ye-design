@@ -23,3 +23,6 @@
 
 /* extra wide */
 @custom-media --media-min-xxxl (min-width: 1921px);
+
+/* hover enabled */
+@custom-media --media-hover (hover: hover);

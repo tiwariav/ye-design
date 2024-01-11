@@ -1,6 +1,6 @@
 @layer ye-components {
   .root {
-    color: var(--color-negative);
+    color: var(--ye-color-negative);
     font-weight: var(--ye-font-weight-normal);
     font-size: var(--ye-font-size-xsmall);
   }

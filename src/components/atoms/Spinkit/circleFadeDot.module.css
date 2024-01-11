@@ -24,6 +24,7 @@
       animation: sk-circle-bounce-delay 1.2s infinite ease-in-out both;
       content: "";
 
+      /* stylelint-disable-next-line csstools/media-use-custom-media */
       @media screen and (prefers-reduced-motion: reduce) {
         animation: none;
       }

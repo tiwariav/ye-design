@@ -6,7 +6,7 @@
   }
 
   .loader-icon {
-    width: var(--ye-em-xlarge);
+    width: var(--ye-spacing-em-xlarge);
   }
 
   .loader-text {

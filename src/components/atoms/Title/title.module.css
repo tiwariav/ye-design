@@ -14,7 +14,7 @@
       bottom: 0;
       display: block;
       height: 2px;
-      background: var(--ye-color-black-10);
+      background: var(--ye-color-dark-10);
       content: "";
     }
   }

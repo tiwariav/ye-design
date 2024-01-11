@@ -23,15 +23,15 @@
   --ye-color-accent: rgb(186 73 240 / 0.75);
   --ye-color-accent-dark: #4f2549;
   --ye-color-accent-light: #ffc880;
-  --ye-color-background: var(--ye-color-white);
-  --ye-color-background-card: var(--ye-color-white);
-  --ye-color-background-content: var(--ye-color-white);
+  --ye-color-background: var(--ye-color-light);
+  --ye-color-background-card: var(--ye-color-light);
+  --ye-color-background-content: var(--ye-color-light);
   --ye-color-background-secondary: #f9fafb;
-  --ye-color-black: #000;
-  --ye-color-black-5: rgb(0 0 0 / 0.05);
-  --ye-color-black-10: rgb(0 0 0 / 0.1);
-  --ye-color-black-75: rgb(0 0 0 / 0.75);
-  --ye-color-black-50: rgb(0 0 0 / 0.5);
+  --ye-color-dark: #000;
+  --ye-color-dark-5: rgb(0 0 0 / 0.05);
+  --ye-color-dark-10: rgb(0 0 0 / 0.1);
+  --ye-color-dark-75: rgb(0 0 0 / 0.75);
+  --ye-color-dark-50: rgb(0 0 0 / 0.5);
   --ye-color-border: rgb(0 0 0 / 0.05);
   --ye-color-danger: rgb(255 0 0);
   --ye-color-negative: #c45d65;
@@ -40,8 +40,8 @@
   --ye-color-ripple: var(--ye-color-shadow);
   --ye-color-shadow: rgb(0 0 0 / 0.1);
   --ye-color-shadow-inset: rgb(0 0 0 / 0.05);
-  --ye-color-text: var(--ye-color-black);
-  --ye-color-text-light: var(--ye-color-black-50);
+  --ye-color-text: var(--ye-color-dark);
+  --ye-color-text-light: var(--ye-color-dark-50);
   --ye-color-text-anchor: #1890ff;
   --ye-color-input-background: rgb(0 0 0 / 0.025);
   --ye-color-input-border: rgb(0 0 0 / 0.025);
@@ -51,17 +51,17 @@
   --ye-color-input-focus-border: rgb(64 169 255);
   --ye-color-input-focus-shadow: rgb(64 164 255 / 0.75);
   --ye-color-neu-background-dark: #ddddde;
-  --ye-color-neu-background-light: #fff;
+  --ye-color-neu-background-light: var(--ye-color-light);
   --ye-color-neu-shadow-dark: #b3b4b4;
-  --ye-color-neu-shadow-light: #fff;
+  --ye-color-neu-shadow-light: var(--ye-color-light);
   --ye-color-text-anchor-focus: #40a9ff;
   --ye-color-text-anchor-visited: #005086;
-  --ye-color-text-content: var(--ye-color-black);
-  --ye-color-white: #fff;
-  --ye-color-white-90: rgb(255 255 255 / 0.9);
-  --ye-color-white-75: rgb(255 255 255 / 0.75);
-  --ye-color-white-50: rgb(255 255 255 / 0.5);
-  --ye-color-white-10: rgb(255 255 255 / 0.1);
+  --ye-color-text-content: var(--ye-color-dark);
+  --ye-color-light: #fff;
+  --ye-color-light-90: rgb(255 255 255 / 0.9);
+  --ye-color-light-75: rgb(255 255 255 / 0.75);
+  --ye-color-light-50: rgb(255 255 255 / 0.5);
+  --ye-color-light-10: rgb(255 255 255 / 0.1);
   --ye-color-disabled-button: #576878;
   --ye-gradient-button-tracker: radial-gradient(
       circle closest-side,
@@ -138,7 +138,7 @@
     0 0 0 1px var(--ye-color-input-focus-shadow);
   --ye-shadow-drawer: 0 -1px 0 var(--ye-color-background),
     var(--ye-shadow-floating-low);
-  --ye-shadow-scrollbar: inset 0 0 6px var(--ye-color-black-10);
+  --ye-shadow-scrollbar: inset 0 0 6px var(--ye-color-dark-10);
 
   /* ====== */
 
@@ -222,6 +222,18 @@
     )
     var(--ye-spacing-em-large);
   --ye-button-shadow: var(--ye-shadow-pressable);
+  --ye-effect-ripple-diameter: 0px;
+  --ye-effect-ripple-x: 0px;
+  --ye-effect-ripple-y: 0px;
+  --ye-effect-tracking-x: 0px;
+  --ye-effect-tracking-y: 0px;
+
+  /* INPUTS */
+
+  --ye-input-padding-top: var(--ye-spacing-rem-small);
+  --ye-input-padding-right: var(--ye-spacing-rem-normal);
+  --ye-input-padding-bottom: var(--ye-spacing-rem-small);
+  --ye-input-padding-left: var(--ye-spacing-rem-normal);
 
   /* FORM */
   --ye-control-outline-border-width: 1px;
@@ -239,9 +251,13 @@
 
   /* COMPONENTS SPECIFIC */
 
+  --ye-spinkit-size: 40px;
+  --ye-spinkit-color: var(--ye-color-dark-75);
+
   /* TOPNAV */
   --ye-topnav-expanded-color-bg: transparent;
 
+  /* stylelint-disable-next-line csstools/media-use-custom-media */
   @media (width <= 600px) {
     --ye-layout-side-nav-width: 240px;
     --ye-layout-side-nav-toggle-width: 0;

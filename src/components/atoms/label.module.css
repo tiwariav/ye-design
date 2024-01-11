@@ -12,7 +12,7 @@
     transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
       translateY(
         calc(
-          var(--input-padding-bottom) - var(--input-padding-top) +
+          var(--ye-input-padding-bottom) - var(--ye-input-padding-top) +
             var(--ye-spacing-rem-tiny)
         )
       );

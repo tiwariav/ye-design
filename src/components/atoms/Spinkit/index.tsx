@@ -5,7 +5,6 @@ import Bounce from "./Bounce.js";
 import Chase from "./Chase.js";
 import CircleFadeDot from "./CircleFadeDot.js";
 import DoubleBounce from "./DoubleBounce.js";
-import styles from "./spinkit.module.css";
 
 function getLoader(name: string, props?: ComponentPropsWithoutRef<"div">) {
   switch (name) {
@@ -28,9 +27,5 @@ function getLoader(name: string, props?: ComponentPropsWithoutRef<"div">) {
 }
 
 export default function Spinkit({ name, ...props }: { name: string }) {
-  return (
-    <LoaderWrapper className={styles.root}>
-      {getLoader(name, props)}
-    </LoaderWrapper>
-  );
+  return <LoaderWrapper>{getLoader(name, props)}</LoaderWrapper>;
 }

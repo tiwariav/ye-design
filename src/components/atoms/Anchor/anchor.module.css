@@ -1,3 +1,17 @@
+@define-mixin anchorStates {
+  &.has-focus,
+  &:focus {
+    @mixin-content;
+  }
+
+  @media (--media-hover) {
+    &.has-hover,
+    &:hover {
+      @mixin-content;
+    }
+  }
+}
+
 @layer ye-components {
   .anchor {
     display: inline-flex;
@@ -5,6 +19,7 @@
     color: var(--ye-color-text);
     text-decoration: none;
 
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
     @media screen and (prefers-reduced-motion: reduce) {
       transition: none;
     }
@@ -39,10 +54,7 @@
   }
 
   .variant-basic {
-    &.has-focus,
-    &.has-hover,
-    &:hover,
-    &:focus {
+    @mixin anchorStates {
       text-decoration: underline;
       outline: none;
       box-shadow: none;
@@ -52,10 +64,7 @@
   .variant-color {
     color: var(--ye-color-text-anchor);
 
-    &.has-focus,
-    &.has-hover,
-    &:hover,
-    &:focus {
+    @mixin anchorStates {
       color: var(--ye-color-text-anchor-focus);
       text-decoration: underline;
     }
@@ -72,9 +81,8 @@
     border-radius: 0;
     transition-property: box-shadow, border-radius, background-color;
 
-    &:hover,
-    &:focus {
-      background-color: var(--ye-color-black-5);
+    @mixin anchorStates {
+      background-color: var(--ye-color-dark-5);
     }
   }
 
@@ -84,8 +92,7 @@
     padding: var(--ye-spacing-em-small) var(--ye-em-base);
     border-radius: 0;
 
-    &:hover,
-    &:focus {
+    @mixin anchorStates {
       color: var(--ye-color-primary);
 
       &::after {
@@ -116,10 +123,7 @@
     padding: var(--ye-button-outline-padding);
     background-color: transparent;
 
-    &.has-focus,
-    &.has-hover,
-    &:hover,
-    &:focus {
+    @mixin anchorStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
       box-shadow: none;
@@ -131,12 +135,9 @@
     color: var(--ye-color-background);
     background-color: var(--ye-color-text);
 
-    &.has-focus,
-    &.has-hover,
-    &:hover,
-    &:focus {
-      color: var(--ye-color-text);
-      background-color: transparent;
+    @mixin anchorStates {
+      color: var(--ye-color-background);
+      background-color: var(--ye-color-text);
       box-shadow: none;
     }
   }
