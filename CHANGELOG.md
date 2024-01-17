@@ -1,3 +1,10 @@
+## [3.5.14](https://github.com/tiwariav/ye-design/compare/v3.5.13...v3.5.14) (2024-01-17)
+
+
+### 🐛 Bug Fixes
+
+* preserve media queries ([c018c09](https://github.com/tiwariav/ye-design/commit/c018c0930f9f1bd47972f37621e0e845767da305))
+
 ## [3.5.13](https://github.com/tiwariav/ye-design/compare/v3.5.12...v3.5.13) (2024-01-17)
 
 
