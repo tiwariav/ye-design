@@ -84,7 +84,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
 
     useEffect(() => {
       layoutDispatch.dispatch.updateSideNav({ hasCompactMode });
-    }, [hasCompactMode]);
+    }, [hasCompactMode, layoutDispatch.dispatch]);
 
     useLayoutEffect(() => {
       if (!innerRef.current) return;

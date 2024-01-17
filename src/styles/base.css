@@ -19,50 +19,96 @@
 
   /* COLORS */
 
+  /* Opacity levels */
+  --mix-opacity-1: 80%;
+  --mix-opacity-2: 50%;
+  --mix-opacity-3: 10%;
+  --mix-opacity-4: 5%;
+
   /* color definitions */
-  --ye-color-accent: rgb(186 73 240 / 0.75);
-  --ye-color-accent-dark: #4f2549;
-  --ye-color-accent-light: #ffc880;
+  --ye-color-light: oklch(97.78% 0 0deg);
+  --ye-color-light-90: color-mix(
+    in oklch,
+    var(--ye-color-light),
+    transparent 90%
+  );
+  --ye-color-light-75: color-mix(
+    in oklch,
+    var(--ye-color-light),
+    transparent var(--mix-opacity-1)
+  );
+  --ye-color-light-50: color-mix(
+    in oklch,
+    var(--ye-color-light),
+    transparent var(--mix-opacity-2)
+  );
+  --ye-color-light-10: color-mix(
+    in oklch,
+    var(--ye-color-light),
+    transparent var(--mix-opacity-3)
+  );
+  --ye-color-dark: oklch(0% 0 0deg);
+  --ye-color-dark-5: color-mix(
+    in oklch,
+    var(--ye-color-dark),
+    transparent var(--mix-opacity-4)
+  );
+  --ye-color-dark-10: color-mix(
+    in oklch,
+    var(--ye-color-dark),
+    transparent var(--mix-opacity-3)
+  );
+  --ye-color-dark-50: color-mix(
+    in oklch,
+    var(--ye-color-dark),
+    transparent var(--mix-opacity-2)
+  );
+  --ye-color-dark-75: color-mix(
+    in oklch,
+    var(--ye-color-dark),
+    transparent var(--mix-opacity-1)
+  );
+  --ye-color-accent: oklch(64.78% 0.245 312.5deg / 0.75);
+  --ye-color-accent-dark: oklch(32% 0.082 332.8deg);
+  --ye-color-accent-light: oklch(88.11% 0.109 73deg);
   --ye-color-background: var(--ye-color-light);
   --ye-color-background-card: var(--ye-color-light);
   --ye-color-background-content: var(--ye-color-light);
-  --ye-color-background-secondary: #f9fafb;
-  --ye-color-dark: #000;
-  --ye-color-dark-5: rgb(0 0 0 / 0.05);
-  --ye-color-dark-10: rgb(0 0 0 / 0.1);
-  --ye-color-dark-75: rgb(0 0 0 / 0.75);
-  --ye-color-dark-50: rgb(0 0 0 / 0.5);
-  --ye-color-border: rgb(0 0 0 / 0.05);
-  --ye-color-danger: rgb(255 0 0);
-  --ye-color-negative: #c45d65;
-  --ye-color-positive: #39bf0a;
-  --ye-color-primary: #f18904;
+  --ye-color-background-secondary: var(--ye-color-light);
+  --ye-color-border: var(--ye-color-dark-5);
+  --ye-color-danger: oklch(64.78% 0.258 29.2deg);
+  --ye-color-negative: oklch(64.78% 0.132 17.1deg);
+  --ye-color-positive: oklch(64.78% 0.226 140.4deg);
+  --ye-color-primary: oklch(74.22% 0.169 60.6deg);
   --ye-color-ripple: var(--ye-color-shadow);
-  --ye-color-shadow: rgb(0 0 0 / 0.1);
-  --ye-color-shadow-inset: rgb(0 0 0 / 0.05);
+  --ye-color-shadow: var(--ye-color-dark-10);
+  --ye-color-shadow-inset: var(--ye-color-dark-5);
   --ye-color-text: var(--ye-color-dark);
   --ye-color-text-light: var(--ye-color-dark-50);
-  --ye-color-text-anchor: #1890ff;
-  --ye-color-input-background: rgb(0 0 0 / 0.025);
-  --ye-color-input-border: rgb(0 0 0 / 0.025);
-  --ye-color-input-focus-background: #f6f7f8;
-  --ye-color-input-focus-placeholder: #f4f5f6;
-  --ye-color-bg-scrollbar: #f5f5f5;
-  --ye-color-input-focus-border: rgb(64 169 255);
-  --ye-color-input-focus-shadow: rgb(64 164 255 / 0.75);
-  --ye-color-neu-background-dark: #ddddde;
+  --ye-color-text-anchor: oklch(64.78% 0.191 252.8deg);
+  --ye-color-input-background: color-mix(
+    in oklch,
+    var(--ye-color-dark),
+    transparent 2.5%
+  );
+  --ye-color-input-border: var(--ye-color-input-background);
+  --ye-color-input-focus-background: var(--ye-color-light);
+  --ye-color-input-focus-placeholder: var(--ye-color-light);
+  --ye-color-bg-scrollbar: var(--ye-color-light);
+  --ye-color-input-focus-border: oklch(74.22% 0.158 247.3deg);
+  --ye-color-input-focus-shadow: color-mix(
+    in oklch,
+    var(--ye-color-input-focus-border),
+    transparent var(--mix-opacity-1)
+  );
+  --ye-color-neu-background-dark: oklch(88.11% 0.001 286.4deg);
   --ye-color-neu-background-light: var(--ye-color-light);
-  --ye-color-neu-shadow-dark: #b3b4b4;
+  --ye-color-neu-shadow-dark: oklch(74.22% 0.001 197.1deg);
   --ye-color-neu-shadow-light: var(--ye-color-light);
-  --ye-color-text-anchor-focus: #40a9ff;
-  --ye-color-text-anchor-visited: #005086;
+  --ye-color-text-anchor-focus: var(--ye-color-input-focus-border);
+  --ye-color-text-anchor-visited: oklch(39.44% 0.112 247.4deg);
   --ye-color-text-content: var(--ye-color-dark);
-  --ye-color-light: #fff;
-  --ye-color-light-90: rgb(255 255 255 / 0.9);
-  --ye-color-light-75: rgb(255 255 255 / 0.75);
-  --ye-color-light-50: rgb(255 255 255 / 0.5);
-  --ye-color-light-10: rgb(255 255 255 / 0.1);
-  --ye-color-disabled-button: #576878;
+  --ye-color-disabled-button: oklch(46.89% 0.033 246.9deg);
   --ye-gradient-button-tracker: radial-gradient(
       circle closest-side,
       var(--ye-color-shadow),

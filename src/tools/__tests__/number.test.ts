@@ -13,16 +13,10 @@ const NON_NUMBERS: TEST_DATA = [
   [[""], ""],
 ];
 
-function testArray(tests: TEST_DATA) {
+function expectResult(tests: TEST_DATA, withSuffix?: boolean) {
   for (const item of tests) {
-    const output = formatNumber(item[0][0], item[0][1]);
-    expect(output).toBe(item[1]);
-  }
-}
-
-function testArrayWithSuffix(tests: TEST_DATA) {
-  for (const item of tests) {
-    const output = formatNumberWithSuffix(item[0][0], item[0][1]);
+    const format = withSuffix ? formatNumberWithSuffix : formatNumber;
+    const output = format(item[0][0], item[0][1]);
     expect(output).toBe(item[1]);
   }
 }
@@ -42,7 +36,7 @@ describe("format number", () => {
   });
 
   test("should return null-value for non-numbers", () => {
-    testArray(NON_NUMBERS);
+    expectResult(NON_NUMBERS);
   });
 
   test("should return correct number of decimals", () => {
@@ -53,7 +47,7 @@ describe("format number", () => {
       [["1", { fractionDigits: 1 }], "1.0"],
       [["1", { minimumFractionDigits: 0 }], "1"],
     ];
-    testArray(tests);
+    expectResult(tests);
   });
 
   test("should round off correctly", () => {
@@ -62,7 +56,7 @@ describe("format number", () => {
       [["1.005"], "1.01"],
       [["1.004"], "1.00"],
     ];
-    testArray(tests);
+    expectResult(tests);
   });
 
   test("should format correctly", () => {
@@ -85,13 +79,13 @@ describe("format number", () => {
       [["1000000000"], "1,00,00,00,000.00"],
       [["10000000000"], "10,00,00,00,000.00"],
     ];
-    testArray(tests);
+    expectResult(tests);
   });
 });
 
 describe("format number with suffix", () => {
   test("should return null-value for non-numbers", () => {
-    testArrayWithSuffix(NON_NUMBERS);
+    expectResult(NON_NUMBERS);
   });
 
   test("should format correctly", () => {
@@ -114,6 +108,6 @@ describe("format number with suffix", () => {
       [["10000000000", { suffix: "Cr" }], "1,000.00 Cr"],
       [["10000", { fractionDigits: 3, suffix: "Cr" }], "0.001 Cr"],
     ];
-    testArrayWithSuffix(tests);
+    expectResult(tests);
   });
 });
