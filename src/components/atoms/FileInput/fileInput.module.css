@@ -1,4 +1,8 @@
 @layer ye-components {
+  .root {
+    width: 100%;
+  }
+
   .wrapper {
     position: relative;
     display: flex;

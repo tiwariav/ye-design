@@ -6,6 +6,7 @@ import { debounce } from "lodash-es";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
+  Fragment,
   ReactNode,
   useId,
   useState,
@@ -103,7 +104,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   );
 
   return (
-    <div className={clsx(className)}>
+    <div className={clsx(styles.root, className)}>
       <InputWrapper
         as="label"
         className={clsx(styles.wrapper, variant && styles[`is-${variant}`], {
@@ -136,9 +137,9 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
         {isBusy && <Spinner className={styles.spinner} />}
       </InputWrapper>
       {files && files.length > 0 && (
-        <div>
+        <Fragment>
           {files.map((item, index) => (
-            <div key={index}>
+            <Fragment key={index}>
               <div className={styles.listItem} key={index}>
                 <div className={styles.listItemText}>{item.file.name}</div>
                 <div className={styles.uploadSection}>
@@ -244,9 +245,9 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                     )
                   ),
                 )}
-            </div>
+            </Fragment>
           ))}
-        </div>
+        </Fragment>
       )}
     </div>
   );
