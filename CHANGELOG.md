@@ -1,3 +1,10 @@
+## [3.5.15](https://github.com/tiwariav/ye-design/compare/v3.5.14...v3.5.15) (2024-01-18)
+
+
+### 🐛 Bug Fixes
+
+* invert mix opacity values ([1cfea0a](https://github.com/tiwariav/ye-design/commit/1cfea0a7ac7689f80a8b6d986426df76b4615a79))
+
 ## [3.5.14](https://github.com/tiwariav/ye-design/compare/v3.5.13...v3.5.14) (2024-01-17)
 
 
