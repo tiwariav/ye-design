@@ -1,3 +1,15 @@
+## [3.5.17](https://github.com/tiwariav/ye-design/compare/v3.5.16...v3.5.17) (2024-01-25)
+
+
+### 🐛 Bug Fixes
+
+* correct stylelint version ([a977bff](https://github.com/tiwariav/ye-design/commit/a977bff4fe135afbbe51573f9a8fbad3b7765842))
+
+
+### ♻️ Code Refactors
+
+* update husky ([13936a4](https://github.com/tiwariav/ye-design/commit/13936a492462f661e8defe0d1066ec2a9a187be1))
+
 ## [3.5.16](https://github.com/tiwariav/ye-design/compare/v3.5.15...v3.5.16) (2024-01-25)
 
 
