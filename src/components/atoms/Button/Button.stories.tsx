@@ -113,3 +113,11 @@ export const Variants: Story = {
     </div>
   ),
 };
+
+export const Busy: Story = {
+  ...Variants,
+  args: {
+    ...Basic.args,
+    isBusy: true,
+  },
+};
