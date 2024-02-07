@@ -182,7 +182,7 @@
       "rollup": "$rollup"
     }
   },
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.0",
   "dependenciesMeta": {
     "country-flag-emoji-polyfill@0.1.4": {
       "unplugged": true
