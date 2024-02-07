@@ -67,13 +67,12 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       isLoading,
       label,
       onBlur,
+      onFocus,
       required,
       size,
       style,
       value,
       variant = "basic",
-      onChange,
-      onFocus,
       ...props
     },
     ref,
@@ -91,14 +90,6 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         onBlur?.(event);
       },
       [onBlur],
-    );
-
-    const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-      (event) => {
-        setHasValue(!isEmpty(event.target.value));
-        onChange?.(event);
-      },
-      [onChange],
     );
 
     const handleFocus = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -169,7 +160,6 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             )}
             id={id || inputId}
             onBlur={handleBlur}
-            onChange={handleChange}
             onFocus={handleFocus}
             ref={ref}
             required={required}

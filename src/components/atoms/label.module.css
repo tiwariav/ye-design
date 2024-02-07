@@ -3,7 +3,7 @@
     display: block;
     margin-bottom: var(--ye-spacing-em-xsmall);
     padding-left: var(--ye-spacing-em-tiny);
-    font-weight: 300;
+    font-weight: var(--ye-font-weight-light);
     line-height: var(--ye-line-height);
   }
 
