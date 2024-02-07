@@ -1,3 +1,10 @@
+## [3.5.18](https://github.com/tiwariav/ye-design/compare/v3.5.17...v3.5.18) (2024-02-07)
+
+
+### 🐛 Bug Fixes
+
+* decrease button loader background opacity ([1003457](https://github.com/tiwariav/ye-design/commit/1003457f9266ba0894aa63912b6ce02d42dacf56))
+
 ## [3.5.17](https://github.com/tiwariav/ye-design/compare/v3.5.16...v3.5.17) (2024-01-25)
 
 
