@@ -157,7 +157,7 @@
         transform: scale(0.72)
           translateY(
             calc(
-              var(--ye-input-padding-bottom) - var(--ye-input-padding-top) -
+              var(--ye-input-padding-bottom) - var(--ye-input-padding-top) +
                 var(--ye-input-border-width) - 1px
             )
           );
