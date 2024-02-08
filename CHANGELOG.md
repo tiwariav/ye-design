@@ -1,3 +1,10 @@
+## [3.5.19](https://github.com/tiwariav/ye-design/compare/v3.5.18...v3.5.19) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* update material input label styles ([08fc90c](https://github.com/tiwariav/ye-design/commit/08fc90c7e44aaa01122fa69041e7a76b2250c2cb))
+
 ## [3.5.18](https://github.com/tiwariav/ye-design/compare/v3.5.17...v3.5.18) (2024-02-07)
 
 
