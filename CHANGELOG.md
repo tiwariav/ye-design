@@ -1,3 +1,10 @@
+## [3.5.20](https://github.com/tiwariav/ye-design/compare/v3.5.19...v3.5.20) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* adjust material label transform for border width ([f39d54a](https://github.com/tiwariav/ye-design/commit/f39d54a5646176ffda39483b1a41a1969dff2a0c))
+
 ## [3.5.19](https://github.com/tiwariav/ye-design/compare/v3.5.18...v3.5.19) (2024-02-08)
 
 
