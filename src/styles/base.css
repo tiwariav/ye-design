@@ -89,7 +89,7 @@
   --ye-color-input-background: color-mix(
     in oklch,
     var(--ye-color-dark),
-    transparent 2.5%
+    transparent 97.5%
   );
   --ye-color-input-border: var(--ye-color-input-background);
   --ye-color-input-focus-background: var(--ye-color-light);
