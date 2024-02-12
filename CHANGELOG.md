@@ -1,3 +1,10 @@
+## [3.5.22](https://github.com/tiwariav/ye-design/compare/v3.5.21...v3.5.22) (2024-02-12)
+
+
+### 🐛 Bug Fixes
+
+* hide file-selector-button for fileinput ([69397dd](https://github.com/tiwariav/ye-design/commit/69397ddb60d04c694a8cf570ad095727d784961b))
+
 ## [3.5.21](https://github.com/tiwariav/ye-design/compare/v3.5.20...v3.5.21) (2024-02-08)
 
 
