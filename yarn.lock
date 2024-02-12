@@ -13719,12 +13719,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^9.0.5":
-  version: 9.0.5
-  resolution: "husky@npm:9.0.5"
+"husky@npm:^9.0.10":
+  version: 9.0.10
+  resolution: "husky@npm:9.0.10"
   bin:
-    husky: bin.js
-  checksum: 10c0/699294459d3147cebcda13872a680a8b7fa8b71bcb28c0f3b932f2f60501b6f004d6e84003b0cf7373fe62efcf869eee976a4471515914d012a259e1f5d5eb97
+    husky: bin.mjs
+  checksum: 10c0/585d95fec151d2e3fba1a8d97c1290dee40b83eb2b8850afae0805e183b3b3ec45bfeef97b2d0c4ae16f1c1bf19788b9129627d9ba02d924c874632207e33b93
   languageName: node
   linkType: hard
 
@@ -24966,7 +24966,7 @@ __metadata:
     dotenv: "npm:^16.4.1"
     eslint: "npm:^8.56.0"
     glob: "npm:^10.3.10"
-    husky: "npm:^9.0.5"
+    husky: "npm:^9.0.10"
     identity-obj-proxy: "npm:^3.0.0"
     immer: "npm:^10.0.3"
     jest: "npm:^29.7.0"

@@ -68,31 +68,33 @@ export const CustomFileObject: Story = {
 function PasswordTemplate({ files = [], ...args }: FileInputProps) {
   const [allFiles, setFiles] = useState(files);
   return (
-    <FileInput
-      files={allFiles}
-      updateFiles={(files) =>
-        setFiles(
-          files.map((item) => {
-            if (!(item instanceof File)) {
-              return item;
-            }
-            const file = new UploadFile(item);
-            file.data = [
-              {
-                name: "password",
-                props: {
-                  label: "Password",
-                  variant: "outlined",
+    <div className="story-bg-container">
+      <FileInput
+        files={allFiles}
+        updateFiles={(files) =>
+          setFiles(
+            files.map((item) => {
+              if (!(item instanceof File)) {
+                return item;
+              }
+              const file = new UploadFile(item);
+              file.data = [
+                {
+                  name: "password",
+                  props: {
+                    label: "Password",
+                    variant: "outlined",
+                  },
+                  type: "password",
                 },
-                type: "password",
-              },
-            ];
-            return file;
-          }),
-        )
-      }
-      {...args}
-    />
+              ];
+              return file;
+            }),
+          )
+        }
+        {...args}
+      />
+    </div>
   );
 }
 
