@@ -24630,7 +24630,7 @@ __metadata:
       optional: true
     swiper:
       optional: true
-  checksum: 73c23489dce2e1d4b87767bbb06ef69076e665573a34ef78d5f3ddd5e381db627e9a12fe814061c3801b76a8063554cc727926a4597056e8dc92274997b2697d
+  checksum: df82917b15f726ebb0d0e081414251d07cd0421f85613820e33a7da875986c00443a79f65ccc35570d7b80a27907c8f3ae2232f4be9640f4d1cd8286bcfe4bda
   languageName: node
   linkType: hard
 
