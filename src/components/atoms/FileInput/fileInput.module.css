@@ -37,6 +37,10 @@
       outline: none;
       box-shadow: var(--ye-shadow-inset-none);
     }
+
+    &::file-selector-button {
+      display: none;
+    }
   }
 
   .icon-wrapper {

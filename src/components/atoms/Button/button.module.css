@@ -276,8 +276,9 @@
   }
 
   .spinner {
-    inset: 1px;
+    background-color: var(--ye-color-light-75);
     border-radius: var(--ye-button-border-radius);
+    inset: 1px;
   }
 
   /* to avoid undef error */

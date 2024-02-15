@@ -9,11 +9,11 @@
   .with-value,
   .with-focus {
     font-weight: 500;
-    transform: scale(0.72) translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
+    transform: scale(0.72)
       translateY(
         calc(
           var(--ye-input-padding-bottom) - var(--ye-input-padding-top) +
-            var(--ye-spacing-rem-tiny)
+            var(--ye-input-border-width) - 1px
         )
       );
     transition-duration: var(--ye-transition-duration);

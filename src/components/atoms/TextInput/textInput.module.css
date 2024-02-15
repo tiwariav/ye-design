@@ -130,7 +130,7 @@
 
       position: absolute;
       top: calc((var(--calc-xy-padding) / 2) + 1px);
-      left: calc(var(--ye-input-padding-left) + var(--ye-spacing-rem-tiny));
+      left: calc(var(--ye-input-padding-left));
       z-index: calc(var(--module-loader-z) - 1);
       display: flex;
       margin: 0;
@@ -144,10 +144,6 @@
       transition-property: transform;
     }
 
-    @media (--media-hover) {
-      background-color: var(--ye-color-input-focus-background);
-    }
-
     &:focus-within,
     &.has-value {
       & ::placeholder {
@@ -159,11 +155,10 @@
       & .label {
         font-weight: 500;
         transform: scale(0.72)
-          translateX(calc(-1px - var(--ye-spacing-rem-tiny)))
           translateY(
             calc(
               var(--ye-input-padding-bottom) - var(--ye-input-padding-top) +
-                var(--ye-spacing-rem-tiny)
+                var(--ye-input-border-width) - 1px
             )
           );
         transition-duration: var(--ye-transition-duration);

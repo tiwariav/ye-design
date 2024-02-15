@@ -1,3 +1,38 @@
+## [3.5.22](https://github.com/tiwariav/ye-design/compare/v3.5.21...v3.5.22) (2024-02-12)
+
+
+### 🐛 Bug Fixes
+
+* hide file-selector-button for fileinput ([69397dd](https://github.com/tiwariav/ye-design/commit/69397ddb60d04c694a8cf570ad095727d784961b))
+
+## [3.5.21](https://github.com/tiwariav/ye-design/compare/v3.5.20...v3.5.21) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* adjust material label transform for border width ([8c0fdfb](https://github.com/tiwariav/ye-design/commit/8c0fdfbf6bd4392d5ce75a908732fdffc93b508e))
+
+## [3.5.20](https://github.com/tiwariav/ye-design/compare/v3.5.19...v3.5.20) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* adjust material label transform for border width ([f39d54a](https://github.com/tiwariav/ye-design/commit/f39d54a5646176ffda39483b1a41a1969dff2a0c))
+
+## [3.5.19](https://github.com/tiwariav/ye-design/compare/v3.5.18...v3.5.19) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* update material input label styles ([08fc90c](https://github.com/tiwariav/ye-design/commit/08fc90c7e44aaa01122fa69041e7a76b2250c2cb))
+
+## [3.5.18](https://github.com/tiwariav/ye-design/compare/v3.5.17...v3.5.18) (2024-02-07)
+
+
+### 🐛 Bug Fixes
+
+* decrease button loader background opacity ([1003457](https://github.com/tiwariav/ye-design/commit/1003457f9266ba0894aa63912b6ce02d42dacf56))
+
 ## [3.5.17](https://github.com/tiwariav/ye-design/compare/v3.5.16...v3.5.17) (2024-01-25)
 
 

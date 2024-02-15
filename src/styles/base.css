@@ -89,7 +89,7 @@
   --ye-color-input-background: color-mix(
     in oklch,
     var(--ye-color-dark),
-    transparent 2.5%
+    transparent 97.5%
   );
   --ye-color-input-border: var(--ye-color-input-background);
   --ye-color-input-focus-background: var(--ye-color-light);
@@ -287,7 +287,7 @@
       var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)
     )
     calc(var(--ye-spacing-em-normal) - var(--ye-button-outline-border-width));
-  --ye-input-border-width: 0;
+  --ye-input-border-width: 0px;
   --ye-input-border-radius: 3em;
   --ye-input-shadow: var(--ye-shadow-inset);
   --ye-z-behind: -1;
