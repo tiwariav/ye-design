@@ -92,7 +92,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       const originalStyle = style ?? {};
       return input && variant === "material"
         ? {
-            paddingTop: `calc(${input.paddingTop}px + var(--module-input-padding-top))`,
+            paddingTop: `calc(${input.paddingTop}px + var(--ye-input-padding-top))`,
             ...originalStyle,
           }
         : originalStyle;
