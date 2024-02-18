@@ -52,6 +52,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
 }: HookFormInputWrapperProps<TValues>): ReactNode {
   const {
     field: { onBlur, onChange, ref, value },
+    fieldState: { error },
     formState: { defaultValues, errors },
   } = useController({ name, ...props });
 
@@ -99,6 +100,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
 
   const cloneProps = useMemo(() => {
     const response = {
+      error: error?.message,
       ref,
       value,
       ...changeHandlers,
@@ -107,7 +109,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
       response.defaultValue = defaultValues[name];
     }
     return response;
-  }, [changeHandlers, child, defaultValues, name, ref, value]);
+  }, [changeHandlers, child, defaultValues, error, name, ref, value]);
 
   return (
     <>

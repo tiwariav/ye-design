@@ -16,6 +16,11 @@
     }
   }
 
+  .error {
+    --ye-color-input-border: var(--ye-color-negative);
+    --ye-input-border-width: 1px;
+  }
+
   .input-wrapper {
     position: relative;
     display: flex;

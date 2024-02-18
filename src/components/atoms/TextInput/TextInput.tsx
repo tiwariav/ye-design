@@ -36,6 +36,7 @@ export type InputFormValue = InputDomValue | null;
 
 export interface TextInputProps
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
+  error?: string;
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   innerClassNames?: {
@@ -58,6 +59,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     {
       className,
       defaultValue,
+      error,
       iconAfter,
       iconBefore,
       id = "",
@@ -107,6 +109,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         className={clsx(
           styles.root,
           variant && styles[`variant-${variant}`],
+          error && styles.error,
           hasValue && styles.hasValue,
           className,
         )}
