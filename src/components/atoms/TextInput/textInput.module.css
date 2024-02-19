@@ -16,9 +16,8 @@
     }
   }
 
-  .error {
-    --ye-color-input-border: var(--ye-color-negative);
-    --ye-input-border-width: 1px;
+  .has-error {
+    --ye-input-shadow: var(--ye-shadow-error);
   }
 
   .input-wrapper {

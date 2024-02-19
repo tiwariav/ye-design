@@ -100,7 +100,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
 
   const cloneProps = useMemo(() => {
     const response = {
-      error: error?.message,
+      hasError: !!error?.message,
       ref,
       value,
       ...changeHandlers,

@@ -57,6 +57,7 @@
 
   .list-item {
     display: flex;
+    gap: var(--ye-spacing-rem-small);
     align-items: center;
     max-width: 100%;
     margin: var(--ye-spacing-em-normal) 0;
