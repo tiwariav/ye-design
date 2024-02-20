@@ -1,3 +1,15 @@
+## [3.6.0](https://github.com/tiwariav/ye-design/compare/v3.5.24...v3.6.0) (2024-02-20)
+
+
+### ✨ Features
+
+* input component errored state ([9eea0e1](https://github.com/tiwariav/ye-design/commit/9eea0e18dedcc6cf8cf08dc9600a1536d40087a9))
+
+
+### 🐛 Bug Fixes
+
+* gap between name and upload status ([342cd69](https://github.com/tiwariav/ye-design/commit/342cd6958eead60ca83cb7826fa0d967b69c4544))
+
 ## [3.5.24](https://github.com/tiwariav/ye-design/compare/v3.5.23...v3.5.24) (2024-02-20)
 
 
