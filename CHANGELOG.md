@@ -1,3 +1,10 @@
+## [3.5.24](https://github.com/tiwariav/ye-design/compare/v3.5.23...v3.5.24) (2024-02-20)
+
+
+### 🐛 Bug Fixes
+
+* fix ArcProgress props ([df7e593](https://github.com/tiwariav/ye-design/commit/df7e5935d72ffa86fdb1bd83e7ffb555a4d4d76f))
+
 ## [3.5.23](https://github.com/tiwariav/ye-design/compare/v3.5.22...v3.5.23) (2024-02-20)
 
 
