@@ -10,7 +10,7 @@ import styles from "./arcProgress.module.css";
 import useProgressAnimation from "./useProgressAnimations.js";
 
 interface ArcProgressProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   innerClassNames?: {
     [key: `segment${number}`]: string;
