@@ -1,3 +1,15 @@
+## [3.5.23](https://github.com/tiwariav/ye-design/compare/v3.5.22...v3.5.23) (2024-02-20)
+
+
+### 🐛 Bug Fixes
+
+* input top padding in text input ([3e3ce8d](https://github.com/tiwariav/ye-design/commit/3e3ce8d2d23937a9a613ecf79a903f8be437ef5f))
+
+
+### ♻️ Code Refactors
+
+* update dependencies ([9285d8b](https://github.com/tiwariav/ye-design/commit/9285d8b9465e36e95d0155dd09f14d6aa06f73d8))
+
 ## [3.5.22](https://github.com/tiwariav/ye-design/compare/v3.5.21...v3.5.22) (2024-02-12)
 
 
