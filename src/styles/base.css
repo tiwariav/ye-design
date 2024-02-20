@@ -101,6 +101,7 @@
     var(--ye-color-input-focus-border),
     transparent var(--mix-opacity-1)
   );
+  --ye-shadow-error: 0 0 0 1px var(--ye-color-negative);
   --ye-color-neu-background-dark: oklch(88.11% 0.001 286.4deg);
   --ye-color-neu-background-light: var(--ye-color-light);
   --ye-color-neu-shadow-dark: oklch(74.22% 0.001 197.1deg);
