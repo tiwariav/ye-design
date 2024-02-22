@@ -1,4 +1,4 @@
-@layer ye-components {
+@layer ye-base-components {
   .container {
     position: absolute;
     inset: 0;
