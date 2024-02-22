@@ -46,7 +46,7 @@ function getPhoneNumber(value: string) {
 
 const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
   function PhoneNumberInputRender(
-    { defaultValue = "+91", variant, ...props },
+    { className, defaultValue = "+91", variant, ...props },
     ref,
   ) {
     const textValueRef = useRef<string>(defaultValue.toString());
@@ -91,6 +91,7 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
         className={clsx(
           styles.root,
           variant === "material" && styles.variantMaterial,
+          className,
         )}
         defaultValue={defaultValue}
         format={formatFunction}
