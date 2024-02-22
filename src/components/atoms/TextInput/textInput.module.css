@@ -16,6 +16,10 @@
     }
   }
 
+  .has-error {
+    --ye-input-shadow: var(--ye-shadow-error);
+  }
+
   .input-wrapper {
     position: relative;
     display: flex;
