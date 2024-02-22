@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/tiwariav/ye-design/compare/v3.6.0...v3.6.1) (2024-02-22)
+
+
+### 🐛 Bug Fixes
+
+* prevent className override in phone number input ([c1adabc](https://github.com/tiwariav/ye-design/commit/c1adabc38e0bc372f859b9e95337c44bf00738a4))
+
 ## [3.6.0](https://github.com/tiwariav/ye-design/compare/v3.5.24...v3.6.0) (2024-02-20)
 
 
