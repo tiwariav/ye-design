@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/tiwariav/ye-design/compare/v3.6.1...v3.6.2) (2024-02-22)
+
+
+### 🐛 Bug Fixes
+
+* move spinner to base components css layer ([6b2378b](https://github.com/tiwariav/ye-design/commit/6b2378b6525cbfff77e311b31958ff11e3d09ba9))
+
 ## [3.6.1](https://github.com/tiwariav/ye-design/compare/v3.6.0...v3.6.1) (2024-02-22)
 
 
