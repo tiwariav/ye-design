@@ -1,3 +1,10 @@
+## [3.6.3](https://github.com/tiwariav/ye-design/compare/v3.6.2...v3.6.3) (2024-02-23)
+
+
+### 🐛 Bug Fixes
+
+* commit msg file permisions ([1caac6f](https://github.com/tiwariav/ye-design/commit/1caac6f7381302e3e0f775546918a079101c81d9))
+
 ## [3.6.2](https://github.com/tiwariav/ye-design/compare/v3.6.1...v3.6.2) (2024-02-22)
 
 
