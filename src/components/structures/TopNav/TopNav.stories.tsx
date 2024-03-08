@@ -146,3 +146,29 @@ export const HangingLogo: Story = {
     logoVariant: "hanging",
   },
 };
+
+export const MiddleContent: Story = {
+  args: {
+    contentLeft: (
+      <>
+        <div>Left</div>
+        <div>Left</div>
+      </>
+    ),
+    contentMiddle: (
+      <>
+        <div>Middle</div>
+        <div>Middle</div>
+      </>
+    ),
+    contentRight: (
+      <>
+        <div>Right</div>
+        <div>Right</div>
+      </>
+    ),
+    logo: iconMap.DogBowl,
+    sticky: { hideOnScroll: true, shrinkOffset: 100 },
+    variant: "flat",
+  },
+};
