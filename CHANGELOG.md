@@ -1,3 +1,10 @@
+## [3.7.0](https://github.com/tiwariav/ye-design/compare/v3.6.3...v3.7.0) (2024-03-11)
+
+
+### ✨ Features
+
+* middle content in top nav ([dba5a0c](https://github.com/tiwariav/ye-design/commit/dba5a0cc3029201a6bc0219e694150904d3c9bf1))
+
 ## [3.6.3](https://github.com/tiwariav/ye-design/compare/v3.6.2...v3.6.3) (2024-02-23)
 
 
