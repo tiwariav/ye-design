@@ -116,6 +116,7 @@ export interface TopNavProps {
   containerRef?: React.MutableRefObject<HTMLDivElement | null>;
   contentLeft?: ReactNode;
   contentMenu?: ReactNode;
+  contentMiddle?: ReactNode;
   contentRight?: ReactNode;
   innerClassNames?: {
     container?: string;
@@ -147,6 +148,7 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       containerRef,
       contentLeft,
       contentMenu,
+      contentMiddle,
       contentRight,
       innerClassNames = {},
       leftNavIcon,
@@ -253,28 +255,38 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
               [styles.hasMultiRow]: multiRow,
             })}
           >
-            {sideNavIcon && (
-              <div className={styles.sideNavToggle}>{sideNavIcon}</div>
+            <FlexAlignCenterDiv>
+              {sideNavIcon && (
+                <div className={styles.sideNavToggle}>{sideNavIcon}</div>
+              )}
+              {/* logo */}
+              {logo && (
+                <div
+                  className={clsx(
+                    styles["logo-container"],
+                    logoVariant && styles[`variant-logo-${logoVariant}`],
+                  )}
+                >
+                  <div className={styles.logo}>{logo}</div>
+                </div>
+              )}
+              {/* left content */}
+              {(smallerWidth === false || multiRow) && contentLeft && (
+                <FlexAlignCenterDiv
+                  className={styles.contentLeft}
+                  ref={contentLeftRef}
+                >
+                  {contentLeft}
+                </FlexAlignCenterDiv>
+              )}
+            </FlexAlignCenterDiv>
+
+            {(smallerWidth === false || multiRow) && contentMiddle && (
+              <FlexAlignCenterDiv>{contentMiddle}</FlexAlignCenterDiv>
             )}
-            {/* logo */}
-            {logo && (
-              <div
-                className={clsx(
-                  styles["logo-container"],
-                  logoVariant && styles[`variant-logo-${logoVariant}`],
-                )}
-              >
-                <div className={styles.logo}>{logo}</div>
-              </div>
-            )}
-            {/* left content */}
-            {(smallerWidth === false || multiRow) && contentLeft && (
-              <div className={styles.contentLeft} ref={contentLeftRef}>
-                {contentLeft}
-              </div>
-            )}
+
             {hasContentMenu && (
-              <FlexAlignCenterDiv className={styles.contentRightWrapper}>
+              <FlexAlignCenterDiv>
                 {/* right content */}
                 {contentRight && (
                   <FlexAlignCenterDiv className={styles.contentRight}>
@@ -332,6 +344,9 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
                         <FlexColDiv className={styles.contentMenuTop}>
                           {contentLeft}
                         </FlexColDiv>
+                      )}
+                      {contentMiddle && (
+                        <FlexColDiv>{contentMiddle}</FlexColDiv>
                       )}
                       {contentRight && (
                         <FlexColDiv className={styles.contentMenuBottom}>
