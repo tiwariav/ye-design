@@ -20,8 +20,8 @@ interface PageProps {
     hero?: string;
   };
   isCentered?: boolean;
-  sideNav?: ReactElement;
-  topNav?: ReactElement;
+  sideNav?: ReactElement<SideNavProps>;
+  topNav?: ReactElement<TopNavProps>;
   variant?: (typeof variantOptions)[number];
 }
 
@@ -45,8 +45,8 @@ function PageInner({
 
   const sideNavMemo = useMemo(() => {
     if (!sideNav) return null;
-    const topNavProps = (topNav?.props || {}) as TopNavProps;
-    const sideNavProps = { ...sideNav?.props } as SideNavProps;
+    const topNavProps = topNav?.props || {};
+    const sideNavProps = { ...sideNav?.props };
     if (
       variant === variantTSC &&
       sideNavProps.sticky &&

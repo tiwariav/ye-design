@@ -3,11 +3,13 @@
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce } from "lodash-es";
-import {
+import React, {
   ChangeEvent,
   ComponentPropsWithoutRef,
+  ReactElement,
   ReactNode,
   useId,
+  useRef,
   useState,
 } from "react";
 
@@ -28,7 +30,8 @@ const FILE_INPUT_VARIANTS = ["outlined"] as const;
 const FILE_INPUT_SPACINGS = [...COMPONENT_SPACINGS, "none", "equal"] as const;
 
 export interface FileInputProps<TFile extends UploadFile = UploadFile>
-  extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
+  extends Omit<ComponentPropsWithoutRef<"input">, "placeholder" | "size"> {
+  children?: ReactElement<ComponentPropsWithoutRef<"button">>;
   files: TFile[];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
@@ -36,11 +39,9 @@ export interface FileInputProps<TFile extends UploadFile = UploadFile>
     input?: string;
     label?: string;
     listItemDataInput?: string;
-    placeholder?: string;
   };
   isBusy?: boolean;
   label?: ReactNode;
-  placeholder?: string;
   size?: (typeof COMPONENT_SIZES)[number];
   spacing?: (typeof FILE_INPUT_SPACINGS)[number];
   updateFiles?: (
@@ -51,6 +52,7 @@ export interface FileInputProps<TFile extends UploadFile = UploadFile>
 }
 
 export default function FileInput<TFile extends UploadFile = UploadFile>({
+  children,
   className,
   files,
   iconAfter,
@@ -62,7 +64,6 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   onBlur,
   onChange,
   onFocus,
-  placeholder = "Browse",
   size,
   spacing,
   updateFiles,
@@ -71,13 +72,27 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
 }: FileInputProps<TFile>) {
   const [hasFocus, setHasFocus] = useState(false);
   const fileInputId = useId();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFocus: typeof onFocus = (event) => {
+  const clonedChildren = children
+    ? React.cloneElement(children as React.ReactElement, {
+        onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+          fileInputRef.current?.click();
+          children?.props?.onClick?.(event);
+        },
+      })
+    : undefined;
+
+  const handleFocus: typeof onFocus = (
+    event: React.FocusEvent<HTMLInputElement>,
+  ) => {
     setHasFocus(true);
     onFocus?.(event);
   };
 
-  const handleBlur: typeof onBlur = (event) => {
+  const handleBlur: typeof onBlur = (
+    event: React.FocusEvent<HTMLInputElement>,
+  ) => {
     setHasFocus(false);
     onBlur?.(event);
   };
@@ -122,12 +137,18 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
           onBlur={handleBlur}
           onChange={(event) => void handleChange(event)}
           onFocus={handleFocus}
+          ref={fileInputRef}
           type="file"
           {...props}
         />
-        <span className={clsx(styles.placeholder, innerClassNames.placeholder)}>
-          {placeholder}
-        </span>
+        {clonedChildren || (
+          <Button
+            className={styles.placeholder}
+            onClick={() => fileInputRef.current?.click()}
+          >
+            Browse
+          </Button>
+        )}
         {iconAfter && (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
             <FormIconSpan>{iconAfter}</FormIconSpan>

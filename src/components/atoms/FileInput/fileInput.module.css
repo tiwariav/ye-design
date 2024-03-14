@@ -9,18 +9,10 @@
     width: 100%;
     max-width: 200px;
     margin: auto;
-    padding: var(--ye-button-padding);
-    color: inherit;
-    line-height: inherit;
-    background-color: var(--ye-color-background);
-    border-color: var(--ye-color-border);
-    border-style: solid;
-    border-width: var(--ye-button-border-width);
-    border-radius: var(--ye-button-border-radius);
-    box-shadow: var(--ye-button-shadow);
   }
 
   .input {
+    display: none;
     width: 0;
     height: 0;
     overflow: hidden;
