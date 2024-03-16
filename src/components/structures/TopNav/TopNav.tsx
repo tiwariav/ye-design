@@ -151,7 +151,6 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
       contentMiddle,
       contentRight,
       innerClassNames = {},
-      leftNavIcon,
       logo,
       logoVariant,
       multiRow,

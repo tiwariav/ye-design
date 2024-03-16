@@ -53,7 +53,6 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       emptyValue,
       format,
       hiddenInputProps = {},
-      id,
       innerClassNames = {},
       isBusy,
       isLoading,

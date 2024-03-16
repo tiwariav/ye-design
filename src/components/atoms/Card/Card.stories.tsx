@@ -106,7 +106,7 @@ export const Height: Story = {
 
 export const Variants: Story = {
   ...WithImage,
-  render: ({ children, ...args }) => (
+  render: (...args) => (
     <div className="story-grid">
       {CARD_VARIANTS.map((variant) => (
         <Card key={variant} variant={variant} {...args}>

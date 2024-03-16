@@ -5,12 +5,7 @@ import { FormattedInputProps } from "../FormattedInput/FormattedInput.js";
 import { InputFormValue } from "../TextInput/TextInput.js";
 import PhoneNumberInput from "./PhoneNumberInput.js";
 
-const Template = ({
-  iconAfter,
-  iconBefore,
-  width,
-  ...args
-}: FormattedInputProps) => {
+const Template = ({ width, ...args }: FormattedInputProps) => {
   const [eventValue, setEventValue] = useState<string>();
   const [refValue, setRefValue] = useState<string>();
   const [parsedValue, setParsedValue] = useState<InputFormValue>("");

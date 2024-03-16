@@ -21,7 +21,7 @@ type Story = StoryObj<typeof Container>;
 export const Basic: Story = {};
 
 export const Align: Story = {
-  render: ({ children, ...args }) => (
+  render: (args) => (
     <div className="story-grid">
       <Container className="story-bordered" {...args}>
         No align

@@ -11,10 +11,6 @@ import {
   useState,
 } from "react";
 
-import {
-  COMPONENT_SIZES,
-  COMPONENT_SPACINGS,
-} from "../../../tools/constants/props.js";
 import UploadFile from "../../../tools/uploadFile.js";
 import { FormIconSpan } from "../../../wrappers/span.js";
 import Button from "../Button/Button.js";
@@ -25,7 +21,6 @@ import PasswordInput from "../TextInput/PasswordInput.js";
 import styles from "./fileInput.module.css";
 
 const FILE_INPUT_VARIANTS = ["outlined"] as const;
-const FILE_INPUT_SPACINGS = [...COMPONENT_SPACINGS, "none", "equal"] as const;
 
 export interface FileInputProps<TFile extends UploadFile = UploadFile>
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
@@ -41,8 +36,6 @@ export interface FileInputProps<TFile extends UploadFile = UploadFile>
   isBusy?: boolean;
   label?: ReactNode;
   placeholder?: string;
-  size?: (typeof COMPONENT_SIZES)[number];
-  spacing?: (typeof FILE_INPUT_SPACINGS)[number];
   updateFiles?: (
     files: (File | TFile)[],
     action: "add" | "remove" | "update",
@@ -55,7 +48,6 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   files,
   iconAfter,
   iconBefore,
-  id,
   innerClassNames = {},
   isBusy,
   label,
@@ -63,8 +55,6 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   onChange,
   onFocus,
   placeholder = "Browse",
-  size,
-  spacing,
   updateFiles,
   variant,
   ...props

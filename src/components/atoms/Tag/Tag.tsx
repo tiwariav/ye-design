@@ -20,7 +20,6 @@ function Tag({
   iconBefore,
   isBusy,
   isLoading,
-  style,
   ...props
 }: TagProps) {
   return (
