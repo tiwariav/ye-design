@@ -1,3 +1,10 @@
+## [3.7.2](https://github.com/tiwariav/ye-design/compare/v3.7.1...v3.7.2) (2024-03-16)
+
+
+### ♻️ Code Refactors
+
+* update storybook to v8 ([e2d1eac](https://github.com/tiwariav/ye-design/commit/e2d1eac728fae347e2e2095148d64e3c097f08f3))
+
 ## [3.7.1](https://github.com/tiwariav/ye-design/compare/v3.7.0...v3.7.1) (2024-03-16)
 
 
