@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/tiwariav/ye-design/compare/v3.7.0...v3.7.1) (2024-03-16)
+
+
+### 🐛 Bug Fixes
+
+* add classname to root of page container ([1f45f38](https://github.com/tiwariav/ye-design/commit/1f45f387c2cd11896aa9bbcdc5b74800cfdac1c9))
+
 ## [3.7.0](https://github.com/tiwariav/ye-design/compare/v3.6.3...v3.7.0) (2024-03-11)
 
 
