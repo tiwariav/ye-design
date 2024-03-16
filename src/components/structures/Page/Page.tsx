@@ -13,6 +13,7 @@ const variantOptions = [variantTSC, variantSTC] as const;
 
 interface PageProps {
   children?: ReactNode;
+  className?: string;
   hero?: ReactNode;
   innerClassNames?: {
     container?: string;
@@ -27,6 +28,7 @@ interface PageProps {
 
 function PageInner({
   children,
+  className,
   hero,
   innerClassNames = {},
   isCentered,
@@ -66,9 +68,13 @@ function PageInner({
 
   return (
     <div
-      className={clsx(styles.root, {
-        [styles.variantStc]: variant === variantSTC,
-      })}
+      className={clsx(
+        styles.root,
+        {
+          [styles.variantStc]: variant === variantSTC,
+        },
+        className,
+      )}
     >
       {variant === variantTSC ? topNavMemo : sideNavMemo}
       <main
