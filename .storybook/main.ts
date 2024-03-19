@@ -8,9 +8,7 @@ import {
 const config: StorybookConfig = {
   ...main,
   addons: [...(main.addons || []), getAbsolutePath("@storybook/addon-themes")],
-  webpackFinal: (config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // 'PRODUCTION' is used when building the static version of storybook.
+  webpackFinal: (config) => {
     config = modulesFullySpecified(config);
     config = nodeNextExtensionAlias(config);
     return config;
