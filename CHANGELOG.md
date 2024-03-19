@@ -1,3 +1,10 @@
+## [3.7.3](https://github.com/tiwariav/ye-design/compare/v3.7.2...v3.7.3) (2024-03-19)
+
+
+### 🐛 Bug Fixes
+
+* fix storybook css config ([6db9893](https://github.com/tiwariav/ye-design/commit/6db9893789629d6f782a496490dfdab8213e55f9))
+
 ## [3.7.2](https://github.com/tiwariav/ye-design/compare/v3.7.1...v3.7.2) (2024-03-16)
 
 
