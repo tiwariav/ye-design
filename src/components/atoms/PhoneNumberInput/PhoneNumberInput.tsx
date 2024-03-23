@@ -97,6 +97,7 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
         format={formatFunction}
         iconBefore={flag}
         innerClassNames={{ iconBefore: styles.flagIcon, label: styles.label }}
+        inputMode="tel"
         parse={parseFunction}
         ref={ref}
         variant={variant}

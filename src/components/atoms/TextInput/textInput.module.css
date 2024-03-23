@@ -140,7 +140,6 @@
       margin: 0;
       padding: 0;
       color: var(--ye-color-text-light);
-      font-weight: 300;
       transform-origin: 0 center;
       cursor: text;
       transition-timing-function: var(--ye-transition-function);
@@ -157,7 +156,6 @@
       }
 
       & .label {
-        font-weight: 500;
         transform: scale(0.72)
           translateY(
             calc(
