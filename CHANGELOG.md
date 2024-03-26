@@ -1,3 +1,10 @@
+## [3.7.5](https://github.com/tiwariav/ye-design/compare/v3.7.4...v3.7.5) (2024-03-26)
+
+
+### 🐛 Bug Fixes
+
+* fix raius css var name spelling ([4d3db31](https://github.com/tiwariav/ye-design/commit/4d3db3189bbf4f3d9ae6304f8da3d0c42a70b73a))
+
 ## [3.7.4](https://github.com/tiwariav/ye-design/compare/v3.7.3...v3.7.4) (2024-03-19)
 
 
