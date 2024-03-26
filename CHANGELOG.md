@@ -1,3 +1,10 @@
+## [3.7.4](https://github.com/tiwariav/ye-design/compare/v3.7.3...v3.7.4) (2024-03-19)
+
+
+### ♻️ Code Refactors
+
+* update packages ([991dc8d](https://github.com/tiwariav/ye-design/commit/991dc8dd44e91c672554c1d36df3866e1bb36fb6))
+
 ## [3.7.3](https://github.com/tiwariav/ye-design/compare/v3.7.2...v3.7.3) (2024-03-19)
 
 
