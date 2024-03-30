@@ -1,3 +1,10 @@
+## [3.7.6](https://github.com/tiwariav/ye-design/compare/v3.7.5...v3.7.6) (2024-03-30)
+
+
+### 🐛 Bug Fixes
+
+* safari icon width ([9305410](https://github.com/tiwariav/ye-design/commit/9305410338f7b42d340f5c55cb6e6e0fe92f9f13))
+
 ## [3.7.5](https://github.com/tiwariav/ye-design/compare/v3.7.4...v3.7.5) (2024-03-26)
 
 
