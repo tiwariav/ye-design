@@ -281,6 +281,9 @@
   --ye-input-padding-right: var(--ye-spacing-rem-normal);
   --ye-input-padding-bottom: var(--ye-spacing-rem-small);
   --ye-input-padding-left: var(--ye-spacing-rem-normal);
+  --ye-input-icon-width: calc(
+    var(--ye-spacing-em-large) + var(--ye-spacing-rem-small)
+  );
 
   /* FORM */
   --ye-control-outline-border-width: 1px;

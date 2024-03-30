@@ -50,7 +50,7 @@
   .icon {
     position: absolute;
     top: 50%;
-    left: var(--ye-spacing-em-normal);
+    left: var(--ye-spacing-rem-normal);
     transform: translateY(-50%);
   }
 
@@ -61,15 +61,13 @@
 
   .padded-left {
     --ye-input-padding-left: calc(
-      var(--ye-spacing-em-large) + var(--ye-spacing-rem-normal) +
-        var(--ye-spacing-rem-small)
+      var(--ye-input-icon-width) + var(--ye-spacing-rem-normal)
     );
   }
 
   .padded-right {
     --ye-input-padding-right: calc(
-      var(--ye-spacing-em-large) + var(--ye-spacing-rem-normal) +
-        var(--ye-spacing-rem-small)
+      var(--ye-input-icon-width) + var(--ye-spacing-rem-normal)
     );
   }
 

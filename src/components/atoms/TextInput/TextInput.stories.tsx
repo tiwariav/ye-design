@@ -44,6 +44,8 @@ export const Variants: Story = {
       {TEXT_INPUT_VARIANTS.map((variant) => (
         <div key={variant}>
           <TextInput
+            iconAfter={storyIconMap.Search}
+            iconBefore={storyIconMap.DogBowl}
             label={`'${variant}' Text Input`}
             placeholder="Enter your text"
             variant={variant}
