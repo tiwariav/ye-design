@@ -46,12 +46,12 @@
   .icon-wrapper {
     position: absolute;
     top: var(--ye-spacing-em-small);
-    left: var(--ye-spacing-em-large);
+    left: var(--ye-spacing-rem-large);
     display: inline-flex;
   }
 
   .icon-right {
-    right: var(--ye-spacing-em-large);
+    right: var(--ye-spacing-rem-large);
     left: auto;
   }
 
