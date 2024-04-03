@@ -1,3 +1,10 @@
+## [3.7.7](https://github.com/tiwariav/ye-design/compare/v3.7.6...v3.7.7) (2024-04-03)
+
+
+### 🐛 Bug Fixes
+
+* center input icons ([f785900](https://github.com/tiwariav/ye-design/commit/f7859000a454ea26523d5b15c11b32338717b513))
+
 ## [3.7.6](https://github.com/tiwariav/ye-design/compare/v3.7.5...v3.7.6) (2024-03-30)
 
 
