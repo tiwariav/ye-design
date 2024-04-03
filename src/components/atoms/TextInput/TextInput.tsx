@@ -108,6 +108,10 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       <InputWrapper
         className={clsx(
           styles.root,
+          {
+            [styles.paddedLeft]: iconBefore,
+            [styles.paddedRight]: iconAfter,
+          },
           variant && styles[`variant-${variant}`],
           hasError && styles.hasError,
           hasValue && styles.hasValue,
@@ -139,14 +143,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             </FormIconSpan>
           )}
           <FormInputControl
-            className={clsx(
-              {
-                [styles.paddedLeft]: iconBefore,
-                [styles.paddedRight]: iconAfter,
-              },
-              styles.textInput,
-              innerClassNames.input,
-            )}
+            className={clsx(styles.textInput, innerClassNames.input)}
             id={id || inputId}
             onBlur={handleBlur}
             ref={ref}

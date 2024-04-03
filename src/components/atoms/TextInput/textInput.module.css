@@ -50,13 +50,14 @@
   .icon {
     position: absolute;
     top: 50%;
-    left: var(--ye-spacing-rem-normal);
-    transform: translateY(-50%);
+    left: calc(var(--ye-input-padding-left) / 2);
+    transform: translateY(-50%) translateX(-50%);
   }
 
   .icon-right {
-    right: var(--ye-spacing-rem-normal);
+    right: calc(var(--ye-input-padding-right) / 2);
     left: auto;
+    transform: translateY(-50%) translateX(50%);
   }
 
   .padded-left {
