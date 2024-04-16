@@ -1,21 +1,24 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { useState } from "react";
 
+import type { FileInputProps } from "./FileInput.js";
+
 import UploadFile from "../../../tools/uploadFile.js";
-import FileInput, { FileInputProps } from "./FileInput.js";
+import FileInput from "./FileInput.js";
 
 function Template({ files, ...args }: FileInputProps) {
   const [allFiles, setFiles] = useState(files);
   return (
     <FileInput
       files={allFiles}
-      updateFiles={(files) =>
+      updateFiles={(newFiles) => {
         setFiles(
-          files.map((item) =>
+          newFiles.map((item) =>
             item instanceof UploadFile ? item : new UploadFile(item),
           ),
-        )
-      }
+        );
+      }}
       {...args}
     />
   );
@@ -36,15 +39,15 @@ class CustomUploadFile extends UploadFile {
   text?: string;
 }
 
-function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
-  const [allFiles, setFiles] = useState<CustomUploadFile[]>(files);
+function FileObjectTemplate({ files, ...args }: FileInputProps) {
+  const [allFiles, setFiles] = useState<CustomUploadFile[] | undefined>(files);
   return (
     <>
       <FileInput
         files={allFiles}
-        updateFiles={(files) =>
+        updateFiles={(newFiles) => {
           setFiles(
-            files.map((item) => {
+            newFiles.map((item) => {
               if (item instanceof CustomUploadFile) {
                 return item;
               }
@@ -52,11 +55,11 @@ function FileObjectTemplate({ files = [], ...args }: FileInputProps) {
               customFile.text = `custom text from file ${customFile.file.name}`;
               return customFile;
             }),
-          )
-        }
+          );
+        }}
         {...args}
       />
-      <div>{allFiles.map((file) => file.text ?? "")}</div>
+      <div>{allFiles?.map((file) => file.text ?? "")}</div>
     </>
   );
 }
@@ -65,15 +68,15 @@ export const CustomFileObject: Story = {
   render: (args) => <FileObjectTemplate {...args} />,
 };
 
-function PasswordTemplate({ files = [], ...args }: FileInputProps) {
+function PasswordTemplate({ files, ...args }: FileInputProps) {
   const [allFiles, setFiles] = useState(files);
   return (
     <div className="story-bg-container">
       <FileInput
         files={allFiles}
-        updateFiles={(files) =>
+        updateFiles={(newFiles) => {
           setFiles(
-            files.map((item) => {
+            newFiles.map((item) => {
               if (!(item instanceof File)) {
                 return item;
               }
@@ -90,8 +93,8 @@ function PasswordTemplate({ files = [], ...args }: FileInputProps) {
               ];
               return file;
             }),
-          )
-        }
+          );
+        }}
         {...args}
       />
     </div>

@@ -1,6 +1,6 @@
 import { getUpdateStateMethod } from "wo-library/contexts/utils.js";
 
-import { ScrollState } from "./state.js";
+import type { ScrollState } from "./state.js";
 
 export default function createScrollMethods(state: ScrollState) {
   return {

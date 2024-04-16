@@ -20,3 +20,8 @@ export const storyIconControl = {
   mapping: { ...storyIconMap, ...noneMap },
   options: [...Object.keys(storyIconMap), "None"],
 };
+
+export const iconArgTypes = {
+  iconAfter: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
+  iconBefore: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
+};

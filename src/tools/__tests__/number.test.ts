@@ -1,19 +1,17 @@
-import {
-  FormatNumberSuffixOptions,
-  formatNumber,
-  formatNumberWithSuffix,
-} from "../number.js";
+import type { FormatNumberSuffixOptions } from "../number.js";
 
-type TEST_DATA = [[string, FormatNumberSuffixOptions?], string | undefined][];
+import { formatNumber, formatNumberWithSuffix } from "../number.js";
+
+type TestData = [[string, FormatNumberSuffixOptions?], string | undefined][];
 
 const SOME_STRING = "some string";
-const NON_NUMBERS: TEST_DATA = [
+const NON_NUMBERS: TestData = [
   [[SOME_STRING], ""],
   [[SOME_STRING, { nullValue: "xx" }], "xx"],
   [[""], ""],
 ];
 
-function expectResult(tests: TEST_DATA, withSuffix?: boolean) {
+function expectResult(tests: TestData, withSuffix?: boolean) {
   for (const item of tests) {
     const format = withSuffix ? formatNumberWithSuffix : formatNumber;
     const output = format(item[0][0], item[0][1]);
@@ -21,15 +19,17 @@ function expectResult(tests: TEST_DATA, withSuffix?: boolean) {
   }
 }
 
-describe("format number", () => {
+const DECIMAL_NUMBER = 85_752.384_823_3;
+
+describe("format number options", () => {
   test("max fraction digit 0", () => {
     // max fration digits should not be less than min fraction digits
-    const output = formatNumber(85_752.384_823_3, { maximumFractionDigits: 0 });
+    const output = formatNumber(DECIMAL_NUMBER, { maximumFractionDigits: 0 });
     expect(output).toBe("85,752");
   });
 
   test("fraction digits 0", () => {
-    const output = formatNumber(85_752.384_823_3, {
+    const output = formatNumber(DECIMAL_NUMBER, {
       fractionDigits: 0,
     });
     expect(output).toBe("85,752");
@@ -40,7 +40,7 @@ describe("format number", () => {
   });
 
   test("should return correct number of decimals", () => {
-    const tests: TEST_DATA = [
+    const tests: TestData = [
       [["1"], "1.00"],
       [["-1"], "-1.00"],
       [["1.001"], "1.00"],
@@ -51,16 +51,18 @@ describe("format number", () => {
   });
 
   test("should round off correctly", () => {
-    const tests: TEST_DATA = [
+    const tests: TestData = [
       [["1.006"], "1.01"],
       [["1.005"], "1.01"],
       [["1.004"], "1.00"],
     ];
     expectResult(tests);
   });
+});
 
+describe("format number", () => {
   test("should format correctly", () => {
-    const tests: TEST_DATA = [
+    const tests: TestData = [
       [["0"], "0.00"],
       [["-0.002"], "-0.00"],
       [["-0.05"], "-0.05"],
@@ -89,7 +91,7 @@ describe("format number with suffix", () => {
   });
 
   test("should format correctly", () => {
-    const tests: TEST_DATA = [
+    const tests: TestData = [
       [["1"], "1.00"],
       [["10"], "10.00"],
       [["100"], "100.00"],

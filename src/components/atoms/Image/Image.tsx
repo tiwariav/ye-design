@@ -1,22 +1,20 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-basic', 'is-circular'] }] */
 
-import { clsx } from "clsx";
-import {
-  ComponentPropsWithoutRef,
-  ElementType,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import type { ComponentPropsWithoutRef, ElementType } from "react";
 
+import { clsx } from "clsx";
+import { useEffect, useMemo, useState } from "react";
+
+import { getDynamicClassName } from "../../../tools/utils.js";
 import Spinner from "../Spinner/Spinner.js";
 import ImageLoader from "./ImageLoader.js";
-import styles from "./image.module.css";
+import * as styles from "./image.module.css";
 
 const IMAGE_VARIANT_OPTIONS = ["basic", "circular"] as const;
+const MAX_PERCENT = 100;
 
 export interface ImageProps extends ComponentPropsWithoutRef<"img"> {
-  Element?: ElementType;
+  as?: ElementType;
   aspectRatio?: `${number}/${number}`;
   isBusy?: boolean;
   isLoading?: boolean;
@@ -24,20 +22,21 @@ export interface ImageProps extends ComponentPropsWithoutRef<"img"> {
 }
 
 export default function Image({
-  Element = "img",
+  as = "img",
   aspectRatio,
   className,
   isBusy,
   isLoading,
-  style = {},
+  style,
   variant = "basic",
   ...props
 }: ImageProps) {
   const [contentStyle, setContentStyle] = useState({});
-  const image = useMemo(
-    () => <Element className={clsx(styles.image, className)} {...props} />,
-    [Element, className, props],
-  );
+
+  const image = useMemo(() => {
+    const Element = as;
+    return <Element className={clsx(styles.image, className)} {...props} />;
+  }, [as, className, props]);
 
   useEffect(() => {
     if (aspectRatio ?? variant === "circular") {
@@ -45,13 +44,18 @@ export default function Image({
       if (aspectRatio && variant !== "circular") {
         ratio = aspectRatio.split("/").map((item) => Number.parseInt(item));
       }
-      setContentStyle({ paddingBottom: `${(100 * ratio[1]) / ratio[0]}%` });
+      setContentStyle({
+        paddingBottom: `${(MAX_PERCENT * ratio[1]) / ratio[0]}%`,
+      });
     }
   }, [aspectRatio, variant]);
 
   return (
     <div
-      className={clsx(styles.container, styles[`is-${variant}`])}
+      className={clsx(
+        styles.container,
+        getDynamicClassName(styles, `is-${variant}`),
+      )}
       style={style}
     >
       {isLoading ? (

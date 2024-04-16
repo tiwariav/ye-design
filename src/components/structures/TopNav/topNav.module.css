@@ -1,20 +1,6 @@
 @layer ye-structures {
-  .root {
-    position: relative;
-    z-index: var(--ye-z-topnav);
-    width: 100%;
-    transition-timing-function: var(--ye-transition-function);
-    transition-duration: var(--ye-transition-duration);
-    transition-property: transform;
-  }
-
   .wrapper {
     width: 100%;
-  }
-
-  .is-sticky {
-    position: sticky;
-    top: 0;
   }
 
   .container {
@@ -35,21 +21,6 @@
           display: flex;
         }
       }
-    }
-  }
-
-  .is-scrolled {
-    & .container {
-      transition-timing-function: var(--ye-transition-function);
-      transition-duration: var(--ye-transition-duration);
-      transition-property: background-color, box-shadow, padding, transform;
-    }
-  }
-
-  .is-expanded {
-    & .container {
-      padding-top: var(--ye-spacing-rem-huge);
-      padding-bottom: var(--ye-spacing-rem-huge);
     }
   }
 
@@ -152,14 +123,6 @@
     display: flex;
     justify-content: center;
     line-height: 1;
-    transition-timing-function: var(--ye-transition-function);
-    transition-duration: var(--ye-transition-duration);
-    transition-property: height;
-
-    /* stylelint-disable-next-line csstools/media-use-custom-media */
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
   }
 
   .logo {
@@ -169,24 +132,25 @@
     justify-content: center;
   }
 
+  .logo-container,
   .variant-logo-hanging {
-    height: 40px;
     transition-timing-function: var(--ye-transition-function);
     transition-duration: var(--ye-transition-duration);
     transition-property: height;
+
+    /* stylelint-disable-next-line csstools/media-use-custom-media */
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .variant-logo-hanging {
+    height: 40px;
 
     & .logo {
       z-index: calc(var(--ye-z-topnav) + 1);
       height: var(--ye-size-hanging-logo);
       font-size: var(--ye-size-hanging-logo);
-    }
-  }
-
-  .root,
-  .variant-logo-hanging {
-    /* stylelint-disable-next-line csstools/media-use-custom-media */
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition: none;
     }
   }
 
@@ -206,8 +170,6 @@
   /* to avoid undef error */
   /* stylelint-disable-next-line no-descending-specificity */
   .has-multi-row,
-  .has-drawer,
-  .content-menu-is-open,
   .content-left {
     /* no styles */
   }

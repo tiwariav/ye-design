@@ -5,20 +5,19 @@
   spacing-less, spacing-extra,
 ]}] */
 
-import { clsx } from "clsx";
-import {
-  ComponentPropsWithoutRef,
-  ElementType,
-  ReactNode,
-  forwardRef,
-} from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-import {
+import { clsx } from "clsx";
+import { forwardRef } from "react";
+
+import type {
   COMPONENT_SIZES,
   COMPONENT_SPACINGS,
 } from "../../../tools/constants/props.js";
+
+import { getDynamicClassName } from "../../../tools/utils.js";
 import { IconSpan } from "../../../wrappers/span.js";
-import styles from "./anchor.module.css";
+import * as styles from "./anchor.module.css";
 
 export const ANCHOR_VARIANTS = [
   "color",
@@ -41,44 +40,49 @@ export interface AnchorProps extends ComponentPropsWithoutRef<"a"> {
 /**
  * Primary UI component for user interaction
  */
-const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(function AnchorRender(
-  {
-    as = "a",
-    children,
-    className,
-    iconAfter,
-    iconBefore,
-    noVisited,
-    size,
-    spacing,
-    variant,
-    ...props
+const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
+  (
+    {
+      as = "a",
+      children,
+      className,
+      iconAfter,
+      iconBefore,
+      noVisited,
+      size,
+      spacing,
+      variant,
+      ...props
+    },
+    ref,
+  ) => {
+    /* jscpd:ignore-start */
+    const Element = as;
+    return (
+      <Element
+        className={clsx(
+          styles.anchor,
+          {
+            [styles.noVisited]: noVisited,
+          },
+          size && getDynamicClassName(styles, `size-${size}`),
+          variant && getDynamicClassName(styles, `variant-${variant}`),
+          spacing && getDynamicClassName(styles, `spacing-${spacing}`),
+          className,
+        )}
+        ref={ref}
+        {...props}
+        /* jscpd:ignore-end */
+      >
+        {!!iconBefore && <IconSpan>{iconBefore}</IconSpan>}
+        {children}
+        {!!iconAfter && (
+          <IconSpan className={styles.iconAfter}>{iconAfter}</IconSpan>
+        )}
+      </Element>
+    );
   },
-  ref,
-) {
-  const Element = as;
-  return (
-    <Element
-      className={clsx(
-        styles.anchor,
-        {
-          [styles.noVisited]: noVisited,
-        },
-        size && styles[`size-${size}`],
-        variant && styles[`variant-${variant}`],
-        spacing && styles[`spacing-${spacing}`],
-        className,
-      )}
-      ref={ref}
-      {...props}
-    >
-      {iconBefore && <IconSpan>{iconBefore}</IconSpan>}
-      {children}
-      {iconAfter && (
-        <IconSpan className={styles.iconAfter}>{iconAfter}</IconSpan>
-      )}
-    </Element>
-  );
-});
+);
+Anchor.displayName = "Anchor";
 
 export default Anchor;

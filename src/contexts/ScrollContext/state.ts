@@ -1,4 +1,4 @@
-import { OverlayScrollbarsComponentRef } from "overlayscrollbars-react";
+import type { OverlayScrollbarsComponentRef } from "overlayscrollbars-react";
 
 export interface ScrollState {
   overlayScrollbars: OverlayScrollbarsComponentRef | null;

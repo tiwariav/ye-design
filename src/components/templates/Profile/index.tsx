@@ -1,8 +1,10 @@
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+
 import { clsx } from "clsx";
-import React, { ComponentPropsWithoutRef, ReactNode } from "react";
+import React from "react";
 
 import Container from "../../atoms/Container/Container.js";
-import styles from "./profile.module.css";
+import * as styles from "./profile.module.css";
 
 interface ProfileProps extends ComponentPropsWithoutRef<"div"> {
   contentLeft?: ReactNode;

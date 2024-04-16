@@ -1,9 +1,11 @@
+import type { CSSProperties, ComponentPropsWithoutRef } from "react";
+
 import { clsx } from "clsx";
-import { CSSProperties, ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 
 import Spinner from "../Spinner/Spinner.js";
 import TextLoader from "./TextLoader.js";
-import styles from "./text.module.css";
+import * as styles from "./text.module.css";
 
 export interface TextProps extends ComponentPropsWithoutRef<"div"> {
   inline?: boolean;
@@ -21,7 +23,7 @@ function Text({
   inline,
   isBusy,
   isLoading,
-  lineHeight,
+  lineHeight = 1.5,
   loaderStyles,
   maxLines,
   minLines = 1,
@@ -29,13 +31,12 @@ function Text({
   ...props
 }: TextProps) {
   const textStyles: CSSProperties = {};
-  const inlineHeight = lineHeight ?? 1.5;
   if (maxLines) {
-    textStyles.maxHeight = `${maxLines * inlineHeight}em`;
+    textStyles.maxHeight = `${maxLines * lineHeight}em`;
     textStyles.WebkitLineClamp = maxLines;
   }
   if (minLines) {
-    textStyles.minHeight = `${minLines * inlineHeight}em`;
+    textStyles.minHeight = `${minLines * lineHeight}em`;
   }
 
   const Wrapper = inline ? "span" : "div";

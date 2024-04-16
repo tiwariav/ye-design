@@ -1,6 +1,6 @@
 import { getUpdateStateMethod } from "wo-library/contexts/utils.js";
 
-import { LayoutState } from "./state.js";
+import type { LayoutState } from "./state.js";
 
 export default function createLayoutMethods(state: LayoutState) {
   return {

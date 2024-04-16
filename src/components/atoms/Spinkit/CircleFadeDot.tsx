@@ -1,11 +1,12 @@
 import { clsx } from "clsx";
 
-import styles from "./circleFadeDot.module.css";
+import * as styles from "./circleFadeDot.module.css";
 
 export default function CircleFadeDot() {
   return (
     <div className={styles.root}>
       <div className={styles.skChild} />
+      {/* jscpd:ignore-start */}
       <div className={clsx(styles.skCircle2, styles.skChild)} />
       <div className={clsx(styles.skCircle3, styles.skChild)} />
       <div className={clsx(styles.skCircle4, styles.skChild)} />
@@ -17,6 +18,7 @@ export default function CircleFadeDot() {
       <div className={clsx(styles.skCircle10, styles.skChild)} />
       <div className={clsx(styles.skCircle11, styles.skChild)} />
       <div className={clsx(styles.skCircle12, styles.skChild)} />
+      {/* jscpd:ignore-end */}
     </div>
   );
 }

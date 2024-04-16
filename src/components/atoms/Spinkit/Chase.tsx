@@ -1,16 +1,13 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./chase.module.css";
+import * as styles from "./chase.module.css";
 
 export default function Chase(props: ComponentPropsWithoutRef<"div">) {
   return (
     <div className={styles.root} {...props}>
-      <div className={styles.dot} />
-      <div className={styles.dot} />
-      <div className={styles.dot} />
-      <div className={styles.dot} />
-      <div className={styles.dot} />
-      <div className={styles.dot} />
+      {Array.from({ length: 6 }).map((_, index) => (
+        <div className={styles.dot} key={index} />
+      ))}
     </div>
   );
 }

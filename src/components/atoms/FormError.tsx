@@ -1,12 +1,12 @@
-import { MultipleFieldErrors } from "react-hook-form";
+import type { MultipleFieldErrors } from "react-hook-form";
 
-import styles from "./formError.module.css";
+import * as styles from "./formError.module.css";
 
-const CustomError = ({
+function CustomError({
   messages,
 }: {
   messages?: MultipleFieldErrors | string;
-}) => {
+}) {
   return (
     messages && (
       <div className={styles.root}>
@@ -18,6 +18,6 @@ const CustomError = ({
       </div>
     )
   );
-};
+}
 
 export default CustomError;

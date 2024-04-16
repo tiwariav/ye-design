@@ -1,7 +1,8 @@
-import { clsx } from "clsx";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./topNavItem.module.css";
+import { clsx } from "clsx";
+
+import * as styles from "./topNavItem.module.css";
 
 export interface TopNavItemProps extends ComponentPropsWithoutRef<"div"> {
   hasSeparator?: boolean;

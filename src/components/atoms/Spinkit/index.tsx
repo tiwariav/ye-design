@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 import LoaderWrapper from "../LoaderWrapper.js";
 import Bounce from "./Bounce.js";

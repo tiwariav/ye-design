@@ -1,5 +1,13 @@
-import generateCssWrapper from "./generateCssWrapper.js";
-import styles from "./span.module.css";
+import clsx from "clsx";
 
-export const IconSpan = generateCssWrapper(styles.icon, "span");
-export const FormIconSpan = generateCssWrapper(styles.formIcon, "span");
+import generateCssWrapper from "./generateCssWrapper.js";
+import * as styles from "./span.module.css";
+
+export const IconSpan = generateCssWrapper(
+  clsx(styles.base, styles.icon),
+  "span",
+);
+export const FormIconSpan = generateCssWrapper(
+  clsx(styles.base, styles.formIcon),
+  "span",
+);

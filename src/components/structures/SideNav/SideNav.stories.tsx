@@ -1,16 +1,17 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
+
 import { IconMenu } from "@tabler/icons-react";
-import { loremIpsum } from "lorem-ipsum";
-import { ComponentProps } from "react";
 import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import Lorem from "../../../vendors/Lorem.js";
 import { BasicSideNav } from "../../__stories/SideNavTemplates.js";
 import Button from "../../atoms/Button/Button.js";
 import SideNav, { SideNavToggle } from "./SideNav.js";
 import { SideNavTitle } from "./SideNavGroup.js";
 
-const SideNavButton = ({ ...props }) => {
+function SideNavButton({ ...props }) {
   const {
     sideNav: { isToggled },
   } = LayoutContext.useContextState();
@@ -19,43 +20,39 @@ const SideNavButton = ({ ...props }) => {
   } = LayoutContext.useContextDispatch();
 
   return (
-    <>
-      <Button
-        variant="borderless"
-        {...props}
-        onClick={() => updateSideNav({ isToggled: !isToggled })}
-      >
-        <IconMenu />
-      </Button>
-    </>
-  );
-};
-
-const Template = (args: ComponentProps<typeof BasicSideNav>) => (
-  <LayoutContext.LayoutProvider>
-    <div
-      className="story-bg-container story-flex"
-      style={{ backgroundImage: randomGradientGenerator(20) }}
+    <Button
+      variant="borderless"
+      {...props}
+      onClick={() => {
+        updateSideNav({ isToggled: !isToggled });
+      }}
     >
-      <div className="story-flex">
-        <BasicSideNav {...args} />
+      <IconMenu />
+    </Button>
+  );
+}
+
+function Template(args: ComponentProps<typeof BasicSideNav>) {
+  return (
+    <LayoutContext.LayoutProvider>
+      <div
+        className="story-bg-container story-flex"
+        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+        style={{ backgroundImage: randomGradientGenerator(20) }}
+      >
+        <div className="story-flex">
+          <BasicSideNav {...args} />
+        </div>
+        <div>
+          <SideNavButton />
+          <div style={{ maxWidth: 400 }}>
+            <Lorem count={10} units="paragraphs" />
+          </div>
+        </div>
       </div>
-      <div>
-        <SideNavButton />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: loremIpsum({
-              count: 10,
-              format: "html",
-              units: "paragraphs",
-            }),
-          }}
-          style={{ maxWidth: 400 }}
-        />
-      </div>
-    </div>
-  </LayoutContext.LayoutProvider>
-);
+    </LayoutContext.LayoutProvider>
+  );
+}
 
 const metadata: Meta<typeof SideNav> = {
   component: SideNav,

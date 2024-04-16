@@ -2,11 +2,14 @@
   'variant-outlined', 'variant-material', 'variant-basic', 'variant-dashed',
   'variant-borderless'
 ]}] */
-import { clsx } from "clsx";
-import {
+import type {
   ComponentPropsWithoutRef,
   FocusEventHandler,
   ReactNode,
+} from "react";
+
+import { clsx } from "clsx";
+import {
   forwardRef,
   useCallback,
   useEffect,
@@ -15,16 +18,21 @@ import {
   useState,
 } from "react";
 
+import type { COMPONENT_SIZES } from "../../../tools/constants/props.js";
+
 import { useMeasureInput } from "../../../hooks/index.js";
-import { COMPONENT_SIZES } from "../../../tools/constants/props.js";
-import { inSubArray, isEmpty } from "../../../tools/utils.js";
+import {
+  getDynamicClassName,
+  inSubArray,
+  isEmpty,
+} from "../../../tools/utils.js";
 import ContentLoader from "../../../vendors/ContentLoader.js";
 import { FormIconSpan } from "../../../wrappers/span.js";
 import { FORM_CONTROL_VARIANTS, FormInputControl } from "../FormControl.js";
 import InputWrapper from "../InputWrapper.js";
 import Label from "../Label.js";
 import Spinner from "../Spinner/Spinner.js";
-import styles from "./textInput.module.css";
+import * as styles from "./textInput.module.css";
 
 export const TEXT_INPUT_VARIANTS = [
   ...FORM_CONTROL_VARIANTS,
@@ -55,7 +63,7 @@ export interface TextInputProps
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  function TextInputRender(
+  (
     {
       className,
       defaultValue,
@@ -76,7 +84,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       ...props
     },
     ref,
-  ) {
+  ) => {
     const [hasValue, setHasValue] = useState(!isEmpty(value ?? defaultValue));
     const inputId = useId();
 
@@ -112,7 +120,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             [styles.paddedLeft]: iconBefore,
             [styles.paddedRight]: iconAfter,
           },
-          variant && styles[`variant-${variant}`],
+          getDynamicClassName(styles, `variant-${variant}`),
           hasError && styles.hasError,
           hasValue && styles.hasValue,
           className,
@@ -135,7 +143,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {label}
         </Label>
         <div className={styles.inputWrapper}>
-          {iconBefore && (
+          {!!iconBefore && (
             <FormIconSpan
               className={clsx(styles.icon, innerClassNames.iconBefore)}
             >
@@ -154,7 +162,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
             {...props}
           />
-          {iconAfter && (
+          {!!iconAfter && (
             <FormIconSpan
               className={clsx(
                 styles.icon,
@@ -169,7 +177,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             <ContentLoader
               className={styles.loader}
               preserveAspectRatio="none"
-              viewBox={`0 0 100 100`}
+              viewBox="0 0 100 100"
             >
               <rect height={100} width={100} x="0" y="0" />
             </ContentLoader>
@@ -180,5 +188,6 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     );
   },
 );
+TextInput.displayName = "TextInput";
 
 export default TextInput;

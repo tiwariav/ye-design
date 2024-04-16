@@ -1,21 +1,21 @@
+import type { PhoneNumber } from "libphonenumber-js";
+import type { Dispatch, SetStateAction } from "react";
+
 import clsx from "clsx";
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
-import {
-  AsYouType,
-  ParseError,
-  PhoneNumber,
-  parsePhoneNumber,
-} from "libphonenumber-js";
+import { AsYouType, ParseError, parsePhoneNumber } from "libphonenumber-js";
 import { isNil, isString } from "lodash-es";
 import { forwardRef, useCallback, useRef, useState } from "react";
 import { useEffectOnce } from "react-use";
 
-import FormattedInput, {
+import type {
   FormattedInputParse,
   FormattedInputProps,
 } from "../FormattedInput/FormattedInput.js";
-import { InputDomValue } from "../TextInput/TextInput.js";
-import styles from "./phoneNumberInput.module.css";
+import type { InputDomValue } from "../TextInput/TextInput.js";
+
+import FormattedInput from "../FormattedInput/FormattedInput.js";
+import * as styles from "./phoneNumberInput.module.css";
 
 // offset between uppercase ascii and regional indicator symbols
 const OFFSET = 127_397;
@@ -24,7 +24,7 @@ function getFlagEmoji(countryCode: string) {
   return countryCode
     .toUpperCase()
     .replaceAll(/./g, (char) =>
-      String.fromCodePoint(char.codePointAt(0)! + OFFSET),
+      String.fromCodePoint((char.codePointAt(0) as number) + OFFSET),
     );
 }
 
@@ -32,7 +32,9 @@ function getPhoneNumber(value: string) {
   try {
     return parsePhoneNumber(value, "IN");
   } catch (error) {
-    if (!(error instanceof ParseError)) throw error;
+    if (!(error instanceof ParseError)) {
+      throw error;
+    }
     if (
       (error.message === "NOT_A_NUMBER" && !/[^+]/.test(value)) ||
       (error.message === "TOO_SHORT" && /^\+?[\d\s]+-*$/.test(value))
@@ -40,15 +42,33 @@ function getPhoneNumber(value: string) {
       // return empty string to allow value change
       return "";
     }
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw error;
   }
 }
 
+function formatCountryCode({
+  currentText,
+  phoneNumber,
+  setFlag,
+  value,
+}: {
+  currentText: string;
+  phoneNumber: PhoneNumber;
+  setFlag: Dispatch<SetStateAction<string>>;
+  value: string;
+}) {
+  currentText = value;
+  if (!phoneNumber.country) {
+    currentText = value;
+    return currentText;
+  }
+  setFlag(getFlagEmoji(phoneNumber.country));
+  return new AsYouType().input(value);
+}
+
 const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
-  function PhoneNumberInputRender(
-    { className, defaultValue = "+91", variant, ...props },
-    ref,
-  ) {
+  ({ className, defaultValue = "+91", variant, ...props }, ref) => {
     const textValueRef = useRef<string>(defaultValue.toString());
     const [flag, setFlag] = useState(getFlagEmoji("IN"));
 
@@ -69,18 +89,19 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
         // unhandled error, dont update input value
         return textValueRef.current;
       }
-      textValueRef.current = value;
-      if (!phoneNumber?.country) {
-        textValueRef.current = value;
-        return textValueRef.current;
-      }
-      setFlag(getFlagEmoji(phoneNumber.country));
-      return new AsYouType().input(value);
+      return formatCountryCode({
+        currentText: textValueRef.current,
+        phoneNumber,
+        setFlag,
+        value,
+      });
     }, []);
 
     const parseFunction = useCallback<FormattedInputParse>((formattedValue) => {
       const textValue = textValueRef.current;
-      if (isNil(textValue) || isNil(formattedValue)) return;
+      if (isNil(textValue) || isNil(formattedValue)) {
+        return;
+      }
       return isString(formattedValue)
         ? formattedValue.replaceAll(" ", "")
         : formattedValue;
@@ -105,5 +126,6 @@ const PhoneNumberInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     );
   },
 );
+PhoneNumberInput.displayName = "PhoneNumberInput";
 
 export default PhoneNumberInput;

@@ -1,16 +1,27 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
-  progress-none, progress-partial, progress-full
-]}] */
+    progress-none, progress-partial, progress-full
+  ]}]
+  @typescript-eslint/no-magic-numbers: [2, {
+    ignore: [0, 1, -1, 2],
+  }]
+*/
+
+import type { ReactNode } from "react";
 
 import { clsx } from "clsx";
-import { ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 
-import styles from "./circleProgress.module.css";
+import * as styles from "./circleProgress.module.css";
+
+const MAX_PERCENT = 100;
+const MAX_ROTATION = 180;
+const ROTATION_OFFSET = 90;
 
 export function getProgressClass(percentage: number) {
   if (percentage <= 0) {
     return "progressNone";
-  } else if (percentage < 100) {
+  }
+  if (percentage < MAX_PERCENT) {
     return "progressPartial";
   }
   return "progressFull";
@@ -18,12 +29,14 @@ export function getProgressClass(percentage: number) {
 
 function getCircleStyles(radius: number, arcRotation = 0, completion = 0) {
   // Arc length at 100% coverage is the circle circumference
-  const strokeDasharray = radius * Math.PI * 2;
-  const rotationOffset = (2 * radius * (arcRotation - 90) * Math.PI) / 180;
+  const strokeDasharray = 2 * radius * Math.PI;
+  const rotationOffset =
+    (2 * radius * (arcRotation - ROTATION_OFFSET) * Math.PI) / MAX_ROTATION;
   // Scale 100% coverage overlay with the actual percent
   const strokeDashoffset =
     rotationOffset +
-    ((strokeDasharray - rotationOffset) * (100 - completion)) / 100;
+    ((strokeDasharray - rotationOffset) * (MAX_PERCENT - completion)) /
+      MAX_PERCENT;
   return { rotationOffset, strokeDasharray, strokeDashoffset };
 }
 
@@ -76,7 +89,7 @@ function CenterText({
         fill={fill}
         textAnchor="middle"
         x="50%"
-        y={`${50 + (100 - arcHeight) / 2}%`}
+        y={`${MAX_PERCENT - arcHeight / 2}%`}
       >
         {getTextContent(text, progress, percentage)}
       </text>
@@ -108,32 +121,34 @@ interface CircleProgressProps {
   strokeWidth?: number;
 }
 
+const DEFAULT_SQUARE_SIZE = 20;
+
 export default function CircleProgress({
-  arcHeight = 100,
+  arcHeight = MAX_PERCENT,
   children,
   className,
-  innerClassNames = {},
+  innerClassNames,
   progress,
   progressText,
   roundEdges = true,
-  squareSize = 20,
+  squareSize = DEFAULT_SQUARE_SIZE,
   strokeWidth = 2,
   ...props
 }: CircleProgressProps) {
   const initData = useMemo(() => {
     // Size of the enclosing square
-    const height = (squareSize * arcHeight) / 100;
-    const dia = (squareSize * 100) / arcHeight;
-    const squareHeight = (dia * arcHeight) / 100;
+    const height = (squareSize * arcHeight) / MAX_PERCENT;
+    const dia = (squareSize * MAX_PERCENT) / arcHeight;
+    const squareHeight = (dia * arcHeight) / MAX_PERCENT;
     // SVG centers the stroke width on the radius, subtract out so circle fits in square
     const radius = (squareSize - strokeWidth) / 2;
     // Enclose cicle in a circumscribing square
     const viewBox = `0 0 ${squareSize} ${height}`;
     const calcRadius = radius;
     const arcRotation =
-      90 +
+      ROTATION_OFFSET +
       Math.acos((height - strokeWidth - calcRadius) / calcRadius) *
-        (180 / Math.PI);
+        (MAX_ROTATION / Math.PI);
     return { arcRotation, dia, height, radius, squareHeight, viewBox };
   }, [arcHeight, squareSize, strokeWidth]);
 
@@ -144,7 +159,9 @@ export default function CircleProgress({
     progressClass: ReturnType<typeof getProgressClass>;
   } = useMemo(() => {
     const completion =
-      progress[0] && progress[1] ? (100 * progress[0]) / progress[1] : 0;
+      progress[0] && progress[1]
+        ? (MAX_PERCENT * progress[0]) / progress[1]
+        : 0;
     const progressClass = getProgressClass(completion);
     const { arcRotation, radius } = initData;
     const { rotationOffset, ...circleStyles } = getCircleStyles(
@@ -174,14 +191,14 @@ export default function CircleProgress({
       {...props}
     >
       <svg
-        height={(squareSize * arcHeight) / 100}
+        height={(squareSize * arcHeight) / MAX_PERCENT}
         viewBox={initData.viewBox}
         width={squareSize}
       >
         <circle
           className={clsx(
             styles.circleBackground,
-            innerClassNames.circleBackground,
+            innerClassNames?.circleBackground,
           )}
           cx={squareSize / 2}
           cy={squareSize / 2}
@@ -197,7 +214,7 @@ export default function CircleProgress({
               [styles.strokeRound]: roundEdges,
             },
             styles[progressData.progressClass],
-            innerClassNames[progressData.progressClass],
+            innerClassNames?.[progressData.progressClass],
           )}
           cx={squareSize / 2}
           cy={squareSize / 2}
@@ -210,16 +227,16 @@ export default function CircleProgress({
         <CenterText
           arcHeight={arcHeight}
           className={clsx(
-            innerClassNames.text,
+            innerClassNames?.text,
             styles[progressData.progressClass],
-            innerClassNames[progressData.progressClass],
+            innerClassNames?.[progressData.progressClass],
           )}
           percentage={progressData.completion}
           progress={progress}
           text={progressText}
         />
       </svg>
-      {children && <div className={styles.content}>{children}</div>}
+      {!!children && <div className={styles.content}>{children}</div>}
     </div>
   );
 }

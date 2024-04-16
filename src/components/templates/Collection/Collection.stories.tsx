@@ -1,44 +1,47 @@
-import { Meta, ReactRenderer, StoryObj } from "@storybook/react";
-import { ArgsStoryFn } from "@storybook/types";
+import type { Meta, StoryObj } from "@storybook/react";
+
+import type { CardProps } from "../../atoms/Card/Card.js";
+import type { CollectionProps } from "./index.js";
 
 import {
-  Template as CardTemplate,
-  WithImage as CardWithImage,
-} from "../../atoms/Card/Card.stories.js";
-import Collection, { CollectionProps } from "./index.js";
+  Basic as ImageBasic,
+  Template as ImageTemplate,
+} from "../../atoms/Image/Image.stories.js";
+import { Card } from "../../atoms/index.js";
+import Collection from "./index.js";
 
 type TemplateProps = Omit<CollectionProps, "children"> & {
   cardWidth?: number;
   variant?: "grid" | "list";
 };
 
-export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
-  cardWidth,
-  variant,
-  ...args
-}) => {
-  const itemArgs = {
-    ...CardWithImage.args,
+export function Template({ cardWidth, variant, ...args }: TemplateProps) {
+  const itemArgs: Partial<CardProps> = {
     style: { width: cardWidth },
   };
-  if (variant === "grid") {
+  if (variant !== "grid") {
     itemArgs.layout = "horizontal";
   }
   return (
     <Collection {...args} variant={variant}>
       {Array.from({ length: 32 }, (_, index) => (
-        <CardTemplate key={index} {...itemArgs}>
+        <Card
+          image={<ImageTemplate {...ImageBasic.args} />}
+          key={index}
+          {...itemArgs}
+        >
           Expedita possimus dolor est unde possimus. Velit est qui alias
           veritatis a reprehenderit. Eos minus velit dolorem dolorem voluptatem
           molestiae odio et dolor.
-        </CardTemplate>
+        </Card>
       ))}
     </Collection>
   );
-};
+}
 
 const metadata: Meta<typeof Collection> = {
   component: Collection,
+  excludeStories: /.*Template$/,
   render: Template,
 };
 

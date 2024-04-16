@@ -1,22 +1,21 @@
-import { Meta, ReactRenderer, StoryObj } from "@storybook/react";
-import { ArgsStoryFn } from "@storybook/types";
-import { ComponentProps } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
 
 import Image from "./Image.js";
 
 type TemplateProps = ComponentProps<typeof Image> & { width?: number };
 
-export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
-  width,
-  ...args
-}) => (
-  <div style={{ width }}>
-    <Image {...args} />
-  </div>
-);
+export function Template({ width, ...args }: TemplateProps) {
+  return (
+    <div style={{ width }}>
+      <Image {...args} />
+    </div>
+  );
+}
 
 const metadata: Meta<TemplateProps> = {
   component: Image,
+  excludeStories: /.*Template$/,
   render: Template,
 };
 

@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./doubleBounce.module.css";
+import * as styles from "./doubleBounce.module.css";
 
 export default function DoubleBounce(props: ComponentPropsWithoutRef<"div">) {
   return (

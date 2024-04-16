@@ -6,15 +6,17 @@ import {
 } from "@tabler/icons-react";
 import { forwardRef } from "react";
 
+import type { SideNavProps } from "../structures/SideNav/SideNav.js";
+
 import { Anchor } from "../atoms/index.js";
-import SideNav, { SideNavProps } from "../structures/SideNav/SideNav.js";
+import SideNav from "../structures/SideNav/SideNav.js";
 import SideNavItem from "../structures/SideNav/SideNavItem.js";
 import { SideNavGroup } from "../structures/index.js";
 
 export const BasicSideNav = forwardRef<
   HTMLDivElement,
   SideNavProps & { groups?: number }
->(function BasicSideNavRender({ groups = 2, ...props }, ref) {
+>(({ groups = 2, ...props }, ref) => {
   return (
     <SideNav {...props} ref={ref}>
       <SideNavGroup>
@@ -62,3 +64,4 @@ export const BasicSideNav = forwardRef<
     </SideNav>
   );
 });
+BasicSideNav.displayName = "BasicSideNav";

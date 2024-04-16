@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./textIcon.module.css";
+import * as styles from "./textIcon.module.css";
 
 export default function Text({
   children,

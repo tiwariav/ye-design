@@ -1,4 +1,4 @@
-export default function SVGPathPin(props: React.SVGProps<SVGPathElement>) {
+export default function SvgPathPin(props: React.SVGProps<SVGPathElement>) {
   return (
     <g transform="translate(-180.28 -179.33)">
       <path

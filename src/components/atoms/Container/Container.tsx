@@ -6,10 +6,12 @@
   spacing-none, spacing-small, spacing-large, spacing-horizontal
 ]}] */
 
-import { clsx } from "clsx";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./container.module.css";
+import { clsx } from "clsx";
+
+import { getDynamicClassName } from "../../../tools/utils.js";
+import * as styles from "./container.module.css";
 
 export const CONTAINER_SPACINGS = [
   "none",
@@ -42,11 +44,11 @@ export default function Container({
     <div
       className={clsx(
         styles.container,
-        spacing && styles[`spacing-${spacing}`],
-        variant && styles[`variant-${variant}`],
-        height && [styles[`height-${height}`]],
-        align && [styles[`align-${align}`]],
-        width && [styles[`width-${width}`]],
+        spacing && getDynamicClassName(styles, `spacing-${spacing}`),
+        variant && getDynamicClassName(styles, `variant-${variant}`),
+        height && getDynamicClassName(styles, `height-${height}`),
+        align && getDynamicClassName(styles, `align-${align}`),
+        width && getDynamicClassName(styles, `width-${width}`),
         className,
       )}
       {...props}

@@ -2,10 +2,13 @@
   'space-none', 'space-small', 'space-large', 'space-medium'
 ]}] */
 
-import { clsx } from "clsx";
-import React, { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./divider.module.css";
+import { clsx } from "clsx";
+import React from "react";
+
+import { getDynamicClassName } from "../../../tools/utils.js";
+import * as styles from "./divider.module.css";
 
 const DIVIDER_SPACING_OPTIONS = ["none", "small", "medium", "large"] as const;
 
@@ -26,7 +29,7 @@ export default function Divider({
       className: clsx(
         styles.root,
         vertical && styles.isVertical,
-        styles[`space-${spacing}`],
+        getDynamicClassName(styles, `space-${spacing}`),
         className,
       ),
       ...props,

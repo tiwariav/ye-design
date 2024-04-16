@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./loaderWrapper.module.css";
+import * as styles from "./loaderWrapper.module.css";
 
 export default function LoaderWrapper(props: ComponentPropsWithoutRef<"div">) {
   return <div className={styles.root} {...props} />;

@@ -1,7 +1,9 @@
-import { IconCircleChevronRight } from "@tabler/icons-react";
-import { Children, ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-import styles from "./bookmark.module.css";
+import { IconCircleChevronRight } from "@tabler/icons-react";
+import { Children } from "react";
+
+import * as styles from "./bookmark.module.css";
 
 export default function Bookmark({
   children,

@@ -1,6 +1,9 @@
 import anime from "animejs";
 import { useEffect } from "react";
 
+export const ARC_ANGLE = 180;
+export const MAX_PROGRESS = 100;
+
 export default function useProgressAnimation(
   percentage: number,
   animeId: string,
@@ -11,7 +14,7 @@ export default function useProgressAnimation(
       duration: 3000,
     };
     anime({
-      rotateZ: [0, (180 * percentage) / 100],
+      rotateZ: [0, (ARC_ANGLE * percentage) / MAX_PROGRESS],
       targets: `#${animeId}-animeIndicator`,
       ...animeProps,
     });

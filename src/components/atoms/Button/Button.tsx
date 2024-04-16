@@ -6,35 +6,35 @@
   spacing-equal, spacing-extra, spacing-less, spacing-none
 ]}] */
 
-import { clsx } from "clsx";
-import {
+import type {
   ComponentPropsWithoutRef,
   MutableRefObject,
   ReactNode,
-  forwardRef,
-  useEffect,
 } from "react";
+
+import { clsx } from "clsx";
+import { forwardRef, useEffect } from "react";
 import { useMouseHovered } from "react-use";
 import { overrideStyleProperty } from "wo-library/tools/css.js";
 
+import type { COMPONENT_SIZES } from "../../../tools/constants/props.js";
+
 import { usePropRef } from "../../../hooks/index.js";
-import {
-  COMPONENT_SIZES,
-  COMPONENT_SPACINGS,
-} from "../../../tools/constants/props.js";
-import { inSubArray } from "../../../tools/utils.js";
+import { COMPONENT_SPACINGS } from "../../../tools/constants/props.js";
+import { getDynamicClassName, inSubArray } from "../../../tools/utils.js";
 import { FormIconSpan } from "../../../wrappers/span.js";
 import { FORM_CONTROL_VARIANTS, FormButtonControl } from "../FormControl.js";
 import Spinner from "../Spinner/Spinner.js";
-import styles from "./button.module.css";
+import * as styles from "./button.module.css";
 
 const setRippleProperties = (
   node: HTMLElement | null,
   initial: boolean,
-  x = 0,
-  y = 0,
+  { x = 0, y = 0 } = {},
 ) => {
-  if (!node) return;
+  if (!node) {
+    return;
+  }
   node.style.setProperty("--ye-effect-ripple-x", `${x}px`);
   node.style.setProperty("--ye-effect-ripple-y", `${y}px`);
   if (initial) {
@@ -82,6 +82,22 @@ const setNeuProperties = (node: HTMLElement, options: NeuOptions = {}) => {
   );
 };
 
+function setButtonEffects(
+  element: HTMLButtonElement,
+  effects: (typeof BUTTON_EFFECTS)[number][],
+  mouseData: ReturnType<typeof useMouseHovered>,
+) {
+  if (effects.includes("cursor-tracking")) {
+    setTrackingProperties(element, mouseData.elX, mouseData.elY);
+  }
+  if (effects.includes("ripple")) {
+    setRippleProperties(element, true);
+  }
+  if (effects.includes("ripple")) {
+    setRippleProperties(element, true);
+  }
+}
+
 export const BUTTON_EFFECTS = ["ripple", "cursor-tracking"] as const;
 export const BUTTON_SPACINGS = [
   ...COMPONENT_SPACINGS,
@@ -115,23 +131,18 @@ function useButtonEffects({
     bound: true,
     whenHovered: true,
   });
-  useEffect(() => {
-    if (!innerRef.current) return;
 
+  useEffect(() => {
+    if (!innerRef.current) {
+      return;
+    }
     if (variant === "neu") {
       setNeuProperties(innerRef.current, neuOptions);
     }
-    if (effects.length === 0) return;
-
-    if (effects.includes("cursor-tracking")) {
-      setTrackingProperties(innerRef.current, mouseData.elX, mouseData.elY);
+    if (effects.length === 0) {
+      return;
     }
-    if (effects.includes("ripple")) {
-      setRippleProperties(innerRef.current, true);
-    }
-    if (effects.includes("ripple")) {
-      setRippleProperties(innerRef.current, true);
-    }
+    setButtonEffects(innerRef.current, effects, mouseData);
   }, [effects, mouseData, variant, neuOptions, innerRef]);
 }
 
@@ -149,81 +160,84 @@ export interface ButtonProps
 /**
  * Primary UI component for user interaction
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function ButtonRender(
-  {
-    children,
-    className,
-    disabled = false,
-    effects = [],
-    iconAfter,
-    iconBefore,
-    isBusy = false,
-    isFullWidth = false,
-    neuOptions,
-    onClick,
-    size,
-    spacing,
-    variant = "basic",
-    ...props
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      className,
+      disabled = false,
+      effects = [],
+      iconAfter,
+      iconBefore,
+      isBusy = false,
+      isFullWidth = false,
+      neuOptions,
+      onClick,
+      size,
+      spacing,
+      variant = "basic",
+      ...props
+    },
+    propRef,
+  ) => {
+    const { innerRef, setInnerRef } = usePropRef(propRef);
+
+    useButtonEffects({
+      effects,
+      innerRef,
+      neuOptions,
+      variant,
+    });
+
+    const effectClasses = effects.map((eff) =>
+      getDynamicClassName(styles, `effect-${eff}`),
+    );
+
+    return (
+      <FormButtonControl
+        className={clsx(
+          styles.root,
+          size && getDynamicClassName(styles, `size-${size}`),
+          getDynamicClassName(styles, `variant-${variant}`),
+          {
+            [styles.isDisabled]: disabled,
+            [styles.isFullWidth]: isFullWidth,
+          },
+          spacing && getDynamicClassName(styles, `spacing-${spacing}`),
+          ...effectClasses,
+          className,
+        )}
+        disabled={disabled || isBusy}
+        onClick={(event) => {
+          if (effects.includes("ripple")) {
+            setRippleProperties(innerRef.current, false, {
+              x: event.nativeEvent.offsetX,
+              y: event.nativeEvent.offsetY,
+            });
+          }
+          onClick?.(event);
+        }}
+        ref={setInnerRef}
+        type="button"
+        variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
+        {...props}
+      >
+        {!!iconBefore && (
+          <FormIconSpan className={styles.icon}>{iconBefore}</FormIconSpan>
+        )}
+        {(iconBefore ?? iconAfter) && children ? (
+          <span>{children}</span>
+        ) : (
+          children
+        )}
+        {!!iconAfter && (
+          <FormIconSpan className={styles.icon}>{iconAfter}</FormIconSpan>
+        )}
+        {isBusy && <Spinner className={styles.spinner} />}
+      </FormButtonControl>
+    );
   },
-  propRef,
-) {
-  const { innerRef, setInnerRef } = usePropRef(propRef);
-
-  useButtonEffects({
-    effects,
-    innerRef,
-    neuOptions,
-    variant,
-  });
-
-  const effectClasses = effects.map((eff) => styles[`effect-${eff}`]);
-
-  return (
-    <FormButtonControl
-      className={clsx(
-        styles.root,
-        size && styles[`size-${size}`],
-        variant && styles[`variant-${variant}`],
-        {
-          [styles.isDisabled]: disabled,
-          [styles.isFullWidth]: isFullWidth,
-        },
-        spacing && styles[`spacing-${spacing}`],
-        ...effectClasses,
-        className,
-      )}
-      disabled={disabled || isBusy}
-      onClick={(event) => {
-        if (effects.includes("ripple")) {
-          setRippleProperties(
-            innerRef.current,
-            false,
-            event.nativeEvent.offsetX,
-            event.nativeEvent.offsetY,
-          );
-        }
-        onClick?.(event);
-      }}
-      ref={setInnerRef}
-      type="button"
-      variant={inSubArray(FORM_CONTROL_VARIANTS, variant)}
-      {...props}
-    >
-      {iconBefore && (
-        <FormIconSpan className={styles.icon}>{iconBefore}</FormIconSpan>
-      )}
-      {(iconBefore ?? iconAfter) && children ? (
-        <span>{children}</span>
-      ) : (
-        children
-      )}
-      {iconAfter && (
-        <FormIconSpan className={styles.icon}>{iconAfter}</FormIconSpan>
-      )}
-      {isBusy && <Spinner className={styles.spinner} />}
-    </FormButtonControl>
-  );
-});
+);
+Button.displayName = "Button";
 
 export default Button;

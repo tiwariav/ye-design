@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { storyIconControl, storyIconMap } from "../../../tools/storybook.js";
 import TextInput, { TEXT_INPUT_VARIANTS } from "./TextInput.js";

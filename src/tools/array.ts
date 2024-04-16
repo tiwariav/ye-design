@@ -6,7 +6,7 @@ export function range(start: number, stop: number, step: number) {
 }
 
 export function addOrUpdate(
-  array: Record<string, unknown>[] = [],
+  array: Record<string, unknown>[],
   object: Record<string, unknown>,
   key: string,
 ) {

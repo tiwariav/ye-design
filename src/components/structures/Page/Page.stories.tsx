@@ -1,5 +1,6 @@
-import { Meta } from "@storybook/react";
-import { ComponentProps } from "react";
+import type { Meta } from "@storybook/react";
+import type { ComponentProps } from "react";
+
 import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
 import { BasicSideNav } from "../../__stories/SideNavTemplates.js";
@@ -45,20 +46,28 @@ const templateMap = {
   Profile: <ProfileTemplate {...ProfileBasic.args} />,
 };
 
-const Template = ({
+function Template({
   hero,
   sideNav,
   topNav,
   ...args
-}: ComponentProps<typeof Page>) => {
+}: ComponentProps<typeof Page>) {
   return (
-    <Page hero={hero} sideNav={sideNav} topNav={topNav} {...args}>
-      <CollectionTemplate {...CollectionBasic.args} />
-    </Page>
+    <div
+      style={{
+        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+        backgroundImage: randomGradientGenerator(20),
+        margin: "-1rem",
+      }}
+    >
+      <Page hero={hero} sideNav={sideNav} topNav={topNav} {...args}>
+        <CollectionTemplate {...CollectionBasic.args} />
+      </Page>
+    </div>
   );
-};
+}
 
-const metadata: Meta<typeof Page> = {
+const pageMeta: Meta<typeof Page> = {
   argTypes: {
     children: { mapping: templateMap, options: Object.keys(templateMap) },
     hero: { mapping: heroMap, options: Object.keys(heroMap) },
@@ -66,22 +75,10 @@ const metadata: Meta<typeof Page> = {
     topNav: { mapping: topNavMap, options: Object.keys(topNavMap) },
   },
   component: Page,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          backgroundImage: randomGradientGenerator(20),
-          margin: "-1rem",
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
   render: (args) => <Template {...args} />,
 };
 
-export default metadata;
+export default pageMeta;
 
 export const Basic = {
   args: {
@@ -99,7 +96,7 @@ export const WithHero = {
   },
 };
 
-export const VariantSTC = {
+export const VariantStc = {
   args: {
     sideNav: "SideNavBasic",
     topNav: "ImageBasic",

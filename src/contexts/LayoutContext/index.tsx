@@ -1,12 +1,15 @@
-import { ReactNode, RefObject, useMemo, useRef } from "react";
-import {
-  ContextDispatch,
-  createAndUseContext,
-} from "wo-library/contexts/utils.js";
+import type { ReactNode, RefObject } from "react";
+import type { ContextDispatch } from "wo-library/contexts/utils.js";
+
+import { useMemo, useRef } from "react";
+import { createAndUseContext } from "wo-library/contexts/utils.js";
 import useMethods from "wo-library/hooks/useMethods.js";
 
-import createLayoutMethods, { LayoutMethods } from "./methods.js";
-import INITIAL_LAYOUT_STATE, { LayoutState } from "./state.js";
+import type { LayoutMethods } from "./methods.js";
+import type { LayoutState } from "./state.js";
+
+import createLayoutMethods from "./methods.js";
+import INITIAL_LAYOUT_STATE from "./state.js";
 
 interface LayoutProviderProps {
   children: ReactNode;
@@ -50,8 +53,10 @@ export function LayoutProvider({
     [state],
   );
 
+  const memoDispatch = useMemo(() => ({ dispatch }), [dispatch]);
+
   return (
-    <DispatchContext.Provider value={{ dispatch }}>
+    <DispatchContext.Provider value={memoDispatch}>
       <Context.Provider value={finalState}>{children}</Context.Provider>
     </DispatchContext.Provider>
   );

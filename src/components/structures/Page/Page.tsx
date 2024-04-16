@@ -1,15 +1,19 @@
+import type { ReactElement, ReactNode } from "react";
+
 import { clsx } from "clsx";
 import { isObject } from "lodash-es";
-import React, { ReactElement, ReactNode, useMemo } from "react";
+import React, { useMemo } from "react";
+
+import type { SideNavProps } from "../SideNav/SideNav.js";
+import type { TopNavProps } from "../TopNav/TopNav.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
-import { SideNavProps, SideNavToggle } from "../SideNav/SideNav.js";
-import { TopNavProps } from "../TopNav/TopNav.js";
-import styles from "./page.module.css";
+import { SideNavToggle } from "../SideNav/SideNav.js";
+import * as styles from "./page.module.css";
 
-const variantTSC = "[T][SC]";
-const variantSTC = "[S][TC]";
-const variantOptions = [variantTSC, variantSTC] as const;
+const variantTsc = "[T][SC]";
+const variantStc = "[S][TC]";
+const variantOptions = [variantTsc, variantStc] as const;
 
 interface PageProps {
   children?: ReactNode;
@@ -30,27 +34,31 @@ function PageInner({
   children,
   className,
   hero,
-  innerClassNames = {},
+  innerClassNames,
   isCentered,
   sideNav,
   topNav,
-  variant = variantTSC,
+  variant = variantTsc,
 }: PageProps) {
   const topNavMemo = useMemo(() => {
-    if (!topNav) return null;
-    const topNavProps = ({ ...topNav?.props } || {}) as TopNavProps;
+    if (!topNav) {
+      return null;
+    }
+    const topNavProps = { ...topNav.props } as TopNavProps;
     if (sideNav && topNavProps.sticky) {
-      topNavProps.sideNavIcon = <SideNavToggle />;
+      topNavProps.leftNavIcon = <SideNavToggle />;
     }
     return React.cloneElement(topNav, topNavProps);
   }, [topNav, sideNav]);
 
   const sideNavMemo = useMemo(() => {
-    if (!sideNav) return null;
+    if (!sideNav) {
+      return null;
+    }
     const topNavProps = (topNav?.props || {}) as TopNavProps;
-    const sideNavProps = { ...sideNav?.props } as SideNavProps;
+    const sideNavProps = { ...sideNav.props } as SideNavProps;
     if (
-      variant === variantTSC &&
+      variant === variantTsc &&
       sideNavProps.sticky &&
       topNavProps.sticky &&
       (!isObject(topNavProps.sticky) ||
@@ -71,22 +79,22 @@ function PageInner({
       className={clsx(
         styles.root,
         {
-          [styles.variantStc]: variant === variantSTC,
+          [styles.variantStc]: variant === variantStc,
         },
         className,
       )}
     >
-      {variant === variantTSC ? topNavMemo : sideNavMemo}
+      {variant === variantTsc ? topNavMemo : sideNavMemo}
       <main
         className={clsx(styles.main, {
           [styles.isCentered]: isCentered,
         })}
       >
-        {variant === variantSTC && topNavMemo}
+        {variant === variantStc && topNavMemo}
         {hero}
-        <div className={clsx(styles.container, innerClassNames.container)}>
-          {variant === variantTSC && sideNavMemo}
-          <div className={clsx(styles.content, innerClassNames.content)}>
+        <div className={clsx(styles.container, innerClassNames?.container)}>
+          {variant === variantTsc && sideNavMemo}
+          <div className={clsx(styles.content, innerClassNames?.content)}>
             {children}
           </div>
         </div>
@@ -95,10 +103,12 @@ function PageInner({
   );
 }
 
-const Page = ({ ...props }: PageProps) => (
-  <LayoutContext.LayoutProvider>
-    <PageInner {...props} />
-  </LayoutContext.LayoutProvider>
-);
+function Page({ ...props }: PageProps) {
+  return (
+    <LayoutContext.LayoutProvider>
+      <PageInner {...props} />
+    </LayoutContext.LayoutProvider>
+  );
+}
 
 export default Page;

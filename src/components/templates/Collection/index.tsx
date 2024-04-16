@@ -2,12 +2,15 @@
   is-list, is-grid
 ]}] */
 
-import { IconFilter, IconSortDescending } from "@tabler/icons-react";
-import React, { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
+import { IconFilter, IconSortDescending } from "@tabler/icons-react";
+import React from "react";
+
+import { getDynamicClassName } from "../../../tools/utils.js";
 import Container from "../../atoms/Container/Container.js";
 import { Button } from "../../atoms/index.js";
-import styles from "./collection.module.css";
+import * as styles from "./collection.module.css";
 
 export interface FilterOption {
   key: string;
@@ -31,6 +34,8 @@ export interface CollectionProps {
   variant?: (typeof COLLECTION_VARIANT_OPTIONS)[number];
 }
 
+const MAX_WIDTH = 100;
+
 export default function Collection({
   children,
   columns,
@@ -44,10 +49,9 @@ export default function Collection({
   const contentStyle: CSSProperties = {};
   if (columns) {
     if (variant === "list") {
-      itemStyle.width = `${100 / columns}%`;
-    } else if (variant === "grid") {
-      contentStyle.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+      itemStyle.width = `${MAX_WIDTH / columns}%`;
     }
+    contentStyle.gridTemplateColumns = `repeat(${columns}, 1fr)`;
   }
   return (
     <Container {...props}>
@@ -74,7 +78,10 @@ export default function Collection({
           )}
         </div>
       )}
-      <div className={styles[`is-${variant}`]} style={contentStyle}>
+      <div
+        className={getDynamicClassName(styles, `is-${variant}`)}
+        style={contentStyle}
+      >
         {React.Children.map(children, (child, index) => (
           <div className={styles.item} key={index} style={itemStyle}>
             {child}

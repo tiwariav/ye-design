@@ -1,8 +1,9 @@
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+
 import clsx from "clsx";
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
-import styles from "./sideNavItem.module.css";
+import * as styles from "./sideNavItem.module.css";
 
 export interface SideNavItemProps<TElement extends ElementType = "div"> {
   as?: TElement;
@@ -20,7 +21,7 @@ export default function SideNavItem<TElement extends ElementType>({
   children,
   className,
   icon,
-  innerClassNames = {},
+  innerClassNames,
   ...props
 }: SideNavItemProps<TElement> & ComponentPropsWithoutRef<TElement>) {
   const layoutState = LayoutContext.useContextState();
@@ -35,10 +36,10 @@ export default function SideNavItem<TElement extends ElementType>({
       })}
       {...props}
     >
-      {icon && (
+      {!!icon && (
         <span className={clsx(styles.icon, innerClassNames?.icon)}>{icon}</span>
       )}
-      {children && (
+      {!!children && (
         <span className={clsx(styles.text, innerClassNames?.text)}>
           {children}
         </span>

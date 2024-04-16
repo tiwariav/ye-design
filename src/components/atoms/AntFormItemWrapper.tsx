@@ -1,11 +1,13 @@
+import type { FormItemProps } from "antd/es/form/index.js";
+import type { ReactElement } from "react";
+
 import { Form as _Form } from "antd";
-import { FormItemProps } from "antd/es/form/index.js";
 import { clsx } from "clsx";
 import { defaultImport } from "default-import";
 import { isDate, isObject } from "lodash-es";
-import React, { ReactElement, useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
-import styles from "./antFormItemWrapper.module.css";
+import * as styles from "./antFormItemWrapper.module.css";
 
 const Form = defaultImport(_Form);
 
@@ -35,7 +37,7 @@ export default function AntFormItemWrapper({
 
   const handleBlur: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
-      if (event.target?.value && virgin) {
+      if (event.target.value && virgin) {
         setVirgin(false);
         setValidateTrigger("onChange");
       }
@@ -77,7 +79,7 @@ export default function AntFormItemWrapper({
         return !isObject(event) || isDate(event)
           ? event
           : event.value ??
-              (event.target.id?.startsWith("numberInputText")
+              (event.target.id.startsWith("numberInputText")
                 ? Number(event.target.value)
                 : event.target.value);
       }}

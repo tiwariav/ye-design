@@ -2,10 +2,13 @@
   ['variant-borderless', 'variant-outlined', 'variant-dashed', 'variant-basic']
 }] */
 
-import clsx from "clsx";
-import { ComponentPropsWithoutRef, Ref, forwardRef } from "react";
+import type { ComponentPropsWithoutRef, Ref } from "react";
 
-import styles from "./formControl.module.css";
+import clsx from "clsx";
+import { forwardRef } from "react";
+
+import { getDynamicClassName } from "../../tools/utils.js";
+import * as styles from "./formControl.module.css";
 
 export const FORM_CONTROL_VARIANTS = [
   "basic",
@@ -27,7 +30,7 @@ function formControlProps<TElement>(
     className: clsx(
       styles.root,
       className,
-      variant && styles[`variant-${variant}`],
+      variant && getDynamicClassName(styles, `variant-${variant}`),
     ),
     ref,
     ...props,
@@ -37,13 +40,15 @@ function formControlProps<TElement>(
 export const FormInputControl = forwardRef<
   HTMLInputElement,
   FormControlProps & ComponentPropsWithoutRef<"input">
->(function FormInputControlRender(props, ref) {
+>((props, ref) => {
   return <input {...formControlProps(props, ref)} />;
 });
+FormInputControl.displayName = "FormInputControl";
 
 export const FormButtonControl = forwardRef<
   HTMLButtonElement,
   FormControlProps & ComponentPropsWithoutRef<"button">
->(function FormButtonControlRender(props, ref) {
+>((props, ref) => {
   return <button {...formControlProps(props, ref)} />;
 });
+FormButtonControl.displayName = "FormButtonControl";

@@ -1,17 +1,18 @@
-import { StoryObj } from "@storybook/react";
-import { isString } from "lodash-es";
-import { useEffect, useRef, useState } from "react";
+import type { StoryObj } from "@storybook/react";
 
-import { storyIconMap } from "../../../tools/storybook.js";
+import { isString } from "lodash-es";
+import { useState } from "react";
+
+import type { InputFormValue } from "../TextInput/TextInput.js";
+import type { FormattedInputProps } from "./FormattedInput.js";
+
+import { iconArgTypes } from "../../../tools/storybook.js";
+import { InputTemplate } from "../../__stories/InputTemplates.js";
 import Button from "../Button/Button.js";
-import { InputFormValue } from "../TextInput/TextInput.js";
-import FormattedInput, { FormattedInputProps } from "./FormattedInput.js";
+import FormattedInput from "./FormattedInput.js";
 
 const metadata = {
-  argTypes: {
-    iconAfter: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
-    iconBefore: { mapping: storyIconMap, options: Object.keys(storyIconMap) },
-  },
+  argTypes: iconArgTypes,
   component: FormattedInput,
 };
 
@@ -32,45 +33,9 @@ function removeHyphens(
   return isString(value) ? value.replaceAll("-", "") : emptyValue;
 }
 
-const Template = (args: FormattedInputProps) => {
-  const [eventValue, setEventValue] = useState<string>();
-  const [refValue, setRefValue] = useState<string>();
-  const [parsedValue, setParsedValue] = useState<InputFormValue>("");
-  const ref = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (ref.current) setRefValue(ref.current.value);
-  }, [eventValue]);
-
-  return (
-    <div>
-      <FormattedInput
-        onChange={(event, value) => {
-          setEventValue(event.target.value);
-          setParsedValue(value);
-        }}
-        placeholder="Enter your text"
-        ref={ref}
-        {...args}
-      />
-      {eventValue !== undefined && (
-        <div style={{ fontSize: "0.875rem" }}>
-          <p>
-            Event Value: <strong>{eventValue}</strong>{" "}
-            <em>({typeof eventValue})</em>
-          </p>
-          <p>
-            Ref Value: <strong>{refValue}</strong> <em>({typeof refValue})</em>
-          </p>
-          <p>
-            Parsed Value: <strong>{parsedValue}</strong>{" "}
-            <em>({typeof parsedValue})</em>
-          </p>
-        </div>
-      )}
-    </div>
-  );
-};
+function Template(args: FormattedInputProps) {
+  return <InputTemplate as={FormattedInput} {...args} />;
+}
 
 export const Basic: Story = {
   args: {
@@ -93,15 +58,21 @@ export const ParseOnly: Story = {
   render: (args) => <Template {...args} />,
 };
 
-const PresetValueTemplate = (args: FormattedInputProps) => {
+function PresetValueTemplate(args: FormattedInputProps) {
   const [value, setValue] = useState("Apples");
   return (
     <div>
-      <Button onClick={() => setValue(value + "a")}>Update</Button>
+      <Button
+        onClick={() => {
+          setValue(value + "a");
+        }}
+      >
+        Update
+      </Button>
       <Template {...args} value={value} />
     </div>
   );
-};
+}
 
 export const PresetValue: Story = {
   args: {

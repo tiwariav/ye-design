@@ -1,7 +1,7 @@
+import type { ChangeEvent, ChangeEventHandler } from "react";
+
 import clsx from "clsx";
 import {
-  ChangeEvent,
-  ChangeEventHandler,
   forwardRef,
   useCallback,
   useEffect,
@@ -11,13 +11,14 @@ import {
 } from "react";
 import { useLatest } from "react-use";
 
-import {
+import type {
   InputDomValue,
   InputFormValue,
   TextInputProps,
 } from "../TextInput/TextInput.js";
+
 import { TextInput } from "../TextInput/index.js";
-import styles from "./formattedInput.module.css";
+import * as styles from "./formattedInput.module.css";
 
 export type FormattedInputParse = (
   value: InputDomValue,
@@ -46,7 +47,7 @@ export interface FormattedInputProps
 }
 
 const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
-  function FormattedInputRender(
+  (
     {
       className,
       defaultValue,
@@ -62,7 +63,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
       ...props
     },
     ref,
-  ) {
+  ) => {
     const modified = useRef(false);
     const [formattedValue, setFormattedValue] = useState<InputDomValue>("");
     const [parsedValue, setParsedValue] = useState<InputFormValue>("");
@@ -104,7 +105,7 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
         !modified.current ||
         // if format is not required for this change
         // (for example if value is `1` but formatterValue is `1.0`)
-        newParsedValue !== currentParsedValue.current // if
+        newParsedValue !== currentParsedValue.current
       ) {
         setFormattedValue(newFormattedValue);
       }
@@ -140,5 +141,6 @@ const FormattedInput = forwardRef<HTMLInputElement, FormattedInputProps>(
     );
   },
 );
+FormattedInput.displayName = "FormattedInput";
 
 export default FormattedInput;

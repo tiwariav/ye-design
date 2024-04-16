@@ -1,17 +1,17 @@
+import type { MutableRefObject } from "react";
+
 import { isEmpty, isNil, isObject } from "lodash-es";
 import { forwardRef, useCallback, useRef } from "react";
 
-import {
-  FormatNumberOptions,
-  formatNumber,
-  stringToNumber,
-} from "../../../tools/number.js";
-import {
+import type { FormatNumberOptions } from "../../../tools/number.js";
+import type {
   FormattedInputParse,
   FormattedInputProps,
 } from "../FormattedInput/FormattedInput.js";
+import type { InputDomValue, InputFormValue } from "../TextInput/TextInput.js";
+
+import { formatNumber, stringToNumber } from "../../../tools/number.js";
 import { FormattedInput } from "../FormattedInput/index.js";
-import { InputDomValue, InputFormValue } from "../TextInput/TextInput.js";
 
 export interface NumberInputProps
   extends Omit<FormattedInputProps, "format" | "parse" | "value"> {
@@ -20,8 +20,35 @@ export interface NumberInputProps
   value?: number | string;
 }
 
+function getFormattedNumber(
+  value: string,
+  format: FormatNumberOptions | boolean,
+  textRef: MutableRefObject<InputFormValue>,
+) {
+  const newValueDecimals = value.split(".")[1]?.length ?? 0;
+  const nullValue = value ? "0" : "";
+  const formatOptions = isObject(format) ? format : {};
+  const minimumFractionDigits =
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    formatOptions.minimumFractionDigits ??
+    Math.min(newValueDecimals, formatOptions.maximumFractionDigits ?? 2) ??
+    0;
+  const formattedValue = formatNumber(value, {
+    nullValue,
+    ...formatOptions,
+    minimumFractionDigits,
+  });
+  if (newValueDecimals > (formattedValue.split(".")[1]?.length || 0)) {
+    // if the input value decimals are more than format options,
+    // reduce the decimals for input to parseFucntion
+    const newSplits = value.split(".");
+    textRef.current = `${newSplits[0]}.${formattedValue.split(".")[1]}`;
+  }
+  return formattedValue;
+}
+
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
-  function NumberInputRender({ format = false, parse = false, ...props }, ref) {
+  ({ format = false, parse = false, ...props }, ref) => {
     const textValueRef = useRef<InputFormValue>();
 
     const formatFunction = useCallback(
@@ -35,31 +62,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         if (!format || value.endsWith(".") || value === "-") {
           return value;
         }
-        const newValueDecimals = value.split(".")[1]?.length ?? 0;
-        const nullValue = value ? "0" : "";
-        const formatOptions = isObject(format) ? format : {};
-        const minimumFractionDigits =
-          formatOptions.minimumFractionDigits ??
-          Math.min(
-            newValueDecimals,
-            formatOptions.maximumFractionDigits ?? 2,
-          ) ??
-          0;
-        const formattedValue = formatNumber(value, {
-          nullValue,
-          ...formatOptions,
-          minimumFractionDigits,
-        });
-        if (formattedValue === undefined) return "";
-        if (newValueDecimals > (formattedValue.split(".")[1]?.length || 0)) {
-          // if the input value decimals are more than format options,
-          // reduce the decimals for input to parseFucntion
-          const newSplits = value.split(".");
-          textValueRef.current = `${newSplits[0]}.${
-            formattedValue.split(".")[1]
-          }`;
-        }
-        return formattedValue;
+        return getFormattedNumber(value, format, textValueRef);
       },
       [format],
     );
@@ -67,9 +70,11 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     const parseFunction = useCallback<FormattedInputParse>(
       (formattedValue, emptyValue) => {
         const textValue = textValueRef.current;
-        if (isEmpty(textValue)) return emptyValue;
+        if (isEmpty(textValue)) {
+          return emptyValue;
+        }
         const unformattedValue = format
-          ? stringToNumber(formattedValue!, emptyValue)
+          ? stringToNumber(formattedValue as string, emptyValue)
           : textValue;
         return parse || isNil(unformattedValue)
           ? unformattedValue
@@ -91,5 +96,6 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     );
   },
 );
+NumberInput.displayName = "NumberInput";
 
 export default NumberInput;

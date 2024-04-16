@@ -1,5 +1,7 @@
-import { Meta, ReactRenderer, StoryObj } from "@storybook/react";
-import { ArgsStoryFn } from "@storybook/types";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ReactNode } from "react";
+
+import type { CardProps } from "./Card.js";
 
 import { COMPONENT_FLOAT } from "../../../tools/constants/props.js";
 import {
@@ -12,7 +14,6 @@ import Card, {
   CARD_LAYOUTS,
   CARD_VARIANTS,
   CARD_VIEW_MODES,
-  CardProps,
 } from "./Card.js";
 
 const imageMap = {
@@ -21,20 +22,21 @@ const imageMap = {
 };
 
 type TemplateProps = CardProps & { width?: number };
-export const Template: ArgsStoryFn<ReactRenderer, TemplateProps> = ({
-  width,
-  ...args
-}) => <Card style={{ width }} {...args} />;
+
+export function Template({ width, ...args }: TemplateProps) {
+  return <Card style={{ width }} {...args} />;
+}
 
 const metadata: Meta<TemplateProps> = {
+  args: {
+    children: "Card content",
+  },
   argTypes: {
     image: { mapping: imageMap, options: Object.keys(imageMap) },
     width: { control: { max: 320, min: 80, type: "range" } },
   },
-  args: {
-    children: "Card content",
-  },
   component: Card,
+  excludeStories: /.*Template$/,
   render: Template,
 };
 
@@ -65,42 +67,52 @@ export const Layouts: Story = {
   ),
 };
 
+function FirstCardTemplate({
+  children,
+  firstContent,
+  ...args
+}: CardProps & { firstContent: ReactNode }) {
+  return (
+    <div className="story-grid">
+      <Card {...args}>{firstContent}</Card>
+      {children}
+    </div>
+  );
+}
+
 export const Floating: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Card {...args}>{children}</Card>
+    <FirstCardTemplate firstContent={children}>
       {COMPONENT_FLOAT.map((floating) => (
         <Card floating={floating} key={floating} {...args}>
           floating {floating}
         </Card>
       ))}
-    </div>
+    </FirstCardTemplate>
   ),
 };
 
 export const Flying: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Card {...args}>{children}</Card>
+    <FirstCardTemplate firstContent={children}>
       {CARD_FLYING.map((floating) => (
         <Card flying={floating} key={floating} {...args}>
           flying {floating}
         </Card>
       ))}
-    </div>
+    </FirstCardTemplate>
   ),
 };
 
 export const Height: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Card {...args}>{children}</Card>
+    <FirstCardTemplate firstContent={children}>
       {CARD_HEIGHTS.map((height) => (
         <Card height={height} key={height} {...args}>
           height {height}
         </Card>
       ))}
-    </div>
+    </FirstCardTemplate>
   ),
 };
 
@@ -122,14 +134,13 @@ export const ViewMode: Story = {
     image: "ImageBasic",
   },
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Card {...args}>{children}</Card>
+    <FirstCardTemplate firstContent={children}>
       {CARD_VIEW_MODES.map((viewMode) => (
         <Card key={viewMode} viewMode={viewMode} {...args}>
           viewMode ${viewMode}
         </Card>
       ))}
-    </div>
+    </FirstCardTemplate>
   ),
 };
 

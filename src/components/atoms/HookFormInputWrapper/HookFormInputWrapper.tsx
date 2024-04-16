@@ -1,29 +1,26 @@
-import { isObject } from "lodash-es";
-import React, {
+import type {
   ChangeEvent,
   ChangeEventHandler,
   ComponentPropsWithRef,
   FocusEvent,
   ReactElement,
-  type ReactNode,
-  Suspense,
-  useCallback,
-  useMemo,
+  ReactNode,
 } from "react";
-import {
-  type ControllerProps,
-  FieldValues,
-  useController,
-} from "react-hook-form";
-import { SetOptional } from "type-fest";
+import type { ControllerProps, FieldValues } from "react-hook-form";
+import type { SetOptional } from "type-fest";
+
+import { isObject } from "lodash-es";
+import React, { Suspense, useCallback, useMemo } from "react";
+import { useController } from "react-hook-form";
+
+import type { InputFormValue } from "../TextInput/TextInput.js";
 
 import FormError from "../FormError.js";
-import { InputFormValue } from "../TextInput/TextInput.js";
 
 const ErrorMessage = React.lazy(() =>
-  import("@hookform/error-message").then(({ ErrorMessage }) => ({
+  import("@hookform/error-message").then((defaultImport) => ({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    default: ErrorMessage,
+    default: defaultImport.ErrorMessage,
   })),
 );
 
@@ -61,23 +58,23 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
   const handleHookFormChange = useCallback(
     (
       event: ChangeEvent<HTMLInputElement>,
-      value: unknown,
+      inputValue: unknown,
       shouldUpdate?: boolean,
     ) => {
       // for react-select compatibility
       if (
-        isObject(value) &&
-        "action" in value &&
-        value?.action === "select-option"
+        isObject(inputValue) &&
+        "action" in inputValue &&
+        inputValue.action === "select-option"
       ) {
         onChange(event);
         return;
       }
       if (shouldUpdate) {
-        onChange(value);
+        onChange(inputValue);
         return;
       }
-      if (value === undefined) {
+      if (inputValue === undefined) {
         onChange(event);
       }
     },
@@ -90,9 +87,9 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
         onBlur();
         child.props.onBlur?.(event);
       },
-      onChange: ((event, value, shouldUpdate) => {
-        handleHookFormChange(event, value, shouldUpdate);
-        child.props.onChange?.(event, value, shouldUpdate);
+      onChange: ((event, inputValue, shouldUpdate) => {
+        handleHookFormChange(event, inputValue, shouldUpdate);
+        child.props.onChange(event, inputValue, shouldUpdate);
       }) as ChangeHandler,
     }),
     [child.props, handleHookFormChange, onBlur],

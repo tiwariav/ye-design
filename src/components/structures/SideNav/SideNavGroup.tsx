@@ -1,12 +1,15 @@
+import type { ReactNode } from "react";
+
 import { clsx } from "clsx";
-import { ReactNode } from "react";
 
-import SideNavItem, { SideNavItemProps } from "./SideNavItem.js";
-import styles from "./sideNavGroup.module.css";
+import type { SideNavItemProps } from "./SideNavItem.js";
 
-export const SideNavTitle = (props: SideNavItemProps) => (
-  <SideNavItem className={clsx(styles.title)} {...props} />
-);
+import SideNavItem from "./SideNavItem.js";
+import * as styles from "./sideNavGroup.module.css";
+
+export function SideNavTitle(props: SideNavItemProps) {
+  return <SideNavItem className={clsx(styles.title)} {...props} />;
+}
 
 interface SideNavGroupProps {
   children: ReactNode;
@@ -21,7 +24,7 @@ export default function SideNavGroup({
 }: SideNavGroupProps) {
   return (
     <div className={clsx(styles.root)} {...props}>
-      {title && <SideNavTitle icon={icon}>{title}</SideNavTitle>}
+      {!!title && <SideNavTitle icon={icon}>{title}</SideNavTitle>}
       {children}
     </div>
   );

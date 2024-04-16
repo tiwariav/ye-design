@@ -1,9 +1,10 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import ArcProgress from "./ArcProgress.js";
 
 const meta: Meta<typeof ArcProgress> = {
   args: {
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     progress: [50, 100],
   },
   component: ArcProgress,
@@ -26,6 +27,7 @@ export const Segments: Story = {
   ),
 };
 
+/* jscpd:ignore-start */
 export const StrokeWidth: Story = {
   render: (args) => (
     <div className="story-grid">
@@ -35,6 +37,7 @@ export const StrokeWidth: Story = {
     </div>
   ),
 };
+/* jscpd:ignore-end */
 
 export const Text: Story = {
   args: {

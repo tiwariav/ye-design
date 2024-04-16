@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { ComponentProps } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
 
 import { LoremCard } from "../../__stories/CardTemplates.js";
 import Container from "../../atoms/Container/Container.js";
@@ -8,15 +8,15 @@ import Profile from "./index.js";
 
 type TemplateProps = ComponentProps<typeof Profile> & { coverImage?: string };
 
-export const Template = ({
+export function Template({
   coverImage = `${process.env.STORYBOOK_IMAGE_SRC}/1600/400`,
   ...args
-}: TemplateProps) => {
+}: TemplateProps) {
   return (
     <Profile
       contentLeft={
         <Container style={{ textAlign: "center" }}>
-          {process.env.STORYBOOK_IMAGE_SRC && (
+          {!!process.env.STORYBOOK_IMAGE_SRC && (
             <Image
               src={`${process.env.STORYBOOK_IMAGE_SRC}/160`}
               style={{ margin: "auto", width: 160 }}
@@ -38,7 +38,7 @@ export const Template = ({
       ))}
     </Profile>
   );
-};
+}
 
 const metadata: Meta<TemplateProps> = {
   component: Profile,

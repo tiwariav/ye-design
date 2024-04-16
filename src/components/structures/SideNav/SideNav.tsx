@@ -1,25 +1,16 @@
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+
 import { IconMenu } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { isEmpty, isObject } from "lodash-es";
-import {
-  ComponentPropsWithoutRef,
-  ReactNode,
-  forwardRef,
-  useEffect,
-  useLayoutEffect,
-} from "react";
-import { useLockBodyScroll, useScrollbarWidth, useWindowSize } from "react-use";
-import { cssVariable } from "wo-library/tools/css.js";
+import { forwardRef } from "react";
+
+import type { ButtonProps } from "../../atoms/Button/Button.js";
 
 import LayoutContext from "../../../contexts/LayoutContext/index.js";
-import usePropRef from "../../../hooks/usePropRef.js";
-import { BREAKPOINTS } from "../../../styles/media.js";
-import { ButtonProps } from "../../atoms/Button/Button.js";
 import { Button } from "../../atoms/index.js";
-import styles from "./sideNav.module.css";
-
-const CSS_VAR_OFFSET = "--ye-layout-side-nav-offset";
-const CSS_VAR_TOGGLE_WIDTH = "--ye-layout-side-nav-toggle-width";
+import * as styles from "./sideNav.module.css";
+import { useSideNavEffects } from "./utils.js";
 
 export function SideNavToggle({ children, ...props }: ButtonProps) {
   const layoutState = LayoutContext.useContextState();
@@ -40,6 +31,42 @@ export function SideNavToggle({ children, ...props }: ButtonProps) {
   );
 }
 
+function SideNavInner({
+  children,
+}: Pick<SideNavProps, "children" | "toggleIcon">) {
+  return (
+    <div className={styles.wrapperOuter}>
+      <div className={styles.wrapperInner}>{children}</div>
+    </div>
+  );
+}
+
+function SideNavButton() {
+  const layoutState = LayoutContext.useContextState();
+  const layoutDispatch = LayoutContext.useContextDispatch();
+
+  return (
+    <button
+      className={clsx(styles.backdrop, {
+        [styles.backdropToggled]: layoutState.sideNav.isToggled,
+      })}
+      onClick={() => {
+        layoutDispatch.dispatch.updateSideNav({
+          isToggled: !layoutState.sideNav.isToggled,
+        });
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
+          layoutDispatch.dispatch.updateSideNav({
+            isToggled: !layoutState.sideNav.isToggled,
+          });
+        }
+      }}
+      tabIndex={0}
+    />
+  );
+}
+
 export interface SideNavProps extends ComponentPropsWithoutRef<"div"> {
   hasCompactMode?: boolean;
   isFullHeight?: boolean;
@@ -53,7 +80,7 @@ export interface SideNavProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
-  function SideNavWrapperRender(
+  (
     {
       children,
       className,
@@ -65,70 +92,16 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
       ...props
     }: SideNavProps,
     ref,
-  ) {
+  ) => {
     const layoutState = LayoutContext.useContextState();
-    const layoutDispatch = LayoutContext.useContextDispatch();
-    const { innerRef, setInnerRef } = usePropRef([
-      ref,
-      layoutState.refs.sideNav,
-    ]);
-
     const { bottom = false, topNavOffset = false } = isObject(sticky)
       ? sticky
       : {};
-    const scrollWidth = useScrollbarWidth();
-    const { width } = useWindowSize();
-    const isMobile = width < BREAKPOINTS.sm;
-
-    useLockBodyScroll(!!isMobile && !!layoutState.sideNav.isToggled);
-
-    useEffect(() => {
-      layoutDispatch.dispatch.updateSideNav({ hasCompactMode });
-    }, [hasCompactMode, layoutDispatch.dispatch]);
-
-    useLayoutEffect(() => {
-      if (!innerRef.current) return;
-      const topNavRef = layoutState.refs.topNav;
-      const newProperties: Record<string, string> = {};
-      let scrollHeight = innerRef.current.scrollHeight;
-      if (topNavOffset && topNavRef.current) {
-        newProperties[CSS_VAR_OFFSET] = `${topNavRef.current.offsetHeight}px`;
-        scrollHeight += topNavRef.current.offsetHeight;
-      }
-      if (scrollHeight > innerRef.current.clientHeight) {
-        const toggleWidth = Number.parseInt(cssVariable(CSS_VAR_TOGGLE_WIDTH));
-        if (toggleWidth) {
-          newProperties[CSS_VAR_TOGGLE_WIDTH] = `${
-            toggleWidth + (scrollWidth ?? 0) / 2
-          }px`;
-        }
-      }
-      for (const [key, value] of Object.entries(newProperties)) {
-        innerRef.current.style.setProperty(key, value);
-      }
-    }, [innerRef, layoutState.refs.topNav, scrollWidth, topNavOffset, width]);
+    const { setInnerRef } = useSideNavEffects(ref, { topNavOffset });
 
     return (
       <>
-        <div
-          className={clsx(styles.backdrop, {
-            [styles.backdropToggled]: layoutState.sideNav.isToggled,
-          })}
-          onClick={() =>
-            layoutDispatch.dispatch.updateSideNav({
-              isToggled: !layoutState.sideNav.isToggled,
-            })
-          }
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              layoutDispatch.dispatch.updateSideNav({
-                isToggled: !layoutState.sideNav.isToggled,
-              });
-            }
-          }}
-          role="button"
-          tabIndex={0}
-        />
+        <SideNavButton />
         <div
           className={clsx(
             styles.root,
@@ -157,26 +130,18 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
     );
   },
 );
+SideNavWrapper.displayName = "SideNavWrapper";
 
-const SideNavInner = ({
-  children,
-}: Pick<SideNavProps, "children" | "toggleIcon">) => (
-  <div className={styles.wrapperOuter}>
-    <div className={styles.wrapperInner}>{children}</div>
-  </div>
-);
-
-const SideNav = forwardRef<HTMLDivElement, SideNavProps>(
-  function SideNavRender(props, ref) {
-    const layoutState = LayoutContext.useContextState();
-    return isEmpty(layoutState) ? (
-      <LayoutContext.LayoutProvider>
-        <SideNavWrapper {...props} ref={ref} />
-      </LayoutContext.LayoutProvider>
-    ) : (
+const SideNav = forwardRef<HTMLDivElement, SideNavProps>((props, ref) => {
+  const layoutState = LayoutContext.useContextState();
+  return isEmpty(layoutState) ? (
+    <LayoutContext.LayoutProvider>
       <SideNavWrapper {...props} ref={ref} />
-    );
-  },
-);
+    </LayoutContext.LayoutProvider>
+  ) : (
+    <SideNavWrapper {...props} ref={ref} />
+  );
+});
+SideNav.displayName = "SideNav";
 
 export default SideNav;

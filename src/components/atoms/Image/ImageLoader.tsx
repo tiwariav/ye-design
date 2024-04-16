@@ -1,4 +1,4 @@
-import { IContentLoaderProps } from "react-content-loader";
+import type { IContentLoaderProps } from "react-content-loader";
 
 import ContentLoader from "../../../vendors/ContentLoader.js";
 

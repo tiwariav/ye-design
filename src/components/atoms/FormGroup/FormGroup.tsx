@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import styles from "./formGroup.module.css";
+import * as styles from "./formGroup.module.css";
 
 interface FormGroupProps extends React.ComponentPropsWithoutRef<"div"> {
   error?: {

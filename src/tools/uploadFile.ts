@@ -1,6 +1,6 @@
 import { uniqueId } from "lodash-es";
 
-import { TextInputProps } from "../components/atoms/TextInput/TextInput.js";
+import type { TextInputProps } from "../components/atoms/TextInput/TextInput.js";
 
 export const UPLOAD_FILE_STATUS = {
   failed: "failed",

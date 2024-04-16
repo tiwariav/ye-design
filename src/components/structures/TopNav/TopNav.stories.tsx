@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import {
   IconDogBowl,
   IconLogin,
@@ -6,13 +7,16 @@ import {
   IconSearch,
 } from "@tabler/icons-react";
 import clsx from "clsx";
-import { loremIpsum } from "lorem-ipsum";
 import { useRef } from "react";
 import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
+import type { TopNavProps } from "./TopNav.js";
+
+import Lorem from "../../../vendors/Lorem.js";
 import { Button, TextInput } from "../../atoms/index.js";
-import TopNav, { TOPNAV_VARIANTS, TopNavProps } from "./TopNav.js";
+import TopNav from "./TopNav.js";
 import TopNavItem from "./TopNavItem.js";
+import { TOPNAV_VARIANTS } from "./utils.js";
 
 const iconMap = { DogBowl: <IconDogBowl /> };
 const itemsMap = {
@@ -48,31 +52,29 @@ const itemsMap = {
   ),
 };
 
-const Template = ({ className, ...props }: TopNavProps) => {
+function Template({ className, ...props }: TopNavProps) {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <div
       className={clsx("story-height-scroll", className)}
       ref={ref}
+      // eslint-disable-next-line @typescript-eslint/no-magic-numbers
       style={{ backgroundImage: randomGradientGenerator(20) }}
     >
       <TopNav containerRef={ref} {...props} />
       <div className="story-box story-height-overflow">
-        <div
-          dangerouslySetInnerHTML={{
-            __html: loremIpsum({
-              count: 4,
-              format: "html",
-              units: "paragraphs",
-            }),
-          }}
-        />
+        <Lorem count={4} units="paragraphs" />
       </div>
     </div>
   );
-};
+}
 
 const metadata: Meta<typeof TopNav> = {
+  args: {
+    contentLeft: [itemsMap.SearchInput],
+    contentRight: [itemsMap.ButtonWithSeparator, itemsMap.Button],
+    logo: iconMap.DogBowl,
+  },
   argTypes: {
     contentLeft: {
       control: {
@@ -90,11 +92,6 @@ const metadata: Meta<typeof TopNav> = {
         options: Object.keys(iconMap),
       },
     },
-  },
-  args: {
-    contentLeft: [itemsMap.SearchInput],
-    contentRight: [itemsMap.ButtonWithSeparator, itemsMap.Button],
-    logo: iconMap.DogBowl,
   },
   component: TopNav,
   render: Template,

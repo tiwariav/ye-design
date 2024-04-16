@@ -1,9 +1,11 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ReactNode } from "react";
 
 import Container, {
   CONTAINER_HEIGHTS,
   CONTAINER_SPACINGS,
   CONTAINER_WIDTHS,
+  type ContainerProps,
 } from "./Container.js";
 
 const metadata: Meta<typeof Container> = {
@@ -33,12 +35,25 @@ export const Align: Story = {
   ),
 };
 
+function FirstContainerTemplate({
+  children,
+  firstContent,
+  isList,
+  ...args
+}: ContainerProps & { firstContent: ReactNode; isList?: boolean }) {
+  return (
+    <div className={isList ? "story-list" : "story-grid"}>
+      <Container className="story-bordered" {...args}>
+        {firstContent}
+      </Container>
+      {children}
+    </div>
+  );
+}
+
 export const Height: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Container className="story-bordered" {...args}>
-        {children}
-      </Container>
+    <FirstContainerTemplate firstContent={children} {...args}>
       {CONTAINER_HEIGHTS.map((height) => (
         <Container
           className="story-bordered"
@@ -52,16 +67,13 @@ export const Height: Story = {
           ))}
         </Container>
       ))}
-    </div>
+    </FirstContainerTemplate>
   ),
 };
 
 export const Spacings: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Container className="story-bordered" {...args}>
-        {children}
-      </Container>
+    <FirstContainerTemplate firstContent={children} {...args}>
       {CONTAINER_SPACINGS.map((spacing) => (
         <Container
           className="story-bordered"
@@ -73,29 +85,23 @@ export const Spacings: Story = {
           <p>{metadata.args?.children}</p>
         </Container>
       ))}
-    </div>
+    </FirstContainerTemplate>
   ),
 };
 
 export const Variants: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-grid">
-      <Container className="story-bordered" {...args}>
-        {children}
-      </Container>
+    <FirstContainerTemplate firstContent={children} {...args}>
       <Container className="story-bordered" variant="secondary" {...args}>
         <p>&apos;secondary&apos; variant</p>
         <p>{metadata.args?.children}</p>
       </Container>
-    </div>
+    </FirstContainerTemplate>
   ),
 };
 export const Widths: Story = {
   render: ({ children, ...args }) => (
-    <div className="story-list">
-      <Container className="story-bordered" {...args}>
-        {children}
-      </Container>
+    <FirstContainerTemplate firstContent={children} isList {...args}>
       {CONTAINER_WIDTHS.map((width) => (
         <Container
           className="story-bordered"
@@ -107,6 +113,6 @@ export const Widths: Story = {
           <p>{metadata.args?.children}</p>
         </Container>
       ))}
-    </div>
+    </FirstContainerTemplate>
   ),
 };

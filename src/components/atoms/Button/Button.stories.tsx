@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { COMPONENT_SIZES } from "../../../tools/constants/props.js";
 import { storyIconMap } from "../../../tools/storybook.js";
@@ -6,9 +6,13 @@ import Button, {
   BUTTON_EFFECTS,
   BUTTON_SPACINGS,
   BUTTON_VARIANTS,
+  type ButtonProps,
 } from "./Button.js";
 
 const metadata: Meta<typeof Button> = {
+  args: {
+    children: "Button",
+  },
   argTypes: {
     iconAfter: {
       mapping: storyIconMap,
@@ -18,9 +22,6 @@ const metadata: Meta<typeof Button> = {
       mapping: storyIconMap,
       options: Object.keys(storyIconMap),
     },
-  },
-  args: {
-    children: "Button",
   },
   component: Button,
   render: (args) => <Button {...args} />,
@@ -40,12 +41,18 @@ export const WithIcon: Story = {
   },
 };
 
+function FirstButtonTemplate({ children, ...args }: ButtonProps) {
+  return (
+    <div className="story-grid">
+      <Button {...args}>Button</Button>
+      {children}
+    </div>
+  );
+}
+
 export const Effects: Story = {
   render: (args) => (
-    <div className="story-grid">
-      <div>
-        <Button {...args}>Button</Button>
-      </div>
+    <FirstButtonTemplate {...args}>
       {BUTTON_EFFECTS.map((effect) => (
         <div key={effect}>
           <Button effects={[effect]} {...args}>
@@ -58,18 +65,13 @@ export const Effects: Story = {
           All effects Button
         </Button>
       </div>
-    </div>
+    </FirstButtonTemplate>
   ),
 };
 
 export const Sizes: Story = {
   render: (args) => (
-    <div className="story-grid">
-      <div>
-        <Button variant="outlined" {...args}>
-          Button
-        </Button>
-      </div>
+    <FirstButtonTemplate {...args}>
       {COMPONENT_SIZES.map((size) => (
         <div key={size}>
           <Button size={size} variant="outlined" {...args}>
@@ -77,18 +79,13 @@ export const Sizes: Story = {
           </Button>
         </div>
       ))}
-    </div>
+    </FirstButtonTemplate>
   ),
 };
 
 export const Spacings: Story = {
   render: (args) => (
-    <div className="story-grid">
-      <div>
-        <Button variant="outlined" {...args}>
-          Button
-        </Button>
-      </div>
+    <FirstButtonTemplate {...args}>
       {BUTTON_SPACINGS.map((spacing) => (
         <div key={spacing}>
           <Button spacing={spacing} variant="outlined" {...args}>
@@ -96,7 +93,7 @@ export const Spacings: Story = {
           </Button>
         </div>
       ))}
-    </div>
+    </FirstButtonTemplate>
   ),
 };
 

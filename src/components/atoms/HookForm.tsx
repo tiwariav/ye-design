@@ -1,29 +1,31 @@
-import { useEffect } from "react";
-import {
+import type {
   FieldValues,
-  FormProvider,
+  Path,
   Resolver,
   SubmitErrorHandler,
   SubmitHandler,
   UseFormProps,
-  UseFormSetError,
-  useForm,
 } from "react-hook-form";
 
-type ErrorParams<TFieldValues extends FieldValues> = Parameters<
-  UseFormSetError<TFieldValues>
->;
+import { useEffect } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+
+type ErrorKey<TFieldValues extends FieldValues> =
+  | "root"
+  | `root.${string}`
+  | Path<TFieldValues>;
+
 export interface HookFormProps<TFieldValues extends FieldValues>
   extends Omit<UseFormProps<TFieldValues>, "errors"> {
   children: React.ReactNode;
   className?: string;
-  errors?: Record<ErrorParams<TFieldValues>[0], string>;
+  errors?: Record<ErrorKey<TFieldValues>, string>;
   onInvalid?: SubmitErrorHandler<TFieldValues>;
   onValid?: SubmitHandler<TFieldValues>;
 }
 
 export type ResolverFieldValues<TResolver extends Resolver> =
-  TResolver extends Resolver<infer T> ? T : unknown;
+  TResolver extends Resolver<infer TField> ? TField : unknown;
 
 export default function HookForm<TFieldValues extends FieldValues>({
   children,
@@ -40,7 +42,7 @@ export default function HookForm<TFieldValues extends FieldValues>({
   useEffect(() => {
     if (errors) {
       for (const [key, value] of Object.entries(errors)) {
-        methods.setError(key as ErrorParams<TFieldValues>[0], {
+        methods.setError(key as ErrorKey<TFieldValues>, {
           message: value,
           type: "manual",
         });
@@ -52,8 +54,10 @@ export default function HookForm<TFieldValues extends FieldValues>({
     <FormProvider {...methods}>
       <form
         className={className}
-        onSubmit={
-          onValid ? methods.handleSubmit(onValid, onInvalid) : undefined
+        onSubmit={(event) =>
+          onValid
+            ? void methods.handleSubmit(onValid, onInvalid)(event)
+            : undefined
         }
       >
         {children}

@@ -1,8 +1,10 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 import ContentLoader from "../../../vendors/ContentLoader.js";
 
 const TEST_UNIQUE_KEY = process.env.JEST_WORKER_ID ? "test" : undefined;
+const LINE_HEIGHT = 24;
+const Y_MARGIN = 3;
 
 interface TextLoaderProps
   extends ComponentPropsWithoutRef<typeof ContentLoader> {
@@ -10,7 +12,7 @@ interface TextLoaderProps
 }
 
 export default function TextLoader({ lines = 1, ...props }: TextLoaderProps) {
-  const height = 24 * (lines || 1);
+  const height = LINE_HEIGHT * (lines || 1);
 
   return (
     <ContentLoader
@@ -24,9 +26,10 @@ export default function TextLoader({ lines = 1, ...props }: TextLoaderProps) {
         <rect
           height="20"
           key={index}
+          // eslint-disable-next-line @typescript-eslint/no-magic-numbers
           width={index ? 100 - Math.pow(8, 3 - (lines - index)) : 100}
           x="0"
-          y={index * 24 + 3}
+          y={index * LINE_HEIGHT + Y_MARGIN}
         />
       ))}
     </ContentLoader>

@@ -1,19 +1,20 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import CircleProgress from "./CircleProgress.js";
-import styles from "./circleProgress.stories.module.css";
+import * as styles from "./circleProgress.stories.module.css";
 
 const metadata: Meta<typeof CircleProgress> = {
-  argTypes: {
-    arcHeight: { control: { max: 100, min: 0, type: "range" } },
-    strokeWidth: { control: { max: 100, min: 0, type: "range" } },
-  },
   args: {
     arcHeight: 100,
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     progress: [25, 100],
     progressText: "percent",
     squareSize: 100,
     strokeWidth: 4,
+  },
+  argTypes: {
+    arcHeight: { control: { max: 100, min: 0, type: "range" } },
+    strokeWidth: { control: { max: 100, min: 0, type: "range" } },
   },
   component: CircleProgress,
   render: (args) => <CircleProgress {...args} />,
@@ -39,6 +40,7 @@ export const ArcHeight: Story = {
 export const Progress: Story = {
   render: (args) => (
     <div className="story-grid">
+      {/* eslint-disable-next-line @typescript-eslint/no-magic-numbers */}
       <CircleProgress {...args} progress={[0, 10]} />
       <CircleProgress {...args} />
       <CircleProgress {...args} progress={[1, 1]} />

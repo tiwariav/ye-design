@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { ComponentProps } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
 
 import Spinner from "./Spinner.js";
 
@@ -20,11 +20,13 @@ type TemplateProps = ComponentProps<typeof Spinner> & {
 
 type Story = StoryObj<TemplateProps>;
 
-const Template = ({ color, height, width, ...args }: TemplateProps) => (
-  <div style={{ position: "relative" }}>
-    <Spinner style={{ color, height, width }} {...args} />
-  </div>
-);
+function Template({ color, height, width, ...args }: TemplateProps) {
+  return (
+    <div style={{ position: "relative" }}>
+      <Spinner style={{ color, height, width }} {...args} />
+    </div>
+  );
+}
 
 export const Basic: Story = {
   args: {

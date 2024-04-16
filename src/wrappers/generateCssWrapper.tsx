@@ -1,17 +1,18 @@
-import { clsx } from "clsx";
-import {
+import type {
   ComponentPropsWithoutRef,
   ComponentType,
   ElementType,
-  forwardRef,
 } from "react";
 
+import { clsx } from "clsx";
+import { forwardRef } from "react";
+
 export default function generateCssWrapper<
-  C extends ElementType,
-  Props extends ComponentPropsWithoutRef<C>,
->(rootClassName: string, as?: C, defaultProps?: Props) {
-  return forwardRef<Props["ref"], Props & { className: string }>(
-    function CssWrapper({ className, ...props }, ref) {
+  TComponent extends ElementType,
+  TProps extends ComponentPropsWithoutRef<TComponent>,
+>(rootClassName: string, as?: TComponent, defaultProps?: Partial<TProps>) {
+  const CssWrapper = forwardRef<TProps["ref"], TProps & { className: string }>(
+    ({ className, ...props }, ref) => {
       const Component = as ?? "div";
       return (
         <Component
@@ -22,5 +23,7 @@ export default function generateCssWrapper<
         />
       );
     },
-  ) as ComponentType<Props>;
+  ) as ComponentType<TProps>;
+  CssWrapper.displayName = `CssWrapper(${rootClassName})`;
+  return CssWrapper;
 }

@@ -2,11 +2,14 @@
   ['is-small', 'is-large']
 }] */
 
-import clsx from "clsx";
-import { ComponentPropsWithoutRef, ElementType } from "react";
+import type { ComponentPropsWithoutRef, ElementType } from "react";
 
-import { COMPONENT_SIZES } from "../../tools/constants/props.js";
-import styles from "./inputWrapper.module.css";
+import clsx from "clsx";
+
+import type { COMPONENT_SIZES } from "../../tools/constants/props.js";
+
+import { getDynamicClassName } from "../../tools/utils.js";
+import * as styles from "./inputWrapper.module.css";
 
 interface InputWrapperProps<TElement extends ElementType> {
   as?: TElement;
@@ -23,7 +26,10 @@ export default function InputWrapper<TElement extends ElementType>({
   const Element = as ?? "div";
   return (
     <Element
-      className={clsx(size && styles[`is-${size}`], className)}
+      className={clsx(
+        size && getDynamicClassName(styles, `is-${size}`),
+        className,
+      )}
       {...props}
     />
   );

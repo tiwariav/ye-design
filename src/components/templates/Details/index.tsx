@@ -1,8 +1,12 @@
-import { clsx } from "clsx";
-import { Children, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import Container, { ContainerProps } from "../../atoms/Container/Container.js";
-import styles from "./details.module.css";
+import { clsx } from "clsx";
+import { Children } from "react";
+
+import type { ContainerProps } from "../../atoms/Container/Container.js";
+
+import Container from "../../atoms/Container/Container.js";
+import * as styles from "./details.module.css";
 
 interface DetailsProps extends ContainerProps {
   contentSide?: ReactNode;

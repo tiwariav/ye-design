@@ -1,30 +1,29 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-outlined'] }] */
 
+import type { ChangeEvent, ComponentPropsWithoutRef, ReactNode } from "react";
+
 import { IconReload, IconTrashXFilled } from "@tabler/icons-react";
 import { clsx } from "clsx";
 import { debounce } from "lodash-es";
-import {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  ReactNode,
-  useId,
-  useState,
-} from "react";
+import { useId, useState } from "react";
 
-import UploadFile from "../../../tools/uploadFile.js";
+import type UploadFile from "../../../tools/uploadFile.js";
+
+import { INPUT_DEBOUNCE } from "../../../tools/constants/time.js";
+import { getDynamicClassName } from "../../../tools/utils.js";
 import { FormIconSpan } from "../../../wrappers/span.js";
 import Button from "../Button/Button.js";
 import CircleProgress from "../CircleProgress/CircleProgress.js";
 import InputWrapper from "../InputWrapper.js";
 import Spinner from "../Spinner/Spinner.js";
 import PasswordInput from "../TextInput/PasswordInput.js";
-import styles from "./fileInput.module.css";
+import * as styles from "./fileInput.module.css";
 
 const FILE_INPUT_VARIANTS = ["outlined"] as const;
 
 export interface FileInputProps<TFile extends UploadFile = UploadFile>
   extends Omit<ComponentPropsWithoutRef<"input">, "size"> {
-  files: TFile[];
+  files?: TFile[];
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   innerClassNames?: {
@@ -48,7 +47,7 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
   files,
   iconAfter,
   iconBefore,
-  innerClassNames = {},
+  innerClassNames,
   isBusy,
   label,
   onBlur,
@@ -89,19 +88,23 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
       fileData[dataIndex].value = event.target.value;
       await updateFiles?.([{ ...file, data: fileData }], "update");
     },
-    500,
+    INPUT_DEBOUNCE,
   );
 
   return (
     <div className={clsx(className)}>
       <InputWrapper
         as="label"
-        className={clsx(styles.wrapper, variant && styles[`is-${variant}`], {
-          [styles.hasFocus]: hasFocus,
-        })}
+        className={clsx(
+          styles.wrapper,
+          variant && getDynamicClassName(styles, `is-${variant}`),
+          {
+            [styles.hasFocus]: hasFocus,
+          },
+        )}
       >
-        {label && <span className={styles.label}>{label}</span>}
-        {iconBefore && (
+        {!!label && <span className={styles.label}>{label}</span>}
+        {!!iconBefore && (
           <span className={clsx(styles.iconWrapper)}>
             <FormIconSpan>{iconBefore}</FormIconSpan>
           </span>
@@ -115,10 +118,12 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
           type="file"
           {...props}
         />
-        <span className={clsx(styles.placeholder, innerClassNames.placeholder)}>
+        <span
+          className={clsx(styles.placeholder, innerClassNames?.placeholder)}
+        >
           {placeholder}
         </span>
-        {iconAfter && (
+        {!!iconAfter && (
           <span className={clsx(styles.iconWrapper, styles.iconRight)}>
             <FormIconSpan>{iconAfter}</FormIconSpan>
           </span>
@@ -224,14 +229,13 @@ export default function FileInput<TFile extends UploadFile = UploadFile>({
                       {...dataItem.props}
                     />
                   ) : (
-                    dataItem.type === "preview" && (
-                      <img
-                        alt={dataItem.name}
-                        className={styles.previewImage}
-                        id={dataItem.resource}
-                        src={dataItem.resource}
-                      />
-                    )
+                    <img
+                      alt={dataItem.name}
+                      className={styles.previewImage}
+                      id={dataItem.resource}
+                      key={index}
+                      src={dataItem.resource}
+                    />
                   ),
                 )}
             </div>

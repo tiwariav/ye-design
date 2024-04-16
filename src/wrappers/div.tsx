@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import styles from "./div.module.css";
+import * as styles from "./div.module.css";
 import generateCssWrapper from "./generateCssWrapper.js";
 
 export const FlexColDiv = generateCssWrapper(

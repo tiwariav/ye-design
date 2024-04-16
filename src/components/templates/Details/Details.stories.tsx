@@ -1,16 +1,18 @@
-import { Meta } from "@storybook/react";
-import { ComponentProps } from "react";
+import type { Meta } from "@storybook/react";
+import type { ComponentProps } from "react";
 
 import { LoremCard } from "../../__stories/CardTemplates.js";
 import Details from "./index.js";
 
-export const Template = (args: ComponentProps<typeof Details>) => (
-  <Details {...args}>
-    {Array.from({ length: 4 }, (_item, index) => (
-      <LoremCard key={index} />
-    ))}
-  </Details>
-);
+export function Template(args: ComponentProps<typeof Details>) {
+  return (
+    <Details {...args}>
+      {Array.from({ length: 4 }, (_item, index) => (
+        <LoremCard key={index} />
+      ))}
+    </Details>
+  );
+}
 
 const metadata: Meta<typeof Details> = {
   component: Details,

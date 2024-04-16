@@ -1,11 +1,14 @@
-import { StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
+import type { SetRequired } from "type-fest";
+
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
-import { SetRequired } from "type-fest";
+
+import type { NumberInputProps } from "../NumberInput/NumberInput.js";
 
 import HookForm from "../HookForm.js";
-import NumberInput, { NumberInputProps } from "../NumberInput/NumberInput.js";
+import NumberInput from "../NumberInput/NumberInput.js";
 import PhoneNumberInput from "../PhoneNumberInput/PhoneNumberInput.js";
 import { Button } from "../index.js";
 import HookFormInputWrapper from "./HookFormInputWrapper.js";
@@ -29,13 +32,16 @@ function InputWrapper({
   );
 }
 
-const FormContent = () => {
+const INITIAL_VALUE = 2000.001;
+const VALUE_INCREMENT = 0.01;
+
+function FormContent() {
   const {
     formState: { errors },
     setValue,
     watch,
   } = useFormContext();
-  const [updateValue, setUpdateValue] = useState(2000.001);
+  const [updateValue, setUpdateValue] = useState(INITIAL_VALUE);
   const watchAll = watch();
   return (
     <div>
@@ -77,9 +83,9 @@ const FormContent = () => {
             onClick={() => {
               setValue(
                 "NumberInput (format with default)",
-                (updateValue + 0.01).toString(),
+                (updateValue + VALUE_INCREMENT).toString(),
               );
-              setUpdateValue(updateValue + 0.01);
+              setUpdateValue(updateValue + VALUE_INCREMENT);
             }}
           >
             Update Value
@@ -94,18 +100,18 @@ const FormContent = () => {
       </div>
     </div>
   );
-};
+}
 
-const Template = () => {
+function Template() {
   return (
     <HookForm
       defaultValues={{
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         "NumberInput (format with default)": "1234.1003",
       }}
       mode="onChange"
-      resolver={
-        // eslint-disable-next-line @typescript-eslint/require-await
-        async (values) => {
+      resolver={async (values) =>
+        await new Promise((resolve) => {
           const errors: Record<string, { message: string; type: string }> = {};
           for (const key of Object.keys(values)) {
             errors[key] = {
@@ -113,17 +119,17 @@ const Template = () => {
               type: "manual",
             };
           }
-          return {
+          resolve({
             errors,
             values: {},
-          };
-        }
+          });
+        })
       }
     >
       <FormContent />
     </HookForm>
   );
-};
+}
 
 export const Basic: Story = {
   render: () => <Template />,

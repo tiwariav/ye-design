@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
 import { storyIconControl } from "../../../tools/storybook.js";
 import Tag from "./Tag.js";

@@ -1,13 +1,21 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: [
   segment-1, segment-2, segment-3, segment-4
 ]}] */
+import type { ReactNode } from "react";
+
 import { IconArrowLeftRhombus } from "@tabler/icons-react";
 import { clsx } from "clsx";
-import { ReactNode, useId, useMemo } from "react";
+import { useId, useMemo } from "react";
 
 import { describeArc } from "../../../tools/svg.js";
-import styles from "./arcProgress.module.css";
-import useProgressAnimation from "./useProgressAnimations.js";
+import * as styles from "./arcProgress.module.css";
+import useProgressAnimation, {
+  ARC_ANGLE,
+  MAX_PROGRESS,
+} from "./useProgressAnimations.js";
+
+const DEFAULT_SLICE_ANGLE = 7.5;
+const CENTER = 50;
 
 interface ArcProgressProps {
   children?: ReactNode;
@@ -21,6 +29,23 @@ interface ArcProgressProps {
   strokeWidth?: number;
 }
 
+function getAngles(segments: number) {
+  const value: [number, number][] = [];
+  const parts = Array.from<number>({ length: segments }).fill(
+    MAX_PROGRESS / segments,
+  );
+  let startAngle = -90;
+  for (let index = 0; index < parts.length; index++) {
+    const part = parts[index];
+    const nextAngle = startAngle + (ARC_ANGLE * part) / MAX_PROGRESS;
+    const endAngle =
+      index === parts.length - 1 ? nextAngle : nextAngle - DEFAULT_SLICE_ANGLE;
+    value.push([startAngle, endAngle]);
+    startAngle = nextAngle;
+  }
+  return value;
+}
+
 export default function ArcProgress({
   children,
   className,
@@ -29,22 +54,9 @@ export default function ArcProgress({
   segments = 4,
   strokeWidth = 2,
 }: ArcProgressProps) {
-  // calculate percentage
-  const percentage = 100 * (progress[0] / progress[1]);
+  const percentage = MAX_PROGRESS * (progress[0] / progress[1]);
   const animeId = useId();
-  const angles = useMemo(() => {
-    const value: [number, number][] = [];
-    const parts = Array.from<number>({ length: segments }).fill(100 / segments);
-    let startAngle = -90;
-    for (let index = 0; index < parts.length; index++) {
-      const part = parts[index];
-      const nextAngle = startAngle + (180 * part) / 100;
-      const endAngle = index === parts.length - 1 ? nextAngle : nextAngle - 7.5;
-      value.push([startAngle, endAngle]);
-      startAngle = nextAngle;
-    }
-    return value;
-  }, [segments]);
+  const angles = useMemo(() => getAngles(segments), [segments]);
 
   /*#__PURE__*/ useProgressAnimation(percentage, animeId);
 
@@ -62,11 +74,9 @@ export default function ArcProgress({
                 innerClassNames?.[segmentIndex],
               )}
               d={describeArc(
-                50,
-                50 - strokeWidth,
-                50 - strokeWidth * 2,
-                startAngle,
-                endAngle,
+                CENTER - strokeWidth * 2,
+                { end: endAngle, start: startAngle },
+                { x: CENTER, y: CENTER - strokeWidth },
               )}
               fill="none"
               key={index}

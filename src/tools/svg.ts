@@ -1,27 +1,29 @@
+const ANGULAR_ORIGIN_SHIFT = 90;
+const ANGLE_SEMI_CIRCLE = 180;
+
 export function polarToCartesian(
-  centerX: number,
-  centerY: number,
+  center: { x: number; y: number },
   radius: number,
   angleInDegrees: number,
 ) {
-  const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180;
+  const angleInRadians =
+    ((angleInDegrees - ANGULAR_ORIGIN_SHIFT) * Math.PI) / ANGLE_SEMI_CIRCLE;
   return {
-    x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians),
+    x: center.x + radius * Math.cos(angleInRadians),
+    y: center.y + radius * Math.sin(angleInRadians),
   };
 }
 
 export function describeArc(
-  x: number,
-  y: number,
   radius: number,
-  startAngle: number,
-  endAngle: number,
+  arcAngle: { end: number; start: number },
+  center: { x: number; y: number },
 ) {
-  const start = polarToCartesian(x, y, radius, endAngle);
-  const end = polarToCartesian(x, y, radius, startAngle);
+  const start = polarToCartesian(center, radius, arcAngle.end);
+  const end = polarToCartesian(center, radius, arcAngle.start);
 
-  const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+  const largeArcFlag =
+    arcAngle.end - arcAngle.start <= ANGLE_SEMI_CIRCLE ? "0" : "1";
 
   return [
     "M",

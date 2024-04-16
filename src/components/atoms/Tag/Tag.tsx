@@ -1,10 +1,11 @@
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+
 import { clsx } from "clsx";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import { IconSpan } from "../../../wrappers/span.js";
 import Spinner from "../Spinner/Spinner.js";
 import TagLoader from "./TagLoader.js";
-import styles from "./tag.module.css";
+import * as styles from "./tag.module.css";
 
 interface TagProps extends ComponentPropsWithoutRef<"span"> {
   iconAfter?: ReactNode;
@@ -28,9 +29,9 @@ function Tag({
         <TagLoader iconAfter={!!iconAfter} iconBefore={!!iconBefore} />
       ) : (
         <>
-          {iconBefore && <IconSpan>{iconBefore}</IconSpan>}
+          {!!iconBefore && <IconSpan>{iconBefore}</IconSpan>}
           {children}
-          {iconAfter && (
+          {!!iconAfter && (
             <IconSpan className={styles.isAfter}>{iconAfter}</IconSpan>
           )}
         </>

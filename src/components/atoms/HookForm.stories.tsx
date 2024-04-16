@@ -1,6 +1,8 @@
-import { FieldValues } from "react-hook-form";
+import type { FieldValues } from "react-hook-form";
 
-import HookForm, { HookFormProps } from "./HookForm.js";
+import type { HookFormProps } from "./HookForm.js";
+
+import HookForm from "./HookForm.js";
 import { HookFormInputWrapper } from "./index.js";
 
 const meta = {
@@ -14,7 +16,7 @@ function Template<TFeildValue extends FieldValues>(
 ) {
   return (
     <HookForm {...args}>
-      <HookFormInputWrapper name={"input"}>
+      <HookFormInputWrapper name="input">
         <input type="text" />
       </HookFormInputWrapper>
     </HookForm>
