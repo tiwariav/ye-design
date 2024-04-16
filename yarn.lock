@@ -23628,9 +23628,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wo-library@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "wo-library@npm:5.0.2"
+"wo-library@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "wo-library@npm:5.0.3"
   dependencies:
     "@floating-ui/react": "npm:^0.26.12"
     "@mdx-js/react": "npm:^3.0.1"
@@ -23658,7 +23658,7 @@ __metadata:
       optional: true
     swiper:
       optional: true
-  checksum: 10c0/ec5883bce8d38c3e0c45af2405bb21967d4ae193bef171dcc12c3631ab8c587fb9d63e188a01137c9564f05a9e168cd37c422b06c1910f3ddc5935e4e22b72ca
+  checksum: 10c0/c7c72ddc40da128029e1476c6be2aef843e7a1cfd231842612b96258726669365bcb1d730d74f32d09e4187207ec8f660d9599155df7e6e5c386ac8796ca7801
   languageName: node
   linkType: hard
 
@@ -24041,7 +24041,7 @@ __metadata:
     typescript-plugin-css-modules: "npm:^5.1.0"
     use-immer: "npm:^0.9.0"
     webpack: "npm:^5.91.0"
-    wo-library: "npm:^5.0.2"
+    wo-library: "npm:^5.0.3"
   peerDependencies:
     antd: ^5.15.3
     overlayscrollbars: ^2.6.1
