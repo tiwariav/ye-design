@@ -1,3 +1,14 @@
+## [4.0.0](https://github.com/tiwariav/ye-design/compare/v3.7.8...v4.0.0) (2024-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Few export names have changed to adhere to new naming rules.
+
+### ♻️ Code Refactors
+
+* update code to stricter eslint config ([995808d](https://github.com/tiwariav/ye-design/commit/995808db3a516f907fb1c3c3ce4473acf7990785))
+
 ## [3.7.8](https://github.com/tiwariav/ye-design/compare/v3.7.7...v3.7.8) (2024-04-09)
 
 
