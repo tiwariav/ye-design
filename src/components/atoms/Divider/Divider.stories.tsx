@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Divider, { DividerProps } from "./Divider.js";
+import type { DividerProps } from "./Divider.js";
+
+import Divider from "./Divider.js";
 
 const metadata: Meta<typeof Divider> = {
   argTypes: {
@@ -13,7 +15,7 @@ export default metadata;
 
 type Story = StoryObj<typeof Divider>;
 
-const Template = ({ vertical, ...props }: DividerProps) => {
+function Template({ vertical, ...props }: DividerProps) {
   return (
     <div
       style={{
@@ -35,7 +37,7 @@ const Template = ({ vertical, ...props }: DividerProps) => {
       culpa fuga?
     </div>
   );
-};
+}
 
 export const Basic: Story = {
   render: (args) => <Template {...args} />,
