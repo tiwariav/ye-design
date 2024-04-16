@@ -1,3 +1,10 @@
+## [3.7.8](https://github.com/tiwariav/ye-design/compare/v3.7.7...v3.7.8) (2024-04-09)
+
+
+### 🐛 Bug Fixes
+
+* vertical in divider ([15ad3d1](https://github.com/tiwariav/ye-design/commit/15ad3d1eec4e0b343d06a2b9877e98bd823d5554))
+
 ## [3.7.7](https://github.com/tiwariav/ye-design/compare/v3.7.6...v3.7.7) (2024-04-03)
 
 

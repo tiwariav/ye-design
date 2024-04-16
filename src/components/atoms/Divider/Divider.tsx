@@ -12,7 +12,7 @@ import * as styles from "./divider.module.css";
 
 const DIVIDER_SPACING_OPTIONS = ["none", "small", "medium", "large"] as const;
 
-interface DividerProps extends ComponentPropsWithoutRef<"div"> {
+export interface DividerProps extends ComponentPropsWithoutRef<"div"> {
   spacing?: (typeof DIVIDER_SPACING_OPTIONS)[number];
   vertical?: boolean;
 }
@@ -28,10 +28,12 @@ export default function Divider({
     {
       className: clsx(
         styles.root,
+        !vertical && styles.isHorizontal,
         vertical && styles.isVertical,
         getDynamicClassName(styles, `space-${spacing}`),
         className,
       ),
+      role: "separator",
       ...props,
     },
     null,
