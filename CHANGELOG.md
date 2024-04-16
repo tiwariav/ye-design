@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/tiwariav/ye-design/compare/v4.0.0...v4.0.1) (2024-04-16)
+
+
+### 🐛 Bug Fixes
+
+* rename css variables causing build error in rollup ([5035569](https://github.com/tiwariav/ye-design/commit/5035569dab1a4b4c622a05d90cd892d7b16e0799))
+
 ## [4.0.0](https://github.com/tiwariav/ye-design/compare/v3.7.8...v4.0.0) (2024-04-16)
 
 
