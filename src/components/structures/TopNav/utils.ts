@@ -11,7 +11,10 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useWindowSize } from "react-use";
 import { useScrollDirection } from "wo-library/hooks/index.js";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import {
+  useLayoutMethods,
+  useLayoutState,
+} from "../../../contexts/LayoutContext/index.js";
 import usePropRef from "../../../hooks/usePropRef.js";
 import { BREAKPOINTS } from "../../../styles/media.js";
 import { getDynamicClassName } from "../../../tools/utils.js";
@@ -69,7 +72,7 @@ function useScrollUpdates({
 }: ScrollUpdateOptions & {
   rootRef: MutableRefObject<HTMLDivElement | null>;
 }) {
-  const layoutState = LayoutContext.useContextState();
+  const layoutState = useLayoutState();
   const { direction, y: scrollY } = useScrollDirection(containerRef);
 
   const topNavMaxHeight = useRef<number>(0);
@@ -114,7 +117,7 @@ function useScrollUpdates({
 }
 
 function useTopNavEffects(transform: number | string) {
-  const layoutDispatch = LayoutContext.useContextDispatch();
+  const layoutDispatch = useLayoutMethods();
   const [smallerWidth, setSmallerWidth] = useState<boolean>();
   const { width } = useWindowSize();
   const [isReady, setIsReady] = useState(false);
@@ -161,7 +164,7 @@ export function useTopNavProps(
   }: UseTopNavPropsOptions,
   ref: ForwardedRef<HTMLDivElement>,
 ) {
-  const layoutState = LayoutContext.useContextState();
+  const layoutState = useLayoutState();
   const { innerRef, setInnerRef } = usePropRef(ref ?? layoutState.refs.topNav);
   const { direction, shrinkOffset, topNavExpanded, transform } =
     useScrollUpdates({

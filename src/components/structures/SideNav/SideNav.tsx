@@ -7,14 +7,18 @@ import { forwardRef } from "react";
 
 import type { ButtonProps } from "../../atoms/Button/Button.js";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import {
+  LayoutProvider,
+  useLayoutMethods,
+  useLayoutState,
+} from "../../../contexts/LayoutContext/index.js";
 import { Button } from "../../atoms/index.js";
 import * as styles from "./sideNav.module.css";
 import { useSideNavEffects } from "./utils.js";
 
 export function SideNavToggle({ children, ...props }: ButtonProps) {
-  const layoutState = LayoutContext.useContextState();
-  const layoutDispatch = LayoutContext.useContextDispatch();
+  const layoutState = useLayoutState();
+  const layoutDispatch = useLayoutMethods();
   return (
     <Button
       onClick={() => {
@@ -42,8 +46,8 @@ function SideNavInner({
 }
 
 function SideNavButton() {
-  const layoutState = LayoutContext.useContextState();
-  const layoutDispatch = LayoutContext.useContextDispatch();
+  const layoutState = useLayoutState();
+  const layoutDispatch = useLayoutMethods();
 
   return (
     <button
@@ -93,7 +97,7 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
     }: SideNavProps,
     ref,
   ) => {
-    const layoutState = LayoutContext.useContextState();
+    const layoutState = useLayoutState();
     const { bottom = false, topNavOffset = false } = isObject(sticky)
       ? sticky
       : {};
@@ -133,11 +137,11 @@ const SideNavWrapper = forwardRef<HTMLDivElement, SideNavProps>(
 SideNavWrapper.displayName = "SideNavWrapper";
 
 const SideNav = forwardRef<HTMLDivElement, SideNavProps>((props, ref) => {
-  const layoutState = LayoutContext.useContextState();
+  const layoutState = useLayoutState();
   return isEmpty(layoutState) ? (
-    <LayoutContext.LayoutProvider>
+    <LayoutProvider>
       <SideNavWrapper {...props} ref={ref} />
-    </LayoutContext.LayoutProvider>
+    </LayoutProvider>
   ) : (
     <SideNavWrapper {...props} ref={ref} />
   );

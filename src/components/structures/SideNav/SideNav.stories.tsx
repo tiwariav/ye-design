@@ -4,7 +4,11 @@ import type { ComponentProps } from "react";
 import { IconMenu } from "@tabler/icons-react";
 import { randomGradientGenerator } from "wo-library/tools/colors.js";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import {
+  LayoutProvider,
+  useLayoutMethods,
+  useLayoutState,
+} from "../../../contexts/LayoutContext/index.js";
 import Lorem from "../../../vendors/Lorem.js";
 import { BasicSideNav } from "../../__stories/SideNavTemplates.js";
 import Button from "../../atoms/Button/Button.js";
@@ -14,10 +18,10 @@ import { SideNavTitle } from "./SideNavGroup.js";
 function SideNavButton({ ...props }) {
   const {
     sideNav: { isToggled },
-  } = LayoutContext.useContextState();
+  } = useLayoutState();
   const {
     dispatch: { updateSideNav },
-  } = LayoutContext.useContextDispatch();
+  } = useLayoutMethods();
 
   return (
     <Button
@@ -34,7 +38,7 @@ function SideNavButton({ ...props }) {
 
 function Template(args: ComponentProps<typeof BasicSideNav>) {
   return (
-    <LayoutContext.LayoutProvider>
+    <LayoutProvider>
       <div
         className="story-bg-container story-flex"
         // eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -50,7 +54,7 @@ function Template(args: ComponentProps<typeof BasicSideNav>) {
           </div>
         </div>
       </div>
-    </LayoutContext.LayoutProvider>
+    </LayoutProvider>
   );
 }
 

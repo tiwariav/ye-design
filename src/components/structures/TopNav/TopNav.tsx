@@ -12,7 +12,11 @@ import { forwardRef, useEffect, useRef, useState } from "react";
 import type { ButtonProps } from "../../atoms/Button/Button.js";
 import type { TopNavInnerClassNames, UseTopNavPropsOptions } from "./utils.js";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import {
+  LayoutProvider,
+  useLayoutMethods,
+  useLayoutState,
+} from "../../../contexts/LayoutContext/index.js";
 import { getDynamicClassName } from "../../../tools/utils.js";
 import { FlexAlignCenterDiv, FlexColDiv } from "../../../wrappers/div.js";
 import { Button, Container } from "../../atoms/index.js";
@@ -73,7 +77,7 @@ function ContentMenu({
   innerClassNames,
   smallerWidth,
 }: ContentMenuProps) {
-  const layoutState = LayoutContext.useContextState();
+  const layoutState = useLayoutState();
   const [contentMenuHeight, setContentMenuHeight] = useState<number>();
   const contentMenuRef = useRef<HTMLDivElement>(null);
 
@@ -123,8 +127,8 @@ function ContentMenu({
 }
 
 function RightNavIcon(props: ButtonProps) {
-  const layoutState = LayoutContext.useContextState();
-  const layoutDispatch = LayoutContext.useContextDispatch();
+  const layoutState = useLayoutState();
+  const layoutDispatch = useLayoutMethods();
 
   return (
     <IconMenuItem
@@ -238,11 +242,11 @@ const TopNavWrapper = forwardRef<HTMLDivElement, TopNavProps>(
 TopNavWrapper.displayName = "TopNavWrapper";
 
 const TopNav = forwardRef<HTMLDivElement, TopNavProps>((props, ref) => {
-  const layoutState = LayoutContext.useContextState();
+  const layoutState = useLayoutState();
   return isEmpty(layoutState) ? (
-    <LayoutContext.LayoutProvider>
+    <LayoutProvider>
       <TopNavWrapper {...props} ref={ref} />
-    </LayoutContext.LayoutProvider>
+    </LayoutProvider>
   ) : (
     <TopNavWrapper {...props} ref={ref} />
   );

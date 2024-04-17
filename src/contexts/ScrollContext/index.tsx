@@ -20,11 +20,15 @@ interface ScrollProviderProps extends OverlayScrollbarsComponentProps {
   data?: object;
 }
 
-const { Context, DispatchContext, useContextDispatch, useContextState } =
-  createAndUseContext<
-    ScrollState,
-    ContextDispatch<ReturnType<typeof createScrollMethods>>
-  >();
+const {
+  MethodContext,
+  StateContext,
+  useContextMethods: useScrollMethods,
+  useContextState: useScrollState,
+} = createAndUseContext<
+  ScrollState,
+  ContextDispatch<ReturnType<typeof createScrollMethods>>
+>();
 
 function ScrollProvider({ children, data, ...props }: ScrollProviderProps) {
   const overlayRef = useRef<OverlayScrollbarsComponentRef>(null);
@@ -41,17 +45,11 @@ function ScrollProvider({ children, data, ...props }: ScrollProviderProps) {
 
   return (
     <OverlayScrollbarsComponent ref={overlayRef} {...props}>
-      <DispatchContext.Provider value={memoDispatch}>
-        <Context.Provider value={state}>{children}</Context.Provider>
-      </DispatchContext.Provider>
+      <MethodContext.Provider value={memoDispatch}>
+        <StateContext.Provider value={state}>{children}</StateContext.Provider>
+      </MethodContext.Provider>
     </OverlayScrollbarsComponent>
   );
 }
 
-const ScrollContext = {
-  ScrollProvider,
-  useContextDispatch,
-  useContextState,
-};
-
-export default ScrollContext;
+export { ScrollProvider, useScrollMethods, useScrollState };

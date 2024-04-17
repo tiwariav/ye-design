@@ -4,7 +4,10 @@ import { useEffect, useLayoutEffect } from "react";
 import { useLockBodyScroll, useScrollbarWidth, useWindowSize } from "react-use";
 import { cssVariable } from "wo-library/tools/css.js";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import {
+  useLayoutMethods,
+  useLayoutState,
+} from "../../../contexts/LayoutContext/index.js";
 import usePropRef from "../../../hooks/usePropRef.js";
 import { BREAKPOINTS } from "../../../styles/media.js";
 
@@ -47,8 +50,8 @@ export function useSideNavEffects(
     topNavOffset,
   }: { hasCompactMode?: boolean; topNavOffset?: boolean },
 ) {
-  const layoutState = LayoutContext.useContextState();
-  const layoutDispatch = LayoutContext.useContextDispatch();
+  const layoutState = useLayoutState();
+  const layoutDispatch = useLayoutMethods();
   const { innerRef, setInnerRef } = usePropRef([ref, layoutState.refs.sideNav]);
   const scrollWidth = useScrollbarWidth();
   const { width } = useWindowSize();

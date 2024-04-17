@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import { useLayoutState } from "../../../contexts/LayoutContext/index.js";
 import * as styles from "./sideNavItem.module.css";
 
 export interface SideNavItemProps<TElement extends ElementType = "div"> {
@@ -24,7 +24,7 @@ export default function SideNavItem<TElement extends ElementType>({
   innerClassNames,
   ...props
 }: SideNavItemProps<TElement> & ComponentPropsWithoutRef<TElement>) {
-  const layoutState = LayoutContext.useContextState();
+  const layoutState = useLayoutState();
   const Element = as ?? "div";
 
   return (

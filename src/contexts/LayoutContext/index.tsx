@@ -23,13 +23,14 @@ type LayoutContextState = LayoutState & {
   };
 };
 
-const { Context, DispatchContext, useContextDispatch, useContextState } =
-  createAndUseContext<LayoutContextState, ContextDispatch<LayoutMethods>>();
+const {
+  MethodContext,
+  StateContext,
+  useContextMethods: useLayoutMethods,
+  useContextState: useLayoutState,
+} = createAndUseContext<LayoutContextState, ContextDispatch<LayoutMethods>>();
 
-export function LayoutProvider({
-  children,
-  initialState,
-}: LayoutProviderProps) {
+function LayoutProvider({ children, initialState }: LayoutProviderProps) {
   const memoizedInitialState = useMemo(
     () => ({ ...INITIAL_LAYOUT_STATE, ...initialState }),
     [initialState],
@@ -56,11 +57,12 @@ export function LayoutProvider({
   const memoDispatch = useMemo(() => ({ dispatch }), [dispatch]);
 
   return (
-    <DispatchContext.Provider value={memoDispatch}>
-      <Context.Provider value={finalState}>{children}</Context.Provider>
-    </DispatchContext.Provider>
+    <MethodContext.Provider value={memoDispatch}>
+      <StateContext.Provider value={finalState}>
+        {children}
+      </StateContext.Provider>
+    </MethodContext.Provider>
   );
 }
 
-const LayoutContext = { LayoutProvider, useContextDispatch, useContextState };
-export default LayoutContext;
+export { LayoutProvider, useLayoutMethods, useLayoutState };

@@ -7,7 +7,7 @@ import React, { useMemo } from "react";
 import type { SideNavProps } from "../SideNav/SideNav.js";
 import type { TopNavProps } from "../TopNav/TopNav.js";
 
-import LayoutContext from "../../../contexts/LayoutContext/index.js";
+import { LayoutProvider } from "../../../contexts/LayoutContext/index.js";
 import { SideNavToggle } from "../SideNav/SideNav.js";
 import * as styles from "./page.module.css";
 
@@ -105,9 +105,9 @@ function PageInner({
 
 function Page({ ...props }: PageProps) {
   return (
-    <LayoutContext.LayoutProvider>
+    <LayoutProvider>
       <PageInner {...props} />
-    </LayoutContext.LayoutProvider>
+    </LayoutProvider>
   );
 }
 
