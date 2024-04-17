@@ -30,21 +30,31 @@ const {
   ContextDispatch<ReturnType<typeof createScrollMethods>>
 >();
 
-function ScrollProvider({ children, data, ...props }: ScrollProviderProps) {
+function ScrollProvider({
+  children,
+  className,
+  data,
+  ...props
+}: ScrollProviderProps) {
   const overlayRef = useRef<OverlayScrollbarsComponentRef>(null);
 
   const [state, dispatch] = useMethods(createScrollMethods, {
     ...INITIAL_SCROLL_STATE,
     ...data,
   });
+
+  const memoDispatch = useMemo(() => ({ dispatch }), [dispatch]);
+
   useEffectOnce(() => {
     dispatch.updateState({ overlayScrollbars: overlayRef.current });
   });
 
-  const memoDispatch = useMemo(() => ({ dispatch }), [dispatch]);
-
   return (
-    <OverlayScrollbarsComponent ref={overlayRef} {...props}>
+    <OverlayScrollbarsComponent
+      className={className}
+      ref={overlayRef}
+      {...props}
+    >
       <MethodContext.Provider value={memoDispatch}>
         <StateContext.Provider value={state}>{children}</StateContext.Provider>
       </MethodContext.Provider>
