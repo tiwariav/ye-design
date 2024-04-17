@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/tiwariav/ye-design/compare/v4.0.1...v4.0.2) (2024-04-17)
+
+
+### ♻️ Code Refactors
+
+* use named exports for contexts ([06f5f67](https://github.com/tiwariav/ye-design/commit/06f5f67f303e58fe1cdfa4df2072ae948ebdd1e1))
+
 ## [4.0.1](https://github.com/tiwariav/ye-design/compare/v4.0.0...v4.0.1) (2024-04-16)
 
 
