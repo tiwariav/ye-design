@@ -1,3 +1,10 @@
+## [3.7.9](https://github.com/tiwariav/ye-design/compare/v3.7.8...v3.7.9) (2024-04-23)
+
+
+### 🐛 Bug Fixes
+
+* remove variable ye-shadow-input-focus ([bd53e73](https://github.com/tiwariav/ye-design/commit/bd53e736af2fc0f88581bf7647a2cfb629f113ef))
+
 ## [3.7.8](https://github.com/tiwariav/ye-design/compare/v3.7.7...v3.7.8) (2024-04-09)
 
 
