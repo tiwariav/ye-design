@@ -5,6 +5,8 @@
     --ye-input-padding-bottom: var(--ye-spacing-rem-small);
     --ye-input-padding-left: var(--ye-spacing-rem-normal);
     --module-loader-z: calc(var(--ye-z-base) + 2);
+    --module-shadow-input-focus: var(--ye-shadow-input-focus-1),
+      var(--ye-shadow-input-focus-2);
 
     position: relative;
     width: 100%;
@@ -43,7 +45,7 @@
     &:focus {
       border-color: var(--ye-color-input-focus-border);
       outline: none;
-      box-shadow: var(--ye-shadow-input-focus);
+      box-shadow: var(--module-shadow-input-focus);
     }
   }
 
