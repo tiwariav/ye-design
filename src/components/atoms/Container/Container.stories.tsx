@@ -40,7 +40,7 @@ function FirstContainerTemplate({
   firstContent,
   isList,
   ...args
-}: ContainerProps & { firstContent: ReactNode; isList?: boolean }) {
+}: { firstContent: ReactNode; isList?: boolean } & ContainerProps) {
   return (
     <div className={isList ? "story-list" : "story-grid"}>
       <Container className="story-bordered" {...args}>

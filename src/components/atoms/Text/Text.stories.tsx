@@ -10,7 +10,7 @@ const metadata: Meta<typeof Text> = {
 
 export default metadata;
 
-type TemplateProps = ComponentProps<typeof Text> & { width: number };
+type TemplateProps = { width: number } & ComponentProps<typeof Text>;
 type Story = StoryObj<TemplateProps>;
 
 function Template({ width, ...args }: TemplateProps) {

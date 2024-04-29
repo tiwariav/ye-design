@@ -39,7 +39,7 @@ function formControlProps<TElement>(
 
 export const FormInputControl = forwardRef<
   HTMLInputElement,
-  FormControlProps & ComponentPropsWithoutRef<"input">
+  ComponentPropsWithoutRef<"input"> & FormControlProps
 >((props, ref) => {
   return <input {...formControlProps(props, ref)} />;
 });
@@ -47,7 +47,7 @@ FormInputControl.displayName = "FormInputControl";
 
 export const FormButtonControl = forwardRef<
   HTMLButtonElement,
-  FormControlProps & ComponentPropsWithoutRef<"button">
+  ComponentPropsWithoutRef<"button"> & FormControlProps
 >((props, ref) => {
   return <button {...formControlProps(props, ref)} />;
 });

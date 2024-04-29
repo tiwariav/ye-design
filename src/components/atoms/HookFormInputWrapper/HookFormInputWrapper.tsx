@@ -30,16 +30,15 @@ export type ChangeHandler = (
   shouldUpdate?: boolean,
 ) => void;
 
-export type HookFormInputWrapperProps<TValues extends FieldValues> =
-  SetOptional<ControllerProps<TValues>, "control" | "render"> & {
-    children: ReactElement<
-      ComponentPropsWithRef<"input"> & {
-        onChange: ChangeHandler;
-      }
-    >;
-    onChange?: ChangeEventHandler;
-    showError?: boolean;
-  };
+export type HookFormInputWrapperProps<TValues extends FieldValues> = {
+  children: ReactElement<
+    {
+      onChange: ChangeHandler;
+    } & ComponentPropsWithRef<"input">
+  >;
+  onChange?: ChangeEventHandler;
+  showError?: boolean;
+} & SetOptional<ControllerProps<TValues>, "control" | "render">;
 
 export default function HookFormInputWrapper<TValues extends FieldValues>({
   children,

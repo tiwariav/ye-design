@@ -6,7 +6,7 @@ import Container from "../../atoms/Container/Container.js";
 import Image from "../../atoms/Image/Image.js";
 import Profile from "./index.js";
 
-type TemplateProps = ComponentProps<typeof Profile> & { coverImage?: string };
+type TemplateProps = { coverImage?: string } & ComponentProps<typeof Profile>;
 
 export function Template({
   coverImage = `${process.env.STORYBOOK_IMAGE_SRC}/1600/400`,

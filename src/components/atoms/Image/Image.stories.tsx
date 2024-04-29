@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 
 import Image from "./Image.js";
 
-type TemplateProps = ComponentProps<typeof Image> & { width?: number };
+type TemplateProps = { width?: number } & ComponentProps<typeof Image>;
 
 export function Template({ width, ...args }: TemplateProps) {
   return (

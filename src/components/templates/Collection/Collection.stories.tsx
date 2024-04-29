@@ -10,10 +10,10 @@ import {
 import { Card } from "../../atoms/index.js";
 import Collection from "./index.js";
 
-type TemplateProps = Omit<CollectionProps, "children"> & {
+type TemplateProps = {
   cardWidth?: number;
   variant?: "grid" | "list";
-};
+} & Omit<CollectionProps, "children">;
 
 export function Template({ cardWidth, variant, ...args }: TemplateProps) {
   const itemArgs: Partial<CardProps> = {

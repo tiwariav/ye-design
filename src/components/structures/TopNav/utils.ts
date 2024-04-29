@@ -69,9 +69,9 @@ function useScrollUpdates({
   contentLeftRef,
   rootRef,
   sticky,
-}: ScrollUpdateOptions & {
+}: {
   rootRef: MutableRefObject<HTMLDivElement | null>;
-}) {
+} & ScrollUpdateOptions) {
   const layoutState = useLayoutState();
   const { direction, y: scrollY } = useScrollDirection(containerRef);
 

@@ -22,7 +22,7 @@ export default function InputWrapper<TElement extends ElementType>({
   className,
   size,
   ...props
-}: InputWrapperProps<TElement> & ComponentPropsWithoutRef<TElement>) {
+}: ComponentPropsWithoutRef<TElement> & InputWrapperProps<TElement>) {
   const Element = as ?? "div";
   return (
     <Element

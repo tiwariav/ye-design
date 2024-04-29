@@ -124,9 +124,9 @@ function useButtonEffects({
   innerRef,
   neuOptions,
   variant,
-}: SharedButtonProps & {
+}: {
   innerRef: MutableRefObject<HTMLButtonElement | null>;
-}) {
+} & SharedButtonProps) {
   const mouseData = useMouseHovered(innerRef, {
     bound: true,
     whenHovered: true,

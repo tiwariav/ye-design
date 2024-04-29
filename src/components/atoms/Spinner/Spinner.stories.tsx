@@ -12,11 +12,11 @@ const metadata: Meta<typeof Spinner> = {
 
 export default metadata;
 
-type TemplateProps = ComponentProps<typeof Spinner> & {
+type TemplateProps = {
   color: string;
   height: number;
   width: number;
-};
+} & ComponentProps<typeof Spinner>;
 
 type Story = StoryObj<TemplateProps>;
 

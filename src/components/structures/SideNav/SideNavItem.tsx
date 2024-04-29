@@ -23,7 +23,7 @@ export default function SideNavItem<TElement extends ElementType>({
   icon,
   innerClassNames,
   ...props
-}: SideNavItemProps<TElement> & ComponentPropsWithoutRef<TElement>) {
+}: ComponentPropsWithoutRef<TElement> & SideNavItemProps<TElement>) {
   const layoutState = useLayoutState();
   const Element = as ?? "div";
 

@@ -16,12 +16,12 @@ interface LayoutProviderProps {
   initialState?: Partial<LayoutState>;
 }
 
-type LayoutContextState = LayoutState & {
+type LayoutContextState = {
   refs: {
     sideNav: RefObject<HTMLDivElement | null>;
     topNav: RefObject<HTMLDivElement | null>;
   };
-};
+} & LayoutState;
 
 const {
   MethodContext,

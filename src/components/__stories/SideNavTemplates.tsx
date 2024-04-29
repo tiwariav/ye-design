@@ -15,7 +15,7 @@ import { SideNavGroup } from "../structures/index.js";
 
 export const BasicSideNav = forwardRef<
   HTMLDivElement,
-  SideNavProps & { groups?: number }
+  { groups?: number } & SideNavProps
 >(({ groups = 2, ...props }, ref) => {
   return (
     <SideNav {...props} ref={ref}>

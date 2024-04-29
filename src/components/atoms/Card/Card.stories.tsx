@@ -21,7 +21,7 @@ const imageMap = {
   None: null,
 };
 
-type TemplateProps = CardProps & { width?: number };
+type TemplateProps = { width?: number } & CardProps;
 
 export function Template({ width, ...args }: TemplateProps) {
   return <Card style={{ width }} {...args} />;
@@ -71,7 +71,7 @@ function FirstCardTemplate({
   children,
   firstContent,
   ...args
-}: CardProps & { firstContent: ReactNode }) {
+}: { firstContent: ReactNode } & CardProps) {
   return (
     <div className="story-grid">
       <Card {...args}>{firstContent}</Card>
