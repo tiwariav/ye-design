@@ -24065,6 +24065,7 @@ __metadata:
     "@types/node": "npm:^20.12.7"
     "@types/react": "npm:^18.3.1"
     "@types/react-dom": "npm:^18.3.0"
+    "@typescript-eslint/types": "npm:^7.7.1"
     "@yarnpkg/sdks": "npm:^3.1.0"
     animejs: "npm:^3.2.2"
     antd: "npm:^5.16.5"
