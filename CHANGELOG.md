@@ -1,3 +1,15 @@
+## [4.0.3](https://github.com/tiwariav/ye-design/compare/v4.0.2...v4.0.3) (2024-04-29)
+
+
+### 🐛 Bug Fixes
+
+* add classname to scroll context ([996333d](https://github.com/tiwariav/ye-design/commit/996333d828797e78bb8533d3847b18662918cfd4))
+
+
+### ♻️ Code Refactors
+
+* udpate dependencies ([f8bbca2](https://github.com/tiwariav/ye-design/commit/f8bbca2e83903929375c73758df039c854eb5798))
+
 ## [4.0.2](https://github.com/tiwariav/ye-design/compare/v4.0.1...v4.0.2) (2024-04-17)
 
 
