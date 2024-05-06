@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/tiwariav/ye-design/compare/v4.0.3...v4.0.4) (2024-05-06)
+
+
+### 🐛 Bug Fixes
+
+* fix getDynamicClassNames to replace hyphens with underscores ([8a38509](https://github.com/tiwariav/ye-design/commit/8a38509918a9f18ab863f4a6f4e91b096764197a))
+
 ## [4.0.3](https://github.com/tiwariav/ye-design/compare/v4.0.2...v4.0.3) (2024-04-29)
 
 
