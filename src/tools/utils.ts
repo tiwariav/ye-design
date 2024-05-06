@@ -19,5 +19,5 @@ export const getDynamicClassName = (styles: unknown, name: string) => {
    * As a temporary workaround for
    * https://www.npmjs.com/package/typescript-plugin-css-modules#importing-css
    */
-  return (styles as Record<string, string>)[name];
+  return (styles as Record<string, string>)[name.replaceAll("-", "__")];
 };

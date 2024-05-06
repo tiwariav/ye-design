@@ -1,4 +1,5 @@
 {
+  "circleci.persistedProjectSelection": [],
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
   "search.exclude": {
