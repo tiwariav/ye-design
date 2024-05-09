@@ -6,15 +6,18 @@
 ]}] */
 
 /* jscpd:ignore-start */
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import type { ElementType, ReactNode, Ref } from "react";
 
 import { clsx } from "clsx";
-import { forwardRef } from "react";
 /* jscpd:ignore-end */
 
 import type { COMPONENT_FLOAT } from "../../../tools/constants/props.js";
+import type { AsElementProps } from "../../AsElement.js";
 
-import { getDynamicClassName } from "../../../tools/utils.js";
+import {
+  genericForwardRef,
+  getDynamicClassName,
+} from "../../../tools/utils.js";
 import Spinner from "../Spinner/Spinner.js";
 import * as styles from "./card.module.css";
 
@@ -24,8 +27,7 @@ export const CARD_VIEW_MODES = ["thumb"] as const;
 export const CARD_HEIGHTS = ["full"] as const;
 export const CARD_FLYING = ["medium"] as const;
 
-export interface CardProps extends ComponentPropsWithoutRef<"div"> {
-  as?: ElementType;
+export type CardProps<TElement extends ElementType = "div"> = {
   floating?: (typeof COMPONENT_FLOAT)[number];
   flying?: (typeof CARD_FLYING)[number];
   height?: (typeof CARD_HEIGHTS)[number];
@@ -37,12 +39,12 @@ export interface CardProps extends ComponentPropsWithoutRef<"div"> {
   layout?: (typeof CARD_LAYOUTS)[number];
   variant?: (typeof CARD_VARIANTS)[number];
   viewMode?: (typeof CARD_VIEW_MODES)[number];
-}
+} & AsElementProps<TElement>;
 
-const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
+const Card = genericForwardRef(
+  <TElement extends ElementType>(
     {
-      as = "div",
+      as,
       children,
       className,
       floating,
@@ -55,10 +57,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       variant = "basic",
       viewMode,
       ...props
-    },
-    ref,
+    }: CardProps<TElement>,
+    ref: Ref<HTMLDivElement>,
   ) => {
-    const Element = as;
+    const Element = as ?? "div";
     return (
       <Element
         className={clsx(
@@ -84,8 +86,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       </Element>
     );
   },
+  "Card",
 );
-
-Card.displayName = "Card";
 
 export default Card;

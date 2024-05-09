@@ -7,15 +7,14 @@ import type { ComponentPropsWithoutRef, ElementType } from "react";
 import clsx from "clsx";
 
 import type { COMPONENT_SIZES } from "../../tools/constants/props.js";
+import type { AsElementProps } from "../AsElement.js";
 
 import { getDynamicClassName } from "../../tools/utils.js";
 import * as styles from "./inputWrapper.module.css";
 
-interface InputWrapperProps<TElement extends ElementType> {
-  as?: TElement;
-  className?: string;
+type InputWrapperProps<TElement extends ElementType = "div"> = {
   size?: (typeof COMPONENT_SIZES)[number];
-}
+} & AsElementProps<TElement>;
 
 export default function InputWrapper<TElement extends ElementType>({
   as,

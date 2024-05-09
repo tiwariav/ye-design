@@ -1,4 +1,5 @@
 import { isNil } from "lodash-es";
+import { forwardRef } from "react";
 
 export function isEmpty<TValue>(value: TValue) {
   return isNil(value) || value === "";
@@ -21,3 +22,13 @@ export const getDynamicClassName = (styles: unknown, name: string) => {
    */
   return (styles as Record<string, string>)[name.replaceAll("-", "___")];
 };
+
+export function genericForwardRef<TRef, TProps = object>(
+  render: (props: TProps, ref: React.Ref<TRef>) => React.ReactNode,
+  name: string,
+): (props: React.RefAttributes<TRef> & TProps) => React.ReactNode {
+  const component = forwardRef(render);
+  component.displayName = name;
+  // @ts-expect-error 2322 because generic mismatch
+  return component as unknown;
+}

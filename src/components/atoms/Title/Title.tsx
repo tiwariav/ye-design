@@ -3,9 +3,11 @@
   align-center
 ]}] */
 
-import type { ComponentPropsWithoutRef, ElementType } from "react";
+import type { ElementType } from "react";
 
 import { clsx } from "clsx";
+
+import type { AsElementProps } from "../../AsElement.js";
 
 import { getDynamicClassName } from "../../../tools/utils.js";
 import * as styles from "./title.module.css";
@@ -13,19 +15,19 @@ import * as styles from "./title.module.css";
 const TITLE_ALIGN_OPTIONS = ["center"] as const;
 const TITLE_VARIANT_OPTIONS = ["tinyline", "tinyline-left"] as const;
 
-interface TitleProps extends ComponentPropsWithoutRef<"div"> {
+type TitleProps<TElement extends ElementType = "div"> = {
   align?: (typeof TITLE_ALIGN_OPTIONS)[number];
-  as?: ElementType;
   variant?: (typeof TITLE_VARIANT_OPTIONS)[number];
-}
-export default function Title({
+} & AsElementProps<TElement>;
+
+export default function Title<TElement extends ElementType>({
   align,
-  as = "div",
+  as,
   className,
   variant,
   ...props
-}: TitleProps) {
-  const Element = as;
+}: TitleProps<TElement>) {
+  const Element = as ?? "div";
   return (
     <Element
       className={clsx(

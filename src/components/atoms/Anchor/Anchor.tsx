@@ -5,17 +5,20 @@
   spacing-less, spacing-extra,
 ]}] */
 
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import type { ElementType, ReactNode, Ref } from "react";
 
 import { clsx } from "clsx";
-import { forwardRef } from "react";
 
 import type {
   COMPONENT_SIZES,
   COMPONENT_SPACINGS,
 } from "../../../tools/constants/props.js";
+import type { AsElementProps } from "../../AsElement.js";
 
-import { getDynamicClassName } from "../../../tools/utils.js";
+import {
+  genericForwardRef,
+  getDynamicClassName,
+} from "../../../tools/utils.js";
 import { IconSpan } from "../../../wrappers/span.js";
 import * as styles from "./anchor.module.css";
 
@@ -27,23 +30,22 @@ export const ANCHOR_VARIANTS = [
   "outlined",
 ] as const;
 
-export interface AnchorProps extends ComponentPropsWithoutRef<"a"> {
-  as?: ElementType;
+export type AnchorProps<TElement extends ElementType = "a"> = {
   iconAfter?: ReactNode;
   iconBefore?: ReactNode;
   noVisited?: boolean;
   size?: (typeof COMPONENT_SIZES)[number];
   spacing?: (typeof COMPONENT_SPACINGS)[number];
   variant?: (typeof ANCHOR_VARIANTS)[number];
-}
+} & AsElementProps<TElement>;
 
 /**
  * Primary UI component for user interaction
  */
-const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-  (
+const Anchor = genericForwardRef(
+  <TElement extends ElementType>(
     {
-      as = "a",
+      as,
       children,
       className,
       iconAfter,
@@ -53,11 +55,11 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
       spacing,
       variant,
       ...props
-    },
-    ref,
+    }: AnchorProps<TElement>,
+    ref: Ref<HTMLAnchorElement>,
   ) => {
     /* jscpd:ignore-start */
-    const Element = as;
+    const Element = as ?? "a";
     return (
       <Element
         className={clsx(
@@ -82,7 +84,7 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
       </Element>
     );
   },
+  "Anchor",
 );
-Anchor.displayName = "Anchor";
 
 export default Anchor;

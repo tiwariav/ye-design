@@ -9,7 +9,6 @@ import Anchor, { ANCHOR_VARIANTS, type AnchorProps } from "./Anchor.js";
 
 const metadata: Meta<typeof Anchor> = {
   args: {
-    as: "a",
     children: "Anchor",
   },
   argTypes: {
@@ -22,7 +21,7 @@ const metadata: Meta<typeof Anchor> = {
 };
 export default metadata;
 
-type Story = StoryObj<typeof Anchor>;
+type Story = StoryObj<AnchorProps>;
 
 /* jscpd:ignore-start */
 export const Basic: Story = {};

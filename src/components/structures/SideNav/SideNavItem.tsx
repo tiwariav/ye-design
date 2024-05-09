@@ -1,12 +1,13 @@
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
 import clsx from "clsx";
+
+import type { AsElementProps } from "../../AsElement.js";
 
 import { useLayoutState } from "../../../contexts/LayoutContext/index.js";
 import * as styles from "./sideNavItem.module.css";
 
-export interface SideNavItemProps<TElement extends ElementType = "div"> {
-  as?: TElement;
+export type SideNavItemProps<TElement extends ElementType = "div"> = {
   children?: ReactNode;
   className?: string;
   icon?: ReactNode;
@@ -14,7 +15,7 @@ export interface SideNavItemProps<TElement extends ElementType = "div"> {
     icon?: string;
     text?: string;
   };
-}
+} & AsElementProps<TElement>;
 
 export default function SideNavItem<TElement extends ElementType>({
   as,
@@ -23,7 +24,7 @@ export default function SideNavItem<TElement extends ElementType>({
   icon,
   innerClassNames,
   ...props
-}: ComponentPropsWithoutRef<TElement> & SideNavItemProps<TElement>) {
+}: SideNavItemProps<TElement>) {
   const layoutState = useLayoutState();
   const Element = as ?? "div";
 

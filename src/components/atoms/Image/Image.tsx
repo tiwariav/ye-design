@@ -1,9 +1,11 @@
 /* eslint css-modules/no-unused-class: [2, {camelCase: true, markAsUsed: ['is-basic', 'is-circular'] }] */
 
-import type { ComponentPropsWithoutRef, ElementType } from "react";
+import type { ElementType } from "react";
 
 import { clsx } from "clsx";
 import { useEffect, useMemo, useState } from "react";
+
+import type { AsElementProps } from "../../AsElement.js";
 
 import { getDynamicClassName } from "../../../tools/utils.js";
 import Spinner from "../Spinner/Spinner.js";
@@ -13,16 +15,15 @@ import * as styles from "./image.module.css";
 const IMAGE_VARIANT_OPTIONS = ["basic", "circular"] as const;
 const MAX_PERCENT = 100;
 
-export interface ImageProps extends ComponentPropsWithoutRef<"img"> {
-  as?: ElementType;
+export type ImageProps<TElement extends ElementType = "img"> = {
   aspectRatio?: `${number}/${number}`;
   isBusy?: boolean;
   isLoading?: boolean;
   variant?: (typeof IMAGE_VARIANT_OPTIONS)[number];
-}
+} & AsElementProps<TElement>;
 
-export default function Image({
-  as = "img",
+export default function Image<TElement extends ElementType>({
+  as,
   aspectRatio,
   className,
   isBusy,
@@ -30,11 +31,11 @@ export default function Image({
   style,
   variant = "basic",
   ...props
-}: ImageProps) {
+}: ImageProps<TElement>) {
   const [contentStyle, setContentStyle] = useState({});
 
   const image = useMemo(() => {
-    const Element = as;
+    const Element = as ?? "img";
     return <Element className={clsx(styles.image, className)} {...props} />;
   }, [as, className, props]);
 
