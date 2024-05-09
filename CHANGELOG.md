@@ -1,3 +1,10 @@
+## [4.0.6](https://github.com/tiwariav/ye-design/compare/v4.0.5...v4.0.6) (2024-05-09)
+
+
+### 🐛 Bug Fixes
+
+* fix ellipse radius css var name ([cf6d0f2](https://github.com/tiwariav/ye-design/commit/cf6d0f2b3abe79867e64a5609bac5ef0b23763bb))
+
 ## [4.0.5](https://github.com/tiwariav/ye-design/compare/v4.0.4...v4.0.5) (2024-05-06)
 
 

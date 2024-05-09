@@ -1,6 +1,6 @@
 {
   "name": "ye-design",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "type": "module",
   "sideEffects": false,
   "engines": {
@@ -179,7 +179,7 @@
       "optional": true
     }
   },
-  "packageManager": "yarn@4.2.1",
+  "packageManager": "yarn@4.2.2",
   "dependenciesMeta": {
     "country-flag-emoji-polyfill@0.1.4": {
       "unplugged": true
