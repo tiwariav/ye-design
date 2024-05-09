@@ -1,3 +1,10 @@
+## [4.0.7](https://github.com/tiwariav/ye-design/compare/v4.0.6...v4.0.7) (2024-05-09)
+
+
+### 🐛 Bug Fixes
+
+* support generic types for forwardRef components ([8b1a31d](https://github.com/tiwariav/ye-design/commit/8b1a31d0f1528f552372d3cd2db9a64d1f3f0805))
+
 ## [4.0.6](https://github.com/tiwariav/ye-design/compare/v4.0.5...v4.0.6) (2024-05-09)
 
 
