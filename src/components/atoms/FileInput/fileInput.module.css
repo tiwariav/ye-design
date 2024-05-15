@@ -10,8 +10,10 @@
     max-width: 200px;
     margin: auto;
     padding: var(--ye-button-padding);
-    color: inherit;
+
     line-height: inherit;
+    color: inherit;
+
     background-color: var(--ye-color-background);
     border-color: var(--ye-color-border);
     border-style: solid;
@@ -21,14 +23,12 @@
   }
 
   .input {
+    overflow: hidden;
     width: 0;
     height: 0;
-    overflow: hidden;
 
-    @media (--media-hover) {
-      &:hover + .placeholder {
-        border-color: var(--ye-color-text-anchor-focus);
-      }
+    &::file-selector-button {
+      display: none;
     }
 
     &:focus + .placeholder {
@@ -38,8 +38,10 @@
       box-shadow: var(--ye-shadow-inset-none);
     }
 
-    &::file-selector-button {
-      display: none;
+    @media (--media-hover) {
+      &:hover + .placeholder {
+        border-color: var(--ye-color-text-anchor-focus);
+      }
     }
   }
 
@@ -59,11 +61,14 @@
     display: flex;
     gap: var(--ye-spacing-rem-small);
     align-items: center;
+
     max-width: 100%;
     margin: var(--ye-spacing-em-normal) 0;
     padding: var(--ye-spacing-rem-small);
+
     font-size: var(--ye-font-size-xsmall);
     text-align: left;
+
     border-color: var(--ye-color-border);
     border-style: solid;
     border-width: var(--ye-button-outline-border-width);

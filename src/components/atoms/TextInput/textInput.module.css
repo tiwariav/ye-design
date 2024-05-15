@@ -12,9 +12,9 @@
     width: 100%;
 
     & ::placeholder {
-      color: var(--ye-color-dark-50);
-      font-weight: 400;
       font-size: var(--ye-font-size-small);
+      font-weight: 400;
+      color: var(--ye-color-dark-50);
     }
   }
 
@@ -31,21 +31,23 @@
     width: 100%;
     padding: var(--ye-input-padding-top) var(--ye-input-padding-right)
       var(--ye-input-padding-bottom) var(--ye-input-padding-left);
-    color: inherit;
+
     font-family: var(--ye-font-family-input);
+    color: inherit;
+
     background-color: var(--ye-color-input-background);
     border-radius: var(--ye-input-border-radius);
-
-    @media (--media-hover) {
-      &:hover {
-        background-color: var(--ye-color-input-focus-background);
-      }
-    }
 
     &:focus {
       border-color: var(--ye-color-input-focus-border);
       outline: none;
       box-shadow: var(--module-shadow-input-focus);
+    }
+
+    @media (--media-hover) {
+      &:hover {
+        background-color: var(--ye-color-input-focus-background);
+      }
     }
   }
 
@@ -77,8 +79,10 @@
   .loader {
     position: absolute;
     z-index: var(--module-loader-z);
+
     width: 100%;
     height: 100%;
+
     border-radius: var(--ye-input-border-radius);
   }
 
@@ -120,9 +124,11 @@
     );
 
     & ::placeholder {
-      transform: scale(0);
       transform-origin: left bottom;
+      transform: scale(0);
+
       opacity: 0;
+
       transition-timing-function: var(--ye-transition-function);
       transition-duration: calc(var(--ye-transition-duration) / 2);
       transition-property: opacity, transform;
@@ -133,17 +139,22 @@
         var(--ye-input-padding-top) + var(--ye-input-padding-bottom)
       );
 
+      cursor: text;
+
       position: absolute;
+      z-index: calc(var(--module-loader-z) - 1);
       top: calc((var(--calc-xy-padding) / 2) + 1px);
       left: calc(var(--ye-input-padding-left));
-      z-index: calc(var(--module-loader-z) - 1);
+      transform-origin: 0 center;
+
       display: flex;
+
       margin: 0;
       padding: 0;
-      color: var(--ye-color-text-light);
+
       font-weight: 300;
-      transform-origin: 0 center;
-      cursor: text;
+      color: var(--ye-color-text-light);
+
       transition-timing-function: var(--ye-transition-function);
       transition-duration: calc(var(--ye-transition-duration) / 2);
       transition-property: transform;
@@ -158,7 +169,6 @@
       }
 
       & .label {
-        font-weight: 500;
         transform: scale(0.72)
           translateY(
             calc(
@@ -166,6 +176,7 @@
                 var(--ye-input-border-width) - 1px
             )
           );
+        font-weight: 500;
         transition-duration: var(--ye-transition-duration);
       }
     }

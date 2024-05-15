@@ -62,12 +62,13 @@
   }
 
   .variant-color {
-    color: var(--ye-color-text-anchor);
 
     @mixin anchorStates {
       color: var(--ye-color-text-anchor-focus);
       text-decoration: underline;
     }
+
+    color: var(--ye-color-text-anchor);
 
     &:not(.no-visited):visited {
       color: var(--ye-color-text-anchor-visited);
@@ -75,37 +76,46 @@
   }
 
   .variant-list-item {
-    display: flex;
-    width: 100%;
-    padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-normal);
-    border-radius: 0;
-    transition-property: box-shadow, border-radius, background-color;
 
     @mixin anchorStates {
       background-color: var(--ye-color-dark-5);
     }
+
+    display: flex;
+
+    width: 100%;
+    padding: var(--ye-spacing-em-xsmall) var(--ye-spacing-em-normal);
+
+    border-radius: 0;
+
+    transition-property: box-shadow, border-radius, background-color;
   }
 
   .variant-nav-item {
-    position: relative;
-    width: 100%;
-    padding: var(--ye-spacing-em-small) var(--ye-em-base);
-    border-radius: 0;
 
     @mixin anchorStates {
       color: var(--ye-color-primary);
 
       &::after {
+        content: "";
+
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
+
         display: block;
+
         width: 2px;
+
         background-color: var(--ye-color-primary);
-        content: "";
       }
     }
+
+    position: relative;
+    width: 100%;
+    padding: var(--ye-spacing-em-small) var(--ye-em-base);
+    border-radius: 0;
   }
 
   .variant-filled,
@@ -114,32 +124,35 @@
     border-style: solid;
     border-width: var(--ye-button-outline-border-width);
     border-radius: var(--ye-button-border-radius);
+
     transition-timing-function: var(--ye-transition-function);
     transition-duration: var(--ye-transition-duration);
     transition-property: box-shadow, border-radius, background-color, color;
   }
 
   .variant-outlined {
-    padding: var(--ye-button-outline-padding);
-    background-color: transparent;
 
     @mixin anchorStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
       box-shadow: none;
     }
+
+    padding: var(--ye-button-outline-padding);
+    background-color: transparent;
   }
 
   .variant-filled {
-    padding: var(--ye-button-outline-padding);
-    color: var(--ye-color-background);
-    background-color: var(--ye-color-text);
 
     @mixin anchorStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
       box-shadow: none;
     }
+
+    padding: var(--ye-button-outline-padding);
+    color: var(--ye-color-background);
+    background-color: var(--ye-color-text);
   }
 
   .icon-after {

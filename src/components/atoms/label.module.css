@@ -8,7 +8,6 @@
 
   .with-value,
   .with-focus {
-    font-weight: 500;
     transform: scale(0.72)
       translateY(
         calc(
@@ -16,11 +15,12 @@
             var(--ye-input-border-width) - 1px
         )
       );
+    font-weight: 500;
     transition-duration: var(--ye-transition-duration);
   }
 
   .required::after {
-    color: var(--ye-color-danger);
     content: " *";
+    color: var(--ye-color-danger);
   }
 }

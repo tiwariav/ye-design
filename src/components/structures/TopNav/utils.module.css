@@ -2,7 +2,9 @@
   .root {
     position: relative;
     z-index: var(--ye-z-topnav);
+
     width: 100%;
+
     transition-timing-function: var(--ye-transition-function);
     transition-duration: var(--ye-transition-duration);
     transition-property: transform;

@@ -10,20 +10,24 @@
     text-align: center;
 
     &::after {
+      content: "";
+
       position: absolute;
       bottom: 0;
+
       display: block;
+
       height: 2px;
+
       background: var(--ye-color-dark-10);
-      content: "";
     }
   }
 
   .is-tinyline {
     &::after {
       left: 50%;
-      width: 40px;
       transform: translateX(-50%);
+      width: 40px;
     }
   }
 

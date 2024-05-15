@@ -1,8 +1,8 @@
 @layer ye-components {
   .root {
-    color: var(--ye-color-negative);
-    font-weight: var(--ye-font-weight-normal);
     font-size: var(--ye-font-size-xsmall);
+    font-weight: var(--ye-font-weight-normal);
+    color: var(--ye-color-negative);
   }
 
   .item {

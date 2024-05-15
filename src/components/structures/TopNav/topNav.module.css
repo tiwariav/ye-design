@@ -8,7 +8,9 @@
     gap: var(--ye-spacing-em-normal);
     align-items: stretch;
     justify-content: space-between;
+
     width: 100%;
+
     background-color: var(--ye-color-background);
     box-shadow: var(--ye-shadow-floating-low);
 
@@ -27,8 +29,10 @@
   .banner {
     width: 100%;
     margin: 0 auto;
+
     font-size: var(--ye-font-size-small);
     text-align: center;
+
     transition: var(--ye-transition-duration) height ease-in-out;
 
     /* stylelint-disable-next-line csstools/media-use-custom-media */
@@ -57,10 +61,13 @@
 
   .content-menu-wrapper {
     position: absolute;
-    right: 0;
     z-index: var(--ye-z-behind);
-    margin-left: auto;
+    right: 0;
+
     overflow: hidden;
+
+    margin-left: auto;
+
     transition: height var(--ye-transition-duration) ease-in-out;
   }
 
@@ -80,11 +87,15 @@
   }
 
   .content-menu-measuring {
-    position: absolute;
-    display: flex;
-    height: fit-content;
-    visibility: hidden;
     pointer-events: none;
+
+    position: absolute;
+
+    display: flex;
+
+    height: fit-content;
+
+    visibility: hidden;
   }
 
   .content-menu-measured {

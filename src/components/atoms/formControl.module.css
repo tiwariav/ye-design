@@ -1,8 +1,11 @@
 @layer ye-base-components {
   .root {
     display: inline-flex;
+
     line-height: var(--ye-line-height);
+
     background-color: transparent;
+
     transition-timing-function: var(--ye-transition-function);
     transition-duration: var(--ye-transition-duration);
     transition-property: box-shadow, border-radius;

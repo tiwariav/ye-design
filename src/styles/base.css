@@ -330,13 +330,15 @@
 
   body {
     overflow-x: hidden;
-    color: var(--ye-color-text);
-    font-weight: var(--ye-font-weight-normal);
+
+    font-family: var(--ye-font-family-body);
     font-size: var(--ye-font-size-normal);
     /* stylelint-disable-next-line declaration-property-value-allowed-list */
     font-size: clamp(100%, 1rem + 2vw, var(--ye-font-size-normal));
-    font-family: var(--ye-font-family-body);
+    font-weight: var(--ye-font-weight-normal);
     line-height: var(--ye-line-height);
+    color: var(--ye-color-text);
+
     background-color: var(--ye-color-background);
   }
 
@@ -346,8 +348,8 @@
   h4,
   h5,
   h6 {
-    font-weight: var(--ye-font-weight-bold);
     font-family: var(--ye-font-family-display);
+    font-weight: var(--ye-font-weight-bold);
   }
 
   h1 {
@@ -380,12 +382,11 @@
 }
 
 .custom-scrollbar {
-  scrollbar-width: thin;
-
   /* SCROLLBAR */
 
   /* New specs, works on Firefox */
   scrollbar-color: var(--ye-color-bg-scrollbar) var(--ye-color-primary);
+  scrollbar-width: thin;
 
   /* Works on Chrome/Edge/Safari */
   &::-webkit-scrollbar-track {

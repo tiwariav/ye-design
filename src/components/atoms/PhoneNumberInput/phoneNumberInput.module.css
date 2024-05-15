@@ -17,8 +17,9 @@
       top: auto;
       bottom: calc(var(--ye-spacing-rem-xsmall) - 1px);
       left: calc(var(--ye-spacing-rem-normal) - 1px);
-      height: var(--ye-spacing-em-normal);
       transform: none;
+
+      height: var(--ye-spacing-em-normal);
     }
   }
 }

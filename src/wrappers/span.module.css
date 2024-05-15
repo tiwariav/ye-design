@@ -4,14 +4,15 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
+
     width: var(--ye-input-icon-width);
     height: calc(1em * var(--ye-line-height));
   }
 
   .icon {
     margin-right: var(--ye-spacing-em-xsmall);
-    color: inherit;
     line-height: 1;
+    color: inherit;
 
     & svg,
     & img {
@@ -21,8 +22,8 @@
   }
 
   .form-icon {
-    color: inherit;
     line-height: 1;
+    color: inherit;
 
     & svg,
     & img {

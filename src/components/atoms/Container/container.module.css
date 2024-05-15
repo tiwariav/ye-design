@@ -43,10 +43,10 @@
   }
 
   .height-readable {
-    max-height: 80vh;
+    scrollbar-gutter: auto;
     overflow: auto;
     overscroll-behavior: auto;
-    scrollbar-gutter: auto;
+    max-height: 80vh;
   }
 
   .height-full {

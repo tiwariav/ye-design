@@ -7,10 +7,13 @@
 
   .bounce {
     display: inline-block;
+
     width: 18px;
     height: 18px;
+
     background-color: var(--ye-color-accent-dark);
     border-radius: var(--ye-radius-circle);
+
     animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 
     /* stylelint-disable-next-line csstools/media-use-custom-media */

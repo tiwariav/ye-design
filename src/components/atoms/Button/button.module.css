@@ -13,23 +13,30 @@
 
 @layer ye-components {
   .root {
-    position: relative;
-    gap: var(--ye-spacing-em-xsmall);
-    align-items: center;
-    padding: var(--ye-button-padding);
-    overflow: hidden;
-    color: var(--ye-color-text);
-    font-weight: var(--ye-button-font-weight);
-    text-align: left;
-    border-color: var(--ye-color-border);
-    border-width: var(--ye-button-border-width);
-    border-radius: var(--ye-button-border-radius);
-    cursor: var(--ye-button-cursor);
-    transition-property: box-shadow, background-color, color;
 
     @mixin buttonStates {
       outline: none;
     }
+
+    cursor: var(--ye-button-cursor);
+
+    position: relative;
+
+    overflow: hidden;
+    gap: var(--ye-spacing-em-xsmall);
+    align-items: center;
+
+    padding: var(--ye-button-padding);
+
+    font-weight: var(--ye-button-font-weight);
+    color: var(--ye-color-text);
+    text-align: left;
+
+    border-color: var(--ye-color-border);
+    border-width: var(--ye-button-border-width);
+    border-radius: var(--ye-button-border-radius);
+
+    transition-property: box-shadow, background-color, color;
   }
 
   .is-disabled {
@@ -78,30 +85,33 @@
 
   .variant-basic,
   .variant-primary {
-    box-shadow: var(--ye-button-shadow);
 
     @mixin buttonStates {
       box-shadow: var(--ye-button-focus-shadow);
     }
+
+    box-shadow: var(--ye-button-shadow);
   }
 
   .variant-borderless {
-    background-color: transparent;
 
     @mixin buttonStates {
       box-shadow: none;
     }
+
+    background-color: transparent;
   }
 
   .variant-inline {
+
+    @mixin buttonStates {
+      box-shadow: none;
+    }
+
     padding-right: var(--ye-spacing-em-xsmall);
     padding-left: var(--ye-spacing-em-xsmall);
     border: 1px solid rgb(0 0 0 / 0.05);
     box-shadow: none;
-
-    @mixin buttonStates {
-      box-shadow: none;
-    }
 
     &.disabled {
       color: var(--ye-color-disabled-button);
@@ -109,14 +119,15 @@
   }
 
   .variant-list-item {
-    width: 100%;
-    border-radius: 0;
-    box-shadow: none;
 
     @mixin buttonStates {
       background-color: var(--ye-color-dark-10);
       box-shadow: none;
     }
+
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .variant-outlined,
@@ -128,24 +139,26 @@
   }
 
   .variant-outlined {
-    border-style: solid;
-    transition-property: background-color, color;
 
     @mixin buttonStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
       box-shadow: none;
     }
+
+    border-style: solid;
+    transition-property: background-color, color;
   }
 
   .variant-filled {
-    color: var(--ye-color-background);
-    background-color: var(--ye-color-text);
 
     @mixin buttonStates {
       background-color: var(--ye-color-dark-50);
       box-shadow: none;
     }
+
+    color: var(--ye-color-background);
+    background-color: var(--ye-color-text);
   }
 
   .variant-dashed {
@@ -166,15 +179,15 @@
     border-radius: var(--ye-radius-normal);
     box-shadow: var(--ye-shadow-neu);
 
+    &:focus,
+    &:active {
+      box-shadow: var(--ye-shadow-neu-focus);
+    }
+
     @media (--media-hover) {
       &:hover {
         box-shadow: var(--ye-shadow-neu-hover);
       }
-    }
-
-    &:focus,
-    &:active {
-      box-shadow: var(--ye-shadow-neu-focus);
     }
   }
 
@@ -207,14 +220,18 @@
 
   .effect-cursor-tracking::after,
   .effect-ripple::before {
+    content: "";
+
     position: absolute;
-    display: block;
-    border-radius: var(--ye-radius-circle);
     transform: translate(-50%, -50%) scale(1);
+
+    display: block;
+
+    border-radius: var(--ye-radius-circle);
+
     transition-timing-function: ease-out;
     transition-duration: 0.5s;
     transition-property: transform, opacity;
-    content: "";
 
     /* stylelint-disable-next-line csstools/media-use-custom-media */
     @media screen and (--media-reduced-motion) {
@@ -223,42 +240,42 @@
   }
 
   .effect-cursor-tracking {
-    &::after {
-      top: var(--ye-effect-tracking-y);
-      left: var(--ye-effect-tracking-x);
-      width: 7.5em;
-      height: 7.5em;
-      background: var(--ye-gradient-button-tracker);
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0.33;
-    }
 
     @mixin buttonStates {
       &::after {
         transform: translate(-50%, -50%) scale(1);
       }
     }
+
+    &::after {
+      top: var(--ye-effect-tracking-y);
+      left: var(--ye-effect-tracking-x);
+      transform: translate(-50%, -50%) scale(0);
+
+      width: 7.5em;
+      height: 7.5em;
+
+      opacity: 0.33;
+      background: var(--ye-gradient-button-tracker);
+    }
   }
 
   .effect-ripple {
-    &::before {
-      top: var(--ye-effect-ripple-y);
-      left: var(--ye-effect-ripple-x);
-      display: none;
-      opacity: 0;
-    }
 
     @mixin buttonStates {
       &::before {
         width: var(--ye-effect-ripple-diameter);
         height: var(--ye-effect-ripple-diameter);
-        background: var(--ye-gradient-button-ripple);
         opacity: 0.025;
+        background: var(--ye-gradient-button-ripple);
       }
     }
 
-    @media (--media-hover) {
-      display: block;
+    &::before {
+      top: var(--ye-effect-ripple-y);
+      left: var(--ye-effect-ripple-x);
+      display: none;
+      opacity: 0;
     }
 
     &.variant-primary {
@@ -273,12 +290,16 @@
       transform: translate(-50%, -50%) scale(0);
       transition-duration: 0s;
     }
+
+    @media (--media-hover) {
+      display: block;
+    }
   }
 
   .spinner {
+    inset: 1px;
     background-color: var(--ye-color-light-75);
     border-radius: var(--ye-button-border-radius);
-    inset: 1px;
   }
 
   /* to avoid undef error */

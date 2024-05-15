@@ -8,23 +8,28 @@
 
 @layer ye-structures {
   .root {
-    flex-shrink: 0;
-    width: var(--ye-layout-side-nav-width);
-    height: max-content;
+    scrollbar-gutter: auto;
+
     overflow: auto;
     overscroll-behavior: auto;
-    scrollbar-gutter: auto;
+    flex-shrink: 0;
+
+    width: var(--ye-layout-side-nav-width);
+    height: max-content;
+
     background-color: var(--ye-color-background-content);
     box-shadow: var(--ye-shadow-drawer);
+
     transition-timing-function: var(--ye-transition-function);
     transition-duration: var(--ye-transition-duration);
     transition-property: width;
 
     @media (--media-max-sm) {
       position: fixed;
+      z-index: calc(var(--ye-z-topnav) + 1);
       top: 0;
       left: 0;
-      z-index: calc(var(--ye-z-topnav) + 1);
+
       width: var(--ye-layout-side-nav-toggle-width);
     }
   }
@@ -36,13 +41,13 @@
   }
 
   .wrapper-outer {
-    width: 100%;
     overflow: hidden;
+    width: 100%;
   }
 
   .wrapper-inner {
-    width: var(--ye-layout-side-nav-width);
     overflow: hidden;
+    width: var(--ye-layout-side-nav-width);
   }
 
   .backdrop {
@@ -53,18 +58,17 @@
     @media (--media-max-sm) {
       position: fixed;
       z-index: calc(var(--ye-z-topnav) + 1);
-      display: block;
-      width: 100%;
-      background: var(--ye-color-dark-50);
       inset: 0 100% 0 0;
+
+      display: block;
+
+      width: 100%;
+
+      background: var(--ye-color-dark-50);
     }
   }
 
   .is-toggled {
-    @media (--media-min-md) and (--media-max-lg) {
-      width: 0;
-    }
-
     &.has-compact-mode {
       @media (--media-min-lg) and (--media-max-lg) {
         width: var(--ye-layout-side-nav-toggle-width);
@@ -73,6 +77,10 @@
       @media (--media-min-md) and (--media-max-md) {
         width: var(--ye-layout-side-nav-width);
       }
+    }
+
+    @media (--media-min-md) and (--media-max-lg) {
+      width: 0;
     }
 
     @media (--media-max-sm) {
@@ -102,11 +110,14 @@
 
   .toggle {
     position: sticky;
-    top: 0;
     z-index: calc(var(--ye-z-base) + 1);
+    top: 0;
+
     display: flex;
+
     padding: var(--ye-spacing-rem-normal) 0 var(--ye-spacing-rem-normal)
       var(--ye-spacing-rem-normal);
+
     background-color: var(--ye-color-background-content);
 
     @media (--media-min-xl) {

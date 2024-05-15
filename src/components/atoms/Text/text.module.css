@@ -1,10 +1,12 @@
 @layer ye-components {
   .text {
     position: relative;
+
+    overflow: hidden;
     display: block;
+
     width: 100%;
     max-width: 720px;
-    overflow: hidden;
 
     &.inline {
       display: inline-flex;
