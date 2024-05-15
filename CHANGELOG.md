@@ -1,3 +1,10 @@
+## [4.0.8](https://github.com/tiwariav/ye-design/compare/v4.0.7...v4.0.8) (2024-05-15)
+
+
+### 🐛 Bug Fixes
+
+* hook form onchange optional ([1b01b2c](https://github.com/tiwariav/ye-design/commit/1b01b2c1d90752b8ad0dd346bef4483c23fccdc4))
+
 ## [4.0.7](https://github.com/tiwariav/ye-design/compare/v4.0.6...v4.0.7) (2024-05-09)
 
 
