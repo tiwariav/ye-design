@@ -155,7 +155,7 @@
     "source-map-explorer": "^2.5.3",
     "storybook": "^8.1.1",
     "style-loader": "^4.0.0",
-    "stylelint": "^16.5.0",
+    "stylelint": "patch:stylelint@npm%3A16.5.0#~/.yarn/patches/stylelint-npm-16.5.0-67c6589a0f.patch",
     "stylelint-order": "^6.0.4",
     "ts-jest": "^29.1.2",
     "type-fest": "^4.18.2",
