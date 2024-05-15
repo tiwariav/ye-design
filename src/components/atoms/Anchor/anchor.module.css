@@ -62,7 +62,6 @@
   }
 
   .variant-color {
-
     @mixin anchorStates {
       color: var(--ye-color-text-anchor-focus);
       text-decoration: underline;
@@ -76,7 +75,6 @@
   }
 
   .variant-list-item {
-
     @mixin anchorStates {
       background-color: var(--ye-color-dark-5);
     }
@@ -92,7 +90,6 @@
   }
 
   .variant-nav-item {
-
     @mixin anchorStates {
       color: var(--ye-color-primary);
 
@@ -120,6 +117,14 @@
 
   .variant-filled,
   .variant-outlined {
+    @mixin anchorStates {
+      color: var(--ye-color-background);
+      background-color: var(--ye-color-text);
+      box-shadow: none;
+    }
+
+    padding: var(--ye-button-outline-padding);
+
     border-color: var(--ye-color-text);
     border-style: solid;
     border-width: var(--ye-button-outline-border-width);
@@ -131,26 +136,10 @@
   }
 
   .variant-outlined {
-
-    @mixin anchorStates {
-      color: var(--ye-color-background);
-      background-color: var(--ye-color-text);
-      box-shadow: none;
-    }
-
-    padding: var(--ye-button-outline-padding);
     background-color: transparent;
   }
 
   .variant-filled {
-
-    @mixin anchorStates {
-      color: var(--ye-color-background);
-      background-color: var(--ye-color-text);
-      box-shadow: none;
-    }
-
-    padding: var(--ye-button-outline-padding);
     color: var(--ye-color-background);
     background-color: var(--ye-color-text);
   }

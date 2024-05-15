@@ -13,7 +13,6 @@
 
 @layer ye-components {
   .root {
-
     @mixin buttonStates {
       outline: none;
     }
@@ -85,7 +84,6 @@
 
   .variant-basic,
   .variant-primary {
-
     @mixin buttonStates {
       box-shadow: var(--ye-button-focus-shadow);
     }
@@ -94,7 +92,6 @@
   }
 
   .variant-borderless {
-
     @mixin buttonStates {
       box-shadow: none;
     }
@@ -103,7 +100,6 @@
   }
 
   .variant-inline {
-
     @mixin buttonStates {
       box-shadow: none;
     }
@@ -119,7 +115,6 @@
   }
 
   .variant-list-item {
-
     @mixin buttonStates {
       background-color: var(--ye-color-dark-10);
       box-shadow: none;
@@ -139,7 +134,6 @@
   }
 
   .variant-outlined {
-
     @mixin buttonStates {
       color: var(--ye-color-background);
       background-color: var(--ye-color-text);
@@ -151,7 +145,6 @@
   }
 
   .variant-filled {
-
     @mixin buttonStates {
       background-color: var(--ye-color-dark-50);
       box-shadow: none;
@@ -240,7 +233,6 @@
   }
 
   .effect-cursor-tracking {
-
     @mixin buttonStates {
       &::after {
         transform: translate(-50%, -50%) scale(1);
@@ -261,7 +253,6 @@
   }
 
   .effect-ripple {
-
     @mixin buttonStates {
       &::before {
         width: var(--ye-effect-ripple-diameter);
