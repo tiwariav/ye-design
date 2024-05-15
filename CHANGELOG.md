@@ -1,3 +1,10 @@
+## [4.0.9](https://github.com/tiwariav/ye-design/compare/v4.0.8...v4.0.9) (2024-05-15)
+
+
+### ♻️ Code Refactors
+
+* update stylelint to v16 ([c5fc4f7](https://github.com/tiwariav/ye-design/commit/c5fc4f7ede6d5201832c0ff81ac0880162ff6ba5))
+
 ## [4.0.8](https://github.com/tiwariav/ye-design/compare/v4.0.7...v4.0.8) (2024-05-15)
 
 
