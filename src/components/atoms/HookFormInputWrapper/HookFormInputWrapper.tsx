@@ -33,7 +33,7 @@ export type ChangeHandler = (
 export type HookFormInputWrapperProps<TValues extends FieldValues> = {
   children: ReactElement<
     {
-      onChange: ChangeHandler;
+      onChange?: ChangeHandler;
     } & ComponentPropsWithRef<"input">
   >;
   onChange?: ChangeEventHandler;
@@ -88,7 +88,7 @@ export default function HookFormInputWrapper<TValues extends FieldValues>({
       },
       onChange: ((event, inputValue, shouldUpdate) => {
         handleHookFormChange(event, inputValue, shouldUpdate);
-        child.props.onChange(event, inputValue, shouldUpdate);
+        child.props.onChange?.(event, inputValue, shouldUpdate);
       }) as ChangeHandler,
     }),
     [child.props, handleHookFormChange, onBlur],
