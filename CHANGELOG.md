@@ -1,3 +1,10 @@
+## [4.0.10](https://github.com/tiwariav/ye-design/compare/v4.0.9...v4.0.10) (2024-06-01)
+
+
+### 🐛 Bug Fixes
+
+* remove border radius from borderless button ([000014b](https://github.com/tiwariav/ye-design/commit/000014b098f2f5253d7e89619c38880f6cf5207b))
+
 ## [4.0.9](https://github.com/tiwariav/ye-design/compare/v4.0.8...v4.0.9) (2024-05-15)
 
 
