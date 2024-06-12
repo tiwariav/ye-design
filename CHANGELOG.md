@@ -1,3 +1,9 @@
+## [4.0.11](https://github.com/tiwariav/ye-design/compare/v4.0.10...v4.0.11) (2024-06-12)
+
+### ♻️ Code Refactors
+
+* update packages ([8fb6f82](https://github.com/tiwariav/ye-design/commit/8fb6f82ca2e475603f751cd46b9e2813967f3aa6))
+
 ## [4.0.10](https://github.com/tiwariav/ye-design/compare/v4.0.9...v4.0.10) (2024-06-01)
 
 
