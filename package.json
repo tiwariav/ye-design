@@ -180,7 +180,7 @@
       "optional": true
     }
   },
-  "packageManager": "yarn@4.2.2",
+  "packageManager": "yarn@4.3.0",
   "dependenciesMeta": {
     "country-flag-emoji-polyfill@0.1.4": {
       "unplugged": true
