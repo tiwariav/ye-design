@@ -1,3 +1,9 @@
+## [4.0.12](https://github.com/tiwariav/ye-design/compare/v4.0.11...v4.0.12) (2024-06-18)
+
+### 🐛 Bug Fixes
+
+* use camelCase names in `getDynamicClassName` ([c0e77ff](https://github.com/tiwariav/ye-design/commit/c0e77ff683680611303e5f3a8bb7d28a9e1994e8))
+
 ## [4.0.11](https://github.com/tiwariav/ye-design/compare/v4.0.10...v4.0.11) (2024-06-12)
 
 ### ♻️ Code Refactors
