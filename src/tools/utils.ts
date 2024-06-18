@@ -1,4 +1,4 @@
-import { isNil } from "lodash-es";
+import { camelCase, isNil } from "lodash-es";
 import { forwardRef } from "react";
 
 export function isEmpty<TValue>(value: TValue) {
@@ -20,7 +20,7 @@ export const getDynamicClassName = (styles: unknown, name: string) => {
    * As a temporary workaround for
    * https://www.npmjs.com/package/typescript-plugin-css-modules#importing-css
    */
-  return (styles as Record<string, string>)[name.replaceAll("-", "___")];
+  return (styles as Record<string, string>)[camelCase(name)];
 };
 
 export function genericForwardRef<TRef, TProps = object>(
